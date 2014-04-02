@@ -76,6 +76,15 @@
 		4E9608D418E9CA5D00418798 /* ms3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4E9608D118E9CA5D00418798 /* ms3.jpg */; };
 		4E9608D518E9CA5D00418798 /* ms1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4E9608D218E9CA5D00418798 /* ms1.jpg */; };
 		4E9608D618E9CA5D00418798 /* ms2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4E9608D318E9CA5D00418798 /* ms2.jpg */; };
+		C1D8700218EBF92A0061F799 /* tabbar_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = C1D86FFE18EBF92A0061F799 /* tabbar_bg.png */; };
+		C1D8700318EBF92A0061F799 /* tabbar_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C1D86FFF18EBF92A0061F799 /* tabbar_bg@2x.png */; };
+		C1D8700418EBF92A0061F799 /* tabbar_selected_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = C1D8700018EBF92A0061F799 /* tabbar_selected_bg.png */; };
+		C1D8700518EBF92A0061F799 /* tabbar_selected_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C1D8700118EBF92A0061F799 /* tabbar_selected_bg@2x.png */; };
+		C1D8700818EBF9B70061F799 /* tabbar_home_Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C1D8700618EBF9B70061F799 /* tabbar_home_Icon.png */; };
+		C1D8700918EBF9B70061F799 /* tabbar_home_Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C1D8700718EBF9B70061F799 /* tabbar_home_Icon@2x.png */; };
+		C1D8700B18EBFD1E0061F799 /* home_btn_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = C1D8700A18EBFD1E0061F799 /* home_btn_bg.png */; };
+		C1D8700F18EC0CAB0061F799 /* CouponDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1D8700D18EC0CAB0061F799 /* CouponDetailViewController.m */; };
+		C1D8701018EC0CAB0061F799 /* CouponDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1D8700E18EC0CAB0061F799 /* CouponDetailViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -186,6 +195,16 @@
 		4E9608D118E9CA5D00418798 /* ms3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ms3.jpg; sourceTree = "<group>"; };
 		4E9608D218E9CA5D00418798 /* ms1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ms1.jpg; sourceTree = "<group>"; };
 		4E9608D318E9CA5D00418798 /* ms2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ms2.jpg; sourceTree = "<group>"; };
+		C1D86FFE18EBF92A0061F799 /* tabbar_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabbar_bg.png; sourceTree = "<group>"; };
+		C1D86FFF18EBF92A0061F799 /* tabbar_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar_bg@2x.png"; sourceTree = "<group>"; };
+		C1D8700018EBF92A0061F799 /* tabbar_selected_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabbar_selected_bg.png; sourceTree = "<group>"; };
+		C1D8700118EBF92A0061F799 /* tabbar_selected_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar_selected_bg@2x.png"; sourceTree = "<group>"; };
+		C1D8700618EBF9B70061F799 /* tabbar_home_Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabbar_home_Icon.png; sourceTree = "<group>"; };
+		C1D8700718EBF9B70061F799 /* tabbar_home_Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar_home_Icon@2x.png"; sourceTree = "<group>"; };
+		C1D8700A18EBFD1E0061F799 /* home_btn_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home_btn_bg.png; sourceTree = "<group>"; };
+		C1D8700C18EC0CAB0061F799 /* CouponDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CouponDetailViewController.h; sourceTree = "<group>"; };
+		C1D8700D18EC0CAB0061F799 /* CouponDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CouponDetailViewController.m; sourceTree = "<group>"; };
+		C1D8700E18EC0CAB0061F799 /* CouponDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CouponDetailViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -260,6 +279,7 @@
 		4E2C6DA618D7502100DF3772 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C1D86FFD18EBF92A0061F799 /* resources */,
 				4E2C6DA718D7502100DF3772 /* InstoreApp-Info.plist */,
 				4E2C6DA818D7502100DF3772 /* InfoPlist.strings */,
 				4E2C6DAB18D7502100DF3772 /* main.m */,
@@ -308,6 +328,9 @@
 				4E96087618E4791000418798 /* CustomNavigationController.m */,
 				4E96087C18E4815500418798 /* BaseViewController.h */,
 				4E96087D18E4815500418798 /* BaseViewController.m */,
+				C1D8700C18EC0CAB0061F799 /* CouponDetailViewController.h */,
+				C1D8700D18EC0CAB0061F799 /* CouponDetailViewController.m */,
+				C1D8700E18EC0CAB0061F799 /* CouponDetailViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -435,6 +458,20 @@
 			path = CycleScrollView;
 			sourceTree = "<group>";
 		};
+		C1D86FFD18EBF92A0061F799 /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				C1D8700A18EBFD1E0061F799 /* home_btn_bg.png */,
+				C1D8700618EBF9B70061F799 /* tabbar_home_Icon.png */,
+				C1D8700718EBF9B70061F799 /* tabbar_home_Icon@2x.png */,
+				C1D86FFE18EBF92A0061F799 /* tabbar_bg.png */,
+				C1D86FFF18EBF92A0061F799 /* tabbar_bg@2x.png */,
+				C1D8700018EBF92A0061F799 /* tabbar_selected_bg.png */,
+				C1D8700118EBF92A0061F799 /* tabbar_selected_bg@2x.png */,
+			);
+			path = resources;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -511,12 +548,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E96088718E4867800418798 /* coffee.jpg in Resources */,
+				C1D8700518EBF92A0061F799 /* tabbar_selected_bg@2x.png in Resources */,
 				4E9608A818E48D6700418798 /* blackArrow.png in Resources */,
 				4E96087A18E47D6600418798 /* Icon.png in Resources */,
 				4E9608AA18E48D6700418798 /* blueArrow.png in Resources */,
 				4E96088318E4838000418798 /* YouhuiTileView.xib in Resources */,
 				4E96087B18E47D6600418798 /* Icon@2x.png in Resources */,
 				4E9608B618E7B1C100418798 /* ServiceViewCell.xib in Resources */,
+				C1D8700918EBF9B70061F799 /* tabbar_home_Icon@2x.png in Resources */,
 				4E9608AC18E48D6700418798 /* grayArrow.png in Resources */,
 				4E2C6DAA18D7502100DF3772 /* InfoPlist.strings in Resources */,
 				4E9608D418E9CA5D00418798 /* ms3.jpg in Resources */,
@@ -527,13 +566,16 @@
 				4E9608AD18E48D6700418798 /* grayArrow@2x.png in Resources */,
 				4E9608A918E48D6700418798 /* blackArrow@2x.png in Resources */,
 				4E2C6E0818D7617100DF3772 /* wifi1.jpg in Resources */,
+				C1D8700418EBF92A0061F799 /* tabbar_selected_bg.png in Resources */,
 				4E9608AF18E48D6700418798 /* whiteArrow@2x.png in Resources */,
+				C1D8701018EC0CAB0061F799 /* CouponDetailViewController.xib in Resources */,
 				4E2C6DD418D7525D00DF3772 /* MainViewController.xib in Resources */,
 				4E2C6DFC18D75CE200DF3772 /* ShopViewController.xib in Resources */,
 				4E9608D618E9CA5D00418798 /* ms2.jpg in Resources */,
 				4E9608AE18E48D6700418798 /* whiteArrow.png in Resources */,
 				4E2C6DB218D7502100DF3772 /* Images.xcassets in Resources */,
 				4E2C6DF218D75CC400DF3772 /* MeViewController.xib in Resources */,
+				C1D8700218EBF92A0061F799 /* tabbar_bg.png in Resources */,
 				4E25476218EB1BCE007388B6 /* MainViewYouhuiCell.xib in Resources */,
 				4E9608C018E7CF9F00418798 /* MeHeaderView.xib in Resources */,
 				4E2C6E0618D7611200DF3772 /* banner2.jpg in Resources */,
@@ -542,8 +584,11 @@
 				4E2C6DF718D75CD600DF3772 /* YouhuiViewController.xib in Resources */,
 				4E9608D018E9C55600418798 /* MainViewMiaoShaCell.xib in Resources */,
 				4E2C6E0C18D761F900DF3772 /* tmp1.png in Resources */,
+				C1D8700B18EBFD1E0061F799 /* home_btn_bg.png in Resources */,
+				C1D8700818EBF9B70061F799 /* tabbar_home_Icon.png in Resources */,
 				4E96088518E4861A00418798 /* url.jpg in Resources */,
 				4E2C6DE118D754ED00DF3772 /* MainViewNavigationCell.xib in Resources */,
+				C1D8700318EBF92A0061F799 /* tabbar_bg@2x.png in Resources */,
 				4E2C6E0418D760DF00DF3772 /* banner.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -588,6 +633,7 @@
 				4E9608A618E48D6700418798 /* PullPsCollectionView.m in Sources */,
 				4E9608A318E48D6700418798 /* EGORefreshTableHeaderView.m in Sources */,
 				4E96087718E4791000418798 /* CustomNavigationController.m in Sources */,
+				C1D8700F18EC0CAB0061F799 /* CouponDetailViewController.m in Sources */,
 				4E2C6DDA18D753AB00DF3772 /* MainViewNavigationCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

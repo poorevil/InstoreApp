@@ -7,6 +7,8 @@
 //
 
 #import "YouhuiTileView.h"
+#import "CouponDetailViewController.h"
+#import "AppDelegate.h"
 
 @implementation YouhuiTileView
 
@@ -15,8 +17,17 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
+        
     }
     return self;
+}
+
+-(void)awakeFromNib
+{
+    self.picView.userInteractionEnabled = YES;
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
+    [self.picView addGestureRecognizer:tap];
+
 }
 
 /*
@@ -27,5 +38,14 @@
     // Drawing code
 }
 */
+
+-(void)tapAction:(UIGestureRecognizer *) gesture
+{
+    AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+    CouponDetailViewController *cdvc = [[CouponDetailViewController alloc] initWithNibName:@"CouponDetailViewController" bundle:nil];
+    UINavigationController *nav = (UINavigationController *)appDelegate.tabBarController.selectedViewController;
+    nav.visibleViewController.hidesBottomBarWhenPushed = YES;
+    [nav pushViewController:cdvc animated:YES];
+}
 
 @end

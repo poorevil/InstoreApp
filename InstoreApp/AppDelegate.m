@@ -43,6 +43,40 @@
     
     self.tabBarController = [[UITabBarController alloc] init];
     self.tabBarController.viewControllers = @[nav1,nav2,nav3,nav4,nav5];
+    // Assign tab bar item with titles
+    UITabBar *tabBar = self.tabBarController.tabBar;
+    UITabBarItem *tabBarItem1 = [tabBar.items objectAtIndex:0];
+    UITabBarItem *tabBarItem2 = [tabBar.items objectAtIndex:1];
+    UITabBarItem *tabBarItem3 = [tabBar.items objectAtIndex:2];
+    UITabBarItem *tabBarItem4 = [tabBar.items objectAtIndex:3];
+    UITabBarItem *tabBarItem5 = [tabBar.items objectAtIndex:4];
+    
+    tabBarItem1.title = @"首页";
+    tabBarItem2.title = @"优惠劵";
+    tabBarItem3.title = @"服务";
+    tabBarItem4.title = @"商户";
+    tabBarItem5.title = @"我的";
+
+    [tabBarItem1 setImage:[UIImage imageNamed:@"tabbar_home_Icon.png"]];
+    [tabBarItem2 setImage:[UIImage imageNamed:@"tabbar_home_Icon.png"]];
+    [tabBarItem3 setImage:[UIImage imageNamed:@"tabbar_home_Icon.png"]];
+    [tabBarItem4 setImage:[UIImage imageNamed:@"tabbar_home_Icon.png"]];
+    [tabBarItem5 setImage:[UIImage imageNamed:@"tabbar_home_Icon.png"]];
+    
+//    [tabBarItem1 setFinishedSelectedImage:[UIImage imageNamed:@"home_selected.png"]
+//              withFinishedUnselectedImage:[UIImage imageNamed:@"home.png"]];
+//    [tabBarItem2 setFinishedSelectedImage:[UIImage imageNamed:@"maps_selected.png"]
+//              withFinishedUnselectedImage:[UIImage imageNamed:@"maps.png"]];
+//    [tabBarItem3 setFinishedSelectedImage:[UIImage imageNamed:@"myplan_selected.png"]
+//              withFinishedUnselectedImage:[UIImage imageNamed:@"myplan.png"]];
+//    [tabBarItem4 setFinishedSelectedImage:[UIImage imageNamed:@"settings_selected.png"]
+//              withFinishedUnselectedImage:[UIImage imageNamed:@"settings.png"]];
+//    [tabBarItem5 setFinishedSelectedImage:[UIImage imageNamed:@"settings_selected.png"]
+//              withFinishedUnselectedImage:[UIImage imageNamed:@"settings.png"]];
+
+    UIImage* tabBarBackground = [UIImage imageNamed:@"tabbar_bg.png"];
+    [[UITabBar appearance] setBackgroundImage:tabBarBackground];
+    [[UITabBar appearance] setSelectionIndicatorImage:[UIImage imageNamed:@"tabbar_selected_bg.png"]];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
