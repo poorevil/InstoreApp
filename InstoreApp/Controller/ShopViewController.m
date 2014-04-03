@@ -8,6 +8,7 @@
 
 #import "ShopViewController.h"
 #import "ShopViewCell.h"
+#import "ShopDetailViewController.h"
 
 @interface ShopViewController ()
 
@@ -62,6 +63,17 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 80;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    ShopDetailViewController *shopDetailVC = [[ShopDetailViewController alloc] initWithNibName:@"ShopDetailViewController"
+                                                                                        bundle:nil];
+    shopDetailVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:shopDetailVC animated:YES];
+    shopDetailVC.hidesBottomBarWhenPushed = NO;
 }
 
 @end

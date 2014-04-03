@@ -100,15 +100,6 @@
     
 }
 
--(void)showSearchView
-{
-    SearchViewController *searchVC = [[SearchViewController alloc] initWithNibName:@"SearchViewController" bundle:nil];
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:searchVC];
-    [self presentViewController:nav
-                       animated:NO
-                     completion:nil];
-}
-
 #pragma mark - UITableViewDataSource<NSObject>
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

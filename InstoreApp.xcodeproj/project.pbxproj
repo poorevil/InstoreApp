@@ -87,6 +87,10 @@
 		C1D8700B18EBFD1E0061F799 /* home_btn_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = C1D8700A18EBFD1E0061F799 /* home_btn_bg.png */; };
 		C1D8700F18EC0CAB0061F799 /* CouponDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1D8700D18EC0CAB0061F799 /* CouponDetailViewController.m */; };
 		C1D8701018EC0CAB0061F799 /* CouponDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1D8700E18EC0CAB0061F799 /* CouponDetailViewController.xib */; };
+		C1D8701418ED5B1D0061F799 /* ShopDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1D8701218ED5B1D0061F799 /* ShopDetailViewController.m */; };
+		C1D8701518ED5B1D0061F799 /* ShopDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1D8701318ED5B1D0061F799 /* ShopDetailViewController.xib */; };
+		C1D8701818ED5CE00061F799 /* ShopDetailHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = C1D8701718ED5CE00061F799 /* ShopDetailHeaderView.m */; };
+		C1D8701A18ED5CF00061F799 /* ShopDetailHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1D8701918ED5CF00061F799 /* ShopDetailHeaderView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -210,6 +214,12 @@
 		C1D8700C18EC0CAB0061F799 /* CouponDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CouponDetailViewController.h; sourceTree = "<group>"; };
 		C1D8700D18EC0CAB0061F799 /* CouponDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CouponDetailViewController.m; sourceTree = "<group>"; };
 		C1D8700E18EC0CAB0061F799 /* CouponDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CouponDetailViewController.xib; sourceTree = "<group>"; };
+		C1D8701118ED5B1D0061F799 /* ShopDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopDetailViewController.h; sourceTree = "<group>"; };
+		C1D8701218ED5B1D0061F799 /* ShopDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopDetailViewController.m; sourceTree = "<group>"; };
+		C1D8701318ED5B1D0061F799 /* ShopDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShopDetailViewController.xib; sourceTree = "<group>"; };
+		C1D8701618ED5CE00061F799 /* ShopDetailHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopDetailHeaderView.h; sourceTree = "<group>"; };
+		C1D8701718ED5CE00061F799 /* ShopDetailHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopDetailHeaderView.m; sourceTree = "<group>"; };
+		C1D8701918ED5CF00061F799 /* ShopDetailHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShopDetailHeaderView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -339,6 +349,9 @@
 				C1D8700C18EC0CAB0061F799 /* CouponDetailViewController.h */,
 				C1D8700D18EC0CAB0061F799 /* CouponDetailViewController.m */,
 				C1D8700E18EC0CAB0061F799 /* CouponDetailViewController.xib */,
+				C1D8701118ED5B1D0061F799 /* ShopDetailViewController.h */,
+				C1D8701218ED5B1D0061F799 /* ShopDetailViewController.m */,
+				C1D8701318ED5B1D0061F799 /* ShopDetailViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -371,6 +384,9 @@
 				4E9608CC18E9C54400418798 /* MainViewMiaoShaCell.h */,
 				4E9608CD18E9C54400418798 /* MainViewMiaoShaCell.m */,
 				4E9608CF18E9C55600418798 /* MainViewMiaoShaCell.xib */,
+				C1D8701618ED5CE00061F799 /* ShopDetailHeaderView.h */,
+				C1D8701718ED5CE00061F799 /* ShopDetailHeaderView.m */,
+				C1D8701918ED5CF00061F799 /* ShopDetailHeaderView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -569,6 +585,7 @@
 				4E9608D418E9CA5D00418798 /* ms3.jpg in Resources */,
 				4E9608AB18E48D6700418798 /* blueArrow@2x.png in Resources */,
 				4E2C6E0118D75CED00DF3772 /* ServiceViewController.xib in Resources */,
+				C1D8701518ED5B1D0061F799 /* ShopDetailViewController.xib in Resources */,
 				4E9608D518E9CA5D00418798 /* ms1.jpg in Resources */,
 				4E2C6DE818D756FD00DF3772 /* MainViewOtherCell.xib in Resources */,
 				4E9608AD18E48D6700418798 /* grayArrow@2x.png in Resources */,
@@ -594,6 +611,7 @@
 				4E9608D018E9C55600418798 /* MainViewMiaoShaCell.xib in Resources */,
 				4E2C6E0C18D761F900DF3772 /* tmp1.png in Resources */,
 				C1D8700B18EBFD1E0061F799 /* home_btn_bg.png in Resources */,
+				C1D8701A18ED5CF00061F799 /* ShopDetailHeaderView.xib in Resources */,
 				C1D8700818EBF9B70061F799 /* tabbar_home_Icon.png in Resources */,
 				4E96088518E4861A00418798 /* url.jpg in Resources */,
 				4E2C6DE118D754ED00DF3772 /* MainViewNavigationCell.xib in Resources */,
@@ -637,6 +655,7 @@
 				4E25476018EB1BC1007388B6 /* MainViewYouhuiCell.m in Sources */,
 				4E96088118E4837100418798 /* YouhuiTileView.m in Sources */,
 				4E96087E18E4815500418798 /* BaseViewController.m in Sources */,
+				C1D8701418ED5B1D0061F799 /* ShopDetailViewController.m in Sources */,
 				4E2C6DFB18D75CE200DF3772 /* ShopViewController.m in Sources */,
 				4E9608B018E48D6700418798 /* PSCollectionView.m in Sources */,
 				4E9608B118E48D6700418798 /* PSCollectionViewCell.m in Sources */,
@@ -644,6 +663,7 @@
 				4E9608A318E48D6700418798 /* EGORefreshTableHeaderView.m in Sources */,
 				4E96087718E4791000418798 /* CustomNavigationController.m in Sources */,
 				C1D8700F18EC0CAB0061F799 /* CouponDetailViewController.m in Sources */,
+				C1D8701818ED5CE00061F799 /* ShopDetailHeaderView.m in Sources */,
 				4E2C6DDA18D753AB00DF3772 /* MainViewNavigationCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
