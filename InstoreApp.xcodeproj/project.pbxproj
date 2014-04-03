@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		4E25476018EB1BC1007388B6 /* MainViewYouhuiCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E25475F18EB1BC1007388B6 /* MainViewYouhuiCell.m */; };
 		4E25476218EB1BCE007388B6 /* MainViewYouhuiCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E25476118EB1BCE007388B6 /* MainViewYouhuiCell.xib */; };
+		4E25476918EC69BF007388B6 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E25476718EC69BF007388B6 /* SearchViewController.m */; };
+		4E25476A18EC69BF007388B6 /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E25476818EC69BF007388B6 /* SearchViewController.xib */; };
 		4E2C6DA018D7502100DF3772 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E2C6D9F18D7502100DF3772 /* Foundation.framework */; };
 		4E2C6DA218D7502100DF3772 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E2C6DA118D7502100DF3772 /* CoreGraphics.framework */; };
 		4E2C6DA418D7502100DF3772 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E2C6DA318D7502100DF3772 /* UIKit.framework */; };
@@ -101,6 +103,9 @@
 		4E25475E18EB1BC1007388B6 /* MainViewYouhuiCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewYouhuiCell.h; sourceTree = "<group>"; };
 		4E25475F18EB1BC1007388B6 /* MainViewYouhuiCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewYouhuiCell.m; sourceTree = "<group>"; };
 		4E25476118EB1BCE007388B6 /* MainViewYouhuiCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewYouhuiCell.xib; sourceTree = "<group>"; };
+		4E25476618EC69BF007388B6 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
+		4E25476718EC69BF007388B6 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
+		4E25476818EC69BF007388B6 /* SearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
 		4E2C6D9C18D7502100DF3772 /* InstoreApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstoreApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E2C6D9F18D7502100DF3772 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		4E2C6DA118D7502100DF3772 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -312,6 +317,9 @@
 				4E2C6DD018D7525D00DF3772 /* MainViewController.h */,
 				4E2C6DD118D7525D00DF3772 /* MainViewController.m */,
 				4E2C6DD218D7525D00DF3772 /* MainViewController.xib */,
+				4E25476618EC69BF007388B6 /* SearchViewController.h */,
+				4E25476718EC69BF007388B6 /* SearchViewController.m */,
+				4E25476818EC69BF007388B6 /* SearchViewController.xib */,
 				4E2C6DEE18D75CC400DF3772 /* MeViewController.h */,
 				4E2C6DEF18D75CC400DF3772 /* MeViewController.m */,
 				4E2C6DF018D75CC400DF3772 /* MeViewController.xib */,
@@ -565,6 +573,7 @@
 				4E2C6DE818D756FD00DF3772 /* MainViewOtherCell.xib in Resources */,
 				4E9608AD18E48D6700418798 /* grayArrow@2x.png in Resources */,
 				4E9608A918E48D6700418798 /* blackArrow@2x.png in Resources */,
+				4E25476A18EC69BF007388B6 /* SearchViewController.xib in Resources */,
 				4E2C6E0818D7617100DF3772 /* wifi1.jpg in Resources */,
 				C1D8700418EBF92A0061F799 /* tabbar_selected_bg.png in Resources */,
 				4E9608AF18E48D6700418798 /* whiteArrow@2x.png in Resources */,
@@ -614,6 +623,7 @@
 				4E9608A718E48D6700418798 /* PullTableView.m in Sources */,
 				4E9608CE18E9C54400418798 /* MainViewMiaoShaCell.m in Sources */,
 				4E9608B918E7B6AC00418798 /* ShopViewCell.m in Sources */,
+				4E25476918EC69BF007388B6 /* SearchViewController.m in Sources */,
 				4E9608CA18E9BD4300418798 /* CycleScrollView.m in Sources */,
 				4E9608B418E7B1B600418798 /* ServiceViewCell.m in Sources */,
 				4E2C6E0018D75CED00DF3772 /* ServiceViewController.m in Sources */,

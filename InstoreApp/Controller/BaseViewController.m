@@ -30,8 +30,8 @@
     if ([self isMemberOfClass:[MainViewController class]]) {
         
         UIView *icon = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"tmp1"]];
-        icon.frame = CGRectMake(0, 0, 40, 40);
-        UIView *iconView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 160, 40)];
+        icon.frame = CGRectMake(0, 0, 50, 26);
+        UIView *iconView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 50, 26 )];
         [iconView addSubview:icon];
         
         UIBarButtonItem *iconItem = [[UIBarButtonItem alloc] initWithCustomView:iconView];

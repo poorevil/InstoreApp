@@ -12,9 +12,11 @@
 #import "MainViewOtherCell.h"
 #import "CycleScrollView.h"
 #import "MainViewMiaoShaCell.h"
+#import "SearchViewController.h"
 
 @interface MainViewController ()
 @property (nonatomic,strong) CycleScrollView *lunboView;
+
 @end
 
 @implementation MainViewController
@@ -33,10 +35,26 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-//    self.title = @"首页";
-//    UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(search)];
-//    rightBtn.title = @"搜索";
-//    self.navigationItem.rightBarButtonItem =rightBtn;
+    UIButton *scanBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    scanBtn.frame = CGRectMake(0, 0, 40, 40);
+    scanBtn.titleLabel.font = [UIFont systemFontOfSize:10];
+    [scanBtn setTitleColor:[UIColor colorWithRed:233/255.0f
+                                           green:63/255.0f
+                                            blue:75/255.0f
+                                           alpha:1] forState:UIControlStateNormal];
+    [scanBtn setTitle:@"扫一扫" forState:UIControlStateNormal];
+    UIImage *image = [UIImage imageNamed:@"tmp2.png"];
+    [scanBtn setImage:image forState:UIControlStateNormal];
+    [scanBtn setTitleEdgeInsets:UIEdgeInsetsMake(30, -image.size.width, 0, 0)];
+    [scanBtn setImageEdgeInsets:UIEdgeInsetsMake(0, 5, 10, 5)];
+    UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc] initWithCustomView:scanBtn];
+    self.navigationItem.rightBarButtonItem =rightBtn;
+    
+    UIButton *searchBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [searchBtn setTitle:@"寻找优惠券、商家" forState:UIControlStateNormal];
+    [searchBtn addTarget:self action:@selector(showSearchView) forControlEvents:UIControlEventTouchUpInside];
+    [searchBtn sizeToFit];
+    self.navigationItem.titleView = searchBtn;
     
     [self initLunboView];
     self.mtableView.scrollsToTop = YES;
@@ -62,7 +80,7 @@
     }
     
     self.lunboView = [[CycleScrollView alloc] initWithFrame:CGRectMake(0, 0, 320, 150)
-                                          animationDuration:2];
+                                          animationDuration:5];
     self.lunboView.fetchContentViewAtIndex = ^UIView *(NSInteger pageIndex){
         return viewsArray[pageIndex];
     };
@@ -77,6 +95,19 @@
 
 }
 
+-(void)scanQRCode
+{
+    
+}
+
+-(void)showSearchView
+{
+    SearchViewController *searchVC = [[SearchViewController alloc] initWithNibName:@"SearchViewController" bundle:nil];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:searchVC];
+    [self presentViewController:nav
+                       animated:NO
+                     completion:nil];
+}
 
 #pragma mark - UITableViewDataSource<NSObject>
 

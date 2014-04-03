@@ -42,10 +42,11 @@
 -(void)tapAction:(UIGestureRecognizer *) gesture
 {
     AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
-    CouponDetailViewController *cdvc = [[CouponDetailViewController alloc] initWithNibName:@"CouponDetailViewController" bundle:nil];
     UINavigationController *nav = (UINavigationController *)appDelegate.tabBarController.selectedViewController;
-    nav.visibleViewController.hidesBottomBarWhenPushed = YES;
+    CouponDetailViewController *cdvc = [[CouponDetailViewController alloc] initWithNibName:@"CouponDetailViewController" bundle:nil];
+    cdvc.hidesBottomBarWhenPushed = YES;
     [nav pushViewController:cdvc animated:YES];
+    cdvc.hidesBottomBarWhenPushed = NO;
 }
 
 @end
