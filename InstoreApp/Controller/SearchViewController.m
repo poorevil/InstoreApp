@@ -8,7 +8,7 @@
 
 #import "SearchViewController.h"
 
-@interface SearchViewController ()
+@interface SearchViewController () <UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic,strong) UISearchBar *searchBar;
 @end
 
@@ -27,12 +27,17 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    UIBarButtonItem *cancelBtn = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStylePlain target:self action:@selector(cancelAction)];
+    [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:248.0f/255.0f
+                                                                             green:40.0f/255.0f
+                                                                              blue:53.0f/255.0f
+                                                                             alpha:1]];
     
+    UIBarButtonItem *cancelBtn = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStylePlain target:self action:@selector(cancelAction)];
+    cancelBtn.tintColor = [UIColor whiteColor];
     self.navigationItem.rightBarButtonItem = cancelBtn;
     
     self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectZero];
-    self.searchBar.placeholder = @"寻找优惠券、商家";
+    self.searchBar.placeholder = @"请输入关键词";
     self.searchBar.showsCancelButton = YES;
 
 //    [self.searchBar setTintColor:[UIColor blackColor]];
@@ -65,5 +70,45 @@
 {
     [self dismissViewControllerAnimated:NO completion:nil];
 }
+
+#pragma mark - UITableViewDataSource
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 4;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+        cell.textLabel.textColor = [UIColor colorWithRed:106/255.0f
+                                                   green:106/255.0f
+                                                    blue:106/255.0f
+                                                   alpha:1];
+    }
+    
+    switch (indexPath.row) {
+        case 0:
+            cell.textLabel.text = @"电影院";
+            break;
+        case 1:
+            cell.textLabel.text = @"牛仔裤 三折";
+            break;
+        case 2:
+            cell.textLabel.text = @"披萨";
+            break;
+        case 3:
+            cell.textLabel.text = @"阿迪达斯";
+            break;
+        default:
+            break;
+    }
+    return cell;
+}
+
+
 
 @end

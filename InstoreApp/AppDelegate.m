@@ -57,11 +57,11 @@
     tabBarItem4.title = @"商户";
     tabBarItem5.title = @"我的";
 
-    [tabBarItem1 setImage:[UIImage imageNamed:@"tabbar_home_Icon.png"]];
-    [tabBarItem2 setImage:[UIImage imageNamed:@"tabbar_home_Icon.png"]];
-    [tabBarItem3 setImage:[UIImage imageNamed:@"tabbar_home_Icon.png"]];
-    [tabBarItem4 setImage:[UIImage imageNamed:@"tabbar_home_Icon.png"]];
-    [tabBarItem5 setImage:[UIImage imageNamed:@"tabbar_home_Icon.png"]];
+    [tabBarItem1 setImage:[UIImage imageNamed:@"toolBar-btn-home.png"]];
+    [tabBarItem2 setImage:[UIImage imageNamed:@"toolBar-btn-sale"]];
+    [tabBarItem3 setImage:[UIImage imageNamed:@"toolBar-btn-service"]];
+    [tabBarItem4 setImage:[UIImage imageNamed:@"toolBar-btn-store"]];
+    [tabBarItem5 setImage:[UIImage imageNamed:@"toolBar-btn-user"]];
     
 //    [tabBarItem1 setFinishedSelectedImage:[UIImage imageNamed:@"home_selected.png"]
 //              withFinishedUnselectedImage:[UIImage imageNamed:@"home.png"]];

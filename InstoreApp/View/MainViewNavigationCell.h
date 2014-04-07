@@ -10,9 +10,13 @@
 
 @interface MainViewNavigationCell : UITableViewCell
 
-@property (nonatomic,strong) IBOutlet UIButton *btn1;
-@property (nonatomic,strong) IBOutlet UIButton *btn2;
-@property (nonatomic,strong) IBOutlet UIButton *btn3;
-@property (nonatomic,strong) IBOutlet UIButton *btn4;
+@property (nonatomic,strong) IBOutlet UIButton *foodBtn;
+@property (nonatomic,strong) IBOutlet UIButton *saleBtn;
+@property (nonatomic,strong) IBOutlet UIButton *cardBtn;
+@property (nonatomic,strong) IBOutlet UIButton *orderBtn;
+
+@property (nonatomic,strong) IBOutlet UIButton *mapBtn;
+@property (nonatomic,strong) IBOutlet UIButton *wifiBtn;
+
 
 @end

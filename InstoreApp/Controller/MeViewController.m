@@ -73,8 +73,9 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1
                                       reuseIdentifier:@"cell"];
+        cell.detailTextLabel.font = [UIFont systemFontOfSize:12];
     }
     UISwitch *switchButton1;
     switch (indexPath.section) {
@@ -82,18 +83,22 @@
             switch (indexPath.row) {
                 case 0:
                     cell.textLabel.text = @"我的优惠劵";
+                    cell.detailTextLabel.text=@"管理我的优惠劵";
                     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                     break;
                 case 1:
                     cell.textLabel.text = @"我关注的商家";
+                    cell.detailTextLabel.text=@"查看管理收藏的商家";
                     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                     break;
                 case 2:
                     cell.textLabel.text = @"消息中心";
+                    cell.detailTextLabel.text=@"";
                     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                     break;
                 case 3:
                     cell.textLabel.text = @"消费记录";
+                    cell.detailTextLabel.text=@"";
                     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                     break;
             }

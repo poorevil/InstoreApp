@@ -12,7 +12,7 @@
 #import "MainViewOtherCell.h"
 #import "CycleScrollView.h"
 #import "MainViewMiaoShaCell.h"
-#import "SearchViewController.h"
+
 
 @interface MainViewController ()
 @property (nonatomic,strong) CycleScrollView *lunboView;
@@ -35,7 +35,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    UIButton *scanBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    UIButton *scanBtn = [UIButton buttonWithType:UIButtonTypeSystem];
     scanBtn.frame = CGRectMake(0, 0, 40, 40);
     scanBtn.titleLabel.font = [UIFont systemFontOfSize:10];
     [scanBtn setTitleColor:[UIColor colorWithRed:233/255.0f
@@ -43,7 +43,7 @@
                                             blue:75/255.0f
                                            alpha:1] forState:UIControlStateNormal];
     [scanBtn setTitle:@"扫一扫" forState:UIControlStateNormal];
-    UIImage *image = [UIImage imageNamed:@"tmp2.png"];
+    UIImage *image = [[UIImage imageNamed:@"topBar-btn-sao"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     [scanBtn setImage:image forState:UIControlStateNormal];
     [scanBtn setTitleEdgeInsets:UIEdgeInsetsMake(30, -image.size.width, 0, 0)];
     [scanBtn setImageEdgeInsets:UIEdgeInsetsMake(0, 5, 10, 5)];
@@ -51,9 +51,20 @@
     self.navigationItem.rightBarButtonItem =rightBtn;
     
     UIButton *searchBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    searchBtn.frame = CGRectMake(0, 0, 320, 40);
     [searchBtn setTitle:@"寻找优惠券、商家" forState:UIControlStateNormal];
     [searchBtn addTarget:self action:@selector(showSearchView) forControlEvents:UIControlEventTouchUpInside];
-    [searchBtn sizeToFit];
+    
+    UIImage *originalImage = [UIImage imageNamed:@"top-search-icon"];
+    UIEdgeInsets insets = UIEdgeInsetsMake(0, 20, 0, 300);
+    UIImage *stretchableImage = [originalImage resizableImageWithCapInsets:insets];
+    [searchBtn setBackgroundImage:stretchableImage forState:UIControlStateNormal];
+    
+    UIImage *searchImage = [[UIImage imageNamed:@"topBar-btn-zoom"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    [searchBtn setImage:searchImage forState:UIControlStateNormal];
+    [searchBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    searchBtn.titleLabel.font = [UIFont systemFontOfSize:12];
+    
     self.navigationItem.titleView = searchBtn;
     
     [self initLunboView];
@@ -100,14 +111,6 @@
     
 }
 
--(void)showSearchView
-{
-    SearchViewController *searchVC = [[SearchViewController alloc] initWithNibName:@"SearchViewController" bundle:nil];
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:searchVC];
-    [self presentViewController:nav
-                       animated:NO
-                     completion:nil];
-}
 
 #pragma mark - UITableViewDataSource<NSObject>
 

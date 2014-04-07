@@ -8,6 +8,8 @@
 
 #import "BaseViewController.h"
 #import "MainViewController.h"
+#import "SearchViewController.h"
+
 @interface BaseViewController ()
 
 @end
@@ -46,7 +48,13 @@
         [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
         
         
-        UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(search)];
+        UIButton *searchBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [searchBtn setImage:[UIImage imageNamed:@"topBar-btn-zoom-white"] forState:UIControlStateNormal];
+        [searchBtn addTarget:self action:@selector(showSearchView) forControlEvents:UIControlEventTouchUpInside];
+        [searchBtn sizeToFit];
+        UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc] initWithCustomView:searchBtn];
+        
+//        [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(showSearchView)];
         rightBtn.title = @"搜索";
         self.navigationItem.rightBarButtonItem =rightBtn;
     }
@@ -59,9 +67,14 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void)search
+-(void)showSearchView
 {
-    
+    SearchViewController *searchVC = [[SearchViewController alloc] initWithNibName:@"SearchViewController" bundle:nil];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:searchVC];
+    [self presentViewController:nav
+                       animated:NO
+                     completion:nil];
 }
+
 
 @end

@@ -10,4 +10,11 @@
 
 @interface ServiceViewCell : UITableViewCell
 
+@property (nonatomic,strong) IBOutlet UIButton *foodBtn;
+@property (nonatomic,strong) IBOutlet UIButton *busBtn;
+@property (nonatomic,strong) IBOutlet UIButton *moneyBtn;
+@property (nonatomic,strong) IBOutlet UIButton *planeBtn;
+@property (nonatomic,strong) IBOutlet UIButton *paintBtn;
+@property (nonatomic,strong) IBOutlet UIButton *gameBtn;
+
 @end

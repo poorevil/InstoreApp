@@ -12,4 +12,8 @@
 
 @property (nonatomic,strong) IBOutlet UITableView *mtable;
 
+@property (nonatomic,strong) IBOutlet UIButton *floorBtn;
+@property (nonatomic,strong) IBOutlet UIButton *cateBtn;
+@property (nonatomic,strong) IBOutlet UIButton *sortBtn;
+
 @end
