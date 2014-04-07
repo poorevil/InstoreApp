@@ -10,7 +10,10 @@
 
 @interface BaseViewController : UIViewController
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> FETCH_HEAD
 -(void)showSearchView;
 
 @end

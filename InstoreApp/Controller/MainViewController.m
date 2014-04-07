@@ -69,6 +69,8 @@
     
     [self initLunboView];
     self.mtableView.scrollsToTop = YES;
+    
+    [self initFooterView];
 }
 
 
@@ -106,11 +108,27 @@
 
 }
 
+-(void)initFooterView
+{
+    UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 80)];
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 10, footerView.frame.size.width, 30)];
+    titleLabel.text = @"继续拖动有惊喜!";
+    titleLabel.font = [UIFont boldSystemFontOfSize:22];
+    titleLabel.textColor = [UIColor grayColor];
+    titleLabel.textAlignment = NSTextAlignmentCenter;
+    [footerView addSubview:titleLabel];
+    
+    self.mtableView.tableFooterView = footerView;
+    
+}
+
+<<<<<<< HEAD
+=======
 -(void)scanQRCode
 {
     
 }
-
+>>>>>>> FETCH_HEAD
 
 #pragma mark - UITableViewDataSource<NSObject>
 
