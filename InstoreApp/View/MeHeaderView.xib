@@ -44,6 +44,9 @@
             </subviews>
             <color key="backgroundColor" white="0.85231551204819289" alpha="1" colorSpace="calibratedWhite"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="headIconImageView" destination="pTQ-Pf-GaU" id="Rkg-UM-InR"/>
+            </connections>
         </view>
     </objects>
     <resources>

@@ -122,13 +122,11 @@
     
 }
 
-<<<<<<< HEAD
-=======
 -(void)scanQRCode
 {
     
 }
->>>>>>> FETCH_HEAD
+
 
 #pragma mark - UITableViewDataSource<NSObject>
 

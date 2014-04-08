@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4510" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4514" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment defaultVersion="1536" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -79,7 +79,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon" translatesAutoresizingMaskIntoConstraints="NO" id="fs7-Gt-cDJ">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fs7-Gt-cDJ">
                                 <rect key="frame" x="20" y="0.0" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -91,7 +91,7 @@
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
-                <outlet property="imageView" destination="7l4-mK-Ma1" id="0Mz-zH-CT6"/>
+                <outlet property="bannerImageView" destination="7l4-mK-Ma1" id="e4B-g0-98r"/>
                 <outlet property="title1" destination="vUj-ni-bQ5" id="iyf-eP-BUx"/>
                 <outlet property="title1_1" destination="V7o-06-3bb" id="pZG-DN-wUS"/>
                 <outlet property="title2" destination="Y6C-Bs-68T" id="ScS-G6-Cal"/>
@@ -102,7 +102,6 @@
     </objects>
     <resources>
         <image name="banner2.jpg" width="520" height="280"/>
-        <image name="icon" width="20" height="15"/>
         <image name="tmp1.png" width="70" height="70"/>
         <image name="tmp2.png" width="70" height="70"/>
     </resources>

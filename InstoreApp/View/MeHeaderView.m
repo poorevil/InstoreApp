@@ -7,6 +7,8 @@
 //
 
 #import "MeHeaderView.h"
+#import "AppDelegate.h"
+#import "BindPhoneViewController.h"
 
 @implementation MeHeaderView
 
@@ -19,6 +21,13 @@
     return self;
 }
 
+-(void)awakeFromNib
+{
+    self.headIconImageView.userInteractionEnabled = YES;
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
+    [self.headIconImageView addGestureRecognizer:tap];
+}
+
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
@@ -27,5 +36,14 @@
     // Drawing code
 }
 */
+-(void)tapAction:(UIGestureRecognizer *)sender
+{
+    AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+    UINavigationController *nav = (UINavigationController *)appDelegate.tabBarController.selectedViewController;
+    BindPhoneViewController *bpvc = [[BindPhoneViewController alloc] initWithNibName:@"BindPhoneViewController" bundle:nil];
+    bpvc.hidesBottomBarWhenPushed = YES;
+    [nav pushViewController:bpvc animated:YES];
+    bpvc.hidesBottomBarWhenPushed = NO;
+}
 
 @end

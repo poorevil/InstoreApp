@@ -48,7 +48,7 @@
         [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
         
         
-<<<<<<< HEAD
+
         UIButton *searchBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [searchBtn setImage:[UIImage imageNamed:@"topBar-btn-zoom-white"] forState:UIControlStateNormal];
         [searchBtn addTarget:self action:@selector(showSearchView) forControlEvents:UIControlEventTouchUpInside];
@@ -56,12 +56,13 @@
         UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc] initWithCustomView:searchBtn];
         
 //        [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(showSearchView)];
-=======
-        UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(showSearchView)];
->>>>>>> FETCH_HEAD
+
         rightBtn.title = @"搜索";
         self.navigationItem.rightBarButtonItem =rightBtn;
     }
+    
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+
 
 }
 

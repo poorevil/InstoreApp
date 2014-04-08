@@ -131,6 +131,25 @@
 		4E9608D418E9CA5D00418798 /* ms3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4E9608D118E9CA5D00418798 /* ms3.jpg */; };
 		4E9608D518E9CA5D00418798 /* ms1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4E9608D218E9CA5D00418798 /* ms1.jpg */; };
 		4E9608D618E9CA5D00418798 /* ms2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4E9608D318E9CA5D00418798 /* ms2.jpg */; };
+		4ECBF70418F43C28003963E1 /* index-red-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ECBF70218F43C28003963E1 /* index-red-btn.png */; };
+		4ECBF70518F43C28003963E1 /* index-red-btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ECBF70318F43C28003963E1 /* index-red-btn@2x.png */; };
+		4ECBF70718F442DE003963E1 /* ShopDetailHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4ECBF70618F442DE003963E1 /* ShopDetailHeaderView.xib */; };
+		4ECBF70B18F4449E003963E1 /* BindPhoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ECBF70918F4449E003963E1 /* BindPhoneViewController.m */; };
+		4ECBF70C18F4449E003963E1 /* BindPhoneViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4ECBF70A18F4449E003963E1 /* BindPhoneViewController.xib */; };
+		4ECBF71118F449AE003963E1 /* store-btn-sb-red-pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ECBF70D18F449AE003963E1 /* store-btn-sb-red-pressed.png */; };
+		4ECBF71218F449AE003963E1 /* store-btn-sb-red-pressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ECBF70E18F449AE003963E1 /* store-btn-sb-red-pressed@2x.png */; };
+		4ECBF71318F449AE003963E1 /* store-btn-sb-red.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ECBF70F18F449AE003963E1 /* store-btn-sb-red.png */; };
+		4ECBF71418F449AE003963E1 /* store-btn-sb-red@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ECBF71018F449AE003963E1 /* store-btn-sb-red@2x.png */; };
+		4ECBF71718F45219003963E1 /* ShopDetailLocationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ECBF71618F45219003963E1 /* ShopDetailLocationCell.m */; };
+		4ECBF71918F45225003963E1 /* ShopDetailLocationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4ECBF71818F45225003963E1 /* ShopDetailLocationCell.xib */; };
+		4ECBF71E18F45272003963E1 /* top-icon-loc-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ECBF71A18F45272003963E1 /* top-icon-loc-black.png */; };
+		4ECBF71F18F45272003963E1 /* top-icon-loc-black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ECBF71B18F45272003963E1 /* top-icon-loc-black@2x.png */; };
+		4ECBF72018F45272003963E1 /* top-icon-phone-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ECBF71C18F45272003963E1 /* top-icon-phone-black.png */; };
+		4ECBF72118F45272003963E1 /* top-icon-phone-black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ECBF71D18F45272003963E1 /* top-icon-phone-black@2x.png */; };
+		4ECBF72418F45377003963E1 /* ShopDetailItemListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ECBF72318F45377003963E1 /* ShopDetailItemListCell.m */; };
+		4ECBF72618F4538C003963E1 /* ShopDetailItemListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4ECBF72518F4538C003963E1 /* ShopDetailItemListCell.xib */; };
+		4ECBF72918F45638003963E1 /* ShopDetailTypeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ECBF72818F45638003963E1 /* ShopDetailTypeCell.m */; };
+		4ECBF72B18F45642003963E1 /* ShopDetailTypeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4ECBF72A18F45642003963E1 /* ShopDetailTypeCell.xib */; };
 		C1D8700218EBF92A0061F799 /* tabbar_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = C1D86FFE18EBF92A0061F799 /* tabbar_bg.png */; };
 		C1D8700318EBF92A0061F799 /* tabbar_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C1D86FFF18EBF92A0061F799 /* tabbar_bg@2x.png */; };
 		C1D8700418EBF92A0061F799 /* tabbar_selected_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = C1D8700018EBF92A0061F799 /* tabbar_selected_bg.png */; };
@@ -142,7 +161,6 @@
 		C1D8701418ED5B1D0061F799 /* ShopDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1D8701218ED5B1D0061F799 /* ShopDetailViewController.m */; };
 		C1D8701518ED5B1D0061F799 /* ShopDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1D8701318ED5B1D0061F799 /* ShopDetailViewController.xib */; };
 		C1D8701818ED5CE00061F799 /* ShopDetailHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = C1D8701718ED5CE00061F799 /* ShopDetailHeaderView.m */; };
-		C1D8701A18ED5CF00061F799 /* ShopDetailHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1D8701918ED5CF00061F799 /* ShopDetailHeaderView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -309,6 +327,29 @@
 		4E9608D118E9CA5D00418798 /* ms3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ms3.jpg; sourceTree = "<group>"; };
 		4E9608D218E9CA5D00418798 /* ms1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ms1.jpg; sourceTree = "<group>"; };
 		4E9608D318E9CA5D00418798 /* ms2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ms2.jpg; sourceTree = "<group>"; };
+		4ECBF70218F43C28003963E1 /* index-red-btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "index-red-btn.png"; sourceTree = "<group>"; };
+		4ECBF70318F43C28003963E1 /* index-red-btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "index-red-btn@2x.png"; sourceTree = "<group>"; };
+		4ECBF70618F442DE003963E1 /* ShopDetailHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShopDetailHeaderView.xib; sourceTree = "<group>"; };
+		4ECBF70818F4449E003963E1 /* BindPhoneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BindPhoneViewController.h; sourceTree = "<group>"; };
+		4ECBF70918F4449E003963E1 /* BindPhoneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BindPhoneViewController.m; sourceTree = "<group>"; };
+		4ECBF70A18F4449E003963E1 /* BindPhoneViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BindPhoneViewController.xib; sourceTree = "<group>"; };
+		4ECBF70D18F449AE003963E1 /* store-btn-sb-red-pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "store-btn-sb-red-pressed.png"; sourceTree = "<group>"; };
+		4ECBF70E18F449AE003963E1 /* store-btn-sb-red-pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "store-btn-sb-red-pressed@2x.png"; sourceTree = "<group>"; };
+		4ECBF70F18F449AE003963E1 /* store-btn-sb-red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "store-btn-sb-red.png"; sourceTree = "<group>"; };
+		4ECBF71018F449AE003963E1 /* store-btn-sb-red@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "store-btn-sb-red@2x.png"; sourceTree = "<group>"; };
+		4ECBF71518F45219003963E1 /* ShopDetailLocationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopDetailLocationCell.h; sourceTree = "<group>"; };
+		4ECBF71618F45219003963E1 /* ShopDetailLocationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopDetailLocationCell.m; sourceTree = "<group>"; };
+		4ECBF71818F45225003963E1 /* ShopDetailLocationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShopDetailLocationCell.xib; sourceTree = "<group>"; };
+		4ECBF71A18F45272003963E1 /* top-icon-loc-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "top-icon-loc-black.png"; sourceTree = "<group>"; };
+		4ECBF71B18F45272003963E1 /* top-icon-loc-black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "top-icon-loc-black@2x.png"; sourceTree = "<group>"; };
+		4ECBF71C18F45272003963E1 /* top-icon-phone-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "top-icon-phone-black.png"; sourceTree = "<group>"; };
+		4ECBF71D18F45272003963E1 /* top-icon-phone-black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "top-icon-phone-black@2x.png"; sourceTree = "<group>"; };
+		4ECBF72218F45377003963E1 /* ShopDetailItemListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopDetailItemListCell.h; sourceTree = "<group>"; };
+		4ECBF72318F45377003963E1 /* ShopDetailItemListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopDetailItemListCell.m; sourceTree = "<group>"; };
+		4ECBF72518F4538C003963E1 /* ShopDetailItemListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShopDetailItemListCell.xib; sourceTree = "<group>"; };
+		4ECBF72718F45638003963E1 /* ShopDetailTypeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopDetailTypeCell.h; sourceTree = "<group>"; };
+		4ECBF72818F45638003963E1 /* ShopDetailTypeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopDetailTypeCell.m; sourceTree = "<group>"; };
+		4ECBF72A18F45642003963E1 /* ShopDetailTypeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShopDetailTypeCell.xib; sourceTree = "<group>"; };
 		C1D86FFE18EBF92A0061F799 /* tabbar_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabbar_bg.png; sourceTree = "<group>"; };
 		C1D86FFF18EBF92A0061F799 /* tabbar_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar_bg@2x.png"; sourceTree = "<group>"; };
 		C1D8700018EBF92A0061F799 /* tabbar_selected_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabbar_selected_bg.png; sourceTree = "<group>"; };
@@ -323,7 +364,6 @@
 		C1D8701318ED5B1D0061F799 /* ShopDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShopDetailViewController.xib; sourceTree = "<group>"; };
 		C1D8701618ED5CE00061F799 /* ShopDetailHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopDetailHeaderView.h; sourceTree = "<group>"; };
 		C1D8701718ED5CE00061F799 /* ShopDetailHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopDetailHeaderView.m; sourceTree = "<group>"; };
-		C1D8701918ED5CF00061F799 /* ShopDetailHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShopDetailHeaderView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -456,6 +496,9 @@
 				C1D8701118ED5B1D0061F799 /* ShopDetailViewController.h */,
 				C1D8701218ED5B1D0061F799 /* ShopDetailViewController.m */,
 				C1D8701318ED5B1D0061F799 /* ShopDetailViewController.xib */,
+				4ECBF70818F4449E003963E1 /* BindPhoneViewController.h */,
+				4ECBF70918F4449E003963E1 /* BindPhoneViewController.m */,
+				4ECBF70A18F4449E003963E1 /* BindPhoneViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -490,7 +533,16 @@
 				4E9608CF18E9C55600418798 /* MainViewMiaoShaCell.xib */,
 				C1D8701618ED5CE00061F799 /* ShopDetailHeaderView.h */,
 				C1D8701718ED5CE00061F799 /* ShopDetailHeaderView.m */,
-				C1D8701918ED5CF00061F799 /* ShopDetailHeaderView.xib */,
+				4ECBF70618F442DE003963E1 /* ShopDetailHeaderView.xib */,
+				4ECBF71518F45219003963E1 /* ShopDetailLocationCell.h */,
+				4ECBF71618F45219003963E1 /* ShopDetailLocationCell.m */,
+				4ECBF71818F45225003963E1 /* ShopDetailLocationCell.xib */,
+				4ECBF72218F45377003963E1 /* ShopDetailItemListCell.h */,
+				4ECBF72318F45377003963E1 /* ShopDetailItemListCell.m */,
+				4ECBF72518F4538C003963E1 /* ShopDetailItemListCell.xib */,
+				4ECBF72718F45638003963E1 /* ShopDetailTypeCell.h */,
+				4ECBF72818F45638003963E1 /* ShopDetailTypeCell.m */,
+				4ECBF72A18F45642003963E1 /* ShopDetailTypeCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -591,6 +643,16 @@
 		C1D86FFD18EBF92A0061F799 /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				4ECBF71A18F45272003963E1 /* top-icon-loc-black.png */,
+				4ECBF71B18F45272003963E1 /* top-icon-loc-black@2x.png */,
+				4ECBF71C18F45272003963E1 /* top-icon-phone-black.png */,
+				4ECBF71D18F45272003963E1 /* top-icon-phone-black@2x.png */,
+				4ECBF70D18F449AE003963E1 /* store-btn-sb-red-pressed.png */,
+				4ECBF70E18F449AE003963E1 /* store-btn-sb-red-pressed@2x.png */,
+				4ECBF70F18F449AE003963E1 /* store-btn-sb-red.png */,
+				4ECBF71018F449AE003963E1 /* store-btn-sb-red@2x.png */,
+				4ECBF70218F43C28003963E1 /* index-red-btn.png */,
+				4ECBF70318F43C28003963E1 /* index-red-btn@2x.png */,
 				4E2547CB18F307DE007388B6 /* store-icon-like-gray.png */,
 				4E2547CC18F307DE007388B6 /* store-icon-like-gray@2x.png */,
 				4E2547CD18F307DE007388B6 /* store-icon-loc-gray.png */,
@@ -727,6 +789,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4ECBF71418F449AE003963E1 /* store-btn-sb-red@2x.png in Resources */,
 				4E25477218EEBBBD007388B6 /* toolBar-btn-service@2x.png in Resources */,
 				4E25477E18EEBD13007388B6 /* top-search-icon@2x.png in Resources */,
 				4E96088718E4867800418798 /* coffee.jpg in Resources */,
@@ -737,6 +800,7 @@
 				4E9608AA18E48D6700418798 /* blueArrow.png in Resources */,
 				4E96088318E4838000418798 /* YouhuiTileView.xib in Resources */,
 				4E25478E18EEC53D007388B6 /* index-tool-btn-food@2x.png in Resources */,
+				4ECBF71E18F45272003963E1 /* top-icon-loc-black.png in Resources */,
 				4E2547BF18F23678007388B6 /* service-icon-paint.png in Resources */,
 				4E25477A18EEBCD4007388B6 /* topBar-btn-sao@2x.png in Resources */,
 				4E96087B18E47D6600418798 /* Icon@2x.png in Resources */,
@@ -744,7 +808,9 @@
 				4E9608B618E7B1C100418798 /* ServiceViewCell.xib in Resources */,
 				4E25479F18EEC778007388B6 /* index-btn-map.png in Resources */,
 				C1D8700918EBF9B70061F799 /* tabbar_home_Icon@2x.png in Resources */,
+				4ECBF71218F449AE003963E1 /* store-btn-sb-red-pressed@2x.png in Resources */,
 				4E2547A918F228AA007388B6 /* index-mid-btn-quick.png in Resources */,
+				4ECBF70518F43C28003963E1 /* index-red-btn@2x.png in Resources */,
 				4E9608AC18E48D6700418798 /* grayArrow.png in Resources */,
 				4E2547A218EEC778007388B6 /* index-btn-wifi@2x.png in Resources */,
 				4E2C6DAA18D7502100DF3772 /* InfoPlist.strings in Resources */,
@@ -752,6 +818,7 @@
 				4E9608AB18E48D6700418798 /* blueArrow@2x.png in Resources */,
 				4E25478B18EEC53D007388B6 /* index-tool-btn-card.png in Resources */,
 				4E2547C918F30393007388B6 /* my-img-userface.png in Resources */,
+				4ECBF70718F442DE003963E1 /* ShopDetailHeaderView.xib in Resources */,
 				4E25478D18EEC53D007388B6 /* index-tool-btn-food.png in Resources */,
 				4E2547BB18F23678007388B6 /* service-icon-game.png in Resources */,
 				4E2C6E0118D75CED00DF3772 /* ServiceViewController.xib in Resources */,
@@ -764,6 +831,7 @@
 				4E25477018EEBBBD007388B6 /* toolBar-btn-home@2x.png in Resources */,
 				4E2547D118F307DE007388B6 /* store-icon-like-gray@2x.png in Resources */,
 				4E9608AD18E48D6700418798 /* grayArrow@2x.png in Resources */,
+				4ECBF72118F45272003963E1 /* top-icon-phone-black@2x.png in Resources */,
 				4E2547A818F228AA007388B6 /* index-mid-btn-quick-pressed@2x.png in Resources */,
 				4E25479118EEC53D007388B6 /* index-tool-btn-sale.png in Resources */,
 				4E25477318EEBBBD007388B6 /* toolBar-btn-store@2x.png in Resources */,
@@ -771,6 +839,7 @@
 				4E25479018EEC53D007388B6 /* index-tool-btn-order@2x.png in Resources */,
 				4E25479E18EEC778007388B6 /* btn-sb-gray@2x.png in Resources */,
 				4E2547D318F307DE007388B6 /* store-icon-loc-gray@2x.png in Resources */,
+				4ECBF71118F449AE003963E1 /* store-btn-sb-red-pressed.png in Resources */,
 				4E25479D18EEC778007388B6 /* btn-sb-gray.png in Resources */,
 				4E25476A18EC69BF007388B6 /* SearchViewController.xib in Resources */,
 				4E25477418EEBBBD007388B6 /* toolBar-btn-user@2x.png in Resources */,
@@ -778,8 +847,10 @@
 				4E2547B918F23678007388B6 /* service-icon-food.png in Resources */,
 				C1D8700418EBF92A0061F799 /* tabbar_selected_bg.png in Resources */,
 				4E9608AF18E48D6700418798 /* whiteArrow@2x.png in Resources */,
+				4ECBF71318F449AE003963E1 /* store-btn-sb-red.png in Resources */,
 				C1D8701018EC0CAB0061F799 /* CouponDetailViewController.xib in Resources */,
 				4E2547A718F228AA007388B6 /* index-mid-btn-quick-pressed.png in Resources */,
+				4ECBF70418F43C28003963E1 /* index-red-btn.png in Resources */,
 				4E25477D18EEBD13007388B6 /* top-search-icon.png in Resources */,
 				4E2C6DD418D7525D00DF3772 /* MainViewController.xib in Resources */,
 				4E2547AA18F228AA007388B6 /* index-mid-btn-quick@2x.png in Resources */,
@@ -787,6 +858,7 @@
 				4E25478F18EEC53D007388B6 /* index-tool-btn-order.png in Resources */,
 				4E2547A118EEC778007388B6 /* index-btn-wifi.png in Resources */,
 				4E2547B818F23678007388B6 /* service-icon-car@2x.png in Resources */,
+				4ECBF71918F45225003963E1 /* ShopDetailLocationCell.xib in Resources */,
 				4E9608D618E9CA5D00418798 /* ms2.jpg in Resources */,
 				4E9608AE18E48D6700418798 /* whiteArrow.png in Resources */,
 				4E2C6DB218D7502100DF3772 /* Images.xcassets in Resources */,
@@ -799,14 +871,18 @@
 				4E25478118EEC068007388B6 /* topBar-btn-zoom.png in Resources */,
 				4E2547B718F23678007388B6 /* service-icon-car.png in Resources */,
 				4E2C6E0618D7611200DF3772 /* banner2.jpg in Resources */,
+				4ECBF70C18F4449E003963E1 /* BindPhoneViewController.xib in Resources */,
 				4E2C6E0B18D761F900DF3772 /* tmp2.png in Resources */,
 				4E9608BB18E7B6B800418798 /* ShopViewCell.xib in Resources */,
 				4E2547BA18F23678007388B6 /* service-icon-food@2x.png in Resources */,
+				4ECBF72B18F45642003963E1 /* ShopDetailTypeCell.xib in Resources */,
+				4ECBF72018F45272003963E1 /* top-icon-phone-black.png in Resources */,
 				4E2547C218F23678007388B6 /* service-icon-plane@2x.png in Resources */,
 				4E25477118EEBBBD007388B6 /* toolBar-btn-sale@2x.png in Resources */,
 				4E2547C018F23678007388B6 /* service-icon-paint@2x.png in Resources */,
 				4E2547A018EEC778007388B6 /* index-btn-map@2x.png in Resources */,
 				4E25478218EEC068007388B6 /* topBar-btn-zoom@2x.png in Resources */,
+				4ECBF72618F4538C003963E1 /* ShopDetailItemListCell.xib in Resources */,
 				4E25479C18EEC778007388B6 /* btn-sb-gray-border@2x.png in Resources */,
 				4E2C6DF718D75CD600DF3772 /* YouhuiViewController.xib in Resources */,
 				4E9608D018E9C55600418798 /* MainViewMiaoShaCell.xib in Resources */,
@@ -814,14 +890,10 @@
 				4E25478C18EEC53D007388B6 /* index-tool-btn-card@2x.png in Resources */,
 				4E2547C518F30260007388B6 /* topBar-btn-zoom-white.png in Resources */,
 				4E2C6E0C18D761F900DF3772 /* tmp1.png in Resources */,
-<<<<<<< HEAD
-=======
-				C1D8700B18EBFD1E0061F799 /* home_btn_bg.png in Resources */,
-				C1D8701A18ED5CF00061F799 /* ShopDetailHeaderView.xib in Resources */,
->>>>>>> FETCH_HEAD
 				C1D8700818EBF9B70061F799 /* tabbar_home_Icon.png in Resources */,
 				4E2547BC18F23678007388B6 /* service-icon-game@2x.png in Resources */,
 				4E2547D018F307DE007388B6 /* store-icon-like-gray.png in Resources */,
+				4ECBF71F18F45272003963E1 /* top-icon-loc-black@2x.png in Resources */,
 				4E96088518E4861A00418798 /* url.jpg in Resources */,
 				4E2C6DE118D754ED00DF3772 /* MainViewNavigationCell.xib in Resources */,
 				4E2547BE18F23678007388B6 /* service-icon-money@2x.png in Resources */,
@@ -849,13 +921,16 @@
 			files = (
 				4E2C6DB018D7502100DF3772 /* AppDelegate.m in Sources */,
 				4E2C6DD318D7525D00DF3772 /* MainViewController.m in Sources */,
+				4ECBF72918F45638003963E1 /* ShopDetailTypeCell.m in Sources */,
 				4E9608CB18E9BD4300418798 /* NSTimer+Addition.m in Sources */,
 				4E9608A718E48D6700418798 /* PullTableView.m in Sources */,
 				4E9608CE18E9C54400418798 /* MainViewMiaoShaCell.m in Sources */,
+				4ECBF72418F45377003963E1 /* ShopDetailItemListCell.m in Sources */,
 				4E9608B918E7B6AC00418798 /* ShopViewCell.m in Sources */,
 				4E25476918EC69BF007388B6 /* SearchViewController.m in Sources */,
 				4E9608CA18E9BD4300418798 /* CycleScrollView.m in Sources */,
 				4E9608B418E7B1B600418798 /* ServiceViewCell.m in Sources */,
+				4ECBF70B18F4449E003963E1 /* BindPhoneViewController.m in Sources */,
 				4E2C6E0018D75CED00DF3772 /* ServiceViewController.m in Sources */,
 				4E9608BE18E7CEC900418798 /* MeHeaderView.m in Sources */,
 				4E2C6DAC18D7502100DF3772 /* main.m in Sources */,
@@ -871,6 +946,7 @@
 				4E2C6DFB18D75CE200DF3772 /* ShopViewController.m in Sources */,
 				4E9608B018E48D6700418798 /* PSCollectionView.m in Sources */,
 				4E9608B118E48D6700418798 /* PSCollectionViewCell.m in Sources */,
+				4ECBF71718F45219003963E1 /* ShopDetailLocationCell.m in Sources */,
 				4E9608A618E48D6700418798 /* PullPsCollectionView.m in Sources */,
 				4E9608A318E48D6700418798 /* EGORefreshTableHeaderView.m in Sources */,
 				4E96087718E4791000418798 /* CustomNavigationController.m in Sources */,

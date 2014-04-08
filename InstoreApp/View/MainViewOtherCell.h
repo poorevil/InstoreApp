@@ -11,7 +11,7 @@
 @interface MainViewOtherCell : UITableViewCell
 
 @property (strong,nonatomic) IBOutlet UILabel *titleLabel;
-@property (strong,nonatomic) IBOutlet UIImageView *imageView;
+@property (strong,nonatomic) IBOutlet UIImageView *bannerImageView;
 @property (strong,nonatomic) IBOutlet UILabel *title1;
 @property (strong,nonatomic) IBOutlet UILabel *title1_1;
 

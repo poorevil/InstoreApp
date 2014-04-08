@@ -28,10 +28,19 @@
     
     
     UIImage *originalImage = [UIImage imageNamed:@"index-mid-btn-quick-pressed"];
-    UIEdgeInsets insets = UIEdgeInsetsMake(0, 20, 0, 300);
-    UIImage *stretchableImage = [originalImage resizableImageWithCapInsets:insets];
-    [self.wifiBtn setBackgroundImage:stretchableImage forState:UIControlStateNormal];
-    [self.mapBtn setBackgroundImage:stretchableImage forState:UIControlStateNormal];
+    UIEdgeInsets insets = UIEdgeInsetsMake(0, 20, 6, 300);
+    UIImage *pressedBg = [originalImage resizableImageWithCapInsets:insets];
+    
+    originalImage = [UIImage imageNamed:@"index-mid-btn-quick"];
+    UIImage *normalBg = [originalImage resizableImageWithCapInsets:insets];
+    
+    [self.wifiBtn setBackgroundImage:normalBg forState:UIControlStateNormal];
+    [self.mapBtn setBackgroundImage:normalBg forState:UIControlStateNormal];
+    
+    [self.wifiBtn setBackgroundImage:pressedBg forState:UIControlStateSelected];
+    [self.wifiBtn setBackgroundImage:pressedBg forState:UIControlStateHighlighted];
+    [self.mapBtn setBackgroundImage:pressedBg forState:UIControlStateSelected];
+    [self.mapBtn setBackgroundImage:pressedBg forState:UIControlStateHighlighted];
     
 }
 

@@ -8,6 +8,8 @@
 
 #import "ShopDetailViewController.h"
 #import "ShopDetailHeaderView.h"
+#import "ShopDetailLocationCell.h"
+#import "ShopDetailItemListCell.h"
 
 @interface ShopDetailViewController ()
 
@@ -70,42 +72,84 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 4;
+    return 3;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSString *cellIdentifier = @"cell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    if (!cell) {
-        
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-    }
-    
     switch (indexPath.section) {
         case 0:
-            cell.textLabel.text = @"010-8634294";
+            cellIdentifier = @"ShopDetailTypeCell";
             break;
         case 1:
-            cell.textLabel.text = @"品类列表";
+            cellIdentifier = @"ShopDetailLocationCell";
             break;
         case 2:
-            cell.textLabel.text = @"店铺描述";
+            cellIdentifier = @"ShopDetailItemListCell";
             break;
-        case 3:
-            cell.textLabel.text = @"品论列表";
-            break;
+//        case 2:
+//            cell.textLabel.text = @"品类列表";
+//            break;
+//        case 3:
+//            cell.textLabel.text = @"店铺描述";
+//            break;
+//        case 4:
+//            cell.textLabel.text = @"品论列表";
+//            break;
         default:
             break;
     }
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    if (!cell) {
+        
+        cell = [[[NSBundle mainBundle] loadNibNamed:cellIdentifier
+                                             owner:self
+                                           options:nil] objectAtIndex:0];
+    }
+    
+//    switch (indexPath.section) {
+//        case 0:
+//            cell.textLabel.text = @"餐饮    人均：￥50";
+//            break;
+//        case 1:
+//            cell.textLabel.text = @"010-8634294";
+//            break;
+//        case 2:
+//            cell.textLabel.text = @"品类列表";
+//            break;
+//        case 3:
+//            cell.textLabel.text = @"店铺描述";
+//            break;
+//        case 4:
+//            cell.textLabel.text = @"品论列表";
+//            break;
+//        default:
+//            break;
+//    }
     
     return cell;
 }
 
 #pragma mark - UITableViewDelegate
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 20;
+    switch (indexPath.section) {
+        case 0:
+        case 1:
+            return 44;
+        case 2:
+            return 95;
+//        case 3:
+//            cell.textLabel.text = @"店铺描述";
+//            break;
+//        case 4:
+//            cell.textLabel.text = @"品论列表";
+//            break;
+        default:
+            return 44;
+    }
 }
 @end

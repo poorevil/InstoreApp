@@ -26,4 +26,14 @@
     // Configure the view for the selected state
 }
 
+-(void)awakeFromNib
+{
+    UIImage *originalImage = [UIImage imageNamed:@"index-red-btn"];
+    UIEdgeInsets insets = UIEdgeInsetsMake(0, 20, 6, 300);
+    UIImage *btnBg = [originalImage resizableImageWithCapInsets:insets];
+    
+    [self.moreBtn setBackgroundImage:btnBg forState:UIControlStateNormal];
+    [self.moreBtn setBackgroundImage:btnBg forState:UIControlStateHighlighted];
+    [self.moreBtn setBackgroundImage:btnBg forState:UIControlStateSelected];
+}
 @end

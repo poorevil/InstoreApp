@@ -10,4 +10,6 @@
 
 @interface MainViewYouhuiCell : UITableViewCell
 
+@property (nonatomic,strong) IBOutlet UIButton *moreBtn;
+
 @end

@@ -10,4 +10,5 @@
 
 @interface MeHeaderView : UIView
 
+@property (nonatomic,strong) IBOutlet UIImageView *headIconImageView;
 @end
