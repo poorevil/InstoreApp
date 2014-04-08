@@ -26,4 +26,26 @@
     // Configure the view for the selected state
 }
 
+-(void)awakeFromNib
+{
+    [self initScrollView];
+}
+
+
+-(void)initScrollView
+{
+    self.mscrollView.contentSize = CGSizeMake(self.bounds.size.width * 2, 75);
+    self.mscrollView.pagingEnabled = YES;
+    
+    for (int i = 0; i < 8; i++) {
+        UIImageView *imageview = [[UIImageView alloc]
+                                  initWithImage:[UIImage
+                                                 imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"tmpimg%d",i] ofType:@"jpg"]]];
+        imageview.clipsToBounds = YES;
+        imageview.contentMode = UIViewContentModeScaleAspectFill;
+        imageview.frame = CGRectMake(i*78+10, 5, 70, 70);
+        [self.mscrollView addSubview:imageview];
+    }
+}
+
 @end
