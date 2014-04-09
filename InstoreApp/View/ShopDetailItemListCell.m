@@ -28,6 +28,12 @@
 
 -(void)awakeFromNib
 {
+    self.pageControl.pageIndicatorTintColor = [UIColor grayColor];
+    self.pageControl.currentPageIndicatorTintColor = [UIColor colorWithRed:248.0f/255.0f
+                                                                     green:40.0f/255.0f
+                                                                      blue:53.0f/255.0f
+                                                                     alpha:1];
+    
     [self initScrollView];
 }
 

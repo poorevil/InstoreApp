@@ -20,11 +20,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "InstoreApp/View/ShopDetailItemListCell.m"
-            timestampString = "418691786.203907"
+            timestampString = "418745237.031582"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
             landmarkName = "-initScrollView"
             landmarkType = "5">
          </BreakpointContent>
