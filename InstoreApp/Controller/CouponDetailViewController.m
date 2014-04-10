@@ -7,9 +7,11 @@
 //
 
 #import "CouponDetailViewController.h"
+#import "CouponDetailWithTitleCell.h"
 
 @interface CouponDetailViewController ()
 @property (nonatomic,strong) UIView *headerView;
+@property (nonatomic,strong) UIView *footerView;
 @end
 
 @implementation CouponDetailViewController
@@ -29,6 +31,9 @@
     // Do any additional setup after loading the view from its nib.
     
     [self initHeaderView];
+    [self initFooterView];
+    
+    self.title = @"优惠劵详情";
 }
 
 - (void)didReceiveMemoryWarning
@@ -58,6 +63,30 @@
     
 }
 
+-(void)initFooterView
+{
+    self.footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
+    UIButton *downloadBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    
+    UIImage *originalImage = [UIImage imageNamed:@"store-btn-sb-red"];
+    UIEdgeInsets insets = UIEdgeInsetsMake(0, 20, 6, 300);
+    UIImage *normalBg = [originalImage resizableImageWithCapInsets:insets];
+    
+    originalImage = [UIImage imageNamed:@"store-btn-sb-red-pressed"];
+    UIImage *pressedBg = [originalImage resizableImageWithCapInsets:insets];
+    
+    [downloadBtn setBackgroundImage:normalBg forState:UIControlStateNormal];
+    [downloadBtn setBackgroundImage:pressedBg forState:UIControlStateSelected];
+    [downloadBtn setBackgroundImage:pressedBg forState:UIControlStateHighlighted];
+    [downloadBtn setTitle:@"立即下载" forState:UIControlStateNormal];
+    downloadBtn.frame = CGRectMake((320-280)/2,
+                                   2,
+                                   280,
+                                   40);
+    [self.footerView addSubview:downloadBtn];
+    self.mtableView.tableFooterView = self.footerView;
+}
+
 #pragma mark - UITableViewDataSource<NSObject>
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -66,7 +95,7 @@
         case 0:
             return 1;
         case 1:
-            return 2;
+            return 1;
         case 2:
             return 3;
         case 3:
@@ -86,28 +115,53 @@
 {
     NSString *cellIdentifier = @"cell";
     
+    
+    switch (indexPath.section) {
+        case 0:
+            cellIdentifier = @"CouponDetailDownloadCell";
+            break;
+        case 1:
+            cellIdentifier = @"CouponDetailWithTitleCell";
+            break;
+        case 2:
+            cellIdentifier = @"cell";
+            break;
+        case 3:
+            cellIdentifier = @"CouponDetailWithTitleCell";
+            break;
+        default:
+            cellIdentifier = @"cell";
+            break;
+    }
+    
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (!cell) {
-        
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        if ([cellIdentifier isEqualToString:@"cell"]) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+            cell.textLabel.font = [UIFont systemFontOfSize:14];
+        }else{
+            cell = [[[NSBundle mainBundle] loadNibNamed:cellIdentifier owner:self
+                                               options:nil] objectAtIndex:0];
+        }
     }
     
     switch (indexPath.section) {
         case 0:
-            cell.textLabel.text = @"已下载：29234次";
             break;
         case 1:
-            switch (indexPath.row) {
-                case 0:
-                    cell.textLabel.text = @"有效期";
-                    break;
-                case 1:
-                    cell.textLabel.text = @"03月15日至08月13日";
-                    break;
-                default:
-                    break;
+            if ([cell isMemberOfClass:[CouponDetailWithTitleCell class]]) {
+                CouponDetailWithTitleCell *withTitleCell = (CouponDetailWithTitleCell *)cell;
+                withTitleCell.titleLabel.text = @"有效期";
+                withTitleCell.iconView.image = [UIImage imageNamed:@"store-icon-clock"];
+                withTitleCell.detailLabel.text = @"03月15日 至 08月13日";
+                withTitleCell.detailLabel.numberOfLines = 99;
+                //TODO:计算文字高度
+                withTitleCell.detailLabel.frame = CGRectMake(withTitleCell.detailLabel.frame.origin.x,
+                                                             withTitleCell.detailLabel.frame.origin.y,
+                                                             withTitleCell.detailLabel.frame.size.width,
+                                                             44);
+                withTitleCell.frame = CGRectMake(0, 0, withTitleCell.frame.size.width, 44);
             }
-            
             break;
         case 2:
             switch (indexPath.row) {
@@ -125,7 +179,21 @@
             }
             break;
         case 3:
-            cell.textLabel.text = @"优惠劵详情";
+            if ([cell isMemberOfClass:[CouponDetailWithTitleCell class]]) {
+                CouponDetailWithTitleCell *withTitleCell = (CouponDetailWithTitleCell *)cell;
+                withTitleCell.titleLabel.text = @"优惠劵详情";
+                withTitleCell.iconView.image = [UIImage imageNamed:@"store-icon-feed"];
+                withTitleCell.detailLabel.text = @"【北京】【爱唯视觉摄影】\n仅399元尊享原价999元的儿童写真摄影套系，7英寸Q存钱罐摆台一款+表情水晶一款10X20+三套服装+三组整体造型+增加一款创意拍摄（需要前期沟通）+内外景综合拍摄+拍摄亲子或全家福一组（不含三套之内）！\n\n北京爱唯视觉摄影\n联系电话:010-85738627\n手机号码:13146379128\n营业时间:09:00-17:00\n商户地址:北京市朝阳区甘露园朝阳无限芳菁苑7号楼102\n交通信息:东四环慈云寺辅路出口东行，十里堡华堂东一站地，物美大卖场后身即是。 朝北大悦城地铁南行到朝阳路西行一站，物美大卖场即是。 ";
+                withTitleCell.detailLabel.numberOfLines = 39;
+                //TODO:计算文字高度
+                withTitleCell.detailLabel.frame = CGRectMake(withTitleCell.detailLabel.frame.origin.x,
+                                                             withTitleCell.detailLabel.frame.origin.y,
+                                                             withTitleCell.detailLabel.frame.size.width,
+                                                             370-55);
+                withTitleCell.frame = CGRectMake(0, 0, withTitleCell.frame.size.width, 370);
+            }
+
+            
             break;
         default:
             break;
@@ -136,32 +204,120 @@
 
 #pragma mark - UITableViewDelegate
 
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-//    switch (indexPath.section) {
-//        case 0:
-//            return 130;
-//        case 1:
-//            return 180;
-//        case 2:
-//            return 334;
-//            //        case 3:
-//            //            cellIdentifier = @"MainViewOtherCell";
-//            //            break;
-//            //        case 4:
-//            //            cellIdentifier = @"MainViewSliderCell";
-//            //            break;
-//            //        case 5:
-//            //            cellIdentifier = @"MainViewSliderCell";
-//            //            break;
-//            //        case 6:
-//            //            cellIdentifier = @"MainViewSliderCell";
-//            //            break;
-//            
-//        default:
-//            return 310;
-//            break;
-//    }
-//    
-//}
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([cell respondsToSelector:@selector(tintColor)]) {
+        
+        if (tableView == self.mtableView) {
+            
+            CGFloat cornerRadius = 5.f;
+            
+            cell.backgroundColor = UIColor.clearColor;
+            
+            CAShapeLayer *layer = [[CAShapeLayer alloc] init];
+            
+            CGMutablePathRef pathRef = CGPathCreateMutable();
+            
+            CGRect bounds = CGRectInset(cell.bounds, 10, 0);
+            
+            BOOL addLine = NO;
+            
+            if (indexPath.row == 0 && indexPath.row == [tableView numberOfRowsInSection:indexPath.section]-1) {
+                
+                if (indexPath.section == 0 && tableView.tableHeaderView) {
+                    CGPathMoveToPoint(pathRef, nil, CGRectGetMinX(bounds), CGRectGetMinY(bounds));
+                    
+                    CGPathAddArcToPoint(pathRef, nil, CGRectGetMinX(bounds), CGRectGetMaxY(bounds), CGRectGetMidX(bounds), CGRectGetMaxY(bounds), cornerRadius);
+                    
+                    CGPathAddArcToPoint(pathRef, nil, CGRectGetMaxX(bounds), CGRectGetMaxY(bounds), CGRectGetMaxX(bounds), CGRectGetMidY(bounds), cornerRadius);
+                    
+                    CGPathAddLineToPoint(pathRef, nil, CGRectGetMaxX(bounds), CGRectGetMinY(bounds));
+                }else{
+                    CGPathAddRoundedRect(pathRef, nil, bounds, cornerRadius, cornerRadius);
+                }
+                
+            } else if (indexPath.row == 0) {
+                
+                CGPathMoveToPoint(pathRef, nil, CGRectGetMinX(bounds), CGRectGetMaxY(bounds));
+                
+                CGPathAddArcToPoint(pathRef, nil, CGRectGetMinX(bounds), CGRectGetMinY(bounds), CGRectGetMidX(bounds), CGRectGetMinY(bounds), cornerRadius);
+                
+                CGPathAddArcToPoint(pathRef, nil, CGRectGetMaxX(bounds), CGRectGetMinY(bounds), CGRectGetMaxX(bounds), CGRectGetMidY(bounds), cornerRadius);
+                
+                CGPathAddLineToPoint(pathRef, nil, CGRectGetMaxX(bounds), CGRectGetMaxY(bounds));
+                
+                addLine = YES;
+                
+            } else if (indexPath.row == [tableView numberOfRowsInSection:indexPath.section]-1) {
+                
+                CGPathMoveToPoint(pathRef, nil, CGRectGetMinX(bounds), CGRectGetMinY(bounds));
+                
+                CGPathAddArcToPoint(pathRef, nil, CGRectGetMinX(bounds), CGRectGetMaxY(bounds), CGRectGetMidX(bounds), CGRectGetMaxY(bounds), cornerRadius);
+                
+                CGPathAddArcToPoint(pathRef, nil, CGRectGetMaxX(bounds), CGRectGetMaxY(bounds), CGRectGetMaxX(bounds), CGRectGetMidY(bounds), cornerRadius);
+                
+                CGPathAddLineToPoint(pathRef, nil, CGRectGetMaxX(bounds), CGRectGetMinY(bounds));
+                
+            } else {
+                
+                CGPathAddRect(pathRef, nil, bounds);
+                
+                addLine = YES;
+                
+            }
+            
+            layer.path = pathRef;
+            
+            CFRelease(pathRef);
+            
+            layer.fillColor = [UIColor colorWithWhite:1.f alpha:0.8f].CGColor;
+            
+            layer.strokeColor = [UIColor lightGrayColor].CGColor;
+            layer.lineWidth = 0.4f;
+            
+            
+            if (addLine == YES) {
+                
+                CALayer *lineLayer = [[CALayer alloc] init];
+                
+                CGFloat lineHeight = (1.f / [UIScreen mainScreen].scale);
+                
+                lineLayer.frame = CGRectMake(CGRectGetMinX(bounds), bounds.size.height-lineHeight, bounds.size.width, lineHeight);
+                
+                lineLayer.backgroundColor = tableView.separatorColor.CGColor;
+                
+                [layer addSublayer:lineLayer];
+                
+            }
+            
+            UIView *testView = [[UIView alloc] initWithFrame:bounds];
+            
+            [testView.layer insertSublayer:layer atIndex:0];
+            
+            testView.backgroundColor = UIColor.clearColor;
+            
+            cell.backgroundView = testView;
+            
+        }
+        
+    }
+    
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    switch (indexPath.section) {
+        case 0:
+            return 44;
+        case 1:
+            return 88;
+        case 2:
+            return 44;
+        case 3:
+            return 370;
+        default:
+            return 44;
+    }
+    
+}
 
 @end

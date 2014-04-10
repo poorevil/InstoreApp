@@ -37,6 +37,7 @@
     [self.bindPhoneBtn setBackgroundImage:btnBg forState:UIControlStateHighlighted];
     [self.bindPhoneBtn setBackgroundImage:btnBg forState:UIControlStateSelected];
     
+    self.title = @"绑定手机";
 }
 
 - (void)didReceiveMemoryWarning

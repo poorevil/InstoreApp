@@ -36,6 +36,8 @@
     [self initHeaderView];
 
     [self initToolBar];
+    
+    self.title = @"星巴克";
 
 }
 
