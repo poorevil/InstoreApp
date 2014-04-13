@@ -28,9 +28,7 @@
 
 -(void)awakeFromNib
 {
-    UIImage *originalImage = [UIImage imageNamed:@"index-red-btn"];
-    UIEdgeInsets insets = UIEdgeInsetsMake(0, 20, 6, 300);
-    UIImage *btnBg = [originalImage resizableImageWithCapInsets:insets];
+    UIImage *btnBg = [UIImage imageNamed:@"index-red-btn"];
     
     [self.moreBtn setBackgroundImage:btnBg forState:UIControlStateNormal];
     [self.moreBtn setBackgroundImage:btnBg forState:UIControlStateHighlighted];

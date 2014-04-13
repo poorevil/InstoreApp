@@ -57,11 +57,15 @@
     tabBarItem4.title = @"商户";
     tabBarItem5.title = @"我的";
 
-    [tabBarItem1 setImage:[UIImage imageNamed:@"toolBar-btn-home.png"]];
-    [tabBarItem2 setImage:[UIImage imageNamed:@"toolBar-btn-sale"]];
-    [tabBarItem3 setImage:[UIImage imageNamed:@"toolBar-btn-service"]];
-    [tabBarItem4 setImage:[UIImage imageNamed:@"toolBar-btn-store"]];
-    [tabBarItem5 setImage:[UIImage imageNamed:@"toolBar-btn-user"]];
+    [tabBarItem1 setFinishedSelectedImage:[UIImage imageNamed:@"toolBar-btn-home.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"toolBar-btn-home.png"]];
+    [tabBarItem2 setFinishedSelectedImage:[UIImage imageNamed:@"toolBar-btn-sale.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"toolBar-btn-sale.png"]];
+    [tabBarItem3 setFinishedSelectedImage:[UIImage imageNamed:@"toolBar-btn-service.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"toolBar-btn-service"]];
+    [tabBarItem4 setFinishedSelectedImage:[UIImage imageNamed:@"toolBar-btn-store"] withFinishedUnselectedImage:[UIImage imageNamed:@"toolBar-btn-store"]];
+    [tabBarItem5 setFinishedSelectedImage:[UIImage imageNamed:@"toolBar-btn-user"] withFinishedUnselectedImage:[UIImage imageNamed:@"toolBar-btn-user"]];
+    
+    [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+                                                       [UIColor whiteColor], UITextAttributeTextColor,
+                                                       nil] forState:UIControlStateHighlighted];
     
 //    [tabBarItem1 setFinishedSelectedImage:[UIImage imageNamed:@"home_selected.png"]
 //              withFinishedUnselectedImage:[UIImage imageNamed:@"home.png"]];

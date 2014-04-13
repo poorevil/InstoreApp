@@ -32,20 +32,7 @@
 
     self.title = @"商户";
     
-    UIImage *originalImage = [UIImage imageNamed:@"top-search-icon"];
-    UIEdgeInsets insets = UIEdgeInsetsMake(0, 20, 10, 300);
-    UIImage *stretchableImage = [originalImage resizableImageWithCapInsets:insets];
-    [self.floorBtn setBackgroundImage:stretchableImage forState:UIControlStateNormal];
-    [self.floorBtn setBackgroundImage:stretchableImage forState:UIControlStateHighlighted];
-    [self.floorBtn setBackgroundImage:stretchableImage forState:UIControlStateSelected];
     
-    [self.cateBtn setBackgroundImage:stretchableImage forState:UIControlStateNormal];
-    [self.cateBtn setBackgroundImage:stretchableImage forState:UIControlStateHighlighted];
-    [self.cateBtn setBackgroundImage:stretchableImage forState:UIControlStateSelected];
-    
-    [self.sortBtn setBackgroundImage:stretchableImage forState:UIControlStateNormal];
-    [self.sortBtn setBackgroundImage:stretchableImage forState:UIControlStateHighlighted];
-    [self.sortBtn setBackgroundImage:stretchableImage forState:UIControlStateSelected];
 
     
     

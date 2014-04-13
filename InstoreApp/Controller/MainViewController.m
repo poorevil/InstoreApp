@@ -46,18 +46,21 @@
     UIImage *image = [[UIImage imageNamed:@"topBar-btn-sao"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     [scanBtn setImage:image forState:UIControlStateNormal];
     [scanBtn setTitleEdgeInsets:UIEdgeInsetsMake(30, -image.size.width, 0, 0)];
-    [scanBtn setImageEdgeInsets:UIEdgeInsetsMake(0, 5, 10, 5)];
+    [scanBtn setImageEdgeInsets:UIEdgeInsetsMake(0,
+                                                 (scanBtn.frame.size.width-scanBtn.imageView.frame.size.width)/2,
+                                                 (scanBtn.frame.size.height-scanBtn.imageView.frame.size.height)/2,
+                                                 0)];
     UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc] initWithCustomView:scanBtn];
     self.navigationItem.rightBarButtonItem =rightBtn;
     
     UIButton *searchBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    searchBtn.frame = CGRectMake(0, 0, 320, 40);
+    searchBtn.frame = CGRectMake(0, 0, 320, 30);
     [searchBtn setTitle:@"寻找优惠券、商家" forState:UIControlStateNormal];
     [searchBtn addTarget:self action:@selector(showSearchView) forControlEvents:UIControlEventTouchUpInside];
     
-    UIImage *originalImage = [UIImage imageNamed:@"top-search-icon"];
-    UIEdgeInsets insets = UIEdgeInsetsMake(0, 20, 0, 300);
-    UIImage *stretchableImage = [originalImage resizableImageWithCapInsets:insets];
+//    UIImage *originalImage = [UIImage imageNamed:@"top-search-icon"];
+//    UIEdgeInsets insets = UIEdgeInsetsMake(0, 20, 0, 300);
+    UIImage *stretchableImage = [UIImage imageNamed:@"top-search-icon"];//[originalImage resizableImageWithCapInsets:insets];
     [searchBtn setBackgroundImage:stretchableImage forState:UIControlStateNormal];
     
     UIImage *searchImage = [[UIImage imageNamed:@"topBar-btn-zoom"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];

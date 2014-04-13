@@ -28,6 +28,8 @@
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
     [self.picView addGestureRecognizer:tap];
 
+    self.layer.borderColor = [UIColor colorWithWhite:0.8 alpha:0.7].CGColor;
+    self.layer.borderWidth = 0.5f;
 }
 
 /*

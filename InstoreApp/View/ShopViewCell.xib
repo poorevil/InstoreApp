@@ -48,11 +48,21 @@
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="store-icon-loc-gray.png" translatesAutoresizingMaskIntoConstraints="NO" id="Kug-jp-SR2">
+                        <rect key="frame" x="161" y="56" width="6" height="9"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="store-icon-like-gray.png" translatesAutoresizingMaskIntoConstraints="NO" id="oKR-tI-NsO">
+                        <rect key="frame" x="238" y="56" width="9" height="8"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    </imageView>
                 </subviews>
             </tableViewCellContentView>
         </tableViewCell>
     </objects>
     <resources>
+        <image name="store-icon-like-gray.png" width="9" height="8"/>
+        <image name="store-icon-loc-gray.png" width="6" height="9"/>
         <image name="url.jpg" width="151" height="151"/>
     </resources>
 </document>

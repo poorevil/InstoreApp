@@ -31,9 +31,9 @@
 	// Do any additional setup after loading the view.
     if ([self isMemberOfClass:[MainViewController class]]) {
         
-        UIView *icon = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"tmp1"]];
-        icon.frame = CGRectMake(0, 0, 50, 26);
-        UIView *iconView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 50, 26 )];
+        UIView *icon = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon"]];
+        icon.frame = CGRectMake(0, 0, 30, 30);
+        UIView *iconView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 30, 30 )];
         [iconView addSubview:icon];
         
         UIBarButtonItem *iconItem = [[UIBarButtonItem alloc] initWithCustomView:iconView];

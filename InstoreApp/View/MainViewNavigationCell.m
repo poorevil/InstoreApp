@@ -27,12 +27,12 @@
     [self setBtnStyle:self.saleBtn];
     
     
-    UIImage *originalImage = [UIImage imageNamed:@"index-mid-btn-quick-pressed"];
-    UIEdgeInsets insets = UIEdgeInsetsMake(0, 20, 6, 300);
-    UIImage *pressedBg = [originalImage resizableImageWithCapInsets:insets];
+//    UIImage *originalImage = [UIImage imageNamed:@"index-mid-btn-quick-pressed"];
+//    UIEdgeInsets insets = UIEdgeInsetsMake(0, 20, 6, 300);
+    UIImage *pressedBg = [UIImage imageNamed:@"index-mid-btn-quick-pressed"];//[originalImage resizableImageWithCapInsets:insets];
     
-    originalImage = [UIImage imageNamed:@"index-mid-btn-quick"];
-    UIImage *normalBg = [originalImage resizableImageWithCapInsets:insets];
+//    originalImage = [UIImage imageNamed:@"index-mid-btn-quick"];
+    UIImage *normalBg = [UIImage imageNamed:@"index-mid-btn-quick"];//[originalImage resizableImageWithCapInsets:insets];
     
     [self.wifiBtn setBackgroundImage:normalBg forState:UIControlStateNormal];
     [self.mapBtn setBackgroundImage:normalBg forState:UIControlStateNormal];
@@ -55,7 +55,7 @@
 -(void)setBtnStyle:(UIButton *)btn
 {
     [btn setImageEdgeInsets:UIEdgeInsetsMake(0,
-                                          (btn.frame.size.width-btn.imageView.frame.size.width)/2,
+                                          (btn.frame.size.width-btn.imageView.frame.size.width)/2-5,
                                           (btn.frame.size.height-btn.imageView.frame.size.height)/2 +5,
                                           0)];
     [btn setTitleEdgeInsets:UIEdgeInsetsMake(btn.imageView.frame.size.height +5,
