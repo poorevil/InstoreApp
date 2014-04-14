@@ -40,6 +40,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="top-icon-more-black.png" width="60" height="60"/>
+        <image name="top-icon-more-black.png" width="13" height="8"/>
     </resources>
 </document>

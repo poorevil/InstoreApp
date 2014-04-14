@@ -11,4 +11,11 @@
 
 @interface YouhuiTileView : PSCollectionViewCell
 @property (retain, nonatomic) IBOutlet UIImageView *picView;
+@property (retain, nonatomic) IBOutlet UIImageView *iconView;
+@property (retain, nonatomic) IBOutlet UIView *viewGroup;
+@property (retain, nonatomic) IBOutlet UILabel *titleLabel;
+@property (retain, nonatomic) IBOutlet UIView *buttonGroup;
+
++ (CGFloat)heightForViewWithObject:(id)object inColumnWidth:(CGFloat)columnWidth;
+
 @end

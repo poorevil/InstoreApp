@@ -35,7 +35,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KvG-xK-inq">
-                        <rect key="frame" x="214" y="-8" width="60" height="60"/>
+                        <rect key="frame" x="241" y="13" width="9" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <state key="normal" image="store-icon-like-gray.png">
@@ -47,6 +47,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="store-icon-like-gray.png" width="60" height="60"/>
+        <image name="store-icon-like-gray.png" width="9" height="8"/>
     </resources>
 </document>

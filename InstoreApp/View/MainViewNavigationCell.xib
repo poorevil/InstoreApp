@@ -33,7 +33,7 @@
                         </state>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" id="4YD-9j-24M">
-                        <rect key="frame" x="15" y="80" width="136" height="40"/>
+                        <rect key="frame" x="15" y="80" width="138" height="40"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <state key="normal" title="商场地图">
@@ -44,7 +44,7 @@
                         </state>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" id="ueL-tN-ZLe">
-                        <rect key="frame" x="167" y="80" width="136" height="40"/>
+                        <rect key="frame" x="167" y="80" width="138" height="40"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <state key="normal" title="免费上网">
@@ -109,6 +109,10 @@
                             <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                     </button>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="line_bg.png" id="Tt7-jr-NWb">
+                        <rect key="frame" x="0.0" y="129" width="320" height="1"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    </imageView>
                 </subviews>
             </tableViewCellContentView>
             <connections>
@@ -123,9 +127,10 @@
     </objects>
     <resources>
         <image name="index-tool-btn-bgd.png" width="63" height="63"/>
-        <image name="index-tool-btn-card.png" width="60" height="60"/>
-        <image name="index-tool-btn-food.png" width="60" height="60"/>
-        <image name="index-tool-btn-order.png" width="60" height="60"/>
-        <image name="index-tool-btn-sale.png" width="60" height="60"/>
+        <image name="index-tool-btn-card.png" width="38" height="24"/>
+        <image name="index-tool-btn-food.png" width="29" height="29"/>
+        <image name="index-tool-btn-order.png" width="26" height="26"/>
+        <image name="index-tool-btn-sale.png" width="31" height="31"/>
+        <image name="line_bg.png" width="2" height="1"/>
     </resources>
 </document>

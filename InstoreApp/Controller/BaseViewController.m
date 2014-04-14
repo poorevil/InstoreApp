@@ -31,7 +31,7 @@
 	// Do any additional setup after loading the view.
     if ([self isMemberOfClass:[MainViewController class]]) {
         
-        UIView *icon = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon"]];
+        UIView *icon = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Icon"]];
         icon.frame = CGRectMake(0, 0, 30, 30);
         UIView *iconView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 30, 30 )];
         [iconView addSubview:icon];

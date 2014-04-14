@@ -47,14 +47,14 @@
 -(void)initHeaderView
 {
     self.headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 320)];
-    UIImageView *headerImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"coffee.jpg"]];
+    UIImageView *headerImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"c_3.jpg"]];
     headerImageView.frame = CGRectMake(10, 10, 300, 300);
     [self.headerView addSubview:headerImageView];
     
     UIView *titleGroupView = [[UIView alloc] initWithFrame:CGRectMake(10, 320-34, 300, 34)];
     titleGroupView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.7f];
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 5, 300, 28)];
-    titleLabel.text = @"俏江南红烧肉全场8折";
+    titleLabel.text = @"迪奥服饰 全场8折";
     titleLabel.textColor = [UIColor whiteColor];
     [titleGroupView addSubview:titleLabel];
     
@@ -166,7 +166,7 @@
         case 2:
             switch (indexPath.row) {
                 case 0:
-                    cell.textLabel.text = @"商户：俏江南";
+                    cell.textLabel.text = @"商户：迪奥服饰";
                     break;
                 case 1:
                     cell.textLabel.text = @"地址：4F/108";

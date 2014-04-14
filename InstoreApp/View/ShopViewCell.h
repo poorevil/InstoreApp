@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface ShopViewCell : UITableViewCell
-
+@property (nonatomic,strong) IBOutlet UIImageView *shopIconImageView;
+@property (nonatomic,strong) IBOutlet UILabel *titleLabel;
+@property (nonatomic,strong) IBOutlet UILabel *typeLabel;
 @end

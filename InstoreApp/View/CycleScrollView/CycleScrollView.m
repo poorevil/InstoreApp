@@ -19,6 +19,8 @@
 @property (nonatomic , strong) NSTimer *animationTimer;
 @property (nonatomic , assign) NSTimeInterval animationDuration;
 
+@property (nonatomic,strong) UIPageControl *pageControl;
+
 @end
 
 @implementation CycleScrollView
@@ -30,6 +32,8 @@
         [self configContentViews];
         [self.animationTimer resumeTimerAfterTimeInterval:self.animationDuration];
     }
+    
+    self.pageControl.numberOfPages = _totalPageCount;
 }
 
 - (id)initWithFrame:(CGRect)frame animationDuration:(NSTimeInterval)animationDuration
@@ -62,6 +66,18 @@
         self.scrollView.pagingEnabled = YES;
         [self addSubview:self.scrollView];
         self.currentPageIndex = 0;
+        
+        self.pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(40,
+                                                                           frame.size.height - 20,
+                                                                           50,
+                                                                           20)];
+        self.pageControl.pageIndicatorTintColor = [UIColor grayColor];
+        self.pageControl.currentPageIndicatorTintColor = [UIColor colorWithRed:248.0f/255.0f
+                                                                         green:40.0f/255.0f
+                                                                          blue:53.0f/255.0f
+                                                                         alpha:1];
+        [self addSubview:self.pageControl];
+        
     }
     return self;
 }
@@ -144,6 +160,8 @@
         NSLog(@"previous，当前页:%d",self.currentPageIndex);
         [self configContentViews];
     }
+    
+    self.pageControl.currentPage = self.currentPageIndex;
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView

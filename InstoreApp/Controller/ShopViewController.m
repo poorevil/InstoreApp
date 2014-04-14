@@ -48,7 +48,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 10;
+    return 8;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -59,6 +59,44 @@
         cell = [[[NSBundle mainBundle] loadNibNamed:@"ShopViewCell" owner:self options:nil] objectAtIndex:0];
     }
     
+    cell.shopIconImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"pp_%d.jpg",indexPath.row+1]];
+    
+    switch (indexPath.row) {
+        case 0:
+            cell.titleLabel.text = @"迪奥";
+            cell.typeLabel.text = @"服饰";
+            break;
+        case 1:
+            cell.titleLabel.text = @"杰克琼斯";
+            cell.typeLabel.text = @"服饰";
+            break;
+        case 2:
+            cell.titleLabel.text = @"可可尼";
+            cell.typeLabel.text = @"服饰";
+            break;
+        case 3:
+            cell.titleLabel.text = @"卡西欧";
+            cell.typeLabel.text = @"配饰";
+            break;
+        case 4:
+            cell.titleLabel.text = @"雷蛇";
+            cell.typeLabel.text = @"配件";
+            break;
+        case 5:
+            cell.titleLabel.text = @"万尼";
+            cell.typeLabel.text = @"服饰";
+            break;
+        case 6:
+            cell.titleLabel.text = @"Dickies";
+            cell.typeLabel.text = @"服饰";
+            break;
+        case 7:
+            cell.titleLabel.text = @"ENZO";
+            cell.typeLabel.text = @"珠宝";
+            break;
+        default:
+            break;
+    }
     
     return  cell;
 }
@@ -74,8 +112,9 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    ShopDetailViewController *shopDetailVC = [[ShopDetailViewController alloc] initWithNibName:@"ShopDetailViewController"
-                                                                                        bundle:nil];
+    ShopDetailViewController *shopDetailVC = [[ShopDetailViewController alloc]
+                                              initWithNibName:@"ShopDetailViewController"
+                                              bundle:nil];
     shopDetailVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:shopDetailVC animated:YES];
     shopDetailVC.hidesBottomBarWhenPushed = NO;

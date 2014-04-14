@@ -49,7 +49,8 @@
                                                  imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"tmpimg%d",i] ofType:@"jpg"]]];
         imageview.clipsToBounds = YES;
         imageview.contentMode = UIViewContentModeScaleAspectFill;
-        imageview.frame = CGRectMake(i*78+10, 5, 70, 70);
+        imageview.frame = CGRectMake(i*78+10 + (i/4*6),
+                                     5, 70, 70);
         [self.mscrollView addSubview:imageview];
     }
 }

@@ -22,6 +22,7 @@
     if (self) {
         // Custom initialization
         self.items = [NSMutableArray array];
+        
     }
     return self;
 }
@@ -124,14 +125,14 @@
     NSDictionary *item = [self.items objectAtIndex:index];
     
     // You should probably subclass PSCollectionViewCell
-    YouhuiTileView *v = (YouhuiTileView *)[self.collectionView dequeueReusableView];
+    YouhuiTileView *v = nil;//(YouhuiTileView *)[self.collectionView dequeueReusableView];
     if(v == nil) {
         NSArray *nib =
         [[NSBundle mainBundle] loadNibNamed:@"YouhuiTileView" owner:self options:nil];
         v = [nib objectAtIndex:0];
     }
     
-    //    [v fillViewWithObject:item];
+    [v fillViewWithObject:item];
 
 //    NSURL *URL = [NSURL URLWithString:[NSString stringWithFormat:@"http://imgur.com/%@%@", [item objectForKey:@"hash"], [item objectForKey:@"ext"]]];
     //    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:URL];
@@ -185,8 +186,31 @@
     
 //    CGFloat objectWidth = [[object objectForKey:@"width"] floatValue];
 //    CGFloat objectHeight = [[object objectForKey:@"height"] floatValue];
-    self.items = [NSMutableArray arrayWithArray:@[@{@"width":[NSNumber numberWithFloat:150.0f],
-                                                    @"height":[NSNumber numberWithFloat:280.0f]}]];
+    self.items = [NSMutableArray arrayWithArray:@[@{@"width":[NSNumber numberWithFloat:600],
+                                                    @"height":[NSNumber numberWithFloat:398.0f],
+                                                    @"title":@"星巴克",
+                                                    @"icon":@"url.jpg",
+                                                    @"image":@"coffee.jpg"},
+                                                  @{@"width":[NSNumber numberWithFloat:280.0f],
+                                                    @"height":[NSNumber numberWithFloat:365.0f],
+                                                    @"title":@"杰克琼斯",
+                                                    @"icon":@"pp_2.jpg",
+                                                    @"image":@"c_2.jpg"},
+                                                  @{@"width":[NSNumber numberWithFloat:280.0f],
+                                                    @"height":[NSNumber numberWithFloat:365.0f],
+                                                    @"title":@"迪奥",
+                                                    @"icon":@"pp_1.jpg",
+                                                    @"image":@"c_3.jpg"},
+                                                  @{@"width":[NSNumber numberWithFloat:280.0f],
+                                                    @"height":[NSNumber numberWithFloat:365.0f],
+                                                    @"title":@"卡西欧",
+                                                    @"icon":@"pp_4.jpg",
+                                                    @"image":@"c_4.jpg"},
+                                                  @{@"width":[NSNumber numberWithFloat:280.0f],
+                                                    @"height":[NSNumber numberWithFloat:365.0f],
+                                                    @"title":@"可可尼",
+                                                    @"icon":@"pp_3.jpg",
+                                                    @"image":@"c_5.jpg"},]];
     [self dataSourceDidLoad];
 }
 

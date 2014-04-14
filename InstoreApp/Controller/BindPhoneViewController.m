@@ -29,13 +29,20 @@
     // Do any additional setup after loading the view from its nib.
     [self.phoneNumField becomeFirstResponder];
     
-    UIImage *originalImage = [UIImage imageNamed:@"index-red-btn"];
-    UIEdgeInsets insets = UIEdgeInsetsMake(0, 20, 6, 300);
-    UIImage *btnBg = [originalImage resizableImageWithCapInsets:insets];
+    UIImage *originalImage = [[UIImage imageNamed:@"index-red-btn"] stretchableImageWithLeftCapWidth:10 topCapHeight:10];
+    [self.bindPhoneBtn setBackgroundImage:originalImage forState:UIControlStateNormal];
+    [self.bindPhoneBtn setBackgroundImage:originalImage forState:UIControlStateHighlighted];
+    [self.bindPhoneBtn setBackgroundImage:originalImage forState:UIControlStateSelected];
     
-    [self.bindPhoneBtn setBackgroundImage:btnBg forState:UIControlStateNormal];
-    [self.bindPhoneBtn setBackgroundImage:btnBg forState:UIControlStateHighlighted];
-    [self.bindPhoneBtn setBackgroundImage:btnBg forState:UIControlStateSelected];
+    originalImage = [[UIImage imageNamed:@"register-phone-forget"] stretchableImageWithLeftCapWidth:10 topCapHeight:10];
+    [self.findAccountBtn setBackgroundImage:originalImage forState:UIControlStateNormal];
+    [self.findAccountBtn setBackgroundImage:originalImage forState:UIControlStateHighlighted];
+    [self.findAccountBtn setBackgroundImage:originalImage forState:UIControlStateSelected];
+    
+    originalImage = [UIImage imageNamed:@"register-phone-submit"];
+    [self.fetchCheckNumBtn setBackgroundImage:originalImage forState:UIControlStateNormal];
+    [self.fetchCheckNumBtn setBackgroundImage:originalImage forState:UIControlStateHighlighted];
+    [self.fetchCheckNumBtn setBackgroundImage:originalImage forState:UIControlStateSelected];
     
     self.title = @"绑定手机";
 }

@@ -14,19 +14,19 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="333"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coffee.jpg" id="ZAK-my-Hsy">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="miaosha_4.jpg" id="ZAK-my-Hsy">
                         <rect key="frame" x="10" y="30" width="300" height="100"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tmp1.png" id="53N-rt-n4B">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="miaosha_1.jpg" id="53N-rt-n4B">
                         <rect key="frame" x="10" y="140" width="145" height="140"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="url.jpg" id="pIG-M8-zGi">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="miaosha_2.jpg" id="pIG-M8-zGi">
                         <rect key="frame" x="165" y="140" width="145" height="65"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wifi1.jpg" id="AJX-Ja-cdj">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="miaosha_3.jpg" id="AJX-Ja-cdj">
                         <rect key="frame" x="165" y="215" width="145" height="65"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
@@ -46,16 +46,18 @@
                         <color key="textColor" red="0.8980392157" green="0.2470588235" blue="0.066666666669999999" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <view contentMode="scaleToFill" id="xh0-Rf-TXo">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="line_bg.png" id="H50-kJ-F9P">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="1"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <view contentMode="scaleToFill" id="cXV-7U-TiF">
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="line_bg.png" id="1hu-Jd-nIy">
                         <rect key="frame" x="0.0" y="24" width="320" height="1"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="line_bg.png" id="kZt-9r-gN9">
+                        <rect key="frame" x="0.0" y="333" width="320" height="1"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    </imageView>
                 </subviews>
             </tableViewCellContentView>
             <connections>
@@ -64,9 +66,10 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="coffee.jpg" width="600" height="398"/>
-        <image name="tmp1.png" width="70" height="70"/>
-        <image name="url.jpg" width="151" height="151"/>
-        <image name="wifi1.jpg" width="1923" height="1076"/>
+        <image name="line_bg.png" width="2" height="1"/>
+        <image name="miaosha_1.jpg" width="210" height="200"/>
+        <image name="miaosha_2.jpg" width="230" height="160"/>
+        <image name="miaosha_3.jpg" width="300" height="180"/>
+        <image name="miaosha_4.jpg" width="230" height="160"/>
     </resources>
 </document>

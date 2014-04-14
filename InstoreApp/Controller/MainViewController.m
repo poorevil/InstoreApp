@@ -87,11 +87,13 @@
 #pragma mark - private method
 -(void)initLunboView
 {
-    NSArray *imageFileName = @[@"coffee.jpg",@"banner.jpg",@"banner2.jpg",@"wifi1.jpg",@"url.jpg"];
+    NSArray *imageFileName = @[@"banner_1.jpg",@"banner_2.jpg",@"banner_3.jpg",@"banner_4.jpg",@"banner_5.jpg"];
     NSMutableArray *viewsArray = [NSMutableArray array];
     for (int i = 0; i < imageFileName.count; ++i) {
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 150)];
         imageView.image = [UIImage imageNamed:[imageFileName objectAtIndex:i]];
+        imageView.contentMode = UIViewContentModeScaleAspectFill;
+        imageView.clipsToBounds = YES;
         [viewsArray addObject:imageView];
     }
     
@@ -116,7 +118,7 @@
     UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 80)];
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 10, footerView.frame.size.width, 30)];
     titleLabel.text = @"继续拖动有惊喜!";
-    titleLabel.font = [UIFont boldSystemFontOfSize:22];
+    titleLabel.font = [UIFont boldSystemFontOfSize:17];
     titleLabel.textColor = [UIColor grayColor];
     titleLabel.textAlignment = NSTextAlignmentCenter;
     [footerView addSubview:titleLabel];
@@ -140,7 +142,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 15;
+    return 4;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
