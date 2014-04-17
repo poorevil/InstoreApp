@@ -7,6 +7,7 @@
 //
 
 #import "MainViewYouhuiCell.h"
+#import "AppDelegate.h"
 
 @implementation MainViewYouhuiCell
 
@@ -28,10 +29,18 @@
 
 -(void)awakeFromNib
 {
-    UIImage *btnBg = [UIImage imageNamed:@"index-red-btn"];
+//    UIImage *btnBg = [UIImage imageNamed:@"index-red-btn"];
+//    [self.moreBtn setBackgroundImage:btnBg forState:UIControlStateNormal];
+//    [self.moreBtn setBackgroundImage:btnBg forState:UIControlStateHighlighted];
+//    [self.moreBtn setBackgroundImage:btnBg forState:UIControlStateSelected];
     
-    [self.moreBtn setBackgroundImage:btnBg forState:UIControlStateNormal];
-    [self.moreBtn setBackgroundImage:btnBg forState:UIControlStateHighlighted];
-    [self.moreBtn setBackgroundImage:btnBg forState:UIControlStateSelected];
+    [self.moreBtn addTarget:self action:@selector(moreBtnAction:)
+           forControlEvents:UIControlEventTouchUpInside];
+}
+
+-(void)moreBtnAction:(id)sender
+{
+    AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+    [appDelegate.tabBarController setSelectedIndex:1];
 }
 @end

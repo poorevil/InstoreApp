@@ -45,6 +45,7 @@
     [self.searchBar sizeToFit];
 
     self.navigationItem.titleView = self.searchBar;
+    [self.searchBar becomeFirstResponder];
     
 }
 
@@ -58,7 +59,7 @@
 //            [self.searchBar becomeFirstResponder];
 //    });
 
-    [self.searchBar performSelector:@selector(becomeFirstResponder) withObject:nil afterDelay:0.05];
+//    [self.searchBar performSelector:@selector(becomeFirstResponder) withObject:nil afterDelay:0.05];
 }
 
 - (void)didReceiveMemoryWarning
