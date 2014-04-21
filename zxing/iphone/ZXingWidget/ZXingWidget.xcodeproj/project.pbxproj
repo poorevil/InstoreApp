@@ -1706,6 +1706,13 @@
 				PRODUCT_NAME = ZXingWidget;
 				SEPARATE_STRIP = NO;
 				SKIP_INSTALL = YES;
+				WARNING_CFLAGS = (
+					"-Wall",
+					"-Wextra",
+					"-Werror",
+					"-Wno-unused-parameter",
+					"-w",
+				);
 			};
 			name = Debug;
 		};
@@ -1723,6 +1730,13 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = ZXingWidget;
 				SKIP_INSTALL = YES;
+				WARNING_CFLAGS = (
+					"-Wall",
+					"-Wextra",
+					"-Werror",
+					"-Wno-unused-parameter",
+					"-w",
+				);
 			};
 			name = Release;
 		};

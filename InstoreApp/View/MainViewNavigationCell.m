@@ -7,6 +7,8 @@
 //
 
 #import "MainViewNavigationCell.h"
+#import "AppDelegate.h"
+#import "IndoorMapWithLeftPopBtnViewController.h"
 
 @implementation MainViewNavigationCell
 
@@ -41,6 +43,7 @@
     [self.wifiBtn setBackgroundImage:pressedBg forState:UIControlStateHighlighted];
     [self.mapBtn setBackgroundImage:pressedBg forState:UIControlStateSelected];
     [self.mapBtn setBackgroundImage:pressedBg forState:UIControlStateHighlighted];
+    [self.mapBtn addTarget:self action:@selector(mapBtnAction:) forControlEvents:UIControlEventTouchUpInside];
     
 }
 
@@ -63,6 +66,16 @@
                                           0, 0)];
     
 //    btn.backgroundColor = [UIColor blackColor];
+}
+
+-(void)mapBtnAction:(id)sender
+{
+    AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+    UINavigationController *nav = (UINavigationController *)appDelegate.tabBarController.selectedViewController;
+    IndoorMapWithLeftPopBtnViewController *imvc = [[IndoorMapWithLeftPopBtnViewController alloc] initWithFrame:nav.view.bounds];
+    imvc.hidesBottomBarWhenPushed = YES;
+    [nav pushViewController:imvc animated:YES];
+    imvc.hidesBottomBarWhenPushed = NO;
 }
 
 @end

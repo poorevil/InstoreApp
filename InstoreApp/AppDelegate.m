@@ -14,10 +14,24 @@
 #import "ServiceViewController.h"
 #import "CustomNavigationController.h"
 
+#import "HTTPAccess.h"
+#import "IconDictManager.h"
+
+static NSString* szClientId = @"2014040301";
+static NSString* szClientSecret = @"ea13692f9c960a37db0086ff87e56e01";
+
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
+    //初始化HTTPAccess
+    if (![HTTPAccess getInstanceIfInited]) {
+        HTTPAccess *httpAccess = [HTTPAccess createWithId:szClientId andSecret:szClientSecret];
+//        [httpAccess requestAccessTokenFromServer];
+        [httpAccess requestAccessTokenFromServerSynchronously];
+        NSLog(@"===========%@",[httpAccess accessToken]);
+    }
     
     self.tabBarController = [[UITabBarController alloc] init];
     
@@ -87,6 +101,9 @@
     self.window.backgroundColor = [UIColor whiteColor];
     self.window.rootViewController = self.tabBarController;
     [self.window makeKeyAndVisible];
+    
+    
+    
     return YES;
 }
 
@@ -102,6 +119,8 @@
 {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    
+    [HTTPAccess saveCacheData];//保存plist到文件
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
