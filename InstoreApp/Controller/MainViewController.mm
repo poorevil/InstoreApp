@@ -76,7 +76,7 @@
     [self initLunboView];
     self.mtableView.scrollsToTop = YES;
     
-    [self initFooterView];
+//    [self initFooterView];
 }
 
 

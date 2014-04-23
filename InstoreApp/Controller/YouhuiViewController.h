@@ -19,6 +19,9 @@
 @property (nonatomic,strong) IBOutlet UIView *optionView;//筛选view
 @property (nonatomic,strong) IBOutlet UISegmentedControl *segmentedControl;
 
+@property (nonatomic,strong) IBOutlet UIButton *categoryBtn;//分类
+@property (nonatomic,strong) IBOutlet UIButton *orderBtn;//排序
+
 @property (nonatomic,strong) IBOutlet UIView *viewParent;//瀑布流view
 
 -(void)loadDataSource;

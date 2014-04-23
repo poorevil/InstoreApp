@@ -51,11 +51,14 @@
 {
     switch (section) {
         case 0:
-            return 4;
+            return 3;
         case 1:
-            return 2;
-            
+            return 3;
         case 2:
+            return 1;
+        case 3:
+            return 1;
+        case 4:
             return 1;
             
     }
@@ -65,7 +68,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 3;
+    return 5;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -87,13 +90,32 @@
                     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                     break;
                 case 1:
-                    cell.textLabel.text = @"我关注的商家";
-                    cell.detailTextLabel.text=@"查看管理收藏的商家";
+                    cell.textLabel.text = @"消息中心";
+                    cell.detailTextLabel.text=@"查看管理收到的消息";
                     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                     break;
                 case 2:
-                    cell.textLabel.text = @"消息中心";
-                    cell.detailTextLabel.text=@"";
+                    cell.textLabel.text = @"消费记录";
+                    cell.detailTextLabel.text=@"查看历史消费记录";
+                    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                    break;
+            }
+            break;
+        case 1:
+            switch (indexPath.row) {
+                case 0:
+                    cell.textLabel.text = @"我关注的商家";
+                    cell.detailTextLabel.text=@"查看管理关注的商家";
+                    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                    break;
+                case 1:
+                    cell.textLabel.text = @"我关注的商品";
+                    cell.detailTextLabel.text=@"查看管理关注的商品";
+                    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                    break;
+                case 2:
+                    cell.textLabel.text = @"我关注的优惠";
+                    cell.detailTextLabel.text=@"查看管理关注的优惠劵";
                     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                     break;
                 case 3:
@@ -104,7 +126,7 @@
             }
             break;
             
-        case 1:
+        case 2:
             switch (indexPath.row) {
                 case 0:
                     cell.textLabel.text = @"允许推送消息";
@@ -115,20 +137,11 @@
 //                    [switchButton addTarget:self action:@selector(switchAction:) forControlEvents:UIControlEventValueChanged];
                     [cell addSubview:switchButton1];
                     break;
-                case 1:
-                    cell.textLabel.text = @"允许获取地理位置";
-                    cell.accessoryType = UITableViewCellAccessoryNone;
-                    UISwitch *switchButton = [[UISwitch alloc] init];
-                    switchButton.frame = CGRectMake(tableView.frame.size.width - switchButton.frame.size.width - 10, (cell.frame.size.height - switchButton.frame.size.height)/2, switchButton1.frame.size.width, switchButton1.frame.size.height);
-                    [switchButton setOn:YES];
-                    //                    [switchButton addTarget:self action:@selector(switchAction:) forControlEvents:UIControlEventValueChanged];
-                    [cell addSubview:switchButton];
-                    break;
             }
 
             break;
         
-        case 2:
+        case 3:
             switch (indexPath.row) {
                 case 0:
                     cell.textLabel.text = @"更换绑定手机";
@@ -137,6 +150,16 @@
             }
             
             break;
+        case 4:
+            switch (indexPath.row) {
+                case 0:
+                    cell.textLabel.text = @"绑定会员卡";
+                    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                    break;
+            }
+            
+            break;
+
             
         default:
             break;
@@ -148,7 +171,10 @@
 
 
 #pragma mark - UITableViewDelegate
-
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
 
 
 @end

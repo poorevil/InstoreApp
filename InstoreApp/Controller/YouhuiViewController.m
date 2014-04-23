@@ -8,9 +8,12 @@
 
 #import "YouhuiViewController.h"
 #import "YouhuiTileView.h"
+#import "YouhuiCategoryViewController.h"
+#import "CategoryModel.h"
 
+@interface YouhuiViewController ()<YouhuiCategoryViewControllerDelegate>
 
-@interface YouhuiViewController ()
+@property (nonatomic,strong) CategoryModel *filterCategory;//分类筛选条件
 
 @end
 
@@ -63,8 +66,12 @@
     }
 
     
-    
-    
+    [self.categoryBtn addTarget:self
+                         action:@selector(categoryBtnAction:)
+               forControlEvents:UIControlEventTouchUpInside];
+    [self.orderBtn addTarget:self
+                         action:@selector(orderBtnAction:)
+               forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)didReceiveMemoryWarning
@@ -97,6 +104,24 @@
     [self.collectionView reloadData];
     self.collectionView.pullTableIsLoadingMore = NO;
 }
+
+
+#pragma mark - private method
+-(void)categoryBtnAction:(id)sender
+{
+    YouhuiCategoryViewController *cateVC = [[YouhuiCategoryViewController alloc] initWithCategoryModel:self.filterCategory];
+    cateVC.delegate = self;
+    cateVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:cateVC animated:YES];
+    cateVC.hidesBottomBarWhenPushed = NO;
+}
+
+-(void)orderBtnAction:(id)sender
+{
+    
+}
+
+
 #pragma mark - PullTableViewDelegate
 
 - (void)pullPsCollectionViewDidTriggerRefresh:(PullPsCollectionView *)pullTableView
@@ -221,5 +246,17 @@
 - (void)dataSourceDidError {
     [self.collectionView reloadData];
 }
+
+#pragma mark - YouhuiCategoryViewControllerDelegate
+-(void)categoryDidSelected:(CategoryModel *)categoryModel
+{
+    self.filterCategory = categoryModel;
+    if (self.filterCategory) {
+        [self.categoryBtn setTitle:categoryModel.cName forState:UIControlStateNormal];
+    }else{
+        [self.categoryBtn setTitle:@"分类 " forState:UIControlStateNormal];
+    }
+}
+
 
 @end

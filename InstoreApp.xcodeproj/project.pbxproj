@@ -44,6 +44,11 @@
 		03573B70190578FC00A11A33 /* ListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03573B69190578FC00A11A33 /* ListViewController.xib */; };
 		03573B71190578FC00A11A33 /* MallsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03573B6B190578FC00A11A33 /* MallsListViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		03573B751905792400A11A33 /* FloorInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03573B741905792400A11A33 /* FloorInfoViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		03573B781906C03700A11A33 /* YouhuiCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03573B771906C03700A11A33 /* YouhuiCategoryViewController.m */; };
+		03573B7C1906C7E400A11A33 /* CategoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 03573B7B1906C7E400A11A33 /* CategoryModel.m */; };
+		03573B7F1906D05700A11A33 /* FloorSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03573B7E1906D05700A11A33 /* FloorSelectViewController.m */; };
+		03573B821906D15700A11A33 /* FloorModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 03573B811906D15700A11A33 /* FloorModel.m */; };
+		03573B861906DA4600A11A33 /* BaseInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 03573B851906DA4600A11A33 /* BaseInterface.m */; };
 		4E25476018EB1BC1007388B6 /* MainViewYouhuiCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E25475F18EB1BC1007388B6 /* MainViewYouhuiCell.m */; };
 		4E25476218EB1BCE007388B6 /* MainViewYouhuiCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E25476118EB1BCE007388B6 /* MainViewYouhuiCell.xib */; };
 		4E25476918EC69BF007388B6 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E25476718EC69BF007388B6 /* SearchViewController.m */; };
@@ -423,6 +428,16 @@
 		03573B6B190578FC00A11A33 /* MallsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MallsListViewController.m; sourceTree = "<group>"; };
 		03573B731905792400A11A33 /* FloorInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FloorInfoViewController.h; sourceTree = "<group>"; };
 		03573B741905792400A11A33 /* FloorInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FloorInfoViewController.m; sourceTree = "<group>"; };
+		03573B761906C03700A11A33 /* YouhuiCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YouhuiCategoryViewController.h; sourceTree = "<group>"; };
+		03573B771906C03700A11A33 /* YouhuiCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YouhuiCategoryViewController.m; sourceTree = "<group>"; };
+		03573B7A1906C7E400A11A33 /* CategoryModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryModel.h; sourceTree = "<group>"; };
+		03573B7B1906C7E400A11A33 /* CategoryModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryModel.m; sourceTree = "<group>"; };
+		03573B7D1906D05700A11A33 /* FloorSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FloorSelectViewController.h; sourceTree = "<group>"; };
+		03573B7E1906D05700A11A33 /* FloorSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FloorSelectViewController.m; sourceTree = "<group>"; };
+		03573B801906D15700A11A33 /* FloorModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FloorModel.h; sourceTree = "<group>"; };
+		03573B811906D15700A11A33 /* FloorModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FloorModel.m; sourceTree = "<group>"; };
+		03573B841906DA4600A11A33 /* BaseInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseInterface.h; sourceTree = "<group>"; };
+		03573B851906DA4600A11A33 /* BaseInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseInterface.m; sourceTree = "<group>"; };
 		4E25475E18EB1BC1007388B6 /* MainViewYouhuiCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewYouhuiCell.h; sourceTree = "<group>"; };
 		4E25475F18EB1BC1007388B6 /* MainViewYouhuiCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewYouhuiCell.m; sourceTree = "<group>"; };
 		4E25476118EB1BCE007388B6 /* MainViewYouhuiCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewYouhuiCell.xib; sourceTree = "<group>"; };
@@ -947,6 +962,26 @@
 			path = ASIHTTPRequest;
 			sourceTree = "<group>";
 		};
+		03573B791906C7CA00A11A33 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				03573B7A1906C7E400A11A33 /* CategoryModel.h */,
+				03573B7B1906C7E400A11A33 /* CategoryModel.m */,
+				03573B801906D15700A11A33 /* FloorModel.h */,
+				03573B811906D15700A11A33 /* FloorModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		03573B831906DA4600A11A33 /* Interface */ = {
+			isa = PBXGroup;
+			children = (
+				03573B841906DA4600A11A33 /* BaseInterface.h */,
+				03573B851906DA4600A11A33 /* BaseInterface.m */,
+			);
+			path = Interface;
+			sourceTree = "<group>";
+		};
 		4E2C6D9318D7502100DF3772 = {
 			isa = PBXGroup;
 			children = (
@@ -1001,6 +1036,8 @@
 		4E2C6DA518D7502100DF3772 /* InstoreApp */ = {
 			isa = PBXGroup;
 			children = (
+				03573B831906DA4600A11A33 /* Interface */,
+				03573B791906C7CA00A11A33 /* Model */,
 				4E96088818E48D6700418798 /* utility */,
 				4E2C6E0218D760DF00DF3772 /* tmp */,
 				4E2C6DCE18D7523D00DF3772 /* Controller */,
@@ -1050,6 +1087,10 @@
 				4E2C6DD018D7525D00DF3772 /* MainViewController.h */,
 				4E2C6DD118D7525D00DF3772 /* MainViewController.mm */,
 				4E2C6DD218D7525D00DF3772 /* MainViewController.xib */,
+				03573B761906C03700A11A33 /* YouhuiCategoryViewController.h */,
+				03573B771906C03700A11A33 /* YouhuiCategoryViewController.m */,
+				03573B7D1906D05700A11A33 /* FloorSelectViewController.h */,
+				03573B7E1906D05700A11A33 /* FloorSelectViewController.m */,
 				4E25476618EC69BF007388B6 /* SearchViewController.h */,
 				4E25476718EC69BF007388B6 /* SearchViewController.m */,
 				4E25476818EC69BF007388B6 /* SearchViewController.xib */,
@@ -1709,6 +1750,7 @@
 				03573B52190572A500A11A33 /* ASINSStringAdditions.m in Sources */,
 				03573B4C190572A500A11A33 /* ASIDataDecompressor.m in Sources */,
 				4E9608CB18E9BD4300418798 /* NSTimer+Addition.m in Sources */,
+				03573B861906DA4600A11A33 /* BaseInterface.m in Sources */,
 				03573B6E190578FC00A11A33 /* CityListViewController.m in Sources */,
 				03573ACB19055C7500A11A33 /* SVProgressHUD.m in Sources */,
 				4E9608A718E48D6700418798 /* PullTableView.m in Sources */,
@@ -1727,12 +1769,15 @@
 				4ECBF70B18F4449E003963E1 /* BindPhoneViewController.m in Sources */,
 				4ECBF73E18F58C28003963E1 /* ShopDetailDescriptionCell.m in Sources */,
 				03573B71190578FC00A11A33 /* MallsListViewController.m in Sources */,
+				03573B7C1906C7E400A11A33 /* CategoryModel.m in Sources */,
 				03573B4E190572A500A11A33 /* ASIFormDataRequest.m in Sources */,
 				4E2C6E0018D75CED00DF3772 /* ServiceViewController.m in Sources */,
 				03573AC419055B7700A11A33 /* IndoorMapWithLeftPopBtnViewController.m in Sources */,
 				4E9608BE18E7CEC900418798 /* MeHeaderView.m in Sources */,
+				03573B781906C03700A11A33 /* YouhuiCategoryViewController.m in Sources */,
 				4ECBF76118F6EAEA003963E1 /* CouponDetailWithTitleCell.m in Sources */,
 				03573B4F190572A500A11A33 /* ASIHTTPRequest.m in Sources */,
+				03573B7F1906D05700A11A33 /* FloorSelectViewController.m in Sources */,
 				03573B50190572A500A11A33 /* ASIInputStream.m in Sources */,
 				4E2C6DAC18D7502100DF3772 /* main.m in Sources */,
 				03573AD719055DE200A11A33 /* StoreListView.m in Sources */,
@@ -1741,6 +1786,7 @@
 				4ECBF75C18F6E9B4003963E1 /* CouponDetailDownloadCell.m in Sources */,
 				03573B53190572A500A11A33 /* Reachability.m in Sources */,
 				4E2C6DE618D756EF00DF3772 /* MainViewOtherCell.m in Sources */,
+				03573B821906D15700A11A33 /* FloorModel.m in Sources */,
 				03573AE019055E6900A11A33 /* ChineseJudge.m in Sources */,
 				4E2C6DF618D75CD600DF3772 /* YouhuiViewController.m in Sources */,
 				03573B4D190572A500A11A33 /* ASIDownloadCache.m in Sources */,

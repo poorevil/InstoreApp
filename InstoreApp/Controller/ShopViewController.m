@@ -9,8 +9,15 @@
 #import "ShopViewController.h"
 #import "ShopViewCell.h"
 #import "ShopDetailViewController.h"
+#import "FloorModel.h"
+#import "FloorSelectViewController.h"
+#import "CategoryModel.h"
+#import "YouhuiCategoryViewController.h"
 
-@interface ShopViewController ()
+@interface ShopViewController () <FloorSelectViewControllerDelegate,YouhuiCategoryViewControllerDelegate>
+
+@property (nonatomic,strong) CategoryModel *filterCategory;//分类筛选条件
+@property (nonatomic,strong) FloorModel *filterFloorModel;//楼层筛选
 
 @end
 
@@ -33,8 +40,10 @@
     self.title = @"商户";
     
     
-
-    
+    [self.floorBtn addTarget:self action:@selector(floorBtnAction:)
+            forControlEvents:UIControlEventTouchUpInside];
+    [self.cateBtn addTarget:self action:@selector(categoryBtnAction:)
+            forControlEvents:UIControlEventTouchUpInside];
     
 }
 
@@ -118,6 +127,49 @@
     shopDetailVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:shopDetailVC animated:YES];
     shopDetailVC.hidesBottomBarWhenPushed = NO;
+}
+
+#pragma mark - private method
+-(void)floorBtnAction:(id)sender
+{
+    FloorSelectViewController *floorVC = [[FloorSelectViewController alloc] initWithFloorModel:self.filterFloorModel];
+    floorVC.delegate = self;
+    floorVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:floorVC animated:YES];
+    floorVC.hidesBottomBarWhenPushed = NO;
+}
+
+-(void)categoryBtnAction:(id)sender
+{
+    YouhuiCategoryViewController *cateVC = [[YouhuiCategoryViewController alloc] initWithCategoryModel:self.filterCategory];
+    cateVC.delegate = self;
+    cateVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:cateVC animated:YES];
+    cateVC.hidesBottomBarWhenPushed = NO;
+}
+
+
+#pragma mark - FloorSelectViewControllerDelegate
+-(void)floorSelectDidFinished:(FloorModel *) floorModel
+{
+    self.filterFloorModel = floorModel;
+    
+    if (self.filterFloorModel) {
+        [self.floorBtn setTitle:self.filterFloorModel.fName forState:UIControlStateNormal];
+    }else{
+        [self.floorBtn setTitle:@"楼层 " forState:UIControlStateNormal];
+    }
+}
+
+#pragma mark - YouhuiCategoryViewControllerDelegate
+-(void)categoryDidSelected:(CategoryModel *)categoryModel
+{
+    self.filterCategory = categoryModel;
+    if (self.filterCategory) {
+        [self.cateBtn setTitle:categoryModel.cName forState:UIControlStateNormal];
+    }else{
+        [self.cateBtn setTitle:@"分类 " forState:UIControlStateNormal];
+    }
 }
 
 @end

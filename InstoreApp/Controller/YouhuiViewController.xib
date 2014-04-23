@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4514" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
         <deployment defaultVersion="1536" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="YouhuiViewController">
             <connections>
+                <outlet property="categoryBtn" destination="4Gg-ZI-8P7" id="OYp-En-5OC"/>
                 <outlet property="optionView" destination="96z-DR-vNz" id="oF6-id-tyt"/>
+                <outlet property="orderBtn" destination="JLe-K2-Ujn" id="iL3-1R-KgB"/>
                 <outlet property="segmentedControl" destination="K5A-7Q-UdR" id="COv-U6-OHc"/>
                 <outlet property="view" destination="1" id="3"/>
                 <outlet property="viewParent" destination="Po3-Wx-TBd" id="mS0-Gu-9Mf"/>
@@ -46,7 +48,7 @@
                             <rect key="frame" x="104" y="44" width="75" height="29"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                            <state key="normal" title="筛选 " backgroundImage="sale-sort-down.png">
+                            <state key="normal" title="排序 " backgroundImage="sale-sort-down.png">
                                 <color key="titleColor" red="0.8980392157" green="0.2470588235" blue="0.066666666669999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
@@ -57,14 +59,13 @@
                     <color key="backgroundColor" white="0.90221432605421703" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" id="Po3-Wx-TBd">
-                    <rect key="frame" x="0.0" y="145" width="320" height="285"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                    <rect key="frame" x="0.0" y="145" width="320" height="335"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-            <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
         </view>
     </objects>
