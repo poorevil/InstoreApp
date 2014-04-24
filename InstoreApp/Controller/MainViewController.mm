@@ -204,11 +204,11 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     switch (indexPath.section) {
         case 0:
-            return 130;
+            return 155;
         case 1:
-            return 180;
+            return 200;
         case 2:
-            return 334;
+            return 312;
             //        case 3:
             //            cellIdentifier = @"MainViewOtherCell";
             //            break;
@@ -223,7 +223,7 @@
             //            break;
             
         default:
-            return 310;
+            return 334;
             break;
     }
 

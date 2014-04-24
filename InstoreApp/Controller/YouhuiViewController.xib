@@ -10,7 +10,6 @@
                 <outlet property="categoryBtn" destination="4Gg-ZI-8P7" id="OYp-En-5OC"/>
                 <outlet property="optionView" destination="96z-DR-vNz" id="oF6-id-tyt"/>
                 <outlet property="orderBtn" destination="JLe-K2-Ujn" id="iL3-1R-KgB"/>
-                <outlet property="segmentedControl" destination="K5A-7Q-UdR" id="COv-U6-OHc"/>
                 <outlet property="view" destination="1" id="3"/>
                 <outlet property="viewParent" destination="Po3-Wx-TBd" id="mS0-Gu-9Mf"/>
             </connections>
@@ -21,20 +20,11 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" id="96z-DR-vNz">
-                    <rect key="frame" x="0.0" y="65" width="320" height="80"/>
+                    <rect key="frame" x="0.0" y="65" width="320" height="45"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="K5A-7Q-UdR">
-                            <rect key="frame" x="20" y="8" width="280" height="29"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <segments>
-                                <segment title="优惠劵"/>
-                                <segment title="感兴趣"/>
-                            </segments>
-                            <color key="tintColor" red="0.41176470588235292" green="0.41176470588235292" blue="0.41176470588235292" alpha="1" colorSpace="calibratedRGB"/>
-                        </segmentedControl>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="4Gg-ZI-8P7">
-                            <rect key="frame" x="20" y="44" width="76" height="29"/>
+                            <rect key="frame" x="20" y="8" width="76" height="29"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <state key="normal" title="分类 " backgroundImage="sale-sort-down.png">
@@ -45,7 +35,7 @@
                             <state key="highlighted" backgroundImage="sale-sort-down.png"/>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="JLe-K2-Ujn">
-                            <rect key="frame" x="104" y="44" width="75" height="29"/>
+                            <rect key="frame" x="104" y="8" width="75" height="29"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <state key="normal" title="排序 " backgroundImage="sale-sort-down.png">
@@ -55,11 +45,19 @@
                             <state key="selected" backgroundImage="sale-sort-down.png"/>
                             <state key="highlighted" backgroundImage="sale-sort-down.png"/>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Eht-tH-yt1">
+                            <rect key="frame" x="270" y="8" width="50" height="29"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <state key="normal" image="store-icon-fav-red.png">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="0.90221432605421703" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" id="Po3-Wx-TBd">
-                    <rect key="frame" x="0.0" y="145" width="320" height="335"/>
+                    <rect key="frame" x="0.0" y="110" width="320" height="370"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 </view>
             </subviews>
@@ -71,5 +69,6 @@
     </objects>
     <resources>
         <image name="sale-sort-down.png" width="68" height="22"/>
+        <image name="store-icon-fav-red.png" width="17" height="17"/>
     </resources>
 </document>

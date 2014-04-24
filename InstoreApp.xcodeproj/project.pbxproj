@@ -982,6 +982,25 @@
 			path = Interface;
 			sourceTree = "<group>";
 		};
+		03573B871908028000A11A33 /* MainViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				4E2C6DD818D753AB00DF3772 /* MainViewNavigationCell.h */,
+				4E2C6DD918D753AB00DF3772 /* MainViewNavigationCell.m */,
+				4E2C6DE018D754ED00DF3772 /* MainViewNavigationCell.xib */,
+				4E9608CC18E9C54400418798 /* MainViewMiaoShaCell.h */,
+				4E9608CD18E9C54400418798 /* MainViewMiaoShaCell.m */,
+				4E9608CF18E9C55600418798 /* MainViewMiaoShaCell.xib */,
+				4E25475E18EB1BC1007388B6 /* MainViewYouhuiCell.h */,
+				4E25475F18EB1BC1007388B6 /* MainViewYouhuiCell.m */,
+				4E25476118EB1BCE007388B6 /* MainViewYouhuiCell.xib */,
+				4E2C6DE418D756EF00DF3772 /* MainViewOtherCell.h */,
+				4E2C6DE518D756EF00DF3772 /* MainViewOtherCell.m */,
+				4E2C6DE718D756FD00DF3772 /* MainViewOtherCell.xib */,
+			);
+			name = MainViewCell;
+			sourceTree = "<group>";
+		};
 		4E2C6D9318D7502100DF3772 = {
 			isa = PBXGroup;
 			children = (
@@ -1127,15 +1146,7 @@
 			isa = PBXGroup;
 			children = (
 				4E9608C518E9BD4300418798 /* CycleScrollView */,
-				4E2C6DD818D753AB00DF3772 /* MainViewNavigationCell.h */,
-				4E2C6DD918D753AB00DF3772 /* MainViewNavigationCell.m */,
-				4E2C6DE018D754ED00DF3772 /* MainViewNavigationCell.xib */,
-				4E25475E18EB1BC1007388B6 /* MainViewYouhuiCell.h */,
-				4E25475F18EB1BC1007388B6 /* MainViewYouhuiCell.m */,
-				4E25476118EB1BCE007388B6 /* MainViewYouhuiCell.xib */,
-				4E2C6DE418D756EF00DF3772 /* MainViewOtherCell.h */,
-				4E2C6DE518D756EF00DF3772 /* MainViewOtherCell.m */,
-				4E2C6DE718D756FD00DF3772 /* MainViewOtherCell.xib */,
+				03573B871908028000A11A33 /* MainViewCell */,
 				4E96087F18E4837100418798 /* YouhuiTileView.h */,
 				4E96088018E4837100418798 /* YouhuiTileView.m */,
 				4E96088218E4838000418798 /* YouhuiTileView.xib */,
@@ -1148,9 +1159,6 @@
 				4E9608BC18E7CEC900418798 /* MeHeaderView.h */,
 				4E9608BD18E7CEC900418798 /* MeHeaderView.m */,
 				4E9608BF18E7CF9F00418798 /* MeHeaderView.xib */,
-				4E9608CC18E9C54400418798 /* MainViewMiaoShaCell.h */,
-				4E9608CD18E9C54400418798 /* MainViewMiaoShaCell.m */,
-				4E9608CF18E9C55600418798 /* MainViewMiaoShaCell.xib */,
 				C1D8701618ED5CE00061F799 /* ShopDetailHeaderView.h */,
 				C1D8701718ED5CE00061F799 /* ShopDetailHeaderView.m */,
 				4ECBF70618F442DE003963E1 /* ShopDetailHeaderView.xib */,

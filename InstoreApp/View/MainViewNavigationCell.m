@@ -27,24 +27,13 @@
     [self setBtnStyle:self.cardBtn];
     [self setBtnStyle:self.orderBtn];
     [self setBtnStyle:self.saleBtn];
+
+    [self setBtnStyle:self.mapBtn];
+    [self setBtnStyle:self.wifiBtn];
     
-    
-//    UIImage *originalImage = [UIImage imageNamed:@"index-mid-btn-quick-pressed"];
-//    UIEdgeInsets insets = UIEdgeInsetsMake(0, 20, 6, 300);
-    UIImage *pressedBg = [UIImage imageNamed:@"index-mid-btn-quick-pressed"];//[originalImage resizableImageWithCapInsets:insets];
-    
-//    originalImage = [UIImage imageNamed:@"index-mid-btn-quick"];
-    UIImage *normalBg = [UIImage imageNamed:@"index-mid-btn-quick"];//[originalImage resizableImageWithCapInsets:insets];
-    
-    [self.wifiBtn setBackgroundImage:normalBg forState:UIControlStateNormal];
-    [self.mapBtn setBackgroundImage:normalBg forState:UIControlStateNormal];
-    
-    [self.wifiBtn setBackgroundImage:pressedBg forState:UIControlStateSelected];
-    [self.wifiBtn setBackgroundImage:pressedBg forState:UIControlStateHighlighted];
-    [self.mapBtn setBackgroundImage:pressedBg forState:UIControlStateSelected];
-    [self.mapBtn setBackgroundImage:pressedBg forState:UIControlStateHighlighted];
     [self.mapBtn addTarget:self action:@selector(mapBtnAction:) forControlEvents:UIControlEventTouchUpInside];
-    
+    [self.saleBtn addTarget:self action:@selector(saleBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+    [self.cardBtn addTarget:self action:@selector(cardBtnAction:) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
@@ -76,6 +65,18 @@
     imvc.hidesBottomBarWhenPushed = YES;
     [nav pushViewController:imvc animated:YES];
     imvc.hidesBottomBarWhenPushed = NO;
+}
+
+-(void)saleBtnAction:(id)sender
+{
+    AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+    [appDelegate.tabBarController setSelectedIndex:1];
+}
+
+-(void)cardBtnAction:(id)sender
+{
+    AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+    [appDelegate.tabBarController setSelectedIndex:4];
 }
 
 @end
