@@ -252,7 +252,8 @@
 {
     self.filterCategory = categoryModel;
     if (self.filterCategory) {
-        [self.categoryBtn setTitle:categoryModel.cName forState:UIControlStateNormal];
+        [self.categoryBtn setTitle:[NSString stringWithFormat:@"%@ ",categoryModel.cName]
+                          forState:UIControlStateNormal];
     }else{
         [self.categoryBtn setTitle:@"分类 " forState:UIControlStateNormal];
     }

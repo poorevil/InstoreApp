@@ -27,12 +27,12 @@
         return nil;
     
     self.storeListView = nil;
-    self.cityCodeUse = @"010";
+    self.cityCodeUse = @"022";
     self.firstFloorId = nil;
-    self.mallId = 118;
+    self.mallId = 1350;//天津银河，galaxy
     mSelectedFloorIndex = 0;
     self.view.frame = frame;
-    self.title = @"西单大悦城";
+    self.title = @"GALAXY";
     
 	return self;
 }
@@ -96,6 +96,7 @@
     
     [self.view addSubview:self.mMapControl.view];
     [self createZoomButtons];
+    
 }
 
 - (void)switchToStoreListView {

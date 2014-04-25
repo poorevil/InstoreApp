@@ -155,7 +155,8 @@
     self.filterFloorModel = floorModel;
     
     if (self.filterFloorModel) {
-        [self.floorBtn setTitle:self.filterFloorModel.fName forState:UIControlStateNormal];
+        [self.floorBtn setTitle:[NSString stringWithFormat:@"%@ ",self.filterFloorModel.fName]
+                       forState:UIControlStateNormal];
     }else{
         [self.floorBtn setTitle:@"楼层 " forState:UIControlStateNormal];
     }
@@ -166,7 +167,8 @@
 {
     self.filterCategory = categoryModel;
     if (self.filterCategory) {
-        [self.cateBtn setTitle:categoryModel.cName forState:UIControlStateNormal];
+        [self.cateBtn setTitle:[NSString stringWithFormat:@"%@ ",categoryModel.cName]
+                      forState:UIControlStateNormal];
     }else{
         [self.cateBtn setTitle:@"分类 " forState:UIControlStateNormal];
     }

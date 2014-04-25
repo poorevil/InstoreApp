@@ -1506,6 +1506,9 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = evil;
 				TargetAttributes = {
+					4E2C6D9B18D7502100DF3772 = {
+						DevelopmentTeam = L3MUMFQJ9E;
+					};
 					4E2C6DB618D7502200DF3772 = {
 						TestTargetID = 4E2C6D9B18D7502100DF3772;
 					};
@@ -1943,6 +1946,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_CXX_LIBRARY = "libstdc++";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "InstoreApp/InstoreApp-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -1963,6 +1968,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1975,6 +1981,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_CXX_LIBRARY = "libstdc++";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "InstoreApp/InstoreApp-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -1995,6 +2003,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};

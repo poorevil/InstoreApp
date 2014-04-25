@@ -11,7 +11,7 @@
 
 @interface FloorSelectViewController () <UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic,strong) UITableView *mtableView;
-@property (nonatomic,strong) NSArray *floors;//楼层列表
+@property (nonatomic,strong) NSMutableArray *floors;//楼层列表
 @property (nonatomic,strong) FloorModel *selectedFloorModel;
 @end
 
@@ -42,6 +42,16 @@
     // Do any additional setup after loading the view.
     self.title = @"楼层筛选";
     
+    self.floors = [NSMutableArray array];
+    
+    for (NSInteger i=0; i<5; i++) {
+        FloorModel *floorModel = [[FloorModel alloc] init];
+        floorModel.fid = [NSString stringWithFormat:@"%d",i];
+        floorModel.fName = [NSString stringWithFormat:@"%d层",i+1];
+        [self.floors addObject:floorModel];
+    }
+    
+    
     self.mtableView = [[UITableView alloc] initWithFrame:self.view.bounds];
     self.mtableView.delegate = self;
     self.mtableView.dataSource = self;
@@ -71,7 +81,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return 10;//self.categorys.count;
+    return self.floors.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -82,9 +92,10 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     
-    cell.textLabel.text = @"B1";//TODO:从列表中获取
+    FloorModel *fm = [self.floors objectAtIndex:indexPath.row];
+    cell.textLabel.text = [fm fName];
     
-    if (indexPath.row == 0) {//TODO:判断选中的分类id
+    if ([self.selectedFloorModel.fid isEqualToString:fm.fid]) {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
     }else{
         cell.accessoryType = UITableViewCellAccessoryNone;
@@ -99,7 +110,7 @@
     //TODO:获取选中的分类
     //TODO:更新selectedCategory
     if ([self.delegate respondsToSelector:@selector(floorSelectDidFinished:)]) {
-        [self.delegate floorSelectDidFinished:[[self.floors objectAtIndex:indexPath.row] copy]];
+        [self.delegate floorSelectDidFinished:[self.floors objectAtIndex:indexPath.row]];
     }
     
     [self.navigationController popViewControllerAnimated:YES];

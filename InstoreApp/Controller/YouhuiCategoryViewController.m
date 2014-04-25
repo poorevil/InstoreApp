@@ -12,7 +12,7 @@
 @interface YouhuiCategoryViewController () <UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic,strong) UITableView *mtableView;
-@property (nonatomic,strong) NSArray *categorys;//分类列表
+@property (nonatomic,strong) NSMutableArray *categorys;//分类列表
 @property (nonatomic,strong) CategoryModel *selectedCategoryModel;
 @end
 
@@ -44,6 +44,39 @@
     
     self.title = @"分类筛选";
     
+    self.categorys = [NSMutableArray array];
+    
+    CategoryModel *cm = [[CategoryModel alloc] init];
+    cm.cid = @"0";
+    cm.cName = @"服装";
+    [self.categorys addObject:cm];
+    
+    cm = [[CategoryModel alloc] init];
+    cm.cid = @"1";
+    cm.cName = @"鞋帽";
+    [self.categorys addObject:cm];
+    
+    cm = [[CategoryModel alloc] init];
+    cm.cid = @"2";
+    cm.cName = @"电器";
+    [self.categorys addObject:cm];
+    
+    cm = [[CategoryModel alloc] init];
+    cm.cid = @"3";
+    cm.cName = @"箱包";
+    [self.categorys addObject:cm];
+    
+    cm = [[CategoryModel alloc] init];
+    cm.cid = @"4";
+    cm.cName = @"美食";
+    [self.categorys addObject:cm];
+    
+    cm = [[CategoryModel alloc] init];
+    cm.cid = @"5";
+    cm.cName = @"百货";
+    [self.categorys addObject:cm];
+    
+    
     self.mtableView = [[UITableView alloc] initWithFrame:self.view.bounds];
     self.mtableView.delegate = self;
     self.mtableView.dataSource = self;
@@ -73,7 +106,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return 10;//self.categorys.count;
+    return self.categorys.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -84,9 +117,11 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     
-    cell.textLabel.text = @"分类";//TODO:从列表中获取
+    CategoryModel *cm = [self.categorys objectAtIndex:indexPath.row];
     
-    if (indexPath.row == 0) {//TODO:判断选中的分类id
+    cell.textLabel.text = cm.cName;
+    
+    if ([self.selectedCategoryModel.cid isEqualToString:cm.cid]) {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
     }else{
         cell.accessoryType = UITableViewCellAccessoryNone;
@@ -101,7 +136,7 @@
     //TODO:获取选中的分类
     //TODO:更新selectedCategory
     if ([self.delegate respondsToSelector:@selector(categoryDidSelected:)]) {
-        [self.delegate categoryDidSelected:[[self.categorys objectAtIndex:indexPath.row] copy]];
+        [self.delegate categoryDidSelected:[self.categorys objectAtIndex:indexPath.row]];
     }
     
     [self.navigationController popViewControllerAnimated:YES];

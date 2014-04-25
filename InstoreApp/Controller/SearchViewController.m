@@ -8,7 +8,7 @@
 
 #import "SearchViewController.h"
 
-@interface SearchViewController () <UITableViewDataSource,UITableViewDelegate>
+@interface SearchViewController () <UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate>
 @property (nonatomic,strong) UISearchBar *searchBar;
 @end
 
@@ -32,20 +32,20 @@
                                                                               blue:53.0f/255.0f
                                                                              alpha:1]];
     
-    UIBarButtonItem *cancelBtn = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStylePlain target:self action:@selector(cancelAction)];
+    UIBarButtonItem *cancelBtn = [[UIBarButtonItem alloc] initWithTitle:@"关闭" style:UIBarButtonItemStylePlain target:self action:@selector(cancelAction)];
     cancelBtn.tintColor = [UIColor whiteColor];
     self.navigationItem.rightBarButtonItem = cancelBtn;
     
     self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectZero];
     self.searchBar.placeholder = @"请输入关键词";
-    self.searchBar.showsCancelButton = YES;
+    self.searchBar.delegate = self;
 
-//    [self.searchBar setTintColor:[UIColor blackColor]];
+    [self.searchBar setTintColor:[UIColor lightGrayColor]];
 //    [self.searchBar setSearchTextPositionAdjustment:UIOffsetMake(30, 0)];// 设置搜索框中文本框的文本偏移量
     [self.searchBar sizeToFit];
 
     self.navigationItem.titleView = self.searchBar;
-    [self.searchBar becomeFirstResponder];
+//    [self.searchBar becomeFirstResponder];
     
 }
 
@@ -71,7 +71,12 @@
 #pragma mark - private method
 -(void)cancelAction
 {
-    [self dismissViewControllerAnimated:NO completion:nil];
+    if ([self.searchBar isFirstResponder]) {
+        [self.searchBar resignFirstResponder];
+        [self.navigationItem.rightBarButtonItem setTitle:@"关闭"];
+    }else{
+        [self dismissViewControllerAnimated:NO completion:nil];
+    }
 }
 
 #pragma mark - UITableViewDataSource
@@ -112,6 +117,10 @@
     return cell;
 }
 
-
+#pragma mark - UISearchBarDelegate
+- (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar{
+    [self.navigationItem.rightBarButtonItem setTitle:@"取消"];
+    return YES;
+}
 
 @end

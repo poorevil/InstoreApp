@@ -33,6 +33,13 @@
     [popup setCanSwitchToStoreDetail:YES];
     [popup setDelegate:self];
     [popup setFHasLeftAccessoryView:YES];
+
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.hidesBottomBarWhenPushed = YES;
 }
 
 - (void)didReceiveMemoryWarning
@@ -58,6 +65,7 @@
     storeOverviewController.cityCodeUse = self.cityCodeUse;
     storeOverviewController.storeId = baseStoreInfo.storeId;
     
+    storeOverviewController.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:storeOverviewController animated:YES];
     [storeOverviewController release];
 }
@@ -81,9 +89,11 @@
 
 -(void)onLeftButtonPressedWithStoreInfo:(StoreInfo*)storeInfo
 {
-    UIAlertView *aAlertView = [[UIAlertView alloc] initWithTitle:@"点击事件" message:@"点击了气球左边的订制按钮！" delegate:nil cancelButtonTitle:@"知道了" otherButtonTitles:nil, nil];
-    [aAlertView show];
-    [aAlertView release];
+//    UIAlertView *aAlertView = [[UIAlertView alloc] initWithTitle:@"点击事件"
+//                                                         message:storeInfo.brandLogoUrl
+//                                                        delegate:nil cancelButtonTitle:@"知道了" otherButtonTitles:nil, nil];
+//    [aAlertView show];
+//    [aAlertView release];
 }
 
 @end
