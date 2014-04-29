@@ -15,3 +15,13 @@
     #import <Foundation/Foundation.h>
     #import <QuartzCore/QuartzCore.h>
 #endif
+
+
+#define BASE_INTERFACE_DOMAIN       @"http://www.wise-mall.com/"
+//商场编号
+#define MALL_CODE                   @"bj001"
+
+
+//keychain key
+#define KEYCHAIN_USERID_KEYNAME         @"USER_ID"
+#define KEYCHAIN_SECRETKEY_KEYNAME      @"SECRET_KEY"

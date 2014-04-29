@@ -49,6 +49,14 @@
 		03573B7F1906D05700A11A33 /* FloorSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03573B7E1906D05700A11A33 /* FloorSelectViewController.m */; };
 		03573B821906D15700A11A33 /* FloorModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 03573B811906D15700A11A33 /* FloorModel.m */; };
 		03573B861906DA4600A11A33 /* BaseInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 03573B851906DA4600A11A33 /* BaseInterface.m */; };
+		03573B8B190EA1EF00A11A33 /* InitInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 03573B8A190EA1EF00A11A33 /* InitInterface.m */; };
+		03573B8E190EA45800A11A33 /* RuntimeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 03573B8D190EA45800A11A33 /* RuntimeModel.m */; };
+		03573B95190EA53800A11A33 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 03573B91190EA53800A11A33 /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		03573B9A190EA8DB00A11A33 /* KeyChainTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 03573B99190EA8DB00A11A33 /* KeyChainTool.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		03573B9D190EAB9900A11A33 /* GlobeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 03573B9C190EAB9900A11A33 /* GlobeModel.m */; };
+		03573BA0190EBB8300A11A33 /* SearchInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 03573B9F190EBB8300A11A33 /* SearchInterface.m */; };
+		03573BA3190EBE1600A11A33 /* CouponModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 03573BA2190EBE1600A11A33 /* CouponModel.m */; };
+		03573BA6190EBF5300A11A33 /* StoreModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 03573BA5190EBF5300A11A33 /* StoreModel.m */; };
 		4E25476018EB1BC1007388B6 /* MainViewYouhuiCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E25475F18EB1BC1007388B6 /* MainViewYouhuiCell.m */; };
 		4E25476218EB1BCE007388B6 /* MainViewYouhuiCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E25476118EB1BCE007388B6 /* MainViewYouhuiCell.xib */; };
 		4E25476918EC69BF007388B6 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E25476718EC69BF007388B6 /* SearchViewController.m */; };
@@ -438,6 +446,22 @@
 		03573B811906D15700A11A33 /* FloorModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FloorModel.m; sourceTree = "<group>"; };
 		03573B841906DA4600A11A33 /* BaseInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseInterface.h; sourceTree = "<group>"; };
 		03573B851906DA4600A11A33 /* BaseInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseInterface.m; sourceTree = "<group>"; };
+		03573B89190EA1EF00A11A33 /* InitInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InitInterface.h; sourceTree = "<group>"; };
+		03573B8A190EA1EF00A11A33 /* InitInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InitInterface.m; sourceTree = "<group>"; };
+		03573B8C190EA45800A11A33 /* RuntimeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RuntimeModel.h; sourceTree = "<group>"; };
+		03573B8D190EA45800A11A33 /* RuntimeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RuntimeModel.m; sourceTree = "<group>"; };
+		03573B90190EA53800A11A33 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
+		03573B91190EA53800A11A33 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
+		03573B98190EA8DB00A11A33 /* KeyChainTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyChainTool.h; sourceTree = "<group>"; };
+		03573B99190EA8DB00A11A33 /* KeyChainTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyChainTool.m; sourceTree = "<group>"; };
+		03573B9B190EAB9900A11A33 /* GlobeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobeModel.h; sourceTree = "<group>"; };
+		03573B9C190EAB9900A11A33 /* GlobeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlobeModel.m; sourceTree = "<group>"; };
+		03573B9E190EBB8300A11A33 /* SearchInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchInterface.h; sourceTree = "<group>"; };
+		03573B9F190EBB8300A11A33 /* SearchInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchInterface.m; sourceTree = "<group>"; };
+		03573BA1190EBE1600A11A33 /* CouponModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CouponModel.h; sourceTree = "<group>"; };
+		03573BA2190EBE1600A11A33 /* CouponModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CouponModel.m; sourceTree = "<group>"; };
+		03573BA4190EBF5300A11A33 /* StoreModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreModel.h; sourceTree = "<group>"; };
+		03573BA5190EBF5300A11A33 /* StoreModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreModel.m; sourceTree = "<group>"; };
 		4E25475E18EB1BC1007388B6 /* MainViewYouhuiCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewYouhuiCell.h; sourceTree = "<group>"; };
 		4E25475F18EB1BC1007388B6 /* MainViewYouhuiCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewYouhuiCell.m; sourceTree = "<group>"; };
 		4E25476118EB1BCE007388B6 /* MainViewYouhuiCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewYouhuiCell.xib; sourceTree = "<group>"; };
@@ -969,6 +993,14 @@
 				03573B7B1906C7E400A11A33 /* CategoryModel.m */,
 				03573B801906D15700A11A33 /* FloorModel.h */,
 				03573B811906D15700A11A33 /* FloorModel.m */,
+				03573B8C190EA45800A11A33 /* RuntimeModel.h */,
+				03573B8D190EA45800A11A33 /* RuntimeModel.m */,
+				03573B9B190EAB9900A11A33 /* GlobeModel.h */,
+				03573B9C190EAB9900A11A33 /* GlobeModel.m */,
+				03573BA1190EBE1600A11A33 /* CouponModel.h */,
+				03573BA2190EBE1600A11A33 /* CouponModel.m */,
+				03573BA4190EBF5300A11A33 /* StoreModel.h */,
+				03573BA5190EBF5300A11A33 /* StoreModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -978,6 +1010,10 @@
 			children = (
 				03573B841906DA4600A11A33 /* BaseInterface.h */,
 				03573B851906DA4600A11A33 /* BaseInterface.m */,
+				03573B89190EA1EF00A11A33 /* InitInterface.h */,
+				03573B8A190EA1EF00A11A33 /* InitInterface.m */,
+				03573B9E190EBB8300A11A33 /* SearchInterface.h */,
+				03573B9F190EBB8300A11A33 /* SearchInterface.m */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
@@ -999,6 +1035,24 @@
 				4E2C6DE718D756FD00DF3772 /* MainViewOtherCell.xib */,
 			);
 			name = MainViewCell;
+			sourceTree = "<group>";
+		};
+		03573B8F190EA53800A11A33 /* JSONKIT */ = {
+			isa = PBXGroup;
+			children = (
+				03573B90190EA53800A11A33 /* JSONKit.h */,
+				03573B91190EA53800A11A33 /* JSONKit.m */,
+			);
+			path = JSONKIT;
+			sourceTree = "<group>";
+		};
+		03573B97190EA8DB00A11A33 /* KeyChainTool */ = {
+			isa = PBXGroup;
+			children = (
+				03573B98190EA8DB00A11A33 /* KeyChainTool.h */,
+				03573B99190EA8DB00A11A33 /* KeyChainTool.m */,
+			);
+			path = KeyChainTool;
 			sourceTree = "<group>";
 		};
 		4E2C6D9318D7502100DF3772 = {
@@ -1222,6 +1276,8 @@
 		4E96088818E48D6700418798 /* utility */ = {
 			isa = PBXGroup;
 			children = (
+				03573B97190EA8DB00A11A33 /* KeyChainTool */,
+				03573B8F190EA53800A11A33 /* JSONKIT */,
 				03573B3F190572A500A11A33 /* ASIHTTPRequest */,
 				03573AE81905695C00A11A33 /* MBSMap_lib */,
 				03573AC619055C7500A11A33 /* SVProgressHUD */,
@@ -1763,12 +1819,14 @@
 				4E9608CB18E9BD4300418798 /* NSTimer+Addition.m in Sources */,
 				03573B861906DA4600A11A33 /* BaseInterface.m in Sources */,
 				03573B6E190578FC00A11A33 /* CityListViewController.m in Sources */,
+				03573B9D190EAB9900A11A33 /* GlobeModel.m in Sources */,
 				03573ACB19055C7500A11A33 /* SVProgressHUD.m in Sources */,
 				4E9608A718E48D6700418798 /* PullTableView.m in Sources */,
 				4E9608CE18E9C54400418798 /* MainViewMiaoShaCell.m in Sources */,
 				4ECBF72418F45377003963E1 /* ShopDetailItemListCell.m in Sources */,
 				03573AD119055D8A00A11A33 /* UIGlossyButton.m in Sources */,
 				03573B751905792400A11A33 /* FloorInfoViewController.m in Sources */,
+				03573B8B190EA1EF00A11A33 /* InitInterface.m in Sources */,
 				03573ACE19055CA900A11A33 /* StoreOverViewController.m in Sources */,
 				03573B51190572A500A11A33 /* ASINetworkQueue.m in Sources */,
 				03573AE71905610600A11A33 /* MobiAccessaryView.m in Sources */,
@@ -1779,6 +1837,8 @@
 				4E9608B418E7B1B600418798 /* ServiceViewCell.m in Sources */,
 				4ECBF70B18F4449E003963E1 /* BindPhoneViewController.m in Sources */,
 				4ECBF73E18F58C28003963E1 /* ShopDetailDescriptionCell.m in Sources */,
+				03573BA3190EBE1600A11A33 /* CouponModel.m in Sources */,
+				03573BA6190EBF5300A11A33 /* StoreModel.m in Sources */,
 				03573B71190578FC00A11A33 /* MallsListViewController.m in Sources */,
 				03573B7C1906C7E400A11A33 /* CategoryModel.m in Sources */,
 				03573B4E190572A500A11A33 /* ASIFormDataRequest.m in Sources */,
@@ -1790,6 +1850,7 @@
 				03573B4F190572A500A11A33 /* ASIHTTPRequest.m in Sources */,
 				03573B7F1906D05700A11A33 /* FloorSelectViewController.m in Sources */,
 				03573B50190572A500A11A33 /* ASIInputStream.m in Sources */,
+				03573B8E190EA45800A11A33 /* RuntimeModel.m in Sources */,
 				4E2C6DAC18D7502100DF3772 /* main.m in Sources */,
 				03573AD719055DE200A11A33 /* StoreListView.m in Sources */,
 				03573ADA19055E2300A11A33 /* SingletonHelpers.m in Sources */,
@@ -1802,11 +1863,14 @@
 				4E2C6DF618D75CD600DF3772 /* YouhuiViewController.m in Sources */,
 				03573B4D190572A500A11A33 /* ASIDownloadCache.m in Sources */,
 				4E9608A518E48D6700418798 /* MessageInterceptor.m in Sources */,
+				03573BA0190EBB8300A11A33 /* SearchInterface.m in Sources */,
 				4E2C6DF118D75CC400DF3772 /* MeViewController.m in Sources */,
 				4E9608A418E48D6700418798 /* LoadMoreTableFooterView.m in Sources */,
 				03573B4B190572A500A11A33 /* ASIDataCompressor.m in Sources */,
 				4E25476018EB1BC1007388B6 /* MainViewYouhuiCell.m in Sources */,
+				03573B95190EA53800A11A33 /* JSONKit.m in Sources */,
 				4E96088118E4837100418798 /* YouhuiTileView.m in Sources */,
+				03573B9A190EA8DB00A11A33 /* KeyChainTool.m in Sources */,
 				4E96087E18E4815500418798 /* BaseViewController.m in Sources */,
 				C1D8701418ED5B1D0061F799 /* ShopDetailViewController.m in Sources */,
 				4E2C6DFB18D75CE200DF3772 /* ShopViewController.m in Sources */,

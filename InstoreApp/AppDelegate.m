@@ -17,8 +17,18 @@
 #import "HTTPAccess.h"
 #import "IconDictManager.h"
 
+#import "InitInterface.h"
+
+#import "GlobeModel.h"
+
 static NSString* szClientId = @"2014040301";
 static NSString* szClientSecret = @"ea13692f9c960a37db0086ff87e56e01";
+
+@interface AppDelegate()
+
+@property (nonatomic,strong) InitInterface *myInitInterface;
+
+@end
 
 @implementation AppDelegate
 
@@ -102,7 +112,10 @@ static NSString* szClientSecret = @"ea13692f9c960a37db0086ff87e56e01";
     self.window.rootViewController = self.tabBarController;
     [self.window makeKeyAndVisible];
     
+    [[GlobeModel sharedSingleton] initUUIDIfNeeded];
     
+    self.myInitInterface = [[InitInterface alloc] init];
+    [self.myInitInterface getInitParam];
     
     return YES;
 }

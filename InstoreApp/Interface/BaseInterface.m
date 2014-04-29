@@ -17,10 +17,6 @@
 
 -(void)connect {
     if (self.interfaceUrl) {
-        NSURL *url = [[NSURL alloc]initWithString:self.interfaceUrl];
-        
-        self.request = [ASIHTTPRequest requestWithURL:url];
-//        [url release];
         
 //        //设置缓存机制
 //        [[InterfaceCache sharedCache] setShouldRespectCacheControlHeaders:NO];
@@ -36,6 +32,27 @@
                 
             }
         }
+        
+        NSString *urlString = nil;
+        
+        if (self.args) {
+            NSMutableString *prams = [[NSMutableString alloc] init];
+            
+            for (NSString *key in self.args) {
+                [prams appendFormat:@"%@=%@&",key,[self.args objectForKey:key]];
+            }
+            NSString *removeLastChar = [prams substringWithRange:NSMakeRange(0, [prams length]-1)];
+            urlString = [NSString stringWithFormat:@"%@?%@",self.interfaceUrl ,removeLastChar];
+            
+            NSLog(@"urlString %@",urlString);
+        }else{
+            urlString = self.interfaceUrl;
+        }
+        
+        //TODO:加密算法
+        
+        NSURL *url = [[NSURL alloc]initWithString:urlString];
+        self.request = [ASIHTTPRequest requestWithURL:url];
         
         [self.request setDelegate:self];
         [self.request startAsynchronous]; 
