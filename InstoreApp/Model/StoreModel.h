@@ -10,7 +10,7 @@
 
 @interface StoreModel : NSObject
 
-@property (nonatomic,strong) NSString *sid;
+@property (nonatomic,assign) NSInteger sid;
 @property (nonatomic,strong) NSString *logoUrl;
 @property (nonatomic,strong) NSString *categoryId;
 @property (nonatomic,strong) NSString *title;

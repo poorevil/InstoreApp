@@ -10,7 +10,7 @@
 
 @interface FloorModel : NSObject
 
-@property (nonatomic,strong) NSString *fid;
+@property (nonatomic,assign) NSInteger fid;
 @property (nonatomic,strong) NSString *fName;
 
 @end

@@ -14,7 +14,7 @@
 
 @property (nonatomic,strong) NSDate *startTime;
 @property (nonatomic,strong) NSDate *endTime;
-@property (nonatomic,strong) NSString *cid;
+@property (nonatomic,assign) NSInteger cid;
 
 @property (nonatomic,assign) NSInteger collectCount;
 @property (nonatomic,strong) NSString *title;

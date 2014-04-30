@@ -12,7 +12,7 @@
 
 @interface CategoryModel : NSObject
 
-@property (nonatomic,strong) NSString *cid;
+@property (nonatomic,assign) NSInteger cid;
 @property (nonatomic,strong) NSString *cName;
 
 @end
