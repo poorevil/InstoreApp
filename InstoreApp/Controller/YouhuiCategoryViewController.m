@@ -121,7 +121,7 @@
     
     cell.textLabel.text = cm.cName;
     
-    if ([self.selectedCategoryModel.cid isEqualToString:cm.cid]) {
+    if (self.selectedCategoryModel.cid == cm.cid) {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
     }else{
         cell.accessoryType = UITableViewCellAccessoryNone;

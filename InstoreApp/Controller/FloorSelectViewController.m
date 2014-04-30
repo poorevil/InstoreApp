@@ -95,7 +95,7 @@
     FloorModel *fm = [self.floors objectAtIndex:indexPath.row];
     cell.textLabel.text = [fm fName];
     
-    if ([self.selectedFloorModel.fid isEqualToString:fm.fid]) {
+    if (self.selectedFloorModel.fid == fm.fid) {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
     }else{
         cell.accessoryType = UITableViewCellAccessoryNone;
