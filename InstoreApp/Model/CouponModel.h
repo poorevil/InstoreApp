@@ -23,6 +23,13 @@
 @property (nonatomic,assign) NSInteger commentCount;
 @property (nonatomic,assign) NSInteger type;
 
+@property (nonatomic,assign) NSInteger downloadCount;
+@property (nonatomic,retain) NSDate *date;
+@property (nonatomic,retain) NSString *descriptionStr;
+@property (nonatomic,retain) NSMutableArray *images;
+@property (nonatomic,assign) NSInteger downloadLimit;
+
+
 @property (nonatomic,strong) StoreModel *store;
 
 -(id)initWithJsonMap:(NSDictionary *)jsonMap;

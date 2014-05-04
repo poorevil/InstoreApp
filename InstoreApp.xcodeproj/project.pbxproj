@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0312032B19169A4E00077E25 /* CouponInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 0312032A19169A4E00077E25 /* CouponInterface.m */; };
+		0312032F19169DC100077E25 /* CouponDetailInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 0312032E19169DC100077E25 /* CouponDetailInterface.m */; };
 		03573A6F19041D5600A11A33 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 03573A6E19041D5600A11A33 /* libxml2.dylib */; };
 		03573A7519041EFB00A11A33 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03573A7419041EFB00A11A33 /* CoreLocation.framework */; };
 		03573ABD1905584800A11A33 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03573ABC1905584800A11A33 /* QuartzCore.framework */; };
@@ -317,6 +318,8 @@
 /* Begin PBXFileReference section */
 		0312032919169A4E00077E25 /* CouponInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CouponInterface.h; sourceTree = "<group>"; };
 		0312032A19169A4E00077E25 /* CouponInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CouponInterface.m; sourceTree = "<group>"; };
+		0312032D19169DC100077E25 /* CouponDetailInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CouponDetailInterface.h; sourceTree = "<group>"; };
+		0312032E19169DC100077E25 /* CouponDetailInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CouponDetailInterface.m; sourceTree = "<group>"; };
 		03573A6E19041D5600A11A33 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		03573A7019041E2200A11A33 /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
 		03573A7219041EF400A11A33 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -1019,6 +1022,8 @@
 				03573B9F190EBB8300A11A33 /* SearchInterface.m */,
 				0312032919169A4E00077E25 /* CouponInterface.h */,
 				0312032A19169A4E00077E25 /* CouponInterface.m */,
+				0312032D19169DC100077E25 /* CouponDetailInterface.h */,
+				0312032E19169DC100077E25 /* CouponDetailInterface.m */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
@@ -1816,6 +1821,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E2C6DB018D7502100DF3772 /* AppDelegate.m in Sources */,
+				0312032F19169DC100077E25 /* CouponDetailInterface.m in Sources */,
 				4E2C6DD318D7525D00DF3772 /* MainViewController.mm in Sources */,
 				4ECBF72918F45638003963E1 /* ShopDetailTypeCell.m in Sources */,
 				03573AE319055E8A00A11A33 /* CustomUITableViewCell.m in Sources */,

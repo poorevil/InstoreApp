@@ -15,6 +15,13 @@
 @property (nonatomic,strong) NSString *categoryId;
 @property (nonatomic,strong) NSString *title;
 
+@property (nonatomic,strong) NSString *storeNo;
+@property (nonatomic,strong) NSString *floor;
+@property (nonatomic,strong) NSString *address;
+@property (nonatomic,strong) NSString *mapid;
+@property (nonatomic,strong) NSString *tel;
+
+
 -(id)initWithJsonMap:(NSDictionary*)jsonMap;
 
 @end
