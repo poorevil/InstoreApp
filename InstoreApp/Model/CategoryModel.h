@@ -15,4 +15,5 @@
 @property (nonatomic,assign) NSInteger cid;
 @property (nonatomic,strong) NSString *cName;
 
+-(id)initWithJsonMap:(NSDictionary *)jsonMap;
 @end

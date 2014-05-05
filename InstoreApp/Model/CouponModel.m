@@ -54,7 +54,11 @@
 //               "http://img10.360buyimg.com/da/g14/M0A/1F/11/rBEhVVNXWkEIAAAAAAEZiA2IHjIAAMfMQFTwKkAARmg289.jpg",
 //               "http://img10.360buyimg.com/da/g14/M0A/1F/11/rBEhVVNXWkEIAAAAAAEZiA2IHjIAAMfMQFTwKkAARmg289.jpg"
 //               ],
-//    "downloadLimit": -2
+//    "downloadLimit": -2,
+//    collectType: '下载方式'            // 0: 免费下, 1: 分享后下载
+//    collectLimit: '限量'              // 0: 不限制; N: 限制下载N次,
+//    collectRole: '下载规则'            // 待定, 目前返回空串,统一处理为每人限下载一次
+//    userCollectCount: '我的下载次数',       // 根据role不同会有不同的处理情况,目前总是返回1.
 //
 //}
 -(id)initWithJsonMap:(NSDictionary *)jsonMap
@@ -77,6 +81,11 @@
             self.downloadLimit = [jsonMap objectForKey:@"downloadLimit"]==nil?0:[[jsonMap objectForKey:@"downloadLimit"] integerValue];
             
             self.images = [jsonMap objectForKey:@"images"]==nil?[NSMutableArray array]:[NSMutableArray arrayWithArray:[jsonMap objectForKey:@"images"]];
+            
+            self.collectType = [jsonMap objectForKey:@"collectType"]==nil?0:[[jsonMap objectForKey:@"collectType"] integerValue];
+            self.collectLimit = [jsonMap objectForKey:@"collectLimit"]==nil?0:[[jsonMap objectForKey:@"collectLimit"] integerValue];
+            self.collectRole = [jsonMap objectForKey:@"collectRole"]==nil?0:[[jsonMap objectForKey:@"collectRole"] integerValue];
+            self.userCollectCount = [jsonMap objectForKey:@"userCollectCount"]==nil?0:[[jsonMap objectForKey:@"userCollectCount"] integerValue];
                
             self.store = [[StoreModel alloc] initWithJsonMap:[jsonMap objectForKey:@"store"]];
         }

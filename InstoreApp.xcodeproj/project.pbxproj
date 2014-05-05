@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		0312032B19169A4E00077E25 /* CouponInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 0312032A19169A4E00077E25 /* CouponInterface.m */; };
 		0312032F19169DC100077E25 /* CouponDetailInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 0312032E19169DC100077E25 /* CouponDetailInterface.m */; };
+		031203321917D7EA00077E25 /* CouponDownloadInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 031203311917D7EA00077E25 /* CouponDownloadInterface.m */; };
+		031203351917D9F600077E25 /* CouponDownloadModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 031203341917D9F600077E25 /* CouponDownloadModel.m */; };
+		031203381917DC4200077E25 /* CategoryInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 031203371917DC4200077E25 /* CategoryInterface.m */; };
+		0312033B1917DE8000077E25 /* ServiceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0312033A1917DE8000077E25 /* ServiceModel.m */; };
+		0312033E1917E05200077E25 /* ServicesInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 0312033D1917E05200077E25 /* ServicesInterface.m */; };
+		031203411917E2C500077E25 /* StoreInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 031203401917E2C500077E25 /* StoreInterface.m */; };
 		03573A6F19041D5600A11A33 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 03573A6E19041D5600A11A33 /* libxml2.dylib */; };
 		03573A7519041EFB00A11A33 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03573A7419041EFB00A11A33 /* CoreLocation.framework */; };
 		03573ABD1905584800A11A33 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03573ABC1905584800A11A33 /* QuartzCore.framework */; };
@@ -320,6 +326,18 @@
 		0312032A19169A4E00077E25 /* CouponInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CouponInterface.m; sourceTree = "<group>"; };
 		0312032D19169DC100077E25 /* CouponDetailInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CouponDetailInterface.h; sourceTree = "<group>"; };
 		0312032E19169DC100077E25 /* CouponDetailInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CouponDetailInterface.m; sourceTree = "<group>"; };
+		031203301917D7EA00077E25 /* CouponDownloadInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CouponDownloadInterface.h; sourceTree = "<group>"; };
+		031203311917D7EA00077E25 /* CouponDownloadInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CouponDownloadInterface.m; sourceTree = "<group>"; };
+		031203331917D9F600077E25 /* CouponDownloadModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CouponDownloadModel.h; sourceTree = "<group>"; };
+		031203341917D9F600077E25 /* CouponDownloadModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CouponDownloadModel.m; sourceTree = "<group>"; };
+		031203361917DC4200077E25 /* CategoryInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryInterface.h; sourceTree = "<group>"; };
+		031203371917DC4200077E25 /* CategoryInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryInterface.m; sourceTree = "<group>"; };
+		031203391917DE8000077E25 /* ServiceModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceModel.h; sourceTree = "<group>"; };
+		0312033A1917DE8000077E25 /* ServiceModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceModel.m; sourceTree = "<group>"; };
+		0312033C1917E05200077E25 /* ServicesInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServicesInterface.h; sourceTree = "<group>"; };
+		0312033D1917E05200077E25 /* ServicesInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServicesInterface.m; sourceTree = "<group>"; };
+		0312033F1917E2C500077E25 /* StoreInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreInterface.h; sourceTree = "<group>"; };
+		031203401917E2C500077E25 /* StoreInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreInterface.m; sourceTree = "<group>"; };
 		03573A6E19041D5600A11A33 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		03573A7019041E2200A11A33 /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
 		03573A7219041EF400A11A33 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -1007,6 +1025,10 @@
 				03573BA2190EBE1600A11A33 /* CouponModel.m */,
 				03573BA4190EBF5300A11A33 /* StoreModel.h */,
 				03573BA5190EBF5300A11A33 /* StoreModel.m */,
+				031203331917D9F600077E25 /* CouponDownloadModel.h */,
+				031203341917D9F600077E25 /* CouponDownloadModel.m */,
+				031203391917DE8000077E25 /* ServiceModel.h */,
+				0312033A1917DE8000077E25 /* ServiceModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1024,6 +1046,14 @@
 				0312032A19169A4E00077E25 /* CouponInterface.m */,
 				0312032D19169DC100077E25 /* CouponDetailInterface.h */,
 				0312032E19169DC100077E25 /* CouponDetailInterface.m */,
+				031203301917D7EA00077E25 /* CouponDownloadInterface.h */,
+				031203311917D7EA00077E25 /* CouponDownloadInterface.m */,
+				031203361917DC4200077E25 /* CategoryInterface.h */,
+				031203371917DC4200077E25 /* CategoryInterface.m */,
+				0312033C1917E05200077E25 /* ServicesInterface.h */,
+				0312033D1917E05200077E25 /* ServicesInterface.m */,
+				0312033F1917E2C500077E25 /* StoreInterface.h */,
+				031203401917E2C500077E25 /* StoreInterface.m */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
@@ -1846,6 +1876,7 @@
 				03573AC319055B7700A11A33 /* IndoorMapViewController.m in Sources */,
 				4E9608CA18E9BD4300418798 /* CycleScrollView.m in Sources */,
 				4E9608B418E7B1B600418798 /* ServiceViewCell.m in Sources */,
+				0312033B1917DE8000077E25 /* ServiceModel.m in Sources */,
 				4ECBF70B18F4449E003963E1 /* BindPhoneViewController.m in Sources */,
 				4ECBF73E18F58C28003963E1 /* ShopDetailDescriptionCell.m in Sources */,
 				03573BA3190EBE1600A11A33 /* CouponModel.m in Sources */,
@@ -1856,6 +1887,7 @@
 				4E2C6E0018D75CED00DF3772 /* ServiceViewController.m in Sources */,
 				03573AC419055B7700A11A33 /* IndoorMapWithLeftPopBtnViewController.m in Sources */,
 				4E9608BE18E7CEC900418798 /* MeHeaderView.m in Sources */,
+				0312033E1917E05200077E25 /* ServicesInterface.m in Sources */,
 				03573B781906C03700A11A33 /* YouhuiCategoryViewController.m in Sources */,
 				4ECBF76118F6EAEA003963E1 /* CouponDetailWithTitleCell.m in Sources */,
 				03573B4F190572A500A11A33 /* ASIHTTPRequest.m in Sources */,
@@ -1881,7 +1913,9 @@
 				4E25476018EB1BC1007388B6 /* MainViewYouhuiCell.m in Sources */,
 				03573B95190EA53800A11A33 /* JSONKit.m in Sources */,
 				4E96088118E4837100418798 /* YouhuiTileView.m in Sources */,
+				031203381917DC4200077E25 /* CategoryInterface.m in Sources */,
 				03573B9A190EA8DB00A11A33 /* KeyChainTool.m in Sources */,
+				031203351917D9F600077E25 /* CouponDownloadModel.m in Sources */,
 				4E96087E18E4815500418798 /* BaseViewController.m in Sources */,
 				C1D8701418ED5B1D0061F799 /* ShopDetailViewController.m in Sources */,
 				4E2C6DFB18D75CE200DF3772 /* ShopViewController.m in Sources */,
@@ -1891,11 +1925,13 @@
 				4ECBF71718F45219003963E1 /* ShopDetailLocationCell.m in Sources */,
 				4E9608A618E48D6700418798 /* PullPsCollectionView.m in Sources */,
 				4E9608A318E48D6700418798 /* EGORefreshTableHeaderView.m in Sources */,
+				031203321917D7EA00077E25 /* CouponDownloadInterface.m in Sources */,
 				03573B4A190572A500A11A33 /* ASIAuthenticationDialog.m in Sources */,
 				4E96087718E4791000418798 /* CustomNavigationController.m in Sources */,
 				C1D8700F18EC0CAB0061F799 /* CouponDetailViewController.m in Sources */,
 				0312032B19169A4E00077E25 /* CouponInterface.m in Sources */,
 				C1D8701818ED5CE00061F799 /* ShopDetailHeaderView.m in Sources */,
+				031203411917E2C500077E25 /* StoreInterface.m in Sources */,
 				4E2C6DDA18D753AB00DF3772 /* MainViewNavigationCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

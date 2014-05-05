@@ -50,8 +50,14 @@
 //               "http://img10.360buyimg.com/da/g14/M0A/1F/11/rBEhVVNXWkEIAAAAAAEZiA2IHjIAAMfMQFTwKkAARmg289.jpg",
 //               "http://img10.360buyimg.com/da/g14/M0A/1F/11/rBEhVVNXWkEIAAAAAAEZiA2IHjIAAMfMQFTwKkAARmg289.jpg"
 //               ],
-//    "downloadLimit": -2
-//    
+//    "downloadLimit": -2,
+
+//    collectType: '下载方式'            // 0: 免费下, 1: 分享后下载
+//    collectLimit: '限量'              // 0: 不限制; N: 限制下载N次,
+//    collectRole: '下载规则'            // 待定, 目前返回空串,统一处理为每人限下载一次
+//    userCollectCount: '我的下载次数',       // 根据role不同会有不同的处理情况,目前总是返回1.
+//    date:"<服务器当前时间>"
+//
 //}
 -(void)parseResult:(ASIHTTPRequest *)request{
     NSString *jsonStr = [[NSString alloc] initWithData:[request responseData] encoding:NSUTF8StringEncoding];

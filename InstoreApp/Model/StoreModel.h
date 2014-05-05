@@ -21,6 +21,10 @@
 @property (nonatomic,strong) NSString *mapid;
 @property (nonatomic,strong) NSString *tel;
 
+@property (nonatomic,assign) NSInteger followerCount;
+
+@property (nonatomic,strong) NSMutableArray *coupons;
+@property (nonatomic,strong) NSMutableArray *comments;
 
 -(id)initWithJsonMap:(NSDictionary*)jsonMap;
 

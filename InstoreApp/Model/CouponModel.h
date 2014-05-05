@@ -29,6 +29,10 @@
 @property (nonatomic,retain) NSMutableArray *images;
 @property (nonatomic,assign) NSInteger downloadLimit;
 
+@property (nonatomic,assign) NSInteger collectType;
+@property (nonatomic,assign) NSInteger collectLimit;
+@property (nonatomic,assign) NSInteger collectRole;
+@property (nonatomic,assign) NSInteger userCollectCount;
 
 @property (nonatomic,strong) StoreModel *store;
 

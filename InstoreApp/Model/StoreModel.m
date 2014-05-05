@@ -37,6 +37,12 @@
             self.storeNo = [jsonMap objectForKey:@"address"];
             self.storeNo = [jsonMap objectForKey:@"mapid"];
             self.storeNo = [jsonMap objectForKey:@"tel"];
+            
+            self.followerCount = [jsonMap objectForKey:@"followerCount"]==nil?0:[[jsonMap objectForKey:@"followerCount"] integerValue];
+            
+            //TODO:
+//            coupons;
+//            comments;
         }
     }
     

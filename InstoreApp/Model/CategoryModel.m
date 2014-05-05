@@ -10,4 +10,15 @@
 
 @implementation CategoryModel
 
+-(id)initWithJsonMap:(NSDictionary *)jsonMap
+{
+    if (self = [super init]) {
+        if (jsonMap) {
+            self.cid = [[jsonMap objectForKey:@"id"] integerValue];
+            self.cName = [jsonMap objectForKey:@"name"];
+        }
+    }
+    
+    return self;
+}
 @end
