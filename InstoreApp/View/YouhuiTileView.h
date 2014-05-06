@@ -8,13 +8,17 @@
 
 #import <UIKit/UIKit.h>
 #import "PSCollectionViewCell.h"
-
+#import "EGOImageView.h"
 @interface YouhuiTileView : PSCollectionViewCell
-@property (retain, nonatomic) IBOutlet UIImageView *picView;
-@property (retain, nonatomic) IBOutlet UIImageView *iconView;
+@property (retain, nonatomic) IBOutlet EGOImageView *picView;
+@property (retain, nonatomic) IBOutlet EGOImageView *iconView;
 @property (retain, nonatomic) IBOutlet UIView *viewGroup;
 @property (retain, nonatomic) IBOutlet UILabel *titleLabel;
 @property (retain, nonatomic) IBOutlet UIView *buttonGroup;
+
+@property (retain, nonatomic) IBOutlet UIButton *commentCountLabel;
+@property (retain, nonatomic) IBOutlet UIButton *collectCountLabel;
+
 
 + (CGFloat)heightForViewWithObject:(id)object inColumnWidth:(CGFloat)columnWidth;
 

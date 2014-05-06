@@ -21,6 +21,7 @@
 @property (nonatomic,retain) NSDictionary *headers;
 @property (nonatomic,retain) NSDictionary *bodys;
 @property (nonatomic,retain) NSDictionary *args;        //请求参数
+@property (nonatomic,retain) NSDictionary *postParams;        //post请求参数
 
 @property (nonatomic,assign) id<BaseInterfaceDelegate> baseDelegate;
 

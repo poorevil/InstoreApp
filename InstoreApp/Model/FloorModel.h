@@ -13,4 +13,5 @@
 @property (nonatomic,assign) NSInteger fid;
 @property (nonatomic,strong) NSString *fName;
 
+-(id)initWithJsonMap:(NSDictionary *)jsonMap;
 @end

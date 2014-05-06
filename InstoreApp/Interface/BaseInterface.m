@@ -9,7 +9,7 @@
 //
 
 #import "BaseInterface.h"
-
+#import "ASIFormDataRequest.h"
 @implementation BaseInterface
 
 @synthesize baseDelegate = _baseDelegate , request = _request;
@@ -52,8 +52,18 @@
         //TODO:加密算法
         
         NSURL *url = [[NSURL alloc]initWithString:urlString];
-        self.request = [ASIHTTPRequest requestWithURL:url];
         
+        if (self.postParams) {
+            ASIFormDataRequest *formRequest = [ASIFormDataRequest requestWithURL:url];
+            for (NSString *key in self.postParams) {
+                [formRequest setPostValue:[self.postParams objectForKey:key] forKey:key];
+            }
+            self.request = formRequest;
+        }else{
+        
+            self.request = [ASIHTTPRequest requestWithURL:url];
+        }
+                
         [self.request setDelegate:self];
         [self.request startAsynchronous]; 
         

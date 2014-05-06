@@ -15,6 +15,14 @@
 		0312033B1917DE8000077E25 /* ServiceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0312033A1917DE8000077E25 /* ServiceModel.m */; };
 		0312033E1917E05200077E25 /* ServicesInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 0312033D1917E05200077E25 /* ServicesInterface.m */; };
 		031203411917E2C500077E25 /* StoreInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 031203401917E2C500077E25 /* StoreInterface.m */; };
+		03120344191934B000077E25 /* StoreDetailInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 03120343191934B000077E25 /* StoreDetailInterface.m */; };
+		03120347191937E100077E25 /* StoreFocusInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 03120346191937E100077E25 /* StoreFocusInterface.m */; };
+		0312034A19193BD800077E25 /* FloorInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 0312034919193BD800077E25 /* FloorInterface.m */; };
+		0312034D19193E7000077E25 /* CategoryListInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 0312034C19193E7000077E25 /* CategoryListInterface.m */; };
+		0312035A191945DF00077E25 /* EGOCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 03120351191945DF00077E25 /* EGOCache.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		0312035B191945DF00077E25 /* EGOImageLoadConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 03120354191945DF00077E25 /* EGOImageLoadConnection.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		0312035C191945DF00077E25 /* EGOImageLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 03120356191945DF00077E25 /* EGOImageLoader.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		0312035D191945DF00077E25 /* EGOImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 03120359191945DF00077E25 /* EGOImageView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		03573A6F19041D5600A11A33 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 03573A6E19041D5600A11A33 /* libxml2.dylib */; };
 		03573A7519041EFB00A11A33 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03573A7419041EFB00A11A33 /* CoreLocation.framework */; };
 		03573ABD1905584800A11A33 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03573ABC1905584800A11A33 /* QuartzCore.framework */; };
@@ -338,6 +346,22 @@
 		0312033D1917E05200077E25 /* ServicesInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServicesInterface.m; sourceTree = "<group>"; };
 		0312033F1917E2C500077E25 /* StoreInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreInterface.h; sourceTree = "<group>"; };
 		031203401917E2C500077E25 /* StoreInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreInterface.m; sourceTree = "<group>"; };
+		03120342191934B000077E25 /* StoreDetailInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreDetailInterface.h; sourceTree = "<group>"; };
+		03120343191934B000077E25 /* StoreDetailInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreDetailInterface.m; sourceTree = "<group>"; };
+		03120345191937E100077E25 /* StoreFocusInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreFocusInterface.h; sourceTree = "<group>"; };
+		03120346191937E100077E25 /* StoreFocusInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreFocusInterface.m; sourceTree = "<group>"; };
+		0312034819193BD800077E25 /* FloorInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FloorInterface.h; sourceTree = "<group>"; };
+		0312034919193BD800077E25 /* FloorInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FloorInterface.m; sourceTree = "<group>"; };
+		0312034B19193E7000077E25 /* CategoryListInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryListInterface.h; sourceTree = "<group>"; };
+		0312034C19193E7000077E25 /* CategoryListInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryListInterface.m; sourceTree = "<group>"; };
+		03120350191945DF00077E25 /* EGOCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGOCache.h; sourceTree = "<group>"; };
+		03120351191945DF00077E25 /* EGOCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGOCache.m; sourceTree = "<group>"; };
+		03120353191945DF00077E25 /* EGOImageLoadConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGOImageLoadConnection.h; sourceTree = "<group>"; };
+		03120354191945DF00077E25 /* EGOImageLoadConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGOImageLoadConnection.m; sourceTree = "<group>"; };
+		03120355191945DF00077E25 /* EGOImageLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGOImageLoader.h; sourceTree = "<group>"; };
+		03120356191945DF00077E25 /* EGOImageLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGOImageLoader.m; sourceTree = "<group>"; };
+		03120358191945DF00077E25 /* EGOImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGOImageView.h; sourceTree = "<group>"; };
+		03120359191945DF00077E25 /* EGOImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGOImageView.m; sourceTree = "<group>"; };
 		03573A6E19041D5600A11A33 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		03573A7019041E2200A11A33 /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
 		03573A7219041EF400A11A33 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -794,6 +818,44 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0312034E191945DF00077E25 /* EGOImage */ = {
+			isa = PBXGroup;
+			children = (
+				0312034F191945DF00077E25 /* EGOCache */,
+				03120352191945DF00077E25 /* EGOImageLoader */,
+			);
+			path = EGOImage;
+			sourceTree = "<group>";
+		};
+		0312034F191945DF00077E25 /* EGOCache */ = {
+			isa = PBXGroup;
+			children = (
+				03120350191945DF00077E25 /* EGOCache.h */,
+				03120351191945DF00077E25 /* EGOCache.m */,
+			);
+			path = EGOCache;
+			sourceTree = "<group>";
+		};
+		03120352191945DF00077E25 /* EGOImageLoader */ = {
+			isa = PBXGroup;
+			children = (
+				03120353191945DF00077E25 /* EGOImageLoadConnection.h */,
+				03120354191945DF00077E25 /* EGOImageLoadConnection.m */,
+				03120355191945DF00077E25 /* EGOImageLoader.h */,
+				03120356191945DF00077E25 /* EGOImageLoader.m */,
+			);
+			path = EGOImageLoader;
+			sourceTree = "<group>";
+		};
+		03120357191945DF00077E25 /* EGOImageView */ = {
+			isa = PBXGroup;
+			children = (
+				03120358191945DF00077E25 /* EGOImageView.h */,
+				03120359191945DF00077E25 /* EGOImageView.m */,
+			);
+			path = EGOImageView;
+			sourceTree = "<group>";
+		};
 		03573ABE19055B7700A11A33 /* IndoorMap */ = {
 			isa = PBXGroup;
 			children = (
@@ -1054,6 +1116,14 @@
 				0312033D1917E05200077E25 /* ServicesInterface.m */,
 				0312033F1917E2C500077E25 /* StoreInterface.h */,
 				031203401917E2C500077E25 /* StoreInterface.m */,
+				03120342191934B000077E25 /* StoreDetailInterface.h */,
+				03120343191934B000077E25 /* StoreDetailInterface.m */,
+				03120345191937E100077E25 /* StoreFocusInterface.h */,
+				03120346191937E100077E25 /* StoreFocusInterface.m */,
+				0312034819193BD800077E25 /* FloorInterface.h */,
+				0312034919193BD800077E25 /* FloorInterface.m */,
+				0312034B19193E7000077E25 /* CategoryListInterface.h */,
+				0312034C19193E7000077E25 /* CategoryListInterface.m */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
@@ -1316,6 +1386,8 @@
 		4E96088818E48D6700418798 /* utility */ = {
 			isa = PBXGroup;
 			children = (
+				0312034E191945DF00077E25 /* EGOImage */,
+				03120357191945DF00077E25 /* EGOImageView */,
 				03573B97190EA8DB00A11A33 /* KeyChainTool */,
 				03573B8F190EA53800A11A33 /* JSONKIT */,
 				03573B3F190572A500A11A33 /* ASIHTTPRequest */,
@@ -1876,10 +1948,13 @@
 				03573AC319055B7700A11A33 /* IndoorMapViewController.m in Sources */,
 				4E9608CA18E9BD4300418798 /* CycleScrollView.m in Sources */,
 				4E9608B418E7B1B600418798 /* ServiceViewCell.m in Sources */,
+				0312034A19193BD800077E25 /* FloorInterface.m in Sources */,
 				0312033B1917DE8000077E25 /* ServiceModel.m in Sources */,
 				4ECBF70B18F4449E003963E1 /* BindPhoneViewController.m in Sources */,
 				4ECBF73E18F58C28003963E1 /* ShopDetailDescriptionCell.m in Sources */,
 				03573BA3190EBE1600A11A33 /* CouponModel.m in Sources */,
+				03120347191937E100077E25 /* StoreFocusInterface.m in Sources */,
+				03120344191934B000077E25 /* StoreDetailInterface.m in Sources */,
 				03573BA6190EBF5300A11A33 /* StoreModel.m in Sources */,
 				03573B71190578FC00A11A33 /* MallsListViewController.m in Sources */,
 				03573B7C1906C7E400A11A33 /* CategoryModel.m in Sources */,
@@ -1899,6 +1974,7 @@
 				03573ADA19055E2300A11A33 /* SingletonHelpers.m in Sources */,
 				03573ADD19055E4A00A11A33 /* MBSFilterInfo.m in Sources */,
 				4ECBF75C18F6E9B4003963E1 /* CouponDetailDownloadCell.m in Sources */,
+				0312035A191945DF00077E25 /* EGOCache.m in Sources */,
 				03573B53190572A500A11A33 /* Reachability.m in Sources */,
 				4E2C6DE618D756EF00DF3772 /* MainViewOtherCell.m in Sources */,
 				03573B821906D15700A11A33 /* FloorModel.m in Sources */,
@@ -1912,6 +1988,7 @@
 				03573B4B190572A500A11A33 /* ASIDataCompressor.m in Sources */,
 				4E25476018EB1BC1007388B6 /* MainViewYouhuiCell.m in Sources */,
 				03573B95190EA53800A11A33 /* JSONKit.m in Sources */,
+				0312035D191945DF00077E25 /* EGOImageView.m in Sources */,
 				4E96088118E4837100418798 /* YouhuiTileView.m in Sources */,
 				031203381917DC4200077E25 /* CategoryInterface.m in Sources */,
 				03573B9A190EA8DB00A11A33 /* KeyChainTool.m in Sources */,
@@ -1920,10 +1997,13 @@
 				C1D8701418ED5B1D0061F799 /* ShopDetailViewController.m in Sources */,
 				4E2C6DFB18D75CE200DF3772 /* ShopViewController.m in Sources */,
 				4ECBF74718F59395003963E1 /* ShopDetailCommentsCell.m in Sources */,
+				0312035C191945DF00077E25 /* EGOImageLoader.m in Sources */,
 				4E9608B018E48D6700418798 /* PSCollectionView.m in Sources */,
 				4E9608B118E48D6700418798 /* PSCollectionViewCell.m in Sources */,
 				4ECBF71718F45219003963E1 /* ShopDetailLocationCell.m in Sources */,
+				0312034D19193E7000077E25 /* CategoryListInterface.m in Sources */,
 				4E9608A618E48D6700418798 /* PullPsCollectionView.m in Sources */,
+				0312035B191945DF00077E25 /* EGOImageLoadConnection.m in Sources */,
 				4E9608A318E48D6700418798 /* EGORefreshTableHeaderView.m in Sources */,
 				031203321917D7EA00077E25 /* CouponDownloadInterface.m in Sources */,
 				03573B4A190572A500A11A33 /* ASIAuthenticationDialog.m in Sources */,

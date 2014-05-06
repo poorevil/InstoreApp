@@ -9,6 +9,8 @@
 #import "YouhuiTileView.h"
 #import "CouponDetailViewController.h"
 #import "AppDelegate.h"
+#import "CouponModel.h"
+#import "StoreModel.h"
 
 @implementation YouhuiTileView
 #define MARGIN 4.0
@@ -54,16 +56,23 @@
 - (void)fillViewWithObject:(id)object {
     [super fillViewWithObject:object];
 
-    self.iconView.image = [UIImage imageNamed:[object objectForKey:@"icon"]];
-    self.picView.image = [UIImage imageNamed:[object objectForKey:@"image"]];
-    self.titleLabel.text = [object objectForKey:@"title"];
+    CouponModel *coupon = object;
+    
+    self.iconView.imageURL = [NSURL URLWithString:coupon.imageUrl];
+    self.picView.imageURL = [NSURL URLWithString:coupon.store.logoUrl];
+    self.titleLabel.text = coupon.title;
+    
+    [self.commentCountLabel setTitle:[NSString stringWithFormat:@"%d",coupon.commentCount]
+                            forState:UIControlStateNormal];
+    [self.collectCountLabel setTitle:[NSString stringWithFormat:@"%d",coupon.collectCount]
+                            forState:UIControlStateNormal];
     
     //计算高度
     CGFloat diffHeight = 0;
     CGFloat width = self.bounds.size.width;
     // Image
-    CGFloat objectWidth = [[object objectForKey:@"width"] floatValue];
-    CGFloat objectHeight = [[object objectForKey:@"height"] floatValue];
+    CGFloat objectWidth = coupon.imageWidth==0?160:coupon.imageWidth;
+    CGFloat objectHeight = coupon.imageHeight==0?160:coupon.imageHeight;
     CGFloat scaledHeight = floorf(objectHeight / (objectWidth / width));
     
     diffHeight += (scaledHeight - self.picView.frame.size.height);
@@ -96,12 +105,14 @@
 
 + (CGFloat)heightForViewWithObject:(id)object inColumnWidth:(CGFloat)columnWidth {
     
+    CouponModel *coupon = object;
+    
     //计算高度
     CGFloat diffHeight = 0;
     CGFloat width = columnWidth;
     // Image
-    CGFloat objectWidth = [[object objectForKey:@"width"] floatValue];
-    CGFloat objectHeight = [[object objectForKey:@"height"] floatValue];
+    CGFloat objectWidth = coupon.imageWidth==0?columnWidth:coupon.imageWidth;
+    CGFloat objectHeight = coupon.imageHeight==0?columnWidth:coupon.imageHeight;
     CGFloat scaledHeight = floorf(objectHeight / (objectWidth / width));
     
     diffHeight += (scaledHeight - 99);

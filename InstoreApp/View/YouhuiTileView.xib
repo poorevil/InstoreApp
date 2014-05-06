@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4514" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
         <deployment defaultVersion="1536" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -15,11 +15,11 @@
                     <rect key="frame" x="0.0" y="0.0" width="148" height="221"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="url.jpg" id="b82-UP-JqX">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="url.jpg" id="b82-UP-JqX" customClass="EGOImageView">
                             <rect key="frame" x="0.0" y="0.0" width="152" height="50"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coffee.jpg" id="VDt-hN-jBQ">
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coffee.jpg" id="VDt-hN-jBQ" customClass="EGOImageView">
                             <rect key="frame" x="0.0" y="50" width="148" height="99"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
@@ -96,6 +96,8 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="buttonGroup" destination="Vdp-YS-wm8" id="Vcf-Mm-lNT"/>
+                <outlet property="collectCountLabel" destination="bHk-dH-eIS" id="9MO-pj-fPJ"/>
+                <outlet property="commentCountLabel" destination="42W-RS-af5" id="tDd-lo-Qu0"/>
                 <outlet property="iconView" destination="b82-UP-JqX" id="oNq-h1-gCL"/>
                 <outlet property="picView" destination="VDt-hN-jBQ" id="6Ex-De-lSc"/>
                 <outlet property="titleLabel" destination="JZF-vw-ymt" id="XTZ-3h-Jsh"/>

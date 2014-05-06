@@ -72,6 +72,9 @@
             self.title = [jsonMap objectForKey:@"title"];
             self.tag = [jsonMap objectForKey:@"tag"];
             self.imageUrl = [jsonMap objectForKey:@"image"];
+            //TODO:widith height
+//            @property (nonatomic,assign) CGFloat imageWidth;
+//            @property (nonatomic,assign) CGFloat imageHeight;
             self.commentCount = [[jsonMap objectForKey:@"commentCount"] integerValue];
             self.type = [[jsonMap objectForKey:@"type"] integerValue];
             

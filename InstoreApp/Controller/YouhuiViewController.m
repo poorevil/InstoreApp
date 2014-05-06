@@ -10,10 +10,15 @@
 #import "YouhuiTileView.h"
 #import "YouhuiCategoryViewController.h"
 #import "CategoryModel.h"
+#import "CouponInterface.h"
+#import "CouponModel.h"
 
-@interface YouhuiViewController ()<YouhuiCategoryViewControllerDelegate>
+@interface YouhuiViewController ()<YouhuiCategoryViewControllerDelegate,CouponInterfaceDelegate>
 
 @property (nonatomic,strong) CategoryModel *filterCategory;//分类筛选条件
+@property (nonatomic,strong) CouponInterface *couponInterface;
+
+@property (nonatomic,assign) NSInteger currentPage;
 
 @end
 
@@ -35,6 +40,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 
+    self.currentPage = 1;
+    
     self.title = @"优惠劵";
     
     self.collectionView = [[PullPsCollectionView alloc] initWithFrame:CGRectMake(0, 0,
@@ -72,6 +79,8 @@
     [self.orderBtn addTarget:self
                          action:@selector(orderBtnAction:)
                forControlEvents:UIControlEventTouchUpInside];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -99,9 +108,9 @@
      Code to actually load more data goes here.
      
      */
-    //    [self loadDataSource];
-    [self.items addObjectsFromArray:self.items];
-    [self.collectionView reloadData];
+    [self loadDataSource];
+//    [self.items addObjectsFromArray:self.items];
+//    [self.collectionView reloadData];
     self.collectionView.pullTableIsLoadingMore = NO;
 }
 
@@ -147,7 +156,7 @@
 
 //实例化tile
 - (YouhuiTileView *)collectionView:(PSCollectionView *)collectionView viewAtIndex:(NSInteger)index {
-    NSDictionary *item = [self.items objectAtIndex:index];
+    CouponModel *item = [self.items objectAtIndex:index];
     
     // You should probably subclass PSCollectionViewCell
     YouhuiTileView *v = nil;//(YouhuiTileView *)[self.collectionView dequeueReusableView];
@@ -168,10 +177,8 @@
 
 //根据图片高度返回tile高度
 - (CGFloat)heightForViewAtIndex:(NSInteger)index {
-    NSDictionary *item = [self.items objectAtIndex:index];
-    
     // You should probably subclass PSCollectionViewCell
-    return [YouhuiTileView heightForViewWithObject:item inColumnWidth:self.collectionView.colWidth];
+    return [YouhuiTileView heightForViewWithObject:[self.items objectAtIndex:index] inColumnWidth:self.collectionView.colWidth];
 }
 
 - (void)collectionView:(PSCollectionView *)collectionView didSelectView:(PSCollectionViewCell *)view atIndex:(NSInteger)index {
@@ -211,32 +218,43 @@
     
 //    CGFloat objectWidth = [[object objectForKey:@"width"] floatValue];
 //    CGFloat objectHeight = [[object objectForKey:@"height"] floatValue];
-    self.items = [NSMutableArray arrayWithArray:@[@{@"width":[NSNumber numberWithFloat:600],
-                                                    @"height":[NSNumber numberWithFloat:398.0f],
-                                                    @"title":@"星巴克",
-                                                    @"icon":@"url.jpg",
-                                                    @"image":@"coffee.jpg"},
-                                                  @{@"width":[NSNumber numberWithFloat:280.0f],
-                                                    @"height":[NSNumber numberWithFloat:365.0f],
-                                                    @"title":@"杰克琼斯",
-                                                    @"icon":@"pp_2.jpg",
-                                                    @"image":@"c_2.jpg"},
-                                                  @{@"width":[NSNumber numberWithFloat:280.0f],
-                                                    @"height":[NSNumber numberWithFloat:365.0f],
-                                                    @"title":@"迪奥",
-                                                    @"icon":@"pp_1.jpg",
-                                                    @"image":@"c_3.jpg"},
-                                                  @{@"width":[NSNumber numberWithFloat:280.0f],
-                                                    @"height":[NSNumber numberWithFloat:365.0f],
-                                                    @"title":@"卡西欧",
-                                                    @"icon":@"pp_4.jpg",
-                                                    @"image":@"c_4.jpg"},
-                                                  @{@"width":[NSNumber numberWithFloat:280.0f],
-                                                    @"height":[NSNumber numberWithFloat:365.0f],
-                                                    @"title":@"可可尼",
-                                                    @"icon":@"pp_3.jpg",
-                                                    @"image":@"c_5.jpg"},]];
-    [self dataSourceDidLoad];
+    
+    
+    //------------
+//    self.items = [NSMutableArray arrayWithArray:@[@{@"width":[NSNumber numberWithFloat:600],
+//                                                    @"height":[NSNumber numberWithFloat:398.0f],
+//                                                    @"title":@"星巴克",
+//                                                    @"icon":@"url.jpg",
+//                                                    @"image":@"coffee.jpg"},
+//                                                  @{@"width":[NSNumber numberWithFloat:280.0f],
+//                                                    @"height":[NSNumber numberWithFloat:365.0f],
+//                                                    @"title":@"杰克琼斯",
+//                                                    @"icon":@"pp_2.jpg",
+//                                                    @"image":@"c_2.jpg"},
+//                                                  @{@"width":[NSNumber numberWithFloat:280.0f],
+//                                                    @"height":[NSNumber numberWithFloat:365.0f],
+//                                                    @"title":@"迪奥",
+//                                                    @"icon":@"pp_1.jpg",
+//                                                    @"image":@"c_3.jpg"},
+//                                                  @{@"width":[NSNumber numberWithFloat:280.0f],
+//                                                    @"height":[NSNumber numberWithFloat:365.0f],
+//                                                    @"title":@"卡西欧",
+//                                                    @"icon":@"pp_4.jpg",
+//                                                    @"image":@"c_4.jpg"},
+//                                                  @{@"width":[NSNumber numberWithFloat:280.0f],
+//                                                    @"height":[NSNumber numberWithFloat:365.0f],
+//                                                    @"title":@"可可尼",
+//                                                    @"icon":@"pp_3.jpg",
+//                                                    @"image":@"c_5.jpg"},]];
+    
+    self.couponInterface = [[CouponInterface alloc] init];
+    self.couponInterface.delegate = self;
+    [self.couponInterface getCouponListByCid:@"0"
+                                      isLike:0
+                                       order:@"startTime,desc"
+                                      amount:20
+                                        page:self.currentPage];
+    
 }
 
 - (void)dataSourceDidLoad {
@@ -259,5 +277,19 @@
     }
 }
 
+#pragma mark - CouponInterfaceDelegate <NSObject>
+
+-(void)getCouponListDidFinished:(NSArray *)result totalAmount:(NSInteger)totalAmount currentPage:(NSInteger)currentPage
+{
+    [self.items addObjectsFromArray:result];
+    [self dataSourceDidLoad];
+    
+    self.currentPage++;
+}
+
+-(void)getCouponListDidFailed:(NSString *)errorMessage
+{
+    NSLog(@"%@",errorMessage);
+}
 
 @end

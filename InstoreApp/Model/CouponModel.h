@@ -20,6 +20,8 @@
 @property (nonatomic,strong) NSString *title;
 @property (nonatomic,strong) NSString *tag;
 @property (nonatomic,strong) NSString *imageUrl;
+@property (nonatomic,assign) CGFloat imageWidth;
+@property (nonatomic,assign) CGFloat imageHeight;
 @property (nonatomic,assign) NSInteger commentCount;
 @property (nonatomic,assign) NSInteger type;
 
