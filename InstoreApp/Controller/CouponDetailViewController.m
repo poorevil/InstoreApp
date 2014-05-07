@@ -8,10 +8,19 @@
 
 #import "CouponDetailViewController.h"
 #import "CouponDetailWithTitleCell.h"
+#import "CouponDetailInterface.h"
+#import "EGOImageView.h"
+#import "CouponModel.h"
 
-@interface CouponDetailViewController ()
+#import "CouponDetailDownloadCell.h"
+#import "NSDate+DynamicDateString.h"
+
+@interface CouponDetailViewController () <CouponDetailInterfaceDelegate>
 @property (nonatomic,strong) UIView *headerView;
 @property (nonatomic,strong) UIView *footerView;
+
+@property (nonatomic,strong) CouponDetailInterface *couponDetailInterface;
+@property (nonatomic,retain) CouponModel *couponModel;
 @end
 
 @implementation CouponDetailViewController
@@ -30,6 +39,12 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
+    self.couponModel = nil;
+    
+    self.couponDetailInterface = [[CouponDetailInterface alloc] init];
+    self.couponDetailInterface.delegate = self;
+    [self.couponDetailInterface getCouponDetailByCouponId:200];
+    
     [self initHeaderView];
     [self initFooterView];
     
@@ -43,18 +58,26 @@
 }
 
 #pragma mark - private method
+-(void)refreshUI
+{
+    [self initHeaderView];
+    [self initFooterView];
+    [self.mtableView reloadData];
+}
+
 //初始化头部view
 -(void)initHeaderView
 {
     self.headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 320)];
-    UIImageView *headerImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"c_3.jpg"]];
+    EGOImageView *headerImageView = [[EGOImageView alloc] init];
+    headerImageView.imageURL = [NSURL URLWithString:self.couponModel.imageUrl];
     headerImageView.frame = CGRectMake(10, 10, 300, 300);
     [self.headerView addSubview:headerImageView];
     
     UIView *titleGroupView = [[UIView alloc] initWithFrame:CGRectMake(10, 320-34, 300, 34)];
     titleGroupView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.7f];
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 5, 300, 28)];
-    titleLabel.text = @"迪奥服饰 全场8折";
+    titleLabel.text = self.couponModel.title;
     titleLabel.textColor = [UIColor whiteColor];
     [titleGroupView addSubview:titleLabel];
     
@@ -65,6 +88,7 @@
 
 -(void)initFooterView
 {
+    //TODO:
     self.footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
     UIButton *downloadBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     
@@ -146,14 +170,20 @@
     }
     
     switch (indexPath.section) {
-        case 0:
+        case 0:{
+            CouponDetailDownloadCell *cddc = (CouponDetailDownloadCell *)cell;
+            cddc.downloadNumLabel.text = [NSString stringWithFormat:@"%d",self.couponModel.downloadCount];
+            cddc.favNumLabel.text = [NSString stringWithFormat:@"%d",self.couponModel.collectCount];
+            
             break;
+        }
         case 1:
             if ([cell isMemberOfClass:[CouponDetailWithTitleCell class]]) {
                 CouponDetailWithTitleCell *withTitleCell = (CouponDetailWithTitleCell *)cell;
                 withTitleCell.titleLabel.text = @"有效期";
                 withTitleCell.iconView.image = [UIImage imageNamed:@"store-icon-clock"];
-                withTitleCell.detailLabel.text = @"03月15日 至 08月13日";
+                withTitleCell.detailLabel.text = [NSString stringWithFormat:@"%@ 至 %@",
+                                                  self.couponModel.startTime,self.couponModel.endTime];
                 withTitleCell.detailLabel.numberOfLines = 99;
                 //TODO:计算文字高度
                 withTitleCell.detailLabel.frame = CGRectMake(withTitleCell.detailLabel.frame.origin.x,
@@ -183,7 +213,7 @@
                 CouponDetailWithTitleCell *withTitleCell = (CouponDetailWithTitleCell *)cell;
                 withTitleCell.titleLabel.text = @"优惠劵详情";
                 withTitleCell.iconView.image = [UIImage imageNamed:@"store-icon-feed"];
-                withTitleCell.detailLabel.text = @"【北京】【爱唯视觉摄影】\n仅399元尊享原价999元的儿童写真摄影套系，7英寸Q存钱罐摆台一款+表情水晶一款10X20+三套服装+三组整体造型+增加一款创意拍摄（需要前期沟通）+内外景综合拍摄+拍摄亲子或全家福一组（不含三套之内）！\n\n北京爱唯视觉摄影\n联系电话:010-85738627\n手机号码:13146379128\n营业时间:09:00-17:00\n商户地址:北京市朝阳区甘露园朝阳无限芳菁苑7号楼102\n交通信息:东四环慈云寺辅路出口东行，十里堡华堂东一站地，物美大卖场后身即是。 朝北大悦城地铁南行到朝阳路西行一站，物美大卖场即是。 ";
+                withTitleCell.detailLabel.text = self.couponModel.descriptionStr;
                 withTitleCell.detailLabel.numberOfLines = 39;
                 //TODO:计算文字高度
                 withTitleCell.detailLabel.frame = CGRectMake(withTitleCell.detailLabel.frame.origin.x,
@@ -318,6 +348,19 @@
             return 44;
     }
     
+}
+
+#pragma mark - CouponDetailInterfaceDelegate <NSObject>
+
+-(void)getCouponDetailDidFinished:(CouponModel *)couponModel
+{
+    self.couponModel = couponModel;
+    [self refreshUI];
+}
+
+-(void)getCouponDetailDidFailed:(NSString *)errorMessage
+{
+    NSLog(@"%@",errorMessage);
 }
 
 @end

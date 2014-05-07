@@ -20,7 +20,7 @@
 {
     self.interfaceUrl = [NSString stringWithFormat:@"%@api/%@/coupon",BASE_INTERFACE_DOMAIN, MALL_CODE];
     self.args = @{@"cid":cid,
-                  @"order":order,
+//                  @"order":order,
                   @"like":[NSString stringWithFormat:@"%d",isLike],
                   @"amount":[NSString stringWithFormat:@"%d",amount],
                   @"pageNum":[NSString stringWithFormat:@"%d",pageNum]};

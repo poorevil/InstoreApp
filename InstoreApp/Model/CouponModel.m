@@ -8,6 +8,7 @@
 
 #import "CouponModel.h"
 #import "StoreModel.h"
+#import "NSDate+DynamicDateString.h"
 
 @implementation CouponModel
 
@@ -65,21 +66,20 @@
 {
     if (self = [super init]) {
         if (jsonMap) {
-            self.startTime = [NSDate dateWithTimeIntervalSince1970:[[jsonMap objectForKey:@"startTime"] longValue]];
-            self.endTime = [NSDate dateWithTimeIntervalSince1970:[[jsonMap objectForKey:@"endTime"] longValue]];
+            self.startTime = [NSDate dateFromString:[jsonMap objectForKey:@"startTime"]];
+            self.endTime = [NSDate dateFromString:[jsonMap objectForKey:@"endTime"]];
             self.cid = [[jsonMap objectForKey:@"id"] integerValue];
             self.collectCount = [[jsonMap objectForKey:@"collectCount"] integerValue];
             self.title = [jsonMap objectForKey:@"title"];
             self.tag = [jsonMap objectForKey:@"tag"];
-            self.imageUrl = [jsonMap objectForKey:@"image"];
-            //TODO:widith height
-//            @property (nonatomic,assign) CGFloat imageWidth;
-//            @property (nonatomic,assign) CGFloat imageHeight;
+//            self.imageUrl = [jsonMap objectForKey:@"image"];
+//            self.imageWidth = [[jsonMap objectForKey:@"pixelWith"] integerValue];
+//            self.imageHeight = [[jsonMap objectForKey:@"pixelHeight"] integerValue];
             self.commentCount = [[jsonMap objectForKey:@"commentCount"] integerValue];
             self.type = [[jsonMap objectForKey:@"type"] integerValue];
             
             self.downloadCount = [jsonMap objectForKey:@"downloadCount"]==nil?0:[[jsonMap objectForKey:@"downloadCount"] integerValue];
-            self.date = [jsonMap objectForKey:@"date"]==nil?nil:[NSDate dateWithTimeIntervalSince1970:[[jsonMap objectForKey:@"date"] longValue]];
+            self.date = [jsonMap objectForKey:@"date"]==nil?nil:[NSDate dateFromString:[jsonMap objectForKey:@"date"]];
             self.descriptionStr = [jsonMap objectForKey:@"description"];
             self.downloadLimit = [jsonMap objectForKey:@"downloadLimit"]==nil?0:[[jsonMap objectForKey:@"downloadLimit"] integerValue];
             
@@ -87,10 +87,11 @@
             
             self.collectType = [jsonMap objectForKey:@"collectType"]==nil?0:[[jsonMap objectForKey:@"collectType"] integerValue];
             self.collectLimit = [jsonMap objectForKey:@"collectLimit"]==nil?0:[[jsonMap objectForKey:@"collectLimit"] integerValue];
-            self.collectRole = [jsonMap objectForKey:@"collectRole"]==nil?0:[[jsonMap objectForKey:@"collectRole"] integerValue];
+            self.collectRole = [jsonMap objectForKey:@"collectRole"]==[NSNull null]?0:[[jsonMap objectForKey:@"collectRole"] integerValue];
             self.userCollectCount = [jsonMap objectForKey:@"userCollectCount"]==nil?0:[[jsonMap objectForKey:@"userCollectCount"] integerValue];
                
             self.store = [[StoreModel alloc] initWithJsonMap:[jsonMap objectForKey:@"store"]];
+            
         }
     }
     

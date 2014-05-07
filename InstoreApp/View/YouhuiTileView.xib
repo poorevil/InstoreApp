@@ -39,7 +39,7 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="bHk-dH-eIS">
-                                    <rect key="frame" x="7" y="8" width="40" height="16"/>
+                                    <rect key="frame" x="7" y="8" width="48" height="16"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                     <state key="normal" title="236" image="sale-heart-icon-pressed.png">
@@ -48,7 +48,7 @@
                                     </state>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="42W-RS-af5">
-                                    <rect key="frame" x="55" y="8" width="40" height="16"/>
+                                    <rect key="frame" x="61" y="8" width="48" height="16"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                     <state key="normal" title="135" image="sale-feed-icon.png">
@@ -57,7 +57,7 @@
                                     </state>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="WXO-UE-sId">
-                                    <rect key="frame" x="103" y="8" width="40" height="16"/>
+                                    <rect key="frame" x="109" y="8" width="40" height="16"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                     <state key="normal" image="sale-share-icon.png">

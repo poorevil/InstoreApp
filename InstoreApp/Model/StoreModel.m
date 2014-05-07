@@ -26,7 +26,7 @@
 -(id)initWithJsonMap:(NSDictionary*)jsonMap
 {
     if (self = [super init]) {
-        if (jsonMap) {
+        if (jsonMap && ![jsonMap isKindOfClass:[NSNull class]]) {
             self.sid = [[jsonMap objectForKey:@"id"] integerValue];
             self.logoUrl = [jsonMap objectForKey:@"logo"];
             self.categoryId = [jsonMap objectForKey:@"category"];

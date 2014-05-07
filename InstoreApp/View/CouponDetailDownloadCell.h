@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface CouponDetailDownloadCell : UITableViewCell
-
+@property (nonatomic,strong) UILabel *downloadNumLabel;
+@property (nonatomic,strong) UILabel *favNumLabel;
 @end

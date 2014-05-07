@@ -62,9 +62,9 @@
     self.picView.imageURL = [NSURL URLWithString:coupon.store.logoUrl];
     self.titleLabel.text = coupon.title;
     
-    [self.commentCountLabel setTitle:[NSString stringWithFormat:@"%d",coupon.commentCount]
+    [self.commentCountLabel setTitle:[NSString stringWithFormat:@" %d",coupon.commentCount]
                             forState:UIControlStateNormal];
-    [self.collectCountLabel setTitle:[NSString stringWithFormat:@"%d",coupon.collectCount]
+    [self.collectCountLabel setTitle:[NSString stringWithFormat:@" %d",coupon.collectCount]
                             forState:UIControlStateNormal];
     
     //计算高度
