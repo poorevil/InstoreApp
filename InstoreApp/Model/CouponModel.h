@@ -12,8 +12,8 @@
 @class StoreModel;
 @interface CouponModel : NSObject
 
-@property (nonatomic,retain) NSDate *startTime;
-@property (nonatomic,retain) NSDate *endTime;
+@property (nonatomic,strong) NSDate *startTime;
+@property (nonatomic,strong) NSDate *endTime;
 @property (nonatomic,assign) NSInteger cid;
 
 @property (nonatomic,assign) NSInteger collectCount;
