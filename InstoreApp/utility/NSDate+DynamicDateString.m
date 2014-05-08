@@ -120,7 +120,16 @@
     NSDate *destDate= [dateFormatter dateFromString:dateString];
     
     return destDate;
-    
 }
+
+-(NSString *)toDateString
+{
+    //5月5日
+    NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
+    [dateFormatter setDateFormat: @"M月d日"];
+
+    return [dateFormatter stringFromDate:self];
+}
+
 
 @end

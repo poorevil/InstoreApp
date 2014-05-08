@@ -12,7 +12,7 @@
 
 @property (nonatomic,assign) NSInteger sid;
 @property (nonatomic,strong) NSString *logoUrl;
-@property (nonatomic,strong) NSString *categoryId;
+@property (nonatomic,assign) NSInteger categoryId;
 @property (nonatomic,strong) NSString *title;
 
 @property (nonatomic,strong) NSString *storeNo;

@@ -7,6 +7,10 @@
 //
 
 #import "ShopViewCell.h"
+#import "EGOImageView.h"
+#import "StoreModel.h"
+#import "FloorModel.h"
+
 
 @implementation ShopViewCell
 
@@ -24,6 +28,17 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+-(void)setStoreModel:(StoreModel *)storeModel
+{
+    _storeModel = storeModel;
+    
+    self.shopIconImageView.imageURL = [NSURL URLWithString:self.storeModel.logoUrl];
+    self.titleLabel.text = self.storeModel.title;
+    self.typeLabel.text = [NSString stringWithFormat:@"%d",self.storeModel.categoryId];
+    self.floorLabel.text = self.storeModel.floor;
+    self.favLabel.text = [NSString stringWithFormat:@"%d",self.storeModel.followerCount];
 }
 
 @end

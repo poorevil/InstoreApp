@@ -9,11 +9,16 @@
 #import "YouhuiCategoryViewController.h"
 #import "CategoryModel.h"
 
-@interface YouhuiCategoryViewController () <UITableViewDataSource,UITableViewDelegate>
+#import "CategoryListInterface.h"
+
+@interface YouhuiCategoryViewController () <UITableViewDataSource,UITableViewDelegate,CategoryListInterfaceDelegate>
 
 @property (nonatomic,strong) UITableView *mtableView;
 @property (nonatomic,strong) NSMutableArray *categorys;//分类列表
 @property (nonatomic,strong) CategoryModel *selectedCategoryModel;
+
+@property (nonatomic,assign) NSInteger currentPage;
+@property (nonatomic,strong) CategoryListInterface *categoryInterface;
 @end
 
 @implementation YouhuiCategoryViewController
@@ -42,47 +47,21 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    self.currentPage = 1;
     self.title = @"分类筛选";
     
     self.categorys = [NSMutableArray array];
-    
-    CategoryModel *cm = [[CategoryModel alloc] init];
-    cm.cid = @"0";
-    cm.cName = @"服装";
-    [self.categorys addObject:cm];
-    
-    cm = [[CategoryModel alloc] init];
-    cm.cid = @"1";
-    cm.cName = @"鞋帽";
-    [self.categorys addObject:cm];
-    
-    cm = [[CategoryModel alloc] init];
-    cm.cid = @"2";
-    cm.cName = @"电器";
-    [self.categorys addObject:cm];
-    
-    cm = [[CategoryModel alloc] init];
-    cm.cid = @"3";
-    cm.cName = @"箱包";
-    [self.categorys addObject:cm];
-    
-    cm = [[CategoryModel alloc] init];
-    cm.cid = @"4";
-    cm.cName = @"美食";
-    [self.categorys addObject:cm];
-    
-    cm = [[CategoryModel alloc] init];
-    cm.cid = @"5";
-    cm.cName = @"百货";
-    [self.categorys addObject:cm];
-    
     
     self.mtableView = [[UITableView alloc] initWithFrame:self.view.bounds];
     self.mtableView.delegate = self;
     self.mtableView.dataSource = self;
 
-    
     [self.view addSubview:self.mtableView];
+    
+    self.categoryInterface = [[CategoryListInterface alloc] init];
+    self.categoryInterface.delegate = self;
+    [self.categoryInterface getCategoryListByPage:self.currentPage
+                                           amount:20];
 }
 
 - (void)didReceiveMemoryWarning
@@ -90,17 +69,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 #pragma mark - UITableViewDataSource
 
@@ -118,7 +86,6 @@
     }
     
     CategoryModel *cm = [self.categorys objectAtIndex:indexPath.row];
-    
     cell.textLabel.text = cm.cName;
     
     if (self.selectedCategoryModel.cid == cm.cid) {
@@ -133,13 +100,28 @@
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    //TODO:获取选中的分类
-    //TODO:更新selectedCategory
+    //获取选中的分类
     if ([self.delegate respondsToSelector:@selector(categoryDidSelected:)]) {
         [self.delegate categoryDidSelected:[self.categorys objectAtIndex:indexPath.row]];
     }
     
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+
+#pragma mark - CategoryInterfaceDelegate <NSObject>
+
+-(void)getCategoryListDidFinished:(NSArray *)categoryList totalAmount:(NSInteger)totalAmount currentPage:(NSInteger)currentPage
+{
+    [self.categorys addObjectsFromArray:categoryList];
+    [self.mtableView reloadData];
+    
+    self.currentPage++;
+}
+
+-(void)getCategoryListDidFailed:(NSString *)errorMessage
+{
+    NSLog(@"%@",errorMessage);
 }
 
 @end

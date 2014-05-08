@@ -8,11 +8,14 @@
 
 #import "FloorSelectViewController.h"
 #import "FloorModel.h"
+#import "FloorInterface.h"
 
-@interface FloorSelectViewController () <UITableViewDataSource,UITableViewDelegate>
+@interface FloorSelectViewController () <UITableViewDataSource,UITableViewDelegate,FloorInterfaceDelegate>
 @property (nonatomic,strong) UITableView *mtableView;
 @property (nonatomic,strong) NSMutableArray *floors;//楼层列表
 @property (nonatomic,strong) FloorModel *selectedFloorModel;
+
+@property (nonatomic,strong) FloorInterface *floorInterface;
 @end
 
 @implementation FloorSelectViewController
@@ -44,20 +47,16 @@
     
     self.floors = [NSMutableArray array];
     
-    for (NSInteger i=0; i<5; i++) {
-        FloorModel *floorModel = [[FloorModel alloc] init];
-        floorModel.fid = [NSString stringWithFormat:@"%d",i];
-        floorModel.fName = [NSString stringWithFormat:@"%d层",i+1];
-        [self.floors addObject:floorModel];
-    }
-    
-    
     self.mtableView = [[UITableView alloc] initWithFrame:self.view.bounds];
     self.mtableView.delegate = self;
     self.mtableView.dataSource = self;
     
-    
     [self.view addSubview:self.mtableView];
+    
+    self.floorInterface = [[FloorInterface alloc] init];
+    self.floorInterface.delegate = self;
+    //TODO:areaId暂时写死0
+    [self.floorInterface getFloorListByAreaId:0];
 }
 
 - (void)didReceiveMemoryWarning
@@ -65,17 +64,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 #pragma mark - UITableViewDataSource
 
@@ -107,13 +95,24 @@
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    //TODO:获取选中的分类
-    //TODO:更新selectedCategory
+    //获取选中的分类
     if ([self.delegate respondsToSelector:@selector(floorSelectDidFinished:)]) {
         [self.delegate floorSelectDidFinished:[self.floors objectAtIndex:indexPath.row]];
     }
     
     [self.navigationController popViewControllerAnimated:YES];
 }
+
+#pragma mark - FloorInterfaceDelegate <NSObject>
+-(void)getFloorListDidFinished:(NSArray *)floorList{
+    [self.floors addObjectsFromArray:floorList];
+    [self.mtableView reloadData];
+}
+
+-(void)getFloorListDidFailed:(NSString *)errorMessage
+{
+    NSLog(@"%@",errorMessage);
+}
+
 
 @end

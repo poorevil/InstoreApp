@@ -17,4 +17,7 @@
 @property (nonatomic,strong) IBOutlet UIButton *paintBtn;
 @property (nonatomic,strong) IBOutlet UIButton *gameBtn;
 
+
+@property (nonatomic,strong) NSArray *serviceList;
+
 @end

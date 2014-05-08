@@ -14,10 +14,17 @@
 #import "CategoryModel.h"
 #import "YouhuiCategoryViewController.h"
 
-@interface ShopViewController () <FloorSelectViewControllerDelegate,YouhuiCategoryViewControllerDelegate>
+#import "StoreInterface.h"
+#import "StoreModel.h"
+
+@interface ShopViewController () <FloorSelectViewControllerDelegate,YouhuiCategoryViewControllerDelegate,StoreInterfaceDelegate>
 
 @property (nonatomic,strong) CategoryModel *filterCategory;//分类筛选条件
 @property (nonatomic,strong) FloorModel *filterFloorModel;//楼层筛选
+
+@property (nonatomic,strong) StoreInterface *storeInterface;
+@property (nonatomic,strong) NSMutableArray *storeList;
+@property (nonatomic,assign) NSInteger currentPage;
 
 @end
 
@@ -35,15 +42,23 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-
-    self.title = @"商户";
     
+    self.storeList = [NSMutableArray array];
+    self.title = @"商户";
     
     [self.floorBtn addTarget:self action:@selector(floorBtnAction:)
             forControlEvents:UIControlEventTouchUpInside];
     [self.cateBtn addTarget:self action:@selector(categoryBtnAction:)
             forControlEvents:UIControlEventTouchUpInside];
+    
+    self.storeInterface = [[StoreInterface alloc] init];
+    self.storeInterface.delegate = self;
+    [self.storeInterface getStoreListByFloor:nil
+                                         cid:0
+                                       order:nil
+                                      isLike:0
+                                      amount:20
+                                        page:self.currentPage];
     
 }
 
@@ -57,7 +72,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 8;
+    return self.storeList.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -68,44 +83,7 @@
         cell = [[[NSBundle mainBundle] loadNibNamed:@"ShopViewCell" owner:self options:nil] objectAtIndex:0];
     }
     
-    cell.shopIconImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"pp_%d.jpg",indexPath.row+1]];
-    
-    switch (indexPath.row) {
-        case 0:
-            cell.titleLabel.text = @"迪奥";
-            cell.typeLabel.text = @"服饰";
-            break;
-        case 1:
-            cell.titleLabel.text = @"杰克琼斯";
-            cell.typeLabel.text = @"服饰";
-            break;
-        case 2:
-            cell.titleLabel.text = @"可可尼";
-            cell.typeLabel.text = @"服饰";
-            break;
-        case 3:
-            cell.titleLabel.text = @"卡西欧";
-            cell.typeLabel.text = @"配饰";
-            break;
-        case 4:
-            cell.titleLabel.text = @"雷蛇";
-            cell.typeLabel.text = @"配件";
-            break;
-        case 5:
-            cell.titleLabel.text = @"万尼";
-            cell.typeLabel.text = @"服饰";
-            break;
-        case 6:
-            cell.titleLabel.text = @"Dickies";
-            cell.typeLabel.text = @"服饰";
-            break;
-        case 7:
-            cell.titleLabel.text = @"ENZO";
-            cell.typeLabel.text = @"珠宝";
-            break;
-        default:
-            break;
-    }
+    cell.storeModel = [self.storeList objectAtIndex:indexPath.row];
     
     return  cell;
 }
@@ -172,6 +150,19 @@
     }else{
         [self.cateBtn setTitle:@"分类 " forState:UIControlStateNormal];
     }
+}
+
+#pragma mark - StoreInterfaceDelegate <NSObject>
+
+-(void)getStoreListDidFinished:(NSArray *)resultList totalCount:(NSInteger)totalCount currentPage:(NSInteger)currentPage
+{
+    [self.storeList addObjectsFromArray:resultList];
+    [self.mtable reloadData];
+}
+
+-(void)getStoreListDidFailed:(NSString *)errorMessage
+{
+    NSLog(@"%@",errorMessage);
 }
 
 @end

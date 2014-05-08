@@ -54,7 +54,6 @@
     if (jsonObj) {
         NSMutableArray *resultList = [NSMutableArray array];
         NSInteger totalCount = 0;
-        NSInteger currentPage = 0;
         if (jsonObj && [[jsonObj objectForKey:@"totalCount"] integerValue] > 0) {
             totalCount = [[jsonObj objectForKey:@"totalCount"] integerValue];
             

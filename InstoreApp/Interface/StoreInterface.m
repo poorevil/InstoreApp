@@ -20,9 +20,9 @@
                       page:(NSInteger)page
 {
     self.interfaceUrl = [NSString stringWithFormat:@"%@api/%@/shop",BASE_INTERFACE_DOMAIN, MALL_CODE];
-    self.args = @{@"floor":floor,
+    self.args = @{//@"floor":floor,
                   @"cid":[NSString stringWithFormat:@"%d",cid],
-                  @"order":order,
+//                  @"order":order,
                   @"like":[NSString stringWithFormat:@"%d",isLike],
                   @"page":[NSString stringWithFormat:@"%d",page],
                   @"amount":[NSString stringWithFormat:@"%d",amount]};

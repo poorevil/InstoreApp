@@ -22,4 +22,6 @@
 
 ////输入的日期字符串形如：@"1992-05-21 13:08:08"
 + (NSDate *)dateFromString:(NSString *)dateString;
+
+-(NSString *)toDateString;
 @end

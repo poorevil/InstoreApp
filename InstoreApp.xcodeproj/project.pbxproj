@@ -11,7 +11,6 @@
 		0312032F19169DC100077E25 /* CouponDetailInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 0312032E19169DC100077E25 /* CouponDetailInterface.m */; };
 		031203321917D7EA00077E25 /* CouponDownloadInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 031203311917D7EA00077E25 /* CouponDownloadInterface.m */; };
 		031203351917D9F600077E25 /* CouponDownloadModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 031203341917D9F600077E25 /* CouponDownloadModel.m */; };
-		031203381917DC4200077E25 /* CategoryInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 031203371917DC4200077E25 /* CategoryInterface.m */; };
 		0312033B1917DE8000077E25 /* ServiceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0312033A1917DE8000077E25 /* ServiceModel.m */; };
 		0312033E1917E05200077E25 /* ServicesInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 0312033D1917E05200077E25 /* ServicesInterface.m */; };
 		031203411917E2C500077E25 /* StoreInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 031203401917E2C500077E25 /* StoreInterface.m */; };
@@ -292,6 +291,7 @@
 		4EF0917A190026EC00ABFE7D /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EF09179190026EC00ABFE7D /* AudioToolbox.framework */; };
 		4EF0917C190026F500ABFE7D /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EF0917B190026F500ABFE7D /* AVFoundation.framework */; };
 		4EF091A31900321B00ABFE7D /* libZXingWidget.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EF0919E1900320700ABFE7D /* libZXingWidget.a */; };
+		C195320B191B6D5000D3BFA8 /* EGOImageButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C195320A191B6D5000D3BFA8 /* EGOImageButton.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C1D8700F18EC0CAB0061F799 /* CouponDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1D8700D18EC0CAB0061F799 /* CouponDetailViewController.m */; };
 		C1D8701018EC0CAB0061F799 /* CouponDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1D8700E18EC0CAB0061F799 /* CouponDetailViewController.xib */; };
 		C1D8701418ED5B1D0061F799 /* ShopDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1D8701218ED5B1D0061F799 /* ShopDetailViewController.m */; };
@@ -339,8 +339,6 @@
 		031203311917D7EA00077E25 /* CouponDownloadInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CouponDownloadInterface.m; sourceTree = "<group>"; };
 		031203331917D9F600077E25 /* CouponDownloadModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CouponDownloadModel.h; sourceTree = "<group>"; };
 		031203341917D9F600077E25 /* CouponDownloadModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CouponDownloadModel.m; sourceTree = "<group>"; };
-		031203361917DC4200077E25 /* CategoryInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryInterface.h; sourceTree = "<group>"; };
-		031203371917DC4200077E25 /* CategoryInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryInterface.m; sourceTree = "<group>"; };
 		031203391917DE8000077E25 /* ServiceModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceModel.h; sourceTree = "<group>"; };
 		0312033A1917DE8000077E25 /* ServiceModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceModel.m; sourceTree = "<group>"; };
 		0312033C1917E05200077E25 /* ServicesInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServicesInterface.h; sourceTree = "<group>"; };
@@ -769,6 +767,8 @@
 		4EF09179190026EC00ABFE7D /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		4EF0917B190026F500ABFE7D /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		4EF091981900320600ABFE7D /* ZXingWidget.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ZXingWidget.xcodeproj; path = zxing/iphone/ZXingWidget/ZXingWidget.xcodeproj; sourceTree = "<group>"; };
+		C1953209191B6D5000D3BFA8 /* EGOImageButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGOImageButton.h; sourceTree = "<group>"; };
+		C195320A191B6D5000D3BFA8 /* EGOImageButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGOImageButton.m; sourceTree = "<group>"; };
 		C1D8700C18EC0CAB0061F799 /* CouponDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CouponDetailViewController.h; sourceTree = "<group>"; };
 		C1D8700D18EC0CAB0061F799 /* CouponDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CouponDetailViewController.m; sourceTree = "<group>"; };
 		C1D8700E18EC0CAB0061F799 /* CouponDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CouponDetailViewController.xib; sourceTree = "<group>"; };
@@ -1113,8 +1113,6 @@
 				0312032E19169DC100077E25 /* CouponDetailInterface.m */,
 				031203301917D7EA00077E25 /* CouponDownloadInterface.h */,
 				031203311917D7EA00077E25 /* CouponDownloadInterface.m */,
-				031203361917DC4200077E25 /* CategoryInterface.h */,
-				031203371917DC4200077E25 /* CategoryInterface.m */,
 				0312033C1917E05200077E25 /* ServicesInterface.h */,
 				0312033D1917E05200077E25 /* ServicesInterface.m */,
 				0312033F1917E2C500077E25 /* StoreInterface.h */,
@@ -1389,6 +1387,7 @@
 		4E96088818E48D6700418798 /* utility */ = {
 			isa = PBXGroup;
 			children = (
+				C1953208191B6D3B00D3BFA8 /* EGOImageButton */,
 				0312035E191A71DA00077E25 /* NSDate+DynamicDateString.h */,
 				0312035F191A71DA00077E25 /* NSDate+DynamicDateString.m */,
 				0312034E191945DF00077E25 /* EGOImage */,
@@ -1629,6 +1628,15 @@
 				4EF091A01900320700ABFE7D /* ZXingTests.octest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		C1953208191B6D3B00D3BFA8 /* EGOImageButton */ = {
+			isa = PBXGroup;
+			children = (
+				C1953209191B6D5000D3BFA8 /* EGOImageButton.h */,
+				C195320A191B6D5000D3BFA8 /* EGOImageButton.m */,
+			);
+			path = EGOImageButton;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1980,6 +1988,7 @@
 				03573ADA19055E2300A11A33 /* SingletonHelpers.m in Sources */,
 				03573ADD19055E4A00A11A33 /* MBSFilterInfo.m in Sources */,
 				4ECBF75C18F6E9B4003963E1 /* CouponDetailDownloadCell.m in Sources */,
+				C195320B191B6D5000D3BFA8 /* EGOImageButton.m in Sources */,
 				0312035A191945DF00077E25 /* EGOCache.m in Sources */,
 				03573B53190572A500A11A33 /* Reachability.m in Sources */,
 				4E2C6DE618D756EF00DF3772 /* MainViewOtherCell.m in Sources */,
@@ -1996,7 +2005,6 @@
 				03573B95190EA53800A11A33 /* JSONKit.m in Sources */,
 				0312035D191945DF00077E25 /* EGOImageView.m in Sources */,
 				4E96088118E4837100418798 /* YouhuiTileView.m in Sources */,
-				031203381917DC4200077E25 /* CategoryInterface.m in Sources */,
 				03573B9A190EA8DB00A11A33 /* KeyChainTool.m in Sources */,
 				031203351917D9F600077E25 /* CouponDownloadModel.m in Sources */,
 				4E96087E18E4815500418798 /* BaseViewController.m in Sources */,

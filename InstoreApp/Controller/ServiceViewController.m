@@ -8,10 +8,15 @@
 
 #import "ServiceViewController.h"
 #import "ServiceViewCell.h"
+#import "ServiceModel.h"
+#import "ServicesInterface.h"
 
-@interface ServiceViewController () <UITableViewDataSource,UITableViewDelegate>
+@interface ServiceViewController () <UITableViewDataSource,UITableViewDelegate,ServicesInterfaceDelegate>
 
 @property (nonatomic,strong) UITableView *mtableView;
+
+@property (nonatomic,strong) ServicesInterface *servicesInterface;
+@property (nonatomic,strong) NSMutableArray *serviceList;
 @end
 
 @implementation ServiceViewController
@@ -31,6 +36,7 @@
     // Do any additional setup after loading the view from its nib.
     
     self.title = @"服务";
+    self.serviceList = [NSMutableArray array];
     
     self.mtableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width,
                                                                 self.view.bounds.size.height)];
@@ -51,6 +57,9 @@
     [tableViewFooterView addSubview:label];
     self.mtableView.tableFooterView = tableViewFooterView;
     
+    self.servicesInterface = [[ServicesInterface alloc] init];
+    self.servicesInterface.delegate = self;
+    [self.servicesInterface getServicesList];
 }
 
 - (void)didReceiveMemoryWarning
@@ -74,6 +83,7 @@
         cell = [[[NSBundle mainBundle] loadNibNamed:@"ServiceViewCell" owner:self options:nil] objectAtIndex:0];
     }
     
+    cell.serviceList = self.serviceList;
     
     return  cell;
 }
@@ -92,6 +102,19 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 160;
+}
+
+#pragma mark - ServicesInterfaceDelegate <NSObject>
+-(void)getServicesListDidFinished:(NSArray *)resultList totalCount:(NSInteger)totalCount
+{
+    [self.serviceList addObjectsFromArray:resultList];
+    
+    [self.mtableView reloadData];
+}
+
+-(void)getServicesListDidFailed:(NSString *)errorMessage
+{
+    NSLog(@"%@",errorMessage);
 }
 
 

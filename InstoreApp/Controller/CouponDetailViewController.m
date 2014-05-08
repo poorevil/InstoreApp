@@ -11,6 +11,7 @@
 #import "CouponDetailInterface.h"
 #import "EGOImageView.h"
 #import "CouponModel.h"
+#import "StoreModel.h"
 
 #import "CouponDetailDownloadCell.h"
 #import "NSDate+DynamicDateString.h"
@@ -183,7 +184,8 @@
                 withTitleCell.titleLabel.text = @"有效期";
                 withTitleCell.iconView.image = [UIImage imageNamed:@"store-icon-clock"];
                 withTitleCell.detailLabel.text = [NSString stringWithFormat:@"%@ 至 %@",
-                                                  self.couponModel.startTime,self.couponModel.endTime];
+                                                  [self.couponModel.startTime toDateString],
+                                                  [self.couponModel.endTime toDateString]];
                 withTitleCell.detailLabel.numberOfLines = 99;
                 //TODO:计算文字高度
                 withTitleCell.detailLabel.frame = CGRectMake(withTitleCell.detailLabel.frame.origin.x,
@@ -194,18 +196,20 @@
             }
             break;
         case 2:
-            switch (indexPath.row) {
-                case 0:
-                    cell.textLabel.text = @"商户：迪奥服饰";
-                    break;
-                case 1:
-                    cell.textLabel.text = @"地址：4F/108";
-                    break;
-                case 2:
-                    cell.textLabel.text = @"电话：010-32324345";
-                    break;
-                default:
-                    break;
+            if (self.couponModel.store) {
+                switch (indexPath.row) {
+                    case 0:
+                        cell.textLabel.text = [NSString stringWithFormat:@"商户：%@",self.couponModel.store.title];
+                        break;
+                    case 1:
+                        cell.textLabel.text = [NSString stringWithFormat:@"地址：%@",self.couponModel.store.floor];
+                        break;
+                    case 2:
+                        cell.textLabel.text = [NSString stringWithFormat:@"电话：%@",self.couponModel.store.tel];
+                        break;
+                    default:
+                        break;
+                }
             }
             break;
         case 3:

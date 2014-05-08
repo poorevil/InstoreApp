@@ -29,14 +29,14 @@
         if (jsonMap && ![jsonMap isKindOfClass:[NSNull class]]) {
             self.sid = [[jsonMap objectForKey:@"id"] integerValue];
             self.logoUrl = [jsonMap objectForKey:@"logo"];
-            self.categoryId = [jsonMap objectForKey:@"category"];
+            self.categoryId = [[jsonMap objectForKey:@"category"] integerValue];
             self.title = [jsonMap objectForKey:@"title"];
             
             self.storeNo = [jsonMap objectForKey:@"storeNo"];
-            self.storeNo = [jsonMap objectForKey:@"floor"];
-            self.storeNo = [jsonMap objectForKey:@"address"];
-            self.storeNo = [jsonMap objectForKey:@"mapid"];
-            self.storeNo = [jsonMap objectForKey:@"tel"];
+            self.floor = [jsonMap objectForKey:@"floor"];
+            self.address = [jsonMap objectForKey:@"address"];
+            self.mapid = [jsonMap objectForKey:@"mapid"];
+            self.tel = [jsonMap objectForKey:@"tel"];
             
             self.followerCount = [jsonMap objectForKey:@"followerCount"]==nil?0:[[jsonMap objectForKey:@"followerCount"] integerValue];
             

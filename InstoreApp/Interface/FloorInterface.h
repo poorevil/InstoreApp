@@ -10,12 +10,13 @@
 
 @protocol FloorInterfaceDelegate <NSObject>
 
--(void)getFloorListDidFinished:(NSArray *)floorList totalCount:(NSInteger)totalCount currentPage:(NSInteger)currentPage;
+-(void)getFloorListDidFinished:(NSArray *)floorList;
 -(void)getFloorListDidFailed:(NSString *)errorMessage;
 
 @end
+
 @interface FloorInterface : BaseInterface <BaseInterfaceDelegate>
 @property (nonatomic,assign) id<FloorInterfaceDelegate> delegate;
 
--(void)getFloorListByPage:(NSInteger)page amount:(NSInteger)amount;
+-(void)getFloorListByAreaId:(NSInteger)areaId;
 @end

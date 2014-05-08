@@ -12,20 +12,19 @@
 
 @implementation FloorInterface
 
--(void)getFloorListByPage:(NSInteger)page amount:(NSInteger)amount
+-(void)getFloorListByAreaId:(NSInteger)areaId
 {
     self.interfaceUrl = [NSString stringWithFormat:@"%@api/%@/shop/floor",BASE_INTERFACE_DOMAIN, MALL_CODE];
-    self.args = @{@"page":[NSString stringWithFormat:@"%d",page],
-                  @"amount":[NSString stringWithFormat:@"%d",amount]};
+    self.args = @{@"areaId":[NSString stringWithFormat:@"%d",areaId]};
     self.baseDelegate = self;
     [self connect];
 }
 
 #pragma mark - BaseInterfaceDelegate
 //{
-//    "totalCount":<总页数>,
-//    "currentPage":<当前页>,
-//    "floors":[                         //优惠列表
+//    
+//    "areaId":<当前楼区>,
+//    "floors":[                         //楼层列表
 //              {
 //                  id: 'ID',
 //              name: '名称'
@@ -43,28 +42,21 @@
     
     if (jsonObj) {
         NSMutableArray *resultList = [NSMutableArray array];
-        NSInteger totalCount = 0;
-        NSInteger currentPage = 0;
-        if (jsonObj && [[jsonObj objectForKey:@"totalCount"] integerValue] > 0) {
-            totalCount = [[jsonObj objectForKey:@"totalCount"] integerValue];
-            currentPage = [[jsonObj objectForKey:@"currentPage"] integerValue];
-            
-            NSArray *storesArray = [jsonObj objectForKey:@"list"];
-            if (storesArray) {
-                for (NSDictionary *floorDict in storesArray) {
-                    FloorModel *floor = [[FloorModel alloc] initWithJsonMap:floorDict];
+        if (jsonObj) {
+            NSInteger areaId = [[jsonObj objectForKey:@"totalCount"] integerValue];
+            NSArray *floorsArray = [jsonObj objectForKey:@"floors"];
+            if (floorsArray) {
+                for (NSDictionary *floorDict in floorsArray) {
+                    FloorModel *floor = [[FloorModel alloc] initWithJsonMap:floorDict areaId:areaId];
                     [resultList addObject:floor];
                 }
             }
         }
         
-        if ([self.delegate respondsToSelector:@selector(getFloorListDidFinished:totalCount:currentPage:)]) {
-            [self.delegate getFloorListDidFinished:resultList
-                                        totalCount:totalCount
-                                       currentPage:currentPage];
+        if ([self.delegate respondsToSelector:@selector(getFloorListDidFinished:)]) {
+            [self.delegate getFloorListDidFinished:resultList];
         }
     }
-
 }
 
 -(void)requestIsFailed:(NSError *)error{
