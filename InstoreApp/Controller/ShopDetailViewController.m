@@ -10,10 +10,17 @@
 #import "ShopDetailHeaderView.h"
 #import "ShopDetailLocationCell.h"
 #import "ShopDetailItemListCell.h"
+#import "ShopDetailTypeCell.h"
 
-@interface ShopDetailViewController ()
+#import "StoreDetailInterface.h"
+#import "StoreModel.h"
+
+@interface ShopDetailViewController () <StoreDetailInterfaceDelegate>
 
 @property (nonatomic,strong) ShopDetailHeaderView *headerView;
+
+@property (nonatomic,strong) StoreDetailInterface *storeDetailInterface;
+@property (nonatomic,strong) StoreModel *storeModel;
 
 @end
 
@@ -38,6 +45,10 @@
     [self initToolBar];
     
     self.title = @"星巴克";
+    
+    self.storeDetailInterface = [[StoreDetailInterface alloc] init];
+    self.storeDetailInterface.delegate = self;
+    [self.storeDetailInterface getStoreDetailByShopId:self.shopId commentSize:10 couponSize:10];
 
 }
 
@@ -175,25 +186,30 @@
                                            options:nil] objectAtIndex:0];
     }
     
-//    switch (indexPath.section) {
-//        case 0:
-//            cell.textLabel.text = @"餐饮    人均：￥50";
-//            break;
-//        case 1:
-//            cell.textLabel.text = @"010-8634294";
-//            break;
-//        case 2:
-//            cell.textLabel.text = @"品类列表";
-//            break;
-//        case 3:
-//            cell.textLabel.text = @"店铺描述";
-//            break;
-//        case 4:
-//            cell.textLabel.text = @"品论列表";
-//            break;
-//        default:
-//            break;
-//    }
+    switch (indexPath.section) {
+        case 0:{
+            ShopDetailTypeCell *sdtc = (ShopDetailTypeCell *)cell;
+            sdtc.storeModel = self.storeModel;
+            break;
+        }
+        case 1:{
+            ShopDetailLocationCell *sdtc = (ShopDetailLocationCell *)cell;
+            sdtc.storeModel = self.storeModel;
+            cell.textLabel.text = @"010-8634294";
+            break;
+        }
+        case 2:
+            cell.textLabel.text = @"品类列表";
+            break;
+        case 3:
+            cell.textLabel.text = @"店铺描述";
+            break;
+        case 4:
+            cell.textLabel.text = @"品论列表";
+            break;
+        default:
+            break;
+    }
     
     return cell;
 }
@@ -215,5 +231,17 @@
         default:
             return 44;
     }
+}
+
+#pragma mark - StoreDetailInterfaceDelegate <NSObject>
+-(void)getStoreDetailDidFinished:(StoreModel*)storeModel
+{
+    self.storeModel = storeModel;
+    [self.mtableView reloadData];
+}
+
+-(void)getStoreDetailDidFailed:(NSString *)errorMessage
+{
+    NSLog(@"%@",errorMessage);
 }
 @end

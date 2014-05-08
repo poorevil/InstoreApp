@@ -7,6 +7,8 @@
 //
 
 #import "ShopDetailLocationCell.h"
+#import "StoreModel.h"
+#import "FloorModel.h"
 
 @implementation ShopDetailLocationCell
 
@@ -24,6 +26,13 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+-(void)setStoreModel:(StoreModel *)storeModel
+{
+    _storeModel = storeModel;
+    self.floorLabel.text = self.storeModel.floor.fName;
+    self.telLabel.text = self.storeModel.tel;
 }
 
 @end

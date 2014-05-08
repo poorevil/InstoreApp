@@ -7,6 +7,8 @@
 //
 
 #import "ShopDetailTypeCell.h"
+#import "StoreModel.h"
+#import "CategoryModel.h"
 
 @implementation ShopDetailTypeCell
 
@@ -24,6 +26,13 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+-(void)setStoreModel:(StoreModel *)storeModel
+{
+    _storeModel = storeModel;
+    self.categoryLabel.text = self.storeModel.categoryModel.cName;
+    //TODO:人均
 }
 
 @end

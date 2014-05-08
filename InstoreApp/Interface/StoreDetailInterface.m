@@ -12,10 +12,12 @@
 
 @implementation StoreDetailInterface
 
--(void)getStoreDetailByShopId:(NSInteger)shopId
+-(void)getStoreDetailByShopId:(NSInteger)shopId commentSize:(NSInteger)commentSize couponSize:(NSInteger)couponSize
 {
     self.interfaceUrl = [NSString stringWithFormat:@"%@api/%@/shop_detail",BASE_INTERFACE_DOMAIN, MALL_CODE];
-    self.args = @{@"shopid":[NSString stringWithFormat:@"%d",shopId]};
+    self.args = @{@"shopid":[NSString stringWithFormat:@"%d",shopId],
+                  @"commentSize":[NSString stringWithFormat:@"%d",commentSize],
+                  @"couponSize":[NSString stringWithFormat:@"%d",couponSize]};
     self.baseDelegate = self;
     [self connect];
 }

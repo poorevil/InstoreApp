@@ -7,6 +7,8 @@
 //
 
 #import "StoreModel.h"
+#import "FloorModel.h"
+#import "CategoryModel.h"
 
 @implementation StoreModel
 //{
@@ -29,11 +31,11 @@
         if (jsonMap && ![jsonMap isKindOfClass:[NSNull class]]) {
             self.sid = [[jsonMap objectForKey:@"id"] integerValue];
             self.logoUrl = [jsonMap objectForKey:@"logo"];
-            self.categoryId = [[jsonMap objectForKey:@"category"] integerValue];
+            self.categoryModel = [[CategoryModel alloc] initWithJsonMap:[jsonMap objectForKey:@"category"]];
             self.title = [jsonMap objectForKey:@"title"];
             
             self.storeNo = [jsonMap objectForKey:@"storeNo"];
-            self.floor = [jsonMap objectForKey:@"floor"];
+            self.floor = [[FloorModel alloc] initWithJsonMap:[jsonMap objectForKey:@"floor"] areaId:0];
             self.address = [jsonMap objectForKey:@"address"];
             self.mapid = [jsonMap objectForKey:@"mapid"];
             self.tel = [jsonMap objectForKey:@"tel"];

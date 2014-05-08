@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+@class StoreModel;
+
 @interface ShopDetailLocationCell : UITableViewCell
+
+@property (nonatomic,strong) IBOutlet UILabel *telLabel;
+@property (nonatomic,strong) IBOutlet UILabel *floorLabel;
+
+@property (nonatomic,strong) StoreModel *storeModel;
 
 @end

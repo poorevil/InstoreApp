@@ -18,5 +18,5 @@
 
 @interface StoreDetailInterface : BaseInterface <BaseInterfaceDelegate>
 @property (nonatomic,assign) id<StoreDetailInterfaceDelegate> delegate;
--(void)getStoreDetailByShopId:(NSInteger)shopId;
+-(void)getStoreDetailByShopId:(NSInteger)shopId commentSize:(NSInteger)commentSize couponSize:(NSInteger)couponSize;
 @end

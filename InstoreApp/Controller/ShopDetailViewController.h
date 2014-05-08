@@ -11,5 +11,6 @@
 @interface ShopDetailViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic,strong) IBOutlet UITableView *mtableView;
+@property (nonatomic,assign) NSInteger shopId;
 
 @end
