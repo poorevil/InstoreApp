@@ -163,7 +163,7 @@
     CGSize constraintSize = CGSizeMake(textLabelFrame.size.width, MAXFLOAT);
     CGSize textLabelSize = [self.textLabel.text sizeWithFont:cellFont 
                                            constrainedToSize:constraintSize 
-                                               lineBreakMode:UILineBreakModeWordWrap];
+                                               lineBreakMode:NSLineBreakByWordWrapping];
     textLabelFrame.size.height = textLabelSize.height;
     
     self.textLabel.frame = textLabelFrame;

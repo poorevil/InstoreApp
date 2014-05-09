@@ -68,7 +68,7 @@ object = _object;
     NSString *caption = [object objectForKey:@"title"]!=[NSNull null]? [object objectForKey:@"title"]:@"";
     CGSize labelSize = CGSizeZero;
     UIFont *labelFont = [UIFont boldSystemFontOfSize:14.0];
-    labelSize = [caption sizeWithFont:labelFont constrainedToSize:CGSizeMake(width, INT_MAX) lineBreakMode:UILineBreakModeWordWrap];
+    labelSize = [caption sizeWithFont:labelFont constrainedToSize:CGSizeMake(width, INT_MAX) lineBreakMode:NSLineBreakByWordWrapping];
     height += labelSize.height;
     
     height += MARGIN;

@@ -25,7 +25,7 @@
         UILabel *aLabel = [[UILabel alloc] init];
         aLabel.backgroundColor = [UIColor clearColor];
         aLabel.font = [UIFont systemFontOfSize: 12.0];
-        aLabel.textAlignment = UITextAlignmentCenter;
+        aLabel.textAlignment = NSTextAlignmentCenter;
         aLabel.contentMode = UIViewContentModeCenter;
         aLabel.textColor = [UIColor colorWithRed:52.0/255 green:139.0/255 blue:206.0/255 alpha:1];
         self.firstLineTextLabel = aLabel;
@@ -49,7 +49,7 @@
     CGSize constraintSize = CGSizeMake(200.0f, MAXFLOAT);
     CGSize firstLineTextLabelSize = [firstLineTextLabel.text sizeWithFont:cellFont 
                                                constrainedToSize:constraintSize 
-                                                   lineBreakMode:UILineBreakModeWordWrap];
+                                                   lineBreakMode:NSLineBreakByWordWrapping];
     CGRect firstLineLabelFrame = CGRectZero;
     firstLineLabelFrame.size.width = firstLineTextLabelSize.width;
     firstLineLabelFrame.size.height = firstLineTextLabelSize.height;
@@ -84,7 +84,7 @@
     if (self.firstLineTextLabel.text) {
         CGSize firstLineTextLabelSize = [firstLineTextLabel.text sizeWithFont:cellFont 
                                                             constrainedToSize:constraintSize 
-                                                                lineBreakMode:UILineBreakModeWordWrap];
+                                                                lineBreakMode:NSLineBreakByWordWrapping];
         lineOneWidth += firstLineTextLabelSize.width;
         lineOneHeight = MAX(lineOneHeight, firstLineTextLabelSize.height);
     }

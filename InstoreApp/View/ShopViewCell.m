@@ -10,7 +10,7 @@
 #import "EGOImageView.h"
 #import "StoreModel.h"
 #import "FloorModel.h"
-
+#import "CategoryModel.h"
 
 @implementation ShopViewCell
 
@@ -36,8 +36,8 @@
     
     self.shopIconImageView.imageURL = [NSURL URLWithString:self.storeModel.logoUrl];
     self.titleLabel.text = self.storeModel.title;
-    self.typeLabel.text = [NSString stringWithFormat:@"%d",self.storeModel.categoryId];
-    self.floorLabel.text = self.storeModel.floor;
+    self.typeLabel.text = [NSString stringWithFormat:@"%d",self.storeModel.categoryModel.cid];
+    self.floorLabel.text = self.storeModel.floor.fName;
     self.favLabel.text = [NSString stringWithFormat:@"%d",self.storeModel.followerCount];
 }
 
