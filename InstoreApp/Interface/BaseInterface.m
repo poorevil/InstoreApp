@@ -60,8 +60,11 @@
             }
             self.request = formRequest;
         }else{
-        
             self.request = [ASIHTTPRequest requestWithURL:url];
+            
+            if (self.requestMethod) {
+                [self.request setRequestMethod:self.requestMethod];
+            }
         }
                 
         [self.request setDelegate:self];

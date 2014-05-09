@@ -292,6 +292,12 @@
 		4EF0917C190026F500ABFE7D /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EF0917B190026F500ABFE7D /* AVFoundation.framework */; };
 		4EF091A31900321B00ABFE7D /* libZXingWidget.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EF0919E1900320700ABFE7D /* libZXingWidget.a */; };
 		C195320B191B6D5000D3BFA8 /* EGOImageButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C195320A191B6D5000D3BFA8 /* EGOImageButton.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		C195320E191CB58E00D3BFA8 /* UserInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C195320D191CB58E00D3BFA8 /* UserInfoModel.m */; };
+		C1953211191CB68F00D3BFA8 /* UserInfoInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = C1953210191CB68F00D3BFA8 /* UserInfoInterface.m */; };
+		C1953214191CC00D00D3BFA8 /* CouponsDownloadListInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = C1953213191CC00D00D3BFA8 /* CouponsDownloadListInterface.m */; };
+		C1953217191CC27100D3BFA8 /* MyShopsListInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = C1953216191CC27100D3BFA8 /* MyShopsListInterface.m */; };
+		C195321A191CC4B800D3BFA8 /* MyCouponsListInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = C1953219191CC4B800D3BFA8 /* MyCouponsListInterface.m */; };
+		C195321D191CC6A200D3BFA8 /* BindPhoneInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = C195321C191CC6A200D3BFA8 /* BindPhoneInterface.m */; };
 		C1D8700F18EC0CAB0061F799 /* CouponDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1D8700D18EC0CAB0061F799 /* CouponDetailViewController.m */; };
 		C1D8701018EC0CAB0061F799 /* CouponDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1D8700E18EC0CAB0061F799 /* CouponDetailViewController.xib */; };
 		C1D8701418ED5B1D0061F799 /* ShopDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1D8701218ED5B1D0061F799 /* ShopDetailViewController.m */; };
@@ -769,6 +775,18 @@
 		4EF091981900320600ABFE7D /* ZXingWidget.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ZXingWidget.xcodeproj; path = zxing/iphone/ZXingWidget/ZXingWidget.xcodeproj; sourceTree = "<group>"; };
 		C1953209191B6D5000D3BFA8 /* EGOImageButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGOImageButton.h; sourceTree = "<group>"; };
 		C195320A191B6D5000D3BFA8 /* EGOImageButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGOImageButton.m; sourceTree = "<group>"; };
+		C195320C191CB58E00D3BFA8 /* UserInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoModel.h; sourceTree = "<group>"; };
+		C195320D191CB58E00D3BFA8 /* UserInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoModel.m; sourceTree = "<group>"; };
+		C195320F191CB68F00D3BFA8 /* UserInfoInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoInterface.h; sourceTree = "<group>"; };
+		C1953210191CB68F00D3BFA8 /* UserInfoInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoInterface.m; sourceTree = "<group>"; };
+		C1953212191CC00D00D3BFA8 /* CouponsDownloadListInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CouponsDownloadListInterface.h; sourceTree = "<group>"; };
+		C1953213191CC00D00D3BFA8 /* CouponsDownloadListInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CouponsDownloadListInterface.m; sourceTree = "<group>"; };
+		C1953215191CC27100D3BFA8 /* MyShopsListInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyShopsListInterface.h; sourceTree = "<group>"; };
+		C1953216191CC27100D3BFA8 /* MyShopsListInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyShopsListInterface.m; sourceTree = "<group>"; };
+		C1953218191CC4B800D3BFA8 /* MyCouponsListInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCouponsListInterface.h; sourceTree = "<group>"; };
+		C1953219191CC4B800D3BFA8 /* MyCouponsListInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCouponsListInterface.m; sourceTree = "<group>"; };
+		C195321B191CC6A200D3BFA8 /* BindPhoneInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BindPhoneInterface.h; sourceTree = "<group>"; };
+		C195321C191CC6A200D3BFA8 /* BindPhoneInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BindPhoneInterface.m; sourceTree = "<group>"; };
 		C1D8700C18EC0CAB0061F799 /* CouponDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CouponDetailViewController.h; sourceTree = "<group>"; };
 		C1D8700D18EC0CAB0061F799 /* CouponDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CouponDetailViewController.m; sourceTree = "<group>"; };
 		C1D8700E18EC0CAB0061F799 /* CouponDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CouponDetailViewController.xib; sourceTree = "<group>"; };
@@ -1094,6 +1112,8 @@
 				031203341917D9F600077E25 /* CouponDownloadModel.m */,
 				031203391917DE8000077E25 /* ServiceModel.h */,
 				0312033A1917DE8000077E25 /* ServiceModel.m */,
+				C195320C191CB58E00D3BFA8 /* UserInfoModel.h */,
+				C195320D191CB58E00D3BFA8 /* UserInfoModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1125,6 +1145,16 @@
 				0312034919193BD800077E25 /* FloorInterface.m */,
 				0312034B19193E7000077E25 /* CategoryListInterface.h */,
 				0312034C19193E7000077E25 /* CategoryListInterface.m */,
+				C195320F191CB68F00D3BFA8 /* UserInfoInterface.h */,
+				C1953210191CB68F00D3BFA8 /* UserInfoInterface.m */,
+				C1953212191CC00D00D3BFA8 /* CouponsDownloadListInterface.h */,
+				C1953213191CC00D00D3BFA8 /* CouponsDownloadListInterface.m */,
+				C1953215191CC27100D3BFA8 /* MyShopsListInterface.h */,
+				C1953216191CC27100D3BFA8 /* MyShopsListInterface.m */,
+				C1953218191CC4B800D3BFA8 /* MyCouponsListInterface.h */,
+				C1953219191CC4B800D3BFA8 /* MyCouponsListInterface.m */,
+				C195321B191CC6A200D3BFA8 /* BindPhoneInterface.h */,
+				C195321C191CC6A200D3BFA8 /* BindPhoneInterface.m */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
@@ -1945,6 +1975,8 @@
 				4E9608CB18E9BD4300418798 /* NSTimer+Addition.m in Sources */,
 				03573B861906DA4600A11A33 /* BaseInterface.m in Sources */,
 				03573B6E190578FC00A11A33 /* CityListViewController.m in Sources */,
+				C1953211191CB68F00D3BFA8 /* UserInfoInterface.m in Sources */,
+				C195321A191CC4B800D3BFA8 /* MyCouponsListInterface.m in Sources */,
 				03573B9D190EAB9900A11A33 /* GlobeModel.m in Sources */,
 				03573ACB19055C7500A11A33 /* SVProgressHUD.m in Sources */,
 				4E9608A718E48D6700418798 /* PullTableView.m in Sources */,
@@ -1978,6 +2010,7 @@
 				4E9608BE18E7CEC900418798 /* MeHeaderView.m in Sources */,
 				0312033E1917E05200077E25 /* ServicesInterface.m in Sources */,
 				03573B781906C03700A11A33 /* YouhuiCategoryViewController.m in Sources */,
+				C195321D191CC6A200D3BFA8 /* BindPhoneInterface.m in Sources */,
 				4ECBF76118F6EAEA003963E1 /* CouponDetailWithTitleCell.m in Sources */,
 				03573B4F190572A500A11A33 /* ASIHTTPRequest.m in Sources */,
 				03573B7F1906D05700A11A33 /* FloorSelectViewController.m in Sources */,
@@ -2001,6 +2034,7 @@
 				4E2C6DF118D75CC400DF3772 /* MeViewController.m in Sources */,
 				4E9608A418E48D6700418798 /* LoadMoreTableFooterView.m in Sources */,
 				03573B4B190572A500A11A33 /* ASIDataCompressor.m in Sources */,
+				C1953214191CC00D00D3BFA8 /* CouponsDownloadListInterface.m in Sources */,
 				4E25476018EB1BC1007388B6 /* MainViewYouhuiCell.m in Sources */,
 				03573B95190EA53800A11A33 /* JSONKit.m in Sources */,
 				0312035D191945DF00077E25 /* EGOImageView.m in Sources */,
@@ -2012,7 +2046,9 @@
 				4E2C6DFB18D75CE200DF3772 /* ShopViewController.m in Sources */,
 				4ECBF74718F59395003963E1 /* ShopDetailCommentsCell.m in Sources */,
 				0312035C191945DF00077E25 /* EGOImageLoader.m in Sources */,
+				C195320E191CB58E00D3BFA8 /* UserInfoModel.m in Sources */,
 				4E9608B018E48D6700418798 /* PSCollectionView.m in Sources */,
+				C1953217191CC27100D3BFA8 /* MyShopsListInterface.m in Sources */,
 				4E9608B118E48D6700418798 /* PSCollectionViewCell.m in Sources */,
 				4ECBF71718F45219003963E1 /* ShopDetailLocationCell.m in Sources */,
 				0312034D19193E7000077E25 /* CategoryListInterface.m in Sources */,

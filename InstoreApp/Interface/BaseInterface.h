@@ -23,6 +23,8 @@
 @property (nonatomic,retain) NSDictionary *args;        //请求参数
 @property (nonatomic,retain) NSDictionary *postParams;        //post请求参数
 
+@property (nonatomic,retain) NSString *requestMethod;//请求方式
+
 @property (nonatomic,assign) id<BaseInterfaceDelegate> baseDelegate;
 
 -(void)connect;
