@@ -11,6 +11,8 @@
 #import "ShopDetailLocationCell.h"
 #import "ShopDetailItemListCell.h"
 #import "ShopDetailTypeCell.h"
+#import "ShopDetailDescriptionCell.h"
+#import "ShopDetailCommentsCell.h"
 
 #import "StoreDetailInterface.h"
 #import "StoreModel.h"
@@ -193,20 +195,28 @@
             break;
         }
         case 1:{
-            ShopDetailLocationCell *sdtc = (ShopDetailLocationCell *)cell;
-            sdtc.storeModel = self.storeModel;
-            cell.textLabel.text = @"010-8634294";
+            ShopDetailLocationCell *sdtlc = (ShopDetailLocationCell *)cell;
+            sdtlc.storeModel = self.storeModel;
             break;
         }
-        case 2:
-            cell.textLabel.text = @"品类列表";
+        case 2:{
+            ShopDetailItemListCell *sditc = (ShopDetailItemListCell *)cell;
+            sditc.storeModel = self.storeModel;
+//            cell.textLabel.text = @"品类列表";
             break;
-        case 3:
-            cell.textLabel.text = @"店铺描述";
+        }
+        case 3:{
+            ShopDetailDescriptionCell *sddtc = (ShopDetailDescriptionCell *)cell;
+            sddtc.descLabel.text = self.storeModel.descStr;
+//            cell.textLabel.text = @"店铺描述";
             break;
-        case 4:
-            cell.textLabel.text = @"品论列表";
+        }
+        case 4:{
+            ShopDetailCommentsCell *sdctc = (ShopDetailCommentsCell *)cell;
+            sdctc.storeModel = self.storeModel;
+//            cell.textLabel.text = @"评论列表";
             break;
+        }
         default:
             break;
     }
@@ -225,9 +235,6 @@
         case 3:
         case 4:
             return 95;
-//        case 4:
-//            cell.textLabel.text = @"品论列表";
-//            break;
         default:
             return 44;
     }

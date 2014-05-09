@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+@class StoreModel;
 @interface ShopDetailCommentsCell : UITableViewCell
+
+@property (nonatomic,strong) StoreModel *storeModel;
 
 @end

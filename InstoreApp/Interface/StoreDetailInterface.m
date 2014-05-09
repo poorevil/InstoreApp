@@ -23,39 +23,50 @@
 }
 
 #pragma mark - BaseInterfaceDelegate
-//{                                       //商户对象
-//    <商户对象基本信息>,
-//    "coupons":[{商户发布的优惠劵},{商户发布的优惠劵},{商户发布的优惠劵},...],
-//    "comments"[{商户的评论信息},{商户的评论信息},{商户的评论信息},...]
+//{
 //    
-//title: '商户名称',
-//logo: '商户LOGO',
-//    id: '商户ID',
-//category: '商户类型',
-//floor: '楼层',
-//roomNum: '商户房间号',
-//description: '介绍',
-//followerCount: '关注人数',
-//    特殊属性: '特殊属性',
-//    特殊属性: '特殊属性',
-//    特殊属性: '特殊属性',
-//    特殊属性: '特殊属性',
-//coupons:[                           // 商户的优惠劵
-//         {
-//             id: '优惠ID',
-//         title: '优惠标题',
-//         type: '优惠类型',              // 1: 优惠活动; 2: 优惠券; 3: 团购;
-//         tag: '优惠标签',
-//         image: '优惠图',
-//         }...
-//         ],
-//comments:[                          // 商户的评论
-//          {
-//          author: "发布人名字",
-//          content: "内容",
-//          createTime: "发布时间"
-//          },...
-//          ]
+//    "id": 10,
+//    "coupons": [
+//                {
+//                    "id": 191,
+//                    "title": "扒者",
+//                    "type": 3
+//                },
+//                {
+//                    "id": 171,
+//                    "title": "质亡瘴名冀腾本",
+//                    "type": 2
+//                },
+//                {
+//                    "id": 155,
+//                    "title": "龚伺藏镭伶缮比道认毯",
+//                    "type": 1
+//                },
+//                {
+//                    "id": 101,
+//                    "title": "黑式",
+//                    "hotTag": "HOT",
+//                    "type": 3
+//                },
+//                {
+//                    "id": 103,
+//                    "title": "鞘帛陌蔚炬狰兔姻碍谴",
+//                    "type": 2
+//                }
+//                ],
+//    "logo": "http://storeLogo",
+//    "category": {
+//        "id": 2,
+//        "name": "分类2"
+//    },
+//    "title": "商户10",
+//    "area": "E",
+//    "floor": "2",
+//    "description": "药鼻庙瓤愚矛慷凯少陶掏抛税链篇...",
+//    "roomNum": "8831",
+//    "date": "2014-05-09 04:00:39 UTC",
+//    "followerCount": 0
+//    
 //}
 -(void)parseResult:(ASIHTTPRequest *)request{
     NSString *jsonStr = [[NSString alloc] initWithData:[request responseData] encoding:NSUTF8StringEncoding];

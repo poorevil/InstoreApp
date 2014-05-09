@@ -10,6 +10,10 @@
 
 @implementation CategoryModel
 
+//{
+//   "id": 2,
+//   "name": "分类2"
+//},
 -(id)initWithJsonMap:(NSDictionary *)jsonMap
 {
     if (self = [super init]) {

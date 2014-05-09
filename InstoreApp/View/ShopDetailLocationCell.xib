@@ -36,6 +36,10 @@
                     </label>
                 </subviews>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="floorLabel" destination="6yK-rm-kQC" id="bjG-Rr-M6p"/>
+                <outlet property="telLabel" destination="VRz-XG-iHg" id="wTV-T7-MSp"/>
+            </connections>
         </tableViewCell>
     </objects>
     <resources>

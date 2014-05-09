@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+#import "StoreModel.h"
 @interface ShopDetailItemListCell : UITableViewCell <UIScrollViewDelegate>
 
 @property (nonatomic,strong) IBOutlet UIScrollView *mscrollView;
 @property (nonatomic,strong) IBOutlet UIPageControl *pageControl;
+
+@property (nonatomic,strong) StoreModel *storeModel;
 @end

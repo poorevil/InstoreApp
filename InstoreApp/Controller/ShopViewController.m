@@ -102,6 +102,7 @@
     ShopDetailViewController *shopDetailVC = [[ShopDetailViewController alloc]
                                               initWithNibName:@"ShopDetailViewController"
                                               bundle:nil];
+    shopDetailVC.shopId = [[self.storeList objectAtIndex:indexPath.row] sid];
     shopDetailVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:shopDetailVC animated:YES];
     shopDetailVC.hidesBottomBarWhenPushed = NO;
