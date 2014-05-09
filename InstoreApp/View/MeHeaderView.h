@@ -8,7 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+@class UserInfoModel;
+@class EGOImageView;
 @interface MeHeaderView : UIView
 
-@property (nonatomic,strong) IBOutlet UIImageView *headIconImageView;
+@property (nonatomic,strong) IBOutlet EGOImageView *headIconImageView;
+@property (nonatomic,strong) IBOutlet UILabel *cardNumLabel;
+@property (nonatomic,strong) IBOutlet UILabel *nickNameLabel;
+
+
+@property (nonatomic,strong) UserInfoModel *userInfo;
+
+
 @end

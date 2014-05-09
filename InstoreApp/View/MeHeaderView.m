@@ -10,6 +10,9 @@
 #import "AppDelegate.h"
 #import "BindPhoneViewController.h"
 
+#import "UserInfoModel.h"
+#import "EGOImageView.h"
+
 @implementation MeHeaderView
 
 - (id)initWithFrame:(CGRect)frame
@@ -44,6 +47,15 @@
     bpvc.hidesBottomBarWhenPushed = YES;
     [nav pushViewController:bpvc animated:YES];
     bpvc.hidesBottomBarWhenPushed = NO;
+}
+
+-(void)setUserInfo:(UserInfoModel *)userInfo
+{
+    _userInfo = userInfo;
+    
+//    self.headIconImageView.imageURL = [NSURL URLWithString:self.userInfo.photo];
+    self.nickNameLabel.text = self.userInfo.name;
+    self.cardNumLabel.text = self.userInfo.clubCard;
 }
 
 @end

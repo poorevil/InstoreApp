@@ -9,10 +9,16 @@
 #import "MeViewController.h"
 #import "MeHeaderView.h"
 
-@interface MeViewController ()
+#import "UserInfoInterface.h"
+#import "UserInfoModel.h"
+
+
+@interface MeViewController () <UserInfoInterfaceDelegate>
 
 @property (nonatomic,strong) MeHeaderView *headerView;
 
+@property (nonatomic,strong) UserInfoInterface *userInfoInterface;
+@property (nonatomic,strong) UserInfoModel *userInfo;
 @end
 
 @implementation MeViewController
@@ -33,10 +39,19 @@
     
     self.title = @"我的信息";
     
-    self.headerView = [[[NSBundle mainBundle] loadNibNamed:@"MeHeaderView"
-                                                    owner:self options:nil] objectAtIndex:0];
-    self.mtableView.tableHeaderView = self.headerView;
+    [self initHeaderView];
     
+    self.userInfoInterface = [[UserInfoInterface alloc] init];
+    self.userInfoInterface.delegate = self;
+    [self.userInfoInterface getUserInfo];
+    
+}
+
+-(void)initHeaderView
+{
+    self.headerView = [[[NSBundle mainBundle] loadNibNamed:@"MeHeaderView"
+                                                     owner:self options:nil] objectAtIndex:0];
+    self.mtableView.tableHeaderView = self.headerView;
 }
 
 - (void)didReceiveMemoryWarning
@@ -176,5 +191,15 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
+#pragma mark - UserInfoInterfaceDelegate <NSObject>
+-(void)getUserInfoDidFinished:(UserInfoModel *)userInfo
+{
+    self.userInfo = userInfo;
+    self.headerView.userInfo = self.userInfo;
+}
 
+-(void)getUserInfoDidFailed:(NSString *)errorMessage
+{
+    NSLog(@"%@",errorMessage);
+}
 @end
