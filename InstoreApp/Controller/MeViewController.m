@@ -12,6 +12,8 @@
 #import "UserInfoInterface.h"
 #import "UserInfoModel.h"
 
+#import "DownloadCouponsViewController.h"
+
 
 @interface MeViewController () <UserInfoInterfaceDelegate>
 
@@ -66,9 +68,9 @@
 {
     switch (section) {
         case 0:
-            return 3;
+            return 2;
         case 1:
-            return 3;
+            return 2;
         case 2:
             return 1;
         case 3:
@@ -109,11 +111,11 @@
                     cell.detailTextLabel.text=@"查看管理收到的消息";
                     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                     break;
-                case 2:
-                    cell.textLabel.text = @"消费记录";
-                    cell.detailTextLabel.text=@"查看历史消费记录";
-                    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-                    break;
+//                case 2:
+//                    cell.textLabel.text = @"消费记录";
+//                    cell.detailTextLabel.text=@"查看历史消费记录";
+//                    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+//                    break;
             }
             break;
         case 1:
@@ -123,21 +125,21 @@
                     cell.detailTextLabel.text=@"查看管理关注的商家";
                     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                     break;
+//                case 1:
+//                    cell.textLabel.text = @"我关注的商品";
+//                    cell.detailTextLabel.text=@"查看管理关注的商品";
+//                    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+//                    break;
                 case 1:
-                    cell.textLabel.text = @"我关注的商品";
-                    cell.detailTextLabel.text=@"查看管理关注的商品";
-                    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-                    break;
-                case 2:
                     cell.textLabel.text = @"我关注的优惠";
                     cell.detailTextLabel.text=@"查看管理关注的优惠劵";
                     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                     break;
-                case 3:
-                    cell.textLabel.text = @"消费记录";
-                    cell.detailTextLabel.text=@"";
-                    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-                    break;
+//                case 2:
+//                    cell.textLabel.text = @"消费记录";
+//                    cell.detailTextLabel.text=@"";
+//                    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+//                    break;
             }
             break;
             
@@ -180,7 +182,6 @@
             break;
     }
     
-    
     return  cell;
 }
 
@@ -189,6 +190,19 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    //DownloadCouponsViewController
+    switch (indexPath.section) {
+        case 0:
+            switch (indexPath.row) {
+                case 0:{
+                    DownloadCouponsViewController *dcvc = [[DownloadCouponsViewController alloc] initWithNibName:@"DownloadCouponsViewController" bundle:nil];
+                    dcvc.hidesBottomBarWhenPushed = YES;
+                    [self.navigationController pushViewController:dcvc animated:YES];
+                    dcvc.hidesBottomBarWhenPushed = NO;
+                }
+            }
+    }
 }
 
 #pragma mark - UserInfoInterfaceDelegate <NSObject>

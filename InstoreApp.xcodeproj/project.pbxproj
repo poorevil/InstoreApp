@@ -298,6 +298,8 @@
 		C1953217191CC27100D3BFA8 /* MyShopsListInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = C1953216191CC27100D3BFA8 /* MyShopsListInterface.m */; };
 		C195321A191CC4B800D3BFA8 /* MyCouponsListInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = C1953219191CC4B800D3BFA8 /* MyCouponsListInterface.m */; };
 		C195321D191CC6A200D3BFA8 /* BindPhoneInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = C195321C191CC6A200D3BFA8 /* BindPhoneInterface.m */; };
+		C1953221191CDBF500D3BFA8 /* DownloadCouponsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C195321F191CDBF500D3BFA8 /* DownloadCouponsViewController.m */; };
+		C1953222191CDBF500D3BFA8 /* DownloadCouponsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1953220191CDBF500D3BFA8 /* DownloadCouponsViewController.xib */; };
 		C1D8700F18EC0CAB0061F799 /* CouponDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1D8700D18EC0CAB0061F799 /* CouponDetailViewController.m */; };
 		C1D8701018EC0CAB0061F799 /* CouponDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1D8700E18EC0CAB0061F799 /* CouponDetailViewController.xib */; };
 		C1D8701418ED5B1D0061F799 /* ShopDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1D8701218ED5B1D0061F799 /* ShopDetailViewController.m */; };
@@ -787,6 +789,9 @@
 		C1953219191CC4B800D3BFA8 /* MyCouponsListInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCouponsListInterface.m; sourceTree = "<group>"; };
 		C195321B191CC6A200D3BFA8 /* BindPhoneInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BindPhoneInterface.h; sourceTree = "<group>"; };
 		C195321C191CC6A200D3BFA8 /* BindPhoneInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BindPhoneInterface.m; sourceTree = "<group>"; };
+		C195321E191CDBF500D3BFA8 /* DownloadCouponsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadCouponsViewController.h; sourceTree = "<group>"; };
+		C195321F191CDBF500D3BFA8 /* DownloadCouponsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadCouponsViewController.m; sourceTree = "<group>"; };
+		C1953220191CDBF500D3BFA8 /* DownloadCouponsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DownloadCouponsViewController.xib; sourceTree = "<group>"; };
 		C1D8700C18EC0CAB0061F799 /* CouponDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CouponDetailViewController.h; sourceTree = "<group>"; };
 		C1D8700D18EC0CAB0061F799 /* CouponDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CouponDetailViewController.m; sourceTree = "<group>"; };
 		C1D8700E18EC0CAB0061F799 /* CouponDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CouponDetailViewController.xib; sourceTree = "<group>"; };
@@ -1314,6 +1319,9 @@
 				4E2C6DF318D75CD600DF3772 /* YouhuiViewController.h */,
 				4E2C6DF418D75CD600DF3772 /* YouhuiViewController.m */,
 				4E2C6DF518D75CD600DF3772 /* YouhuiViewController.xib */,
+				C195321E191CDBF500D3BFA8 /* DownloadCouponsViewController.h */,
+				C195321F191CDBF500D3BFA8 /* DownloadCouponsViewController.m */,
+				C1953220191CDBF500D3BFA8 /* DownloadCouponsViewController.xib */,
 				4E2C6DF818D75CE200DF3772 /* ShopViewController.h */,
 				4E2C6DF918D75CE200DF3772 /* ShopViewController.m */,
 				4E2C6DFA18D75CE200DF3772 /* ShopViewController.xib */,
@@ -1926,6 +1934,7 @@
 				4ECBF72B18F45642003963E1 /* ShopDetailTypeCell.xib in Resources */,
 				4EF0907918FB52CE00ABFE7D /* Icon-72@2x.png in Resources */,
 				4EF090D018FB52FD00ABFE7D /* btn-sb-gray-border@2x.png in Resources */,
+				C1953222191CDBF500D3BFA8 /* DownloadCouponsViewController.xib in Resources */,
 				4ECBF75E18F6E9C4003963E1 /* CouponDetailDownloadCell.xib in Resources */,
 				4EF0914618FC2CEE00ABFE7D /* pp_5.jpg in Resources */,
 				4ECBF72618F4538C003963E1 /* ShopDetailItemListCell.xib in Resources */,
@@ -2021,6 +2030,7 @@
 				03573ADA19055E2300A11A33 /* SingletonHelpers.m in Sources */,
 				03573ADD19055E4A00A11A33 /* MBSFilterInfo.m in Sources */,
 				4ECBF75C18F6E9B4003963E1 /* CouponDetailDownloadCell.m in Sources */,
+				C1953221191CDBF500D3BFA8 /* DownloadCouponsViewController.m in Sources */,
 				C195320B191B6D5000D3BFA8 /* EGOImageButton.m in Sources */,
 				0312035A191945DF00077E25 /* EGOCache.m in Sources */,
 				03573B53190572A500A11A33 /* Reachability.m in Sources */,
