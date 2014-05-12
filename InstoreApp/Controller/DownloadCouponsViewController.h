@@ -15,7 +15,7 @@
 UIScrollViewDelegate,PullPsCollectionViewDelegate>
 
 @property(nonatomic,retain) PullPsCollectionView *collectionView;
-@property(nonatomic,retain)NSMutableArray *items;
+@property(nonatomic,retain) NSMutableArray *items;
 
 //@property (nonatomic,strong) IBOutlet UIView *optionView;//筛选view
 //@property (nonatomic,strong) IBOutlet UISegmentedControl *segmentedControl;

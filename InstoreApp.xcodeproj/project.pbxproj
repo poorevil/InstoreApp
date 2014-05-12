@@ -298,7 +298,7 @@
 		C1953217191CC27100D3BFA8 /* MyShopsListInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = C1953216191CC27100D3BFA8 /* MyShopsListInterface.m */; };
 		C195321A191CC4B800D3BFA8 /* MyCouponsListInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = C1953219191CC4B800D3BFA8 /* MyCouponsListInterface.m */; };
 		C195321D191CC6A200D3BFA8 /* BindPhoneInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = C195321C191CC6A200D3BFA8 /* BindPhoneInterface.m */; };
-		C1953221191CDBF500D3BFA8 /* DownloadCouponsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C195321F191CDBF500D3BFA8 /* DownloadCouponsViewController.m */; };
+		C1953221191CDBF500D3BFA8 /* DownloadCouponsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C195321F191CDBF500D3BFA8 /* DownloadCouponsViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C1953222191CDBF500D3BFA8 /* DownloadCouponsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1953220191CDBF500D3BFA8 /* DownloadCouponsViewController.xib */; };
 		C1D8700F18EC0CAB0061F799 /* CouponDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1D8700D18EC0CAB0061F799 /* CouponDetailViewController.m */; };
 		C1D8701018EC0CAB0061F799 /* CouponDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1D8700E18EC0CAB0061F799 /* CouponDetailViewController.xib */; };

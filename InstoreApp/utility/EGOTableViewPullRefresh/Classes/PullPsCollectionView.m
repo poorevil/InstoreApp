@@ -35,9 +35,9 @@
     [pullTextColor release];
     [pullLastRefreshDate release];
     
-    [refreshView release];
-    [loadMoreView release];
-    [delegateInterceptor release];
+//    [refreshView release];
+//    [loadMoreView release];
+//    [delegateInterceptor release];
     [super dealloc];
 }
 

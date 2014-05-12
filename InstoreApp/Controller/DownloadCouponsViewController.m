@@ -37,9 +37,9 @@
     self.currentPage = 1;
     self.title = @"我的优惠劵";
     
-    self.collectionView = [[PullPsCollectionView alloc] initWithFrame:CGRectMake(0, 0,
+    self.collectionView = [[[PullPsCollectionView alloc] initWithFrame:CGRectMake(0, 0,
                                                                                  self.view.frame.size.width,
-                                                                                 self.view.frame.size.height)];
+                                                                                 self.view.frame.size.height)] autorelease];
     [self.view addSubview:self.collectionView];
     self.collectionView.collectionViewDelegate = self;
     self.collectionView.collectionViewDataSource = self;
@@ -54,7 +54,7 @@
     self.collectionView.pullBackgroundColor = [UIColor whiteColor];
     self.collectionView.pullTextColor = [UIColor blackColor];
     
-    UILabel *loadingLabel = [[UILabel alloc] initWithFrame:self.collectionView.bounds];
+    UILabel *loadingLabel = [[[UILabel alloc] initWithFrame:self.collectionView.bounds] autorelease];
     loadingLabel.text = @"Loading...";
     loadingLabel.textAlignment = NSTextAlignmentCenter;
     self.collectionView.loadingView = loadingLabel;
@@ -144,7 +144,7 @@
 
 //获取接口数据
 - (void)loadDataSource {
-    self.couponsDownloadListInterface = [[CouponsDownloadListInterface alloc] init];
+    self.couponsDownloadListInterface = [[[CouponsDownloadListInterface alloc] init] autorelease];
     self.couponsDownloadListInterface.delegate = self;
     [self.couponsDownloadListInterface getCouponsDownloadList];
     
@@ -170,6 +170,19 @@
 -(void)getCouponsDownloadListFailed:(NSString *)errorMessage
 {
     NSLog(@"%@",errorMessage);
+}
+
+-(void)dealloc{
+    self.couponsDownloadListInterface.delegate = nil;
+    self.couponsDownloadListInterface = nil;
+    
+    self.collectionView.collectionViewDelegate = nil;
+    self.collectionView.collectionViewDataSource = nil;
+    self.collectionView.pullDelegate=nil;
+    self.collectionView = nil;
+    self.items = nil;
+    
+    [super dealloc];
 }
 
 @end
