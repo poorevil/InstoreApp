@@ -8,6 +8,7 @@
 
 #import "RuntimeModel.h"
 #import "KeyChainTool.h"
+#import "NSDate+DynamicDateString.h"
 
 @implementation RuntimeModel
 
@@ -34,7 +35,7 @@
             self.mallLogo = [jsonMap objectForKey:@"mallLogo"];
             self.mallMapId = [jsonMap objectForKey:@"mallMapId"];
             self.mallId = [[jsonMap objectForKey:@"mallId"] integerValue];
-            self.date = [NSDate dateWithTimeIntervalSince1970:[[jsonMap objectForKey:@"date"] longValue]];
+            self.date = [NSDate dateFromString:[jsonMap objectForKey:@"date"]];
             self.isNewUser = [[jsonMap objectForKey:@"isNewUser"] integerValue];
             self.mallName = [jsonMap objectForKey:@"mallName"];
         }
@@ -48,7 +49,6 @@
     if (secretKey) {
         [KeyChainTool setValue:secretKey forKey:@"secretKey"];
     }
-
 }
 
 -(NSString *)secretKey

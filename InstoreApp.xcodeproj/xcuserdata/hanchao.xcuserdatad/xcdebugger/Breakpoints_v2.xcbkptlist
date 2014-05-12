@@ -51,13 +51,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "InstoreApp/Interface/InitInterface.m"
-            timestampString = "421579369.548375"
+            filePath = "InstoreApp/Model/RuntimeModel.m"
+            timestampString = "421581161.584015"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "44"
-            endingLineNumber = "44"
-            landmarkName = "-parseResult:"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
+            landmarkName = "-setSecretKey:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

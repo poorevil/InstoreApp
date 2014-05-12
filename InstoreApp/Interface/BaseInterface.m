@@ -155,7 +155,7 @@
         [string2Sign appendString:[NSString stringWithFormat:@"%@%@",key,[self.requestArgs objectForKey:key]]];
     }
     
-    NSString *secretKey = [[[GlobeModel sharedSingleton] runtimeModel] secretKey]?[[[GlobeModel sharedSingleton] runtimeModel] secretKey]:@" ";
+    NSString *secretKey = [[GlobeModel sharedSingleton] runtimeModel].secretKey?[[GlobeModel sharedSingleton] runtimeModel].secretKey:@" ";
     
     [string2Sign insertString:secretKey atIndex:0];
     [string2Sign appendString:MALL_CODE];

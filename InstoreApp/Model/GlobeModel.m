@@ -9,6 +9,7 @@
 #import "GlobeModel.h"
 
 #import "KeyChainTool.h"
+#import "RuntimeModel.h"
 
 @implementation GlobeModel
 
@@ -20,7 +21,7 @@
     {
         if (!sharedSingleton){
             sharedSingleton = [[GlobeModel alloc] init];
-            
+            sharedSingleton.runtimeModel = [[RuntimeModel alloc] init];
             [sharedSingleton initUUIDIfNeeded];
         }
         
