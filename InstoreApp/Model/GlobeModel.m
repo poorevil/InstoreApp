@@ -18,8 +18,11 @@
     
     @synchronized(self)
     {
-        if (!sharedSingleton)
+        if (!sharedSingleton){
             sharedSingleton = [[GlobeModel alloc] init];
+            
+            [sharedSingleton initUUIDIfNeeded];
+        }
         
 //        if (sharedSingleton.appKey == NULL || sharedSingleton.appSecret == NULL
 //            || sharedSingleton.taokeName == NULL) {

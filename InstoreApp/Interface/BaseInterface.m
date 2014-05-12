@@ -10,6 +10,17 @@
 
 #import "BaseInterface.h"
 #import "ASIFormDataRequest.h"
+#import "GlobeModel.h"
+#import "RuntimeModel.h"
+
+#import "NSString+Crypto.h"
+
+@interface BaseInterface()
+
+@property (nonatomic,strong) NSMutableDictionary *requestArgs;
+
+@end
+
 @implementation BaseInterface
 
 @synthesize baseDelegate = _baseDelegate , request = _request;
@@ -36,10 +47,11 @@
         NSString *urlString = nil;
         
         if (self.args) {
+            [self handleRequestParameter];
             NSMutableString *prams = [[NSMutableString alloc] init];
             
-            for (NSString *key in self.args) {
-                [prams appendFormat:@"%@=%@&",key,[self.args objectForKey:key]];
+            for (NSString *key in self.requestArgs) {
+                [prams appendFormat:@"%@=%@&",key,[self.requestArgs objectForKey:key]];
             }
             NSString *removeLastChar = [prams substringWithRange:NSMakeRange(0, [prams length]-1)];
             urlString = [NSString stringWithFormat:@"%@?%@",self.interfaceUrl ,removeLastChar];
@@ -116,6 +128,42 @@
 //    
 //    [super dealloc];
 //}
+
+-(void)handleRequestParameter
+{
+    self.requestArgs = [NSMutableDictionary dictionary];
+    [self.requestArgs addEntriesFromDictionary:self.args];
+    [self.requestArgs setObject:[NSString stringWithFormat:@"%ld",(long)[[NSDate date] timeIntervalSince1970]] forKey:@"timestamp"];
+    [self.requestArgs setObject:[GlobeModel sharedSingleton].userId forKey:@"userid"];
+    [self.requestArgs setObject:[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"] forKey:@"v"];
+    
+//    if ([self.interfaceUrl rangeOfString:@"init/"].location == NSNotFound) {
+        [self.requestArgs setObject:[self genSignString] forKey:@"sign"];
+//    }
+}
+
+-(NSString *)genSignString
+{
+    NSArray *sortedKeys = [[self.requestArgs allKeys] sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+        NSString *key1 = obj1;
+        NSString *key2 = obj2;
+        return [key1 compare:key2];
+    }];
+    
+    NSMutableString *string2Sign = [[NSMutableString alloc] init];
+    for (NSString *key in sortedKeys) {
+        [string2Sign appendString:[NSString stringWithFormat:@"%@%@",key,[self.requestArgs objectForKey:key]]];
+    }
+    
+    NSString *secretKey = [[[GlobeModel sharedSingleton] runtimeModel] secretKey]?[[[GlobeModel sharedSingleton] runtimeModel] secretKey]:@" ";
+    
+    [string2Sign insertString:secretKey atIndex:0];
+    [string2Sign appendString:MALL_CODE];
+    
+//    NSLog(@"string2Sign:%@",string2Sign);
+    NSString *sign = [string2Sign HMAC_MD5_HEX:secretKey];
+    return [sign uppercaseString];
+}
 
 
 @end
