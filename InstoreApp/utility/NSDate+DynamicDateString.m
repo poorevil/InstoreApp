@@ -114,11 +114,13 @@
 }
 
 + (NSDate *)dateFromString:(NSString *)dateString{
-    //2014-05-05 10:11:31 UTC
-    NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
-    [dateFormatter setDateFormat: @"yyyy-MM-dd HH:mm:ss z"];
-    NSDate *destDate= [dateFormatter dateFromString:dateString];
-    
+    NSDate *destDate = nil;
+    if (dateString) {
+        //2014-05-05 10:11:31 UTC
+        NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
+        [dateFormatter setDateFormat: @"yyyy-MM-dd HH:mm:ss z"];
+        destDate= [dateFormatter dateFromString:dateString];
+    }
     return destDate;
 }
 

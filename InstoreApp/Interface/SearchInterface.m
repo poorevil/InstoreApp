@@ -23,7 +23,7 @@
                   @"type":[NSString stringWithFormat:@"%d",type],
                   @"order":order,
                   @"amount":[NSString stringWithFormat:@"%d",amount],
-                  @"pageNum":[NSString stringWithFormat:@"%d",pageNum]};
+                  @"page":[NSString stringWithFormat:@"%d",pageNum]};
     self.baseDelegate = self;
     [self connect];
 }
@@ -33,27 +33,35 @@
 //    
 //    "coupons": [
 //                {
-//                    "startTime": 1398703339205,
-//                    "id": 1,
-//                    "collectCount": 11,
-//                    "title": "测试优惠活动",
-//                    "store": {
-//                        "id": 1,
-//                        "logo": "http://misc.360buyimg.com/lib/img/e/logo-201305.png",
-//                        "category": 1,
-//                        "title": "商户名称"
-//                    },
-//                    "tag": "HOT",
-//                    "image": "http://img10.360buyimg.com/da/g14/M0A/1F/11/rBEhVVNXWkEIAAAAAAEZiA2IHjIAAMfMQFTwKkAARmg289.jpg",
-//                    "endTime": 1398703339205,
-//                    "commentCount": 11,
-//                    "type": 1
+//                    store:                         // 优惠对应的商户信息
+//                        {
+//                        title: '商户名称',
+//                        logo: '商户LOGO',
+//                            id: '商户ID',               // **int**
+//                        category: {
+//                            id: '商户类型ID',        // **int**
+//                        name: '商户类型名称'
+//                        }
+//                        },
+//                        id: '优惠ID',                  // **int**
+//                        title: '优惠标题',
+//                        type: '优惠类型',              // **int** 1: 优惠活动; 2: 优惠券; 3: 团购;
+//                        hotTag: '优惠HOT标签',
+//                        isFocus: '是否已关注',         // **boolean** true: 已关注; false: 未关注
+//                        image: '优惠图',
+//                        pixelWith: '图片宽',            // **int**
+//                        pixelHeight: '图片高',          // **int**
+//                        collectCount: '下载数',        // **int**
+//                        commentCount: '评论数',        // **int**
+//                        focusCount: '关注数',          // **int**
+//                        startTime: '开始时间',
+//                        endTime: '结束时间'
 //                },
 //                ...
 //                ],
 //    "totalCount": 3,
 //    "currentPage": 1
-//    
+//
 //}
 -(void)parseResult:(ASIHTTPRequest *)request{
     NSString *jsonStr = [[NSString alloc] initWithData:[request responseData] encoding:NSUTF8StringEncoding];

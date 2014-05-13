@@ -17,7 +17,7 @@
 @property (nonatomic,strong) CategoryModel *categoryModel;
 @property (nonatomic,strong) NSString *title;
 
-@property (nonatomic,strong) NSString *roomNum;
+@property (nonatomic,strong) NSString *roomNum;//商户房间号
 @property (nonatomic,strong) FloorModel *floor;//楼层
 @property (nonatomic,strong) NSString *address;
 @property (nonatomic,strong) NSString *tel;
@@ -25,7 +25,7 @@
 @property (nonatomic,strong) NSString *descStr;
 @property (nonatomic,strong) NSString *mapCode;
 
-@property (nonatomic,assign) NSInteger followerCount;
+@property (nonatomic,assign) NSInteger followerCount;//关注人数
 
 @property (nonatomic,strong) NSMutableArray *coupons;
 @property (nonatomic,strong) NSMutableArray *comments;

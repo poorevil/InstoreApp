@@ -46,20 +46,23 @@
         
         NSString *urlString = nil;
         
-        if (self.args) {
-            [self handleRequestParameter];
+        [self handleRequestParameter];
+        
+        if (self.requestArgs) {
             NSMutableString *prams = [[NSMutableString alloc] init];
-            
             for (NSString *key in self.requestArgs) {
                 [prams appendFormat:@"%@=%@&",key,[self.requestArgs objectForKey:key]];
             }
             NSString *removeLastChar = [prams substringWithRange:NSMakeRange(0, [prams length]-1)];
             urlString = [NSString stringWithFormat:@"%@?%@",self.interfaceUrl ,removeLastChar];
             
-            NSLog(@"urlString %@",urlString);
         }else{
             urlString = self.interfaceUrl;
         }
+        
+        
+        
+        NSLog(@"urlString %@",urlString);
         
         //TODO:加密算法
         

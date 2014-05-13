@@ -10,7 +10,7 @@
 #import "FloorModel.h"
 #import "CategoryModel.h"
 #import "CouponModel.h"
-
+#import "CommentModel.h"
 
 @implementation StoreModel
 //{                                       //商户对象
@@ -72,9 +72,11 @@
                 [self.coupons addObject:[[CouponModel alloc] initWithJsonMap:couponDict]];
             }
             
-            //TODO:
-//            coupons;
-//            comments;
+            self.comments = [NSMutableArray array];
+            NSArray *comments = [jsonMap objectForKey:@"comments"];
+            for (NSDictionary *commentDict in comments) {
+                [self.comments addObject:[[CommentModel alloc] initWithJsonMap:commentDict]];
+            }
         }
     }
     
