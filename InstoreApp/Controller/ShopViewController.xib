@@ -9,6 +9,7 @@
             <connections>
                 <outlet property="cateBtn" destination="2T6-FT-An8" id="bHl-pu-iqc"/>
                 <outlet property="floorBtn" destination="ByH-Jv-bdJ" id="Hta-nE-53R"/>
+                <outlet property="likeBtn" destination="rCx-ka-qxH" id="CPn-d1-g6D"/>
                 <outlet property="mtable" destination="Bjm-bz-T1M" id="1gt-Vs-xsP"/>
                 <outlet property="sortBtn" destination="XRL-Ez-TZJ" id="Nvf-Uj-2fL"/>
                 <outlet property="view" destination="1" id="3"/>

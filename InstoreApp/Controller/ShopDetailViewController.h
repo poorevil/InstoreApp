@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+@class StoreModel;
 @interface ShopDetailViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic,strong) IBOutlet UITableView *mtableView;

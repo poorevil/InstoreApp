@@ -7,6 +7,11 @@
 //
 
 #import "ShopDetailItemListCell.h"
+#import "EGOImageView.h"
+#import "StoreModel.h"
+#import "CouponModel.h"
+#import "CouponDetailViewController.h"
+#import "AppDelegate.h"
 
 @implementation ShopDetailItemListCell
 
@@ -34,25 +39,84 @@
                                                                       blue:53.0f/255.0f
                                                                      alpha:1];
     
-    [self initScrollView];
+    [self refreshScrollView];
 }
 
 
--(void)initScrollView
+-(void)refreshScrollView
 {
-    self.mscrollView.contentSize = CGSizeMake(self.bounds.size.width * 2, 75);
-    self.mscrollView.pagingEnabled = YES;
-    
-    for (int i = 0; i < 8; i++) {
-        UIImageView *imageview = [[UIImageView alloc]
-                                  initWithImage:[UIImage
-                                                 imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"tmpimg%d",i] ofType:@"jpg"]]];
-        imageview.clipsToBounds = YES;
-        imageview.contentMode = UIViewContentModeScaleAspectFill;
-        imageview.frame = CGRectMake(i*78+10 + (i/4*6),
-                                     5, 70, 70);
-        [self.mscrollView addSubview:imageview];
+    if (self.storeModel.coupons.count>0) {
+        self.pageControl.numberOfPages = ceil(self.storeModel.coupons.count/4.0f);
+        self.pageControl.currentPage = 0;
+        
+        self.mscrollView.contentSize = CGSizeMake(self.bounds.size.width * self.pageControl.numberOfPages, 75);
+        self.mscrollView.pagingEnabled = YES;
+        
+        for (int i = 0; i < self.storeModel.coupons.count; i++) {
+            CouponModel *couponModel = [self.storeModel.coupons objectAtIndex:i];
+            EGOImageView *imageview = [[EGOImageView alloc] init];
+            imageview.userInteractionEnabled = YES;
+            imageview.clipsToBounds = YES;
+            imageview.tag = 900+i;
+            imageview.contentMode = UIViewContentModeScaleAspectFill;
+            imageview.frame = CGRectMake(i*78+10 + (i/4*6),
+                                         5, 70, 70);
+            imageview.imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@/100*100.png",couponModel.imageUrl]];
+            [self.mscrollView addSubview:imageview];
+            
+            UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
+            [imageview addGestureRecognizer:tap];
+        }
+        
+        
+    }else{
+        self.pageControl.numberOfPages = 0;
+        self.pageControl.currentPage = 0;
+        
+        for (UIView *v in self.mscrollView.subviews) {
+            if ([v isMemberOfClass:[EGOImageView class]]) {
+                [v removeFromSuperview];
+            }
+        }
     }
+}
+
+-(void)setStoreModel:(StoreModel *)storeModel
+{
+    _storeModel = storeModel;
+    
+    [self refreshScrollView];
+}
+
+-(void)tapAction:(UIGestureRecognizer *)gesture
+{
+    if ([gesture.view isMemberOfClass:[EGOImageView class]]) {
+        CouponModel *coupon = [self.storeModel.coupons objectAtIndex:gesture.view.tag-900];
+        CouponDetailViewController *cdvc = [[CouponDetailViewController alloc] initWithNibName:@"CouponDetailViewController" bundle:nil];
+        cdvc.couponModel = coupon;
+        AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+        UINavigationController *nav = (UINavigationController *)appDelegate.tabBarController.selectedViewController;
+        cdvc.hidesBottomBarWhenPushed = YES;
+        [nav pushViewController:cdvc animated:YES];
+        cdvc.hidesBottomBarWhenPushed = NO;
+    }
+}
+
+#pragma mark - UIScrollViewDelegate
+// at the end of scroll animation, reset the boolean used when scrolls originate from the UIPageControl
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    // switch the indicator when more than 50% of the previous/next page is visible
+    CGFloat pageWidth = CGRectGetWidth(self.mscrollView.frame);
+    NSUInteger page = floor((self.mscrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
+    self.pageControl.currentPage = page;
+    
+//    // load the visible page and the page on either side of it (to avoid flashes when the user starts scrolling)
+//    [self loadScrollViewWithPage:page - 1];
+//    [self loadScrollViewWithPage:page];
+//    [self loadScrollViewWithPage:page + 1];
+    
+    // a possible optimization would be to unload the views+controllers which are no longer visible
 }
 
 @end

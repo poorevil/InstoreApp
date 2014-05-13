@@ -308,8 +308,6 @@
 		C1D8701418ED5B1D0061F799 /* ShopDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1D8701218ED5B1D0061F799 /* ShopDetailViewController.m */; };
 		C1D8701518ED5B1D0061F799 /* ShopDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1D8701318ED5B1D0061F799 /* ShopDetailViewController.xib */; };
 		C1D8701818ED5CE00061F799 /* ShopDetailHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = C1D8701718ED5CE00061F799 /* ShopDetailHeaderView.m */; };
-		C1E2FD2E1921FFFD00BDFBC9 /* MyFavorStoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E2FD2C1921FFFD00BDFBC9 /* MyFavorStoreViewController.m */; };
-		C1E2FD2F1921FFFD00BDFBC9 /* MyFavorStoreViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1E2FD2D1921FFFD00BDFBC9 /* MyFavorStoreViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -811,9 +809,6 @@
 		C1D8701318ED5B1D0061F799 /* ShopDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShopDetailViewController.xib; sourceTree = "<group>"; };
 		C1D8701618ED5CE00061F799 /* ShopDetailHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopDetailHeaderView.h; sourceTree = "<group>"; };
 		C1D8701718ED5CE00061F799 /* ShopDetailHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopDetailHeaderView.m; sourceTree = "<group>"; };
-		C1E2FD2B1921FFFD00BDFBC9 /* MyFavorStoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyFavorStoreViewController.h; sourceTree = "<group>"; };
-		C1E2FD2C1921FFFD00BDFBC9 /* MyFavorStoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyFavorStoreViewController.m; sourceTree = "<group>"; };
-		C1E2FD2D1921FFFD00BDFBC9 /* MyFavorStoreViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyFavorStoreViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1341,9 +1336,6 @@
 				4E2C6DF818D75CE200DF3772 /* ShopViewController.h */,
 				4E2C6DF918D75CE200DF3772 /* ShopViewController.m */,
 				4E2C6DFA18D75CE200DF3772 /* ShopViewController.xib */,
-				C1E2FD2B1921FFFD00BDFBC9 /* MyFavorStoreViewController.h */,
-				C1E2FD2C1921FFFD00BDFBC9 /* MyFavorStoreViewController.m */,
-				C1E2FD2D1921FFFD00BDFBC9 /* MyFavorStoreViewController.xib */,
 				4E2C6DFD18D75CED00DF3772 /* ServiceViewController.h */,
 				4E2C6DFE18D75CED00DF3772 /* ServiceViewController.m */,
 				4E2C6DFF18D75CED00DF3772 /* ServiceViewController.xib */,
@@ -1933,7 +1925,6 @@
 				4EF090F418FB52FD00ABFE7D /* search-icon-close@2x.png in Resources */,
 				4EF0914318FC2CEE00ABFE7D /* pp_2.jpg in Resources */,
 				4EF0911918FB52FD00ABFE7D /* top-icon-loc-black@2x.png in Resources */,
-				C1E2FD2F1921FFFD00BDFBC9 /* MyFavorStoreViewController.xib in Resources */,
 				4EF090EF18FB52FD00ABFE7D /* sale-heart-icon-pressed@2x.png in Resources */,
 				4EF090D818FB52FD00ABFE7D /* index-silde-nav-cur@2x.png in Resources */,
 				4EF0910E18FB52FD00ABFE7D /* store-icon-loc-gray@2x.png in Resources */,
@@ -2040,7 +2031,6 @@
 				03573B4E190572A500A11A33 /* ASIFormDataRequest.m in Sources */,
 				03120360191A71DA00077E25 /* NSDate+DynamicDateString.m in Sources */,
 				C19532251920C68500D3BFA8 /* NSString+Crypto.m in Sources */,
-				C1E2FD2E1921FFFD00BDFBC9 /* MyFavorStoreViewController.m in Sources */,
 				4E2C6E0018D75CED00DF3772 /* ServiceViewController.m in Sources */,
 				03573AC419055B7700A11A33 /* IndoorMapWithLeftPopBtnViewController.m in Sources */,
 				4E9608BE18E7CEC900418798 /* MeHeaderView.m in Sources */,

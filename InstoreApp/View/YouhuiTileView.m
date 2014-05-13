@@ -48,6 +48,7 @@
     AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
     UINavigationController *nav = (UINavigationController *)appDelegate.tabBarController.selectedViewController;
     CouponDetailViewController *cdvc = [[CouponDetailViewController alloc] initWithNibName:@"CouponDetailViewController" bundle:nil];
+    cdvc.couponModel = self.coupon;
     cdvc.hidesBottomBarWhenPushed = YES;
     [nav pushViewController:cdvc animated:YES];
     cdvc.hidesBottomBarWhenPushed = NO;
@@ -56,23 +57,23 @@
 - (void)fillViewWithObject:(id)object {
     [super fillViewWithObject:object];
 
-    CouponModel *coupon = object;
+    self.coupon = object;
     
-    self.iconView.imageURL = [NSURL URLWithString:coupon.imageUrl];
-    self.picView.imageURL = [NSURL URLWithString:coupon.store.logoUrl];
-    self.titleLabel.text = coupon.title;
+    self.iconView.imageURL = [NSURL URLWithString:self.coupon.imageUrl];
+    self.picView.imageURL = [NSURL URLWithString:self.coupon.store.logoUrl];
+    self.titleLabel.text = self.coupon.title;
     
-    [self.commentCountLabel setTitle:[NSString stringWithFormat:@" %d",coupon.commentCount]
+    [self.commentCountLabel setTitle:[NSString stringWithFormat:@" %d",self.coupon.commentCount]
                             forState:UIControlStateNormal];
-    [self.collectCountLabel setTitle:[NSString stringWithFormat:@" %d",coupon.collectCount]
+    [self.collectCountLabel setTitle:[NSString stringWithFormat:@" %d",self.coupon.collectCount]
                             forState:UIControlStateNormal];
     
     //计算高度
     CGFloat diffHeight = 0;
     CGFloat width = self.bounds.size.width;
     // Image
-    CGFloat objectWidth = coupon.imageWidth==0?160:coupon.imageWidth;
-    CGFloat objectHeight = coupon.imageHeight==0?160:coupon.imageHeight;
+    CGFloat objectWidth = self.coupon.imageWidth==0?160:self.coupon.imageWidth;
+    CGFloat objectHeight = self.coupon.imageHeight==0?160:self.coupon.imageHeight;
     CGFloat scaledHeight = floorf(objectHeight / (objectWidth / width));
     
     diffHeight += (scaledHeight - self.picView.frame.size.height);

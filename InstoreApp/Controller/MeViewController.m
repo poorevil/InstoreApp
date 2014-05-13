@@ -14,6 +14,8 @@
 
 #import "DownloadCouponsViewController.h"
 
+#import "ShopViewController.h"
+
 
 @interface MeViewController () <UserInfoInterfaceDelegate>
 
@@ -70,7 +72,7 @@
         case 0:
             return 2;
         case 1:
-            return 2;
+            return 1;
         case 2:
             return 1;
         case 3:
@@ -130,11 +132,11 @@
 //                    cell.detailTextLabel.text=@"查看管理关注的商品";
 //                    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 //                    break;
-                case 1:
-                    cell.textLabel.text = @"我关注的优惠";
-                    cell.detailTextLabel.text=@"查看管理关注的优惠劵";
-                    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-                    break;
+//                case 1:
+//                    cell.textLabel.text = @"我关注的优惠";
+//                    cell.detailTextLabel.text=@"查看管理关注的优惠劵";
+//                    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+//                    break;
 //                case 2:
 //                    cell.textLabel.text = @"消费记录";
 //                    cell.detailTextLabel.text=@"";
@@ -200,8 +202,25 @@
                     dcvc.hidesBottomBarWhenPushed = YES;
                     [self.navigationController pushViewController:dcvc animated:YES];
                     dcvc.hidesBottomBarWhenPushed = NO;
+                    break;
                 }
             }
+            break;
+        case 1:
+            switch (indexPath.row) {
+                case 0:{
+                    ShopViewController *shopVC = [[ShopViewController alloc] initWithNibName:@"ShopViewController" bundle:nil];
+                    shopVC.isShowLikeOnly = YES;
+                    shopVC.hidesBottomBarWhenPushed = YES;
+                    [self.navigationController pushViewController:shopVC animated:YES];
+                    shopVC.hidesBottomBarWhenPushed = NO;
+
+                    break;
+                }
+                default:
+                    break;
+            }
+            break;
     }
 }
 

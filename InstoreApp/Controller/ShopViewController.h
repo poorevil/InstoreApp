@@ -16,4 +16,8 @@
 @property (nonatomic,strong) IBOutlet UIButton *cateBtn;
 @property (nonatomic,strong) IBOutlet UIButton *sortBtn;
 
+@property (nonatomic,strong) IBOutlet UIButton *likeBtn;
+
+@property (nonatomic,assign) BOOL isShowLikeOnly;
+
 @end

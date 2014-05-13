@@ -46,8 +46,6 @@
 
     [self initToolBar];
     
-    self.title = @"星巴克";
-    
     self.storeDetailInterface = [[StoreDetailInterface alloc] init];
     self.storeDetailInterface.delegate = self;
     [self.storeDetailInterface getStoreDetailByShopId:self.shopId commentSize:10 couponSize:10];
@@ -73,9 +71,12 @@
 #pragma mark - private method
 -(void)initHeaderView
 {
-    self.headerView = [[[NSBundle mainBundle] loadNibNamed:@"ShopDetailHeaderView" owner:self options:nil] objectAtIndex:0];
-    
-    self.mtableView.tableHeaderView = self.headerView;
+    if (!self.headerView) {
+        self.headerView = [[[NSBundle mainBundle] loadNibNamed:@"ShopDetailHeaderView" owner:self options:nil] objectAtIndex:0];
+        self.headerView.storeModel = self.storeModel;
+        self.mtableView.tableHeaderView = self.headerView;
+    }
+    self.headerView.storeModel = self.storeModel;
 }
 
 -(void)initToolBar
@@ -244,6 +245,7 @@
 -(void)getStoreDetailDidFinished:(StoreModel*)storeModel
 {
     self.storeModel = storeModel;
+    [self initHeaderView];
     [self.mtableView reloadData];
 }
 

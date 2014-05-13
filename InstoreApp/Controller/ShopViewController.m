@@ -44,22 +44,38 @@
     [super viewDidLoad];
     
     self.storeList = [NSMutableArray array];
-    self.title = @"商户";
+    self.title = self.isShowLikeOnly?@"我关注的商家":@"商户";
+    
+    self.likeBtn.hidden = self.isShowLikeOnly;
     
     [self.floorBtn addTarget:self action:@selector(floorBtnAction:)
             forControlEvents:UIControlEventTouchUpInside];
     [self.cateBtn addTarget:self action:@selector(categoryBtnAction:)
             forControlEvents:UIControlEventTouchUpInside];
     
+    [self refreshDate];
+    
+}
+
+-(void)refreshDate
+{
+    [self.storeList removeAllObjects];
+    [self.mtable reloadData];
+    self.currentPage = 1;
+    
+    [self loadNextPage];
+}
+
+-(void)loadNextPage
+{
     self.storeInterface = [[StoreInterface alloc] init];
     self.storeInterface.delegate = self;
-    [self.storeInterface getStoreListByFloor:nil
-                                         cid:0
+    [self.storeInterface getStoreListByFloor:[NSString stringWithFormat:@"%d",self.filterFloorModel.fid]
+                                         cid:self.filterFloorModel.fid
                                        order:nil
-                                      isLike:0
+                                      isLike:self.isShowLikeOnly?1:0
                                       amount:20
                                         page:self.currentPage];
-    
 }
 
 - (void)didReceiveMemoryWarning
@@ -103,6 +119,7 @@
                                               initWithNibName:@"ShopDetailViewController"
                                               bundle:nil];
     shopDetailVC.shopId = [[self.storeList objectAtIndex:indexPath.row] sid];
+    shopDetailVC.title = [[self.storeList objectAtIndex:indexPath.row] title];
     shopDetailVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:shopDetailVC animated:YES];
     shopDetailVC.hidesBottomBarWhenPushed = NO;
@@ -139,6 +156,8 @@
     }else{
         [self.floorBtn setTitle:@"楼层 " forState:UIControlStateNormal];
     }
+    
+    [self refreshDate];
 }
 
 #pragma mark - YouhuiCategoryViewControllerDelegate
@@ -151,6 +170,8 @@
     }else{
         [self.cateBtn setTitle:@"分类 " forState:UIControlStateNormal];
     }
+    
+    [self refreshDate];
 }
 
 #pragma mark - StoreInterfaceDelegate <NSObject>

@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+@class StoreModel;
+@class EGOImageView;
 @interface ShopDetailHeaderView : UIView
+
+@property (nonatomic,strong) StoreModel *storeModel;
+
+@property (nonatomic,strong) IBOutlet EGOImageView *bannerImageView;
+@property (nonatomic,strong) IBOutlet EGOImageView *logoImageView;
 
 @end

@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "PSCollectionViewCell.h"
 #import "EGOImageView.h"
+
+@class CouponModel;
+
 @interface YouhuiTileView : PSCollectionViewCell
 @property (retain, nonatomic) IBOutlet EGOImageView *picView;
 @property (retain, nonatomic) IBOutlet EGOImageView *iconView;
@@ -18,6 +21,8 @@
 
 @property (retain, nonatomic) IBOutlet UIButton *commentCountLabel;
 @property (retain, nonatomic) IBOutlet UIButton *collectCountLabel;
+
+@property (retain, nonatomic) CouponModel *coupon;
 
 
 + (CGFloat)heightForViewWithObject:(id)object inColumnWidth:(CGFloat)columnWidth;

@@ -21,7 +21,7 @@
 @property (nonatomic,strong) UIView *footerView;
 
 @property (nonatomic,strong) CouponDetailInterface *couponDetailInterface;
-@property (nonatomic,retain) CouponModel *couponModel;
+
 @end
 
 @implementation CouponDetailViewController
@@ -40,11 +40,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    self.couponModel = nil;
-    
     self.couponDetailInterface = [[CouponDetailInterface alloc] init];
     self.couponDetailInterface.delegate = self;
-    [self.couponDetailInterface getCouponDetailByCouponId:200];
+    [self.couponDetailInterface getCouponDetailByCouponId:self.couponModel.cid];
     
     [self initHeaderView];
     [self initFooterView];
