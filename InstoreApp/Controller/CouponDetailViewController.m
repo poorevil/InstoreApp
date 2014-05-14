@@ -423,7 +423,9 @@
     }
     
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title
-                                                    message:couponDownloadModel.msg
+                                                    message:couponDownloadModel.status==1?
+                                                              [NSString stringWithFormat:@"优惠代码:%d",couponDownloadModel.couponCode]:
+                                                              couponDownloadModel.msg
                                                    delegate:nil
                                           cancelButtonTitle:@"关闭"
                                           otherButtonTitles: nil];
