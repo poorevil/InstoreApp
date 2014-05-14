@@ -54,7 +54,6 @@
             forControlEvents:UIControlEventTouchUpInside];
     
     [self refreshDate];
-    
 }
 
 -(void)refreshDate

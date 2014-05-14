@@ -99,24 +99,16 @@
         cdvc.hidesBottomBarWhenPushed = YES;
         [nav pushViewController:cdvc animated:YES];
         cdvc.hidesBottomBarWhenPushed = NO;
+        
     }
 }
 
 #pragma mark - UIScrollViewDelegate
-// at the end of scroll animation, reset the boolean used when scrolls originate from the UIPageControl
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-    // switch the indicator when more than 50% of the previous/next page is visible
     CGFloat pageWidth = CGRectGetWidth(self.mscrollView.frame);
     NSUInteger page = floor((self.mscrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
     self.pageControl.currentPage = page;
-    
-//    // load the visible page and the page on either side of it (to avoid flashes when the user starts scrolling)
-//    [self loadScrollViewWithPage:page - 1];
-//    [self loadScrollViewWithPage:page];
-//    [self loadScrollViewWithPage:page + 1];
-    
-    // a possible optimization would be to unload the views+controllers which are no longer visible
 }
 
 @end

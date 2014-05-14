@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4510" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
         <deployment defaultVersion="1536" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -98,6 +98,8 @@
                 <outlet property="buttonGroup" destination="Vdp-YS-wm8" id="Vcf-Mm-lNT"/>
                 <outlet property="collectCountLabel" destination="bHk-dH-eIS" id="9MO-pj-fPJ"/>
                 <outlet property="commentCountLabel" destination="42W-RS-af5" id="tDd-lo-Qu0"/>
+                <outlet property="hotTagLabel" destination="xPK-fo-fXJ" id="F4Y-J5-30m"/>
+                <outlet property="hotTagViewGroup" destination="IeU-Kg-O0f" id="GJW-Ba-qGL"/>
                 <outlet property="iconView" destination="b82-UP-JqX" id="oNq-h1-gCL"/>
                 <outlet property="picView" destination="VDt-hN-jBQ" id="6Ex-De-lSc"/>
                 <outlet property="titleLabel" destination="JZF-vw-ymt" id="XTZ-3h-Jsh"/>

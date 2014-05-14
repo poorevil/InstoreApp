@@ -59,14 +59,21 @@
 
     self.coupon = object;
     
-    self.iconView.imageURL = [NSURL URLWithString:self.coupon.imageUrl];
-    self.picView.imageURL = [NSURL URLWithString:self.coupon.store.logoUrl];
+    self.iconView.imageURL = [NSURL URLWithString:self.coupon.store.logoUrl];
+    self.picView.imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@/300*300.png",self.coupon.imageUrl]];
     self.titleLabel.text = self.coupon.title;
     
     [self.commentCountLabel setTitle:[NSString stringWithFormat:@" %d",self.coupon.commentCount]
                             forState:UIControlStateNormal];
     [self.collectCountLabel setTitle:[NSString stringWithFormat:@" %d",self.coupon.collectCount]
                             forState:UIControlStateNormal];
+    
+    if (self.coupon.hotTag) {
+        self.hotTagViewGroup.hidden = NO;
+        self.hotTagLabel.text = self.coupon.hotTag;
+    }else{
+        self.hotTagViewGroup.hidden = YES;
+    }
     
     //计算高度
     CGFloat diffHeight = 0;

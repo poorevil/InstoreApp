@@ -49,7 +49,8 @@
     self.storeDetailInterface = [[StoreDetailInterface alloc] init];
     self.storeDetailInterface.delegate = self;
     [self.storeDetailInterface getStoreDetailByShopId:self.shopId commentSize:10 couponSize:10];
-
+    
+    self.hidesBottomBarWhenPushed = YES;
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -252,5 +253,10 @@
 -(void)getStoreDetailDidFailed:(NSString *)errorMessage
 {
     NSLog(@"%@",errorMessage);
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    [segue.destinationViewController setHidesBottomBarWhenPushed:YES];
 }
 @end

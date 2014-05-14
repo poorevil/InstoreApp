@@ -22,6 +22,9 @@
 @property (retain, nonatomic) IBOutlet UIButton *commentCountLabel;
 @property (retain, nonatomic) IBOutlet UIButton *collectCountLabel;
 
+@property (retain, nonatomic) IBOutlet UIView *hotTagViewGroup;
+@property (retain, nonatomic) IBOutlet UILabel *hotTagLabel;
+
 @property (retain, nonatomic) CouponModel *coupon;
 
 

@@ -12,6 +12,7 @@
 #import "EGOImageView.h"
 #import "CouponModel.h"
 #import "StoreModel.h"
+#import "FloorModel.h"
 
 #import "CouponDetailDownloadCell.h"
 #import "NSDate+DynamicDateString.h"
@@ -21,6 +22,9 @@
 @property (nonatomic,strong) UIView *footerView;
 
 @property (nonatomic,strong) CouponDetailInterface *couponDetailInterface;
+
+@property (nonatomic,strong) EGOImageView *headerImageView;
+@property (nonatomic,strong) UILabel *titleLabel;
 
 @end
 
@@ -59,7 +63,7 @@
 #pragma mark - private method
 -(void)refreshUI
 {
-    [self initHeaderView];
+//    [self initHeaderView];
     [self initFooterView];
     [self.mtableView reloadData];
 }
@@ -67,21 +71,24 @@
 //初始化头部view
 -(void)initHeaderView
 {
-    self.headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 320)];
-    EGOImageView *headerImageView = [[EGOImageView alloc] init];
-    headerImageView.imageURL = [NSURL URLWithString:self.couponModel.imageUrl];
-    headerImageView.frame = CGRectMake(10, 10, 300, 300);
-    [self.headerView addSubview:headerImageView];
+    if (!self.headerView) {
+        self.headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 320)];
+        self.headerImageView = [[EGOImageView alloc] init];
+        self.headerImageView.frame = CGRectMake(10, 10, 300, 300);
+        [self.headerView addSubview:self.headerImageView];
+        
+        UIView *titleGroupView = [[UIView alloc] initWithFrame:CGRectMake(10, 320-34, 300, 34)];
+        titleGroupView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.7f];
+        self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 5, 300, 28)];
+        self.titleLabel.textColor = [UIColor whiteColor];
+        [titleGroupView addSubview:self.titleLabel];
+        
+        [self.headerView addSubview:titleGroupView];
+        self.mtableView.tableHeaderView = self.headerView;
+    }
     
-    UIView *titleGroupView = [[UIView alloc] initWithFrame:CGRectMake(10, 320-34, 300, 34)];
-    titleGroupView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.7f];
-    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 5, 300, 28)];
-    titleLabel.text = self.couponModel.title;
-    titleLabel.textColor = [UIColor whiteColor];
-    [titleGroupView addSubview:titleLabel];
-    
-    [self.headerView addSubview:titleGroupView];
-    self.mtableView.tableHeaderView = self.headerView;
+    self.headerImageView.imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@/400*400.png",self.couponModel.imageUrl]];
+    self.titleLabel.text = self.couponModel.title;
     
 }
 
@@ -200,10 +207,10 @@
                         cell.textLabel.text = [NSString stringWithFormat:@"商户：%@",self.couponModel.store.title];
                         break;
                     case 1:
-                        cell.textLabel.text = [NSString stringWithFormat:@"地址：%@",self.couponModel.store.floor];
+                        cell.textLabel.text = [NSString stringWithFormat:@"地址：%@",self.couponModel.store.floor.fName];
                         break;
                     case 2:
-                        cell.textLabel.text = [NSString stringWithFormat:@"电话：%@",self.couponModel.store.tel];
+                        cell.textLabel.text = [NSString stringWithFormat:@"电话：%@",self.couponModel.store.tel?self.couponModel.store.tel:@""];
                         break;
                     default:
                         break;
@@ -218,10 +225,15 @@
                 withTitleCell.detailLabel.text = self.couponModel.descriptionStr;
                 withTitleCell.detailLabel.numberOfLines = 39;
                 //TODO:计算文字高度
+                //计算内容的size
+                CGSize labelFontSize = [self.couponModel.descriptionStr sizeWithFont:[UIFont systemFontOfSize:14]
+                                                                   constrainedToSize:CGSizeMake(280, 999)
+                                                                       lineBreakMode:NSLineBreakByWordWrapping];
+                
                 withTitleCell.detailLabel.frame = CGRectMake(withTitleCell.detailLabel.frame.origin.x,
                                                              withTitleCell.detailLabel.frame.origin.y,
                                                              withTitleCell.detailLabel.frame.size.width,
-                                                             370-55);
+                                                             labelFontSize.height);
                 withTitleCell.frame = CGRectMake(0, 0, withTitleCell.frame.size.width, 370);
             }
 
@@ -344,8 +356,16 @@
             return 88;
         case 2:
             return 44;
-        case 3:
-            return 370;
+        case 3:{
+            //计算内容的size
+            CGSize labelFontSize = [self.couponModel.descriptionStr sizeWithFont:[UIFont systemFontOfSize:14]
+                                          constrainedToSize:CGSizeMake(280, 999)
+                                              lineBreakMode:NSLineBreakByWordWrapping];
+            
+            
+            
+            return labelFontSize.height+60;
+        }
         default:
             return 44;
     }

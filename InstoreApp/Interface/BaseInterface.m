@@ -163,7 +163,7 @@
     [string2Sign insertString:secretKey atIndex:0];
     [string2Sign appendString:MALL_CODE];
     
-//    NSLog(@"string2Sign:%@",string2Sign);
+    NSLog(@"---------string2Sign:%@",string2Sign);
     NSString *sign = [string2Sign HMAC_MD5_HEX:secretKey];
     return [sign uppercaseString];
 }
