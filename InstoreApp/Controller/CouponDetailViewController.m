@@ -13,11 +13,13 @@
 #import "CouponModel.h"
 #import "StoreModel.h"
 #import "FloorModel.h"
-
+#import "CouponDownloadInterface.h"
 #import "CouponDetailDownloadCell.h"
 #import "NSDate+DynamicDateString.h"
+#import "CouponDownloadModel.h"
+#import "SVProgressHUD.h"
 
-@interface CouponDetailViewController () <CouponDetailInterfaceDelegate>
+@interface CouponDetailViewController () <CouponDetailInterfaceDelegate,CouponDownloadInterfaceDelegate>
 @property (nonatomic,strong) UIView *headerView;
 @property (nonatomic,strong) UIView *footerView;
 
@@ -26,6 +28,9 @@
 @property (nonatomic,strong) EGOImageView *headerImageView;
 @property (nonatomic,strong) UILabel *titleLabel;
 
+@property (nonatomic,strong) CouponDownloadInterface *couponDownloadInterface;
+
+@property (nonatomic,strong) UIButton *downloadBtn;
 @end
 
 @implementation CouponDetailViewController
@@ -94,27 +99,38 @@
 
 -(void)initFooterView
 {
-    //TODO:
-    self.footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
-    UIButton *downloadBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    
-    UIImage *originalImage = [UIImage imageNamed:@"store-btn-sb-red"];
-    UIEdgeInsets insets = UIEdgeInsetsMake(0, 20, 6, 300);
-    UIImage *normalBg = [originalImage resizableImageWithCapInsets:insets];
-    
-    originalImage = [UIImage imageNamed:@"store-btn-sb-red-pressed"];
-    UIImage *pressedBg = [originalImage resizableImageWithCapInsets:insets];
-    
-    [downloadBtn setBackgroundImage:normalBg forState:UIControlStateNormal];
-    [downloadBtn setBackgroundImage:pressedBg forState:UIControlStateSelected];
-    [downloadBtn setBackgroundImage:pressedBg forState:UIControlStateHighlighted];
-    [downloadBtn setTitle:@"立即下载" forState:UIControlStateNormal];
-    downloadBtn.frame = CGRectMake((320-280)/2,
-                                   2,
-                                   280,
-                                   40);
-    [self.footerView addSubview:downloadBtn];
-    self.mtableView.tableFooterView = self.footerView;
+    if (self.couponModel.type==2) {//1: 优惠活动; 2: 优惠券; 3: 团购;
+        self.footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
+        self.downloadBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        
+        UIImage *originalImage = [UIImage imageNamed:@"store-btn-sb-red"];
+        UIEdgeInsets insets = UIEdgeInsetsMake(0, 20, 6, 300);
+        UIImage *normalBg = [originalImage resizableImageWithCapInsets:insets];
+        
+        originalImage = [UIImage imageNamed:@"store-btn-sb-red-pressed"];
+        UIImage *pressedBg = [originalImage resizableImageWithCapInsets:insets];
+        
+        [self.downloadBtn setBackgroundImage:normalBg forState:UIControlStateNormal];
+        [self.downloadBtn setBackgroundImage:pressedBg forState:UIControlStateSelected];
+        [self.downloadBtn setBackgroundImage:pressedBg forState:UIControlStateHighlighted];
+        [self.downloadBtn setTitle:@"立即下载" forState:UIControlStateNormal];
+        self.downloadBtn.frame = CGRectMake((320-280)/2,
+                                       2,
+                                       280,
+                                       40);
+        [self.downloadBtn addTarget:self action:@selector(downloadBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+        [self.footerView addSubview:self.downloadBtn];
+        self.mtableView.tableFooterView = self.footerView;
+    }
+}
+
+-(void)downloadBtnAction:(id)sender
+{
+    [SVProgressHUD showInView:self.view status:@"下载中，请稍后..."];
+    self.downloadBtn.enabled = NO;
+    self.couponDownloadInterface = [[CouponDownloadInterface alloc] init];
+    self.couponDownloadInterface.delegate = self;
+    [self.couponDownloadInterface getCouponDownloadByCouponId:self.couponModel.cid];
 }
 
 #pragma mark - UITableViewDataSource<NSObject>
@@ -192,7 +208,6 @@
                                                   [self.couponModel.startTime toDateString],
                                                   [self.couponModel.endTime toDateString]];
                 withTitleCell.detailLabel.numberOfLines = 99;
-                //TODO:计算文字高度
                 withTitleCell.detailLabel.frame = CGRectMake(withTitleCell.detailLabel.frame.origin.x,
                                                              withTitleCell.detailLabel.frame.origin.y,
                                                              withTitleCell.detailLabel.frame.size.width,
@@ -224,7 +239,6 @@
                 withTitleCell.iconView.image = [UIImage imageNamed:@"store-icon-feed"];
                 withTitleCell.detailLabel.text = self.couponModel.descriptionStr;
                 withTitleCell.detailLabel.numberOfLines = 39;
-                //TODO:计算文字高度
                 //计算内容的size
                 CGSize labelFontSize = [self.couponModel.descriptionStr sizeWithFont:[UIFont systemFontOfSize:14]
                                                                    constrainedToSize:CGSizeMake(280, 999)
@@ -383,6 +397,45 @@
 -(void)getCouponDetailDidFailed:(NSString *)errorMessage
 {
     NSLog(@"%@",errorMessage);
+}
+
+#pragma mark - CouponDownloadInterfaceDelegate <NSObject>
+-(void)getCouponDownloadDidFinished:(CouponDownloadModel *)couponDownloadModel
+{
+    [SVProgressHUD dismiss];
+    //status: '下载结果',            // 1: 成功; 2: X; 3: 失败-已下载过; 4: 失败-不符合参与条件
+    NSString *title = nil;
+    switch (couponDownloadModel.status) {
+        case 1:
+            title = @"成功";
+            break;
+        case 2:
+            title = @"X";//??
+            break;
+        case 3:
+            title = @"失败-已下载过";
+            break;
+        case 4:
+            title = @"失败-不符合参与条件";
+            break;
+        default:
+            break;
+    }
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title
+                                                    message:couponDownloadModel.msg
+                                                   delegate:nil
+                                          cancelButtonTitle:@"关闭"
+                                          otherButtonTitles: nil];
+    [alert show];
+}
+
+-(void)getCouponDownloadDidFailed:(NSString *)errorMessage
+{
+    NSLog(@"%@",errorMessage);
+    [SVProgressHUD dismiss];
+    
+    self.downloadBtn.enabled = YES;
 }
 
 @end

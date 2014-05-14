@@ -40,6 +40,10 @@
         if ([self.delegate respondsToSelector:@selector(getCouponDownloadDidFinished:)]) {
             [self.delegate getCouponDownloadDidFinished:couponDownloadModel];
         }
+    }else{
+        if ([self.delegate respondsToSelector:@selector(getCouponDownloadDidFailed:)]) {
+            [self.delegate getCouponDownloadDidFailed:[NSString stringWithFormat:@"获取失败！"]];
+        }
     }
 }
 

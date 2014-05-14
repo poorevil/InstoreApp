@@ -17,12 +17,18 @@
 #import "StoreDetailInterface.h"
 #import "StoreModel.h"
 
-@interface ShopDetailViewController () <StoreDetailInterfaceDelegate>
+#import "StoreFocusInterface.h"
+
+#import "SVProgressHUD.h"
+
+@interface ShopDetailViewController () <StoreDetailInterfaceDelegate,StoreFocusInterfaceDelegate>
 
 @property (nonatomic,strong) ShopDetailHeaderView *headerView;
 
 @property (nonatomic,strong) StoreDetailInterface *storeDetailInterface;
 @property (nonatomic,strong) StoreModel *storeModel;
+
+@property (nonatomic,strong) StoreFocusInterface *storeFocusInterface;
 
 @end
 
@@ -91,13 +97,6 @@
     [addCommentBtn addTarget:self action:@selector(addCommentAction:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *addCommentItem = [[UIBarButtonItem alloc] initWithCustomView:addCommentBtn];
 
-    //喜欢
-    UIButton *likeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [likeBtn sizeToFit];
-    [likeBtn setImage:[UIImage imageNamed:@"store-icon-like-black"] forState:UIControlStateNormal];
-    [likeBtn addTarget:self action:@selector(likeAction:) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *likeItem = [[UIBarButtonItem alloc] initWithCustomView:likeBtn];
-
     //收藏
     UIButton *favorBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [favorBtn sizeToFit];
@@ -112,7 +111,7 @@
     [shareBtn addTarget:self action:@selector(favorAction:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *shareItem = [[UIBarButtonItem alloc] initWithCustomView:shareBtn];
     
-    self.toolbarItems = @[addCommentItem,flexibleSpace,likeItem,flexibleSpace,favorItem,flexibleSpace,shareItem];
+    self.toolbarItems = @[addCommentItem,flexibleSpace,favorItem,flexibleSpace,shareItem];
 }
 
 //添加评论
@@ -121,35 +120,19 @@
     
 }
 
-//添加喜欢
--(void)likeAction:(id)sender
-{
-    
-}
-
 //收藏
 -(void)favorAction:(id)sender
 {
-    
+    [SVProgressHUD showInView:self.view status:@"添加关注中，请稍后..."];
+    self.storeFocusInterface = [[StoreFocusInterface alloc] init];
+    self.storeFocusInterface.delegate = self;
+    [self.storeFocusInterface setStoreFocusByShopIds:@[[NSString stringWithFormat:@"%d",self.storeModel.sid]] isUp:YES];
 }
 
 #pragma mark - UITableViewDataSource<NSObject>
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-//    switch (section) {
-//        case 0:
-//            return 1;
-//        case 1:
-//            return 2;
-//        case 2:
-//            return 3;
-//        case 3:
-//            return 1;
-//            
-//        default:
-//            return 1;
-//    }
     return 1;
 }
 
@@ -204,19 +187,16 @@
         case 2:{
             ShopDetailItemListCell *sditc = (ShopDetailItemListCell *)cell;
             sditc.storeModel = self.storeModel;
-//            cell.textLabel.text = @"品类列表";
             break;
         }
         case 3:{
             ShopDetailDescriptionCell *sddtc = (ShopDetailDescriptionCell *)cell;
             sddtc.descLabel.text = self.storeModel.descStr;
-//            cell.textLabel.text = @"店铺描述";
             break;
         }
         case 4:{
             ShopDetailCommentsCell *sdctc = (ShopDetailCommentsCell *)cell;
             sdctc.storeModel = self.storeModel;
-//            cell.textLabel.text = @"评论列表";
             break;
         }
         default:
@@ -259,4 +239,24 @@
 {
     [segue.destinationViewController setHidesBottomBarWhenPushed:YES];
 }
+
+#pragma mark - StoreFocusInterfaceDelegate <NSObject>
+-(void)setStoreFocusDidFinished
+{
+    [SVProgressHUD dismiss];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"关注成功" message:nil delegate:nil
+                                          cancelButtonTitle:@"关闭"
+                                          otherButtonTitles:nil];
+    [alert show];
+}
+
+-(void)setStoreFocusDidFailed:(NSString *)errorMessage
+{
+    [SVProgressHUD dismiss];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"关注失败" message:nil delegate:nil
+                                          cancelButtonTitle:@"关闭"
+                                          otherButtonTitles:nil];
+    [alert show];
+}
+
 @end
