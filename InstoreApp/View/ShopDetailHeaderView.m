@@ -35,7 +35,7 @@
     _storeModel = storeModel;
     
     if (self.storeModel) {
-        self.bannerImageView.imageURL = [NSURL URLWithString:self.storeModel.logoUrl];
+        self.bannerImageView.imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@/640*256.png",self.storeModel.imageUrl]];
         self.logoImageView.imageURL = [NSURL URLWithString:self.storeModel.logoUrl];
     }
 }

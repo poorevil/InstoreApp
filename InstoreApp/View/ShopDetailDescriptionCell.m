@@ -15,6 +15,8 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code
+        
+        self.isShowDetailMessage = NO;
     }
     return self;
 }
@@ -28,7 +30,11 @@
 
 -(IBAction)moreBtnAction:(id)sender
 {
-    //TODO:修改高度
+    self.isShowDetailMessage = !self.isShowDetailMessage;
+    
+    if ([self.delegate respondsToSelector:@selector(isShowDetailMessage:)]) {
+        [self.delegate isShowDetailMessage:self.isShowDetailMessage];
+    }
 }
 
 @end

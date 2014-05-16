@@ -9,6 +9,7 @@
 #import "ShopDetailLocationCell.h"
 #import "StoreModel.h"
 #import "FloorModel.h"
+#import "PositionModel.h"
 
 @implementation ShopDetailLocationCell
 
@@ -31,7 +32,7 @@
 -(void)setStoreModel:(StoreModel *)storeModel
 {
     _storeModel = storeModel;
-    self.floorLabel.text = self.storeModel.floor.fName;
+    self.floorLabel.text = self.storeModel.position.floor.fName;
     self.telLabel.text = self.storeModel.tel;
 }
 

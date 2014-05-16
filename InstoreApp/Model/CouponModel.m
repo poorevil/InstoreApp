@@ -43,6 +43,8 @@
             
             self.store = [[StoreModel alloc] initWithJsonMap:[jsonMap objectForKey:@"store"]];
             
+            self.couponStatus = [jsonMap objectForKey:@"coupon_status"]==nil?-1:[[jsonMap objectForKey:@"coupon_status"] integerValue];
+            self.couponCode = [jsonMap objectForKey:@"couponCode"];
         }
     }
     

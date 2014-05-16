@@ -18,5 +18,5 @@
 @interface FloorInterface : BaseInterface <BaseInterfaceDelegate>
 @property (nonatomic,assign) id<FloorInterfaceDelegate> delegate;
 
--(void)getFloorListByAreaId:(NSInteger)areaId;
+-(void)getFloorListByBuildingId:(NSInteger)buildingId;
 @end

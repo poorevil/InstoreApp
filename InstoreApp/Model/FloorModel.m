@@ -18,6 +18,18 @@
     if(self = [super init]){
         self.fid = [[jsonMap objectForKey:@"id"] integerValue];
         self.fName = [jsonMap objectForKey:@"name"];
+        self.mapCode = [jsonMap objectForKey:@"mapCode"];
+    }
+    return self;
+}
+
+-(id)initWithJsonMap:(NSDictionary *)jsonMap buildingId:(NSInteger)buildingId
+{
+    if (self = [super init]) {
+        self.fid = [[jsonMap objectForKey:@"id"] integerValue];
+        self.fName = [jsonMap objectForKey:@"name"];
+        self.mapCode = [jsonMap objectForKey:@"mapCode"];
+        self.buildingId = buildingId;
     }
     return self;
 }

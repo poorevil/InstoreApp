@@ -37,6 +37,8 @@
 //@property (nonatomic,assign) NSInteger collectRole;//下载规则
 @property (nonatomic,assign) NSInteger focusCount;//关注数
 
+@property (nonatomic,strong) NSString *couponCode;//优惠券代码   // ('-1', '未知'),('0', '未消费'), ('1', '已消费')
+@property (nonatomic,assign) NSInteger couponStatus;//优惠券状态
 
 @property (nonatomic,strong) StoreModel *store;
 

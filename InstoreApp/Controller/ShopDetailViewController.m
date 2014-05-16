@@ -21,7 +21,7 @@
 
 #import "SVProgressHUD.h"
 
-@interface ShopDetailViewController () <StoreDetailInterfaceDelegate,StoreFocusInterfaceDelegate>
+@interface ShopDetailViewController () <StoreDetailInterfaceDelegate,StoreFocusInterfaceDelegate,ShopDetailDescriptionCellDelegate>
 
 @property (nonatomic,strong) ShopDetailHeaderView *headerView;
 
@@ -29,6 +29,8 @@
 @property (nonatomic,strong) StoreModel *storeModel;
 
 @property (nonatomic,strong) StoreFocusInterface *storeFocusInterface;
+
+@property (nonatomic,assign) BOOL isShowWholeDetailMsg;//是否显示全部描述
 
 @end
 
@@ -192,6 +194,21 @@
         case 3:{
             ShopDetailDescriptionCell *sddtc = (ShopDetailDescriptionCell *)cell;
             sddtc.descLabel.text = self.storeModel.descStr;
+            sddtc.delegate = self;
+            
+            CGRect frame = sddtc.frame;
+            if (self.isShowWholeDetailMsg){
+                //计算内容的size
+                CGSize labelFontSize = [self.storeModel.descStr sizeWithFont:[UIFont systemFontOfSize:14]
+                                                           constrainedToSize:CGSizeMake(280, 999)
+                                                               lineBreakMode:NSLineBreakByWordWrapping];
+                frame.size.height = labelFontSize.height + 95 - 54;
+                sddtc.frame = frame;
+            }else{
+                frame.size.height = 95;
+                sddtc.frame = frame;
+            }
+            
             break;
         }
         case 4:{
@@ -214,7 +231,18 @@
         case 1:
             return 44;
         case 2:
-        case 3:
+            return 95;
+        case 3:{
+            if (self.isShowWholeDetailMsg) {
+                //计算内容的size
+                CGSize labelFontSize = [self.storeModel.descStr sizeWithFont:[UIFont systemFontOfSize:14]
+                                                                   constrainedToSize:CGSizeMake(280, 999)
+                                                                       lineBreakMode:NSLineBreakByWordWrapping];
+                
+                return labelFontSize.height + 95 - 54;
+            }else
+                return 95;
+        }
         case 4:
             return 95;
         default:
@@ -257,6 +285,13 @@
                                           cancelButtonTitle:@"关闭"
                                           otherButtonTitles:nil];
     [alert show];
+}
+
+#pragma mark - ShopDetailDescriptionCellDelegate <NSObject>
+-(void)isShowDetailMessage:(BOOL)show
+{
+    self.isShowWholeDetailMsg = show;
+    [self.mtableView reloadData];
 }
 
 @end

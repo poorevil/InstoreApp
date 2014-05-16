@@ -12,6 +12,9 @@
 
 @property (nonatomic,assign) NSInteger fid;
 @property (nonatomic,strong) NSString *fName;
+@property (nonatomic,strong) NSString *mapCode;
+@property (nonatomic,assign) NSInteger buildingId;
 
 -(id)initWithJsonMap:(NSDictionary *)jsonMap;
+-(id)initWithJsonMap:(NSDictionary *)jsonMap buildingId:(NSInteger)buildingId;
 @end

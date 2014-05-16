@@ -8,9 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol ShopDetailDescriptionCellDelegate <NSObject>
+
+-(void)isShowDetailMessage:(BOOL)show;
+
+@end
+
 @interface ShopDetailDescriptionCell : UITableViewCell
 
 @property (nonatomic,strong) IBOutlet UILabel *descLabel;
+@property (nonatomic,assign) id<ShopDetailDescriptionCellDelegate> delegate;
+
+@property (nonatomic,assign) BOOL isShowDetailMessage;
 
 -(IBAction)moreBtnAction:(id)sender;
 

@@ -13,6 +13,7 @@
 #import "CouponModel.h"
 #import "StoreModel.h"
 #import "FloorModel.h"
+#import "PositionModel.h"
 #import "CouponDownloadInterface.h"
 #import "CouponDetailDownloadCell.h"
 #import "NSDate+DynamicDateString.h"
@@ -194,7 +195,7 @@
     switch (indexPath.section) {
         case 0:{
             CouponDetailDownloadCell *cddc = (CouponDetailDownloadCell *)cell;
-            cddc.downloadNumLabel.text = [NSString stringWithFormat:@"%d",self.couponModel.downloadCount];
+//            cddc.downloadNumLabel.text = [NSString stringWithFormat:@"%d",self.couponModel.collectCount];
             cddc.favNumLabel.text = [NSString stringWithFormat:@"%d",self.couponModel.collectCount];
             
             break;
@@ -222,7 +223,7 @@
                         cell.textLabel.text = [NSString stringWithFormat:@"商户：%@",self.couponModel.store.title];
                         break;
                     case 1:
-                        cell.textLabel.text = [NSString stringWithFormat:@"地址：%@",self.couponModel.store.floor.fName];
+                        cell.textLabel.text = [NSString stringWithFormat:@"地址：%@",self.couponModel.store.address];
                         break;
                     case 2:
                         cell.textLabel.text = [NSString stringWithFormat:@"电话：%@",self.couponModel.store.tel?self.couponModel.store.tel:@""];

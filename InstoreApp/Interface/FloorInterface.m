@@ -12,10 +12,10 @@
 
 @implementation FloorInterface
 
--(void)getFloorListByAreaId:(NSInteger)areaId
+-(void)getFloorListByBuildingId:(NSInteger)buildingId
 {
     self.interfaceUrl = [NSString stringWithFormat:@"%@api/%@/shop/floor",BASE_INTERFACE_DOMAIN, MALL_CODE];
-    self.args = @{@"areaId":[NSString stringWithFormat:@"%d",areaId]};
+    self.args = @{@"buildingId":[NSString stringWithFormat:@"%d",buildingId]};
     self.baseDelegate = self;
     [self connect];
 }
@@ -23,11 +23,12 @@
 #pragma mark - BaseInterfaceDelegate
 //{
 //    
-//    "areaId":<当前楼区>,
+//    "buildingId":<当前楼区>,
 //    "floors":[                         //楼层列表
 //              {
 //                  id: 'ID',
-//              name: '名称'
+//                  name: '名称'
+//                  mapCode:'地图编号'
 //              },
 //              {
 //                  id: 'ID',
@@ -43,11 +44,11 @@
     if (jsonObj) {
         NSMutableArray *resultList = [NSMutableArray array];
         if (jsonObj) {
-            NSInteger areaId = [[jsonObj objectForKey:@"totalCount"] integerValue];
+            NSInteger buildingId = [[jsonObj objectForKey:@"buildingId"] integerValue];
             NSArray *floorsArray = [jsonObj objectForKey:@"floors"];
             if (floorsArray) {
                 for (NSDictionary *floorDict in floorsArray) {
-                    FloorModel *floor = [[FloorModel alloc] initWithJsonMap:floorDict];
+                    FloorModel *floor = [[FloorModel alloc] initWithJsonMap:floorDict buildingId:buildingId];
                     [resultList addObject:floor];
                 }
             }

@@ -56,7 +56,7 @@
     self.floorInterface = [[FloorInterface alloc] init];
     self.floorInterface.delegate = self;
     //TODO:areaId暂时写死0
-    [self.floorInterface getFloorListByAreaId:0];
+    [self.floorInterface getFloorListByBuildingId:0];
 }
 
 - (void)didReceiveMemoryWarning
