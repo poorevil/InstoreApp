@@ -166,7 +166,7 @@
             cellIdentifier = @"MainViewNavigationCell";
             break;
         case 1:
-            cellIdentifier = @"MainViewMiaoShaCell";
+            cellIdentifier = @"MainViewYouhuiCell";//@"MainViewMiaoShaCell";
             break;
         case 2:
             cellIdentifier = @"MainViewYouhuiCell";

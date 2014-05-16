@@ -140,31 +140,50 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 5;
+    return self.storeModel.coupons.count > 0 ? 5 : 4;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSString *cellIdentifier = @"cell";
     
-    switch (indexPath.section) {
-        case 0:
-            cellIdentifier = @"ShopDetailTypeCell";
-            break;
-        case 1:
-            cellIdentifier = @"ShopDetailLocationCell";
-            break;
-        case 2:
-            cellIdentifier = @"ShopDetailItemListCell";
-            break;
-        case 3:
-            cellIdentifier = @"ShopDetailDescriptionCell";
-            break;
-        case 4:
-            cellIdentifier = @"ShopDetailCommentsCell";
-            break;
-        default:
-            break;
+    if (self.storeModel.coupons.count > 0) {
+        switch (indexPath.section) {
+            case 0:
+                cellIdentifier = @"ShopDetailTypeCell";
+                break;
+            case 1:
+                cellIdentifier = @"ShopDetailLocationCell";
+                break;
+            case 2:
+                cellIdentifier = @"ShopDetailItemListCell";
+                break;
+            case 3:
+                cellIdentifier = @"ShopDetailDescriptionCell";
+                break;
+            case 4:
+                cellIdentifier = @"ShopDetailCommentsCell";
+                break;
+            default:
+                break;
+        }
+    }else{
+        switch (indexPath.section) {
+            case 0:
+                cellIdentifier = @"ShopDetailTypeCell";
+                break;
+            case 1:
+                cellIdentifier = @"ShopDetailLocationCell";
+                break;
+            case 2:
+                cellIdentifier = @"ShopDetailDescriptionCell";
+                break;
+            case 3:
+                cellIdentifier = @"ShopDetailCommentsCell";
+                break;
+            default:
+                break;
+        }
     }
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
@@ -175,49 +194,91 @@
                                            options:nil] objectAtIndex:0];
     }
     
-    switch (indexPath.section) {
-        case 0:{
-            ShopDetailTypeCell *sdtc = (ShopDetailTypeCell *)cell;
-            sdtc.storeModel = self.storeModel;
-            break;
-        }
-        case 1:{
-            ShopDetailLocationCell *sdtlc = (ShopDetailLocationCell *)cell;
-            sdtlc.storeModel = self.storeModel;
-            break;
-        }
-        case 2:{
-            ShopDetailItemListCell *sditc = (ShopDetailItemListCell *)cell;
-            sditc.storeModel = self.storeModel;
-            break;
-        }
-        case 3:{
-            ShopDetailDescriptionCell *sddtc = (ShopDetailDescriptionCell *)cell;
-            sddtc.descLabel.text = self.storeModel.descStr;
-            sddtc.delegate = self;
-            
-            CGRect frame = sddtc.frame;
-            if (self.isShowWholeDetailMsg){
-                //计算内容的size
-                CGSize labelFontSize = [self.storeModel.descStr sizeWithFont:[UIFont systemFontOfSize:14]
-                                                           constrainedToSize:CGSizeMake(280, 999)
-                                                               lineBreakMode:NSLineBreakByWordWrapping];
-                frame.size.height = labelFontSize.height + 95 - 54;
-                sddtc.frame = frame;
-            }else{
-                frame.size.height = 95;
-                sddtc.frame = frame;
+    if (self.storeModel.coupons.count > 0) {
+        switch (indexPath.section) {
+            case 0:{
+                ShopDetailTypeCell *sdtc = (ShopDetailTypeCell *)cell;
+                sdtc.storeModel = self.storeModel;
+                break;
             }
-            
-            break;
+            case 1:{
+                ShopDetailLocationCell *sdtlc = (ShopDetailLocationCell *)cell;
+                sdtlc.storeModel = self.storeModel;
+                break;
+            }
+            case 2:{
+                ShopDetailItemListCell *sditc = (ShopDetailItemListCell *)cell;
+                sditc.storeModel = self.storeModel;
+                break;
+            }
+            case 3:{
+                ShopDetailDescriptionCell *sddtc = (ShopDetailDescriptionCell *)cell;
+                sddtc.descLabel.text = self.storeModel.descStr;
+                sddtc.delegate = self;
+                
+                CGRect frame = sddtc.frame;
+                if (self.isShowWholeDetailMsg){
+                    //计算内容的size
+                    CGSize labelFontSize = [self.storeModel.descStr sizeWithFont:[UIFont systemFontOfSize:14]
+                                                               constrainedToSize:CGSizeMake(280, 999)
+                                                                   lineBreakMode:NSLineBreakByWordWrapping];
+                    frame.size.height = labelFontSize.height + 95 - 54;
+                    sddtc.frame = frame;
+                }else{
+                    frame.size.height = 95;
+                    sddtc.frame = frame;
+                }
+                
+                break;
+            }
+            case 4:{
+                ShopDetailCommentsCell *sdctc = (ShopDetailCommentsCell *)cell;
+                sdctc.storeModel = self.storeModel;
+                break;
+            }
+            default:
+                break;
         }
-        case 4:{
-            ShopDetailCommentsCell *sdctc = (ShopDetailCommentsCell *)cell;
-            sdctc.storeModel = self.storeModel;
-            break;
+    }else{
+        switch (indexPath.section) {
+            case 0:{
+                ShopDetailTypeCell *sdtc = (ShopDetailTypeCell *)cell;
+                sdtc.storeModel = self.storeModel;
+                break;
+            }
+            case 1:{
+                ShopDetailLocationCell *sdtlc = (ShopDetailLocationCell *)cell;
+                sdtlc.storeModel = self.storeModel;
+                break;
+            }
+            case 2:{
+                ShopDetailDescriptionCell *sddtc = (ShopDetailDescriptionCell *)cell;
+                sddtc.descLabel.text = self.storeModel.descStr;
+                sddtc.delegate = self;
+                
+                CGRect frame = sddtc.frame;
+                if (self.isShowWholeDetailMsg){
+                    //计算内容的size
+                    CGSize labelFontSize = [self.storeModel.descStr sizeWithFont:[UIFont systemFontOfSize:14]
+                                                               constrainedToSize:CGSizeMake(280, 999)
+                                                                   lineBreakMode:NSLineBreakByWordWrapping];
+                    frame.size.height = labelFontSize.height + 95 - 54;
+                    sddtc.frame = frame;
+                }else{
+                    frame.size.height = 95;
+                    sddtc.frame = frame;
+                }
+                
+                break;
+            }
+            case 3:{
+                ShopDetailCommentsCell *sdctc = (ShopDetailCommentsCell *)cell;
+                sdctc.storeModel = self.storeModel;
+                break;
+            }
+            default:
+                break;
         }
-        default:
-            break;
     }
     
     return cell;
@@ -226,27 +287,50 @@
 #pragma mark - UITableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    switch (indexPath.section) {
-        case 0:
-        case 1:
-            return 44;
-        case 2:
-            return 95;
-        case 3:{
-            if (self.isShowWholeDetailMsg) {
-                //计算内容的size
-                CGSize labelFontSize = [self.storeModel.descStr sizeWithFont:[UIFont systemFontOfSize:14]
-                                                                   constrainedToSize:CGSizeMake(280, 999)
-                                                                       lineBreakMode:NSLineBreakByWordWrapping];
-                
-                return labelFontSize.height + 95 - 54;
-            }else
+    if (self.storeModel.coupons.count > 0) {
+        switch (indexPath.section) {
+            case 0:
+            case 1:
+                return 44;
+            case 2:
                 return 95;
+            case 3:{
+                if (self.isShowWholeDetailMsg) {
+                    //计算内容的size
+                    CGSize labelFontSize = [self.storeModel.descStr sizeWithFont:[UIFont systemFontOfSize:14]
+                                                                       constrainedToSize:CGSizeMake(280, 999)
+                                                                           lineBreakMode:NSLineBreakByWordWrapping];
+                    
+                    return labelFontSize.height + 95 - 54;
+                }else
+                    return 95;
+            }
+            case 4:
+                return 95;
+            default:
+                return 44;
         }
-        case 4:
-            return 95;
-        default:
-            return 44;
+    }else{
+        switch (indexPath.section) {
+            case 0:
+            case 1:
+                return 44;
+            case 2:{
+                if (self.isShowWholeDetailMsg) {
+                    //计算内容的size
+                    CGSize labelFontSize = [self.storeModel.descStr sizeWithFont:[UIFont systemFontOfSize:14]
+                                                               constrainedToSize:CGSizeMake(280, 999)
+                                                                   lineBreakMode:NSLineBreakByWordWrapping];
+                    
+                    return labelFontSize.height + 95 - 54;
+                }else
+                    return 95;
+            }
+            case 3:
+                return 95;
+            default:
+                return 44;
+        }
     }
 }
 

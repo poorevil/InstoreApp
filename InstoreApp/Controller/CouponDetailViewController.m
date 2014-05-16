@@ -195,8 +195,9 @@
     switch (indexPath.section) {
         case 0:{
             CouponDetailDownloadCell *cddc = (CouponDetailDownloadCell *)cell;
-//            cddc.downloadNumLabel.text = [NSString stringWithFormat:@"%d",self.couponModel.collectCount];
-            cddc.favNumLabel.text = [NSString stringWithFormat:@"%d",self.couponModel.collectCount];
+            cddc.downloadNumLabel.text = [NSString stringWithFormat:@"%d",self.couponModel.collectCount];
+//            cddc.favNumLabel.text = [NSString stringWithFormat:@"%d",self.couponModel.collectCount];
+            cddc.favNumLabel.hidden = YES;
             
             break;
         }

@@ -14,7 +14,7 @@
 
 -(void)getFloorListByBuildingId:(NSInteger)buildingId
 {
-    self.interfaceUrl = [NSString stringWithFormat:@"%@api/%@/shop/floor",BASE_INTERFACE_DOMAIN, MALL_CODE];
+    self.interfaceUrl = [NSString stringWithFormat:@"%@api/%@/building/floor",BASE_INTERFACE_DOMAIN, MALL_CODE];
     self.args = @{@"buildingId":[NSString stringWithFormat:@"%d",buildingId]};
     self.baseDelegate = self;
     [self connect];

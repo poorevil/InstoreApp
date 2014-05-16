@@ -12,6 +12,7 @@
 #import "FloorModel.h"
 #import "CategoryModel.h"
 #import "PositionModel.h"
+#import "BuildingModel.h"
 
 @implementation ShopViewCell
 
@@ -37,8 +38,8 @@
     
     self.shopIconImageView.imageURL = [NSURL URLWithString:self.storeModel.logoUrl];
     self.titleLabel.text = self.storeModel.title;
-    self.typeLabel.text = [NSString stringWithFormat:@"%d",self.storeModel.categoryModel.cid];
-    self.floorLabel.text = self.storeModel.position.floor.fName;
+    self.typeLabel.text = self.storeModel.categoryModel.cName;
+    self.floorLabel.text = [NSString stringWithFormat:@"%@ %@",self.storeModel.position.building.name, self.storeModel.position.floor.fName];
     self.favLabel.text = [NSString stringWithFormat:@"%d",self.storeModel.followerCount];
 }
 
