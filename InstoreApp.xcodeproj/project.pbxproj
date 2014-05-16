@@ -291,6 +291,8 @@
 		4EF0917A190026EC00ABFE7D /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EF09179190026EC00ABFE7D /* AudioToolbox.framework */; };
 		4EF0917C190026F500ABFE7D /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EF0917B190026F500ABFE7D /* AVFoundation.framework */; };
 		4EF091A31900321B00ABFE7D /* libZXingWidget.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EF0919E1900320700ABFE7D /* libZXingWidget.a */; };
+		C18347181925BB57002F7B9B /* PositionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C18347171925BB57002F7B9B /* PositionModel.m */; };
+		C183471C1925BF75002F7B9B /* BuildingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C183471B1925BF75002F7B9B /* BuildingModel.m */; };
 		C195320B191B6D5000D3BFA8 /* EGOImageButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C195320A191B6D5000D3BFA8 /* EGOImageButton.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C195320E191CB58E00D3BFA8 /* UserInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C195320D191CB58E00D3BFA8 /* UserInfoModel.m */; };
 		C1953211191CB68F00D3BFA8 /* UserInfoInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = C1953210191CB68F00D3BFA8 /* UserInfoInterface.m */; };
@@ -778,6 +780,10 @@
 		4EF09179190026EC00ABFE7D /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		4EF0917B190026F500ABFE7D /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		4EF091981900320600ABFE7D /* ZXingWidget.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ZXingWidget.xcodeproj; path = zxing/iphone/ZXingWidget/ZXingWidget.xcodeproj; sourceTree = "<group>"; };
+		C18347161925BB57002F7B9B /* PositionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PositionModel.h; sourceTree = "<group>"; };
+		C18347171925BB57002F7B9B /* PositionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PositionModel.m; sourceTree = "<group>"; };
+		C183471A1925BF75002F7B9B /* BuildingModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuildingModel.h; sourceTree = "<group>"; };
+		C183471B1925BF75002F7B9B /* BuildingModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuildingModel.m; sourceTree = "<group>"; };
 		C1953209191B6D5000D3BFA8 /* EGOImageButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGOImageButton.h; sourceTree = "<group>"; };
 		C195320A191B6D5000D3BFA8 /* EGOImageButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGOImageButton.m; sourceTree = "<group>"; };
 		C195320C191CB58E00D3BFA8 /* UserInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoModel.h; sourceTree = "<group>"; };
@@ -1122,6 +1128,10 @@
 				03573BA2190EBE1600A11A33 /* CouponModel.m */,
 				03573BA4190EBF5300A11A33 /* StoreModel.h */,
 				03573BA5190EBF5300A11A33 /* StoreModel.m */,
+				C18347161925BB57002F7B9B /* PositionModel.h */,
+				C18347171925BB57002F7B9B /* PositionModel.m */,
+				C183471A1925BF75002F7B9B /* BuildingModel.h */,
+				C183471B1925BF75002F7B9B /* BuildingModel.m */,
 				031203331917D9F600077E25 /* CouponDownloadModel.h */,
 				031203341917D9F600077E25 /* CouponDownloadModel.m */,
 				031203391917DE8000077E25 /* ServiceModel.h */,
@@ -2026,6 +2036,7 @@
 				03120347191937E100077E25 /* StoreFocusInterface.m in Sources */,
 				03120344191934B000077E25 /* StoreDetailInterface.m in Sources */,
 				03573BA6190EBF5300A11A33 /* StoreModel.m in Sources */,
+				C18347181925BB57002F7B9B /* PositionModel.m in Sources */,
 				03573B71190578FC00A11A33 /* MallsListViewController.m in Sources */,
 				03573B7C1906C7E400A11A33 /* CategoryModel.m in Sources */,
 				03573B4E190572A500A11A33 /* ASIFormDataRequest.m in Sources */,
@@ -2061,6 +2072,7 @@
 				4E2C6DF118D75CC400DF3772 /* MeViewController.m in Sources */,
 				4E9608A418E48D6700418798 /* LoadMoreTableFooterView.m in Sources */,
 				03573B4B190572A500A11A33 /* ASIDataCompressor.m in Sources */,
+				C183471C1925BF75002F7B9B /* BuildingModel.m in Sources */,
 				C1953214191CC00D00D3BFA8 /* CouponsDownloadListInterface.m in Sources */,
 				4E25476018EB1BC1007388B6 /* MainViewYouhuiCell.m in Sources */,
 				03573B95190EA53800A11A33 /* JSONKit.m in Sources */,

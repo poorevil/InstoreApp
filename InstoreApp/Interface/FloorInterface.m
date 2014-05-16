@@ -47,7 +47,7 @@
             NSArray *floorsArray = [jsonObj objectForKey:@"floors"];
             if (floorsArray) {
                 for (NSDictionary *floorDict in floorsArray) {
-                    FloorModel *floor = [[FloorModel alloc] initWithJsonMap:floorDict areaId:areaId];
+                    FloorModel *floor = [[FloorModel alloc] initWithJsonMap:floorDict];
                     [resultList addObject:floor];
                 }
             }

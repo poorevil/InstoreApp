@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @class CategoryModel;
-@class FloorModel;
+@class PositionModel;
 @interface StoreModel : NSObject
 
 @property (nonatomic,assign) NSInteger sid;
@@ -18,13 +18,12 @@
 @property (nonatomic,strong) NSString *title;
 
 @property (nonatomic,strong) NSString *roomNum;//商户房间号
-@property (nonatomic,strong) FloorModel *floor;//楼层
+@property (nonatomic,strong) PositionModel *position;
 @property (nonatomic,strong) NSString *address;
 @property (nonatomic,strong) NSString *tel;
-@property (nonatomic,strong) NSString *area;//楼区
 @property (nonatomic,strong) NSString *descStr;
-@property (nonatomic,strong) NSString *mapCode;
-
+@property (nonatomic,assign) BOOL isFocus;
+@property (nonatomic,strong) NSString *imageUrl;
 @property (nonatomic,assign) NSInteger followerCount;//关注人数
 
 @property (nonatomic,strong) NSMutableArray *coupons;

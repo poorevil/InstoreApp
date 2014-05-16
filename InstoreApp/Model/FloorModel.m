@@ -13,10 +13,9 @@
 //  id: 'ID',
 //name: '名称'
 //}
--(id)initWithJsonMap:(NSDictionary *)jsonMap areaId:(NSInteger)areaId
+-(id)initWithJsonMap:(NSDictionary *)jsonMap
 {
     if(self = [super init]){
-        self.areaId = areaId;
         self.fid = [[jsonMap objectForKey:@"id"] integerValue];
         self.fName = [jsonMap objectForKey:@"name"];
     }
