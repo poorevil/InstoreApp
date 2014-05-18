@@ -37,9 +37,10 @@
     self.currentPage = 1;
     self.title = @"我的优惠劵";
     
-    self.collectionView = [[[PullPsCollectionView alloc] initWithFrame:CGRectMake(0, 0,
+    self.collectionView = [[[PullPsCollectionView alloc] initWithFrame:CGRectMake(0,
+                                                                                 self.navigationController.navigationBar.frame.size.height+self.navigationController.navigationBar.frame.origin.y,
                                                                                  self.view.frame.size.width,
-                                                                                 self.view.frame.size.height)] autorelease];
+                                                                                 self.view.frame.size.height-(self.navigationController.navigationBar.frame.size.height+self.navigationController.navigationBar.frame.origin.y))] autorelease];
     [self.view addSubview:self.collectionView];
     self.collectionView.collectionViewDelegate = self;
     self.collectionView.collectionViewDataSource = self;
