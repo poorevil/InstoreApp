@@ -60,8 +60,7 @@
             urlString = self.interfaceUrl;
         }
         
-        
-        
+        urlString = [self URLEncodedString:urlString];
         NSLog(@"urlString %@",urlString);
         
         //TODO:加密算法
@@ -168,5 +167,15 @@
     return [sign uppercaseString];
 }
 
+- (NSString *)URLEncodedString:(NSString *)orignUrlString
+{
+    NSString *encodedString = (NSString *)
+    CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
+                                                              (CFStringRef)orignUrlString,
+                                                              (CFStringRef)@"!$&'()*+,-./:;=?@_~%#[]",
+                                                              NULL,
+                                                              kCFStringEncodingUTF8));
+    return encodedString;
+}
 
 @end

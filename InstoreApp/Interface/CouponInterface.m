@@ -23,7 +23,7 @@
 //                  @"order":order,
                   @"like":[NSString stringWithFormat:@"%d",isLike],
                   @"amount":[NSString stringWithFormat:@"%d",amount],
-                  @"pageNum":[NSString stringWithFormat:@"%d",pageNum]};
+                  @"page":[NSString stringWithFormat:@"%d",pageNum]};
     self.baseDelegate = self;
     [self connect];
 }

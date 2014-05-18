@@ -73,6 +73,7 @@
 		03573BA0190EBB8300A11A33 /* SearchInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 03573B9F190EBB8300A11A33 /* SearchInterface.m */; };
 		03573BA3190EBE1600A11A33 /* CouponModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 03573BA2190EBE1600A11A33 /* CouponModel.m */; };
 		03573BA6190EBF5300A11A33 /* StoreModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 03573BA5190EBF5300A11A33 /* StoreModel.m */; };
+		03C6592A1928985D009CADA6 /* SearchResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C659291928985D009CADA6 /* SearchResultViewController.m */; };
 		4E25476018EB1BC1007388B6 /* MainViewYouhuiCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E25475F18EB1BC1007388B6 /* MainViewYouhuiCell.m */; };
 		4E25476218EB1BCE007388B6 /* MainViewYouhuiCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E25476118EB1BCE007388B6 /* MainViewYouhuiCell.xib */; };
 		4E25476918EC69BF007388B6 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E25476718EC69BF007388B6 /* SearchViewController.m */; };
@@ -524,6 +525,8 @@
 		03573BA2190EBE1600A11A33 /* CouponModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CouponModel.m; sourceTree = "<group>"; };
 		03573BA4190EBF5300A11A33 /* StoreModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreModel.h; sourceTree = "<group>"; };
 		03573BA5190EBF5300A11A33 /* StoreModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreModel.m; sourceTree = "<group>"; };
+		03C659281928985D009CADA6 /* SearchResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultViewController.h; sourceTree = "<group>"; };
+		03C659291928985D009CADA6 /* SearchResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultViewController.m; sourceTree = "<group>"; };
 		4E25475E18EB1BC1007388B6 /* MainViewYouhuiCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewYouhuiCell.h; sourceTree = "<group>"; };
 		4E25475F18EB1BC1007388B6 /* MainViewYouhuiCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewYouhuiCell.m; sourceTree = "<group>"; };
 		4E25476118EB1BCE007388B6 /* MainViewYouhuiCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewYouhuiCell.xib; sourceTree = "<group>"; };
@@ -1334,6 +1337,8 @@
 				4E25476618EC69BF007388B6 /* SearchViewController.h */,
 				4E25476718EC69BF007388B6 /* SearchViewController.m */,
 				4E25476818EC69BF007388B6 /* SearchViewController.xib */,
+				03C659281928985D009CADA6 /* SearchResultViewController.h */,
+				03C659291928985D009CADA6 /* SearchResultViewController.m */,
 				4E2C6DEE18D75CC400DF3772 /* MeViewController.h */,
 				4E2C6DEF18D75CC400DF3772 /* MeViewController.m */,
 				4E2C6DF018D75CC400DF3772 /* MeViewController.xib */,
@@ -2031,6 +2036,7 @@
 				0312034A19193BD800077E25 /* FloorInterface.m in Sources */,
 				0312033B1917DE8000077E25 /* ServiceModel.m in Sources */,
 				4ECBF70B18F4449E003963E1 /* BindPhoneViewController.m in Sources */,
+				03C6592A1928985D009CADA6 /* SearchResultViewController.m in Sources */,
 				4ECBF73E18F58C28003963E1 /* ShopDetailDescriptionCell.m in Sources */,
 				03573BA3190EBE1600A11A33 /* CouponModel.m in Sources */,
 				03120347191937E100077E25 /* StoreFocusInterface.m in Sources */,

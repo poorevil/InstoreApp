@@ -80,6 +80,8 @@
     if (!self.headerView) {
         self.headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 320)];
         self.headerImageView = [[EGOImageView alloc] init];
+        self.headerImageView.contentMode = UIViewContentModeScaleAspectFill;
+        self.headerImageView.clipsToBounds = YES;
         self.headerImageView.frame = CGRectMake(10, 10, 300, 300);
         [self.headerView addSubview:self.headerImageView];
         
@@ -93,7 +95,7 @@
         self.mtableView.tableHeaderView = self.headerView;
     }
     
-    self.headerImageView.imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@/400*400.png",self.couponModel.imageUrl]];
+    self.headerImageView.imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@/640*640.png",self.couponModel.imageUrl]];
     self.titleLabel.text = self.couponModel.title;
     
 }
@@ -114,6 +116,9 @@
         [self.downloadBtn setBackgroundImage:normalBg forState:UIControlStateNormal];
         [self.downloadBtn setBackgroundImage:pressedBg forState:UIControlStateSelected];
         [self.downloadBtn setBackgroundImage:pressedBg forState:UIControlStateHighlighted];
+        [self.downloadBtn setBackgroundImage:pressedBg forState:UIControlStateDisabled];
+        [self.downloadBtn setTitleColor:[UIColor grayColor] forState:UIControlStateDisabled];
+        
         [self.downloadBtn setTitle:@"立即下载" forState:UIControlStateNormal];
         self.downloadBtn.frame = CGRectMake((320-280)/2,
                                        2,
@@ -122,6 +127,10 @@
         [self.downloadBtn addTarget:self action:@selector(downloadBtnAction:) forControlEvents:UIControlEventTouchUpInside];
         [self.footerView addSubview:self.downloadBtn];
         self.mtableView.tableFooterView = self.footerView;
+        
+        if (self.couponModel.userCollectCount > 0) {
+            self.downloadBtn.enabled = NO;
+        }
     }
 }
 

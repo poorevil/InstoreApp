@@ -7,6 +7,7 @@
 //
 
 #import "SearchViewController.h"
+#import "SearchResultViewController.h"
 
 @interface SearchViewController () <UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate>
 @property (nonatomic,strong) UISearchBar *searchBar;
@@ -117,10 +118,46 @@
     return cell;
 }
 
+#pragma mark - UITableViewDelegate
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    SearchResultViewController *searchResultViewController = [[SearchResultViewController alloc] init];
+    NSString *keyWord = nil;
+    switch (indexPath.row) {
+        case 0:
+            keyWord = @"电影院";
+            break;
+        case 1:
+            keyWord = @"牛仔裤 三折";
+            break;
+        case 2:
+            keyWord = @"披萨";
+            break;
+        case 3:
+            keyWord = @"阿迪达斯";
+            break;
+        default:
+            break;
+    }
+    searchResultViewController.searchKeyWord = keyWord;
+    [self.navigationController pushViewController:searchResultViewController animated:NO];
+    
+}
+
 #pragma mark - UISearchBarDelegate
 - (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar{
     [self.navigationItem.rightBarButtonItem setTitle:@"取消"];
     return YES;
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    SearchResultViewController *searchResultViewController = [[SearchResultViewController alloc] init];
+    searchResultViewController.searchKeyWord = self.searchBar.text;
+    [self.navigationController pushViewController:searchResultViewController animated:NO];
+    
 }
 
 @end

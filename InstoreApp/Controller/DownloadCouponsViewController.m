@@ -75,6 +75,7 @@
 {
     [self.items removeAllObjects];
     [self loadDataSource];
+    self.currentPage = 1;
     self.collectionView.pullLastRefreshDate = [NSDate date];
     self.collectionView.pullTableIsRefreshing = NO;
     [self.collectionView reloadData];

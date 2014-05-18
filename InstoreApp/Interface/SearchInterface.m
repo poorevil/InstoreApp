@@ -21,7 +21,7 @@
     self.interfaceUrl = [NSString stringWithFormat:@"%@api/%@/search",BASE_INTERFACE_DOMAIN, MALL_CODE];
     self.args = @{@"keyword":keyword,
                   @"type":[NSString stringWithFormat:@"%d",type],
-                  @"order":order,
+//                  @"order":order,
                   @"amount":[NSString stringWithFormat:@"%d",amount],
                   @"page":[NSString stringWithFormat:@"%d",pageNum]};
     self.baseDelegate = self;

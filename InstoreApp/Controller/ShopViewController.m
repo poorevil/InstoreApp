@@ -52,6 +52,8 @@
             forControlEvents:UIControlEventTouchUpInside];
     [self.cateBtn addTarget:self action:@selector(categoryBtnAction:)
             forControlEvents:UIControlEventTouchUpInside];
+    [self.likeBtn addTarget:self action:@selector(likeBtnAction:)
+           forControlEvents:UIControlEventTouchUpInside];
     
     [self refreshDate];
 }
@@ -70,7 +72,7 @@
     self.storeInterface = [[StoreInterface alloc] init];
     self.storeInterface.delegate = self;
     [self.storeInterface getStoreListByFloor:[NSString stringWithFormat:@"%d",self.filterFloorModel.fid]
-                                         cid:self.filterFloorModel.fid
+                                         cid:self.filterCategory.cid
                                        order:nil
                                       isLike:self.isShowLikeOnly?1:0
                                       amount:20
@@ -143,6 +145,15 @@
     cateVC.hidesBottomBarWhenPushed = NO;
 }
 
+-(void)likeBtnAction:(id)sender
+{
+    ShopViewController *likeOnlyVC = [[ShopViewController alloc] initWithNibName:@"ShopViewController"
+                                                                              bundle:nil];
+    likeOnlyVC.isShowLikeOnly = YES;
+    likeOnlyVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:likeOnlyVC animated:YES];
+    likeOnlyVC.hidesBottomBarWhenPushed = NO;
+}
 
 #pragma mark - FloorSelectViewControllerDelegate
 -(void)floorSelectDidFinished:(FloorModel *) floorModel
