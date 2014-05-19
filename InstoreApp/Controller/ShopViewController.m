@@ -52,19 +52,15 @@
 {
     [super viewDidLoad];
     
-    if (self.refreshHeaderView == nil) {
-		
-		EGORefreshTableHeaderView *view = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f,
-                                                                                                      0.0f - self.mtable.bounds.size.height,
-                                                                                                      self.view.frame.size.width,
-                                                                                                      self.mtable.bounds.size.height)];
-		view.delegate = self;
-		[self.mtable addSubview:view];
-		self.refreshHeaderView = view;
-	}
-	
-	//  update the last update date
-	[self.refreshHeaderView refreshLastUpdatedDate];
+    self.mtable = [[UITableView alloc] initWithFrame:CGRectMake(0,
+                                                                self.likeBtn.superview.frame.size.height + self.likeBtn.superview.frame.origin.y,
+                                                                self.view.frame.size.width,
+                                                                self.view.frame.size.height  - self.likeBtn.superview.frame.origin.y-8)];
+    self.mtable.delegate = self;
+    self.mtable.dataSource = self;
+    [self.view addSubview:self.mtable];
+
+    self.mtable.tableHeaderView = nil;
     
     self.storeList = [NSMutableArray array];
     self.title = self.isShowLikeOnly?@"我关注的商家":@"商户";
@@ -79,7 +75,22 @@
            forControlEvents:UIControlEventTouchUpInside];
     
     [self refreshDate];
-    [self.refreshHeaderView startAnimatingWithScrollView:self.mtable];
+    
+    if (self.refreshHeaderView == nil) {
+		
+		EGORefreshTableHeaderView *view = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f,
+                                                                                                      0.0f - self.mtable.bounds.size.height,
+                                                                                                      self.view.frame.size.width,
+                                                                                                      self.mtable.bounds.size.height)];
+		view.delegate = self;
+		[self.mtable addSubview:view];
+		self.refreshHeaderView = view;
+	}
+	
+	//  update the last update date
+	[self.refreshHeaderView refreshLastUpdatedDate];
+    
+
 }
 
 -(void)refreshDate

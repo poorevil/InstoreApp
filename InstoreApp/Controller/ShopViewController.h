@@ -10,7 +10,7 @@
 #import "BaseViewController.h"
 @interface ShopViewController : BaseViewController <UITableViewDelegate,UITableViewDataSource>
 
-@property (nonatomic,strong) IBOutlet UITableView *mtable;
+@property (nonatomic,strong) UITableView *mtable;
 
 @property (nonatomic,strong) IBOutlet UIButton *floorBtn;
 @property (nonatomic,strong) IBOutlet UIButton *cateBtn;
