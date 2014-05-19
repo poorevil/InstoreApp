@@ -14,10 +14,12 @@
 #import "CategoryModel.h"
 #import "YouhuiCategoryViewController.h"
 
+#import "EGORefreshTableHeaderView.h"
+
 #import "StoreInterface.h"
 #import "StoreModel.h"
 
-@interface ShopViewController () <FloorSelectViewControllerDelegate,YouhuiCategoryViewControllerDelegate,StoreInterfaceDelegate>
+@interface ShopViewController () <FloorSelectViewControllerDelegate,YouhuiCategoryViewControllerDelegate,StoreInterfaceDelegate,EGORefreshTableHeaderDelegate>
 
 @property (nonatomic,strong) CategoryModel *filterCategory;//分类筛选条件
 @property (nonatomic,strong) FloorModel *filterFloorModel;//楼层筛选
@@ -25,6 +27,13 @@
 @property (nonatomic,strong) StoreInterface *storeInterface;
 @property (nonatomic,strong) NSMutableArray *storeList;
 @property (nonatomic,assign) NSInteger currentPage;
+
+@property (nonatomic,strong) EGORefreshTableHeaderView *refreshHeaderView;
+
+//  Reloading var should really be your tableviews datasource
+//  Putting it here for demo purposes
+@property (nonatomic,assign) BOOL reloading;
+
 
 @end
 
@@ -43,6 +52,20 @@
 {
     [super viewDidLoad];
     
+    if (self.refreshHeaderView == nil) {
+		
+		EGORefreshTableHeaderView *view = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f,
+                                                                                                      0.0f - self.mtable.bounds.size.height,
+                                                                                                      self.view.frame.size.width,
+                                                                                                      self.mtable.bounds.size.height)];
+		view.delegate = self;
+		[self.mtable addSubview:view];
+		self.refreshHeaderView = view;
+	}
+	
+	//  update the last update date
+	[self.refreshHeaderView refreshLastUpdatedDate];
+    
     self.storeList = [NSMutableArray array];
     self.title = self.isShowLikeOnly?@"我关注的商家":@"商户";
     
@@ -56,6 +79,7 @@
            forControlEvents:UIControlEventTouchUpInside];
     
     [self refreshDate];
+    [self.refreshHeaderView startAnimatingWithScrollView:self.mtable];
 }
 
 -(void)refreshDate
@@ -195,6 +219,63 @@
 -(void)getStoreListDidFailed:(NSString *)errorMessage
 {
     NSLog(@"%@",errorMessage);
+}
+
+#pragma mark -
+#pragma mark Data Source Loading / Reloading Methods
+
+- (void)reloadTableViewDataSource{
+	
+	_reloading = YES;
+    [self refreshDate];
+	
+}
+
+- (void)doneLoadingTableViewData{
+	
+	//  model should call this when its done loading
+	_reloading = NO;
+	[_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.mtable];
+	
+}
+
+
+#pragma mark -
+#pragma mark UIScrollViewDelegate Methods
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+	
+	[_refreshHeaderView egoRefreshScrollViewDidScroll:scrollView];
+    
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+	
+	[_refreshHeaderView egoRefreshScrollViewDidEndDragging:scrollView];
+	
+}
+
+
+#pragma mark -
+#pragma mark EGORefreshTableHeaderDelegate Methods
+
+- (void)egoRefreshTableHeaderDidTriggerRefresh:(EGORefreshTableHeaderView*)view{
+	
+	[self reloadTableViewDataSource];
+	[self performSelector:@selector(doneLoadingTableViewData) withObject:nil afterDelay:3.0];
+	
+}
+
+- (BOOL)egoRefreshTableHeaderDataSourceIsLoading:(EGORefreshTableHeaderView*)view{
+	
+	return _reloading; // should return if data source model is reloading
+	
+}
+
+- (NSDate*)egoRefreshTableHeaderDataSourceLastUpdated:(EGORefreshTableHeaderView*)view{
+	
+	return [NSDate date]; // should return date data source was last changed
+	
 }
 
 @end

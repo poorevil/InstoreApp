@@ -11,7 +11,7 @@
 #import "SearchInterface.h"
 #import "CouponModel.h"
 
-@interface SearchResultViewController () <UISearchBarDelegate,SearchInterfaceDelegate>
+@interface SearchResultViewController () <UISearchBarDelegate,SearchInterfaceDelegate,UIScrollViewDelegate>
 
 @property (nonatomic,strong) UISearchBar *searchBar;
 
@@ -93,6 +93,8 @@
     loadingLabel.text = @"Loading...";
     loadingLabel.textAlignment = NSTextAlignmentCenter;
     self.collectionView.loadingView = loadingLabel;
+    
+    self.collectionView.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning
@@ -224,6 +226,17 @@
     return YES;
 }
 
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    [self.searchBar resignFirstResponder];
+    self.searchKeyWord = self.searchBar.text;
+    [self refreshTable];
+}
 
+#pragma mark - UIScrollViewDelegate
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    [self.searchBar resignFirstResponder];
+}
 
 @end

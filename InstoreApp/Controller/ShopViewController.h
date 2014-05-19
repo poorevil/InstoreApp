@@ -20,4 +20,8 @@
 
 @property (nonatomic,assign) BOOL isShowLikeOnly;
 
+
+- (void)reloadTableViewDataSource;
+- (void)doneLoadingTableViewData;
+
 @end
