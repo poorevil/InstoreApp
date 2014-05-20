@@ -14,6 +14,7 @@
 
 @property (nonatomic,strong) IBOutlet UILabel *telLabel;
 @property (nonatomic,strong) IBOutlet UILabel *floorLabel;
+- (IBAction)MapButton:(id)sender;
 
 @property (nonatomic,strong) StoreModel *storeModel;
 

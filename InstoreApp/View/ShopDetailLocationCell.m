@@ -11,6 +11,9 @@
 #import "FloorModel.h"
 #import "PositionModel.h"
 
+#import "IndoorMapWithLeftPopBtnViewController.h"
+#import "AppDelegate.h"
+
 @implementation ShopDetailLocationCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -36,4 +39,17 @@
     self.telLabel.text = self.storeModel.tel;
 }
 
+- (IBAction)MapButton:(id)sender {
+    AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+    UINavigationController *nav = (UINavigationController *)appDelegate.tabBarController.selectedViewController;
+    IndoorMapWithLeftPopBtnViewController *imvc = [[IndoorMapWithLeftPopBtnViewController alloc] initWithFrame:nav.view.bounds];
+    imvc.hidesBottomBarWhenPushed = YES;
+    [nav pushViewController:imvc animated:YES];
+    
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"indoormap" object:nil];
+    imvc.hidesBottomBarWhenPushed = NO;
+
+    
+}
 @end

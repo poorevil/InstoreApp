@@ -9,6 +9,7 @@
 #import "IndoorMapWithLeftPopBtnViewController.h"
 #import "MBSMapKit.h"
 #import "StoreOverViewController.h"
+#import "ShopDetailLocationCell.h"
 
 @interface IndoorMapWithLeftPopBtnViewController ()
 
@@ -29,12 +30,19 @@
 {
     [super viewDidLoad];
 	
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectStoreWithFloorId:storeId:) name:@"indoormap" object:nil];
+    
     MBSPopup *popup = [MBSPopup getInstance];
     [popup setCanSwitchToStoreDetail:YES];
     [popup setDelegate:self];
     [popup setFHasLeftAccessoryView:YES];
 
 }
+- (void)selectStoreWithFloorId:(int)floorId storeId:(long long)storeId
+{
+    [_mMap selectStoreWithFloorId:2 storeId:13500227];
+}
+
 
 -(void)viewWillAppear:(BOOL)animated
 {
