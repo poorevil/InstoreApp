@@ -13,6 +13,9 @@
 
 @interface IndoorMapWithLeftPopBtnViewController ()
 
+@property (nonatomic,assign) NSInteger floorId;
+@property (nonatomic,assign) long long storeId;
+
 @end
 
 @implementation IndoorMapWithLeftPopBtnViewController
@@ -30,7 +33,10 @@
 {
     [super viewDidLoad];
 	
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectStoreWithFloorId:storeId:) name:@"indoormap" object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectStoreWithFloorId:storeId:) name:@"indoormap" object:nil];
+    
+    self.floorId = 0;
+    self.storeId = 0;
     
     MBSPopup *popup = [MBSPopup getInstance];
     [popup setCanSwitchToStoreDetail:YES];
@@ -38,11 +44,21 @@
     [popup setFHasLeftAccessoryView:YES];
 
 }
+
 - (void)selectStoreWithFloorId:(int)floorId storeId:(long long)storeId
 {
-    [_mMap selectStoreWithFloorId:2 storeId:13500227];
+//    [super.mMapControl selectStoreWithFloorId:2 storeId:13500227];
+    self.floorId = floorId;
+    self.storeId = storeId;
 }
 
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    if (self.floorId!=0&&self.storeId!=0) {
+        [super.mMapControl selectStoreWithFloorId:self.floorId storeId:self.storeId];
+    }
+}
 
 -(void)viewWillAppear:(BOOL)animated
 {

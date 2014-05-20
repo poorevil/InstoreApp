@@ -46,8 +46,9 @@
     imvc.hidesBottomBarWhenPushed = YES;
     [nav pushViewController:imvc animated:YES];
     
+    [imvc selectStoreWithFloorId:2 storeId:13500227];
+//    [[NSNotificationCenter defaultCenter] postNotificationName:@"indoormap" object:nil];
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"indoormap" object:nil];
     imvc.hidesBottomBarWhenPushed = NO;
 
     
