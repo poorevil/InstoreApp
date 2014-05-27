@@ -16,8 +16,6 @@
 
 @property(nonatomic,retain) PullPsCollectionView *collectionView;
 @property(nonatomic,retain) NSMutableArray *items;
-
-
 @property (nonatomic,strong) NSString *searchKeyWord;
 
 @end

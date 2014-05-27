@@ -45,7 +45,7 @@
     
     [self initHeaderView];
     
-    self.userInfoInterface = [[UserInfoInterface alloc] init];
+    self.userInfoInterface = [[[UserInfoInterface alloc] init] autorelease];
     self.userInfoInterface.delegate = self;
     [self.userInfoInterface getUserInfo];
     
@@ -95,8 +95,8 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1
-                                      reuseIdentifier:@"cell"];
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1
+                                      reuseIdentifier:@"cell"] autorelease];
         cell.detailTextLabel.font = [UIFont systemFontOfSize:12];
     }
     UISwitch *switchButton1;
@@ -198,7 +198,7 @@
         case 0:
             switch (indexPath.row) {
                 case 0:{
-                    DownloadCouponsViewController *dcvc = [[DownloadCouponsViewController alloc] initWithNibName:@"DownloadCouponsViewController" bundle:nil];
+                    DownloadCouponsViewController *dcvc = [[[DownloadCouponsViewController alloc] initWithNibName:@"DownloadCouponsViewController" bundle:nil] autorelease];
                     dcvc.hidesBottomBarWhenPushed = YES;
                     [self.navigationController pushViewController:dcvc animated:YES];
                     dcvc.hidesBottomBarWhenPushed = NO;
@@ -209,7 +209,7 @@
         case 1:
             switch (indexPath.row) {
                 case 0:{
-                    ShopViewController *shopVC = [[ShopViewController alloc] initWithNibName:@"ShopViewController" bundle:nil];
+                    ShopViewController *shopVC = [[[ShopViewController alloc] initWithNibName:@"ShopViewController" bundle:nil] autorelease];
                     shopVC.isShowLikeOnly = YES;
                     shopVC.hidesBottomBarWhenPushed = YES;
                     [self.navigationController pushViewController:shopVC animated:YES];
@@ -234,5 +234,17 @@
 -(void)getUserInfoDidFailed:(NSString *)errorMessage
 {
     NSLog(@"%@",errorMessage);
+}
+
+-(void)dealloc
+{
+    self.mtableView = nil;
+
+    self.headerView = nil;
+    self.userInfoInterface.delegate = nil;
+    self.userInfoInterface = nil;
+    self.userInfo = nil;
+    
+    [super dealloc];
 }
 @end

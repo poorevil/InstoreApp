@@ -53,4 +53,15 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)dealloc
+{
+    self.phoneNumField = nil;
+    self.checkNumField = nil;
+    self.fetchCheckNumBtn = nil;
+    self.bindPhoneBtn = nil;
+    self.findAccountBtn = nil;
+    
+    [super dealloc];
+}
+
 @end

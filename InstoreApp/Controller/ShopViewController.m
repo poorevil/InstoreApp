@@ -289,4 +289,22 @@
 	
 }
 
+-(void)dealloc
+{
+    self.mtable = nil;
+    self.floorBtn = nil;
+    self.cateBtn = nil;
+    self.sortBtn = nil;
+    self.likeBtn = nil;
+    
+    self.filterCategory = nil;
+    self.filterFloorModel = nil;
+    self.storeInterface.delegate = nil;
+    self.storeInterface = nil;
+    self.storeList = nil;
+    self.refreshHeaderView = nil;
+    
+    [super dealloc];
+}
+
 @end

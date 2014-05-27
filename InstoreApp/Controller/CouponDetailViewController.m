@@ -449,4 +449,22 @@
     self.downloadBtn.enabled = YES;
 }
 
+-(void)dealloc
+{
+    self.couponModel = nil;
+    self.mtableView = nil;
+
+    self.headerView = nil;
+    self.footerView = nil;
+    self.couponDetailInterface.delegate = nil;
+    self.couponDetailInterface = nil;
+    self.couponDownloadInterface.delegate = nil;
+    self.couponDownloadInterface = nil;
+    self.headerImageView = nil;
+    self.titleLabel = nil;
+    self.downloadBtn = nil;
+    
+    [super dealloc];
+}
+
 @end

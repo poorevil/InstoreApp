@@ -160,4 +160,12 @@
     
 }
 
+-(void)dealloc
+{
+    self.mtableView = nil;
+    self.searchBar = nil;
+    
+    [super dealloc];
+}
+
 @end

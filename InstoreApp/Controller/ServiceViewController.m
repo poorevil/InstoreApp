@@ -117,5 +117,14 @@
     NSLog(@"%@",errorMessage);
 }
 
+-(void)dealloc
+{
+    self.mtableView = nil;
+    self.servicesInterface.delegate = nil;
+    self.servicesInterface = nil;
+    self.serviceList = nil;
+    
+    [super dealloc];
+}
 
 @end

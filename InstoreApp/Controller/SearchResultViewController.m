@@ -239,4 +239,15 @@
     [self.searchBar resignFirstResponder];
 }
 
+-(void)dealloc
+{
+    self.items = nil;
+    self.searchKeyWord = nil;
+    self.collectionView = nil;
+    self.searchBar = nil;
+    self.searchInterface.delegate = nil;
+    self.searchInterface = nil;
+    
+    [super dealloc];
+}
 @end

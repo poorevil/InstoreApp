@@ -114,5 +114,16 @@
     NSLog(@"%@",errorMessage);
 }
 
+-(void)dealloc
+{
+    self.delegate = nil;
 
+    self.mtableView = nil;
+    self.floors = nil;
+    self.selectedFloorModel = nil;
+    self.floorInterface.delegate = nil;
+    self.floorInterface = nil;
+    
+    [super dealloc];
+}
 @end

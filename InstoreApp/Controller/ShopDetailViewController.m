@@ -378,4 +378,17 @@
     [self.mtableView reloadData];
 }
 
+-(void)dealloc
+{
+    self.mtableView = nil;
+    self.headerView = nil;
+    self.storeDetailInterface.delegate = nil;
+    self.storeDetailInterface = nil;
+    self.storeModel = nil;
+    self.storeFocusInterface.delegate = nil;
+    self.storeFocusInterface = nil;
+    
+    [super dealloc];
+}
+
 @end

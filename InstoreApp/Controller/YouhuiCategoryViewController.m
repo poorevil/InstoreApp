@@ -124,4 +124,17 @@
     NSLog(@"%@",errorMessage);
 }
 
+-(void)dealloc
+{
+    self.delegate = nil;
+    
+    self.mtableView = nil;
+    self.categorys = nil;
+    self.selectedCategoryModel = nil;
+    self.categoryInterface.delegate = nil;
+    self.categoryInterface = nil;
+    
+    [super dealloc];
+}
+
 @end

@@ -229,4 +229,22 @@
     NSLog(@"%@",errorMessage);
 }
 
+-(void)dealloc
+{
+    self.collectionView = nil;
+    self.collectionView.pullDelegate = nil;
+    self.collectionView.collectionViewDelegate = nil;
+    self.collectionView.collectionViewDataSource = nil;
+    
+    self.items = nil;
+    self.optionView = nil;
+    self.segmentedControl = nil;
+    self.categoryBtn = nil;
+    self.orderBtn = nil;
+    self.viewParent = nil;
+    self.filterCategory = nil;
+    self.couponInterface = nil;
+    
+    [super dealloc];
+}
 @end
