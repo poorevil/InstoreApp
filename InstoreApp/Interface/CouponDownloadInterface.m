@@ -28,13 +28,13 @@
 //    date":"<服务器当前时间>"
 //}
 -(void)parseResult:(ASIHTTPRequest *)request{
-    NSString *jsonStr = [[NSString alloc] initWithData:[request responseData] encoding:NSUTF8StringEncoding];
+    NSString *jsonStr = [[[NSString alloc] initWithData:[request responseData] encoding:NSUTF8StringEncoding] autorelease];
     id jsonObj = [jsonStr objectFromJSONString];
     
     if (jsonObj) {
         CouponDownloadModel *couponDownloadModel = nil;
         if (jsonObj) {
-            couponDownloadModel = [[CouponDownloadModel alloc] initWithJsonMap:jsonObj];
+            couponDownloadModel = [[[CouponDownloadModel alloc] initWithJsonMap:jsonObj] autorelease];
         }
         
         if ([self.delegate respondsToSelector:@selector(getCouponDownloadDidFinished:)]) {
@@ -51,5 +51,11 @@
     if ([self.delegate respondsToSelector:@selector(getCouponDownloadDidFailed:)]) {
         [self.delegate getCouponDownloadDidFailed:[NSString stringWithFormat:@"获取失败！(%@)",error]];
     }
+}
+
+-(void)dealloc
+{
+    self.delegate = nil;
+    [super dealloc];
 }
 @end

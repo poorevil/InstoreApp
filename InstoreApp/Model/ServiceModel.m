@@ -31,4 +31,13 @@
     return self;
 }
 
+-(void)dealloc
+{  
+    self.name = nil;
+    self.picUrl = nil;
+    self.link = nil;
+    
+    [super dealloc];
+}
+
 @end

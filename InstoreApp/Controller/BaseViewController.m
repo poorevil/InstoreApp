@@ -31,12 +31,12 @@
 	// Do any additional setup after loading the view.
     if ([self isMemberOfClass:[MainViewController class]]) {
         
-        UIView *icon = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Icon"]];
+        UIView *icon = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Icon"]] autorelease];
         icon.frame = CGRectMake(0, 0, 30, 30);
-        UIView *iconView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 30, 30 )];
+        UIView *iconView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 30, 30 )] autorelease];
         [iconView addSubview:icon];
         
-        UIBarButtonItem *iconItem = [[UIBarButtonItem alloc] initWithCustomView:iconView];
+        UIBarButtonItem *iconItem = [[[UIBarButtonItem alloc] initWithCustomView:iconView] autorelease];
         NSArray *items = [NSArray arrayWithObjects:iconItem, nil];
         self.navigationItem.leftBarButtonItems = items;
         self.navigationItem.leftItemsSupplementBackButton = YES;
@@ -53,7 +53,7 @@
         [searchBtn setImage:[UIImage imageNamed:@"topBar-btn-zoom-white"] forState:UIControlStateNormal];
         [searchBtn addTarget:self action:@selector(showSearchView) forControlEvents:UIControlEventTouchUpInside];
         [searchBtn sizeToFit];
-        UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc] initWithCustomView:searchBtn];
+        UIBarButtonItem *rightBtn = [[[UIBarButtonItem alloc] initWithCustomView:searchBtn] autorelease];
         
 //        [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(showSearchView)];
 
@@ -74,8 +74,8 @@
 
 -(void)showSearchView
 {
-    SearchViewController *searchVC = [[SearchViewController alloc] initWithNibName:@"SearchViewController" bundle:nil];
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:searchVC];
+    SearchViewController *searchVC = [[[SearchViewController alloc] initWithNibName:@"SearchViewController" bundle:nil] autorelease];
+    UINavigationController *nav = [[[UINavigationController alloc] initWithRootViewController:searchVC] autorelease];
     [self presentViewController:nav
                        animated:NO
                      completion:nil];

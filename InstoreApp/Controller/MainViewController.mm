@@ -53,7 +53,7 @@
                                                  (scanBtn.frame.size.width-scanBtn.imageView.frame.size.width)/2,
                                                  (scanBtn.frame.size.height-scanBtn.imageView.frame.size.height)/2,
                                                  0)];
-    UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc] initWithCustomView:scanBtn];
+    UIBarButtonItem *rightBtn = [[[UIBarButtonItem alloc] initWithCustomView:scanBtn] autorelease];
     self.navigationItem.rightBarButtonItem =rightBtn;
     
     UIButton *searchBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
@@ -93,15 +93,15 @@
     NSArray *imageFileName = @[@"banner_1.jpg",@"banner_2.jpg",@"banner_3.jpg",@"banner_4.jpg",@"banner_5.jpg"];
     NSMutableArray *viewsArray = [NSMutableArray array];
     for (int i = 0; i < imageFileName.count; ++i) {
-        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 150)];
+        UIImageView *imageView = [[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 150)] autorelease];
         imageView.image = [UIImage imageNamed:[imageFileName objectAtIndex:i]];
         imageView.contentMode = UIViewContentModeScaleAspectFill;
         imageView.clipsToBounds = YES;
         [viewsArray addObject:imageView];
     }
     
-    self.lunboView = [[CycleScrollView alloc] initWithFrame:CGRectMake(0, 0, 320, 150)
-                                          animationDuration:5];
+    self.lunboView = [[[CycleScrollView alloc] initWithFrame:CGRectMake(0, 0, 320, 150)
+                                          animationDuration:5] autorelease];
     self.lunboView.fetchContentViewAtIndex = ^UIView *(NSInteger pageIndex){
         return viewsArray[pageIndex];
     };
@@ -118,8 +118,8 @@
 
 -(void)initFooterView
 {
-    UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 80)];
-    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 10, footerView.frame.size.width, 30)];
+    UIView *footerView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 80)] autorelease];
+    UILabel *titleLabel = [[[UILabel alloc] initWithFrame:CGRectMake(0, 10, footerView.frame.size.width, 30)] autorelease];
     titleLabel.text = @"继续拖动有惊喜!";
     titleLabel.font = [UIFont boldSystemFontOfSize:17];
     titleLabel.textColor = [UIColor grayColor];
@@ -137,11 +137,11 @@
     NSMutableSet *readers = [[NSMutableSet alloc ] init];
     QRCodeReader* qrcodeReader = [[QRCodeReader alloc] init];
     [readers addObject:qrcodeReader];
-//    [qrcodeReader release];
+    [qrcodeReader release];
     widController.readers = readers;
-//    [readers release];
+    [readers release];
     [self presentViewController:widController animated:YES completion:nil];
-//    [widController release];
+    [widController release];
 }
 
 
@@ -241,24 +241,20 @@
                                           cancelButtonTitle:@"cancel"
                                           otherButtonTitles:nil];
     [alert show];
-//    [alert release];
-    
-//    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-//    NSDictionary *parameters = @{@"deviceId": @"deviceId111",@"portalId":@"zgdx",@"uuid":result};
-//    
-//    [manager POST:[NSString stringWithFormat:@"%@/regist/clientRegist",BASEURL] parameters:parameters
-//          success:^(AFHTTPRequestOperation *operation, id responseObject) {
-//              //{"regist_result":200,"msg":"go to login page"}
-//              NSLog(@"Success: %@", responseObject);
-//              
-//          } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-//              NSLog(@"Error: %@", error);
-//          }];
+    [alert release];
 }
 
 - (void)zxingControllerDidCancel:(ZXingWidgetController*)controller
 {
     [controller dismissViewControllerAnimated:NO completion:nil];
+}
+
+-(void)dealloc
+{
+    self.lunboView = nil;
+    self.mtableView = nil;
+    
+    [super dealloc];
 }
 
 @end

@@ -43,29 +43,30 @@ static NSString* szClientSecret = @"ea13692f9c960a37db0086ff87e56e01";
         NSLog(@"===========%@",[httpAccess accessToken]);
     }
     
-    self.tabBarController = [[UITabBarController alloc] init];
+    self.tabBarController = [[[UITabBarController alloc] init] autorelease];
     
-    MainViewController *mainViewVC = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:nil];
-    CustomNavigationController *nav1 = [[CustomNavigationController alloc] initWithRootViewController:mainViewVC];
+    MainViewController *mainViewVC = [[[MainViewController alloc] initWithNibName:@"MainViewController" bundle:nil] autorelease];
+    CustomNavigationController *nav1 = [[[CustomNavigationController alloc] initWithRootViewController:mainViewVC]autorelease];
     nav1.title = @"首页";
     
-    YouhuiViewController *youhuiVC = [[YouhuiViewController alloc] initWithNibName:@"YouhuiViewController" bundle:nil];
-    CustomNavigationController *nav2 = [[CustomNavigationController alloc] initWithRootViewController:youhuiVC];
+    YouhuiViewController *youhuiVC = [[[YouhuiViewController alloc] initWithNibName:@"YouhuiViewController"
+                                                                            bundle:nil] autorelease];
+    CustomNavigationController *nav2 = [[[CustomNavigationController alloc] initWithRootViewController:youhuiVC] autorelease];
     nav2.title = @"优惠劵";
     
-    ServiceViewController *serviceVC = [[ServiceViewController alloc] initWithNibName:@"ServiceViewController" bundle:nil];
-    CustomNavigationController *nav3 = [[CustomNavigationController alloc] initWithRootViewController:serviceVC];
+    ServiceViewController *serviceVC = [[[ServiceViewController alloc] initWithNibName:@"ServiceViewController" bundle:nil] autorelease];
+    CustomNavigationController *nav3 = [[[CustomNavigationController alloc] initWithRootViewController:serviceVC] autorelease];
     nav3.title = @"服务";
     
-    ShopViewController *shopViewVC = [[ShopViewController alloc] initWithNibName:@"ShopViewController" bundle:nil];
-    CustomNavigationController *nav4 = [[CustomNavigationController alloc] initWithRootViewController:shopViewVC];
+    ShopViewController *shopViewVC = [[[ShopViewController alloc] initWithNibName:@"ShopViewController" bundle:nil] autorelease];
+    CustomNavigationController *nav4 = [[[CustomNavigationController alloc] initWithRootViewController:shopViewVC] autorelease];
     nav4.title = @"商户";
     
-    MeViewController *meViewVC = [[MeViewController alloc] initWithNibName:@"MeViewController" bundle:nil];
-    CustomNavigationController *nav5 = [[CustomNavigationController alloc] initWithRootViewController:meViewVC];
+    MeViewController *meViewVC = [[[MeViewController alloc] initWithNibName:@"MeViewController" bundle:nil] autorelease];
+    CustomNavigationController *nav5 = [[[CustomNavigationController alloc] initWithRootViewController:meViewVC] autorelease];
     nav5.title = @"我的";
     
-    self.tabBarController = [[UITabBarController alloc] init];
+    self.tabBarController = [[[UITabBarController alloc] init] autorelease];
     self.tabBarController.viewControllers = @[nav1,nav2,nav3,nav4,nav5];
     // Assign tab bar item with titles
     UITabBar *tabBar = self.tabBarController.tabBar;
@@ -106,7 +107,7 @@ static NSString* szClientSecret = @"ea13692f9c960a37db0086ff87e56e01";
     [[UITabBar appearance] setBackgroundImage:tabBarBackground];
     [[UITabBar appearance] setSelectionIndicatorImage:[UIImage imageNamed:@"tabbar_selected_bg.png"]];
     
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     self.window.rootViewController = self.tabBarController;
@@ -114,13 +115,11 @@ static NSString* szClientSecret = @"ea13692f9c960a37db0086ff87e56e01";
     
     [[GlobeModel sharedSingleton] initUUIDIfNeeded];
     
-    self.myInitInterface = [[InitInterface alloc] init];
+    self.myInitInterface = [[[InitInterface alloc] init] autorelease];
     [self.myInitInterface getInitParam];
     
     return YES;
 }
-
-
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {
@@ -149,6 +148,15 @@ static NSString* szClientSecret = @"ea13692f9c960a37db0086ff87e56e01";
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+-(void)dealloc
+{
+    self.tabBarController = nil;
+    self.window = nil;
+    self.myInitInterface = nil;
+    
+    [super dealloc];
 }
 
 @end

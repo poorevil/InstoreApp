@@ -38,7 +38,7 @@
 //              ]                    
 //}
 -(void)parseResult:(ASIHTTPRequest *)request{
-    NSString *jsonStr = [[NSString alloc] initWithData:[request responseData] encoding:NSUTF8StringEncoding];
+    NSString *jsonStr = [[[NSString alloc] initWithData:[request responseData] encoding:NSUTF8StringEncoding] autorelease];
     id jsonObj = [jsonStr objectFromJSONString];
     
     if (jsonObj) {
@@ -48,7 +48,7 @@
             NSArray *floorsArray = [jsonObj objectForKey:@"floors"];
             if (floorsArray) {
                 for (NSDictionary *floorDict in floorsArray) {
-                    FloorModel *floor = [[FloorModel alloc] initWithJsonMap:floorDict buildingId:buildingId];
+                    FloorModel *floor = [[[FloorModel alloc] initWithJsonMap:floorDict buildingId:buildingId] autorelease];
                     [resultList addObject:floor];
                 }
             }
@@ -64,6 +64,12 @@
     if ([self.delegate respondsToSelector:@selector(getFloorListDidFailed:)]) {
         [self.delegate getFloorListDidFailed:[NSString stringWithFormat:@"获取失败！(%@)",error]];
     }
+}
+
+-(void)dealloc
+{
+    self.delegate = nil;
+    [super dealloc];
 }
 
 @end

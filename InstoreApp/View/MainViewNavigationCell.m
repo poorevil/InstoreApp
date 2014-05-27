@@ -61,7 +61,7 @@
 {
     AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
     UINavigationController *nav = (UINavigationController *)appDelegate.tabBarController.selectedViewController;
-    IndoorMapWithLeftPopBtnViewController *imvc = [[IndoorMapWithLeftPopBtnViewController alloc] initWithFrame:nav.view.bounds];
+    IndoorMapWithLeftPopBtnViewController *imvc = [[[IndoorMapWithLeftPopBtnViewController alloc] initWithFrame:nav.view.bounds] autorelease];
     imvc.hidesBottomBarWhenPushed = YES;
     [nav pushViewController:imvc animated:YES];
     imvc.hidesBottomBarWhenPushed = NO;

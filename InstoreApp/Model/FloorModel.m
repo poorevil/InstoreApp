@@ -33,4 +33,11 @@
     }
     return self;
 }
+
+-(void)dealloc
+{
+    self.fName = nil;
+    self.mapCode = nil;
+    [super dealloc];
+}
 @end

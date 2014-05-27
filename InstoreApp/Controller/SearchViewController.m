@@ -37,7 +37,7 @@
     cancelBtn.tintColor = [UIColor whiteColor];
     self.navigationItem.rightBarButtonItem = cancelBtn;
     
-    self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectZero];
+    self.searchBar = [[[UISearchBar alloc] initWithFrame:CGRectZero] autorelease];
     self.searchBar.placeholder = @"请输入关键词";
     self.searchBar.delegate = self;
 
@@ -92,7 +92,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"] autorelease];
         cell.textLabel.textColor = [UIColor colorWithRed:106/255.0f
                                                    green:106/255.0f
                                                     blue:106/255.0f
@@ -123,7 +123,7 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    SearchResultViewController *searchResultViewController = [[SearchResultViewController alloc] init];
+    SearchResultViewController *searchResultViewController = [[[SearchResultViewController alloc] init] autorelease];
     NSString *keyWord = nil;
     switch (indexPath.row) {
         case 0:
@@ -154,7 +154,7 @@
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
-    SearchResultViewController *searchResultViewController = [[SearchResultViewController alloc] init];
+    SearchResultViewController *searchResultViewController = [[[SearchResultViewController alloc] init] autorelease];
     searchResultViewController.searchKeyWord = self.searchBar.text;
     [self.navigationController pushViewController:searchResultViewController animated:NO];
     

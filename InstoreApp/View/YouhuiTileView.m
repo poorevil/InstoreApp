@@ -47,7 +47,7 @@
 {
     AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
     UINavigationController *nav = (UINavigationController *)appDelegate.tabBarController.selectedViewController;
-    CouponDetailViewController *cdvc = [[CouponDetailViewController alloc] initWithNibName:@"CouponDetailViewController" bundle:nil];
+    CouponDetailViewController *cdvc = [[[CouponDetailViewController alloc] initWithNibName:@"CouponDetailViewController" bundle:nil] autorelease];
     cdvc.couponModel = self.coupon;
     cdvc.hidesBottomBarWhenPushed = YES;
     [nav pushViewController:cdvc animated:YES];

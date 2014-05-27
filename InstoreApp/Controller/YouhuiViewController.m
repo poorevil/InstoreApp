@@ -44,9 +44,9 @@
     
     self.title = @"优惠劵";
     
-    self.collectionView = [[PullPsCollectionView alloc] initWithFrame:CGRectMake(0, 0,
+    self.collectionView = [[[PullPsCollectionView alloc] initWithFrame:CGRectMake(0, 0,
                                                                                  self.viewParent.frame.size.width,
-                                                                                 self.viewParent.frame.size.height)];
+                                                                                 self.viewParent.frame.size.height)] autorelease];
     [self.viewParent addSubview:self.collectionView];
     self.collectionView.collectionViewDelegate = self;
     self.collectionView.collectionViewDataSource = self;
@@ -61,7 +61,7 @@
     self.collectionView.pullBackgroundColor = [UIColor whiteColor];
     self.collectionView.pullTextColor = [UIColor blackColor];
 
-    UILabel *loadingLabel = [[UILabel alloc] initWithFrame:self.collectionView.bounds];
+    UILabel *loadingLabel = [[[UILabel alloc] initWithFrame:self.collectionView.bounds] autorelease];
     loadingLabel.text = @"Loading...";
     loadingLabel.textAlignment = NSTextAlignmentCenter;
     self.collectionView.loadingView = loadingLabel;
@@ -182,7 +182,7 @@
 
 //获取接口数据
 - (void)loadDataSource {
-    self.couponInterface = [[CouponInterface alloc] init];
+    self.couponInterface = [[[CouponInterface alloc] init] autorelease];
     self.couponInterface.delegate = self;
     [self.couponInterface getCouponListByCid:[NSString stringWithFormat:@"%d",self.filterCategory.cid]
                                       isLike:0

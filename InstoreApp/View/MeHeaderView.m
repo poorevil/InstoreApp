@@ -43,7 +43,7 @@
 {
     AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
     UINavigationController *nav = (UINavigationController *)appDelegate.tabBarController.selectedViewController;
-    BindPhoneViewController *bpvc = [[BindPhoneViewController alloc] initWithNibName:@"BindPhoneViewController" bundle:nil];
+    BindPhoneViewController *bpvc = [[[BindPhoneViewController alloc] initWithNibName:@"BindPhoneViewController" bundle:nil] autorelease];
     bpvc.hidesBottomBarWhenPushed = YES;
     [nav pushViewController:bpvc animated:YES];
     bpvc.hidesBottomBarWhenPushed = NO;

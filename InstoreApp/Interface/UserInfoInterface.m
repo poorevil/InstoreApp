@@ -52,13 +52,13 @@
             [self.delegate setUserInfoDidFinished];
         }
     }else{
-        NSString *jsonStr = [[NSString alloc] initWithData:[request responseData] encoding:NSUTF8StringEncoding];
+        NSString *jsonStr = [[[NSString alloc] initWithData:[request responseData] encoding:NSUTF8StringEncoding] autorelease];
         id jsonObj = [jsonStr objectFromJSONString];
         
         if (jsonObj) {
             UserInfoModel *userInfo = nil;
             if (jsonObj) {
-                userInfo = [[UserInfoModel alloc] initWithJsonDict:jsonObj];
+                userInfo = [[[UserInfoModel alloc] initWithJsonDict:jsonObj] autorelease];
             }
             
             if ([self.delegate respondsToSelector:@selector(getUserInfoDidFinished:)]) {
@@ -78,5 +78,11 @@
             [self.delegate getUserInfoDidFailed:[NSString stringWithFormat:@"获取失败！(%@)",error]];
         }
     }
+}
+
+-(void)dealloc
+{
+    self.delegate = nil;
+    [super dealloc];
 }
 @end

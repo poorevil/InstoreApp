@@ -56,4 +56,16 @@
     return [KeyChainTool getValueByKey:@"secretKey"];
 }
 
+-(void)dealloc
+{
+    self.appName = nil;
+    self.secretKey = nil;
+    self.mallCode = nil;
+    self.mallLogo = nil;
+    self.mallMapId = nil;
+    self.date = nil;
+    self.mallName = nil;
+    
+    [super dealloc];
+}
 @end

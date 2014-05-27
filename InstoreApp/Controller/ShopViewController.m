@@ -52,10 +52,10 @@
 {
     [super viewDidLoad];
     
-    self.mtable = [[UITableView alloc] initWithFrame:CGRectMake(0,
+    self.mtable = [[[UITableView alloc] initWithFrame:CGRectMake(0,
                                                                 self.likeBtn.superview.frame.size.height + self.likeBtn.superview.frame.origin.y,
                                                                 self.view.frame.size.width,
-                                                                self.view.frame.size.height  - self.likeBtn.superview.frame.origin.y-8)];
+                                                                self.view.frame.size.height  - self.likeBtn.superview.frame.origin.y-8)] autorelease];
     self.mtable.delegate = self;
     self.mtable.dataSource = self;
     [self.view addSubview:self.mtable];
@@ -104,7 +104,7 @@
 
 -(void)loadNextPage
 {
-    self.storeInterface = [[StoreInterface alloc] init];
+    self.storeInterface = [[[StoreInterface alloc] init] autorelease];
     self.storeInterface.delegate = self;
     [self.storeInterface getStoreListByFloor:[NSString stringWithFormat:@"%d",self.filterFloorModel.fid]
                                          cid:self.filterCategory.cid
@@ -151,9 +151,9 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    ShopDetailViewController *shopDetailVC = [[ShopDetailViewController alloc]
+    ShopDetailViewController *shopDetailVC = [[[ShopDetailViewController alloc]
                                               initWithNibName:@"ShopDetailViewController"
-                                              bundle:nil];
+                                              bundle:nil] autorelease];
     shopDetailVC.shopId = [[self.storeList objectAtIndex:indexPath.row] sid];
     shopDetailVC.title = [[self.storeList objectAtIndex:indexPath.row] title];
     shopDetailVC.hidesBottomBarWhenPushed = YES;
@@ -182,8 +182,8 @@
 
 -(void)likeBtnAction:(id)sender
 {
-    ShopViewController *likeOnlyVC = [[ShopViewController alloc] initWithNibName:@"ShopViewController"
-                                                                              bundle:nil];
+    ShopViewController *likeOnlyVC = [[[ShopViewController alloc] initWithNibName:@"ShopViewController"
+                                                                              bundle:nil] autorelease];
     likeOnlyVC.isShowLikeOnly = YES;
     likeOnlyVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:likeOnlyVC animated:YES];

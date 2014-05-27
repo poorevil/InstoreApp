@@ -55,7 +55,7 @@
     cancelBtn.tintColor = [UIColor whiteColor];
     self.navigationItem.rightBarButtonItem = cancelBtn;
     
-    self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectZero];
+    self.searchBar = [[[UISearchBar alloc] initWithFrame:CGRectZero] autorelease];
     self.searchBar.placeholder = @"请输入关键词";
     self.searchBar.text = self.searchKeyWord;
     self.searchBar.delegate = self;
@@ -71,10 +71,10 @@
     self.currentPage = 1;
     self.title = @"我的优惠劵";
     
-    self.collectionView = [[PullPsCollectionView alloc] initWithFrame:CGRectMake(0,
+    self.collectionView = [[[PullPsCollectionView alloc] initWithFrame:CGRectMake(0,
                                                                                  self.navigationController.navigationBar.frame.size.height+self.navigationController.navigationBar.frame.origin.y,
                                                                                   self.view.frame.size.width,
-                                                                                  self.view.frame.size.height-(self.navigationController.navigationBar.frame.size.height+self.navigationController.navigationBar.frame.origin.y))];
+                                                                                  self.view.frame.size.height-(self.navigationController.navigationBar.frame.size.height+self.navigationController.navigationBar.frame.origin.y))] autorelease];
     [self.view addSubview:self.collectionView];
     self.collectionView.collectionViewDelegate = self;
     self.collectionView.collectionViewDataSource = self;
@@ -89,7 +89,7 @@
     self.collectionView.pullBackgroundColor = [UIColor whiteColor];
     self.collectionView.pullTextColor = [UIColor blackColor];
     
-    UILabel *loadingLabel = [[UILabel alloc] initWithFrame:self.collectionView.bounds];
+    UILabel *loadingLabel = [[[UILabel alloc] initWithFrame:self.collectionView.bounds] autorelease];
     loadingLabel.text = @"Loading...";
     loadingLabel.textAlignment = NSTextAlignmentCenter;
     self.collectionView.loadingView = loadingLabel;
@@ -178,7 +178,7 @@
 
 //获取接口数据
 - (void)loadDataSource {
-    self.searchInterface = [[SearchInterface alloc] init];
+    self.searchInterface = [[[SearchInterface alloc] init] autorelease];
     self.searchInterface.delegate = self;
     [self.searchInterface searchKeyword:self.searchKeyWord
                                    type:0

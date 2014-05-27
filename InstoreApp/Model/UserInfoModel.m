@@ -30,4 +30,15 @@
     return self;
 }
 
+-(void)dealloc
+{
+    self.name = nil;
+    self.gender = nil;
+    self.nickName = nil;
+    self.mobile = nil;
+    self.clubCard = nil;
+    
+    [super dealloc];
+}
+
 @end

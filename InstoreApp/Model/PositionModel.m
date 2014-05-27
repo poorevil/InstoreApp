@@ -31,15 +31,25 @@
         self.roomNum = [jsonMap objectForKey:@"roomNum"];
         
         if ([jsonMap objectForKey:@"building"]) {
-            self.building = [[BuildingModel alloc] initWithJsonMap:[jsonMap objectForKey:@"building"]];
+            self.building = [[[BuildingModel alloc] initWithJsonMap:[jsonMap objectForKey:@"building"]] autorelease];
         }
         
         if ([jsonMap objectForKey:@"floor"]) {
-            self.floor = [[FloorModel alloc] initWithJsonMap:[jsonMap objectForKey:@"floor"]];
+            self.floor = [[[FloorModel alloc] initWithJsonMap:[jsonMap objectForKey:@"floor"]] autorelease];
         }
         
     }
     
     return self;
+}
+
+-(void)dealloc
+{
+    self.building = nil;
+    self.floor = nil;
+    self.mapCode = nil;
+    self.roomNum = nil;
+    
+    [super dealloc];
 }
 @end

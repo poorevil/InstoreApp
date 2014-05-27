@@ -25,4 +25,10 @@
     
     return self;
 }
+
+-(void)dealloc
+{
+    self.cName = nil;
+    [super dealloc];
+}
 @end

@@ -62,6 +62,10 @@
     NSLog(@"%@",error.description);
 }
 
-
+-(void)dealloc
+{
+    
+    [super dealloc];
+}
 
 @end

@@ -50,7 +50,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    self.couponDetailInterface = [[CouponDetailInterface alloc] init];
+    self.couponDetailInterface = [[[CouponDetailInterface alloc] init] autorelease];
     self.couponDetailInterface.delegate = self;
     [self.couponDetailInterface getCouponDetailByCouponId:self.couponModel.cid];
     
@@ -78,16 +78,16 @@
 -(void)initHeaderView
 {
     if (!self.headerView) {
-        self.headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 320)];
-        self.headerImageView = [[EGOImageView alloc] init];
+        self.headerView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 320)] autorelease];
+        self.headerImageView = [[[EGOImageView alloc] init] autorelease];
         self.headerImageView.contentMode = UIViewContentModeScaleAspectFill;
         self.headerImageView.clipsToBounds = YES;
         self.headerImageView.frame = CGRectMake(10, 10, 300, 300);
         [self.headerView addSubview:self.headerImageView];
         
-        UIView *titleGroupView = [[UIView alloc] initWithFrame:CGRectMake(10, 320-34, 300, 34)];
+        UIView *titleGroupView = [[[UIView alloc] initWithFrame:CGRectMake(10, 320-34, 300, 34)] autorelease];
         titleGroupView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.7f];
-        self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 5, 300, 28)];
+        self.titleLabel = [[[UILabel alloc] initWithFrame:CGRectMake(10, 5, 300, 28)] autorelease];
         self.titleLabel.textColor = [UIColor whiteColor];
         [titleGroupView addSubview:self.titleLabel];
         
@@ -103,7 +103,7 @@
 -(void)initFooterView
 {
     if (self.couponModel.type==2) {//1: 优惠活动; 2: 优惠券; 3: 团购;
-        self.footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
+        self.footerView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 44)] autorelease];
         self.downloadBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         
         UIImage *originalImage = [UIImage imageNamed:@"store-btn-sb-red"];
@@ -138,7 +138,7 @@
 {
     [SVProgressHUD showInView:self.view status:@"下载中，请稍后..."];
     self.downloadBtn.enabled = NO;
-    self.couponDownloadInterface = [[CouponDownloadInterface alloc] init];
+    self.couponDownloadInterface = [[[CouponDownloadInterface alloc] init] autorelease];
     self.couponDownloadInterface.delegate = self;
     [self.couponDownloadInterface getCouponDownloadByCouponId:self.couponModel.cid];
 }
@@ -193,7 +193,8 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (!cell) {
         if ([cellIdentifier isEqualToString:@"cell"]) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+            cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                          reuseIdentifier:cellIdentifier] autorelease];
             cell.textLabel.font = [UIFont systemFontOfSize:14];
         }else{
             cell = [[[NSBundle mainBundle] loadNibNamed:cellIdentifier owner:self
@@ -283,7 +284,7 @@
             
             cell.backgroundColor = UIColor.clearColor;
             
-            CAShapeLayer *layer = [[CAShapeLayer alloc] init];
+            CAShapeLayer *layer = [[[CAShapeLayer alloc] init] autorelease];
             
             CGMutablePathRef pathRef = CGPathCreateMutable();
             
@@ -346,11 +347,8 @@
             
             
             if (addLine == YES) {
-                
-                CALayer *lineLayer = [[CALayer alloc] init];
-                
+                CALayer *lineLayer = [[[CALayer alloc] init] autorelease];
                 CGFloat lineHeight = (1.f / [UIScreen mainScreen].scale);
-                
                 lineLayer.frame = CGRectMake(CGRectGetMinX(bounds), bounds.size.height-lineHeight, bounds.size.width, lineHeight);
                 
                 lineLayer.backgroundColor = tableView.separatorColor.CGColor;
@@ -359,7 +357,7 @@
                 
             }
             
-            UIView *testView = [[UIView alloc] initWithFrame:bounds];
+            UIView *testView = [[[UIView alloc] initWithFrame:bounds] autorelease];
             
             [testView.layer insertSublayer:layer atIndex:0];
             
@@ -433,13 +431,13 @@
             break;
     }
     
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title
+    UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:title
                                                     message:couponDownloadModel.status==1?
                                                               [NSString stringWithFormat:@"优惠代码:%d",couponDownloadModel.couponCode]:
                                                               couponDownloadModel.msg
                                                    delegate:nil
                                           cancelButtonTitle:@"关闭"
-                                          otherButtonTitles: nil];
+                                          otherButtonTitles: nil] autorelease];
     [alert show];
 }
 

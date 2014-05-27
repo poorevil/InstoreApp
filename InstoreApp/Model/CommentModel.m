@@ -22,4 +22,13 @@
     return self;
 }
 
+-(void)dealloc
+{
+    self.author = nil;
+    self.content = nil;
+    self.createTime = nil;
+    
+    [super dealloc];
+}
+
 @end

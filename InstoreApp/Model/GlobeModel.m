@@ -21,7 +21,7 @@
     {
         if (!sharedSingleton){
             sharedSingleton = [[GlobeModel alloc] init];
-            sharedSingleton.runtimeModel = [[RuntimeModel alloc] init];
+            sharedSingleton.runtimeModel = [[[RuntimeModel alloc] init] autorelease];
             [sharedSingleton initUUIDIfNeeded];
         }
         
@@ -42,6 +42,14 @@
         self.userId = [KeyChainTool GUIDString];
         [KeyChainTool setValue:self.userId forKey:KEYCHAIN_USERID_KEYNAME];
     }
+}
+
+-(void)dealloc
+{
+    self.runtimeModel = nil;
+    self.userId = nil;
+    
+    [super dealloc];
 }
 @end
 

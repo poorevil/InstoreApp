@@ -54,7 +54,7 @@
         
         for (int i = 0; i < self.storeModel.coupons.count; i++) {
             CouponModel *couponModel = [self.storeModel.coupons objectAtIndex:i];
-            EGOImageView *imageview = [[EGOImageView alloc] init];
+            EGOImageView *imageview = [[[EGOImageView alloc] init] autorelease];
             imageview.userInteractionEnabled = YES;
             imageview.clipsToBounds = YES;
             imageview.tag = 900+i;
@@ -92,7 +92,7 @@
 {
     if ([gesture.view isMemberOfClass:[EGOImageView class]]) {
         CouponModel *coupon = [self.storeModel.coupons objectAtIndex:gesture.view.tag-900];
-        CouponDetailViewController *cdvc = [[CouponDetailViewController alloc] initWithNibName:@"CouponDetailViewController" bundle:nil];
+        CouponDetailViewController *cdvc = [[[CouponDetailViewController alloc] initWithNibName:@"CouponDetailViewController" bundle:nil] autorelease];
         cdvc.couponModel = coupon;
         AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
         UINavigationController *nav = (UINavigationController *)appDelegate.tabBarController.selectedViewController;

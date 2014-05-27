@@ -48,7 +48,7 @@
 //    
 //}
 -(void)parseResult:(ASIHTTPRequest *)request{
-    NSString *jsonStr = [[NSString alloc] initWithData:[request responseData] encoding:NSUTF8StringEncoding];
+    NSString *jsonStr = [[[NSString alloc] initWithData:[request responseData] encoding:NSUTF8StringEncoding] autorelease];
     id jsonObj = [jsonStr objectFromJSONString];
     
     if (jsonObj) {
@@ -60,7 +60,7 @@
             NSArray *servicesArray = [jsonObj objectForKey:@"services"];
             if (servicesArray) {
                 for (NSDictionary *serviceDict in servicesArray) {
-                    ServiceModel *service = [[ServiceModel alloc] initWithJsonMap:serviceDict];
+                    ServiceModel *service = [[[ServiceModel alloc] initWithJsonMap:serviceDict] autorelease];
                     [resultList addObject:service];
                 }
             }
@@ -77,6 +77,12 @@
     if ([self.delegate respondsToSelector:@selector(getServicesListDidFailed:)]) {
         [self.delegate getServicesListDidFailed:[NSString stringWithFormat:@"获取失败！(%@)",error]];
     }
+}
+
+-(void)dealloc
+{
+    self.delegate = nil;
+    [super dealloc];
 }
 
 @end

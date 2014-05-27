@@ -52,13 +52,13 @@
     
     self.categorys = [NSMutableArray array];
     
-    self.mtableView = [[UITableView alloc] initWithFrame:self.view.bounds];
+    self.mtableView = [[[UITableView alloc] initWithFrame:self.view.bounds] autorelease];
     self.mtableView.delegate = self;
     self.mtableView.dataSource = self;
 
     [self.view addSubview:self.mtableView];
     
-    self.categoryInterface = [[CategoryListInterface alloc] init];
+    self.categoryInterface = [[[CategoryListInterface alloc] init] autorelease];
     self.categoryInterface.delegate = self;
     [self.categoryInterface getCategoryListByPage:self.currentPage
                                            amount:20];
@@ -81,7 +81,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"] autorelease];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     

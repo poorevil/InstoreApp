@@ -47,13 +47,13 @@
     
     self.floors = [NSMutableArray array];
     
-    self.mtableView = [[UITableView alloc] initWithFrame:self.view.bounds];
+    self.mtableView = [[[UITableView alloc] initWithFrame:self.view.bounds] autorelease];
     self.mtableView.delegate = self;
     self.mtableView.dataSource = self;
     
     [self.view addSubview:self.mtableView];
     
-    self.floorInterface = [[FloorInterface alloc] init];
+    self.floorInterface = [[[FloorInterface alloc] init] autorelease];
     self.floorInterface.delegate = self;
     //TODO:areaId暂时写死0
     [self.floorInterface getFloorListByBuildingId:0];
@@ -76,7 +76,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"] autorelease];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     

@@ -56,7 +56,7 @@
     if (self) {
         // Initialization code
         self.autoresizesSubviews = YES;
-        self.scrollView = [[UIScrollView alloc] initWithFrame:self.bounds];
+        self.scrollView = [[[UIScrollView alloc] initWithFrame:self.bounds] autorelease];
         self.scrollView.scrollsToTop = NO;
         self.scrollView.autoresizingMask = 0xFF;
         self.scrollView.contentMode = UIViewContentModeCenter;
@@ -67,10 +67,10 @@
         [self addSubview:self.scrollView];
         self.currentPageIndex = 0;
         
-        self.pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(40,
+        self.pageControl = [[[UIPageControl alloc] initWithFrame:CGRectMake(40,
                                                                            frame.size.height - 20,
                                                                            50,
-                                                                           20)];
+                                                                           20)] autorelease];
         self.pageControl.pageIndicatorTintColor = [UIColor grayColor];
         self.pageControl.currentPageIndicatorTintColor = [UIColor colorWithRed:248.0f/255.0f
                                                                          green:40.0f/255.0f
@@ -112,7 +112,7 @@
     NSInteger previousPageIndex = [self getValidNextPageIndexWithPageIndex:self.currentPageIndex - 1];
     NSInteger rearPageIndex = [self getValidNextPageIndexWithPageIndex:self.currentPageIndex + 1];
     if (self.contentViews == nil) {
-        self.contentViews = [@[] mutableCopy];
+        self.contentViews = [[@[] mutableCopy] autorelease];
     }
     [self.contentViews removeAllObjects];
     

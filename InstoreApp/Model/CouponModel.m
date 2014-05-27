@@ -41,7 +41,7 @@
             
             self.date = [jsonMap objectForKey:@"date"]==nil?nil:[NSDate dateFromString:[jsonMap objectForKey:@"date"]];
             
-            self.store = [[StoreModel alloc] initWithJsonMap:[jsonMap objectForKey:@"store"]];
+            self.store = [[[StoreModel alloc] initWithJsonMap:[jsonMap objectForKey:@"store"]] autorelease];
             
             self.couponStatus = [jsonMap objectForKey:@"coupon_status"]==nil?-1:[[jsonMap objectForKey:@"coupon_status"] integerValue];
             self.couponCode = [jsonMap objectForKey:@"couponCode"];
@@ -49,6 +49,23 @@
     }
     
     return self;
+}
+
+-(void)dealloc
+{
+    self.startTime = nil;
+    self.endTime = nil;
+    self.title = nil;
+    self.imageUrl = nil;
+    self.date = nil;
+    self.descriptionStr = nil;
+    self.images = nil;
+    self.hotTag = nil;
+    self.instruction = nil;
+    self.couponCode = nil;
+    self.store = nil;
+    
+    [super dealloc];
 }
 
 @end

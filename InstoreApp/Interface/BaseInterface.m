@@ -49,7 +49,7 @@
         [self handleRequestParameter];
         
         if (self.requestArgs) {
-            NSMutableString *prams = [[NSMutableString alloc] init];
+            NSMutableString *prams = [[[NSMutableString alloc] init] autorelease];
             for (NSString *key in self.requestArgs) {
                 [prams appendFormat:@"%@=%@&",key,[self.requestArgs objectForKey:key]];
             }
@@ -65,7 +65,7 @@
         
         //TODO:加密算法
         
-        NSURL *url = [[NSURL alloc]initWithString:urlString];
+        NSURL *url = [[[NSURL alloc]initWithString:urlString] autorelease];
         
         if (self.postParams) {
             ASIFormDataRequest *formRequest = [ASIFormDataRequest requestWithURL:url];
@@ -117,19 +117,22 @@
     [_baseDelegate requestIsFailed:request.error];
 }
 
-
-//-(void)dealloc {
-//    self.baseDelegate = nil;
-//    
-//    [self.request clearDelegatesAndCancel];
-//    self.request = nil;
-//    
-//    self.interfaceUrl = nil;
-//    self.headers = nil;
-//    self.bodys = nil;
-//    
-//    [super dealloc];
-//}
+-(void)dealloc {
+    self.baseDelegate = nil;
+    
+    [self.request clearDelegatesAndCancel];
+    self.request = nil;
+    
+    self.interfaceUrl = nil;
+    self.headers = nil;
+    self.bodys = nil;
+    self.args = nil;
+    self.postParams = nil;
+    self.requestMethod = nil;
+    self.requestArgs = nil;
+    
+    [super dealloc];
+}
 
 -(void)handleRequestParameter
 {
@@ -164,6 +167,7 @@
     
     NSLog(@"---------string2Sign:%@",string2Sign);
     NSString *sign = [string2Sign HMAC_MD5_HEX:secretKey];
+    [string2Sign release];
     return [sign uppercaseString];
 }
 

@@ -54,7 +54,7 @@
 
     [self initToolBar];
     
-    self.storeDetailInterface = [[StoreDetailInterface alloc] init];
+    self.storeDetailInterface = [[[StoreDetailInterface alloc] init] autorelease];
     self.storeDetailInterface.delegate = self;
     [self.storeDetailInterface getStoreDetailByShopId:self.shopId commentSize:10 couponSize:10];
     
@@ -90,28 +90,28 @@
 
 -(void)initToolBar
 {
-    UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
-                                                                                   target:nil action:nil];
+    UIBarButtonItem *flexibleSpace = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
+                                                                                   target:nil action:nil] autorelease];
     //添加评论
     UIButton *addCommentBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [addCommentBtn sizeToFit];
     [addCommentBtn setImage:[UIImage imageNamed:@"store-icon-feed-black"] forState:UIControlStateNormal];
     [addCommentBtn addTarget:self action:@selector(addCommentAction:) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *addCommentItem = [[UIBarButtonItem alloc] initWithCustomView:addCommentBtn];
+    UIBarButtonItem *addCommentItem = [[[UIBarButtonItem alloc] initWithCustomView:addCommentBtn] autorelease];
 
     //收藏
     UIButton *favorBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [favorBtn sizeToFit];
     [favorBtn setImage:[UIImage imageNamed:@"store-icon-fav-black"] forState:UIControlStateNormal];
     [favorBtn addTarget:self action:@selector(favorAction:) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *favorItem = [[UIBarButtonItem alloc] initWithCustomView:favorBtn];
+    UIBarButtonItem *favorItem = [[[UIBarButtonItem alloc] initWithCustomView:favorBtn] autorelease];
 
     //分享
     UIButton *shareBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [shareBtn sizeToFit];
     [shareBtn setImage:[UIImage imageNamed:@"store-icon-share-black"] forState:UIControlStateNormal];
     [shareBtn addTarget:self action:@selector(favorAction:) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *shareItem = [[UIBarButtonItem alloc] initWithCustomView:shareBtn];
+    UIBarButtonItem *shareItem = [[[UIBarButtonItem alloc] initWithCustomView:shareBtn] autorelease];
     
     self.toolbarItems = @[addCommentItem,flexibleSpace,favorItem,flexibleSpace,shareItem];
 }
@@ -126,7 +126,7 @@
 -(void)favorAction:(id)sender
 {
     [SVProgressHUD showInView:self.view status:@"添加关注中，请稍后..."];
-    self.storeFocusInterface = [[StoreFocusInterface alloc] init];
+    self.storeFocusInterface = [[[StoreFocusInterface alloc] init] autorelease];
     self.storeFocusInterface.delegate = self;
     [self.storeFocusInterface setStoreFocusByShopIds:@[[NSString stringWithFormat:@"%d",self.storeModel.sid]] isUp:YES];
 }

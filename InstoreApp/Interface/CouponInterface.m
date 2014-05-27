@@ -56,7 +56,7 @@
 //    
 //}
 -(void)parseResult:(ASIHTTPRequest *)request{
-    NSString *jsonStr = [[NSString alloc] initWithData:[request responseData] encoding:NSUTF8StringEncoding];
+    NSString *jsonStr = [[[NSString alloc] initWithData:[request responseData] encoding:NSUTF8StringEncoding] autorelease];
     id jsonObj = [jsonStr objectFromJSONString];
     
     if (jsonObj) {
@@ -70,7 +70,7 @@
             NSArray *couponsArray = [jsonObj objectForKey:@"coupons"];
             if (couponsArray) {
                 for (NSDictionary *couponDict in couponsArray) {
-                    CouponModel *coupon = [[CouponModel alloc] initWithJsonMap:couponDict];
+                    CouponModel *coupon = [[[CouponModel alloc] initWithJsonMap:couponDict] autorelease];
                     [resultList addObject:coupon];
                 }
             }
@@ -90,5 +90,9 @@
     }
 }
 
-
+-(void)dealloc
+{
+    self.delegate = nil;
+    [super dealloc];
+}
 @end

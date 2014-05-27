@@ -38,8 +38,8 @@
     self.title = @"服务";
     self.serviceList = [NSMutableArray array];
     
-    self.mtableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width,
-                                                                self.view.bounds.size.height)];
+    self.mtableView = [[[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width,
+                                                                self.view.bounds.size.height)] autorelease];
     self.mtableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.mtableView.allowsSelection = NO;
     self.mtableView.delegate = self;
@@ -47,17 +47,17 @@
     
     [self.view addSubview:self.mtableView];
     
-    UIView *tableViewFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0,
+    UIView *tableViewFooterView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0,
                                                                            self.view.bounds.size.width,
-                                                                           100)];
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0,
-                                                               self.view.bounds.size.width, 100)];
+                                                                           100)] autorelease];
+    UILabel *label = [[[UILabel alloc] initWithFrame:CGRectMake(0, 0,
+                                                               self.view.bounds.size.width, 100)] autorelease];
     label.text = @"更多精彩应用，敬请期待";
     label.textAlignment = NSTextAlignmentCenter;
     [tableViewFooterView addSubview:label];
     self.mtableView.tableFooterView = tableViewFooterView;
     
-    self.servicesInterface = [[ServicesInterface alloc] init];
+    self.servicesInterface = [[[ServicesInterface alloc] init] autorelease];
     self.servicesInterface.delegate = self;
     [self.servicesInterface getServicesList];
 }

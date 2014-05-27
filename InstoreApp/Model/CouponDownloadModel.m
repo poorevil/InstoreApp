@@ -28,5 +28,9 @@
     return self;
 }
 
-
+-(void)dealloc
+{
+    self.msg = nil;
+    [super dealloc];
+}
 @end

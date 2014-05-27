@@ -37,7 +37,7 @@
 //                  ]
 //}
 -(void)parseResult:(ASIHTTPRequest *)request{
-    NSString *jsonStr = [[NSString alloc] initWithData:[request responseData] encoding:NSUTF8StringEncoding];
+    NSString *jsonStr = [[[NSString alloc] initWithData:[request responseData] encoding:NSUTF8StringEncoding] autorelease];
     id jsonObj = [jsonStr objectFromJSONString];
     
     if (jsonObj) {
@@ -51,7 +51,7 @@
             NSArray *categorysArray = [jsonObj objectForKey:@"categories"];
             if (categorysArray) {
                 for (NSDictionary *categoryDict in categorysArray) {
-                    CategoryModel *category = [[CategoryModel alloc] initWithJsonMap:categoryDict];
+                    CategoryModel *category = [[[CategoryModel alloc] initWithJsonMap:categoryDict] autorelease];
                     [resultList addObject:category];
                 }
             }
@@ -69,5 +69,11 @@
     if ([self.delegate respondsToSelector:@selector(getCategoryListDidFailed:)]) {
         [self.delegate getCategoryListDidFailed:[NSString stringWithFormat:@"获取失败！(%@)",error]];
     }
+}
+
+-(void)dealloc
+{
+    self.delegate = nil;
+    [super dealloc];
 }
 @end

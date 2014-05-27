@@ -111,7 +111,7 @@
     
 	CCHmac(kCCHmacAlgMD5, hashKey, strlen(hashKey), data, strlen(data), hashBuffer);
     
-    NSMutableString*    result  =   [[NSMutableString   alloc]  initWithCapacity:CC_MD5_DIGEST_LENGTH*2];
+    NSMutableString*    result  =   [[[NSMutableString   alloc]  initWithCapacity:CC_MD5_DIGEST_LENGTH*2] autorelease];
 	for (int i = 0; i   < CC_MD5_DIGEST_LENGTH; i++)
 		[result appendFormat:@"%02X", hashBuffer[i]];
     

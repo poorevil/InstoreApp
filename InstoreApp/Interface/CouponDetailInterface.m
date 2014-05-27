@@ -22,13 +22,13 @@
 #pragma mark - BaseInterfaceDelegate
 //见文档：https://github.com/joyx-inc/vmall#优惠详细信息接口
 -(void)parseResult:(ASIHTTPRequest *)request{
-    NSString *jsonStr = [[NSString alloc] initWithData:[request responseData] encoding:NSUTF8StringEncoding];
+    NSString *jsonStr = [[[NSString alloc] initWithData:[request responseData] encoding:NSUTF8StringEncoding] autorelease];
     id jsonObj = [jsonStr objectFromJSONString];
     
     if (jsonObj) {
         CouponModel *coupon = nil;
         if (jsonObj) {
-            coupon = [[CouponModel alloc] initWithJsonMap:jsonObj];
+            coupon = [[[CouponModel alloc] initWithJsonMap:jsonObj] autorelease];
         }
         
         if ([self.delegate respondsToSelector:@selector(getCouponDetailDidFinished:)]) {
@@ -43,5 +43,10 @@
     }
 }
 
+-(void)dealloc
+{
+    self.delegate = nil;
+    [super dealloc];
+}
 
 @end

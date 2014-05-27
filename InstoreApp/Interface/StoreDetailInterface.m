@@ -69,13 +69,13 @@
 //    
 //}
 -(void)parseResult:(ASIHTTPRequest *)request{
-    NSString *jsonStr = [[NSString alloc] initWithData:[request responseData] encoding:NSUTF8StringEncoding];
+    NSString *jsonStr = [[[NSString alloc] initWithData:[request responseData] encoding:NSUTF8StringEncoding] autorelease];
     id jsonObj = [jsonStr objectFromJSONString];
     
     if (jsonObj) {
         StoreModel *store = nil;
         if (jsonObj) {
-            store = [[StoreModel alloc] initWithJsonMap:jsonObj];
+            store = [[[StoreModel alloc] initWithJsonMap:jsonObj] autorelease];
         }
         
         if ([self.delegate respondsToSelector:@selector(getStoreDetailDidFinished:)]) {
@@ -88,6 +88,12 @@
     if ([self.delegate respondsToSelector:@selector(getStoreDetailDidFailed:)]) {
         [self.delegate getStoreDetailDidFailed:[NSString stringWithFormat:@"获取失败！(%@)",error]];
     }
+}
+
+-(void)dealloc
+{
+    self.delegate = nil;
+    [super dealloc];
 }
 
 @end

@@ -23,8 +23,8 @@
             self.logoUrl = [jsonMap objectForKey:@"logo"];
             self.address = [jsonMap objectForKey:@"address"];
             self.tel = [jsonMap objectForKey:@"tel"];
-            self.categoryModel = [[CategoryModel alloc] initWithJsonMap:[jsonMap objectForKey:@"category"]];
-            self.position = [[PositionModel alloc ]initWithJsonMap:[jsonMap objectForKey:@"pos"]];
+            self.categoryModel = [[[CategoryModel alloc] initWithJsonMap:[jsonMap objectForKey:@"category"]] autorelease];
+            self.position = [[[PositionModel alloc ]initWithJsonMap:[jsonMap objectForKey:@"pos"]] autorelease];
             self.descStr = [jsonMap objectForKey:@"description"];
             self.followerCount = [jsonMap objectForKey:@"followerCount"]==nil?0:[[jsonMap objectForKey:@"followerCount"] integerValue];
             self.isFocus = [[jsonMap objectForKey:@"isFocus"] boolValue];
@@ -32,12 +32,12 @@
             self.coupons = [NSMutableArray array];
             NSArray *coupons = [jsonMap objectForKey:@"coupons"];
             for (NSDictionary *couponDict in coupons) {
-                [self.coupons addObject:[[CouponModel alloc] initWithJsonMap:couponDict]];
+                [self.coupons addObject:[[[CouponModel alloc] initWithJsonMap:couponDict] autorelease]];
             }
             self.comments = [NSMutableArray array];
             NSArray *comments = [jsonMap objectForKey:@"comments"];
             for (NSDictionary *commentDict in comments) {
-                [self.comments addObject:[[CommentModel alloc] initWithJsonMap:commentDict]];
+                [self.comments addObject:[[[CommentModel alloc] initWithJsonMap:commentDict] autorelease]];
             }
         }
     }
@@ -45,4 +45,20 @@
     return self;
 }
 
+-(void)dealloc
+{
+    self.logoUrl = nil;
+    self.categoryModel = nil;
+    self.title = nil;
+    self.roomNum = nil;
+    self.position = nil;
+    self.address = nil;
+    self.tel = nil;
+    self.descStr = nil;
+    self.imageUrl = nil;
+    self.coupons = nil;
+    self.comments = nil;
+    
+    [super dealloc];
+}
 @end
