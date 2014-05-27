@@ -37,4 +37,12 @@
     }
 }
 
+-(void)dealloc
+{
+    self.delegate = nil;
+    self.descLabel = nil;
+    
+    [super dealloc];
+}
+
 @end

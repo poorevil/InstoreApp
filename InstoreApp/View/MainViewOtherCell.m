@@ -26,4 +26,16 @@
     // Configure the view for the selected state
 }
 
+-(void)dealloc
+{
+    self.titleLabel = nil;
+    self.bannerImageView = nil;
+    self.title1 = nil;
+    self.title1_1 = nil;
+    self.title2 = nil;
+    self.title2_1 = nil;
+    
+    [super dealloc];
+}
+
 @end

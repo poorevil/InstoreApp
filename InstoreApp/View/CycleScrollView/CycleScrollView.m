@@ -194,4 +194,14 @@
 }
 */
 
+-(void)dealloc
+{
+    self.contentViews = nil;
+    self.scrollView = nil;
+    self.animationTimer = nil;
+    self.pageControl = nil;
+    
+    [super dealloc];
+}
+
 @end

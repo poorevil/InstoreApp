@@ -26,4 +26,12 @@
     // Configure the view for the selected state
 }
 
+-(void)dealloc
+{
+    self.favNumLabel = nil;
+    self.downloadNumLabel = nil;
+    
+    [super dealloc];
+}
+
 @end

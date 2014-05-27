@@ -111,4 +111,13 @@
     self.pageControl.currentPage = page;
 }
 
+-(void)dealloc
+{
+    self.mscrollView = nil;
+    self.pageControl = nil;
+    self.storeModel = nil;
+    
+    [super dealloc];
+}
+
 @end

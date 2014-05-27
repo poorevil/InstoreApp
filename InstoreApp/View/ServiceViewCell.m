@@ -114,4 +114,17 @@
     }
 }
 
+-(void)dealloc
+{
+    self.foodBtn = nil;
+    self.busBtn = nil;
+    self.moneyBtn = nil;
+    self.planeBtn = nil;
+    self.paintBtn = nil;
+    self.gameBtn = nil;
+    self.serviceList = nil;
+    
+    [super dealloc];
+}
+
 @end

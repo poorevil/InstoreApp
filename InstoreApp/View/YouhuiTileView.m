@@ -128,4 +128,20 @@
     return 221 + diffHeight;
 }
 
+-(void)dealloc
+{
+    self.picView = nil;
+    self.iconView = nil;
+    self.viewGroup = nil;
+    self.titleLabel = nil;
+    self.buttonGroup = nil;
+    self.commentCountLabel = nil;
+    self.collectCountLabel = nil;
+    self.hotTagViewGroup = nil;
+    self.hotTagLabel = nil;
+    self.coupon = nil;
+    
+    [super dealloc];
+}
+
 @end

@@ -40,4 +40,13 @@
     }
 }
 
+-(void)dealloc
+{
+    self.storeModel = nil;
+    self.bannerImageView = nil;
+    self.logoImageView = nil;
+    
+    [super dealloc];
+}
+
 @end

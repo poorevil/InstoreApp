@@ -79,4 +79,23 @@
     [appDelegate.tabBarController setSelectedIndex:4];
 }
 
+-(void)dealloc
+{
+//    @property (nonatomic,strong) IBOutlet UIButton *foodBtn;
+//    @property (nonatomic,strong) IBOutlet UIButton *saleBtn;
+//    @property (nonatomic,strong) IBOutlet UIButton *cardBtn;
+//    @property (nonatomic,strong) IBOutlet UIButton *orderBtn;
+//    
+//    @property (nonatomic,strong) IBOutlet UIButton *mapBtn;
+//    @property (nonatomic,strong) IBOutlet UIButton *wifiBtn;
+
+    self.foodBtn = nil;
+    self.saleBtn = nil;
+    self.cardBtn = nil;
+    self.orderBtn = nil;
+    self.mapBtn = nil;
+    self.wifiBtn = nil;
+    
+    [super dealloc];
+}
 @end

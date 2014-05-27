@@ -58,4 +58,13 @@
     self.cardNumLabel.text = self.userInfo.clubCard;
 }
 
+-(void)dealloc
+{
+    self.headIconImageView = nil;
+    self.cardNumLabel = nil;
+    self.nickNameLabel = nil;
+    self.userInfo = nil;
+    
+    [super dealloc];
+}
 @end

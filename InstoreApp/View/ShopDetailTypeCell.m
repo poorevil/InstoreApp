@@ -35,4 +35,12 @@
     //TODO:人均
 }
 
+-(void)dealloc
+{
+    self.categoryLabel = nil;
+    self.priceLabel = nil;
+    self.storeModel = nil;
+    
+    [super dealloc];
+}
 @end

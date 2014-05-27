@@ -43,4 +43,12 @@
     AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
     [appDelegate.tabBarController setSelectedIndex:1];
 }
+
+-(void)dealloc
+{
+    self.moreBtn = nil;
+    
+    [super dealloc];
+}
+
 @end

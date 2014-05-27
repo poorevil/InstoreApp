@@ -43,4 +43,16 @@
     self.favLabel.text = [NSString stringWithFormat:@"%d",self.storeModel.followerCount];
 }
 
+-(void)dealloc
+{
+    self.shopIconImageView = nil;
+    self.titleLabel = nil;
+    self.typeLabel = nil;
+    self.floorLabel = nil;
+    self.favLabel = nil;
+    self.storeModel = nil;
+    
+    [super dealloc];
+}
+
 @end

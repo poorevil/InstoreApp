@@ -53,4 +53,13 @@
 
     
 }
+
+-(void)dealloc
+{
+    self.telLabel = nil;
+    self.floorLabel = nil;
+    self.storeModel = nil;
+    
+    [super dealloc];
+}
 @end

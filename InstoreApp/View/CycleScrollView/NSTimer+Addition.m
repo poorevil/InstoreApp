@@ -35,4 +35,9 @@
     [self setFireDate:[NSDate dateWithTimeIntervalSinceNow:interval]];
 }
 
+-(void)dealloc
+{
+    
+    [super dealloc];
+}
 @end
