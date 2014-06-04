@@ -313,6 +313,40 @@
 		C1A84A52192C538C003219DA /* Icon_50.png in Resources */ = {isa = PBXBuildFile; fileRef = C1A84A4C192C538C003219DA /* Icon_50.png */; };
 		C1A84A53192C538C003219DA /* Icon_58.png in Resources */ = {isa = PBXBuildFile; fileRef = C1A84A4D192C538C003219DA /* Icon_58.png */; };
 		C1A84A54192C538C003219DA /* Icon_80.png in Resources */ = {isa = PBXBuildFile; fileRef = C1A84A4E192C538C003219DA /* Icon_80.png */; };
+		C1A9C81F193F12CC00DD420F /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A9C81E193F12CC00DD420F /* PhotoViewController.m */; };
+		C1A9C870193F130300DD420F /* NICommonMetrics.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A9C824193F130300DD420F /* NICommonMetrics.m */; };
+		C1A9C871193F130300DD420F /* NIDataStructures.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A9C826193F130300DD420F /* NIDataStructures.m */; };
+		C1A9C872193F130300DD420F /* NIDebuggingTools.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A9C828193F130300DD420F /* NIDebuggingTools.m */; };
+		C1A9C873193F130300DD420F /* NIDeviceOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A9C82A193F130300DD420F /* NIDeviceOrientation.m */; };
+		C1A9C874193F130300DD420F /* NIError.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A9C82C193F130300DD420F /* NIError.m */; };
+		C1A9C875193F130300DD420F /* NIFoundationMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A9C82E193F130300DD420F /* NIFoundationMethods.m */; };
+		C1A9C876193F130300DD420F /* NIInMemoryCache.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A9C830193F130300DD420F /* NIInMemoryCache.m */; };
+		C1A9C877193F130300DD420F /* NINavigationAppearance.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A9C835193F130300DD420F /* NINavigationAppearance.m */; };
+		C1A9C878193F130300DD420F /* NINetworkActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A9C837193F130300DD420F /* NINetworkActivity.m */; };
+		C1A9C879193F130300DD420F /* NINonEmptyCollectionTesting.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A9C839193F130300DD420F /* NINonEmptyCollectionTesting.m */; };
+		C1A9C87A193F130300DD420F /* NINonRetainingCollections.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A9C83B193F130300DD420F /* NINonRetainingCollections.m */; };
+		C1A9C87B193F130300DD420F /* NIOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A9C83E193F130300DD420F /* NIOperations.m */; };
+		C1A9C87C193F130300DD420F /* NIPaths.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A9C840193F130300DD420F /* NIPaths.m */; };
+		C1A9C87D193F130300DD420F /* NIRuntimeClassModifications.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A9C843193F130300DD420F /* NIRuntimeClassModifications.m */; };
+		C1A9C87E193F130300DD420F /* NISDKAvailability.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A9C845193F130300DD420F /* NISDKAvailability.m */; };
+		C1A9C87F193F130300DD420F /* NIState.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A9C847193F130300DD420F /* NIState.m */; };
+		C1A9C880193F130300DD420F /* NIViewRecycler.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A9C849193F130300DD420F /* NIViewRecycler.m */; };
+		C1A9C881193F130300DD420F /* NSData+NimbusCore.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A9C84B193F130300DD420F /* NSData+NimbusCore.m */; };
+		C1A9C882193F130300DD420F /* NSString+NimbusCore.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A9C84D193F130300DD420F /* NSString+NimbusCore.m */; };
+		C1A9C883193F130300DD420F /* UIView+NimbusCore.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A9C84F193F130300DD420F /* UIView+NimbusCore.m */; };
+		C1A9C884193F130300DD420F /* ImageMetaDataLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A9C851193F130300DD420F /* ImageMetaDataLoader.m */; };
+		C1A9C885193F130300DD420F /* NIPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A9C856193F130300DD420F /* NIPageView.m */; };
+		C1A9C886193F130300DD420F /* NIPagingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A9C858193F130300DD420F /* NIPagingScrollView.m */; };
+		C1A9C887193F130300DD420F /* BaseImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A9C85E193F130300DD420F /* BaseImageView.m */; };
+		C1A9C888193F130300DD420F /* NimbusPhotos.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C1A9C860193F130300DD420F /* NimbusPhotos.bundle */; };
+		C1A9C889193F130300DD420F /* NIPhotoAlbumScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A9C863193F130300DD420F /* NIPhotoAlbumScrollView.m */; };
+		C1A9C88A193F130300DD420F /* NIPhotoScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A9C867193F130300DD420F /* NIPhotoScrollView.m */; };
+		C1A9C88B193F130300DD420F /* NIPhotoScrubberView.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A9C86B193F130300DD420F /* NIPhotoScrubberView.m */; };
+		C1A9C88C193F130300DD420F /* NIToolbarPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A9C86D193F130300DD420F /* NIToolbarPhotoViewController.m */; };
+		C1A9C88D193F130300DD420F /* TileView.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A9C86F193F130300DD420F /* TileView.m */; };
+		C1A9C891193F13A600DD420F /* PhotoAlbumToolBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A9C88F193F13A600DD420F /* PhotoAlbumToolBarView.m */; };
+		C1A9C892193F13A600DD420F /* PhotoAlbumToolBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1A9C890193F13A600DD420F /* PhotoAlbumToolBarView.xib */; };
+		C1A9C896193F17C100DD420F /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A9C895193F17C100DD420F /* MBProgressHUD.m */; };
 		C1D8700F18EC0CAB0061F799 /* CouponDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1D8700D18EC0CAB0061F799 /* CouponDetailViewController.m */; };
 		C1D8701018EC0CAB0061F799 /* CouponDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1D8700E18EC0CAB0061F799 /* CouponDetailViewController.xib */; };
 		C1D8701418ED5B1D0061F799 /* ShopDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1D8701218ED5B1D0061F799 /* ShopDetailViewController.m */; };
@@ -377,11 +411,6 @@
 		FA4E65F019357B21005022E2 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = FA4E659B19357B21005022E2 /* index.html */; };
 		FA4E65F119357B21005022E2 /* UMSocialDataDelegate.html in Resources */ = {isa = PBXBuildFile; fileRef = FA4E659D19357B21005022E2 /* UMSocialDataDelegate.html */; };
 		FA4E65F219357B21005022E2 /* UMSocialUIDelegate.html in Resources */ = {isa = PBXBuildFile; fileRef = FA4E659E19357B21005022E2 /* UMSocialUIDelegate.html */; };
-		FA4E65F319357B21005022E2 /* libSocialQQ.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FA4E65A119357B21005022E2 /* libSocialQQ.a */; };
-		FA4E65F419357B21005022E2 /* TencentOpenAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA4E65A219357B21005022E2 /* TencentOpenAPI.framework */; };
-		FA4E65F519357B21005022E2 /* TencentOpenApi_IOS_Bundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FA4E65A319357B21005022E2 /* TencentOpenApi_IOS_Bundle.bundle */; };
-		FA4E65F619357B21005022E2 /* libSocialWechat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FA4E65A619357B21005022E2 /* libSocialWechat.a */; };
-		FA4E65F719357B22005022E2 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FA4E65A719357B21005022E2 /* libWeChatSDK.a */; };
 		FA4E65F819357B22005022E2 /* iOS-social-analytics-releasenote.html in Resources */ = {isa = PBXBuildFile; fileRef = FA4E65AC19357B21005022E2 /* iOS-social-analytics-releasenote.html */; };
 		FA4E65F919357B22005022E2 /* iOS-social-releasenote.html in Resources */ = {isa = PBXBuildFile; fileRef = FA4E65AD19357B21005022E2 /* iOS-social-releasenote.html */; };
 		FA4E65FA19357B22005022E2 /* ios-social-sdk-comment-detail.html in Resources */ = {isa = PBXBuildFile; fileRef = FA4E65AE19357B21005022E2 /* ios-social-sdk-comment-detail.html */; };
@@ -900,6 +929,89 @@
 		C1A84A4C192C538C003219DA /* Icon_50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon_50.png; sourceTree = "<group>"; };
 		C1A84A4D192C538C003219DA /* Icon_58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon_58.png; sourceTree = "<group>"; };
 		C1A84A4E192C538C003219DA /* Icon_80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon_80.png; sourceTree = "<group>"; };
+		C1A9C81D193F12CC00DD420F /* PhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoViewController.h; sourceTree = "<group>"; };
+		C1A9C81E193F12CC00DD420F /* PhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoViewController.m; sourceTree = "<group>"; };
+		C1A9C822193F130300DD420F /* NIBlocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIBlocks.h; sourceTree = "<group>"; };
+		C1A9C823193F130300DD420F /* NICommonMetrics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NICommonMetrics.h; sourceTree = "<group>"; };
+		C1A9C824193F130300DD420F /* NICommonMetrics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NICommonMetrics.m; sourceTree = "<group>"; };
+		C1A9C825193F130300DD420F /* NIDataStructures.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIDataStructures.h; sourceTree = "<group>"; };
+		C1A9C826193F130300DD420F /* NIDataStructures.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIDataStructures.m; sourceTree = "<group>"; };
+		C1A9C827193F130300DD420F /* NIDebuggingTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIDebuggingTools.h; sourceTree = "<group>"; };
+		C1A9C828193F130300DD420F /* NIDebuggingTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIDebuggingTools.m; sourceTree = "<group>"; };
+		C1A9C829193F130300DD420F /* NIDeviceOrientation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIDeviceOrientation.h; sourceTree = "<group>"; };
+		C1A9C82A193F130300DD420F /* NIDeviceOrientation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIDeviceOrientation.m; sourceTree = "<group>"; };
+		C1A9C82B193F130300DD420F /* NIError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIError.h; sourceTree = "<group>"; };
+		C1A9C82C193F130300DD420F /* NIError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIError.m; sourceTree = "<group>"; };
+		C1A9C82D193F130300DD420F /* NIFoundationMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIFoundationMethods.h; sourceTree = "<group>"; };
+		C1A9C82E193F130300DD420F /* NIFoundationMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIFoundationMethods.m; sourceTree = "<group>"; };
+		C1A9C82F193F130300DD420F /* NIInMemoryCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIInMemoryCache.h; sourceTree = "<group>"; };
+		C1A9C830193F130300DD420F /* NIInMemoryCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIInMemoryCache.m; sourceTree = "<group>"; };
+		C1A9C831193F130300DD420F /* NimbusCore+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NimbusCore+Additions.h"; sourceTree = "<group>"; };
+		C1A9C832193F130300DD420F /* NimbusCore+Namespace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NimbusCore+Namespace.h"; sourceTree = "<group>"; };
+		C1A9C833193F130300DD420F /* NimbusCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NimbusCore.h; sourceTree = "<group>"; };
+		C1A9C834193F130300DD420F /* NINavigationAppearance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NINavigationAppearance.h; sourceTree = "<group>"; };
+		C1A9C835193F130300DD420F /* NINavigationAppearance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NINavigationAppearance.m; sourceTree = "<group>"; };
+		C1A9C836193F130300DD420F /* NINetworkActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NINetworkActivity.h; sourceTree = "<group>"; };
+		C1A9C837193F130300DD420F /* NINetworkActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NINetworkActivity.m; sourceTree = "<group>"; };
+		C1A9C838193F130300DD420F /* NINonEmptyCollectionTesting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NINonEmptyCollectionTesting.h; sourceTree = "<group>"; };
+		C1A9C839193F130300DD420F /* NINonEmptyCollectionTesting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NINonEmptyCollectionTesting.m; sourceTree = "<group>"; };
+		C1A9C83A193F130300DD420F /* NINonRetainingCollections.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NINonRetainingCollections.h; sourceTree = "<group>"; };
+		C1A9C83B193F130300DD420F /* NINonRetainingCollections.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NINonRetainingCollections.m; sourceTree = "<group>"; };
+		C1A9C83C193F130300DD420F /* NIOperations+Subclassing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NIOperations+Subclassing.h"; sourceTree = "<group>"; };
+		C1A9C83D193F130300DD420F /* NIOperations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIOperations.h; sourceTree = "<group>"; };
+		C1A9C83E193F130300DD420F /* NIOperations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIOperations.m; sourceTree = "<group>"; };
+		C1A9C83F193F130300DD420F /* NIPaths.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIPaths.h; sourceTree = "<group>"; };
+		C1A9C840193F130300DD420F /* NIPaths.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIPaths.m; sourceTree = "<group>"; };
+		C1A9C841193F130300DD420F /* NIPreprocessorMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIPreprocessorMacros.h; sourceTree = "<group>"; };
+		C1A9C842193F130300DD420F /* NIRuntimeClassModifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIRuntimeClassModifications.h; sourceTree = "<group>"; };
+		C1A9C843193F130300DD420F /* NIRuntimeClassModifications.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIRuntimeClassModifications.m; sourceTree = "<group>"; };
+		C1A9C844193F130300DD420F /* NISDKAvailability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NISDKAvailability.h; sourceTree = "<group>"; };
+		C1A9C845193F130300DD420F /* NISDKAvailability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NISDKAvailability.m; sourceTree = "<group>"; };
+		C1A9C846193F130300DD420F /* NIState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIState.h; sourceTree = "<group>"; };
+		C1A9C847193F130300DD420F /* NIState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIState.m; sourceTree = "<group>"; };
+		C1A9C848193F130300DD420F /* NIViewRecycler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIViewRecycler.h; sourceTree = "<group>"; };
+		C1A9C849193F130300DD420F /* NIViewRecycler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIViewRecycler.m; sourceTree = "<group>"; };
+		C1A9C84A193F130300DD420F /* NSData+NimbusCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+NimbusCore.h"; sourceTree = "<group>"; };
+		C1A9C84B193F130300DD420F /* NSData+NimbusCore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+NimbusCore.m"; sourceTree = "<group>"; };
+		C1A9C84C193F130300DD420F /* NSString+NimbusCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+NimbusCore.h"; sourceTree = "<group>"; };
+		C1A9C84D193F130300DD420F /* NSString+NimbusCore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+NimbusCore.m"; sourceTree = "<group>"; };
+		C1A9C84E193F130300DD420F /* UIView+NimbusCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+NimbusCore.h"; sourceTree = "<group>"; };
+		C1A9C84F193F130300DD420F /* UIView+NimbusCore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+NimbusCore.m"; sourceTree = "<group>"; };
+		C1A9C850193F130300DD420F /* ImageMetaDataLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageMetaDataLoader.h; sourceTree = "<group>"; };
+		C1A9C851193F130300DD420F /* ImageMetaDataLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageMetaDataLoader.m; sourceTree = "<group>"; };
+		C1A9C853193F130300DD420F /* NimbusPagingScrollView+Namespace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NimbusPagingScrollView+Namespace.h"; sourceTree = "<group>"; };
+		C1A9C854193F130300DD420F /* NimbusPagingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NimbusPagingScrollView.h; sourceTree = "<group>"; };
+		C1A9C855193F130300DD420F /* NIPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIPageView.h; sourceTree = "<group>"; };
+		C1A9C856193F130300DD420F /* NIPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIPageView.m; sourceTree = "<group>"; };
+		C1A9C857193F130300DD420F /* NIPagingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIPagingScrollView.h; sourceTree = "<group>"; };
+		C1A9C858193F130300DD420F /* NIPagingScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIPagingScrollView.m; sourceTree = "<group>"; };
+		C1A9C859193F130300DD420F /* NIPagingScrollViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIPagingScrollViewDataSource.h; sourceTree = "<group>"; };
+		C1A9C85A193F130300DD420F /* NIPagingScrollViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIPagingScrollViewDelegate.h; sourceTree = "<group>"; };
+		C1A9C85B193F130300DD420F /* NIPagingScrollViewPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIPagingScrollViewPage.h; sourceTree = "<group>"; };
+		C1A9C85D193F130300DD420F /* BaseImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseImageView.h; sourceTree = "<group>"; };
+		C1A9C85E193F130300DD420F /* BaseImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseImageView.m; sourceTree = "<group>"; };
+		C1A9C85F193F130300DD420F /* NimbusPhotos+Namespace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NimbusPhotos+Namespace.h"; sourceTree = "<group>"; };
+		C1A9C860193F130300DD420F /* NimbusPhotos.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = NimbusPhotos.bundle; sourceTree = "<group>"; };
+		C1A9C861193F130300DD420F /* NimbusPhotos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NimbusPhotos.h; sourceTree = "<group>"; };
+		C1A9C862193F130300DD420F /* NIPhotoAlbumScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIPhotoAlbumScrollView.h; sourceTree = "<group>"; };
+		C1A9C863193F130300DD420F /* NIPhotoAlbumScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIPhotoAlbumScrollView.m; sourceTree = "<group>"; };
+		C1A9C864193F130300DD420F /* NIPhotoAlbumScrollViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIPhotoAlbumScrollViewDataSource.h; sourceTree = "<group>"; };
+		C1A9C865193F130300DD420F /* NIPhotoAlbumScrollViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIPhotoAlbumScrollViewDelegate.h; sourceTree = "<group>"; };
+		C1A9C866193F130300DD420F /* NIPhotoScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIPhotoScrollView.h; sourceTree = "<group>"; };
+		C1A9C867193F130300DD420F /* NIPhotoScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIPhotoScrollView.m; sourceTree = "<group>"; };
+		C1A9C868193F130300DD420F /* NIPhotoScrollViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIPhotoScrollViewDelegate.h; sourceTree = "<group>"; };
+		C1A9C869193F130300DD420F /* NIPhotoScrollViewPhotoSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIPhotoScrollViewPhotoSize.h; sourceTree = "<group>"; };
+		C1A9C86A193F130300DD420F /* NIPhotoScrubberView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIPhotoScrubberView.h; sourceTree = "<group>"; };
+		C1A9C86B193F130300DD420F /* NIPhotoScrubberView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIPhotoScrubberView.m; sourceTree = "<group>"; };
+		C1A9C86C193F130300DD420F /* NIToolbarPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIToolbarPhotoViewController.h; sourceTree = "<group>"; };
+		C1A9C86D193F130300DD420F /* NIToolbarPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIToolbarPhotoViewController.m; sourceTree = "<group>"; };
+		C1A9C86E193F130300DD420F /* TileView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TileView.h; sourceTree = "<group>"; };
+		C1A9C86F193F130300DD420F /* TileView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TileView.m; sourceTree = "<group>"; };
+		C1A9C88E193F13A600DD420F /* PhotoAlbumToolBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoAlbumToolBarView.h; sourceTree = "<group>"; };
+		C1A9C88F193F13A600DD420F /* PhotoAlbumToolBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoAlbumToolBarView.m; sourceTree = "<group>"; };
+		C1A9C890193F13A600DD420F /* PhotoAlbumToolBarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoAlbumToolBarView.xib; sourceTree = "<group>"; };
+		C1A9C894193F17C100DD420F /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		C1A9C895193F17C100DD420F /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		C1D8700C18EC0CAB0061F799 /* CouponDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CouponDetailViewController.h; sourceTree = "<group>"; };
 		C1D8700D18EC0CAB0061F799 /* CouponDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CouponDetailViewController.m; sourceTree = "<group>"; };
 		C1D8700E18EC0CAB0061F799 /* CouponDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CouponDetailViewController.xib; sourceTree = "<group>"; };
@@ -979,15 +1091,6 @@
 		FA4E659B19357B21005022E2 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
 		FA4E659D19357B21005022E2 /* UMSocialDataDelegate.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = UMSocialDataDelegate.html; sourceTree = "<group>"; };
 		FA4E659E19357B21005022E2 /* UMSocialUIDelegate.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = UMSocialUIDelegate.html; sourceTree = "<group>"; };
-		FA4E65A119357B21005022E2 /* libSocialQQ.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSocialQQ.a; sourceTree = "<group>"; };
-		FA4E65A219357B21005022E2 /* TencentOpenAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TencentOpenAPI.framework; sourceTree = "<group>"; };
-		FA4E65A319357B21005022E2 /* TencentOpenApi_IOS_Bundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TencentOpenApi_IOS_Bundle.bundle; sourceTree = "<group>"; };
-		FA4E65A419357B21005022E2 /* UMSocialQQHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSocialQQHandler.h; sourceTree = "<group>"; };
-		FA4E65A619357B21005022E2 /* libSocialWechat.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSocialWechat.a; sourceTree = "<group>"; };
-		FA4E65A719357B21005022E2 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
-		FA4E65A819357B21005022E2 /* UMSocialWechatHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSocialWechatHandler.h; sourceTree = "<group>"; };
-		FA4E65A919357B21005022E2 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
-		FA4E65AA19357B21005022E2 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
 		FA4E65AC19357B21005022E2 /* iOS-social-analytics-releasenote.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "iOS-social-analytics-releasenote.html"; sourceTree = "<group>"; };
 		FA4E65AD19357B21005022E2 /* iOS-social-releasenote.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "iOS-social-releasenote.html"; sourceTree = "<group>"; };
 		FA4E65AE19357B21005022E2 /* ios-social-sdk-comment-detail.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "ios-social-sdk-comment-detail.html"; sourceTree = "<group>"; };
@@ -1008,13 +1111,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				03573A7519041EFB00A11A33 /* CoreLocation.framework in Frameworks */,
-				FA4E65F419357B21005022E2 /* TencentOpenAPI.framework in Frameworks */,
 				03573B3819056ABE00A11A33 /* libz.1.2.5.dylib in Frameworks */,
 				03573B3A19056ACC00A11A33 /* MobileCoreServices.framework in Frameworks */,
-				FA4E65F719357B22005022E2 /* libWeChatSDK.a in Frameworks */,
 				03573B3C19056AE000A11A33 /* SystemConfiguration.framework in Frameworks */,
 				03573B3619056A9800A11A33 /* CFNetwork.framework in Frameworks */,
-				FA4E65F619357B21005022E2 /* libSocialWechat.a in Frameworks */,
 				03573ABD1905584800A11A33 /* QuartzCore.framework in Frameworks */,
 				03573B3E19056F5700A11A33 /* CoreFoundation.framework in Frameworks */,
 				4E2C6DA418D7502100DF3772 /* UIKit.framework in Frameworks */,
@@ -1032,7 +1132,6 @@
 				4EF0916F1900264B00ABFE7D /* CoreMedia.framework in Frameworks */,
 				FA4E65B919357B21005022E2 /* libUMSocial_Sdk_3.3.8.a in Frameworks */,
 				4EF0916D1900264000ABFE7D /* Security.framework in Frameworks */,
-				FA4E65F319357B21005022E2 /* libSocialQQ.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1513,6 +1612,7 @@
 		4E2C6DCE18D7523D00DF3772 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				C1A9C81C193F12CC00DD420F /* Reader */,
 				03573ABE19055B7700A11A33 /* IndoorMap */,
 				4E2C6DD018D7525D00DF3772 /* MainViewController.h */,
 				4E2C6DD118D7525D00DF3772 /* MainViewController.mm */,
@@ -1638,6 +1738,8 @@
 		4E96088818E48D6700418798 /* utility */ = {
 			isa = PBXGroup;
 			children = (
+				C1A9C893193F17C100DD420F /* MBProgressHUD */,
+				C1A9C820193F130300DD420F /* Nimbus */,
 				FA4E654E19357B21005022E2 /* umeng_ios_social_sdk_3.3-1.8_custom */,
 				C1953208191B6D3B00D3BFA8 /* EGOImageButton */,
 				0312035E191A71DA00077E25 /* NSDate+DynamicDateString.h */,
@@ -1910,12 +2012,139 @@
 			path = icon;
 			sourceTree = "<group>";
 		};
+		C1A9C81C193F12CC00DD420F /* Reader */ = {
+			isa = PBXGroup;
+			children = (
+				C1A9C88E193F13A600DD420F /* PhotoAlbumToolBarView.h */,
+				C1A9C88F193F13A600DD420F /* PhotoAlbumToolBarView.m */,
+				C1A9C890193F13A600DD420F /* PhotoAlbumToolBarView.xib */,
+				C1A9C81D193F12CC00DD420F /* PhotoViewController.h */,
+				C1A9C81E193F12CC00DD420F /* PhotoViewController.m */,
+			);
+			path = Reader;
+			sourceTree = "<group>";
+		};
+		C1A9C820193F130300DD420F /* Nimbus */ = {
+			isa = PBXGroup;
+			children = (
+				C1A9C821193F130300DD420F /* Core */,
+				C1A9C850193F130300DD420F /* ImageMetaDataLoader.h */,
+				C1A9C851193F130300DD420F /* ImageMetaDataLoader.m */,
+				C1A9C852193F130300DD420F /* PagingScrollView */,
+				C1A9C85C193F130300DD420F /* Photos */,
+			);
+			path = Nimbus;
+			sourceTree = "<group>";
+		};
+		C1A9C821193F130300DD420F /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				C1A9C822193F130300DD420F /* NIBlocks.h */,
+				C1A9C823193F130300DD420F /* NICommonMetrics.h */,
+				C1A9C824193F130300DD420F /* NICommonMetrics.m */,
+				C1A9C825193F130300DD420F /* NIDataStructures.h */,
+				C1A9C826193F130300DD420F /* NIDataStructures.m */,
+				C1A9C827193F130300DD420F /* NIDebuggingTools.h */,
+				C1A9C828193F130300DD420F /* NIDebuggingTools.m */,
+				C1A9C829193F130300DD420F /* NIDeviceOrientation.h */,
+				C1A9C82A193F130300DD420F /* NIDeviceOrientation.m */,
+				C1A9C82B193F130300DD420F /* NIError.h */,
+				C1A9C82C193F130300DD420F /* NIError.m */,
+				C1A9C82D193F130300DD420F /* NIFoundationMethods.h */,
+				C1A9C82E193F130300DD420F /* NIFoundationMethods.m */,
+				C1A9C82F193F130300DD420F /* NIInMemoryCache.h */,
+				C1A9C830193F130300DD420F /* NIInMemoryCache.m */,
+				C1A9C831193F130300DD420F /* NimbusCore+Additions.h */,
+				C1A9C832193F130300DD420F /* NimbusCore+Namespace.h */,
+				C1A9C833193F130300DD420F /* NimbusCore.h */,
+				C1A9C834193F130300DD420F /* NINavigationAppearance.h */,
+				C1A9C835193F130300DD420F /* NINavigationAppearance.m */,
+				C1A9C836193F130300DD420F /* NINetworkActivity.h */,
+				C1A9C837193F130300DD420F /* NINetworkActivity.m */,
+				C1A9C838193F130300DD420F /* NINonEmptyCollectionTesting.h */,
+				C1A9C839193F130300DD420F /* NINonEmptyCollectionTesting.m */,
+				C1A9C83A193F130300DD420F /* NINonRetainingCollections.h */,
+				C1A9C83B193F130300DD420F /* NINonRetainingCollections.m */,
+				C1A9C83C193F130300DD420F /* NIOperations+Subclassing.h */,
+				C1A9C83D193F130300DD420F /* NIOperations.h */,
+				C1A9C83E193F130300DD420F /* NIOperations.m */,
+				C1A9C83F193F130300DD420F /* NIPaths.h */,
+				C1A9C840193F130300DD420F /* NIPaths.m */,
+				C1A9C841193F130300DD420F /* NIPreprocessorMacros.h */,
+				C1A9C842193F130300DD420F /* NIRuntimeClassModifications.h */,
+				C1A9C843193F130300DD420F /* NIRuntimeClassModifications.m */,
+				C1A9C844193F130300DD420F /* NISDKAvailability.h */,
+				C1A9C845193F130300DD420F /* NISDKAvailability.m */,
+				C1A9C846193F130300DD420F /* NIState.h */,
+				C1A9C847193F130300DD420F /* NIState.m */,
+				C1A9C848193F130300DD420F /* NIViewRecycler.h */,
+				C1A9C849193F130300DD420F /* NIViewRecycler.m */,
+				C1A9C84A193F130300DD420F /* NSData+NimbusCore.h */,
+				C1A9C84B193F130300DD420F /* NSData+NimbusCore.m */,
+				C1A9C84C193F130300DD420F /* NSString+NimbusCore.h */,
+				C1A9C84D193F130300DD420F /* NSString+NimbusCore.m */,
+				C1A9C84E193F130300DD420F /* UIView+NimbusCore.h */,
+				C1A9C84F193F130300DD420F /* UIView+NimbusCore.m */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		C1A9C852193F130300DD420F /* PagingScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				C1A9C853193F130300DD420F /* NimbusPagingScrollView+Namespace.h */,
+				C1A9C854193F130300DD420F /* NimbusPagingScrollView.h */,
+				C1A9C855193F130300DD420F /* NIPageView.h */,
+				C1A9C856193F130300DD420F /* NIPageView.m */,
+				C1A9C857193F130300DD420F /* NIPagingScrollView.h */,
+				C1A9C858193F130300DD420F /* NIPagingScrollView.m */,
+				C1A9C859193F130300DD420F /* NIPagingScrollViewDataSource.h */,
+				C1A9C85A193F130300DD420F /* NIPagingScrollViewDelegate.h */,
+				C1A9C85B193F130300DD420F /* NIPagingScrollViewPage.h */,
+			);
+			path = PagingScrollView;
+			sourceTree = "<group>";
+		};
+		C1A9C85C193F130300DD420F /* Photos */ = {
+			isa = PBXGroup;
+			children = (
+				C1A9C85D193F130300DD420F /* BaseImageView.h */,
+				C1A9C85E193F130300DD420F /* BaseImageView.m */,
+				C1A9C85F193F130300DD420F /* NimbusPhotos+Namespace.h */,
+				C1A9C860193F130300DD420F /* NimbusPhotos.bundle */,
+				C1A9C861193F130300DD420F /* NimbusPhotos.h */,
+				C1A9C862193F130300DD420F /* NIPhotoAlbumScrollView.h */,
+				C1A9C863193F130300DD420F /* NIPhotoAlbumScrollView.m */,
+				C1A9C864193F130300DD420F /* NIPhotoAlbumScrollViewDataSource.h */,
+				C1A9C865193F130300DD420F /* NIPhotoAlbumScrollViewDelegate.h */,
+				C1A9C866193F130300DD420F /* NIPhotoScrollView.h */,
+				C1A9C867193F130300DD420F /* NIPhotoScrollView.m */,
+				C1A9C868193F130300DD420F /* NIPhotoScrollViewDelegate.h */,
+				C1A9C869193F130300DD420F /* NIPhotoScrollViewPhotoSize.h */,
+				C1A9C86A193F130300DD420F /* NIPhotoScrubberView.h */,
+				C1A9C86B193F130300DD420F /* NIPhotoScrubberView.m */,
+				C1A9C86C193F130300DD420F /* NIToolbarPhotoViewController.h */,
+				C1A9C86D193F130300DD420F /* NIToolbarPhotoViewController.m */,
+				C1A9C86E193F130300DD420F /* TileView.h */,
+				C1A9C86F193F130300DD420F /* TileView.m */,
+			);
+			path = Photos;
+			sourceTree = "<group>";
+		};
+		C1A9C893193F17C100DD420F /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				C1A9C894193F17C100DD420F /* MBProgressHUD.h */,
+				C1A9C895193F17C100DD420F /* MBProgressHUD.m */,
+			);
+			path = MBProgressHUD;
+			sourceTree = "<group>";
+		};
 		FA4E654E19357B21005022E2 /* umeng_ios_social_sdk_3.3-1.8_custom */ = {
 			isa = PBXGroup;
 			children = (
 				FA4E654F19357B21005022E2 /* UMSocial_Sdk_3.3.8 */,
 				FA4E656A19357B21005022E2 /* UMSocial_Sdk_Api_Reference */,
-				FA4E659F19357B21005022E2 /* UMSocial_Sdk_Extra_Frameworks */,
 				FA4E65AB19357B21005022E2 /* UMSocial_Sdk_Instructions */,
 			);
 			path = "umeng_ios_social_sdk_3.3-1.8_custom";
@@ -2051,38 +2280,6 @@
 				FA4E659E19357B21005022E2 /* UMSocialUIDelegate.html */,
 			);
 			path = Protocols;
-			sourceTree = "<group>";
-		};
-		FA4E659F19357B21005022E2 /* UMSocial_Sdk_Extra_Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				FA4E65A019357B21005022E2 /* TencentOpenAPI */,
-				FA4E65A519357B21005022E2 /* Wechat */,
-			);
-			path = UMSocial_Sdk_Extra_Frameworks;
-			sourceTree = "<group>";
-		};
-		FA4E65A019357B21005022E2 /* TencentOpenAPI */ = {
-			isa = PBXGroup;
-			children = (
-				FA4E65A119357B21005022E2 /* libSocialQQ.a */,
-				FA4E65A219357B21005022E2 /* TencentOpenAPI.framework */,
-				FA4E65A319357B21005022E2 /* TencentOpenApi_IOS_Bundle.bundle */,
-				FA4E65A419357B21005022E2 /* UMSocialQQHandler.h */,
-			);
-			path = TencentOpenAPI;
-			sourceTree = "<group>";
-		};
-		FA4E65A519357B21005022E2 /* Wechat */ = {
-			isa = PBXGroup;
-			children = (
-				FA4E65A619357B21005022E2 /* libSocialWechat.a */,
-				FA4E65A719357B21005022E2 /* libWeChatSDK.a */,
-				FA4E65A819357B21005022E2 /* UMSocialWechatHandler.h */,
-				FA4E65A919357B21005022E2 /* WXApi.h */,
-				FA4E65AA19357B21005022E2 /* WXApiObject.h */,
-			);
-			path = Wechat;
 			sourceTree = "<group>";
 		};
 		FA4E65AB19357B21005022E2 /* UMSocial_Sdk_Instructions */ = {
@@ -2242,7 +2439,6 @@
 				C1009E86192C5CBF00A4CC79 /* Icon_114.png in Resources */,
 				FA4E65E519357B21005022E2 /* UMSocialYXSessionData.html in Resources */,
 				4ECBF74918F593A0003963E1 /* ShopDetailCommentsCell.xib in Resources */,
-				FA4E65F519357B21005022E2 /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
 				4ECBF73A18F4B9A4003963E1 /* tmpimg6.jpg in Resources */,
 				4E9608AA18E48D6700418798 /* blueArrow.png in Resources */,
 				FA4E660019357B22005022E2 /* ios-social-sdk-share-detail.html in Resources */,
@@ -2340,6 +2536,7 @@
 				4EF090F918FB52FD00ABFE7D /* service-icon-paint@2x.png in Resources */,
 				4E25476A18EC69BF007388B6 /* SearchViewController.xib in Resources */,
 				FA4E65BC19357B21005022E2 /* UMSCommentInputControlleriPad.xib in Resources */,
+				C1A9C892193F13A600DD420F /* PhotoAlbumToolBarView.xib in Resources */,
 				4E2C6E0818D7617100DF3772 /* wifi1.jpg in Resources */,
 				4ECBF73618F4B9A4003963E1 /* tmpimg2.jpg in Resources */,
 				4EF090D118FB52FD00ABFE7D /* btn-sb-gray@2x.png in Resources */,
@@ -2437,6 +2634,7 @@
 				4EF0914618FC2CEE00ABFE7D /* pp_5.jpg in Resources */,
 				4ECBF72618F4538C003963E1 /* ShopDetailItemListCell.xib in Resources */,
 				4EF0911618FB52FD00ABFE7D /* toolBar-btn-user@2x.png in Resources */,
+				C1A9C888193F130300DD420F /* NimbusPhotos.bundle in Resources */,
 				FA4E65CA19357B21005022E2 /* UMSocialCustomAccount.html in Resources */,
 				FA4E65DD19357B21005022E2 /* UMSocialSnsPlatformManager.html in Resources */,
 				FA4E660219357B22005022E2 /* ios-social-sdk-socialBar.html in Resources */,
@@ -2481,10 +2679,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E2C6DB018D7502100DF3772 /* AppDelegate.m in Sources */,
+				C1A9C878193F130300DD420F /* NINetworkActivity.m in Sources */,
+				C1A9C880193F130300DD420F /* NIViewRecycler.m in Sources */,
 				0312032F19169DC100077E25 /* CouponDetailInterface.m in Sources */,
 				4E2C6DD318D7525D00DF3772 /* MainViewController.mm in Sources */,
 				4ECBF72918F45638003963E1 /* ShopDetailTypeCell.m in Sources */,
 				03573AE319055E8A00A11A33 /* CustomUITableViewCell.m in Sources */,
+				C1A9C896193F17C100DD420F /* MBProgressHUD.m in Sources */,
 				03573B52190572A500A11A33 /* ASINSStringAdditions.m in Sources */,
 				03573B4C190572A500A11A33 /* ASIDataDecompressor.m in Sources */,
 				4E9608CB18E9BD4300418798 /* NSTimer+Addition.m in Sources */,
@@ -2497,15 +2698,20 @@
 				C19532281920C6CB00D3BFA8 /* Base64.m in Sources */,
 				4E9608A718E48D6700418798 /* PullTableView.m in Sources */,
 				4E9608CE18E9C54400418798 /* MainViewMiaoShaCell.m in Sources */,
+				C1A9C87D193F130300DD420F /* NIRuntimeClassModifications.m in Sources */,
 				4ECBF72418F45377003963E1 /* ShopDetailItemListCell.m in Sources */,
+				C1A9C87E193F130300DD420F /* NISDKAvailability.m in Sources */,
 				03573AD119055D8A00A11A33 /* UIGlossyButton.m in Sources */,
 				03573B751905792400A11A33 /* FloorInfoViewController.m in Sources */,
 				03573B8B190EA1EF00A11A33 /* InitInterface.m in Sources */,
+				C1A9C88A193F130300DD420F /* NIPhotoScrollView.m in Sources */,
 				03573ACE19055CA900A11A33 /* StoreOverViewController.m in Sources */,
 				03573B51190572A500A11A33 /* ASINetworkQueue.m in Sources */,
 				03573AE71905610600A11A33 /* MobiAccessaryView.m in Sources */,
 				4E9608B918E7B6AC00418798 /* ShopViewCell.m in Sources */,
+				C1A9C883193F130300DD420F /* UIView+NimbusCore.m in Sources */,
 				4E25476918EC69BF007388B6 /* SearchViewController.m in Sources */,
+				C1A9C871193F130300DD420F /* NIDataStructures.m in Sources */,
 				03573AC319055B7700A11A33 /* IndoorMapViewController.m in Sources */,
 				4E9608CA18E9BD4300418798 /* CycleScrollView.m in Sources */,
 				4E9608B418E7B1B600418798 /* ServiceViewCell.m in Sources */,
@@ -2514,10 +2720,14 @@
 				4ECBF70B18F4449E003963E1 /* BindPhoneViewController.m in Sources */,
 				03C6592A1928985D009CADA6 /* SearchResultViewController.m in Sources */,
 				4ECBF73E18F58C28003963E1 /* ShopDetailDescriptionCell.m in Sources */,
+				C1A9C881193F130300DD420F /* NSData+NimbusCore.m in Sources */,
 				03573BA3190EBE1600A11A33 /* CouponModel.m in Sources */,
 				03120347191937E100077E25 /* StoreFocusInterface.m in Sources */,
+				C1A9C884193F130300DD420F /* ImageMetaDataLoader.m in Sources */,
+				C1A9C882193F130300DD420F /* NSString+NimbusCore.m in Sources */,
 				03120344191934B000077E25 /* StoreDetailInterface.m in Sources */,
 				03573BA6190EBF5300A11A33 /* StoreModel.m in Sources */,
+				C1A9C870193F130300DD420F /* NICommonMetrics.m in Sources */,
 				C18347181925BB57002F7B9B /* PositionModel.m in Sources */,
 				03573B71190578FC00A11A33 /* MallsListViewController.m in Sources */,
 				03573B7C1906C7E400A11A33 /* CategoryModel.m in Sources */,
@@ -2528,30 +2738,46 @@
 				03573AC419055B7700A11A33 /* IndoorMapWithLeftPopBtnViewController.m in Sources */,
 				4E9608BE18E7CEC900418798 /* MeHeaderView.m in Sources */,
 				0312033E1917E05200077E25 /* ServicesInterface.m in Sources */,
+				C1A9C875193F130300DD420F /* NIFoundationMethods.m in Sources */,
+				C1A9C88C193F130300DD420F /* NIToolbarPhotoViewController.m in Sources */,
+				C1A9C872193F130300DD420F /* NIDebuggingTools.m in Sources */,
 				03573B781906C03700A11A33 /* YouhuiCategoryViewController.m in Sources */,
 				C195321D191CC6A200D3BFA8 /* BindPhoneInterface.m in Sources */,
 				4ECBF76118F6EAEA003963E1 /* CouponDetailWithTitleCell.m in Sources */,
+				C1A9C87B193F130300DD420F /* NIOperations.m in Sources */,
 				03573B4F190572A500A11A33 /* ASIHTTPRequest.m in Sources */,
+				C1A9C877193F130300DD420F /* NINavigationAppearance.m in Sources */,
 				03573B7F1906D05700A11A33 /* FloorSelectViewController.m in Sources */,
 				03573B50190572A500A11A33 /* ASIInputStream.m in Sources */,
+				C1A9C87A193F130300DD420F /* NINonRetainingCollections.m in Sources */,
 				03573B8E190EA45800A11A33 /* RuntimeModel.m in Sources */,
+				C1A9C886193F130300DD420F /* NIPagingScrollView.m in Sources */,
 				4E2C6DAC18D7502100DF3772 /* main.m in Sources */,
 				03573AD719055DE200A11A33 /* StoreListView.m in Sources */,
+				C1A9C891193F13A600DD420F /* PhotoAlbumToolBarView.m in Sources */,
+				C1A9C879193F130300DD420F /* NINonEmptyCollectionTesting.m in Sources */,
 				03573ADA19055E2300A11A33 /* SingletonHelpers.m in Sources */,
 				03573ADD19055E4A00A11A33 /* MBSFilterInfo.m in Sources */,
 				4ECBF75C18F6E9B4003963E1 /* CouponDetailDownloadCell.m in Sources */,
+				C1A9C876193F130300DD420F /* NIInMemoryCache.m in Sources */,
 				C1953221191CDBF500D3BFA8 /* DownloadCouponsViewController.m in Sources */,
 				C195320B191B6D5000D3BFA8 /* EGOImageButton.m in Sources */,
+				C1A9C874193F130300DD420F /* NIError.m in Sources */,
 				0312035A191945DF00077E25 /* EGOCache.m in Sources */,
 				03573B53190572A500A11A33 /* Reachability.m in Sources */,
 				4E2C6DE618D756EF00DF3772 /* MainViewOtherCell.m in Sources */,
 				03573B821906D15700A11A33 /* FloorModel.m in Sources */,
 				03573AE019055E6900A11A33 /* ChineseJudge.m in Sources */,
+				C1A9C88B193F130300DD420F /* NIPhotoScrubberView.m in Sources */,
 				4E2C6DF618D75CD600DF3772 /* YouhuiViewController.m in Sources */,
+				C1A9C885193F130300DD420F /* NIPageView.m in Sources */,
 				03573B4D190572A500A11A33 /* ASIDownloadCache.m in Sources */,
+				C1A9C88D193F130300DD420F /* TileView.m in Sources */,
 				4E9608A518E48D6700418798 /* MessageInterceptor.m in Sources */,
 				03573BA0190EBB8300A11A33 /* SearchInterface.m in Sources */,
+				C1A9C81F193F12CC00DD420F /* PhotoViewController.m in Sources */,
 				4E2C6DF118D75CC400DF3772 /* MeViewController.m in Sources */,
+				C1A9C87F193F130300DD420F /* NIState.m in Sources */,
 				4E9608A418E48D6700418798 /* LoadMoreTableFooterView.m in Sources */,
 				03573B4B190572A500A11A33 /* ASIDataCompressor.m in Sources */,
 				C183471C1925BF75002F7B9B /* BuildingModel.m in Sources */,
@@ -2565,6 +2791,8 @@
 				031203351917D9F600077E25 /* CouponDownloadModel.m in Sources */,
 				4E96087E18E4815500418798 /* BaseViewController.m in Sources */,
 				C1D8701418ED5B1D0061F799 /* ShopDetailViewController.m in Sources */,
+				C1A9C873193F130300DD420F /* NIDeviceOrientation.m in Sources */,
+				C1A9C87C193F130300DD420F /* NIPaths.m in Sources */,
 				4E2C6DFB18D75CE200DF3772 /* ShopViewController.m in Sources */,
 				4ECBF74718F59395003963E1 /* ShopDetailCommentsCell.m in Sources */,
 				0312035C191945DF00077E25 /* EGOImageLoader.m in Sources */,
@@ -2579,12 +2807,14 @@
 				4E9608A318E48D6700418798 /* EGORefreshTableHeaderView.m in Sources */,
 				031203321917D7EA00077E25 /* CouponDownloadInterface.m in Sources */,
 				03573B4A190572A500A11A33 /* ASIAuthenticationDialog.m in Sources */,
+				C1A9C887193F130300DD420F /* BaseImageView.m in Sources */,
 				4E96087718E4791000418798 /* CustomNavigationController.m in Sources */,
 				C1D8700F18EC0CAB0061F799 /* CouponDetailViewController.m in Sources */,
 				0312032B19169A4E00077E25 /* CouponInterface.m in Sources */,
 				C1D8701818ED5CE00061F799 /* ShopDetailHeaderView.m in Sources */,
 				031203411917E2C500077E25 /* StoreInterface.m in Sources */,
 				4E2C6DDA18D753AB00DF3772 /* MainViewNavigationCell.m in Sources */,
+				C1A9C889193F130300DD420F /* NIPhotoAlbumScrollView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

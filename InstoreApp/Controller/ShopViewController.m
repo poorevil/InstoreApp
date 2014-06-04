@@ -52,7 +52,6 @@
 {
     [super viewDidLoad];
     
-；
 
     
     
