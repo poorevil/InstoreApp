@@ -7,6 +7,7 @@
 //
 
 #import "NSString+Crypto.h"
+#import "NSData+MD5.h"
 
 @implementation NSString (Crypto)
 
@@ -131,6 +132,11 @@
 		[result appendFormat:@"%02X", hashBuffer[i]];
     
 	return result;
+}
+
+- (NSString *)MD5EncodedString {
+    
+	return [[self dataUsingEncoding:NSUTF8StringEncoding] MD5EncodedString];
 }
 
 @end

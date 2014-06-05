@@ -10,8 +10,8 @@
 
 @interface PhotoViewController : UIViewController
 
-@property (nonatomic,retain) NSMutableArray *fileListData;
-@property (nonatomic,retain) id metadata;
+@property (nonatomic,retain) NSMutableArray *imageListUrl;
+@property (nonatomic,retain) NSString *currentImageUrl;
 
 @property (nonatomic,assign) BOOL shareActionLock;
 

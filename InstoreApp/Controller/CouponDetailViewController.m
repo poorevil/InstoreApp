@@ -20,6 +20,8 @@
 #import "CouponDownloadModel.h"
 #import "SVProgressHUD.h"
 
+#import "PhotoViewController.h"
+
 @interface CouponDetailViewController () <CouponDetailInterfaceDelegate,CouponDownloadInterfaceDelegate>
 @property (nonatomic,strong) UIView *headerView;
 @property (nonatomic,strong) UIView *footerView;
@@ -85,6 +87,11 @@
         self.headerImageView.frame = CGRectMake(10, 10, 300, 300);
         [self.headerView addSubview:self.headerImageView];
         
+        self.headerImageView.userInteractionEnabled = YES;
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imagesTapAction:)];
+        [self.headerImageView addGestureRecognizer:tap];
+        [tap release];
+        
         UIView *titleGroupView = [[[UIView alloc] initWithFrame:CGRectMake(10, 320-34, 300, 34)] autorelease];
         titleGroupView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.7f];
         self.titleLabel = [[[UILabel alloc] initWithFrame:CGRectMake(10, 5, 300, 28)] autorelease];
@@ -98,6 +105,15 @@
     self.headerImageView.imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@/640*640.png",self.couponModel.imageUrl]];
     self.titleLabel.text = self.couponModel.title;
     
+}
+
+-(void)imagesTapAction:(UIGestureRecognizer *)sender
+{
+    PhotoViewController *photoViewController = [[[PhotoViewController alloc] init] autorelease];
+    photoViewController.currentImageUrl = [self.couponModel.images objectAtIndex:0];
+    photoViewController.imageListUrl = self.couponModel.images;
+    
+    [self.navigationController pushViewController:photoViewController animated:NO];
 }
 
 -(void)initFooterView

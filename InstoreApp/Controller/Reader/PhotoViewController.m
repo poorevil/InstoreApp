@@ -25,17 +25,23 @@
 //#import "VdiskDownloadOperation.h"
 
 #import "ImageMetaDataLoader.h"
-
 #import "TileView.h"
-
 #import <ImageIO/ImageIO.h>
 
-//#import "HomeViewController.h"
+#import "ImageMetadata.h"
+#import "NSString+Crypto.h"
 
-//#import "GIKPopoverBackgroundView.h"
+#import "ASINetworkQueue.h"
+#import "ASIHTTPRequest.h"
 
-@interface PhotoViewController () <NIPhotoAlbumScrollViewDelegate,NIPhotoAlbumScrollViewDataSource
-//,VdiskRestClientDelegate,UIActionSheetDelegate,FolderSelectionDelegate,ShareDelegate
+
+
+
+#define	kSMALLJPGPATH(__src)    [[(__src) stringByDeletingPathExtension] stringByAppendingString:@"-thumb-small.jpg"]
+
+
+@interface PhotoViewController () <NIPhotoAlbumScrollViewDelegate,NIPhotoAlbumScrollViewDataSource,UIActionSheetDelegate
+//,VdiskRestClientDelegate,,ShareDelegate
 ,MBProgressHUDDelegate,UIDocumentInteractionControllerDelegate>{//,VdiskDownloadOperationDelegate
     
 //    VdiskRestClient *_restClient;
@@ -43,6 +49,11 @@
     BOOL _isLoged;
     
 }
+
+@property (nonatomic, retain) ASINetworkQueue *networkQueue;
+
+@property (nonatomic,retain) ImageMetadata *metadata;//当前显示的图片
+@property (nonatomic,retain) NSMutableArray *fileListData;//所有图片
 
 @property (nonatomic, retain) UIActionSheet *actionSheet;
 
@@ -81,6 +92,12 @@
 //                                                 maxConcurrent:3
 //                                             maxOperationCount:5];
 //        [_restClient setDelegate:self];
+        
+        self.networkQueue = [ASINetworkQueue queue];
+        self.networkQueue.delegate = self;
+        [self.networkQueue setRequestDidFinishSelector:@selector(requestFinished:)];
+        [self.networkQueue setRequestDidFailSelector:@selector(requestFailed:)];
+        [self.networkQueue setQueueDidFinishSelector:@selector(queueFinished:)];
     }
     
     return self;
@@ -115,7 +132,6 @@
     frame.size.width = self.view.frame.size.width;
     self.mPhotoAlbumToolBarView.frame = frame;
     
-    
     [self.view addSubview:self.mPhotoAlbumToolBarView];
 }
 
@@ -127,7 +143,6 @@
     if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1) {
         
         self.edgesForExtendedLayout = UIRectEdgeNone;
-        //[self.navigationController.navigationBar setTranslucent:NO];
     }
 #endif
     
@@ -139,6 +154,8 @@
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(didBecomeActivity:)
                                                  name:UIApplicationDidBecomeActiveNotification object:nil];
+    
+    [[self networkQueue] go];
 }
 
 -(void)didBecomeActivity:(NSNotification *)notification
@@ -203,6 +220,10 @@
 
 -(void)dealloc
 {
+    [self.networkQueue cancelAllOperations];
+    self.networkQueue.delegate = nil;
+    self.networkQueue = nil;
+    
     self.blockDelegate = nil;
     
     self.photoAlbum.delegate = nil;
@@ -237,7 +258,33 @@
 //    [_downloadOperation clearDelegatesAndCancel];
 //    V_RELEASE_SAFELY(_downloadOperation);
     
+    self.currentImageUrl = nil;
+    self.imageListUrl = nil;
+    
     [super dealloc];
+}
+
+#pragma mark - override getter and setter method
+-(void)setCurrentImageUrl:(NSString *)currentImageUrl
+{
+    [_currentImageUrl release];
+    _currentImageUrl = [currentImageUrl retain];
+    
+    self.metadata = [[[ImageMetadata alloc] initWithLine:currentImageUrl] autorelease];
+}
+
+-(void)setImageListUrl:(NSMutableArray *)imageListUrl
+{
+    [_imageListUrl release];
+    _imageListUrl = [imageListUrl retain];
+    
+    self.fileListData = [NSMutableArray array];
+    
+    for (NSString *url in imageListUrl) {
+        ImageMetadata *metadata = [[ImageMetadata alloc] initWithLine:url];
+        [self.fileListData addObject:metadata];
+        [metadata release];
+    }
 }
 
 #pragma mark - screen autorotate
@@ -276,42 +323,42 @@
 
 #pragma mark - private method
 
-//TODO:根据情况初始化按钮
+//根据情况初始化按钮
 -(void)setupBarButtonsByCurrentMetaData
 {
-//    VdiskMetadata *metadata = [self.fileListData objectAtIndex:self.photoAlbum.centerPageIndex];
-//    /*
-//     * 判断centerButton和rightButton是否可用
-//     */
-//    for (NIPhotoScrollView *page in self.photoAlbum.visiblePages) {
-//        if (page.pageIndex == self.photoAlbum.centerPageIndex) {
-//            if (page.hud != nil && page.hud.progress != 0 && page.hud.progress != 1) {
-//                self.mPhotoAlbumToolBarView.centerBtn.enabled = NO;
-//                self.mPhotoAlbumToolBarView.rightBtn.enabled = NO;
-//            }else{
-//                self.mPhotoAlbumToolBarView.centerBtn.enabled = YES;
-//                self.mPhotoAlbumToolBarView.rightBtn.enabled = YES;
-//            }
-//            
-//            //            if (page.photoSize == NIPhotoScrollViewPhotoSizeUnknown) {
-//            //                self.mPhotoAlbumToolBarView.rightBtn.enabled = NO;
-//            //            }else{
-//            //                self.mPhotoAlbumToolBarView.rightBtn.enabled = YES;
-//            //            }
-//            
-//            if (metadata.hasCache || [[NSFileManager defaultManager] fileExistsAtPath:kSMALLJPGPATH(metadata.cachePath)]) {
-//                self.mPhotoAlbumToolBarView.rightBtn.enabled = YES;
-//            }else{
-//                self.mPhotoAlbumToolBarView.rightBtn.enabled = NO;
-//            }
-//            
-//            break;
-//        }
-//    }
-//    
-//    //更新当前图片索引
-//    self.mPhotoAlbumToolBarView.indexLabel.text = [NSString stringWithFormat:@"%d / %d",self.photoAlbum.centerPageIndex+1,self.fileListData.count];
-//    
+    ImageMetadata *metadata = [self.fileListData objectAtIndex:self.photoAlbum.centerPageIndex];
+    /*
+     * 判断centerButton和rightButton是否可用
+     */
+    for (NIPhotoScrollView *page in self.photoAlbum.visiblePages) {
+        if (page.pageIndex == self.photoAlbum.centerPageIndex) {
+            if (page.hud != nil && page.hud.progress != 0 && page.hud.progress != 1) {
+                self.mPhotoAlbumToolBarView.centerBtn.enabled = NO;
+                self.mPhotoAlbumToolBarView.rightBtn.enabled = NO;
+            }else{
+                self.mPhotoAlbumToolBarView.centerBtn.enabled = YES;
+                self.mPhotoAlbumToolBarView.rightBtn.enabled = YES;
+            }
+            
+            //            if (page.photoSize == NIPhotoScrollViewPhotoSizeUnknown) {
+            //                self.mPhotoAlbumToolBarView.rightBtn.enabled = NO;
+            //            }else{
+            //                self.mPhotoAlbumToolBarView.rightBtn.enabled = YES;
+            //            }
+            
+            if (metadata.hasCache || [[NSFileManager defaultManager] fileExistsAtPath:kSMALLJPGPATH(metadata.cachePath)]) {
+                self.mPhotoAlbumToolBarView.rightBtn.enabled = YES;
+            }else{
+                self.mPhotoAlbumToolBarView.rightBtn.enabled = NO;
+            }
+            
+            break;
+        }
+    }
+    
+    //更新当前图片索引
+    self.mPhotoAlbumToolBarView.indexLabel.text = [NSString stringWithFormat:@"%d / %d",self.photoAlbum.centerPageIndex+1,self.fileListData.count];
+    
 //    [self.mPhotoAlbumToolBarView.leftBtn removeTarget:nil
 //                                               action:NULL
 //                                     forControlEvents:UIControlEventAllEvents];
@@ -321,10 +368,18 @@
 //    [self.mPhotoAlbumToolBarView.rightBtn removeTarget:nil
 //                                                action:NULL
 //                                      forControlEvents:UIControlEventAllEvents];
-//    
-//    
+    
+    if ([metadata hasCache]) {//若文件已经下载
+        [self.mPhotoAlbumToolBarView.rightBtn setImage:[UIImage imageNamed:@"more_light"]
+                                              forState:UIControlStateNormal];
+        [self.mPhotoAlbumToolBarView.rightBtn addTarget:self
+                                                 action:@selector(rightAction:)
+                                       forControlEvents:UIControlEventTouchUpInside];
+    }
+    
+    
 //    if ([metadata hasCache]) {//若文件已经下载
-//        if (!(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad && kShareAppDelegate.isNewIpad)) {
+//        if (!(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad )) {//&& kShareAppDelegate.isNewIpad
 //            
 //            self.mPhotoAlbumToolBarView.centerBtn.hidden = NO;
 //            /*
@@ -365,7 +420,7 @@
 //                                        forControlEvents:UIControlEventTouchUpInside];
 //        
 //    }
-//    
+    
 //    if (self.showDirectly) {
 //        
 //        self.mPhotoAlbumToolBarView.centerBtn.hidden = YES;//若showDirectly==yes 则没有加星、下载功能
@@ -475,133 +530,38 @@
 //    }
 //}
 //
-//- (void)rightAction:(id)sender {
-//    
-//    VdiskMetadata *metadata = [self.fileListData objectAtIndex:self.photoAlbum.centerPageIndex];
-//    
-//    if (_shareActionLock) {
-//		
-//		NSLog(@"shareAction locked");
-//		return;
-//	}
-//    
-//    
-//    
-//    if (self.showDirectly) {
-//        
-//        self.actionSheet = [[[UIActionSheet alloc] initWithTitle:nil
-//                                                        delegate:self
-//                                               cancelButtonTitle:@"取消"
-//                                          destructiveButtonTitle:nil
-//                                               otherButtonTitles:@"用其他应用打开", @"保存到相册", nil] autorelease];
-//        
-//    } else {
-//        
-//        if ([metadata isKindOfClass:[VdiskSharesMetadata class]]) {
-//            
-//            if ([(VdiskSharesMetadata *)metadata sharesMetadataType] == kVdiskSharesMetadataTypeFromFriend) {
-//                
-//                self.actionSheet = [[[UIActionSheet alloc] initWithTitle:nil
-//                                                                delegate:self
-//                                                       cancelButtonTitle:@"取消"
-//                                                  destructiveButtonTitle:nil
-//                                                       otherButtonTitles:@"用其他应用打开", @"保存到相册", nil] autorelease];
-//                
-//            } else if ([(VdiskSharesMetadata *)metadata sharesMetadataType] == kVdiskSharesMetadataTypeLinkcommon) {
-//                
-//                self.actionSheet = [[[UIActionSheet alloc] initWithTitle:nil
-//                                                                delegate:self
-//                                                       cancelButtonTitle:@"取消"
-//                                                  destructiveButtonTitle:nil
-//                                                       otherButtonTitles:@"用其他应用打开", @"保存到相册", nil] autorelease];
-//                
-//            } else {
-//                
-//                self.actionSheet = [[[UIActionSheet alloc] initWithTitle:nil
-//                                                                delegate:self
-//                                                       cancelButtonTitle:@"取消"
-//                                                  destructiveButtonTitle:nil
-//                                                       otherButtonTitles:@"用其他应用打开", @"保存到相册", @"发微博推荐", nil] autorelease];
-//                
-//            }
-//            
-//        } else {
-//            
-//            self.actionSheet = [[[UIActionSheet alloc] initWithTitle:nil
-//                                                            delegate:self
-//                                                   cancelButtonTitle:@"取消"
-//                                              destructiveButtonTitle:nil
-//                                                   otherButtonTitles:@"用其他应用打开", @"保存到相册", nil] autorelease];
-//        }
-//        
-//    }
-//    
-//    self.actionSheet.actionSheetStyle = UIActionSheetStyleDefault;
-//    
-//    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-//        
-//        //        [actionSheet showFromBarButtonItem:_rightItem animated:YES];
-//        
-//        CGPoint pointInViewCoords = [self.mPhotoAlbumToolBarView convertPoint:self.mPhotoAlbumToolBarView.rightBtn.frame.origin
-//                                                                       toView:self.view];
-//        [self.actionSheet showFromRect:CGRectMake(pointInViewCoords.x,
-//                                                  pointInViewCoords.y,
-//                                                  self.mPhotoAlbumToolBarView.rightBtn.frame.size.width,
-//                                                  self.mPhotoAlbumToolBarView.rightBtn.frame.size.height)
-//                                inView:self.view
-//                              animated:YES];
-//        
-//    } else {
-//        
-//        [self.actionSheet showInView:self.navigationController.view];
-//    }
-//    
-//    //    [actionSheet release];
-//    
-//    _shareActionLock = YES;
-//}
-//
-//- (BOOL)favFile:(id)sender {
-//    
-//    VdiskMetadata *metadata = [self.fileListData objectAtIndex:self.photoAlbum.centerPageIndex];
-//    
-//    FavoriteModel *favoriteModel = [[FavoriteModel alloc] init];
-//    
-//    if ([favoriteModel isStared:metadata]) {
-//        
-//        if ([favoriteModel star:NO metadata:metadata]) {
-//            
-//            //            [self.mPhotoAlbumToolBarView.centerBtn setImage:[UIImage imageNamed:@"unstar_light"]
-//            //                                                   forState:UIControlStateNormal];
-//            
-//            [self alertWithHUD:@"已取消加星"];
-//            
-//        }
-//        
-//    } else {
-//        
-//        if ([favoriteModel star:YES metadata:metadata]) {
-//            
-//            //            [self.mPhotoAlbumToolBarView.centerBtn setImage:[UIImage imageNamed:@"star_light"]
-//            //                                                   forState:UIControlStateNormal];
-//            [self alertWithHUD:@"已加星"];
-//        }
-//    }
-//    
-//    [favoriteModel release];
-//    
-//    [[FavoritesListViewController sharedInstance] updateFavoritesList];
-//	
-//    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-//        
-//        [kShareAppDelegate.mainViewController reload];
-//    }
-//	
-//    [self setupBarButtonsByCurrentMetaData];
-//    
-//    
-//	return NO;
-//}
+- (void)rightAction:(id)sender {
+    
+    self.actionSheet = [[[UIActionSheet alloc] initWithTitle:nil
+                                                    delegate:self
+                                           cancelButtonTitle:@"取消"
+                                      destructiveButtonTitle:nil
+                                           otherButtonTitles:@"用其他应用打开", @"保存到相册", nil] autorelease];
+
+        
+
+    
+    self.actionSheet.actionSheetStyle = UIActionSheetStyleDefault;
+    
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        
+        CGPoint pointInViewCoords = [self.mPhotoAlbumToolBarView convertPoint:self.mPhotoAlbumToolBarView.rightBtn.frame.origin
+                                                                       toView:self.view];
+        [self.actionSheet showFromRect:CGRectMake(pointInViewCoords.x,
+                                                  pointInViewCoords.y,
+                                                  self.mPhotoAlbumToolBarView.rightBtn.frame.size.width,
+                                                  self.mPhotoAlbumToolBarView.rightBtn.frame.size.height)
+                                inView:self.view
+                              animated:YES];
+        
+    } else {
+        
+        [self.actionSheet showInView:self.navigationController.view];
+    }
+    
+    _shareActionLock = YES;
+}
+
 
 #define kIMAGE_PREFIX @"bigimage_"
 #define kIMAGE_CATCHE_PATH ([[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:@"tiledImage"])
@@ -615,12 +575,9 @@
 ////下载原图
 //-(BOOL)downloadFile:(id)sender
 //{
-//    VdiskMetadata *metadata = [self.fileListData objectAtIndex:self.photoAlbum.centerPageIndex];
+//    ImageMetadata *metadata = [self.fileListData objectAtIndex:self.photoAlbum.centerPageIndex];
 //    
-//    [_downloadOperation clearDelegatesAndCancel];
-//    V_RELEASE_SAFELY(_downloadOperation);
-//    
-//    _downloadOperation = [[VdiskDownloadOperation alloc] initWithMetadata:metadata delegate:self];
+////    _downloadOperation = [[VdiskDownloadOperation alloc] initWithMetadata:metadata delegate:self];
 //    
 //    __block typeof(self.blockDelegate) bself = self.blockDelegate;
 //    _downloadOperation.downloadCompletedBlock = ^(VdiskDownloadOperation *downloadOperation){
@@ -773,72 +730,6 @@
 //    return NO;
 //}
 
-
-//- (void)selectDestinationFolder {
-//    
-//    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-//		
-//        FolderSelectionViewController *folderSelectionViewController = [[FolderSelectionViewController alloc] init];
-//        folderSelectionViewController.delegate = self;
-//        
-//        //UIViewController *folderSelectionViewController = [[UIViewController alloc] init];
-//        
-//        //UINavigationController *folderNavController = [[UINavigationController alloc] initWithRootViewController:folderSelectionViewController];
-//        //UINavigationController *folderNavController = [[UINavigationController alloc] initWithRootViewController:folderSelectionViewController];
-//        UINavigationController *folderNavController = [[UINavigationController alloc] initWithNavigationBarClass:[VdiskNavigationBar class] toolbarClass:[VdiskToolbar class]];
-//        
-//        [Static customizePromptNavigationController:folderNavController];
-//        [folderNavController setViewControllers:@[folderSelectionViewController]];
-//        [folderSelectionViewController release];
-//		
-//        
-//        /*
-//        kShareAppDelegate.readerPopover = [[[UIPopoverController alloc] initWithContentViewController:folderNavController] autorelease];
-//        //kShareAppDelegate.isReaderPopoverUsing = YES;
-//        
-//        CGPoint pointInViewCoords = [self.mPhotoAlbumToolBarView convertPoint:self.mPhotoAlbumToolBarView.leftBtn.frame.origin
-//                                                                       toView:self.view];
-//        [kShareAppDelegate.readerPopover presentPopoverFromRect:CGRectMake(pointInViewCoords.x,
-//                                                                           pointInViewCoords.y,
-//                                                                           self.mPhotoAlbumToolBarView.leftBtn.frame.size.width,
-//                                                                           self.mPhotoAlbumToolBarView.leftBtn.frame.size.height)
-//                                                         inView:self.view
-//                                       permittedArrowDirections:UIPopoverArrowDirectionDown
-//                                                       animated:YES];
-//        
-//        
-//        
-//        [folderNavController release];
-//         */
-//        
-//        
-//        folderNavController.modalPresentationStyle = UIModalPresentationFormSheet;
-//        [self presentModalViewController:folderNavController animated:YES];
-//        [folderNavController release];
-//        
-//	} else {
-//		
-//        FolderSelectionViewController *folderSelectionViewController = [[FolderSelectionViewController alloc] init];
-//        folderSelectionViewController.delegate = self;
-//        //UINavigationController *folderNavController = [[UINavigationController alloc] initWithRootViewController:folderSelectionViewController];
-//        UINavigationController *folderNavController = [[UINavigationController alloc] initWithNavigationBarClass:[VdiskNavigationBar class] toolbarClass:[VdiskToolbar class]];
-//        [folderNavController setViewControllers:@[folderSelectionViewController]];
-//        [Static customizePromptNavigationController:folderNavController];
-//        //[Static customizeNavigationController:folderNavController];
-//        [folderSelectionViewController release];
-//		[self presentModalViewController:folderNavController animated:YES];
-//        [folderNavController release];
-//	}
-//}
-
-- (void)setFileListData:(NSMutableArray *)fileListData {
-    
-//    V_RELEASE_SAFELY(_fileListData);
-    self.fileListData = nil;
-    
-    self.fileListData = [NSMutableArray arrayWithArray:fileListData];
-}
-
 -(void)setTapGesture
 {
     UITapGestureRecognizer *doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTapAction:)];
@@ -928,29 +819,35 @@ UIImage* resizedImage(UIImage *inImage, CGRect thumbRect)
 {
     UIImage *image = nil;
     
-    //TODO:VdiskMetadata
-//    VdiskMetadata *metadata = [self.fileListData objectAtIndex:photoIndex];
-//    
-//    if (![[NSFileManager defaultManager] fileExistsAtPath:kICONPNGRAWPATH(metadata.cachePath,@"m")]){
-//        if(photoIndex != photoAlbumScrollView.centerPageIndex) {
-//            
-//            //下载“m”缩略图
+    ImageMetadata *metadata = [self.fileListData objectAtIndex:photoIndex];
+    
+    if (![[NSFileManager defaultManager] fileExistsAtPath:kSMALLJPGPATH(metadata.cachePath)]){
+        if(photoIndex != photoAlbumScrollView.centerPageIndex) {
+            
+            //下载“m”缩略图
 //            [_restClient loadThumbnailWithMetadata:metadata
 //                                            ofSize:@"m" //size   字符串（s,m,l,xl）    s:60x60,m:100x100,l:640x480,xl:1024x768
 //                                          intoPath:kICONPNGRAWPATH([metadata cachePath:YES],@"m")
 //                                            params:nil];
-//            //            *photoSize = NIPhotoScrollViewPhotoSizeThumbnail;
-//        }
-//    }else{
-//        
-//        image = [UIImage imageWithContentsOfFile:kICONPNGRAWPATH(metadata.cachePath,@"m")];
-//        image.accessibilityIdentifier = [kICONPNGRAWPATH(metadata.cachePath,@"m") MD5EncodedString];
-//        
-//        *photoSize = NIPhotoScrollViewPhotoSizeThumbnail;
-//        *originalPhotoDimensions = image.size;
-//    }
-//    
-//    *isLoading = YES;
+            
+            ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/100*100.png",
+                                                                                           metadata.link]]];
+            [request setShowAccurateProgress:YES];
+            [request setDownloadProgressDelegate:self];
+            request.userInfo = @{@"metadata": metadata, @"size":@"m"};
+            [request setDownloadDestinationPath:kSMALLJPGPATH([metadata cachePath])];
+            [self.networkQueue addOperation:request];
+        }
+    }else{
+        
+        image = [UIImage imageWithContentsOfFile:kSMALLJPGPATH(metadata.cachePath)];
+        image.accessibilityIdentifier = [kSMALLJPGPATH(metadata.cachePath) MD5EncodedString];
+        
+        *photoSize = NIPhotoScrollViewPhotoSizeThumbnail;
+        *originalPhotoDimensions = image.size;
+    }
+    
+    *isLoading = YES;
     
     
     return image;
@@ -969,159 +866,154 @@ UIImage* resizedImage(UIImage *inImage, CGRect thumbRect)
     
 }
 
-//-(void)loadBigImage:(NSNumber *)pageIndexNumber
-//{
-//    NSInteger pageIndex = [pageIndexNumber integerValue];//加载的页数
-//    
-//    NIPhotoScrollViewPhotoSize currentPhotoSize = NIPhotoScrollViewPhotoSizeUnknown;
-//    
-//    for (NIPhotoScrollView *page in self.photoAlbum.visiblePages) {
-//        
-//        if (page.pageIndex == pageIndex) {
-//            
-//            currentPhotoSize = page.photoSize;
-//            
-//            break;
-//        }
-//    }
-//    
-//    if (currentPhotoSize != NIPhotoScrollViewPhotoSizeOriginal) {
-//        
-//        NIPhotoScrollView *psv = (NIPhotoScrollView *)[self.photoAlbum pagingScrollView:self.photoAlbum pageViewForIndex:pageIndex];
-//        if (psv.photoSize < NIPhotoScrollViewPhotoSizeOriginal ) {
-//            
-//            VdiskMetadata *metadata = [self.fileListData objectAtIndex:pageIndex];
-//            
-//            //如果已经下载则看看是否要插入数据库:
-//            if (!self.showDirectly && metadata && [metadata hasCache]) {
-//                
-//                FavoriteModel *favoriteModel = [[FavoriteModel alloc] init];
-//                [favoriteModel insertMetadata:metadata];
-//                [favoriteModel release];
-//                [[FavoritesListViewController sharedInstance] updateFavoritesList];
-//            }
-//            
-//            UIImage *image = [self fetchBigImageByMetadata:metadata];
-//            
-//            if (image) {
-//                
-//                if ((image.size.width*image.size.height) >= (1024*1024) ) {
-//                    NSString *generatedFilePath = [NSString stringWithFormat:@"%@/generated",
-//                                                   [kIMAGE_CATCHE_PATH stringByAppendingPathComponent:image.accessibilityIdentifier]];
-//                    
-//                    /*
-//                     * 若generated文件不存在，说明需要生成tile图片文件
-//                     */
-//                    if(![[NSFileManager defaultManager] fileExistsAtPath:generatedFilePath]){
-//                        
-//                        [self downloadFile:nil];
-//                        
-//                        return;
-//                    }
-//                }
-//                
-//                [self.photoAlbum didLoadPhoto: image
-//                                      atIndex: pageIndex
-//                                    photoSize: NIPhotoScrollViewPhotoSizeOriginal];
-//            }else{
-//                
-//                if([[NSFileManager defaultManager] fileExistsAtPath:kSMALLJPGPATH([metadata cachePath:YES])]){
-//                    UIImage *smallJpgImage = [UIImage imageWithContentsOfFile:kSMALLJPGPATH(metadata.cachePath)];
-//                    smallJpgImage.accessibilityIdentifier = [kSMALLJPGPATH(metadata.cachePath) MD5EncodedString];
-//                    
-//                    [self.photoAlbum didLoadPhoto: smallJpgImage
-//                                          atIndex: pageIndex
-//                                        photoSize: NIPhotoScrollViewPhotoSizeOriginal];
-//                }else{
-//                    
-//                    //下载大缩略图
+//读大图
+-(void)loadBigImage:(NSNumber *)pageIndexNumber
+{
+    NSInteger pageIndex = [pageIndexNumber integerValue];//加载的页数
+    
+    NIPhotoScrollViewPhotoSize currentPhotoSize = NIPhotoScrollViewPhotoSizeUnknown;
+    
+    for (NIPhotoScrollView *page in self.photoAlbum.visiblePages) {
+        
+        if (page.pageIndex == pageIndex) {
+            
+            currentPhotoSize = page.photoSize;
+            
+            break;
+        }
+    }
+    
+    if (currentPhotoSize != NIPhotoScrollViewPhotoSizeOriginal) {
+        
+        NIPhotoScrollView *psv = (NIPhotoScrollView *)[self.photoAlbum pagingScrollView:self.photoAlbum pageViewForIndex:pageIndex];
+        if (psv.photoSize < NIPhotoScrollViewPhotoSizeOriginal ) {
+            
+            ImageMetadata *metadata = [self.fileListData objectAtIndex:pageIndex];
+            
+            UIImage *image = [self fetchBigImageByMetadata:metadata];
+            
+            if (image) {
+                if ((image.size.width*image.size.height) >= (1024*1024) ) {
+                    NSString *generatedFilePath = [NSString stringWithFormat:@"%@/generated",
+                                                   [kIMAGE_CATCHE_PATH stringByAppendingPathComponent:image.accessibilityIdentifier]];
+                    
+                    /*
+                     * 若generated文件不存在，说明需要生成tile图片文件
+                     */
+                    if(![[NSFileManager defaultManager] fileExistsAtPath:generatedFilePath]){
+                        
+                        //TODO:[self downloadFile:nil];
+                        
+                        return;
+                    }
+                }
+                
+                [self.photoAlbum didLoadPhoto: image
+                                      atIndex: pageIndex
+                                    photoSize: NIPhotoScrollViewPhotoSizeOriginal];
+            }else{
+                if([[NSFileManager defaultManager] fileExistsAtPath:kSMALLJPGPATH([metadata cachePath])]){
+                    UIImage *smallJpgImage = [UIImage imageWithContentsOfFile:kSMALLJPGPATH(metadata.cachePath)];
+                    smallJpgImage.accessibilityIdentifier = [kSMALLJPGPATH(metadata.cachePath) MD5EncodedString];
+                    
+                    [self.photoAlbum didLoadPhoto: smallJpgImage
+                                          atIndex: pageIndex
+                                        photoSize: NIPhotoScrollViewPhotoSizeOriginal];
+                }else{
+                    
+                    //下载大缩略图
 //                    [_restClient loadThumbnailWithMetadata:metadata
 //                                                    ofSize:@"l" //size   字符串（s,m,l,xl）    s:60x60,m:100x100,l:640x480,xl:1024x768
 //                                                  intoPath:kSMALLJPGPATH([metadata cachePath:YES])
 //                                                    params:nil];
-//                    
-//                    /*
-//                     * 更新下载进度
-//                     */
-//                    for (NIPhotoScrollView *page in self.photoAlbum.visiblePages) {
-//                        if (page.pageIndex == pageIndex) {
-//                            
-//                            [page setLoadProgress:0.0001f];
-//                            
-//                            break;
-//                        }
-//                    }
-//                }
-//            }
-//        }
-//    }
-//    
-//    [self setupBarButtonsByCurrentMetaData];
-//}
+                    
+                    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:metadata.link]];
+                    [request setShowAccurateProgress:YES];
+                    [request setDownloadProgressDelegate:self];
+                    request.userInfo = @{@"metadata": metadata, @"size":@"l"};
+                    [request setDownloadDestinationPath:[metadata cachePath]];
+                    [self.networkQueue addOperation:request];
+                    
+                    /*
+                     * 更新下载进度
+                     */
+                    for (NIPhotoScrollView *page in self.photoAlbum.visiblePages) {
+                        if (page.pageIndex == pageIndex) {
+                            
+                            [page setLoadProgress:0.0001f];
+                            
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    [self setupBarButtonsByCurrentMetaData];
+}
 
 #define kMAX_IMAGE_WIDTH    1024.0f*6
 #define kMAX_IMAGE_HEIGHT   1024.0f*6
 
-////根据metadata获取已下载图片
-//-(UIImage *)fetchBigImageByMetadata:(VdiskMetadata *)metadata
-//{
-//    UIImage *bigImage = nil;
-//    
-//    if (metadata.hasCache) {
-//        
-//        ImageMetaDataLoader *imd = [[ImageMetaDataLoader alloc] initWithImageUrl:[NSURL fileURLWithPath:metadata.cachePath]];
-//        [imd loadImageMateDate];
-//        
-//        CGFloat imageWidth = imd.width;
-//        CGFloat imageHeight = imd.height;
-//        
-//        [imd release];
-//        
-//        //原图大于1024x1024
-//        if((imageWidth * imageHeight) > (kMAX_IMAGE_WIDTH * kMAX_IMAGE_HEIGHT)){
-//            
-//            if([[NSFileManager defaultManager] fileExistsAtPath:kORIGNSMALLJPGPATH([metadata cachePath:YES])]){
+//根据metadata获取已下载图片
+-(UIImage *)fetchBigImageByMetadata:(ImageMetadata *)metadata
+{
+    UIImage *bigImage = nil;
+    
+    if (metadata.hasCache) {
+        
+        ImageMetaDataLoader *imd = [[ImageMetaDataLoader alloc] initWithImageUrl:[NSURL fileURLWithPath:metadata.cachePath]];
+        [imd loadImageMateDate];
+        
+        CGFloat imageWidth = imd.width;
+        CGFloat imageHeight = imd.height;
+        
+        [imd release];
+        
+        //原图大于1024x1024
+        if((imageWidth * imageHeight) > (kMAX_IMAGE_WIDTH * kMAX_IMAGE_HEIGHT)){
+            
+//            if([[NSFileManager defaultManager] fileExistsAtPath:kORIGNSMALLJPGPATH([metadata cachePath])]){
 //                
 //                bigImage = [UIImage imageWithContentsOfFile:kORIGNSMALLJPGPATH([metadata cachePath:YES])];
 //                bigImage.accessibilityIdentifier = [kORIGNSMALLJPGPATH(metadata.cachePath) MD5EncodedString];
 //                
 //            }else{
-//                
-//                CGFloat rate = (kMAX_IMAGE_WIDTH * kMAX_IMAGE_HEIGHT) / (imageHeight*imageWidth);
-//                imageWidth *= rate;
-//                imageHeight *= rate;
-//                
-//                UIImage *bigImageTmp = [UIImage imageWithContentsOfFile:metadata.cachePath];
-//                
-//                CGRect rect = CGRectMake(0, 0, floorf(imageWidth), floorf(imageHeight));
-//                bigImage = resizedImage(bigImageTmp, rect);
-//                bigImage.accessibilityIdentifier = [kORIGNSMALLJPGPATH(metadata.cachePath) MD5EncodedString];
-//                
-//                
-//                [UIImageJPEGRepresentation(bigImage, 1) writeToFile:kORIGNSMALLJPGPATH([metadata cachePath:YES])
-//                                                         atomically:YES];
+            
+                CGFloat rate = (kMAX_IMAGE_WIDTH * kMAX_IMAGE_HEIGHT) / (imageHeight*imageWidth);
+                imageWidth *= rate;
+                imageHeight *= rate;
+                
+                UIImage *bigImageTmp = [UIImage imageWithContentsOfFile:metadata.cachePath];
+                
+                CGRect rect = CGRectMake(0, 0, floorf(imageWidth), floorf(imageHeight));
+                bigImage = resizedImage(bigImageTmp, rect);
+                bigImage.accessibilityIdentifier = [metadata.cachePath MD5EncodedString];
+            
+                [UIImageJPEGRepresentation(bigImage, 1) writeToFile:[metadata cachePath] atomically:YES];
 //            }
-//            
-//        }else{
-//            
-//            bigImage = [UIImage imageWithContentsOfFile:metadata.cachePath];
-//            bigImage.accessibilityIdentifier = [metadata.cachePath MD5EncodedString];
-//        }
-//        
-//    }else{
-//        
-//        if([[NSFileManager defaultManager] fileExistsAtPath:kSMALLJPGPATH([metadata cachePath:YES])]){
-//            
-//            bigImage = [UIImage imageWithContentsOfFile:kSMALLJPGPATH([metadata cachePath:YES])];
-//            bigImage.accessibilityIdentifier = [kSMALLJPGPATH(metadata.cachePath) MD5EncodedString];
-//            
-//        }else{
-//            //啥都不做，留给调用者自己启动网络连接加载网络图片。
-//        }
-//    }
-//    
-//    return bigImage;
-//}
+            
+        }else{
+            
+            bigImage = [UIImage imageWithContentsOfFile:metadata.cachePath];
+            bigImage.accessibilityIdentifier = [metadata.cachePath MD5EncodedString];
+        }
+        
+    }else{
+        
+        if([[NSFileManager defaultManager] fileExistsAtPath:kSMALLJPGPATH([metadata cachePath])]){
+            
+            bigImage = [UIImage imageWithContentsOfFile:kSMALLJPGPATH([metadata cachePath])];
+            bigImage.accessibilityIdentifier = [kSMALLJPGPATH(metadata.cachePath) MD5EncodedString];
+            
+        }else{
+            //啥都不做，留给调用者自己启动网络连接加载网络图片。
+        }
+    }
+    
+    return bigImage;
+}
 
 
 #pragma mark - NIPagingScrollViewDataSource <NSObject>
@@ -1248,195 +1140,65 @@ UIImage* resizedImage(UIImage *inImage, CGRect thumbRect)
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     
-//    [self.actionSheet dismissWithClickedButtonIndex:0 animated:NO];
-//    
-//    _shareActionLock = NO;
-//    
-//    if (actionSheet.cancelButtonIndex == buttonIndex) {
-//        
-//        return;
-//    }
-//    
-//	
-//    VdiskMetadata *metadata =  [_fileListData objectAtIndex:self.photoAlbum.centerPageIndex];
-//    
-//    NSLog(@"actionSheet:clickedButtonAtIndex:%@", metadata.filename);
-//    
-//    
-//    if (buttonIndex == 0) {
-//        
-//        [self presentOptionsMenu];
-//        
-//    } else if (buttonIndex == 1) {
-//        
-//        _shareActionLock = NO;
-//        
-//        if ([[NSFileManager defaultManager] fileExistsAtPath:metadata.cachePath]) {
-//            
+    [self.actionSheet dismissWithClickedButtonIndex:0 animated:NO];
+    
+    _shareActionLock = NO;
+    
+    if (actionSheet.cancelButtonIndex == buttonIndex) {
+        
+        return;
+    }
+    
+	
+    ImageMetadata *metadata =  [_fileListData objectAtIndex:self.photoAlbum.centerPageIndex];
+    
+    NSLog(@"actionSheet:clickedButtonAtIndex:%@", metadata.filename);
+    
+    
+    if (buttonIndex == 0) {
+        
+        [self presentOptionsMenu];
+        
+    } else if (buttonIndex == 1) {
+        
+        _shareActionLock = NO;
+        
+        if ([[NSFileManager defaultManager] fileExistsAtPath:metadata.cachePath]) {
+            
 //            if (metadata.totalBytes <= 5*1024*1024) {
 //                
 //                UIImageWriteToSavedPhotosAlbum([UIImage imageWithContentsOfFile:metadata.cachePath], nil, nil , nil);
-//                [Static alertTitle:nil message:@"保存成功!"];
+//                [self alertTitle:nil message:@"保存成功!"];
 //                
 //                
-//            } else if([[NSFileManager defaultManager] fileExistsAtPath:kSMALLJPGPATH(metadata.cachePath)]){
-//                
-//                UIImageWriteToSavedPhotosAlbum([UIImage imageWithContentsOfFile:kSMALLJPGPATH(metadata.cachePath)], nil, nil , nil);
-//                [Static alertTitle:nil message:@"保存成功!"];
-//                
-//            } else {
-//                
-//                [Static alertTitle:@"保存失败" message:@"保存失败"];
-//            }
-//            
-//        } else if ([[NSFileManager defaultManager] fileExistsAtPath:kSMALLJPGPATH(metadata.cachePath)]){
-//            
-//            UIImageWriteToSavedPhotosAlbum([UIImage imageWithContentsOfFile:kSMALLJPGPATH(metadata.cachePath)], nil, nil , nil);
-//            [Static alertTitle:nil message:@"保存成功!"];
-//            
-//        } else {
-//            
-//            [Static alertTitle:@"保存失败" message:@"下载还未完成"];
-//        }
-//        
-//    } else {
-//        
-//        [self sendWeibo];
-//    }
-//    
-//    return;
-//    
-//    
-//    if (self.showDirectly) {
-//        
-//        if (buttonIndex == 0) {
-//            
-//            [self selectDestinationFolder];
-//            
-//        } else if (buttonIndex == 1) {
-//            
-//            NSString *fileCachePath = [metadata cachePath:YES];
-//            UIImageWriteToSavedPhotosAlbum([UIImage imageWithContentsOfFile:fileCachePath], nil, nil , nil);
-//            [Static alertTitle:nil message:@"保存成功!"];
-//            _shareActionLock = NO;
-//        }
-//        
-//        return;
-//    }
-//	
-//    if ([metadata isKindOfClass:[VdiskSharesMetadata class]]) {
-//        
-//        
-//        if (buttonIndex == 0) {
-//            
-//            [self selectDestinationFolder];
-//            
-//        } else if(buttonIndex == 1) {
-//            
-//            _shareActionLock = NO;
-//            
-//            if ([[NSFileManager defaultManager] fileExistsAtPath:metadata.cachePath]) {
-//                
-//                if (metadata.totalBytes <= 5*1024*1024) {
-//                    
-//                    UIImageWriteToSavedPhotosAlbum([UIImage imageWithContentsOfFile:metadata.cachePath], nil, nil , nil);
-//                    [Static alertTitle:nil message:@"保存成功!"];
-//                    
-//                    
-//                } else if([[NSFileManager defaultManager] fileExistsAtPath:kSMALLJPGPATH(metadata.cachePath)]){
-//                    
-//                    UIImageWriteToSavedPhotosAlbum([UIImage imageWithContentsOfFile:kSMALLJPGPATH(metadata.cachePath)], nil, nil , nil);
-//                    [Static alertTitle:nil message:@"保存成功!"];
-//                    
-//                } else {
-//                    
-//                    [Static alertTitle:@"保存失败" message:@"保存失败"];
-//                }
-//                
-//            } else if ([[NSFileManager defaultManager] fileExistsAtPath:kSMALLJPGPATH(metadata.cachePath)]){
-//                
-//                UIImageWriteToSavedPhotosAlbum([UIImage imageWithContentsOfFile:kSMALLJPGPATH(metadata.cachePath)], nil, nil , nil);
-//                [Static alertTitle:nil message:@"保存成功!"];
-//                
-//            } else {
-//                
-//                [Static alertTitle:@"保存失败" message:@"下载还未完成"];
-//            }
-//            
-//        } else if(buttonIndex == 2) {
-//            
-//            [self sendWeibo];
-//        }
-//        
-//        return;
-//    }
-//    
-//	if (buttonIndex == 0) {
-//		
-//		[self shareTo];
-//		
-//	} else if (buttonIndex == 1) {
-//        
-//		_shareActionLock = NO;
-//        
-//		if ([[NSFileManager defaultManager] fileExistsAtPath:metadata.cachePath]) {
-//            
-//            if (metadata.totalBytes <= 5*1024*1024) {
-//                
-//                UIImageWriteToSavedPhotosAlbum([UIImage imageWithContentsOfFile:metadata.cachePath], nil, nil , nil);
-//                [Static alertTitle:nil message:@"保存成功!"];
-//                
-//            } else if([[NSFileManager defaultManager] fileExistsAtPath:kSMALLJPGPATH(metadata.cachePath)]){
-//                
-//                UIImageWriteToSavedPhotosAlbum([UIImage imageWithContentsOfFile:kSMALLJPGPATH(metadata.cachePath)], nil, nil , nil);
-//                [Static alertTitle:nil message:@"保存成功!"];
-//                
-//            } else {
-//                
-//                [Static alertTitle:@"保存失败" message:@"保存失败"];
-//            }
-//            
-//        } else if ([[NSFileManager defaultManager] fileExistsAtPath:kSMALLJPGPATH(metadata.cachePath)]){
-//            
-//            UIImageWriteToSavedPhotosAlbum([UIImage imageWithContentsOfFile:kSMALLJPGPATH(metadata.cachePath)], nil, nil , nil);
-//            [Static alertTitle:nil message:@"保存成功!"];
-//            
-//        } else {
-//            
-//            [Static alertTitle:@"保存失败" message:@"下载还未完成"];
-//        }
-//	}
+//            } else
+            if([[NSFileManager defaultManager] fileExistsAtPath:metadata.cachePath]){
+                
+                UIImageWriteToSavedPhotosAlbum([UIImage imageWithContentsOfFile:metadata.cachePath], nil, nil , nil);
+                [self alertTitle:nil message:@"保存成功!"];
+                
+            } else {
+                
+                [self alertTitle:@"保存失败" message:@"保存失败"];
+            }
+            
+        } else if ([[NSFileManager defaultManager] fileExistsAtPath:kSMALLJPGPATH(metadata.cachePath)]){
+            
+            UIImageWriteToSavedPhotosAlbum([UIImage imageWithContentsOfFile:kSMALLJPGPATH(metadata.cachePath)], nil, nil , nil);
+            [self alertTitle:nil message:@"保存成功!"];
+            
+        } else {
+            
+            [self alertTitle:@"保存失败" message:@"下载还未完成"];
+        }
+        
+    } else {
+        
+        //TODO:[self sendWeibo];
+    }
+    
+    return;
 }
-
-//- (void)saveToVDisk:(NSString *)path {
-//    
-//    VdiskMetadata *currentMetadata =  [_fileListData objectAtIndex:self.photoAlbum.centerPageIndex];
-//    
-//    if ([currentMetadata isKindOfClass:[VdiskSharesMetadata class]]) {
-//        
-//        VdiskSharesMetadata *metadata = (VdiskSharesMetadata *)currentMetadata;
-//        
-//        if (nil != metadata.userinfo && [metadata.userinfo objectForKey:@"access_code"]) {
-//            
-//            [_restClient copyFromRef:metadata.cpRef toPath:[path stringByAppendingPathComponent:metadata.filename] withAccessCode:[metadata.userinfo objectForKey:@"access_code"]];
-//            [self loading:@"正在保存"];
-//            
-//        } else {
-//            
-//            if (metadata.sharesMetadataType == kVdiskSharesMetadataTypeFromFriend) {
-//                
-//                [_restClient copyFromMyFriendRef:metadata.cpRef toPath:[path stringByAppendingPathComponent:metadata.filename] params:@{@"paths[]":metadata.path}];
-//                
-//            } else {
-//                
-//                [_restClient copyFromRef:metadata.cpRef toPath:[path stringByAppendingPathComponent:metadata.filename]];
-//            }
-//            
-//            [self loading:@"正在保存"];
-//        }
-//    }
-//    
-//}
 
 
 - (void)loading:(NSString *)text {
@@ -1449,220 +1211,6 @@ UIImage* resizedImage(UIImage *inImage, CGRect thumbRect)
     _hud.labelText = text;
     [_hud show:NO];
 }
-
-//#pragma mark -  FolderSelectionDelegate
-//
-//- (void)folderSelectionViewController:(FolderSelectionViewController *)folderSelectionViewController didFinishSelectWithInfo:(NSDictionary *)info {
-//    
-//    VdiskMetadata *metadata =  [_fileListData objectAtIndex:self.photoAlbum.centerPageIndex];
-//    
-//    if (self.showDirectly) {
-//        
-//        NSString *path = (NSString *)[info objectForKey:@"path"];
-//        
-//        if (path == nil) {
-//            
-//            path = @"/";
-//        }
-//        
-//        NSString *tmpFilePath = [NSTemporaryDirectory() stringByAppendingString:[(VdiskMetadata *)metadata filename]];
-//        
-//        NSError *error = nil;
-//        
-//        if (![[NSFileManager defaultManager] fileExistsAtPath:tmpFilePath]) {
-//            
-//            [[NSFileManager defaultManager] copyItemAtPath:[(VdiskMetadata *)metadata cachePath] toPath:tmpFilePath error:&error];
-//        }
-//        
-//        
-//        if (error == nil) {
-//            
-//            [kShareAppDelegate.uploadManager.uploadTaskListViewController uploadFromExternalAppWithURL:[NSURL fileURLWithPath:tmpFilePath]
-//                                                                                                toPath:path
-//                                                                                                  task:[Static taskOfClearDirsCache:[NSArray arrayWithObjects:path, nil]]];
-//            
-//            [self alertWithHUD:@"添加到上传队列成功" afterDelay:1];
-//            
-//        } else {
-//            
-//            [self alertWithHUD:@"添加到上传队列失败" afterDelay:1];
-//        }
-//        
-//    } else {
-//        
-//        [self saveToVDisk:[info objectForKey:@"path"]];
-//    }
-//    
-//}
-
-//- (void)sendWeibo {
-//    
-//    VdiskMetadata *currentMetadata =  [_fileListData objectAtIndex:self.photoAlbum.centerPageIndex];
-//    
-//    if ([currentMetadata isKindOfClass:[VdiskSharesMetadata class]]) {
-//        
-//        VdiskSharesMetadata *metadata = (VdiskSharesMetadata *)currentMetadata;
-//        
-//        NSString *weibo = [NSString stringWithFormat:@"我刚在@微盘 发现了一个很不错的文件\"%@\"，推荐你也来看看！%@", metadata.filename, metadata.link];
-//        
-//        NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:weibo, @"status",nil];
-//        [_restClient callWeiboAPI:@"/statuses/update" params:params method:@"POST" responseType:[NSDictionary class]];
-//        [params release];
-//        
-//        [_hud hide:NO];
-//        self.hud = [[[MBProgressHUD alloc] initWithView:self.navigationController.view] autorelease];
-//        [self.navigationController.view addSubview:_hud];
-//        _hud.dimBackground = YES;
-//        _hud.delegate = self;
-//        _hud.labelText = @"正在发送微博";
-//        [_hud show:NO];
-//    }
-//    
-//}
-
-//- (void)shareTo {
-//    VdiskMetadata *metadata =  [_fileListData objectAtIndex:self.photoAlbum.centerPageIndex];
-//    
-//
-//    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-//        
-//        GroupShareTableViewController *groupShareTableViewController = [[[GroupShareTableViewController alloc] initWithStyle:UITableViewStyleGrouped] autorelease];
-//        groupShareTableViewController.metadata = metadata;
-//        groupShareTableViewController.showActionBar = NO;
-//        
-//        UINavigationController *shareNavigationController = [[UINavigationController alloc] initWithRootViewController:groupShareTableViewController];
-//        shareNavigationController.contentSizeForViewInPopover = CGSizeMake(320, 1000);
-//        
-//        kShareAppDelegate.readerPopover = [[[UIPopoverController alloc] initWithContentViewController:shareNavigationController] autorelease];
-//        
-//#ifdef __IPHONE_7_0
-//        if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1) {} else
-//#endif
-//        {
-//            [kShareAppDelegate.readerPopover setPopoverBackgroundViewClass:[GIKPopoverBackgroundView class]];
-//            
-//            [[UINavigationBar appearanceWhenContainedIn:[UIPopoverController class], nil] setTitleTextAttributes:@{UITextAttributeTextColor:RGBCOLOR(94, 100, 109),
-//                                                                                                                   UITextAttributeTextShadowOffset:[NSValue valueWithUIOffset:UIOffsetMake(0, -1)],
-//                                                                                                                   UITextAttributeTextShadowColor:RGBCOLOR(255, 255, 255)
-//                                                                                                                   }];//UITextAttributeFont:[UIFont systemFontOfSize:16.0f]
-//        }
-//        
-//        CGPoint pointInViewCoords = [self.mPhotoAlbumToolBarView convertPoint:self.mPhotoAlbumToolBarView.leftBtn.frame.origin
-//                                                                       toView:self.view];
-//        
-//        [kShareAppDelegate.readerPopover presentPopoverFromRect:CGRectMake(pointInViewCoords.x,
-//                                                                           pointInViewCoords.y,
-//                                                                           self.mPhotoAlbumToolBarView.leftBtn.frame.size.width,
-//                                                                           self.mPhotoAlbumToolBarView.leftBtn.frame.size.height)
-//                                                         inView:self.view
-//                                       permittedArrowDirections:UIPopoverArrowDirectionDown
-//                                                       animated:YES];
-//        
-//        [shareNavigationController release];
-//        
-//        
-//    } else {
-//        self.navigationController.navigationBar.barStyle = UIBarStyleDefault;
-//        GroupShareTableViewController *groupShareTableViewController  = [[[GroupShareTableViewController alloc] initWithStyle:UITableViewStyleGrouped] autorelease];
-//        groupShareTableViewController.metadata = metadata;
-//        
-//        CATransition *transition = [CATransition animation];
-//        transition.duration = 0.3;
-//        transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionDefault];
-//        transition.type = kCATransitionMoveIn; //kCATransitionMoveIn; //, kCATransitionPush, kCATransitionReveal, kCATransitionFade
-//        transition.subtype = kCATransitionFromTop; //kCATransitionFromLeft, kCATransitionFromRight, kCATransitionFromTop, kCATransitionFromBottom
-//        [self.navigationController.view.layer addAnimation:transition forKey:kCATransition];
-//        [Static customizeNavigationController:self.navigationController];
-//        [self.navigationController pushViewController:groupShareTableViewController animated:NO];
-//    }
-//    
-//}
-//
-//#pragma mark -  ShareDelegate
-//
-//- (void)sharesStartCreateLink:(Shares *)shares {
-//    
-//    [_hud hide:NO];
-//    
-//    self.hud = [[[MBProgressHUD alloc] initWithView:self.navigationController.view] autorelease];
-//    [self.navigationController.view addSubview:_hud];
-//    
-//    _hud.dimBackground = YES;
-//    _hud.delegate = self;
-//    _hud.labelText = @"正在生成分享链接";
-//    [_hud show:NO];
-//}
-//
-//- (void)sharesCreateLinkSuccess:(Shares *)shares withLink:(NSString *)link {
-//    
-//    [_hud hide:NO];
-//}
-//
-//- (void)sharesCreateLinkFail:(Shares *)shares withMessage:(NSString *)message {
-//    
-//    [_hud hide:NO];
-//    
-//    self.hud = [[[MBProgressHUD alloc] initWithView:self.navigationController.view] autorelease];
-//    [self.navigationController.view addSubview:_hud];
-//    
-//    _hud.dimBackground = YES;
-//    _hud.delegate = self;
-//    
-//    _hud.customView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"X.png"]] autorelease];
-//    _hud.mode = MBProgressHUDModeCustomView;
-//    _hud.labelText = @"操作失败";
-//    _hud.detailsLabelText = message;
-//    [_hud show:NO];
-//    [_hud hide:YES afterDelay:1.5];
-//    
-//}
-
-//#pragma - shares
-//
-//- (void)shareWithMail:(VdiskMetadata *)metadata {
-//    
-//    if (_shares != nil) {
-//        
-//        [_shares release];
-//    }
-//    
-//    _shares = [[Shares alloc] initWithShareWay:kShareWayMail];
-//    _shares.onSplit = NO;
-//    _shares.delegate = self;
-//    _shares.style = UIModalPresentationFullScreen;
-//    _shares.viewController = self;
-//    [_shares createSharedLinkForMetadata:metadata];
-//}
-//
-//- (void)shareWithWeibo:(VdiskMetadata *)metadata {
-//    
-//    if (_shares != nil) {
-//        
-//        [_shares release];
-//    }
-//    
-//    _shares = [[Shares alloc] initWithShareWay:kShareWayWeibo];
-//    _shares.onSplit = NO;
-//    _shares.delegate = self;
-//    _shares.style = UIModalPresentationFullScreen;
-//    _shares.viewController = self;
-//    [_shares createSharedLinkForMetadata:metadata];
-//}
-//
-//- (void)shareWithSMS:(VdiskMetadata *)metadata {
-//    
-//    if (_shares != nil) {
-//        
-//        [_shares release];
-//    }
-//    
-//    _shares = [[Shares alloc] initWithShareWay:kShareWaySMS];
-//    _shares.onSplit = NO;
-//    _shares.delegate = self;
-//    _shares.style = UIModalPresentationFullScreen;
-//    _shares.viewController = self;
-//    [_shares createSharedLinkForMetadata:metadata];
-//}
 
 #pragma mark -
 #pragma mark UIDocumentInteractionController
@@ -1685,72 +1233,82 @@ UIImage* resizedImage(UIImage *inImage, CGRect thumbRect)
 	return docController;
 }
 
-//- (void)unavailableReader {
-//	
-//	[Static alertTitle:nil message:@"没有检测到可用的阅读器."];
-//}
-//
-//- (void)presentOptionsMenu {
-//    
-//    if (_shareActionLock) {
-//        
-//        return;
-//    }
-//    
-//    VdiskMetadata *metadata = (VdiskMetadata *)[_fileListData objectAtIndex:self.photoAlbum.centerPageIndex];
-//    
-//    NSLog(@"presentOptionsMenu %@", metadata.filename);
-//    
-//    NSFileManager *fm = [NSFileManager defaultManager];
-//    
-//    if (self.docController == nil) {
-//		
-//        if ([fm fileExistsAtPath:metadata.cachePath]) {
-//            
-//            self.docController = [self docControllerForFile:[NSURL fileURLWithPath:metadata.cachePath]];
-//            
-//        } else {
-//            
-//            self.docController = [self docControllerForFile:[NSURL fileURLWithPath:kSMALLJPGPATH(metadata.cachePath)]];
-//        }
-//		
-//		[self.docController setName:metadata.filename];
-//        
-//    } else {
-//        
-//        if ([fm fileExistsAtPath:metadata.cachePath]) {
-//            
-//            [self.docController setURL:[NSURL fileURLWithPath:metadata.cachePath]];
-//            
-//        } else {
-//            
-//            [self.docController setURL:[NSURL fileURLWithPath:kSMALLJPGPATH(metadata.cachePath)]];
-//        }
-//		
-//		[self.docController setName:metadata.filename];
-//    }
-//	
-//    CGPoint pointInViewCoords = [self.mPhotoAlbumToolBarView convertPoint:self.mPhotoAlbumToolBarView.rightBtn.frame.origin
-//                                                                   toView:self.view];
-//    
-//    //	if (![self.docController presentOpenInMenuFromBarButtonItem:_rightItem animated:YES]) {
-//    if (![self.docController presentOpenInMenuFromRect:CGRectMake(pointInViewCoords.x,
-//                                                                  pointInViewCoords.y,
-//                                                                  self.mPhotoAlbumToolBarView.rightBtn.frame.size.width,
-//                                                                  self.mPhotoAlbumToolBarView.rightBtn.frame.size.height)
-//                                                inView:self.view
-//                                              animated:YES]) {
-//		[self unavailableReader];
-//		self.docController = nil;
-//        //kShareAppDelegate.docController = nil;
-//        
-//	} else {
-//        
-//        // kShareAppDelegate.docController = self.docController;
-//        _shareActionLock = YES;
-//    }
-//    
-//}
+- (void)unavailableReader {
+	
+	[self alertTitle:nil message:@"没有检测到可用的阅读器."];
+}
+
+- (void)alertTitle:(NSString *)t message:(NSString *)m {
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:t
+                                                        message:m
+                                                       delegate:nil
+                                              cancelButtonTitle:@"确定"
+                                              otherButtonTitles:nil];
+    [alertView show];
+    [alertView release];
+}
+
+- (void)presentOptionsMenu {
+    
+    if (_shareActionLock) {
+        
+        return;
+    }
+    
+    ImageMetadata *metadata = (ImageMetadata *)[_fileListData objectAtIndex:self.photoAlbum.centerPageIndex];
+    
+    NSLog(@"presentOptionsMenu %@", metadata.filename);
+    
+    NSFileManager *fm = [NSFileManager defaultManager];
+    
+    if (self.docController == nil) {
+		
+        if ([fm fileExistsAtPath:metadata.cachePath]) {
+            
+            self.docController = [self docControllerForFile:[NSURL fileURLWithPath:metadata.cachePath]];
+            
+        } else {
+            
+            self.docController = [self docControllerForFile:[NSURL fileURLWithPath:kSMALLJPGPATH(metadata.cachePath)]];
+        }
+		
+		[self.docController setName:metadata.filename];
+        
+    } else {
+        
+        if ([fm fileExistsAtPath:metadata.cachePath]) {
+            
+            [self.docController setURL:[NSURL fileURLWithPath:metadata.cachePath]];
+            
+        } else {
+            
+            [self.docController setURL:[NSURL fileURLWithPath:kSMALLJPGPATH(metadata.cachePath)]];
+        }
+		
+		[self.docController setName:metadata.filename];
+    }
+	
+    CGPoint pointInViewCoords = [self.mPhotoAlbumToolBarView convertPoint:self.mPhotoAlbumToolBarView.rightBtn.frame.origin
+                                                                   toView:self.view];
+    
+    //	if (![self.docController presentOpenInMenuFromBarButtonItem:_rightItem animated:YES]) {
+    if (![self.docController presentOpenInMenuFromRect:CGRectMake(pointInViewCoords.x,
+                                                                  pointInViewCoords.y,
+                                                                  self.mPhotoAlbumToolBarView.rightBtn.frame.size.width,
+                                                                  self.mPhotoAlbumToolBarView.rightBtn.frame.size.height)
+                                                inView:self.view
+                                              animated:YES]) {
+		[self unavailableReader];
+		self.docController = nil;
+        //kShareAppDelegate.docController = nil;
+        
+	} else {
+        
+        // kShareAppDelegate.docController = self.docController;
+        _shareActionLock = YES;
+    }
+    
+}
 
 #pragma mark MBProgressHUDDelegate methods
 
@@ -1795,6 +1353,14 @@ UIImage* resizedImage(UIImage *inImage, CGRect thumbRect)
     
     [self alertWithHUD:message afterDelay:0.5];
 }
+
+
+
+
+
+
+
+
 
 //#pragma mark - VdiskDownloadOperationDelegate
 //- (void)downloadOperationFailedWithError:(NSError *)error downloadOperation:(VdiskDownloadOperation *)downloadOperation {
@@ -2014,9 +1580,109 @@ UIImage* resizedImage(UIImage *inImage, CGRect thumbRect)
 //    [self handleError:error title:@"保存失败"];
 //}
 
-//-(BOOL)isEqual:(id)object{
-//    return [super isEqual:object];
-//}
+#pragma mark - ASINetworkQueue delegate selector
+- (void)requestFinished:(ASIHTTPRequest *)request
+{
+    //@{@"metadata": metadata, @"size":@"l"};
+    NSDictionary *userInfo = request.userInfo;
+    NSString *size = [userInfo objectForKey:@"size"];
+    __block ImageMetadata *metadata = [userInfo objectForKey:@"metadata"];
+    
+    /*
+     * 如果大约制定阈值，则对原图片缩小后显示
+     */
+
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+
+        UIImage *image = [self fetchBigImageByMetadata:metadata];
+
+        if (!image) {
+            image = [UIImage imageWithContentsOfFile:metadata.cachePath];//原图
+            image.accessibilityIdentifier = [metadata.cachePath MD5EncodedString];
+        }
+
+        dispatch_async(dispatch_get_main_queue(), ^{
+            /*
+             * 更新下载进度
+             */
+            NSInteger photoIndex = [self.fileListData indexOfObject:metadata];
+
+            for (NIPhotoScrollView *page in self.photoAlbum.visiblePages) {
+
+                if (page.pageIndex == photoIndex) {
+
+                    [page setLoadProgress:1];
+
+                    break;
+                }
+            }
+
+
+            NIPhotoScrollViewPhotoSize ps = NIPhotoScrollViewPhotoSizeThumbnail;
+
+            if (![@"m" isEqualToString:size])
+                ps = NIPhotoScrollViewPhotoSizeOriginal;
+
+            NIPhotoScrollView *psv = (NIPhotoScrollView *)[self.photoAlbum pagingScrollView:self.photoAlbum
+                                                                           pageViewForIndex:[self.fileListData indexOfObject:metadata]];
+
+            if (psv.photoSize < ps) {
+
+                [self.photoAlbum didLoadPhoto: image
+                                      atIndex: [self.fileListData indexOfObject:metadata]
+                                    photoSize: ps];
+            }
+
+            //若是当前页图片下载完成，则更新所有按钮
+            if (self.photoAlbum.centerPageIndex == [self.fileListData indexOfObject:metadata])
+                [self setupBarButtonsByCurrentMetaData];
+        });
+        
+    });
+
+}
+
+- (void)requestFailed:(ASIHTTPRequest *)request
+{
+    //@{@"metadata": metadata, @"size":@"l"};
+    NSDictionary *userInfo = request.userInfo;
+    NSString *size = [userInfo objectForKey:@"size"];
+    ImageMetadata *metadata = [userInfo objectForKey:@"metadata"];
+    
+    if (![@"m" isEqualToString:size]) {
+        /*
+         * 更新下载进度
+         */
+        for (NIPhotoScrollView *page in self.photoAlbum.visiblePages) {
+            if (page.pageIndex == [self.fileListData indexOfObject:metadata]) {
+
+                page.hud.progress = 1;
+                [page loadProcessFailed];
+
+                break;
+            }
+        }
+
+        //若是当前页图片下载完成，则更新所有按钮
+        if (self.photoAlbum.centerPageIndex == [self.fileListData indexOfObject:metadata])
+            [self setupBarButtonsByCurrentMetaData];
+    }
+}
+
+
+- (void)queueFinished:(ASINetworkQueue *)queue
+{
+    // You could release the queue here if you wanted
+    if ([[self networkQueue] requestsCount] == 0) {
+        [self setNetworkQueue:nil];
+    }
+    NSLog(@"Queue finished");
+}
+
+- (void)request:(ASIHTTPRequest *)request didReceiveBytes:(long long)bytes
+{
+    NSLog(@"====%@======%lld",request,bytes);
+}
 
 
 @end

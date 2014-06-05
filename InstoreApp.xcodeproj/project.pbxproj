@@ -347,6 +347,9 @@
 		C1A9C891193F13A600DD420F /* PhotoAlbumToolBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A9C88F193F13A600DD420F /* PhotoAlbumToolBarView.m */; };
 		C1A9C892193F13A600DD420F /* PhotoAlbumToolBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1A9C890193F13A600DD420F /* PhotoAlbumToolBarView.xib */; };
 		C1A9C896193F17C100DD420F /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A9C895193F17C100DD420F /* MBProgressHUD.m */; };
+		C1A9C89B1940268200DD420F /* ImageMetadata.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A9C89A1940268200DD420F /* ImageMetadata.m */; };
+		C1A9C89F19404B7200DD420F /* NSData+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A9C89E19404B7200DD420F /* NSData+MD5.m */; };
+		C1A9C8A219405F2400DD420F /* Static.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A9C8A119405F2400DD420F /* Static.m */; };
 		C1D8700F18EC0CAB0061F799 /* CouponDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1D8700D18EC0CAB0061F799 /* CouponDetailViewController.m */; };
 		C1D8701018EC0CAB0061F799 /* CouponDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1D8700E18EC0CAB0061F799 /* CouponDetailViewController.xib */; };
 		C1D8701418ED5B1D0061F799 /* ShopDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1D8701218ED5B1D0061F799 /* ShopDetailViewController.m */; };
@@ -1012,6 +1015,12 @@
 		C1A9C890193F13A600DD420F /* PhotoAlbumToolBarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoAlbumToolBarView.xib; sourceTree = "<group>"; };
 		C1A9C894193F17C100DD420F /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		C1A9C895193F17C100DD420F /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		C1A9C8991940268200DD420F /* ImageMetadata.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageMetadata.h; sourceTree = "<group>"; };
+		C1A9C89A1940268200DD420F /* ImageMetadata.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageMetadata.m; sourceTree = "<group>"; };
+		C1A9C89D19404B7200DD420F /* NSData+MD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+MD5.h"; sourceTree = "<group>"; };
+		C1A9C89E19404B7200DD420F /* NSData+MD5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+MD5.m"; sourceTree = "<group>"; };
+		C1A9C8A019405F2400DD420F /* Static.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Static.h; sourceTree = "<group>"; };
+		C1A9C8A119405F2400DD420F /* Static.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Static.m; sourceTree = "<group>"; };
 		C1D8700C18EC0CAB0061F799 /* CouponDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CouponDetailViewController.h; sourceTree = "<group>"; };
 		C1D8700D18EC0CAB0061F799 /* CouponDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CouponDetailViewController.m; sourceTree = "<group>"; };
 		C1D8700E18EC0CAB0061F799 /* CouponDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CouponDetailViewController.xib; sourceTree = "<group>"; };
@@ -1757,6 +1766,10 @@
 				C19532241920C68500D3BFA8 /* NSString+Crypto.m */,
 				C19532261920C6CB00D3BFA8 /* Base64.h */,
 				C19532271920C6CB00D3BFA8 /* Base64.m */,
+				C1A9C89D19404B7200DD420F /* NSData+MD5.h */,
+				C1A9C89E19404B7200DD420F /* NSData+MD5.m */,
+				C1A9C8A019405F2400DD420F /* Static.h */,
+				C1A9C8A119405F2400DD420F /* Static.m */,
 			);
 			path = utility;
 			sourceTree = "<group>";
@@ -2020,6 +2033,8 @@
 				C1A9C890193F13A600DD420F /* PhotoAlbumToolBarView.xib */,
 				C1A9C81D193F12CC00DD420F /* PhotoViewController.h */,
 				C1A9C81E193F12CC00DD420F /* PhotoViewController.m */,
+				C1A9C8991940268200DD420F /* ImageMetadata.h */,
+				C1A9C89A1940268200DD420F /* ImageMetadata.m */,
 			);
 			path = Reader;
 			sourceTree = "<group>";
@@ -2735,9 +2750,11 @@
 				03120360191A71DA00077E25 /* NSDate+DynamicDateString.m in Sources */,
 				C19532251920C68500D3BFA8 /* NSString+Crypto.m in Sources */,
 				4E2C6E0018D75CED00DF3772 /* ServiceViewController.m in Sources */,
+				C1A9C89F19404B7200DD420F /* NSData+MD5.m in Sources */,
 				03573AC419055B7700A11A33 /* IndoorMapWithLeftPopBtnViewController.m in Sources */,
 				4E9608BE18E7CEC900418798 /* MeHeaderView.m in Sources */,
 				0312033E1917E05200077E25 /* ServicesInterface.m in Sources */,
+				C1A9C89B1940268200DD420F /* ImageMetadata.m in Sources */,
 				C1A9C875193F130300DD420F /* NIFoundationMethods.m in Sources */,
 				C1A9C88C193F130300DD420F /* NIToolbarPhotoViewController.m in Sources */,
 				C1A9C872193F130300DD420F /* NIDebuggingTools.m in Sources */,
@@ -2779,6 +2796,7 @@
 				4E2C6DF118D75CC400DF3772 /* MeViewController.m in Sources */,
 				C1A9C87F193F130300DD420F /* NIState.m in Sources */,
 				4E9608A418E48D6700418798 /* LoadMoreTableFooterView.m in Sources */,
+				C1A9C8A219405F2400DD420F /* Static.m in Sources */,
 				03573B4B190572A500A11A33 /* ASIDataCompressor.m in Sources */,
 				C183471C1925BF75002F7B9B /* BuildingModel.m in Sources */,
 				C1953214191CC00D00D3BFA8 /* CouponsDownloadListInterface.m in Sources */,
