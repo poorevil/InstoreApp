@@ -13,7 +13,7 @@
 #import "FloorSelectViewController.h"
 #import "CategoryModel.h"
 #import "YouhuiCategoryViewController.h"
-
+#import "MainViewController.h"
 #import "EGORefreshTableHeaderView.h"
 
 #import "StoreInterface.h"
@@ -51,6 +51,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+
+    
     
     self.mtable = [[[UITableView alloc] initWithFrame:CGRectMake(0,
                                                                 self.likeBtn.superview.frame.size.height + self.likeBtn.superview.frame.origin.y,
@@ -93,6 +96,10 @@
 
 }
 
+- (void)ClickShare
+{
+    NSLog(@"分享");
+}
 -(void)refreshDate
 {
     [self.storeList removeAllObjects];

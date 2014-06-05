@@ -33,4 +33,6 @@
 - (NSString *)HMAC_MD5_HEX  :(NSString *)hmacKey;
 - (NSString *)HMAC_SHA1_HEX :(NSString *)hmacKey;
 
+
+- (NSString *)MD5EncodedString;
 @end

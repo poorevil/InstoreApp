@@ -14,6 +14,8 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
     #import <QuartzCore/QuartzCore.h>
+
+    #import "Static.h"
 #endif
 
 
@@ -25,3 +27,8 @@
 //keychain key
 #define KEYCHAIN_USERID_KEYNAME         @"USER_ID"
 #define KEYCHAIN_SECRETKEY_KEYNAME      @"SECRET_KEY"
+
+
+
+///////
+#define kImageTempDir    [NSHomeDirectory() stringByAppendingPathComponent:@"tmp/image"]

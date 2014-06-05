@@ -20,6 +20,7 @@
 #import "InitInterface.h"
 
 #import "GlobeModel.h"
+#import "UMSocial.h"
 
 static NSString* szClientId = @"2014040301";
 static NSString* szClientSecret = @"ea13692f9c960a37db0086ff87e56e01";
@@ -34,6 +35,9 @@ static NSString* szClientSecret = @"ea13692f9c960a37db0086ff87e56e01";
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
+    // 友盟appKey
+    [UMSocialData setAppKey:@"5385444a56240bdc070c0d4e"];
     
     //初始化HTTPAccess
     if (![HTTPAccess getInstanceIfInited]) {
@@ -117,6 +121,7 @@ static NSString* szClientSecret = @"ea13692f9c960a37db0086ff87e56e01";
     
     self.myInitInterface = [[[InitInterface alloc] init] autorelease];
     [self.myInitInterface getInitParam];
+    
     
     return YES;
 }
