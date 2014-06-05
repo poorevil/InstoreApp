@@ -95,6 +95,7 @@
         
         self.networkQueue = [ASINetworkQueue queue];
         self.networkQueue.delegate = self;
+        self.networkQueue.showAccurateProgress = YES;
         [self.networkQueue setRequestDidFinishSelector:@selector(requestFinished:)];
         [self.networkQueue setRequestDidFailSelector:@selector(requestFailed:)];
         [self.networkQueue setQueueDidFinishSelector:@selector(queueFinished:)];
@@ -832,10 +833,11 @@ UIImage* resizedImage(UIImage *inImage, CGRect thumbRect)
             
             ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/100*100.png",
                                                                                            metadata.link]]];
-            [request setShowAccurateProgress:YES];
+            
             [request setDownloadProgressDelegate:self];
             request.userInfo = @{@"metadata": metadata, @"size":@"m"};
             [request setDownloadDestinationPath:kSMALLJPGPATH([metadata cachePath])];
+            [request setShowAccurateProgress:YES];
             [self.networkQueue addOperation:request];
         }
     }else{
@@ -928,10 +930,10 @@ UIImage* resizedImage(UIImage *inImage, CGRect thumbRect)
 //                                                    params:nil];
                     
                     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:metadata.link]];
-                    [request setShowAccurateProgress:YES];
                     [request setDownloadProgressDelegate:self];
                     request.userInfo = @{@"metadata": metadata, @"size":@"l"};
                     [request setDownloadDestinationPath:[metadata cachePath]];
+                    [request setShowAccurateProgress:YES];
                     [self.networkQueue addOperation:request];
                     
                     /*
@@ -1681,7 +1683,11 @@ UIImage* resizedImage(UIImage *inImage, CGRect thumbRect)
 
 - (void)request:(ASIHTTPRequest *)request didReceiveBytes:(long long)bytes
 {
-    NSLog(@"====%@======%lld",request,bytes);
+    
+    NSLog(@"====%lld======%lld",request.contentLength,bytes);
+    NSDictionary *userInfo = request.userInfo;
+    
+    NSLog(@"===----====%@",userInfo);
 }
 
 

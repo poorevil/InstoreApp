@@ -110,10 +110,16 @@
 //}
 
 -(void)requestFinished:(ASIHTTPRequest *)request {
-    [self.baseDelegate parseResult:request];
+    if (request.responseStatusCode >= 200 && request.responseStatusCode < 300) {
+        [self.baseDelegate parseResult:request];
+    }else{
+        [self requestFailed:request];
+    }
 }
 
 -(void)requestFailed:(ASIHTTPRequest *)request {
+    NSLog(@"-------responseStatusMessage:%@",request.responseStatusMessage);
+    
     [_baseDelegate requestIsFailed:request.error];
 }
 

@@ -109,11 +109,13 @@
 
 -(void)imagesTapAction:(UIGestureRecognizer *)sender
 {
-    PhotoViewController *photoViewController = [[[PhotoViewController alloc] init] autorelease];
-    photoViewController.currentImageUrl = [self.couponModel.images objectAtIndex:0];
-    photoViewController.imageListUrl = self.couponModel.images;
-    
-    [self.navigationController pushViewController:photoViewController animated:NO];
+    if (self.couponModel.images.count > 0) {
+        PhotoViewController *photoViewController = [[[PhotoViewController alloc] init] autorelease];
+        photoViewController.currentImageUrl = [self.couponModel.images objectAtIndex:0];
+        photoViewController.imageListUrl = self.couponModel.images;
+        
+        [self.navigationController pushViewController:photoViewController animated:NO];
+    }
 }
 
 -(void)initFooterView
