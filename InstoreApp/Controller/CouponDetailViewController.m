@@ -111,6 +111,8 @@
 {
     if (self.couponModel.images.count > 0) {
         PhotoViewController *photoViewController = [[[PhotoViewController alloc] init] autorelease];
+        photoViewController.hidesBottomBarWhenPushed = YES;
+        self.hidesBottomBarWhenPushed = YES;
         photoViewController.currentImageUrl = [self.couponModel.images objectAtIndex:0];
         photoViewController.imageListUrl = self.couponModel.images;
         
