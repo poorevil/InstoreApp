@@ -10,9 +10,9 @@
 
 @interface PhotoAlbumToolBarView : UIView
 
-@property (nonatomic,retain) IBOutlet UIButton *leftBtn;
+//@property (nonatomic,retain) IBOutlet UIButton *leftBtn;
 @property (nonatomic,retain) IBOutlet UIButton *rightBtn;
-@property (nonatomic,retain) IBOutlet UIButton *centerBtn;
+//@property (nonatomic,retain) IBOutlet UIButton *centerBtn;
 
 @property (nonatomic,retain) IBOutlet UILabel *indexLabel;
 

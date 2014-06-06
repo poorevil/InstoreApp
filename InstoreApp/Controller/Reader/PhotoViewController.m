@@ -10,19 +10,10 @@
 
 #import "NIPhotoAlbumScrollView.h"
 #import "PhotoAlbumToolBarView.h"
-//#import "FavoritesListViewController.h"
 
 #import "NIPhotoScrollView.h"
 
 #import "MBProgressHUD.h"
-
-//#import "MasterViewController.h"
-//#import "Shares.h"
-
-//#import "GroupShareTableViewController.h"
-//#import "GroupShareIpadViewController.h"
-
-//#import "VdiskDownloadOperation.h"
 
 #import "ImageMetaDataLoader.h"
 #import "TileView.h"
@@ -42,9 +33,7 @@
 
 @interface PhotoViewController () <NIPhotoAlbumScrollViewDelegate,NIPhotoAlbumScrollViewDataSource,UIActionSheetDelegate
 //,VdiskRestClientDelegate,,ShareDelegate
-,MBProgressHUDDelegate,UIDocumentInteractionControllerDelegate>{//,VdiskDownloadOperationDelegate
-    
-//    VdiskRestClient *_restClient;
+,MBProgressHUDDelegate,UIDocumentInteractionControllerDelegate,ASIHTTPRequestDelegate,ASIProgressDelegate>{
     
     BOOL _isLoged;
     
@@ -80,25 +69,9 @@
 - (id)init {
     
     if (self = [super initWithNibName:nil bundle:nil]) {
-        
         self.blockDelegate = self;
-        
-//        [[[FavoritesListViewController sharedInstance] downloadQueue] cancelAllOperations];
-        
         _showDirectly = NO;
         _shareActionLock = NO;
-        
-//        _restClient = [[VdiskRestClient alloc] initWithSession:[VdiskSession sharedSession]
-//                                                 maxConcurrent:3
-//                                             maxOperationCount:5];
-//        [_restClient setDelegate:self];
-        
-        self.networkQueue = [ASINetworkQueue queue];
-        self.networkQueue.delegate = self;
-        self.networkQueue.showAccurateProgress = YES;
-        [self.networkQueue setRequestDidFinishSelector:@selector(requestFinished:)];
-        [self.networkQueue setRequestDidFailSelector:@selector(requestFailed:)];
-        [self.networkQueue setQueueDidFinishSelector:@selector(queueFinished:)];
     }
     
     return self;
@@ -156,6 +129,13 @@
                                              selector:@selector(didBecomeActivity:)
                                                  name:UIApplicationDidBecomeActiveNotification object:nil];
     
+    
+    self.networkQueue = [ASINetworkQueue queue];
+    self.networkQueue.delegate = self;
+    self.networkQueue.shouldCancelAllRequestsOnFailure = NO;
+    [self.networkQueue setRequestDidFinishSelector:@selector(requestFinished:)];
+    [self.networkQueue setRequestDidFailSelector:@selector(requestFailed:)];
+//    [self.networkQueue setQueueDidFinishSelector:@selector(queueFinished:)];
     [[self networkQueue] go];
 }
 
@@ -248,16 +228,7 @@
     self.operationProgressHud.delegate = nil;
     self.operationProgressHud = nil;
     
-//    self.shares = nil;
-    
     self.mPhotoAlbumToolBarView = nil;
-//    
-//    [_restClient setDelegate:nil];
-//    [_restClient cancelAllRequests];
-//    V_RELEASE_SAFELY(_restClient);
-    
-//    [_downloadOperation clearDelegatesAndCancel];
-//    V_RELEASE_SAFELY(_downloadOperation);
     
     self.currentImageUrl = nil;
     self.imageListUrl = nil;
@@ -334,18 +305,12 @@
     for (NIPhotoScrollView *page in self.photoAlbum.visiblePages) {
         if (page.pageIndex == self.photoAlbum.centerPageIndex) {
             if (page.hud != nil && page.hud.progress != 0 && page.hud.progress != 1) {
-                self.mPhotoAlbumToolBarView.centerBtn.enabled = NO;
+//                self.mPhotoAlbumToolBarView.centerBtn.enabled = NO;
                 self.mPhotoAlbumToolBarView.rightBtn.enabled = NO;
             }else{
-                self.mPhotoAlbumToolBarView.centerBtn.enabled = YES;
+//                self.mPhotoAlbumToolBarView.centerBtn.enabled = YES;
                 self.mPhotoAlbumToolBarView.rightBtn.enabled = YES;
             }
-            
-            //            if (page.photoSize == NIPhotoScrollViewPhotoSizeUnknown) {
-            //                self.mPhotoAlbumToolBarView.rightBtn.enabled = NO;
-            //            }else{
-            //                self.mPhotoAlbumToolBarView.rightBtn.enabled = YES;
-            //            }
             
             if (metadata.hasCache || [[NSFileManager defaultManager] fileExistsAtPath:kSMALLJPGPATH(metadata.cachePath)]) {
                 self.mPhotoAlbumToolBarView.rightBtn.enabled = YES;
@@ -837,7 +802,7 @@ UIImage* resizedImage(UIImage *inImage, CGRect thumbRect)
             [request setDownloadProgressDelegate:self];
             request.userInfo = @{@"metadata": metadata, @"size":@"m"};
             [request setDownloadDestinationPath:kSMALLJPGPATH([metadata cachePath])];
-            [request setShowAccurateProgress:YES];
+            request.showAccurateProgress = YES;
             [self.networkQueue addOperation:request];
         }
     }else{
@@ -914,15 +879,15 @@ UIImage* resizedImage(UIImage *inImage, CGRect thumbRect)
                                       atIndex: pageIndex
                                     photoSize: NIPhotoScrollViewPhotoSizeOriginal];
             }else{
-                if([[NSFileManager defaultManager] fileExistsAtPath:kSMALLJPGPATH([metadata cachePath])]){
-                    UIImage *smallJpgImage = [UIImage imageWithContentsOfFile:kSMALLJPGPATH(metadata.cachePath)];
-                    smallJpgImage.accessibilityIdentifier = [kSMALLJPGPATH(metadata.cachePath) MD5EncodedString];
-                    
-                    [self.photoAlbum didLoadPhoto: smallJpgImage
-                                          atIndex: pageIndex
-                                        photoSize: NIPhotoScrollViewPhotoSizeOriginal];
-                }else{
-                    
+//                if([[NSFileManager defaultManager] fileExistsAtPath:kSMALLJPGPATH([metadata cachePath])]){
+//                    UIImage *smallJpgImage = [UIImage imageWithContentsOfFile:kSMALLJPGPATH(metadata.cachePath)];
+//                    smallJpgImage.accessibilityIdentifier = [kSMALLJPGPATH(metadata.cachePath) MD5EncodedString];
+//                    
+//                    [self.photoAlbum didLoadPhoto: smallJpgImage
+//                                          atIndex: pageIndex
+//                                        photoSize: NIPhotoScrollViewPhotoSizeOriginal];
+//                }else{
+                
                     //下载大缩略图
 //                    [_restClient loadThumbnailWithMetadata:metadata
 //                                                    ofSize:@"l" //size   字符串（s,m,l,xl）    s:60x60,m:100x100,l:640x480,xl:1024x768
@@ -933,9 +898,9 @@ UIImage* resizedImage(UIImage *inImage, CGRect thumbRect)
                     [request setDownloadProgressDelegate:self];
                     request.userInfo = @{@"metadata": metadata, @"size":@"l"};
                     [request setDownloadDestinationPath:[metadata cachePath]];
-                    [request setShowAccurateProgress:YES];
+                request.showAccurateProgress = YES;
                     [self.networkQueue addOperation:request];
-                    
+                
                     /*
                      * 更新下载进度
                      */
@@ -947,7 +912,7 @@ UIImage* resizedImage(UIImage *inImage, CGRect thumbRect)
                             break;
                         }
                     }
-                }
+//                }
             }
         }
     }
@@ -1004,14 +969,14 @@ UIImage* resizedImage(UIImage *inImage, CGRect thumbRect)
         
     }else{
         
-        if([[NSFileManager defaultManager] fileExistsAtPath:kSMALLJPGPATH([metadata cachePath])]){
-            
-            bigImage = [UIImage imageWithContentsOfFile:kSMALLJPGPATH([metadata cachePath])];
-            bigImage.accessibilityIdentifier = [kSMALLJPGPATH(metadata.cachePath) MD5EncodedString];
-            
-        }else{
-            //啥都不做，留给调用者自己启动网络连接加载网络图片。
-        }
+//        if([[NSFileManager defaultManager] fileExistsAtPath:kSMALLJPGPATH([metadata cachePath])]){
+//            
+//            bigImage = [UIImage imageWithContentsOfFile:kSMALLJPGPATH([metadata cachePath])];
+//            bigImage.accessibilityIdentifier = [kSMALLJPGPATH(metadata.cachePath) MD5EncodedString];
+//            
+//        }else{
+//            //啥都不做，留给调用者自己启动网络连接加载网络图片。
+//        }
     }
     
     return bigImage;
@@ -1030,108 +995,6 @@ UIImage* resizedImage(UIImage *inImage, CGRect thumbRect)
 {
     return self.photoAlbum== nil?nil:[self.photoAlbum pagingScrollView:pagingScrollView pageViewForIndex:pageIndex];
 }
-
-#pragma mark - VdiskRestClientDelegate
-
-//- (void)restClient:(VdiskRestClient *)client loadedThumbnail:(NSString *)destPath metadata:(VdiskMetadata *)metadata
-//              size:(NSString *)size
-//{
-//    /*
-//     * 如果大约制定阈值，则对原图片缩小后显示
-//     */
-//    
-//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-//        
-//        UIImage *image = [self fetchBigImageByMetadata:metadata];
-//        
-//        if (!image) {
-//            image = [UIImage imageWithContentsOfFile:metadata.cachePath];//原图
-//            image.accessibilityIdentifier = [metadata.cachePath MD5EncodedString];
-//        }
-//        
-//        dispatch_async(dispatch_get_main_queue(), ^{
-//            /*
-//             * 更新下载进度
-//             */
-//            NSInteger photoIndex = [self.fileListData indexOfObject:metadata];
-//            
-//            for (NIPhotoScrollView *page in self.photoAlbum.visiblePages) {
-//                
-//                if (page.pageIndex == photoIndex) {
-//                    
-//                    [page setLoadProgress:1];
-//                    
-//                    break;
-//                }
-//            }
-//            
-//            
-//            NIPhotoScrollViewPhotoSize ps = NIPhotoScrollViewPhotoSizeThumbnail;
-//            
-//            if (![@"m" isEqualToString:size])
-//                ps = NIPhotoScrollViewPhotoSizeOriginal;
-//            
-//            NIPhotoScrollView *psv = (NIPhotoScrollView *)[self.photoAlbum pagingScrollView:self.photoAlbum
-//                                                                           pageViewForIndex:[self.fileListData indexOfObject:metadata]];
-//            
-//            if (psv.photoSize < ps) {
-//                
-//                [self.photoAlbum didLoadPhoto: image
-//                                      atIndex: [self.fileListData indexOfObject:metadata]
-//                                    photoSize: ps];
-//            }
-//            
-//            //若是当前页图片下载完成，则更新所有按钮
-//            if (self.photoAlbum.centerPageIndex == [self.fileListData indexOfObject:metadata])
-//                [self setupBarButtonsByCurrentMetaData];
-//        });
-//        
-//    });
-//    
-//}
-
-//- (void)restClient:(VdiskRestClient *)client loadThumbnailFailedWithError:(NSError *)error
-//          metadata:(VdiskMetadata *)metadata size:(NSString *)size
-//{
-//    if (![@"m" isEqualToString:size]) {
-//        /*
-//         * 更新下载进度
-//         */
-//        for (NIPhotoScrollView *page in self.photoAlbum.visiblePages) {
-//            if (page.pageIndex == [self.fileListData indexOfObject:metadata]) {
-//                
-//                page.hud.progress = 1;
-//                [page loadProcessFailed];
-//                
-//                break;
-//            }
-//        }
-//        
-//        //若是当前页图片下载完成，则更新所有按钮
-//        if (self.photoAlbum.centerPageIndex == [self.fileListData indexOfObject:metadata])
-//            [self setupBarButtonsByCurrentMetaData];
-//    }
-//    
-//}
-//
-//- (void)restClient:(VdiskRestClient *)client loadThumbnailProgress:(CGFloat)progress destPath:(NSString *)destPath
-//          metadata:(VdiskMetadata *)metadata size:(NSString *)size
-//{
-//    
-//    if (![@"m" isEqualToString:size]) {
-//        
-//        NSInteger photoIndex = [self.fileListData indexOfObject:metadata];
-//        
-//        for (NIPhotoScrollView *page in self.photoAlbum.visiblePages) {
-//            if (page.pageIndex == photoIndex) {
-//                
-//                [page setLoadProgress:progress];
-//                
-//                break;
-//            }
-//        }
-//    }
-//}
 
 #pragma mark - UIActionSheetDelegate
 
@@ -1355,12 +1218,6 @@ UIImage* resizedImage(UIImage *inImage, CGRect thumbRect)
     
     [self alertWithHUD:message afterDelay:0.5];
 }
-
-
-
-
-
-
 
 
 
@@ -1672,23 +1529,36 @@ UIImage* resizedImage(UIImage *inImage, CGRect thumbRect)
 }
 
 
-- (void)queueFinished:(ASINetworkQueue *)queue
-{
-    // You could release the queue here if you wanted
-    if ([[self networkQueue] requestsCount] == 0) {
-        [self setNetworkQueue:nil];
-    }
-    NSLog(@"Queue finished");
-}
+//- (void)queueFinished:(ASINetworkQueue *)queue
+//{
+//    // You could release the queue here if you wanted
+////    if ([[self networkQueue] requestsCount] == 0) {
+////        [self setNetworkQueue:nil];
+////    }
+//    NSLog(@"Queue finished");
+//}
 
-- (void)request:(ASIHTTPRequest *)request didReceiveBytes:(long long)bytes
-{
-    
-    NSLog(@"====%lld======%lld",request.contentLength,bytes);
-    NSDictionary *userInfo = request.userInfo;
-    
-    NSLog(@"===----====%@",userInfo);
-}
+////ASIProgressDelegate
+//- (void)request:(ASIHTTPRequest *)request didReceiveBytes:(long long)bytes
+//{
+//    
+//    NSLog(@"====%lld======%lld",request.contentLength,bytes);
+//    NSDictionary *userInfo = request.userInfo;
+//    
+//    NSLog(@"===----====%@",userInfo);
+//}
 
+
+//- (void)request:(ASIHTTPRequest *)request incrementDownloadSizeBy:(long long)newLength
+//{
+//    NSDictionary *userInfo = request.userInfo;
+//    
+//    NSLog(@"===incrementDownloadSizeBy----====%@",userInfo);
+//}
+//
+//- (void)setProgress:(float)newProgress
+//{
+//    NSLog(@"===-setProgress---====%f",newProgress);
+//}
 
 @end

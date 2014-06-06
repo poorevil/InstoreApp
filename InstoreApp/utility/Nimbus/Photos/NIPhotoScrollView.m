@@ -660,7 +660,6 @@
 {
     if (!self.hud) {
         self.hud = [[MBProgressHUD alloc] initWithView:self];
-        
         self.hud.delegate = self;
         //            self.hud.labelText = @"Loading";
         
@@ -668,7 +667,7 @@
         [self.hud show:YES];
     }
     
-    if (progress<=0) {
+    if (progress<=0.1) {
         
         // Set determinate mode
         self.hud.mode = MBProgressHUDModeIndeterminate;

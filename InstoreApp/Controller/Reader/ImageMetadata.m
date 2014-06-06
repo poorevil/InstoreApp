@@ -22,9 +22,7 @@
 
 -(BOOL)hasCache
 {
-    //TODO:test if has cache
-    
-    return NO;
+    return [[NSFileManager defaultManager] fileExistsAtPath:self.cachePath];
 }
 
 - (BOOL)isEqual:(id)object {
