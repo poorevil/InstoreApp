@@ -67,16 +67,26 @@
         [self addSubview:self.scrollView];
         self.currentPageIndex = 0;
         
-        self.pageControl = [[[UIPageControl alloc] initWithFrame:CGRectMake(40,
-                                                                           frame.size.height - 20,
-                                                                           50,
+        self.pageControl = [[[UIPageControl alloc] initWithFrame:CGRectMake(0,
+                                                                           0,
+                                                                           self.frame.size.width,
                                                                            20)] autorelease];
-        self.pageControl.pageIndicatorTintColor = [UIColor grayColor];
+        self.pageControl.pageIndicatorTintColor = [UIColor whiteColor];
         self.pageControl.currentPageIndicatorTintColor = [UIColor colorWithRed:248.0f/255.0f
                                                                          green:40.0f/255.0f
                                                                           blue:53.0f/255.0f
                                                                          alpha:1];
-        [self addSubview:self.pageControl];
+        UIView *backgroundView = [[[UIView alloc] initWithFrame:CGRectMake(0,
+                                                                          self.frame.size.height - self.pageControl.frame.size.height,
+                                                                          self.pageControl.frame.size.width,
+                                                                          self.pageControl.frame.size.height)] autorelease];
+        backgroundView.backgroundColor = [UIColor colorWithRed:0
+                                                         green:0
+                                                          blue:0
+                                                         alpha:0.7f];
+        [backgroundView addSubview:self.pageControl];
+        
+        [self addSubview:backgroundView];
         
     }
     return self;

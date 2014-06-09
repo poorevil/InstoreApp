@@ -63,69 +63,70 @@
     self.picView.imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@/300*300.png",self.coupon.imageUrl]];
     self.titleLabel.text = self.coupon.title;
     
-    [self.commentCountLabel setTitle:[NSString stringWithFormat:@" %d",self.coupon.commentCount]
-                            forState:UIControlStateNormal];
-    [self.collectCountLabel setTitle:[NSString stringWithFormat:@" %d",self.coupon.collectCount]
-                            forState:UIControlStateNormal];
-    
-    if (self.coupon.hotTag) {
-        self.hotTagViewGroup.hidden = NO;
-        self.hotTagLabel.text = self.coupon.hotTag;
-    }else{
-        self.hotTagViewGroup.hidden = YES;
-    }
+//    [self.commentCountLabel setTitle:[NSString stringWithFormat:@" %d",self.coupon.commentCount]
+//                            forState:UIControlStateNormal];
+//    [self.collectCountLabel setTitle:[NSString stringWithFormat:@" %d",self.coupon.collectCount]
+//                            forState:UIControlStateNormal];
+//    
+//    if (self.coupon.hotTag) {
+//        self.hotTagViewGroup.hidden = NO;
+//        self.hotTagLabel.text = self.coupon.hotTag;
+//    }else{
+//        self.hotTagViewGroup.hidden = YES;
+//    }
     
     //计算高度
     CGFloat diffHeight = 0;
     CGFloat width = self.bounds.size.width;
     // Image
-    CGFloat objectWidth = self.coupon.imageWidth==0?160:self.coupon.imageWidth;
-    CGFloat objectHeight = self.coupon.imageHeight==0?160:self.coupon.imageHeight;
-    CGFloat scaledHeight = floorf(objectHeight / (objectWidth / width));
+//    CGFloat objectWidth = self.coupon.imageWidth==0?160:self.coupon.imageWidth;
+//    CGFloat objectHeight = self.coupon.imageHeight==0?160:self.coupon.imageHeight;
+//    CGFloat scaledHeight = floorf(objectHeight / (objectWidth / width));
     
-    diffHeight += (scaledHeight - self.picView.frame.size.height);
-    
-    self.picView.frame = CGRectMake(self.picView.frame.origin.x,
-                                    self.picView.frame.origin.y,
-                                    self.picView.frame.size.width,
-                                    self.picView.frame.size.height + diffHeight);
-    self.titleLabel.frame = CGRectMake(self.titleLabel.frame.origin.x,
-                                       self.titleLabel.frame.origin.y + diffHeight,
-                                       self.titleLabel.frame.size.width,
-                                       self.titleLabel.frame.size.height);
-    self.buttonGroup.frame = CGRectMake(self.buttonGroup.frame.origin.x,
-                                       self.buttonGroup.frame.origin.y + diffHeight,
-                                       self.buttonGroup.frame.size.width,
-                                       self.buttonGroup.frame.size.height);
-    self.viewGroup.frame = CGRectMake(self.viewGroup.frame.origin.x,
-                                        self.viewGroup.frame.origin.y,
-                                        self.viewGroup.frame.size.width,
-                                        self.viewGroup.frame.size.height + diffHeight);
-    self.frame = CGRectMake(self.frame.origin.x,
-                            self.frame.origin.y,
-                            self.frame.size.width,
-                            self.frame.size.height + diffHeight);
-    
-    
+//    diffHeight += (scaledHeight - self.picView.frame.size.height);
+//    
+//    self.picView.frame = CGRectMake(self.picView.frame.origin.x,
+//                                    self.picView.frame.origin.y,
+//                                    self.picView.frame.size.width,
+//                                    self.picView.frame.size.height + diffHeight);
+//    self.titleLabel.frame = CGRectMake(self.titleLabel.frame.origin.x,
+//                                       self.titleLabel.frame.origin.y + diffHeight,
+//                                       self.titleLabel.frame.size.width,
+//                                       self.titleLabel.frame.size.height);
+//    self.buttonGroup.frame = CGRectMake(self.buttonGroup.frame.origin.x,
+//                                       self.buttonGroup.frame.origin.y + diffHeight,
+//                                       self.buttonGroup.frame.size.width,
+//                                       self.buttonGroup.frame.size.height);
+//    self.viewGroup.frame = CGRectMake(self.viewGroup.frame.origin.x,
+//                                        self.viewGroup.frame.origin.y,
+//                                        self.viewGroup.frame.size.width,
+//                                        self.viewGroup.frame.size.height + diffHeight);
+//    self.frame = CGRectMake(self.frame.origin.x,
+//                            self.frame.origin.y,
+//                            self.frame.size.width,
+//                            self.frame.size.height + diffHeight);
+//    
+//    
     
 }
 
 
 + (CGFloat)heightForViewWithObject:(id)object inColumnWidth:(CGFloat)columnWidth {
     
-    CouponModel *coupon = object;
-    
-    //计算高度
-    CGFloat diffHeight = 0;
-    CGFloat width = columnWidth;
-    // Image
-    CGFloat objectWidth = coupon.imageWidth==0?columnWidth:coupon.imageWidth;
-    CGFloat objectHeight = coupon.imageHeight==0?columnWidth:coupon.imageHeight;
-    CGFloat scaledHeight = floorf(objectHeight / (objectWidth / width));
-    
-    diffHeight += (scaledHeight - 99);
-    
-    return 221 + diffHeight;
+//    CouponModel *coupon = object;
+//    
+//    //计算高度
+//    CGFloat diffHeight = 0;
+//    CGFloat width = columnWidth;
+//    // Image
+//    CGFloat objectWidth = coupon.imageWidth==0?columnWidth:coupon.imageWidth;
+//    CGFloat objectHeight = coupon.imageHeight==0?columnWidth:coupon.imageHeight;
+//    CGFloat scaledHeight = floorf(objectHeight / (objectWidth / width));
+//    
+//    diffHeight += (scaledHeight - 99);
+//    
+//    return 221 + diffHeight;
+    return 221;
 }
 
 -(void)dealloc

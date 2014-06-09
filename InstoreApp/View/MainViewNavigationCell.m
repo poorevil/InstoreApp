@@ -23,17 +23,19 @@
 
 -(void)awakeFromNib
 {
+    [self setBtnStyle:self.mallActicityBtn];
+    [self setBtnStyle:self.couponBtn];
     [self setBtnStyle:self.foodBtn];
-    [self setBtnStyle:self.cardBtn];
-    [self setBtnStyle:self.orderBtn];
-    [self setBtnStyle:self.saleBtn];
-
+    [self setBtnStyle:self.msgBtn];
+    
     [self setBtnStyle:self.mapBtn];
     [self setBtnStyle:self.wifiBtn];
-    
-    [self.mapBtn addTarget:self action:@selector(mapBtnAction:) forControlEvents:UIControlEventTouchUpInside];
-    [self.saleBtn addTarget:self action:@selector(saleBtnAction:) forControlEvents:UIControlEventTouchUpInside];
-    [self.cardBtn addTarget:self action:@selector(cardBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+    [self setBtnStyle:self.cardBtn];
+    [self setBtnStyle:self.myScoreBtn];
+
+//    [self.mapBtn addTarget:self action:@selector(mapBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+//    [self.saleBtn addTarget:self action:@selector(saleBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+//    [self.cardBtn addTarget:self action:@selector(cardBtnAction:) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
@@ -47,14 +49,14 @@
 -(void)setBtnStyle:(UIButton *)btn
 {
     [btn setImageEdgeInsets:UIEdgeInsetsMake(0,
-                                          (btn.frame.size.width-btn.imageView.frame.size.width)/2-5,
+                                          (btn.frame.size.width-btn.imageView.frame.size.width)/2,
                                           (btn.frame.size.height-btn.imageView.frame.size.height)/2 +5,
                                           0)];
     [btn setTitleEdgeInsets:UIEdgeInsetsMake(btn.imageView.frame.size.height +5,
                                           -btn.imageView.frame.size.width,
                                           0, 0)];
     
-//    btn.backgroundColor = [UIColor blackColor];
+    [btn.titleLabel setFont:[UIFont systemFontOfSize:12]];
 }
 
 -(void)mapBtnAction:(id)sender
@@ -81,20 +83,14 @@
 
 -(void)dealloc
 {
-//    @property (nonatomic,strong) IBOutlet UIButton *foodBtn;
-//    @property (nonatomic,strong) IBOutlet UIButton *saleBtn;
-//    @property (nonatomic,strong) IBOutlet UIButton *cardBtn;
-//    @property (nonatomic,strong) IBOutlet UIButton *orderBtn;
-//    
-//    @property (nonatomic,strong) IBOutlet UIButton *mapBtn;
-//    @property (nonatomic,strong) IBOutlet UIButton *wifiBtn;
-
+    self.mallActicityBtn = nil;
+    self.couponBtn = nil;
     self.foodBtn = nil;
-    self.saleBtn = nil;
-    self.cardBtn = nil;
-    self.orderBtn = nil;
+    self.msgBtn = nil;
     self.mapBtn = nil;
     self.wifiBtn = nil;
+    self.cardBtn = nil;
+    self.myScoreBtn = nil;
     
     [super dealloc];
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
         <deployment defaultVersion="1536" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
@@ -7,19 +7,19 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MainViewNavigationCell" rowHeight="172" id="cjT-P0-Z9l" customClass="MainViewNavigationCell">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="155"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MainViewNavigationCell" rowHeight="180" id="cjT-P0-Z9l" customClass="MainViewNavigationCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="174"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cjT-P0-Z9l" id="dYN-qO-IkW">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="154"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="173"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ba6-VN-pXc">
-                        <rect key="frame" x="15" y="10" width="62" height="62"/>
+                        <rect key="frame" x="21" y="10" width="53" height="70"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                        <state key="normal" title="找美食" image="index-tool-btn-food.png" backgroundImage="index-tool-btn-bgd.png">
-                            <color key="titleColor" red="0.8980392157" green="0.2470588235" blue="0.066666666669999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <state key="normal" title="商场活动" image="mainview_mall_activity.png">
+                            <color key="titleColor" red="0.47450980390000003" green="0.47450980390000003" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                         <state key="disabled">
@@ -33,11 +33,11 @@
                         </state>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Cr0-SV-MhD">
-                        <rect key="frame" x="91" y="10" width="62" height="62"/>
+                        <rect key="frame" x="96" y="10" width="53" height="70"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                        <state key="normal" title="找优惠" image="index-tool-btn-sale.png" backgroundImage="index-tool-btn-bgd.png">
-                            <color key="titleColor" red="0.8980392157" green="0.2470588235" blue="0.066666666669999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <state key="normal" title="每日优惠" image="mainview_coupon.png">
+                            <color key="titleColor" red="0.47450980390000003" green="0.47450980390000003" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                         <state key="disabled">
@@ -51,11 +51,11 @@
                         </state>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="UbD-Bd-OwT">
-                        <rect key="frame" x="167" y="10" width="62" height="62"/>
+                        <rect key="frame" x="171" y="10" width="53" height="70"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                        <state key="normal" title="会员积分" image="index-tool-btn-card.png" backgroundImage="index-tool-btn-bgd.png">
-                            <color key="titleColor" red="0.8980392157" green="0.2470588235" blue="0.066666666669999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <state key="normal" title="找美食" image="mainview_food.png">
+                            <color key="titleColor" red="0.47450980390000003" green="0.47450980390000003" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                         <state key="disabled">
@@ -69,11 +69,11 @@
                         </state>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="a7e-In-7TB">
-                        <rect key="frame" x="243" y="10" width="62" height="62"/>
+                        <rect key="frame" x="246" y="10" width="53" height="70"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                        <state key="normal" title="我的预定" image="index-tool-btn-order.png" backgroundImage="index-tool-btn-bgd.png">
-                            <color key="titleColor" red="0.8980392157" green="0.2470588235" blue="0.066666666669999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <state key="normal" title="我的消息" image="mainview_msg.png">
+                            <color key="titleColor" red="0.47450980392156861" green="0.47450980392156861" blue="0.47450980392156861" alpha="1" colorSpace="calibratedRGB"/>
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                         <state key="disabled">
@@ -87,11 +87,11 @@
                         </state>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="4YD-9j-24M">
-                        <rect key="frame" x="15" y="82" width="62" height="62"/>
+                        <rect key="frame" x="21" y="93" width="53" height="70"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                        <state key="normal" title="商场地图" backgroundImage="index-tool-btn-bgd.png">
-                            <color key="titleColor" red="0.8980392157" green="0.2470588235" blue="0.066666666669999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <state key="normal" title="商场地图" image="mainview_map.png">
+                            <color key="titleColor" red="0.47450980390000003" green="0.47450980390000003" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
                         <state key="selected">
                             <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -101,11 +101,11 @@
                         </state>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ueL-tN-ZLe">
-                        <rect key="frame" x="91" y="82" width="62" height="62"/>
+                        <rect key="frame" x="96" y="93" width="53" height="70"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                        <state key="normal" title="免费上网" backgroundImage="index-tool-btn-bgd.png">
-                            <color key="titleColor" red="0.8980392157" green="0.2470588235" blue="0.066666666669999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <state key="normal" title="免费WIFI" image="mainview_wifi.png">
+                            <color key="titleColor" red="0.47450980390000003" green="0.47450980390000003" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                         <state key="selected">
@@ -115,28 +115,69 @@
                             <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                     </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="CCM-Wq-WOy">
+                        <rect key="frame" x="171" y="93" width="53" height="70"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                        <state key="normal" title="银行卡惠" image="mainview_card.png">
+                            <color key="titleColor" red="0.47450980390000003" green="0.47450980390000003" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                        <state key="disabled">
+                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                        <state key="selected">
+                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                        <state key="highlighted">
+                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="A8m-H8-rSH">
+                        <rect key="frame" x="246" y="93" width="53" height="70"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                        <state key="normal" title="我的积分" image="mainview_myscore.png">
+                            <color key="titleColor" red="0.47450980390000003" green="0.47450980390000003" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                        <state key="disabled">
+                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                        <state key="selected">
+                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                        <state key="highlighted">
+                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                    </button>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="line_bg.png" id="Tt7-jr-NWb">
-                        <rect key="frame" x="0.0" y="154" width="320" height="1"/>
+                        <rect key="frame" x="0.0" y="179" width="320" height="1"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
                 </subviews>
             </tableViewCellContentView>
             <connections>
-                <outlet property="cardBtn" destination="UbD-Bd-OwT" id="FwK-pn-eLp"/>
-                <outlet property="foodBtn" destination="ba6-VN-pXc" id="vNn-st-rY9"/>
-                <outlet property="mapBtn" destination="4YD-9j-24M" id="cJI-l5-UQ3"/>
-                <outlet property="orderBtn" destination="a7e-In-7TB" id="knh-RX-4Nc"/>
-                <outlet property="saleBtn" destination="Cr0-SV-MhD" id="afD-aq-jop"/>
-                <outlet property="wifiBtn" destination="ueL-tN-ZLe" id="drT-kJ-yHb"/>
+                <outlet property="cardBtn" destination="CCM-Wq-WOy" id="l7N-Eb-uAq"/>
+                <outlet property="couponBtn" destination="Cr0-SV-MhD" id="VEB-Wj-cw0"/>
+                <outlet property="foodBtn" destination="UbD-Bd-OwT" id="FJE-gw-c9W"/>
+                <outlet property="mallActicityBtn" destination="ba6-VN-pXc" id="RxD-yg-clH"/>
+                <outlet property="mapBtn" destination="4YD-9j-24M" id="nX9-eq-C9L"/>
+                <outlet property="msgBtn" destination="a7e-In-7TB" id="R9C-0b-jWC"/>
+                <outlet property="myScoreBtn" destination="A8m-H8-rSH" id="aNw-Ba-28d"/>
+                <outlet property="wifiBtn" destination="ueL-tN-ZLe" id="3pK-s1-ino"/>
             </connections>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="index-tool-btn-bgd.png" width="63" height="63"/>
-        <image name="index-tool-btn-card.png" width="38" height="24"/>
-        <image name="index-tool-btn-food.png" width="29" height="29"/>
-        <image name="index-tool-btn-order.png" width="26" height="26"/>
-        <image name="index-tool-btn-sale.png" width="31" height="31"/>
         <image name="line_bg.png" width="2" height="1"/>
+        <image name="mainview_card.png" width="53" height="53"/>
+        <image name="mainview_coupon.png" width="53" height="53"/>
+        <image name="mainview_food.png" width="53" height="53"/>
+        <image name="mainview_mall_activity.png" width="53" height="53"/>
+        <image name="mainview_map.png" width="53" height="53"/>
+        <image name="mainview_msg.png" width="53" height="53"/>
+        <image name="mainview_myscore.png" width="53" height="53"/>
+        <image name="mainview_wifi.png" width="53" height="53"/>
     </resources>
 </document>

@@ -122,7 +122,7 @@
 
 -(void)initFooterView
 {
-    if (self.couponModel.type==2) {//1: 优惠活动; 2: 优惠券; 3: 团购;
+    if (self.couponModel.promotionType==2) {//1: 优惠活动; 2: 优惠券; 3: 团购;
         self.footerView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 44)] autorelease];
         self.downloadBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         
@@ -148,7 +148,7 @@
         [self.footerView addSubview:self.downloadBtn];
         self.mtableView.tableFooterView = self.footerView;
         
-        if (self.couponModel.userCollectCount > 0) {
+        if (self.couponModel.collectCount > 0) {
             self.downloadBtn.enabled = NO;
         }
     }
