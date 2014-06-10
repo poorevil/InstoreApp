@@ -9,6 +9,8 @@
 #import "MainViewInterface.h"
 #import "JSONKit.h"
 #import "CouponModel.h"
+#import "CategoryModel.h"
+#import "StoreModel.h"
 
 @implementation MainViewInterface
 
@@ -37,22 +39,32 @@
                     
                     NSString *dataSource = [itemDict objectForKey:@"dataSource"];
                     
-                    if ([dataSource isEqualToString:@"Category"] || [dataSource isEqualToString:@"Store"]) {
-                        //TODO:处理这俩另类
-                        continue;
-                    }
-                    [cellDict setObject:[itemDict objectForKey:@"dataSource"] forKey:@"dataSource"];
+                    [cellDict setObject:dataSource forKey:@"dataSource"];
                     [cellDict setObject:[itemDict objectForKey:@"title"] forKey:@"title"];
+                    
                     //处理data
                     NSMutableArray *resultDataList = [NSMutableArray array];//datalist
+                    [cellDict setObject:resultDataList forKey:@"data"];
+                    
                     NSArray *dataList = [itemDict objectForKey:@"data"];
-                    for(NSDictionary *dict in dataList){
-                        CouponModel *cm = [[[CouponModel alloc] initWithJsonMap:dict] autorelease];
-                        [resultDataList addObject:cm];
-                        
-                        [cellDict setObject:resultDataList forKey:@"data"];
+                    if ([dataSource isEqualToString:@"Category"]) {
+                        for(NSDictionary *dict in dataList){
+                            CategoryModel *cm = [[[CategoryModel alloc] initWithJsonMap:dict] autorelease];
+                            [resultDataList addObject:cm];
+                        }
+                    }else if ([dataSource isEqualToString:@"Store"]) {
+                        for(NSDictionary *dict in dataList){
+                            StoreModel *sm = [[[StoreModel alloc] initWithJsonMap:dict] autorelease];
+                            [resultDataList addObject:sm];
+                        }
+                    }else{
+                        for(NSDictionary *dict in dataList){
+                            CouponModel *cm = [[[CouponModel alloc] initWithJsonMap:dict] autorelease];
+                            [resultDataList addObject:cm];
+                            
+                        }
                     }
-
+                    
                     [resultList addObject:cellDict];
                 }
             }

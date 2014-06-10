@@ -18,8 +18,11 @@
 {
     if (self = [super init]) {
         if (jsonMap) {
-            self.cid = [[jsonMap objectForKey:@"id"] integerValue];
-            self.cName = [jsonMap objectForKey:@"name"];
+            self.cid = [[jsonMap objectForKey:@"itemId"] integerValue];
+            self.cName = [jsonMap objectForKey:@"title"];
+            
+            self.imageUrl = [jsonMap objectForKey:@"image"];
+            self.subhead = [jsonMap objectForKey:@"subhead"];
         }
     }
     
@@ -29,6 +32,9 @@
 -(void)dealloc
 {
     self.cName = nil;
+    self.imageUrl = nil;
+    self.subhead = nil;
+    
     [super dealloc];
 }
 @end

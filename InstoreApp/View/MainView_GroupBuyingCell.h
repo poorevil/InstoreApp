@@ -22,6 +22,14 @@
 @property (nonatomic, retain) IBOutlet UILabel *titleLabel_2;
 @property (nonatomic, retain) IBOutlet UILabel *sourceLabel_2;
 
+@property (nonatomic, retain) IBOutlet UILabel *priceLabel_1;
+@property (nonatomic, retain) IBOutlet UILabel *oldPriceLabel_1;
+@property (nonatomic, retain) IBOutlet UILabel *collectLabel_1;
+
+@property (nonatomic, retain) IBOutlet UILabel *priceLabel_2;
+@property (nonatomic, retain) IBOutlet UILabel *oldPriceLabel_2;
+@property (nonatomic, retain) IBOutlet UILabel *collectLabel_2;
+
 -(IBAction)moreBtnAction:(id)sender;
 
 @end

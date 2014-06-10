@@ -17,6 +17,8 @@
 #import <QRCodeReader.h>
 
 #import "MainViewInterface.h"
+#import "MainView_CategoryCell.h"
+#import "MainView_StoreCell.h"
 
 @interface MainViewController () <ZXingDelegate, MainViewInterfaceDelegate>
 @property (nonatomic,strong) CycleScrollView *lunboView;
@@ -165,12 +167,21 @@
             cell = [[[NSBundle mainBundle]
                      loadNibNamed:cellIdentifier owner:self options:nil] objectAtIndex:0];
         }else{
-            NSDictionary *dict = [self.itemList objectAtIndex:indexPath.row-1];
-            cell = [[[NSBundle mainBundle]
-                     loadNibNamed:[NSString stringWithFormat:@"MainView_%@Cell",cellIdentifier]
-                     owner:self options:nil] objectAtIndex:0];
-            if ([cell respondsToSelector:@selector(titleLabel)]) {
-                [cell titleLabel].text = [dict objectForKey:@"title"];
+            if ([cellIdentifier isEqualToString:@"Store"]) {
+                cell = [[MainView_StoreCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+                //TODO:
+            }else if ([cellIdentifier isEqualToString:@"Category"]) {
+                cell = [[MainView_CategoryCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+                //TODO:
+            }else{
+            
+                NSDictionary *dict = [self.itemList objectAtIndex:indexPath.row-1];
+                cell = [[[NSBundle mainBundle]
+                         loadNibNamed:[NSString stringWithFormat:@"MainView_%@Cell",cellIdentifier]
+                         owner:self options:nil] objectAtIndex:0];
+                if ([cell respondsToSelector:@selector(titleLabel)]) {
+                    [cell titleLabel].text = [dict objectForKey:@"title"];
+                }
             }
         }
     }
@@ -189,21 +200,21 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row == 0) {
-        return 174;
+        return 178;
     }else{
         NSDictionary *dict = [self.itemList objectAtIndex:indexPath.row-1];
         NSString *cellIdentifier = [dict objectForKey:@"dataSource"];
         
         if ([cellIdentifier isEqualToString:@"DailyPromotion"]) {
-            return 220;
+            return 225;
         }else if ([cellIdentifier isEqualToString:@"PromotionActivity"]) {
-            return 218;
+            return 223;
         }else if ([cellIdentifier isEqualToString:@"Coupons"]) {
-            return 216;
+            return 221;
         }else if ([cellIdentifier isEqualToString:@"GroupBuying"]) {
-            return 238;
+            return 243;
         }else if ([cellIdentifier isEqualToString:@"Restaurant"]) {
-            return 218;
+            return 223;
         }
         
         //TODO:高度

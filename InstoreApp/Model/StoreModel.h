@@ -12,10 +12,18 @@
 @class PositionModel;
 @interface StoreModel : NSObject
 
-@property (nonatomic,assign) NSInteger sid;
+@property (nonatomic,strong) NSString *title;
+@property (nonatomic,strong) NSString *imageUrl;
+@property (nonatomic, assign) NSInteger itemType;//对象类型 (2, '商户')
+@property (nonatomic, assign) NSInteger sid;
+@property (nonatomic, retain) NSString *appCategory;//商户类型时有效,商户对应的APP模板：Department("百货"),Restaurant("餐饮"),Entertainment("娱乐");
+
+
+
+
 @property (nonatomic,strong) NSString *logoUrl;
 @property (nonatomic,strong) CategoryModel *categoryModel;
-@property (nonatomic,strong) NSString *title;
+
 
 @property (nonatomic,strong) NSString *roomNum;//商户房间号
 @property (nonatomic,strong) PositionModel *position;
@@ -23,7 +31,7 @@
 @property (nonatomic,strong) NSString *tel;
 @property (nonatomic,strong) NSString *descStr;
 @property (nonatomic,assign) BOOL isFocus;
-@property (nonatomic,strong) NSString *imageUrl;
+
 @property (nonatomic,assign) NSInteger followerCount;//关注人数
 
 @property (nonatomic,strong) NSMutableArray *coupons;

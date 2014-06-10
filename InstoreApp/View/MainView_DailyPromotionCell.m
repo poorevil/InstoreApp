@@ -40,6 +40,9 @@
     
 }
 
+#define HUI_COLOR   [UIColor colorWithRed:231/255.0f green:51/255.0f blue:60/255.0f alpha:1]
+#define QUAN_COLOR   [UIColor colorWithRed:51/255.0f green:163/255.0f blue:230/255.0f alpha:1]
+#define TUAN_COLOR   [UIColor colorWithRed:239/255.0f green:137/255.0f blue:31/255.0f alpha:1]
 -(void)setDataList:(NSArray *)dataList
 {
     [_dataList release];
@@ -48,16 +51,42 @@
     if (self.dataList.count == 3) {
         CouponModel *cm = [self.dataList objectAtIndex:0];
         self.titleLabel_1.text = cm.title;
-        self.imageView_1.imageURL = [NSURL URLWithString:cm.imageUrl];
+        self.imageView_1.imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@/300*300.png",cm.imageUrl]];
+        [self setupTypeLabel:cm.promotionType andTypeLabel:self.typeLabel_1];
         
         cm = [self.dataList objectAtIndex:1];
         self.titleLabel_2.text = cm.title;
-        self.imageView_2.imageURL = [NSURL URLWithString:cm.imageUrl];
+        self.imageView_2.imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@/400*100.png",cm.imageUrl]];
+        [self setupTypeLabel:cm.promotionType andTypeLabel:self.typeLabel_2];
         
         cm = [self.dataList objectAtIndex:2];
         self.titleLabel_3.text = cm.title;
-        self.imageView_3.imageURL = [NSURL URLWithString:cm.imageUrl];
+        self.imageView_3.imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@/400*100.png",cm.imageUrl]];
+        [self setupTypeLabel:cm.promotionType andTypeLabel:self.typeLabel_3];
     }
+}
+
+-(void)setupTypeLabel:(NSInteger)type andTypeLabel:(UILabel *)label
+{
+    UIColor *bgColor = nil;
+    NSString *text = nil;
+    switch (type) {
+        case 1: //惠
+            bgColor = HUI_COLOR;
+            text = @"惠";
+            break;
+        case 2: //券
+            bgColor = QUAN_COLOR;
+            text = @"券";
+            break;
+        case 3: //团
+            bgColor = TUAN_COLOR;
+            text = @"团";
+            break;
+    }
+    
+    label.superview.backgroundColor = bgColor;
+    label.text = text;
 }
 
 -(void)dealloc
@@ -71,6 +100,9 @@
     self.titleLabel_1 = nil;
     self.titleLabel_2 = nil;
     self.titleLabel_3 = nil;
+    self.typeLabel_1 = nil;
+    self.typeLabel_2 = nil;
+    self.typeLabel_3 = nil;
     
     [super dealloc];
 }

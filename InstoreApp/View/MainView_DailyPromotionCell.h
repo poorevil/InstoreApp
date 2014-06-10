@@ -21,6 +21,10 @@
 @property (nonatomic, retain) IBOutlet EGOImageView *imageView_3;
 @property (nonatomic, retain) IBOutlet UILabel *titleLabel_3;
 
+@property (nonatomic, retain) IBOutlet UILabel *typeLabel_1;
+@property (nonatomic, retain) IBOutlet UILabel *typeLabel_2;
+@property (nonatomic, retain) IBOutlet UILabel *typeLabel_3;
+
 -(IBAction)moreBtnAction:(id)sender;
 
 @end

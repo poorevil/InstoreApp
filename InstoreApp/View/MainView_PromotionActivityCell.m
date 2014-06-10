@@ -48,15 +48,15 @@
     if (self.dataList.count == 3) {
         CouponModel *cm = [self.dataList objectAtIndex:0];
         self.titleLabel_1.text = cm.title;
-        self.imageView_1.imageURL = [NSURL URLWithString:cm.imageUrl];
+        self.imageView_1.imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@/300*300.png",cm.imageUrl]];
         
         cm = [self.dataList objectAtIndex:1];
         self.titleLabel_2.text = cm.title;
-        self.imageView_2.imageURL = [NSURL URLWithString:cm.imageUrl];
+        self.imageView_2.imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@/150*150.png",cm.imageUrl]];
         
         cm = [self.dataList objectAtIndex:2];
         self.titleLabel_3.text = cm.title;
-        self.imageView_3.imageURL = [NSURL URLWithString:cm.imageUrl];
+        self.imageView_3.imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@/150*150.png",cm.imageUrl]];
     }
 }
 
