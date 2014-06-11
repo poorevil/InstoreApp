@@ -167,10 +167,11 @@
             cell = [[[NSBundle mainBundle]
                      loadNibNamed:cellIdentifier owner:self options:nil] objectAtIndex:0];
         }else{
-            if ([cellIdentifier isEqualToString:@"Store"]) {
-                cell = [[MainView_StoreCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-                //TODO:
-            }else if ([cellIdentifier isEqualToString:@"Category"]) {
+//            if ([cellIdentifier isEqualToString:@"Store"]) {
+//                cell = [[MainView_StoreCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+//                //TODO:
+//            }else
+            if ([cellIdentifier isEqualToString:@"Category"]) {
                 cell = [[MainView_CategoryCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
                 //TODO:
             }else{
@@ -215,13 +216,13 @@
             return 243;
         }else if ([cellIdentifier isEqualToString:@"Restaurant"]) {
             return 223;
+        }else if ([cellIdentifier isEqualToString:@"Store"]) {
+            return 400;
         }
         
         //TODO:高度
     //    else if ([cellIdentifier isEqualToString:@"Category"]) {
     //        return 300;
-    //    }else if ([cellIdentifier isEqualToString:@"Store"]) {
-    //        return 174;
     //    }
         else{
             return 10;

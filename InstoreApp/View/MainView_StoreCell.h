@@ -1,7 +1,7 @@
 //
 //  MainView_ StoreCell.h
 //  InstoreApp
-//  品牌推荐
+//  优惠主题馆
 //  Created by evil on 14-6-9.
 //  Copyright (c) 2014年 evil. All rights reserved.
 //
@@ -13,6 +13,6 @@
 @property (nonatomic, retain) IBOutlet UILabel *titleLabel;
 @property (nonatomic, retain) NSArray *dataList;
 
--(IBAction)moreBtnAction:(id)sender;
+@property (nonatomic, retain) IBOutlet UIView *parentView;
 
 @end

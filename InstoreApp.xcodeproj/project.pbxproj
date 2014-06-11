@@ -390,6 +390,7 @@
 		C1D8701418ED5B1D0061F799 /* ShopDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1D8701218ED5B1D0061F799 /* ShopDetailViewController.m */; };
 		C1D8701518ED5B1D0061F799 /* ShopDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1D8701318ED5B1D0061F799 /* ShopDetailViewController.xib */; };
 		C1D8701818ED5CE00061F799 /* ShopDetailHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = C1D8701718ED5CE00061F799 /* ShopDetailHeaderView.m */; };
+		C1E094E419485EB000AA814B /* MainView_StoreCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1E094E319485EB000AA814B /* MainView_StoreCell.xib */; };
 		FA4E65B819357B21005022E2 /* UMSocialLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FA4E655019357B21005022E2 /* UMSocialLocalizable.strings */; };
 		FA4E65B919357B21005022E2 /* libUMSocial_Sdk_3.3.8.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FA4E655E19357B21005022E2 /* libUMSocial_Sdk_3.3.8.a */; };
 		FA4E65BA19357B21005022E2 /* UMSCommentDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA4E656019357B21005022E2 /* UMSCommentDetailController.xib */; };
@@ -1107,6 +1108,7 @@
 		C1D8701318ED5B1D0061F799 /* ShopDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShopDetailViewController.xib; sourceTree = "<group>"; };
 		C1D8701618ED5CE00061F799 /* ShopDetailHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopDetailHeaderView.h; sourceTree = "<group>"; };
 		C1D8701718ED5CE00061F799 /* ShopDetailHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopDetailHeaderView.m; sourceTree = "<group>"; };
+		C1E094E319485EB000AA814B /* MainView_StoreCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainView_StoreCell.xib; sourceTree = "<group>"; };
 		FA4E655119357B21005022E2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/UMSocialLocalizable.strings; sourceTree = "<group>"; };
 		FA4E655319357B21005022E2 /* UMSocial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSocial.h; sourceTree = "<group>"; };
 		FA4E655419357B21005022E2 /* UMSocialAccountManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSocialAccountManager.h; sourceTree = "<group>"; };
@@ -1587,6 +1589,7 @@
 				03650F5E194540E200016289 /* MainView_CategoryCell.m */,
 				03650F60194540F900016289 /* MainView_StoreCell.h */,
 				03650F61194540F900016289 /* MainView_StoreCell.m */,
+				C1E094E319485EB000AA814B /* MainView_StoreCell.xib */,
 			);
 			name = MainViewCell;
 			sourceTree = "<group>";
@@ -2755,6 +2758,7 @@
 				C1A84A52192C538C003219DA /* Icon_50.png in Resources */,
 				4E9608AE18E48D6700418798 /* whiteArrow.png in Resources */,
 				4EF090F418FB52FD00ABFE7D /* search-icon-close@2x.png in Resources */,
+				C1E094E419485EB000AA814B /* MainView_StoreCell.xib in Resources */,
 				4EF0914318FC2CEE00ABFE7D /* pp_2.jpg in Resources */,
 				03650F5C1942FF0E00016289 /* MainView_RestaurantCell.xib in Resources */,
 				4EF0911918FB52FD00ABFE7D /* top-icon-loc-black@2x.png in Resources */,
