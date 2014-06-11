@@ -45,15 +45,22 @@
     
     if (jsonObj) {
         @try {
+            if ([jsonObj objectForKey:@"errorCode"]) {
+                [self.delegate getInitParamDidFailed:[jsonObj objectForKey:@"errorMsg"]];
+                return;
+            }
             
             GlobeModel *globe = [GlobeModel sharedSingleton];
             globe.runtimeModel = [[RuntimeModel alloc] initWithJsonMap:jsonObj];
             
+            [self.delegate getInitParamDidFinished];
         }
         @catch (NSException *exception) {
             //TODO: 缺少重试机制
             
             NSLog(@"%@",exception.reason);
+            
+            [self.delegate getInitParamDidFailed:exception.reason];
         }
     }
 }
@@ -64,6 +71,7 @@
 
 -(void)dealloc
 {
+    self.delegate = nil;
     
     [super dealloc];
 }

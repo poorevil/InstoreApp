@@ -8,8 +8,16 @@
 
 #import "BaseInterface.h"
 
+@protocol InitInterfaceDelegate <NSObject>
+
+-(void)getInitParamDidFinished;
+-(void)getInitParamDidFailed:(NSString *)errorMsg;
+
+@end
+
 @interface InitInterface : BaseInterface <BaseInterfaceDelegate>
 
+@property (nonatomic, assign) id<InitInterfaceDelegate> delegate;
 -(void)getInitParam;
 
 @end

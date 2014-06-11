@@ -19,12 +19,15 @@
 #import "MainViewInterface.h"
 #import "MainView_CategoryCell.h"
 #import "MainView_StoreCell.h"
+#import "InitInterface.h"
 
-@interface MainViewController () <ZXingDelegate, MainViewInterfaceDelegate>
+@interface MainViewController () <ZXingDelegate, MainViewInterfaceDelegate, InitInterfaceDelegate>
 @property (nonatomic,strong) CycleScrollView *lunboView;
 
 @property (nonatomic, retain) NSArray *itemList;
 @property (nonatomic, retain) MainViewInterface *mainViewInterface;
+
+@property (nonatomic,strong) InitInterface *myInitInterface;
 
 @end
 
@@ -51,6 +54,10 @@
     self.mainViewInterface = [[[MainViewInterface alloc] init] autorelease];
     self.mainViewInterface.delegate = self;
     [self.mainViewInterface getMainViewList];
+    
+//    self.myInitInterface = [[[InitInterface alloc] init] autorelease];
+//    self.myInitInterface.delegate = self;
+//    [self.myInitInterface getInitParam];
 }
 
 - (void)didReceiveMemoryWarning

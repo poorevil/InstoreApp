@@ -21,6 +21,7 @@
 @property (nonatomic,strong) NSDate *date;
 @property (nonatomic,assign) BOOL isNewUser;
 @property (nonatomic,strong) NSString *mallName;
+@property (nonatomic,retain) NSString *buildingCount;
 
 -(id)initWithJsonMap:(NSDictionary *)jsonMap;
 

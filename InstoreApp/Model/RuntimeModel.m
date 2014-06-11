@@ -29,15 +29,16 @@
 {
     if (self = [super init]) {
         if (jsonMap) {
-            self.appName = [jsonMap objectForKey:@"appName"];
-            self.secretKey = [jsonMap objectForKey:@"secretKey"];
-            self.mallCode = [jsonMap objectForKey:@"mallCode"];
-            self.mallLogo = [jsonMap objectForKey:@"mallLogo"];
-            self.mallMapId = [jsonMap objectForKey:@"mallMapId"];
             self.mallId = [[jsonMap objectForKey:@"mallId"] integerValue];
+            self.mallCode = [jsonMap objectForKey:@"mallCode"];
+            self.mallName = [jsonMap objectForKey:@"mallName"];
+            self.mallMapId = [jsonMap objectForKey:@"mallMapCode"];
+            self.mallLogo = [jsonMap objectForKey:@"mallLogo"];
+            self.buildingCount = [jsonMap objectForKey:@"buildingCount"];
+            self.appName = [jsonMap objectForKey:@"appName"];
             self.date = [NSDate dateFromString:[jsonMap objectForKey:@"date"]];
             self.isNewUser = [[jsonMap objectForKey:@"isNewUser"] integerValue];
-            self.mallName = [jsonMap objectForKey:@"mallName"];
+            self.secretKey = [jsonMap objectForKey:@"secretKey"];
         }
     }
     
@@ -65,6 +66,7 @@
     self.mallMapId = nil;
     self.date = nil;
     self.mallName = nil;
+    self.buildingCount = nil;
     
     [super dealloc];
 }

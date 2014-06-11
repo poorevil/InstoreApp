@@ -25,7 +25,7 @@
 static NSString* szClientId = @"2014040301";
 static NSString* szClientSecret = @"ea13692f9c960a37db0086ff87e56e01";
 
-@interface AppDelegate()
+@interface AppDelegate()<InitInterfaceDelegate>
 
 @property (nonatomic,strong) InitInterface *myInitInterface;
 
@@ -47,6 +47,18 @@ static NSString* szClientSecret = @"ea13692f9c960a37db0086ff87e56e01";
         NSLog(@"===========%@",[httpAccess accessToken]);
     }
     
+    [[GlobeModel sharedSingleton] initUUIDIfNeeded];
+    
+//    self.myInitInterface = [[[InitInterface alloc] init] autorelease];
+//    self.myInitInterface.delegate = self;
+//    [self.myInitInterface getInitParam];
+    
+    [self initWindow];
+    return YES;
+}
+
+-(void)initWindow
+{
     self.tabBarController = [[[UITabBarController alloc] init] autorelease];
     
     MainViewController *mainViewVC = [[[MainViewController alloc] initWithNibName:@"MainViewController" bundle:nil] autorelease];
@@ -54,7 +66,7 @@ static NSString* szClientSecret = @"ea13692f9c960a37db0086ff87e56e01";
     nav1.title = @"首页";
     
     YouhuiViewController *youhuiVC = [[[YouhuiViewController alloc] initWithNibName:@"YouhuiViewController"
-                                                                            bundle:nil] autorelease];
+                                                                             bundle:nil] autorelease];
     CustomNavigationController *nav2 = [[[CustomNavigationController alloc] initWithRootViewController:youhuiVC] autorelease];
     nav2.title = @"优惠劵";
     
@@ -85,7 +97,7 @@ static NSString* szClientSecret = @"ea13692f9c960a37db0086ff87e56e01";
     tabBarItem3.title = @"服务";
     tabBarItem4.title = @"商户";
     tabBarItem5.title = @"我的";
-
+    
     [tabBarItem1 setFinishedSelectedImage:[UIImage imageNamed:@"toolBar-btn-home.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"toolBar-btn-home.png"]];
     [tabBarItem2 setFinishedSelectedImage:[UIImage imageNamed:@"toolBar-btn-sale.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"toolBar-btn-sale.png"]];
     [tabBarItem3 setFinishedSelectedImage:[UIImage imageNamed:@"toolBar-btn-service.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"toolBar-btn-service"]];
@@ -96,17 +108,17 @@ static NSString* szClientSecret = @"ea13692f9c960a37db0086ff87e56e01";
                                                        [UIColor whiteColor], UITextAttributeTextColor,
                                                        nil] forState:UIControlStateHighlighted];
     
-//    [tabBarItem1 setFinishedSelectedImage:[UIImage imageNamed:@"home_selected.png"]
-//              withFinishedUnselectedImage:[UIImage imageNamed:@"home.png"]];
-//    [tabBarItem2 setFinishedSelectedImage:[UIImage imageNamed:@"maps_selected.png"]
-//              withFinishedUnselectedImage:[UIImage imageNamed:@"maps.png"]];
-//    [tabBarItem3 setFinishedSelectedImage:[UIImage imageNamed:@"myplan_selected.png"]
-//              withFinishedUnselectedImage:[UIImage imageNamed:@"myplan.png"]];
-//    [tabBarItem4 setFinishedSelectedImage:[UIImage imageNamed:@"settings_selected.png"]
-//              withFinishedUnselectedImage:[UIImage imageNamed:@"settings.png"]];
-//    [tabBarItem5 setFinishedSelectedImage:[UIImage imageNamed:@"settings_selected.png"]
-//              withFinishedUnselectedImage:[UIImage imageNamed:@"settings.png"]];
-
+    //    [tabBarItem1 setFinishedSelectedImage:[UIImage imageNamed:@"home_selected.png"]
+    //              withFinishedUnselectedImage:[UIImage imageNamed:@"home.png"]];
+    //    [tabBarItem2 setFinishedSelectedImage:[UIImage imageNamed:@"maps_selected.png"]
+    //              withFinishedUnselectedImage:[UIImage imageNamed:@"maps.png"]];
+    //    [tabBarItem3 setFinishedSelectedImage:[UIImage imageNamed:@"myplan_selected.png"]
+    //              withFinishedUnselectedImage:[UIImage imageNamed:@"myplan.png"]];
+    //    [tabBarItem4 setFinishedSelectedImage:[UIImage imageNamed:@"settings_selected.png"]
+    //              withFinishedUnselectedImage:[UIImage imageNamed:@"settings.png"]];
+    //    [tabBarItem5 setFinishedSelectedImage:[UIImage imageNamed:@"settings_selected.png"]
+    //              withFinishedUnselectedImage:[UIImage imageNamed:@"settings.png"]];
+    
     UIImage* tabBarBackground = [UIImage imageNamed:@"tabbar_bg.png"];
     [[UITabBar appearance] setBackgroundImage:tabBarBackground];
     [[UITabBar appearance] setSelectionIndicatorImage:[UIImage imageNamed:@"tabbar_selected_bg.png"]];
@@ -116,14 +128,6 @@ static NSString* szClientSecret = @"ea13692f9c960a37db0086ff87e56e01";
     self.window.backgroundColor = [UIColor whiteColor];
     self.window.rootViewController = self.tabBarController;
     [self.window makeKeyAndVisible];
-    
-    [[GlobeModel sharedSingleton] initUUIDIfNeeded];
-    
-    self.myInitInterface = [[[InitInterface alloc] init] autorelease];
-    [self.myInitInterface getInitParam];
-    
-    
-    return YES;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
@@ -163,5 +167,17 @@ static NSString* szClientSecret = @"ea13692f9c960a37db0086ff87e56e01";
     
     [super dealloc];
 }
+
+#pragma mark - InitInterfaceDelegate <NSObject>
+-(void)getInitParamDidFinished
+{
+    [self initWindow];
+}
+
+-(void)getInitParamDidFailed:(NSString *)errorMsg{
+    NSLog(@"%@",errorMsg);
+    [self initWindow];
+}
+
 
 @end

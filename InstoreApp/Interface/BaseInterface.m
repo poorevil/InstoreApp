@@ -14,17 +14,28 @@
 #import "RuntimeModel.h"
 
 #import "NSString+Crypto.h"
+#import "JSONKit.h"
 
 @interface BaseInterface()
 
 @property (nonatomic,strong) NSMutableDictionary *requestArgs;
 
+//@property (nonatomic, assign) NSInteger retryInitTimes;//init接口重试次数
 @end
 
 @implementation BaseInterface
 
 @synthesize baseDelegate = _baseDelegate , request = _request;
 @synthesize interfaceUrl = _interfaceUrl , headers = _headers , bodys = _bodys;
+
+//-(id)init
+//{
+//    if (self = [super init]) {
+//        self.retryInitTimes = 0;
+//    }
+//    
+//    return self;
+//}
 
 -(void)connect {
     if (self.interfaceUrl) {
@@ -34,6 +45,13 @@
 //        [self.request setDownloadCache:[InterfaceCache sharedCache]];
 //        [self.request setCachePolicy:ASIAskServerIfModifiedWhenStaleCachePolicy | ASIFallbackToCacheIfLoadFailsCachePolicy];
 //        [self.request setCacheStoragePolicy:ASICachePermanentlyCacheStoragePolicy];
+
+//        if ([self.interfaceUrl rangeOfString:@"init/"].location == NSNotFound) {
+            if (![GlobeModel sharedSingleton].runtimeModel.mallCode) {//TODO:暂时用mallCode判断是否需要调用init接口
+                [self fetchInitParam];
+                return;
+            }
+//        }
         
         [self.request setTimeOutSeconds:15];
 
@@ -89,6 +107,41 @@
     }
 }
 
+-(void)fetchInitParam
+{
+    [[GlobeModel sharedSingleton] initUUIDIfNeeded];
+    __block ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@init/%@?userid=%@",
+                                                                                   BASE_INTERFACE_DOMAIN,
+                                                                                   MALL_CODE,
+                                                                                   [GlobeModel sharedSingleton].userId]]];
+    [request setCompletionBlock:^{
+        id jsonObj = [request.responseString objectFromJSONString];
+        
+        if (jsonObj) {
+            @try {
+                if ([jsonObj objectForKey:@"errorCode"]) {
+                    [self requestFailed:request];
+                    return;
+                }
+                
+                GlobeModel *globe = [GlobeModel sharedSingleton];
+                globe.runtimeModel = [[RuntimeModel alloc] initWithJsonMap:jsonObj];
+                
+                [self connect];
+            }
+            @catch (NSException *exception) {
+                NSLog(@"%@",exception.reason);
+                
+                [self requestFailed:request];
+            }
+        }
+    }];
+    [request setFailedBlock:^{
+        [self requestFailed:request];
+    }];
+    [request startAsynchronous];
+}
+
 #pragma mark - ASIHttpRequestDelegate
 //- (void)request:(ASIHTTPRequest *)request didReceiveResponseHeaders:(NSDictionary *)responseHeaders {
 //    responseHeaders = [responseHeaders allKeytoLowerCase];
@@ -111,6 +164,9 @@
 
 -(void)requestFinished:(ASIHTTPRequest *)request {
     if (request.responseStatusCode >= 200 && request.responseStatusCode < 300) {
+//        NSString *jsonStr = [[NSString alloc] initWithData:[request responseData] encoding:NSUTF8StringEncoding];
+//        NSLog(@"=================%@",jsonStr);
+        
         [self.baseDelegate parseResult:request];
     }else{
         [self requestFailed:request];
@@ -148,9 +204,7 @@
     [self.requestArgs setObject:[GlobeModel sharedSingleton].userId forKey:@"userid"];
     [self.requestArgs setObject:[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"] forKey:@"v"];
     
-//    if ([self.interfaceUrl rangeOfString:@"init/"].location == NSNotFound) {
-        [self.requestArgs setObject:[self genSignString] forKey:@"sign"];
-//    }
+    [self.requestArgs setObject:[self genSignString] forKey:@"sign"];
 }
 
 -(NSString *)genSignString
@@ -166,7 +220,7 @@
         [string2Sign appendString:[NSString stringWithFormat:@"%@%@",key,[self.requestArgs objectForKey:key]]];
     }
     
-    NSString *secretKey = [[GlobeModel sharedSingleton] runtimeModel].secretKey?[[GlobeModel sharedSingleton] runtimeModel].secretKey:@" ";
+    NSString *secretKey = [[GlobeModel sharedSingleton] runtimeModel].secretKey?[[GlobeModel sharedSingleton] runtimeModel].secretKey:@"joyx";
     
     [string2Sign insertString:secretKey atIndex:0];
     [string2Sign appendString:MALL_CODE];
