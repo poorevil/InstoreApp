@@ -18,7 +18,7 @@
 {
     if (self = [super init]) {
         if (jsonMap) {
-            self.cid = [[jsonMap objectForKey:@"itemId"] integerValue];
+            self.cid = [[jsonMap objectForKey:@"id"] integerValue];
             self.cName = [jsonMap objectForKey:@"title"];
             
             self.imageUrl = [jsonMap objectForKey:@"image"];

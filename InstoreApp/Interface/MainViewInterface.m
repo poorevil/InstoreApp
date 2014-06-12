@@ -50,16 +50,19 @@
                     if ([dataSource isEqualToString:@"Category"]) {
                         for(NSDictionary *dict in dataList){
                             CategoryModel *cm = [[[CategoryModel alloc] initWithJsonMap:dict] autorelease];
+                            cm.cid = [dict objectForKey:@"itemId"]?[[dict objectForKey:@"itemId"] integerValue]:0;
                             [resultDataList addObject:cm];
                         }
                     }else if ([dataSource isEqualToString:@"Store"]) {
                         for(NSDictionary *dict in dataList){
                             StoreModel *sm = [[[StoreModel alloc] initWithJsonMap:dict] autorelease];
+                            sm.sid = [dict objectForKey:@"itemId"]?[[dict objectForKey:@"itemId"] integerValue]:0;
                             [resultDataList addObject:sm];
                         }
                     }else{
                         for(NSDictionary *dict in dataList){
                             CouponModel *cm = [[[CouponModel alloc] initWithJsonMap:dict] autorelease];
+                            cm.cid = [dict objectForKey:@"itemId"]?[[dict objectForKey:@"itemId"] integerValue]:0;
                             [resultDataList addObject:cm];
                             
                         }
