@@ -69,7 +69,7 @@
     EGOImageView *imageView = [[[EGOImageView alloc] initWithFrame:CGRectMake(0, 0, 60, 60)] autorelease];
     imageView.contentMode = UIViewContentModeScaleAspectFill;
     imageView.clipsToBounds = YES;
-    imageView.imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@/100*100.png",cm.imageUrl]];
+    imageView.imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@/150*150.png",cm.imageUrl]];
     [tileView addSubview:imageView];
     
     UILabel *titleLabel = [[[UILabel alloc] initWithFrame:CGRectMake(68, 10, 100, 21)] autorelease];

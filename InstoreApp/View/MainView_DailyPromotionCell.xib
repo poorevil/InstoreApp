@@ -143,6 +143,9 @@
                 <outlet property="titleLabel_1" destination="gKW-Td-D5Y" id="p1f-HY-RvC"/>
                 <outlet property="titleLabel_2" destination="kOb-zm-RpV" id="D3X-yv-6cF"/>
                 <outlet property="titleLabel_3" destination="t6a-yd-Oca" id="LDC-ff-OTV"/>
+                <outlet property="typeLabel_1" destination="PfQ-rR-IdQ" id="Ogv-7N-5VJ"/>
+                <outlet property="typeLabel_2" destination="lg9-uw-kEe" id="aoG-sI-ZdM"/>
+                <outlet property="typeLabel_3" destination="ogi-Dr-slR" id="3qF-PV-JEh"/>
             </connections>
         </tableViewCell>
     </objects>

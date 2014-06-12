@@ -40,7 +40,7 @@
         self.titleLabel_1.text = cm.title;
         self.imageView_1.imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@/300*300.png",cm.imageUrl]];
         self.sourceLabel_1.text = cm.source;
-        self.priceLabel_1.text = cm.price;
+        self.priceLabel_1.text = [NSString stringWithFormat:@"￥%@",cm.price];
         self.oldPriceLabel_1.text = cm.oldPrice;
         self.collectLabel_1.text = [NSString stringWithFormat:@"%d人参加",cm.collectCount];
         
@@ -48,7 +48,7 @@
         self.titleLabel_2.text = cm.title;
         self.imageView_2.imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@/300*300.png",cm.imageUrl]];
         self.sourceLabel_2.text = cm.source;
-        self.priceLabel_2.text = cm.price;
+        self.priceLabel_2.text = [NSString stringWithFormat:@"￥%@",cm.price];
         self.oldPriceLabel_2.text = cm.oldPrice;
         self.collectLabel_2.text = [NSString stringWithFormat:@"%d人参加",cm.collectCount];
     }

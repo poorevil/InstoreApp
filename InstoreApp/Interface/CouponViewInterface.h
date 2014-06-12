@@ -10,7 +10,7 @@
 
 @protocol CouponViewInterfaceDelegate <NSObject>
 
-- (void)getCouponViewListDidFinished:(NSDictionary *)resultList
+- (void)getCouponViewListDidFinished:(NSDictionary *)resultDict
                           focusCount:(NSInteger)focusCount
                           totalCount:(NSInteger)totalCount
                          currentPage:(NSInteger)currentPage;

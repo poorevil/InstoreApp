@@ -10,7 +10,8 @@
 #import "MainViewController.h"
 #import "MeViewController.h"
 #import "ShopViewController.h"
-#import "YouhuiViewController.h"
+//#import "YouhuiViewController.h"
+#import "CouponViewController.h"
 #import "ServiceViewController.h"
 #import "CustomNavigationController.h"
 
@@ -65,7 +66,7 @@ static NSString* szClientSecret = @"ea13692f9c960a37db0086ff87e56e01";
     CustomNavigationController *nav1 = [[[CustomNavigationController alloc] initWithRootViewController:mainViewVC]autorelease];
     nav1.title = @"首页";
     
-    YouhuiViewController *youhuiVC = [[[YouhuiViewController alloc] initWithNibName:@"YouhuiViewController"
+    CouponViewController *youhuiVC = [[[CouponViewController alloc] initWithNibName:@"CouponViewController"
                                                                              bundle:nil] autorelease];
     CustomNavigationController *nav2 = [[[CustomNavigationController alloc] initWithRootViewController:youhuiVC] autorelease];
     nav2.title = @"优惠劵";

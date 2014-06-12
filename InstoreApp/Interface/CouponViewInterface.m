@@ -35,7 +35,7 @@
         NSInteger totalCount = 0;
         NSInteger currentPage = 0;
         NSInteger focusCount = 0;
-        if (jsonObj && [[jsonObj objectForKey:@"totalCount"] integerValue] > 0) {
+        if (jsonObj) {
             totalCount = [[jsonObj objectForKey:@"totalCount"] integerValue];
             currentPage = [[jsonObj objectForKey:@"currentPage"] integerValue];
             focusCount = [[jsonObj objectForKey:@"focusCount"] integerValue];
@@ -50,18 +50,24 @@
                                         @"categoryTitle":@"我关注的品牌优惠",
                                         @"categoryId":@"0"}
                                forKey:@"list"];
+            }else{
+                [resultDict setObject:@{@"itemlist":@[],
+                                        @"categoryTitle":@"我关注的品牌优惠",
+                                        @"categoryId":@"0"}
+                               forKey:@"list"];
             }
             //可能感兴趣的，最多6条
             NSArray *recommendArray = [jsonObj objectForKey:@"list_recommend"];
             if (recommendArray) {
                 NSMutableArray *resultList = [NSMutableArray array];
-                for (NSDictionary *dict in listArray) {
+                for (NSDictionary *dict in recommendArray) {
                     [resultList addObject:[[[CouponModel alloc] initWithJsonMap:dict] autorelease]];
                 }
                 [resultDict setObject:@{@"itemlist":resultList,
                                         @"categoryTitle":@"你可能感兴趣的优惠",
                                         @"categoryId":@"0"}
                                forKey:@"list_recommend"];
+                [otherGroupKeysOrder addObject:@"list_recommend"];
             }
             //按分类显示优惠，每组最多4条
             NSArray *categoryArray = [jsonObj objectForKey:@"list_category"];
