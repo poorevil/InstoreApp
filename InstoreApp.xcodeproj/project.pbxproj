@@ -391,6 +391,7 @@
 		C1D8701518ED5B1D0061F799 /* ShopDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1D8701318ED5B1D0061F799 /* ShopDetailViewController.xib */; };
 		C1D8701818ED5CE00061F799 /* ShopDetailHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = C1D8701718ED5CE00061F799 /* ShopDetailHeaderView.m */; };
 		C1E094E419485EB000AA814B /* MainView_StoreCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1E094E319485EB000AA814B /* MainView_StoreCell.xib */; };
+		C1E094E61949504B00AA814B /* MainView_CategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1E094E51949504B00AA814B /* MainView_CategoryCell.xib */; };
 		FA4E65B819357B21005022E2 /* UMSocialLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FA4E655019357B21005022E2 /* UMSocialLocalizable.strings */; };
 		FA4E65B919357B21005022E2 /* libUMSocial_Sdk_3.3.8.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FA4E655E19357B21005022E2 /* libUMSocial_Sdk_3.3.8.a */; };
 		FA4E65BA19357B21005022E2 /* UMSCommentDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA4E656019357B21005022E2 /* UMSCommentDetailController.xib */; };
@@ -1109,6 +1110,7 @@
 		C1D8701618ED5CE00061F799 /* ShopDetailHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopDetailHeaderView.h; sourceTree = "<group>"; };
 		C1D8701718ED5CE00061F799 /* ShopDetailHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopDetailHeaderView.m; sourceTree = "<group>"; };
 		C1E094E319485EB000AA814B /* MainView_StoreCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainView_StoreCell.xib; sourceTree = "<group>"; };
+		C1E094E51949504B00AA814B /* MainView_CategoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainView_CategoryCell.xib; sourceTree = "<group>"; };
 		FA4E655119357B21005022E2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/UMSocialLocalizable.strings; sourceTree = "<group>"; };
 		FA4E655319357B21005022E2 /* UMSocial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSocial.h; sourceTree = "<group>"; };
 		FA4E655419357B21005022E2 /* UMSocialAccountManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSocialAccountManager.h; sourceTree = "<group>"; };
@@ -1587,6 +1589,7 @@
 				03650F5A1942FF0E00016289 /* MainView_RestaurantCell.xib */,
 				03650F5D194540E200016289 /* MainView_CategoryCell.h */,
 				03650F5E194540E200016289 /* MainView_CategoryCell.m */,
+				C1E094E51949504B00AA814B /* MainView_CategoryCell.xib */,
 				03650F60194540F900016289 /* MainView_StoreCell.h */,
 				03650F61194540F900016289 /* MainView_StoreCell.m */,
 				C1E094E319485EB000AA814B /* MainView_StoreCell.xib */,
@@ -2752,6 +2755,7 @@
 				4EF090D518FB52FD00ABFE7D /* index-mid-btn-quick-pressed@2x.png in Resources */,
 				4EF090FC18FB52FD00ABFE7D /* share-icon-friend@2x.png in Resources */,
 				4E9608D618E9CA5D00418798 /* ms2.jpg in Resources */,
+				C1E094E61949504B00AA814B /* MainView_CategoryCell.xib in Resources */,
 				4EF0913218FC1E4600ABFE7D /* miaosha_1.jpg in Resources */,
 				4EF090FA18FB52FD00ABFE7D /* service-icon-plane@2x.png in Resources */,
 				4EF090D218FB52FD00ABFE7D /* index-btn-map@2x.png in Resources */,

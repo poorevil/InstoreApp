@@ -7,9 +7,9 @@
 //
 
 #import "MainView_StoreCell.h"
-
-#import "StoreModel.h"
 #import "EGOImageView.h"
+#import "StoreModel.h"
+
 
 @implementation MainView_StoreCell
 
@@ -41,43 +41,33 @@
     [_dataList release];
     _dataList = [dataList retain];
     
-    CGFloat lastY = 0;
+    CGPoint lastPoint = CGPointMake(0, 0);
     for (NSInteger i = 0; i < self.dataList.count; i++) {
         StoreModel *sm = [self.dataList objectAtIndex:i];
         
-        UIView *tileView = [self createTileView:sm];
-        CGRect frame = tileView.frame;
-        if (i % 2 == 0) {
-            frame.origin.x = self.frame.size.width/2;
+        EGOImageView *imageView = [[[EGOImageView alloc] initWithFrame:CGRectMake(0, 0, 56, 56)] autorelease];
+        imageView.contentMode = UIViewContentModeScaleAspectFill;
+        imageView.layer.cornerRadius = 4;
+        imageView.layer.borderWidth = 0.4f;
+        imageView.layer.borderColor = [UIColor lightGrayColor].CGColor;
+        imageView.clipsToBounds = YES;
+        imageView.imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@/100*100.png",sm.imageUrl]];
+        
+        CGRect frame = imageView.frame ;
+        frame.origin = lastPoint;
+        
+        if (i != 0 && i % 4 == 0) {
+            lastPoint.y = 56 + 10;
+            lastPoint.x = 0;
         }else{
-            frame.origin.x = 0;
+            lastPoint.x += 56 + 5;
         }
-        frame.origin.y = lastY + frame.size.height;
         
-        tileView.frame = frame;
+        imageView.frame = frame;
         
-        [self.parentView addSubview:tileView];
+        [self.parentView addSubview:imageView];
     }
 }
 
--(UIView *)createTileView:(StoreModel *)sm
-{
-    UIView *tileView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, (self.frame.size.width-2)/2, 50)] autorelease];
-    EGOImageView *imageView = [[[EGOImageView alloc] initWithFrame:CGRectMake(0, 0, 50, 50)] autorelease];
-    imageView.imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@/100*100.png",sm.imageUrl]];
-    [tileView addSubview:imageView];
-    
-    UILabel *titleLabel = [[[UILabel alloc] initWithFrame:CGRectMake(70, 20, 50, 21)] autorelease];
-    titleLabel.text = sm.title;
-    [tileView addSubview:titleLabel];
-    
-    UILabel *subTitleLabel = [[[UILabel alloc] initWithFrame:CGRectMake(70, 60, 50, 21)] autorelease];
-    subTitleLabel.text = @"blablabla";
-    [tileView addSubview:subTitleLabel];
-    
-    //TODO:tap action
-    
-    return tileView;
-}
 
 @end

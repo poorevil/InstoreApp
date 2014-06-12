@@ -13,6 +13,7 @@
 @property (nonatomic, retain) IBOutlet UILabel *titleLabel;
 @property (nonatomic, retain) NSArray *dataList;
 
--(IBAction)moreBtnAction:(id)sender;
+@property (nonatomic, retain) IBOutlet UIView *parentView;
+
 
 @end

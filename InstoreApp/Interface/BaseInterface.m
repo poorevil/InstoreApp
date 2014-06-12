@@ -110,10 +110,17 @@
 -(void)fetchInitParam
 {
     [[GlobeModel sharedSingleton] initUUIDIfNeeded];
-    __block ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@init/%@?userid=%@",
+    
+    [self.requestArgs setObject:[NSString stringWithFormat:@"%ld",(long)[[NSDate date] timeIntervalSince1970]] forKey:@"timestamp"];
+    [self.requestArgs setObject:[GlobeModel sharedSingleton].userId forKey:@"userid"];
+    [self.requestArgs setObject:[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"] forKey:@"v"];
+    
+    __block ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@init/%@?userid=%@&v=%@&timestamp=%@",
                                                                                    BASE_INTERFACE_DOMAIN,
                                                                                    MALL_CODE,
-                                                                                   [GlobeModel sharedSingleton].userId]]];
+                                                                                   [GlobeModel sharedSingleton].userId,
+                                                                      [NSString stringWithFormat:@"%ld",(long)[[NSDate date] timeIntervalSince1970]],
+                                                                      [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"]]]];
     [request setCompletionBlock:^{
         id jsonObj = [request.responseString objectFromJSONString];
         

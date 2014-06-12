@@ -19,15 +19,12 @@
 #import "MainViewInterface.h"
 #import "MainView_CategoryCell.h"
 #import "MainView_StoreCell.h"
-#import "InitInterface.h"
 
-@interface MainViewController () <ZXingDelegate, MainViewInterfaceDelegate, InitInterfaceDelegate>
+@interface MainViewController () <ZXingDelegate, MainViewInterfaceDelegate>
 @property (nonatomic,strong) CycleScrollView *lunboView;
 
 @property (nonatomic, retain) NSArray *itemList;
 @property (nonatomic, retain) MainViewInterface *mainViewInterface;
-
-@property (nonatomic,strong) InitInterface *myInitInterface;
 
 @end
 
@@ -55,9 +52,6 @@
     self.mainViewInterface.delegate = self;
     [self.mainViewInterface getMainViewList];
     
-//    self.myInitInterface = [[[InitInterface alloc] init] autorelease];
-//    self.myInitInterface.delegate = self;
-//    [self.myInitInterface getInitParam];
 }
 
 - (void)didReceiveMemoryWarning
@@ -174,22 +168,12 @@
             cell = [[[NSBundle mainBundle]
                      loadNibNamed:cellIdentifier owner:self options:nil] objectAtIndex:0];
         }else{
-//            if ([cellIdentifier isEqualToString:@"Store"]) {
-//                cell = [[MainView_StoreCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-//                //TODO:
-//            }else
-            if ([cellIdentifier isEqualToString:@"Category"]) {
-                cell = [[MainView_CategoryCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-                //TODO:
-            }else{
-            
-                NSDictionary *dict = [self.itemList objectAtIndex:indexPath.row-1];
-                cell = [[[NSBundle mainBundle]
-                         loadNibNamed:[NSString stringWithFormat:@"MainView_%@Cell",cellIdentifier]
-                         owner:self options:nil] objectAtIndex:0];
-                if ([cell respondsToSelector:@selector(titleLabel)]) {
-                    [cell titleLabel].text = [dict objectForKey:@"title"];
-                }
+            NSDictionary *dict = [self.itemList objectAtIndex:indexPath.row-1];
+            cell = [[[NSBundle mainBundle]
+                     loadNibNamed:[NSString stringWithFormat:@"MainView_%@Cell",cellIdentifier]
+                     owner:self options:nil] objectAtIndex:0];
+            if ([cell respondsToSelector:@selector(titleLabel)]) {
+                [cell titleLabel].text = [dict objectForKey:@"title"];
             }
         }
     }
@@ -224,14 +208,10 @@
         }else if ([cellIdentifier isEqualToString:@"Restaurant"]) {
             return 223;
         }else if ([cellIdentifier isEqualToString:@"Store"]) {
-            return 400;
-        }
-        
-        //TODO:高度
-    //    else if ([cellIdentifier isEqualToString:@"Category"]) {
-    //        return 300;
-    //    }
-        else{
+            return 184;
+        }else if ([cellIdentifier isEqualToString:@"Category"]) {
+            return 302;
+        }else{
             return 10;
         }
     }
