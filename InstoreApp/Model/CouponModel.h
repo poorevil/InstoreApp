@@ -21,15 +21,26 @@
 
 @property (nonatomic, assign) NSInteger collectCount;//参与人数
 
+@property (nonatomic, retain) NSDate *startTime;
+@property (nonatomic, retain) NSDate *endTime;
+@property (nonatomic, retain) NSString *descriptionStr;
+@property (nonatomic, retain) NSMutableArray *images;
+
+//----
+@property (nonatomic, retain) NSString *hotTag;
+@property (nonatomic, retain) NSString *shortTitle;//短标题
+@property (nonatomic, assign) NSInteger focusCount;//收藏数
+//@property (nonatomic, assign) NSInteger collectCount;//TODO:下载数
+@property (nonatomic, assign) BOOL isFocus;//是否已收藏，显示红心
+
 //团购
 @property (nonatomic, retain) NSString *source;//团购来源
 
 
-@property (nonatomic,strong) NSDate *startTime;
-@property (nonatomic,strong) NSDate *endTime;
+
 ////@property (nonatomic,assign) NSInteger cid;
 //
-//@property (nonatomic,assign) NSInteger collectCount;//下载数
+
 ////@property (nonatomic,strong) NSString *title;
 ////@property (nonatomic,strong) NSString *imageUrl;
 //@property (nonatomic,assign) CGFloat imageWidth;
@@ -38,18 +49,17 @@
 //@property (nonatomic,assign) NSInteger type;
 //
 //@property (nonatomic,retain) NSDate *date;
-@property (nonatomic,retain) NSString *descriptionStr;
-@property (nonatomic,retain) NSMutableArray *images;
+
 //
 //@property (nonatomic,assign) NSInteger collectType;//下载方式
 //@property (nonatomic,assign) NSInteger collectLimit;//限量
 //@property (nonatomic,assign) NSInteger collectRole;
 //@property (nonatomic,assign) NSInteger userCollectCount;//我的下载次数
 //
-//@property (nonatomic,strong) NSString *hotTag;
+
 //@property (nonatomic,strong) NSString *instruction;//优惠券使用说明
 ////@property (nonatomic,assign) NSInteger collectRole;//下载规则
-//@property (nonatomic,assign) NSInteger focusCount;//关注数
+
 //
 //@property (nonatomic,strong) NSString *couponCode;//优惠券代码   // ('-1', '未知'),('0', '未消费'), ('1', '已消费')
 //@property (nonatomic,assign) NSInteger couponStatus;//优惠券状态

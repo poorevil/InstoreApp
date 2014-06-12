@@ -392,6 +392,9 @@
 		C1D8701818ED5CE00061F799 /* ShopDetailHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = C1D8701718ED5CE00061F799 /* ShopDetailHeaderView.m */; };
 		C1E094E419485EB000AA814B /* MainView_StoreCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1E094E319485EB000AA814B /* MainView_StoreCell.xib */; };
 		C1E094E61949504B00AA814B /* MainView_CategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1E094E51949504B00AA814B /* MainView_CategoryCell.xib */; };
+		C1E094EA194993B400AA814B /* CouponViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E094E8194993B400AA814B /* CouponViewController.m */; };
+		C1E094EB194993B400AA814B /* CouponViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1E094E9194993B400AA814B /* CouponViewController.xib */; };
+		C1E094EE194996F600AA814B /* CouponViewInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E094ED194996F600AA814B /* CouponViewInterface.m */; };
 		FA4E65B819357B21005022E2 /* UMSocialLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FA4E655019357B21005022E2 /* UMSocialLocalizable.strings */; };
 		FA4E65B919357B21005022E2 /* libUMSocial_Sdk_3.3.8.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FA4E655E19357B21005022E2 /* libUMSocial_Sdk_3.3.8.a */; };
 		FA4E65BA19357B21005022E2 /* UMSCommentDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA4E656019357B21005022E2 /* UMSCommentDetailController.xib */; };
@@ -1111,6 +1114,11 @@
 		C1D8701718ED5CE00061F799 /* ShopDetailHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopDetailHeaderView.m; sourceTree = "<group>"; };
 		C1E094E319485EB000AA814B /* MainView_StoreCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainView_StoreCell.xib; sourceTree = "<group>"; };
 		C1E094E51949504B00AA814B /* MainView_CategoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainView_CategoryCell.xib; sourceTree = "<group>"; };
+		C1E094E7194993B400AA814B /* CouponViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CouponViewController.h; sourceTree = "<group>"; };
+		C1E094E8194993B400AA814B /* CouponViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CouponViewController.m; sourceTree = "<group>"; };
+		C1E094E9194993B400AA814B /* CouponViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CouponViewController.xib; sourceTree = "<group>"; };
+		C1E094EC194996F600AA814B /* CouponViewInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CouponViewInterface.h; sourceTree = "<group>"; };
+		C1E094ED194996F600AA814B /* CouponViewInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CouponViewInterface.m; sourceTree = "<group>"; };
 		FA4E655119357B21005022E2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/UMSocialLocalizable.strings; sourceTree = "<group>"; };
 		FA4E655319357B21005022E2 /* UMSocial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSocial.h; sourceTree = "<group>"; };
 		FA4E655419357B21005022E2 /* UMSocialAccountManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSocialAccountManager.h; sourceTree = "<group>"; };
@@ -1551,6 +1559,8 @@
 				C195321C191CC6A200D3BFA8 /* BindPhoneInterface.m */,
 				03650F631945562700016289 /* MainViewInterface.h */,
 				03650F641945562700016289 /* MainViewInterface.m */,
+				C1E094EC194996F600AA814B /* CouponViewInterface.h */,
+				C1E094ED194996F600AA814B /* CouponViewInterface.m */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
@@ -1762,6 +1772,9 @@
 				4E2C6DEE18D75CC400DF3772 /* MeViewController.h */,
 				4E2C6DEF18D75CC400DF3772 /* MeViewController.m */,
 				4E2C6DF018D75CC400DF3772 /* MeViewController.xib */,
+				C1E094E7194993B400AA814B /* CouponViewController.h */,
+				C1E094E8194993B400AA814B /* CouponViewController.m */,
+				C1E094E9194993B400AA814B /* CouponViewController.xib */,
 				4E2C6DF318D75CD600DF3772 /* YouhuiViewController.h */,
 				4E2C6DF418D75CD600DF3772 /* YouhuiViewController.m */,
 				4E2C6DF518D75CD600DF3772 /* YouhuiViewController.xib */,
@@ -2568,6 +2581,7 @@
 				03650F461942D9FE00016289 /* MainView_DailyPromotionCell.xib in Resources */,
 				4EF090DF18FB52FD00ABFE7D /* my-icon-more@2x.png in Resources */,
 				FA4E65C419357B21005022E2 /* UMSocialAccountManager.html in Resources */,
+				C1E094EB194993B400AA814B /* CouponViewController.xib in Resources */,
 				4EF0907B18FB52CE00ABFE7D /* index-btn-map.png in Resources */,
 				FA4E65DE19357B21005022E2 /* UMSocialSnsService.html in Resources */,
 				4EF090D418FB52FD00ABFE7D /* index-btn-wifi@2x.png in Resources */,
@@ -2895,6 +2909,7 @@
 				03573AC319055B7700A11A33 /* IndoorMapViewController.m in Sources */,
 				4E9608CA18E9BD4300418798 /* CycleScrollView.m in Sources */,
 				4E9608B418E7B1B600418798 /* ServiceViewCell.m in Sources */,
+				C1E094EA194993B400AA814B /* CouponViewController.m in Sources */,
 				0312034A19193BD800077E25 /* FloorInterface.m in Sources */,
 				0312033B1917DE8000077E25 /* ServiceModel.m in Sources */,
 				4ECBF70B18F4449E003963E1 /* BindPhoneViewController.m in Sources */,
@@ -2996,6 +3011,7 @@
 				4E9608A318E48D6700418798 /* EGORefreshTableHeaderView.m in Sources */,
 				C1A9C8BD194164C600DD420F /* ASIInputStream.m in Sources */,
 				031203321917D7EA00077E25 /* CouponDownloadInterface.m in Sources */,
+				C1E094EE194996F600AA814B /* CouponViewInterface.m in Sources */,
 				C1A9C887193F130300DD420F /* BaseImageView.m in Sources */,
 				4E96087718E4791000418798 /* CustomNavigationController.m in Sources */,
 				C1D8700F18EC0CAB0061F799 /* CouponDetailViewController.m in Sources */,

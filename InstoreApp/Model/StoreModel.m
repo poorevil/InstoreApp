@@ -22,11 +22,8 @@
             self.title = [jsonMap objectForKey:@"title"];
             self.imageUrl = [jsonMap objectForKey:@"image"];
             self.itemType = [[jsonMap objectForKey:@"itemType"] integerValue];
-            self.sid = [[jsonMap objectForKey:@"itemId"] integerValue];
+            self.sid = [[jsonMap objectForKey:@"id"] integerValue];
             self.appCategory = [jsonMap objectForKey:@"appCategory"];
-            
-            
-            
             
             
             
