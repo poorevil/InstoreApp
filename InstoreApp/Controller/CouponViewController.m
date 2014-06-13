@@ -64,7 +64,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSInteger numberOfRows = ceil((float)[[self.itemListDict objectForKey:@"itemlist"] count] / 2);
+    NSInteger numberOfRows = ceil((float)[[self.itemListDict objectForKey:@"itemlist"] count] / 2)+1;
     
     if (self.listTotalCount == [[self.itemListDict objectForKey:@"itemlist"] count]) {
         for (NSString *key in self.otherGroupKeysOrder) {
