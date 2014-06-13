@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "MainView_BaseCell.h"
 #import "EGOImageView.h"
+#import "UILabelStrikeThrough.h"
 
 @interface MainView_GroupBuyingCell : MainView_BaseCell
 
@@ -23,11 +24,11 @@
 @property (nonatomic, retain) IBOutlet UILabel *sourceLabel_2;
 
 @property (nonatomic, retain) IBOutlet UILabel *priceLabel_1;
-@property (nonatomic, retain) IBOutlet UILabel *oldPriceLabel_1;
+@property (nonatomic, retain) IBOutlet UILabelStrikeThrough *oldPriceLabel_1;
 @property (nonatomic, retain) IBOutlet UILabel *collectLabel_1;
 
 @property (nonatomic, retain) IBOutlet UILabel *priceLabel_2;
-@property (nonatomic, retain) IBOutlet UILabel *oldPriceLabel_2;
+@property (nonatomic, retain) IBOutlet UILabelStrikeThrough *oldPriceLabel_2;
 @property (nonatomic, retain) IBOutlet UILabel *collectLabel_2;
 
 -(IBAction)moreBtnAction:(id)sender;

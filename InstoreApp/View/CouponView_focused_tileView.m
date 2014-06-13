@@ -48,9 +48,9 @@
         self.endTimeLabel.text = [cm.endTime toDateString];//TODO:date
         UIImage *favorIcon = nil;
         if (cm.isFocus) {
-            favorIcon = [UIImage imageNamed:@"favor_yes_btn"];
+            favorIcon = [UIImage imageNamed:@"cellview_favor_yes_btn"];
         }else{
-            favorIcon = [UIImage imageNamed:@"favor_no_btn"];
+            favorIcon = [UIImage imageNamed:@"cellview_favor_no_btn"];
         }
         [self setupBtn:self.favorBtn
                  title:[NSString stringWithFormat:@"%d",cm.focusCount]
@@ -59,7 +59,7 @@
         [self setupBtn:self.shareBtn
                  title:[NSString stringWithFormat:@"%d",0]
                  state:UIControlStateNormal
-                  icon:[UIImage imageNamed:@"favor_no_btn"]];
+                  icon:[UIImage imageNamed:@"cellview_share_btn"]];
         
     }
 }

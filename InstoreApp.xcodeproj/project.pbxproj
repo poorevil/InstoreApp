@@ -405,6 +405,12 @@
 		C1E094EA194993B400AA814B /* CouponViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E094E8194993B400AA814B /* CouponViewController.m */; };
 		C1E094EB194993B400AA814B /* CouponViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1E094E9194993B400AA814B /* CouponViewController.xib */; };
 		C1E094EE194996F600AA814B /* CouponViewInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E094ED194996F600AA814B /* CouponViewInterface.m */; };
+		C1E094F3194A9FF900AA814B /* UILabelStrikeThrough.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E094F2194A9FF900AA814B /* UILabelStrikeThrough.m */; };
+		C1E094FB194AA92000AA814B /* cellview_favor_no_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C1E094F5194AA92000AA814B /* cellview_favor_no_btn@2x.png */; };
+		C1E094FC194AA92000AA814B /* cellview_share_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C1E094F6194AA92000AA814B /* cellview_share_btn@2x.png */; };
+		C1E094FD194AA92000AA814B /* nav_favor_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C1E094F7194AA92000AA814B /* nav_favor_btn@2x.png */; };
+		C1E094FE194AA92000AA814B /* cellview_favor_yes_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C1E094F8194AA92000AA814B /* cellview_favor_yes_btn@2x.png */; };
+		C1E094FF194AA92000AA814B /* down_arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C1E094F9194AA92000AA814B /* down_arrow@2x.png */; };
 		FA4E65B819357B21005022E2 /* UMSocialLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FA4E655019357B21005022E2 /* UMSocialLocalizable.strings */; };
 		FA4E65B919357B21005022E2 /* libUMSocial_Sdk_3.3.8.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FA4E655E19357B21005022E2 /* libUMSocial_Sdk_3.3.8.a */; };
 		FA4E65BA19357B21005022E2 /* UMSCommentDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA4E656019357B21005022E2 /* UMSCommentDetailController.xib */; };
@@ -1143,6 +1149,13 @@
 		C1E094E9194993B400AA814B /* CouponViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CouponViewController.xib; sourceTree = "<group>"; };
 		C1E094EC194996F600AA814B /* CouponViewInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CouponViewInterface.h; sourceTree = "<group>"; };
 		C1E094ED194996F600AA814B /* CouponViewInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CouponViewInterface.m; sourceTree = "<group>"; };
+		C1E094F1194A9FF900AA814B /* UILabelStrikeThrough.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UILabelStrikeThrough.h; sourceTree = "<group>"; };
+		C1E094F2194A9FF900AA814B /* UILabelStrikeThrough.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UILabelStrikeThrough.m; sourceTree = "<group>"; };
+		C1E094F5194AA92000AA814B /* cellview_favor_no_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cellview_favor_no_btn@2x.png"; sourceTree = "<group>"; };
+		C1E094F6194AA92000AA814B /* cellview_share_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cellview_share_btn@2x.png"; sourceTree = "<group>"; };
+		C1E094F7194AA92000AA814B /* nav_favor_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav_favor_btn@2x.png"; sourceTree = "<group>"; };
+		C1E094F8194AA92000AA814B /* cellview_favor_yes_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cellview_favor_yes_btn@2x.png"; sourceTree = "<group>"; };
+		C1E094F9194AA92000AA814B /* down_arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "down_arrow@2x.png"; sourceTree = "<group>"; };
 		FA4E655119357B21005022E2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/UMSocialLocalizable.strings; sourceTree = "<group>"; };
 		FA4E655319357B21005022E2 /* UMSocial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSocial.h; sourceTree = "<group>"; };
 		FA4E655419357B21005022E2 /* UMSocialAccountManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSocialAccountManager.h; sourceTree = "<group>"; };
@@ -1671,6 +1684,11 @@
 		03650F661945F35F00016289 /* img_new */ = {
 			isa = PBXGroup;
 			children = (
+				C1E094F5194AA92000AA814B /* cellview_favor_no_btn@2x.png */,
+				C1E094F6194AA92000AA814B /* cellview_share_btn@2x.png */,
+				C1E094F7194AA92000AA814B /* nav_favor_btn@2x.png */,
+				C1E094F8194AA92000AA814B /* cellview_favor_yes_btn@2x.png */,
+				C1E094F9194AA92000AA814B /* down_arrow@2x.png */,
 				0357FF3C1949FBC00071BD5A /* couponview_empty_btn@2x.png */,
 				0357FF301949F72C0071BD5A /* couponview_focus_time@2x.png */,
 				0357FF1E194758A10071BD5A /* mainview_line@2x.png */,
@@ -1954,6 +1972,8 @@
 				C1A9C89E19404B7200DD420F /* NSData+MD5.m */,
 				C1A9C8A019405F2400DD420F /* Static.h */,
 				C1A9C8A119405F2400DD420F /* Static.m */,
+				C1E094F1194A9FF900AA814B /* UILabelStrikeThrough.h */,
+				C1E094F2194A9FF900AA814B /* UILabelStrikeThrough.m */,
 			);
 			path = utility;
 			sourceTree = "<group>";
@@ -2619,6 +2639,7 @@
 			files = (
 				4EF0915B18FC50B400ABFE7D /* tabbar_bg.png in Resources */,
 				FA4E65C919357B21005022E2 /* UMSocialControllerServiceComment.html in Resources */,
+				C1E094FF194AA92000AA814B /* down_arrow@2x.png in Resources */,
 				FA4E65F219357B21005022E2 /* UMSocialUIDelegate.html in Resources */,
 				FA4E65FB19357B22005022E2 /* ios-social-sdk-comment-quick.html in Resources */,
 				4EF0910A18FB52FD00ABFE7D /* store-icon-floor.png in Resources */,
@@ -2768,6 +2789,7 @@
 				4EF090DA18FB52FD00ABFE7D /* index-tool-btn-bgd@2x.png in Resources */,
 				FA4E65CB19357B21005022E2 /* UMSocialData.html in Resources */,
 				0357FF3B1949FAAF0071BD5A /* CouponView_empty_tileView.xib in Resources */,
+				C1E094FD194AA92000AA814B /* nav_favor_btn@2x.png in Resources */,
 				FA4E65BE19357B21005022E2 /* UMShareEditViewControlleriPad.xib in Resources */,
 				4EF0911C18FB52FD00ABFE7D /* top-search-icon@2x.png in Resources */,
 				FA4E65EC19357B21005022E2 /* disclosure.png in Resources */,
@@ -2785,6 +2807,7 @@
 				4EF0915418FC4A8900ABFE7D /* c_3.jpg in Resources */,
 				FA4E65D919357B21005022E2 /* UMSocialSinaData.html in Resources */,
 				4EF0913518FC1E4600ABFE7D /* miaosha_4.jpg in Resources */,
+				C1E094FE194AA92000AA814B /* cellview_favor_yes_btn@2x.png in Resources */,
 				C1D8701018EC0CAB0061F799 /* CouponDetailViewController.xib in Resources */,
 				4E2C6DD418D7525D00DF3772 /* MainViewController.xib in Resources */,
 				03573B70190578FC00A11A33 /* ListViewController.xib in Resources */,
@@ -2807,6 +2830,7 @@
 				03650F7F1945F52200016289 /* mainview_mall_activity_press@2x.png in Resources */,
 				FA4E65CF19357B21005022E2 /* UMSocialExtConfig.html in Resources */,
 				4EF090E718FB52FD00ABFE7D /* register-phone-register@2x.png in Resources */,
+				C1E094FC194AA92000AA814B /* cellview_share_btn@2x.png in Resources */,
 				FA4E65B819357B21005022E2 /* UMSocialLocalizable.strings in Resources */,
 				FA4E65DB19357B21005022E2 /* UMSocialSnsData.html in Resources */,
 				4EF090D918FB52FD00ABFE7D /* index-silde-nav@2x.png in Resources */,
@@ -2859,6 +2883,7 @@
 				FA4E65E919357B21005022E2 /* hierarchy.html in Resources */,
 				4EF0911018FB52FD00ABFE7D /* store-icon-share-black@2x.png in Resources */,
 				FA4E65C819357B21005022E2 /* UMSocialControllerService.html in Resources */,
+				C1E094FB194AA92000AA814B /* cellview_favor_no_btn@2x.png in Resources */,
 				03650F861945F52200016289 /* mainview_myscore@2x.png in Resources */,
 				4E9608BB18E7B6B800418798 /* ShopViewCell.xib in Resources */,
 				03650F4D1942F0A200016289 /* MainView_PromotionActivityCell.xib in Resources */,
@@ -2934,6 +2959,7 @@
 				C1A9C896193F17C100DD420F /* MBProgressHUD.m in Sources */,
 				4E9608CB18E9BD4300418798 /* NSTimer+Addition.m in Sources */,
 				0357FF291949EB260071BD5A /* CouponView_focusedCell.m in Sources */,
+				C1E094F3194A9FF900AA814B /* UILabelStrikeThrough.m in Sources */,
 				03573B861906DA4600A11A33 /* BaseInterface.m in Sources */,
 				03573B6E190578FC00A11A33 /* CityListViewController.m in Sources */,
 				C1953211191CB68F00D3BFA8 /* UserInfoInterface.m in Sources */,

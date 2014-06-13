@@ -41,7 +41,23 @@
         self.imageView_1.imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@/300*300.png",cm.imageUrl]];
         self.sourceLabel_1.text = cm.source;
         self.priceLabel_1.text = [NSString stringWithFormat:@"￥%@",cm.price];
+        CGSize labelFontSize = [self.priceLabel_1.text sizeWithFont:self.priceLabel_1.font
+                                              constrainedToSize:CGSizeMake(99999, self.priceLabel_1.frame.size.height)
+                                                  lineBreakMode:self.priceLabel_1.lineBreakMode];
+        self.priceLabel_1.frame = CGRectMake(self.priceLabel_1.frame.origin.x,
+                                                self.priceLabel_1.frame.origin.y,
+                                                labelFontSize.width,
+                                                self.priceLabel_1.frame.size.height);
+        
         self.oldPriceLabel_1.text = cm.oldPrice;
+        labelFontSize = [self.oldPriceLabel_1.text sizeWithFont:self.oldPriceLabel_1.font
+                                                     constrainedToSize:CGSizeMake(99999, self.oldPriceLabel_1.frame.size.height)
+                                                         lineBreakMode:self.oldPriceLabel_1.lineBreakMode];
+        self.oldPriceLabel_1.frame = CGRectMake(self.priceLabel_1.frame.origin.x+self.priceLabel_1.frame.size.width+2,
+                                                self.oldPriceLabel_1.frame.origin.y,
+                                                labelFontSize.width,
+                                                self.oldPriceLabel_1.frame.size.height);
+        self.oldPriceLabel_1.isWithStrikeThrough = YES;
         self.collectLabel_1.text = [NSString stringWithFormat:@"%d人参加",cm.collectCount];
         
         cm = [self.dataList objectAtIndex:1];
@@ -49,7 +65,22 @@
         self.imageView_2.imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@/300*300.png",cm.imageUrl]];
         self.sourceLabel_2.text = cm.source;
         self.priceLabel_2.text = [NSString stringWithFormat:@"￥%@",cm.price];
+        labelFontSize = [self.priceLabel_2.text sizeWithFont:self.priceLabel_2.font
+                                           constrainedToSize:CGSizeMake(99999, self.priceLabel_2.frame.size.height)
+                                               lineBreakMode:self.priceLabel_2.lineBreakMode];
+        self.priceLabel_2.frame = CGRectMake(self.priceLabel_2.frame.origin.x,
+                                             self.priceLabel_2.frame.origin.y,
+                                             labelFontSize.width,
+                                             self.priceLabel_2.frame.size.height);
         self.oldPriceLabel_2.text = cm.oldPrice;
+        labelFontSize = [self.oldPriceLabel_2.text sizeWithFont:self.oldPriceLabel_2.font
+                                                     constrainedToSize:CGSizeMake(99999, self.oldPriceLabel_2.frame.size.height)
+                                                         lineBreakMode:self.oldPriceLabel_2.lineBreakMode];
+        self.oldPriceLabel_2.frame = CGRectMake(self.priceLabel_2.frame.origin.x+self.priceLabel_2.frame.size.width+2,
+                                                self.oldPriceLabel_2.frame.origin.y,
+                                                labelFontSize.width,
+                                                self.oldPriceLabel_2.frame.size.height);
+        self.oldPriceLabel_2.isWithStrikeThrough = YES;
         self.collectLabel_2.text = [NSString stringWithFormat:@"%d人参加",cm.collectCount];
     }
 }
