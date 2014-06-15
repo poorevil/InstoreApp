@@ -42,6 +42,8 @@
     // Do any additional setup after loading the view from its nib.
     self.currentPage = 1;
     
+    self.title = @"优惠";
+    
     self.couponViewInterface = [[[CouponViewInterface alloc] init] autorelease];
     self.couponViewInterface.delegate = self;
     [self.couponViewInterface getCouponViewListByPage:self.currentPage amount:20];

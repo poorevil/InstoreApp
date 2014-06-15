@@ -41,7 +41,13 @@
     if (self.cm) {
         self.logoImageView.imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@/100*100.png",cm.store.imageUrl]];
         self.logoNameLabel.text = cm.store.title;
-        self.tagLabel.text = cm.hotTag;
+        if (cm.hotTag.length > 0) {
+            self.tagLabel.superview.hidden = NO;
+            self.tagLabel.text = cm.hotTag;
+        }else{
+            self.tagLabel.superview.hidden = YES;
+        }
+        
         self.couponImageView.imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@/400*400.png",cm.imageUrl]];
         [self setupTypeLabel:cm.promotionType andTypeLabel:self.promotionTypeLabel];
         self.titleLabel.text = cm.title;

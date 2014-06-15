@@ -1681,6 +1681,16 @@
 			name = CouponViewCell;
 			sourceTree = "<group>";
 		};
+		0357FF40194D625E0071BD5A /* to_be_delete */ = {
+			isa = PBXGroup;
+			children = (
+				4E2C6DF318D75CD600DF3772 /* YouhuiViewController.h */,
+				4E2C6DF418D75CD600DF3772 /* YouhuiViewController.m */,
+				4E2C6DF518D75CD600DF3772 /* YouhuiViewController.xib */,
+			);
+			name = to_be_delete;
+			sourceTree = "<group>";
+		};
 		03650F661945F35F00016289 /* img_new */ = {
 			isa = PBXGroup;
 			children = (
@@ -1838,9 +1848,7 @@
 				C1E094E7194993B400AA814B /* CouponViewController.h */,
 				C1E094E8194993B400AA814B /* CouponViewController.m */,
 				C1E094E9194993B400AA814B /* CouponViewController.xib */,
-				4E2C6DF318D75CD600DF3772 /* YouhuiViewController.h */,
-				4E2C6DF418D75CD600DF3772 /* YouhuiViewController.m */,
-				4E2C6DF518D75CD600DF3772 /* YouhuiViewController.xib */,
+				0357FF40194D625E0071BD5A /* to_be_delete */,
 				C195321E191CDBF500D3BFA8 /* DownloadCouponsViewController.h */,
 				C195321F191CDBF500D3BFA8 /* DownloadCouponsViewController.m */,
 				C1953220191CDBF500D3BFA8 /* DownloadCouponsViewController.xib */,

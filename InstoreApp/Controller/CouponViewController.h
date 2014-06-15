@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 
-@interface CouponViewController : UIViewController
+@interface CouponViewController : BaseViewController
 
 @property (nonatomic, retain) IBOutlet UITableView *mtableView;
 @property (nonatomic, retain) IBOutlet UIButton *cateBtn;

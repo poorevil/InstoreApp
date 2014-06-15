@@ -10,6 +10,8 @@
 #import "CouponModel.h"
 #import "CouponView_empty_tileView.h"
 #import "CouponView_focused_tileView.h"
+#import "CouponDetailViewController.h"
+#import "AppDelegate.h"
 
 @implementation CouponView_focusedCell
 
@@ -37,6 +39,12 @@
         view.layer.borderColor = [UIColor lightGrayColor].CGColor;
         view.layer.borderWidth = 0.4f;
         [self addSubview:view];
+        
+        view.tag = 1;
+        UITapGestureRecognizer *tap = [[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)] autorelease];
+        [view addGestureRecognizer:tap];
+        
+        [self addSubview:view];
     }
 }
 
@@ -48,22 +56,49 @@
     if (self.cm1) {
         if (self.cm2) {
             CouponView_focused_tileView *view = [[[NSBundle mainBundle] loadNibNamed:@"CouponView_focused_tileView" owner:self options:nil] objectAtIndex:0];
+            view.userInteractionEnabled = YES;
             view.cm = self.cm2;
             view.frame = CGRectMake(163, 5, view.frame.size.width, view.frame.size.height);
             view.layer.borderColor = [UIColor lightGrayColor].CGColor;
             view.layer.borderWidth = 0.4f;
+            view.tag = 2;
+            
+            UITapGestureRecognizer *tap = [[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)] autorelease];
+            [view addGestureRecognizer:tap];
+            
+            
             [self addSubview:view];
         }else{
             //添加CouponView_empty_tileView
             CouponView_empty_tileView *view = [[[NSBundle mainBundle] loadNibNamed:@"CouponView_empty_tileView" owner:self options:nil] objectAtIndex:0];
+            view.userInteractionEnabled = YES;
             view.frame = CGRectMake(163, 5, view.frame.size.width, view.frame.size.height);
             view.layer.borderColor = [UIColor lightGrayColor].CGColor;
             view.layer.borderWidth = 0.4f;
+            
+            view.tag = 2;
+            
+            UITapGestureRecognizer *tap = [[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)] autorelease];
+            [view addGestureRecognizer:tap];
+            
             [self addSubview:view];
         }
     }else{
         //不添加任何view
     }
+}
+
+-(void)tapAction:(UIGestureRecognizer *)gesture
+{
+    UIView *v = gesture.view;
+    
+    AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+    UINavigationController *nav = (UINavigationController *)appDelegate.tabBarController.selectedViewController;
+    CouponDetailViewController *cdvc = [[[CouponDetailViewController alloc] initWithNibName:@"CouponDetailViewController" bundle:nil] autorelease];
+    cdvc.couponModel = v.tag==1?self.cm1:self.cm2;
+    cdvc.hidesBottomBarWhenPushed = YES;
+    [nav pushViewController:cdvc animated:YES];
+    cdvc.hidesBottomBarWhenPushed = NO;
 }
 
 -(void)dealloc
