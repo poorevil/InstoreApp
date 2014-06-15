@@ -13,7 +13,7 @@
 @implementation CouponDetailInterface
 
 -(void)getCouponDetailByCouponId:(NSInteger)cid{
-    self.interfaceUrl = [NSString stringWithFormat:@"%@api/%@/coupon_detail",BASE_INTERFACE_DOMAIN, MALL_CODE];
+    self.interfaceUrl = [NSString stringWithFormat:@"%@api/%@/coupon/detail",BASE_INTERFACE_DOMAIN, MALL_CODE];
     self.args = @{@"couponid":[NSString stringWithFormat:@"%d",cid]};
     self.baseDelegate = self;
     [self connect];
