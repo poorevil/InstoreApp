@@ -102,8 +102,12 @@ CouponDetailInterfaceDelegate>
                                                                            self.headerView.frame.size.height-16,
                                                                            self.headerView.frame.size.width, 16)] autorelease];
         titleGroupView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.7f];
-        self.titleLabel = [[[UILabel alloc] initWithFrame:CGRectMake(10, 5, 300, 28)] autorelease];
+        self.titleLabel = [[[UILabel alloc] initWithFrame:CGRectMake(20, 0,
+                                                                     titleGroupView.bounds.size.width,
+                                                                     titleGroupView.bounds.size.height)] autorelease];
         self.titleLabel.textColor = [UIColor whiteColor];
+        self.titleLabel.font = [UIFont systemFontOfSize:12];
+        self.titleLabel.text = self.couponModel.title;
         [titleGroupView addSubview:self.titleLabel];
         
         [self.headerView addSubview:titleGroupView];
@@ -212,8 +216,25 @@ CouponDetailInterfaceDelegate>
         case 0:{
             GroupBuyDetailPriceCell *gbdp = (GroupBuyDetailPriceCell *)cell;
             gbdp.priceLabel.text = [NSString stringWithFormat:@"￥%@",self.couponModel.price];
+            CGSize labelFontSize = [gbdp.priceLabel.text sizeWithFont:gbdp.priceLabel.font
+                                                      constrainedToSize:CGSizeMake(gbdp.priceLabel.frame.size.width*2,
+                                                                                   gbdp.priceLabel.frame.size.height)
+                                                          lineBreakMode:gbdp.priceLabel.lineBreakMode];
+            gbdp.priceLabel.frame = CGRectMake(gbdp.priceLabel.frame.origin.x,
+                                                 gbdp.priceLabel.frame.origin.y,
+                                                 labelFontSize.width,
+                                                 gbdp.priceLabel.frame.size.height);
+
+            
             gbdp.oldPriceLabel.text = self.couponModel.oldPrice;
+            gbdp.oldPriceLabel.frame = CGRectMake(gbdp.priceLabel.frame.size.width + gbdp.priceLabel.frame.origin.x,
+                                                  gbdp.oldPriceLabel.frame.origin.y,
+                                                  gbdp.oldPriceLabel.frame.size.width,
+                                                  gbdp.oldPriceLabel.frame.size.height);
+            
             gbdp.amountLabel.text = [NSString stringWithFormat:@"%d人已购买",self.couponModel.collectCount];
+            
+            
             
             break;
         }
@@ -232,7 +253,11 @@ CouponDetailInterfaceDelegate>
                 GroupBuyDateTimeCell *withTitleCell = (GroupBuyDateTimeCell *)cell;
                 withTitleCell.titleLabel.text = @"剩余时间";
                 withTitleCell.iconImageView.image = [UIImage imageNamed:@"couponview_focus_time"];
-                withTitleCell.dateLabel.text = [self.couponModel.endTime toDateString];
+                
+                NSString *str = [self.couponModel.endTime distanceFromNowMaxSeconds:60*60*24
+                                                                         RelpaceStr:[self.couponModel.endTime toDateString]
+                                                                          perfixStr:nil];
+                withTitleCell.dateLabel.text = str?str:@"已过期";
             }
             break;
         case 4:

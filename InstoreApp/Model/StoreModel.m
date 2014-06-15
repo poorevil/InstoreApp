@@ -27,11 +27,11 @@
             
             
             
-//            self.logoUrl = [jsonMap objectForKey:@"logo"];
-//            self.address = [jsonMap objectForKey:@"address"];
-//            self.tel = [jsonMap objectForKey:@"tel"];
-//            self.categoryModel = [[[CategoryModel alloc] initWithJsonMap:[jsonMap objectForKey:@"category"]] autorelease];
-//            self.position = [[[PositionModel alloc ]initWithJsonMap:[jsonMap objectForKey:@"pos"]] autorelease];
+            self.logoUrl = [jsonMap objectForKey:@"logo"];
+            self.address = [jsonMap objectForKey:@"address"];
+            self.tel = [jsonMap objectForKey:@"tel"];
+            self.categoryModel = [[[CategoryModel alloc] initWithJsonMap:[jsonMap objectForKey:@"category"]] autorelease];
+            self.position = [[[PositionModel alloc ]initWithJsonMap:[jsonMap objectForKey:@"pos"]] autorelease];
 //            self.descStr = [jsonMap objectForKey:@"description"];
 //            self.followerCount = [jsonMap objectForKey:@"followerCount"]==nil?0:[[jsonMap objectForKey:@"followerCount"] integerValue];
 //            self.isFocus = [[jsonMap objectForKey:@"isFocus"] boolValue];

@@ -20,6 +20,9 @@
         if (jsonMap) {
             self.cid = [[jsonMap objectForKey:@"id"] integerValue];
             self.cName = [jsonMap objectForKey:@"title"];
+            if (!self.cName) {
+                self.cName = [jsonMap objectForKey:@"name"];
+            }
             
             self.imageUrl = [jsonMap objectForKey:@"image"];
             self.subhead = [jsonMap objectForKey:@"subhead"];

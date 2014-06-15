@@ -23,7 +23,6 @@
             self.cid = [[jsonMap objectForKey:@"id"] integerValue];
             self.oldPrice = [jsonMap objectForKey:@"oldPrice"];
             self.price = [jsonMap objectForKey:@"price"];
-            self.collectCount = [[jsonMap objectForKey:@"collectCount"] integerValue];
             self.source = [jsonMap objectForKey:@"source"];
             
             self.images = [jsonMap objectForKey:@"images"]==nil?[NSMutableArray array]:
@@ -40,20 +39,20 @@
             self.isFocus = [jsonMap objectForKey:@"isFocus"]?[[jsonMap objectForKey:@"isFocus"] boolValue]:NO;
             
             
-            
+            self.instruction = [jsonMap objectForKey:@"instruction"];
             
             self.store = [[[StoreModel alloc] initWithJsonMap:[jsonMap objectForKey:@"store"]] autorelease];
             
 //            self.type = [[jsonMap objectForKey:@"type"] integerValue];
 //            self.hotTag = [jsonMap objectForKey:@"hotTag"];
             
-//            self.instruction = [jsonMap objectForKey:@"instruction"];
-//            self.collectType = [jsonMap objectForKey:@"collectType"]==nil?0:[[jsonMap objectForKey:@"collectType"] integerValue];
-//            self.collectLimit = [jsonMap objectForKey:@"collectLimit"]==nil?0:[[jsonMap objectForKey:@"collectLimit"] integerValue];
-//            self.collectRole = [jsonMap objectForKey:@"collectRole"]==[NSNull null]?0:[[jsonMap objectForKey:@"collectRole"] integerValue];
-//            self.userCollectCount = [jsonMap objectForKey:@"userCollectCount"]==nil?0:[[jsonMap objectForKey:@"userCollectCount"] integerValue];
-//            self.collectCount = [jsonMap objectForKey:@"collectCount"]?[[jsonMap objectForKey:@"collectCount"] integerValue]:0;
-//            self.commentCount = [jsonMap objectForKey:@"commentCount"]?[[jsonMap objectForKey:@"commentCount"] integerValue]:0;
+
+            self.collectType = [jsonMap objectForKey:@"collectType"]==nil?0:[[jsonMap objectForKey:@"collectType"] integerValue];
+            self.collectLimit = [jsonMap objectForKey:@"collectLimit"]==nil?0:[[jsonMap objectForKey:@"collectLimit"] integerValue];
+            self.collectRole = [jsonMap objectForKey:@"collectRole"]==[NSNull null]?0:[[jsonMap objectForKey:@"collectRole"] integerValue];
+            self.userCollectCount = [jsonMap objectForKey:@"userCollectCount"]==nil?0:[[jsonMap objectForKey:@"userCollectCount"] integerValue];
+            self.collectCount = [jsonMap objectForKey:@"collectCount"]?[[jsonMap objectForKey:@"collectCount"] integerValue]:0;
+            self.commentCount = [jsonMap objectForKey:@"commentCount"]?[[jsonMap objectForKey:@"commentCount"] integerValue]:0;
 
             
 //
@@ -83,7 +82,7 @@
     self.descriptionStr = nil;
     self.images = nil;
 //    self.hotTag = nil;
-//    self.instruction = nil;
+    self.instruction = nil;
 //    self.couponCode = nil;
     
     self.title = nil;

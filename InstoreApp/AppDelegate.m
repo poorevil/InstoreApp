@@ -94,35 +94,36 @@ static NSString* szClientSecret = @"ea13692f9c960a37db0086ff87e56e01";
     UITabBarItem *tabBarItem5 = [tabBar.items objectAtIndex:4];
     
     tabBarItem1.title = @"首页";
-    tabBarItem2.title = @"优惠劵";
-    tabBarItem3.title = @"服务";
+    tabBarItem2.title = @"优惠";
+    tabBarItem3.title = @"美食";
     tabBarItem4.title = @"商户";
     tabBarItem5.title = @"我的";
     
-    [tabBarItem1 setFinishedSelectedImage:[UIImage imageNamed:@"toolBar-btn-home.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"toolBar-btn-home.png"]];
-    [tabBarItem2 setFinishedSelectedImage:[UIImage imageNamed:@"toolBar-btn-sale.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"toolBar-btn-sale.png"]];
-    [tabBarItem3 setFinishedSelectedImage:[UIImage imageNamed:@"toolBar-btn-service.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"toolBar-btn-service"]];
-    [tabBarItem4 setFinishedSelectedImage:[UIImage imageNamed:@"toolBar-btn-store"] withFinishedUnselectedImage:[UIImage imageNamed:@"toolBar-btn-store"]];
-    [tabBarItem5 setFinishedSelectedImage:[UIImage imageNamed:@"toolBar-btn-user"] withFinishedUnselectedImage:[UIImage imageNamed:@"toolBar-btn-user"]];
+    [tabBarItem1 setFinishedSelectedImage:[UIImage imageNamed:@"toolbar_main_icon_press.png"]
+              withFinishedUnselectedImage:[UIImage imageNamed:@"toolbar_main_icon.png"]];
+    
+    [tabBarItem2 setFinishedSelectedImage:[UIImage imageNamed:@"toolbar_coupon_icon_press.png"]
+              withFinishedUnselectedImage:[UIImage imageNamed:@"toolbar_coupon_icon.png"]];
+    
+    [tabBarItem3 setFinishedSelectedImage:[UIImage imageNamed:@"toolbar_food_icon_press.png"]
+              withFinishedUnselectedImage:[UIImage imageNamed:@"toolbar_food_icon"]];
+    
+    [tabBarItem4 setFinishedSelectedImage:[UIImage imageNamed:@"toolbar_shop_icon_press"]
+              withFinishedUnselectedImage:[UIImage imageNamed:@"toolbar_shop_icon"]];
+    [tabBarItem5 setFinishedSelectedImage:[UIImage imageNamed:@"toolbar_me_icon_press"]
+              withFinishedUnselectedImage:[UIImage imageNamed:@"toolbar_me_icon"]];
     
     [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
-                                                       [UIColor whiteColor], UITextAttributeTextColor,
-                                                       nil] forState:UIControlStateHighlighted];
+                                                       [UIColor colorWithRed:229/255.0f
+                                                                       green:63/255.0f
+                                                                        blue:17/255.0f
+                                                                       alpha:1],
+                                                       UITextAttributeTextColor,nil]
+                                             forState:UIControlStateSelected];
     
-    //    [tabBarItem1 setFinishedSelectedImage:[UIImage imageNamed:@"home_selected.png"]
-    //              withFinishedUnselectedImage:[UIImage imageNamed:@"home.png"]];
-    //    [tabBarItem2 setFinishedSelectedImage:[UIImage imageNamed:@"maps_selected.png"]
-    //              withFinishedUnselectedImage:[UIImage imageNamed:@"maps.png"]];
-    //    [tabBarItem3 setFinishedSelectedImage:[UIImage imageNamed:@"myplan_selected.png"]
-    //              withFinishedUnselectedImage:[UIImage imageNamed:@"myplan.png"]];
-    //    [tabBarItem4 setFinishedSelectedImage:[UIImage imageNamed:@"settings_selected.png"]
-    //              withFinishedUnselectedImage:[UIImage imageNamed:@"settings.png"]];
-    //    [tabBarItem5 setFinishedSelectedImage:[UIImage imageNamed:@"settings_selected.png"]
-    //              withFinishedUnselectedImage:[UIImage imageNamed:@"settings.png"]];
-    
-    UIImage* tabBarBackground = [UIImage imageNamed:@"tabbar_bg.png"];
-    [[UITabBar appearance] setBackgroundImage:tabBarBackground];
-    [[UITabBar appearance] setSelectionIndicatorImage:[UIImage imageNamed:@"tabbar_selected_bg.png"]];
+//    UIImage* tabBarBackground = [UIImage imageNamed:@"tabbar_bg.png"];
+//    [[UITabBar appearance] setBackgroundImage:tabBarBackground];
+//    [[UITabBar appearance] setSelectionIndicatorImage:[UIImage imageNamed:@"tabbar_selected_bg.png"]];
     
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     // Override point for customization after application launch.

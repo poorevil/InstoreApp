@@ -45,19 +45,19 @@
 ////@property (nonatomic,strong) NSString *imageUrl;
 //@property (nonatomic,assign) CGFloat imageWidth;
 //@property (nonatomic,assign) CGFloat imageHeight;
-//@property (nonatomic,assign) NSInteger commentCount;//评论数
+@property (nonatomic,assign) NSInteger commentCount;//评论数
 //@property (nonatomic,assign) NSInteger type;
 //
 //@property (nonatomic,retain) NSDate *date;
 
 //
-//@property (nonatomic,assign) NSInteger collectType;//下载方式
-//@property (nonatomic,assign) NSInteger collectLimit;//限量
-//@property (nonatomic,assign) NSInteger collectRole;
-//@property (nonatomic,assign) NSInteger userCollectCount;//我的下载次数
+@property (nonatomic,assign) NSInteger collectType;//下载方式// 0: 免费下, 1: 分享后下载
+@property (nonatomic,assign) NSInteger collectLimit;//限量 0: 不限制; N: 限制下载N次,
+@property (nonatomic,assign) NSInteger collectRole;// 待定, 目前返回空,统一处理为每人限下载一次
+@property (nonatomic,assign) NSInteger userCollectCount;//我的下载次数// 已下载返回1,未下载返回0.
 //
 
-//@property (nonatomic,strong) NSString *instruction;//优惠券使用说明
+@property (nonatomic,strong) NSString *instruction;//优惠券使用说明
 ////@property (nonatomic,assign) NSInteger collectRole;//下载规则
 
 //

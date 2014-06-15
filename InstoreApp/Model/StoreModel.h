@@ -21,7 +21,7 @@
 
 
 
-@property (nonatomic,strong) NSString *logoUrl;
+@property (nonatomic,strong) NSString *logoUrl;//logo图片地址
 @property (nonatomic,strong) CategoryModel *categoryModel;
 
 
