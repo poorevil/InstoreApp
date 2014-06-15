@@ -20,6 +20,8 @@
 #import "CouponDownloadModel.h"
 #import "SVProgressHUD.h"
 
+#import "CouponDetailStoreCell.h"
+
 #import "PhotoViewController.h"
 
 @interface CouponDetailViewController () <CouponDetailInterfaceDelegate,CouponDownloadInterfaceDelegate>
@@ -80,11 +82,11 @@
 -(void)initHeaderView
 {
     if (!self.headerView) {
-        self.headerView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 320)] autorelease];
+        self.headerView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 180)] autorelease];
         self.headerImageView = [[[EGOImageView alloc] init] autorelease];
         self.headerImageView.contentMode = UIViewContentModeScaleAspectFill;
         self.headerImageView.clipsToBounds = YES;
-        self.headerImageView.frame = CGRectMake(10, 10, 300, 300);
+        self.headerImageView.frame = self.headerView.bounds;
         [self.headerView addSubview:self.headerImageView];
         
         self.headerImageView.userInteractionEnabled = YES;
@@ -92,10 +94,14 @@
         [self.headerImageView addGestureRecognizer:tap];
         [tap release];
         
-        UIView *titleGroupView = [[[UIView alloc] initWithFrame:CGRectMake(10, 320-34, 300, 34)] autorelease];
+        UIView *titleGroupView = [[[UIView alloc] initWithFrame:CGRectMake(0,
+                                                                           self.headerView.frame.size.height-16,
+                                                                           self.headerView.frame.size.width, 16)] autorelease];
         titleGroupView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.7f];
-        self.titleLabel = [[[UILabel alloc] initWithFrame:CGRectMake(10, 5, 300, 28)] autorelease];
-        self.titleLabel.textColor = [UIColor whiteColor];
+//        self.titleLabel = [[[UILabel alloc] initWithFrame:CGRectMake(10, 5, 300, 28)] autorelease];
+//        self.titleLabel.textColor = [UIColor whiteColor];
+        //TODO:pageControl
+        
         [titleGroupView addSubview:self.titleLabel];
         
         [self.headerView addSubview:titleGroupView];
@@ -103,7 +109,7 @@
     }
     
     self.headerImageView.imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@/640*640.png",self.couponModel.imageUrl]];
-    self.titleLabel.text = self.couponModel.title;
+//    self.titleLabel.text = self.couponModel.title;
     
 }
 
@@ -122,6 +128,7 @@
 
 -(void)initFooterView
 {
+    //TODO:tabbar!!
     if (self.couponModel.promotionType==2) {//1: 优惠活动; 2: 优惠券; 3: 团购;
         self.footerView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 44)] autorelease];
         self.downloadBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -169,13 +176,13 @@
 {
     switch (section) {
         case 0:
-            return 1;
+            return 1;//title
         case 1:
-            return 1;
+            return 1;//有效期
         case 2:
-            return 3;
+            return 1;//商户。。。
         case 3:
-            return 1;
+            return 1;//优惠劵详情
             
         default:
             return 1;
@@ -200,7 +207,7 @@
             cellIdentifier = @"CouponDetailWithTitleCell";
             break;
         case 2:
-            cellIdentifier = @"cell";
+            cellIdentifier = @"CouponDetailStoreCell";
             break;
         case 3:
             cellIdentifier = @"CouponDetailWithTitleCell";
@@ -225,9 +232,9 @@
     switch (indexPath.section) {
         case 0:{
             CouponDetailDownloadCell *cddc = (CouponDetailDownloadCell *)cell;
-            cddc.downloadNumLabel.text = [NSString stringWithFormat:@"%d",self.couponModel.collectCount];
-//            cddc.favNumLabel.text = [NSString stringWithFormat:@"%d",self.couponModel.collectCount];
-            cddc.favNumLabel.hidden = YES;
+            cddc.titleLabel.text = self.couponModel.title;
+            cddc.favNumLabel.text = [NSString stringWithFormat:@"%d",self.couponModel.collectCount];
+//            cddc.favNumLabel.hidden = YES;
             
             break;
         }
@@ -239,28 +246,16 @@
                 withTitleCell.detailLabel.text = [NSString stringWithFormat:@"%@ 至 %@",
                                                   [self.couponModel.startTime toDateString],
                                                   [self.couponModel.endTime toDateString]];
-                withTitleCell.detailLabel.numberOfLines = 99;
-                withTitleCell.detailLabel.frame = CGRectMake(withTitleCell.detailLabel.frame.origin.x,
-                                                             withTitleCell.detailLabel.frame.origin.y,
-                                                             withTitleCell.detailLabel.frame.size.width,
-                                                             44);
-                withTitleCell.frame = CGRectMake(0, 0, withTitleCell.frame.size.width, 44);
             }
             break;
         case 2:
             if (self.couponModel.store) {
-                switch (indexPath.row) {
-                    case 0:
-                        cell.textLabel.text = [NSString stringWithFormat:@"商户：%@",self.couponModel.store.title];
-                        break;
-                    case 1:
-                        cell.textLabel.text = [NSString stringWithFormat:@"地址：%@",self.couponModel.store.address];
-                        break;
-                    case 2:
-                        cell.textLabel.text = [NSString stringWithFormat:@"电话：%@",self.couponModel.store.tel?self.couponModel.store.tel:@""];
-                        break;
-                    default:
-                        break;
+                if ([cell isMemberOfClass:[CouponDetailStoreCell class]]) {
+                    CouponDetailStoreCell *storeCell = (CouponDetailStoreCell *)cell;
+                    storeCell.storeNameLabel.text = self.couponModel.store.title;
+                    storeCell.storeAddrLabel.text = self.couponModel.store.address;
+                    storeCell.storetelLabel.text = self.couponModel.store.tel;
+                    
                 }
             }
             break;
@@ -293,112 +288,14 @@
 }
 
 #pragma mark - UITableViewDelegate
-
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if ([cell respondsToSelector:@selector(tintColor)]) {
-        
-        if (tableView == self.mtableView) {
-            
-            CGFloat cornerRadius = 5.f;
-            
-            cell.backgroundColor = UIColor.clearColor;
-            
-            CAShapeLayer *layer = [[[CAShapeLayer alloc] init] autorelease];
-            
-            CGMutablePathRef pathRef = CGPathCreateMutable();
-            
-            CGRect bounds = CGRectInset(cell.bounds, 10, 0);
-            
-            BOOL addLine = NO;
-            
-            if (indexPath.row == 0 && indexPath.row == [tableView numberOfRowsInSection:indexPath.section]-1) {
-                
-                if (indexPath.section == 0 && tableView.tableHeaderView) {
-                    CGPathMoveToPoint(pathRef, nil, CGRectGetMinX(bounds), CGRectGetMinY(bounds));
-                    
-                    CGPathAddArcToPoint(pathRef, nil, CGRectGetMinX(bounds), CGRectGetMaxY(bounds), CGRectGetMidX(bounds), CGRectGetMaxY(bounds), cornerRadius);
-                    
-                    CGPathAddArcToPoint(pathRef, nil, CGRectGetMaxX(bounds), CGRectGetMaxY(bounds), CGRectGetMaxX(bounds), CGRectGetMidY(bounds), cornerRadius);
-                    
-                    CGPathAddLineToPoint(pathRef, nil, CGRectGetMaxX(bounds), CGRectGetMinY(bounds));
-                }else{
-                    CGPathAddRoundedRect(pathRef, nil, bounds, cornerRadius, cornerRadius);
-                }
-                
-            } else if (indexPath.row == 0) {
-                
-                CGPathMoveToPoint(pathRef, nil, CGRectGetMinX(bounds), CGRectGetMaxY(bounds));
-                
-                CGPathAddArcToPoint(pathRef, nil, CGRectGetMinX(bounds), CGRectGetMinY(bounds), CGRectGetMidX(bounds), CGRectGetMinY(bounds), cornerRadius);
-                
-                CGPathAddArcToPoint(pathRef, nil, CGRectGetMaxX(bounds), CGRectGetMinY(bounds), CGRectGetMaxX(bounds), CGRectGetMidY(bounds), cornerRadius);
-                
-                CGPathAddLineToPoint(pathRef, nil, CGRectGetMaxX(bounds), CGRectGetMaxY(bounds));
-                
-                addLine = YES;
-                
-            } else if (indexPath.row == [tableView numberOfRowsInSection:indexPath.section]-1) {
-                
-                CGPathMoveToPoint(pathRef, nil, CGRectGetMinX(bounds), CGRectGetMinY(bounds));
-                
-                CGPathAddArcToPoint(pathRef, nil, CGRectGetMinX(bounds), CGRectGetMaxY(bounds), CGRectGetMidX(bounds), CGRectGetMaxY(bounds), cornerRadius);
-                
-                CGPathAddArcToPoint(pathRef, nil, CGRectGetMaxX(bounds), CGRectGetMaxY(bounds), CGRectGetMaxX(bounds), CGRectGetMidY(bounds), cornerRadius);
-                
-                CGPathAddLineToPoint(pathRef, nil, CGRectGetMaxX(bounds), CGRectGetMinY(bounds));
-                
-            } else {
-                
-                CGPathAddRect(pathRef, nil, bounds);
-                
-                addLine = YES;
-                
-            }
-            
-            layer.path = pathRef;
-            
-            CFRelease(pathRef);
-            
-            layer.fillColor = [UIColor colorWithWhite:1.f alpha:0.8f].CGColor;
-            
-            layer.strokeColor = [UIColor lightGrayColor].CGColor;
-            layer.lineWidth = 0.4f;
-            
-            
-            if (addLine == YES) {
-                CALayer *lineLayer = [[[CALayer alloc] init] autorelease];
-                CGFloat lineHeight = (1.f / [UIScreen mainScreen].scale);
-                lineLayer.frame = CGRectMake(CGRectGetMinX(bounds), bounds.size.height-lineHeight, bounds.size.width, lineHeight);
-                
-                lineLayer.backgroundColor = tableView.separatorColor.CGColor;
-                
-                [layer addSublayer:lineLayer];
-                
-            }
-            
-            UIView *testView = [[[UIView alloc] initWithFrame:bounds] autorelease];
-            
-            [testView.layer insertSublayer:layer atIndex:0];
-            
-            testView.backgroundColor = UIColor.clearColor;
-            
-            cell.backgroundView = testView;
-            
-        }
-        
-    }
-    
-}
-
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     switch (indexPath.section) {
         case 0:
-            return 44;
+            return 36;
         case 1:
-            return 88;
+            return 72;
         case 2:
-            return 44;
+            return 108;
         case 3:{
             //计算内容的size
             CGSize labelFontSize = [self.couponModel.descriptionStr sizeWithFont:[UIFont systemFontOfSize:14]

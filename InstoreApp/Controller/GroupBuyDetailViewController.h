@@ -1,17 +1,17 @@
 //
-//  CouponDetailViewController.h
+//  GroupBuyDetailViewController.h
 //  InstoreApp
-//  优惠劵详情页
-//  Created by hanchao on 14-4-2.
+//  团购详情
+//  Created by evil on 14-6-15.
 //  Copyright (c) 2014年 evil. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-
+#import "BaseViewController.h"
 @class CouponModel;
 
-@interface CouponDetailViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
+@interface GroupBuyDetailViewController : UIViewController
 
 @property (nonatomic,strong) IBOutlet UITableView *mtableView;
 @property (nonatomic,retain) CouponModel *couponModel;
+
 @end

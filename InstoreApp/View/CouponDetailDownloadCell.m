@@ -29,7 +29,7 @@
 -(void)dealloc
 {
     self.favNumLabel = nil;
-    self.downloadNumLabel = nil;
+    self.titleLabel = nil;
     
     [super dealloc];
 }

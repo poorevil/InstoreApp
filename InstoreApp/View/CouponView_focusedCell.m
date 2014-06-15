@@ -12,6 +12,7 @@
 #import "CouponView_focused_tileView.h"
 #import "CouponDetailViewController.h"
 #import "AppDelegate.h"
+#import "GroupBuyDetailViewController.h"
 
 @implementation CouponView_focusedCell
 
@@ -94,11 +95,24 @@
     
     AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
     UINavigationController *nav = (UINavigationController *)appDelegate.tabBarController.selectedViewController;
-    CouponDetailViewController *cdvc = [[[CouponDetailViewController alloc] initWithNibName:@"CouponDetailViewController" bundle:nil] autorelease];
-    cdvc.couponModel = v.tag==1?self.cm1:self.cm2;
-    cdvc.hidesBottomBarWhenPushed = YES;
-    [nav pushViewController:cdvc animated:YES];
-    cdvc.hidesBottomBarWhenPushed = NO;
+    
+    UIViewController *vc = nil;
+    CouponModel *cm = v.tag==1?self.cm1:self.cm2;
+    switch (cm.promotionType ) {//优惠类型 (1, '优惠活动'), (2, '优惠券'), (3, '团购')
+        case 3:
+            vc = [[[GroupBuyDetailViewController alloc] initWithNibName:@"GroupBuyDetailViewController" bundle:nil] autorelease];
+            break;
+        case 2:
+            vc = [[[CouponDetailViewController alloc] initWithNibName:@"CouponDetailViewController" bundle:nil] autorelease];
+            break;
+        //TODO:case2
+            
+    }
+    
+    [vc setCouponModel:cm];
+    vc.hidesBottomBarWhenPushed = YES;
+    [nav pushViewController:vc animated:YES];
+    vc.hidesBottomBarWhenPushed = NO;
 }
 
 -(void)dealloc
