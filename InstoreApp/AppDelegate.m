@@ -12,7 +12,8 @@
 #import "ShopViewController.h"
 //#import "YouhuiViewController.h"
 #import "CouponViewController.h"
-#import "ServiceViewController.h"
+//#import "ServiceViewController.h"
+#import "FoodViewController.h"
 #import "CustomNavigationController.h"
 
 #import "HTTPAccess.h"
@@ -71,8 +72,9 @@ static NSString* szClientSecret = @"ea13692f9c960a37db0086ff87e56e01";
     CustomNavigationController *nav2 = [[[CustomNavigationController alloc] initWithRootViewController:youhuiVC] autorelease];
     nav2.title = @"优惠劵";
     
-    ServiceViewController *serviceVC = [[[ServiceViewController alloc] initWithNibName:@"ServiceViewController" bundle:nil] autorelease];
-    CustomNavigationController *nav3 = [[[CustomNavigationController alloc] initWithRootViewController:serviceVC] autorelease];
+    FoodViewController *foodVC = [[[FoodViewController alloc] initWithNibName:@"FoodViewController"
+                                                                       bundle:nil] autorelease];
+    CustomNavigationController *nav3 = [[[CustomNavigationController alloc] initWithRootViewController:foodVC] autorelease];
     nav3.title = @"服务";
     
     ShopViewController *shopViewVC = [[[ShopViewController alloc] initWithNibName:@"ShopViewController" bundle:nil] autorelease];
