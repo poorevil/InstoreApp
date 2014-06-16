@@ -33,20 +33,23 @@
     [_cm1 release];
     _cm1 = [cm1 retain];
     
+    [self.leftView removeFromSuperview];
+    
     if (self.cm1) {
         CouponView_focused_tileView *view = [[[NSBundle mainBundle] loadNibNamed:@"CouponView_focused_tileView" owner:self options:nil] objectAtIndex:0];
         view.cm = self.cm1;
         view.frame = CGRectMake(5, 5, view.frame.size.width, view.frame.size.height);
-        view.layer.borderColor = [UIColor lightGrayColor].CGColor;
-        view.layer.borderWidth = 0.4f;
+        view.parentView.layer.borderColor = [UIColor lightGrayColor].CGColor;
+        view.parentView.layer.borderWidth = 0.4f;
         [self addSubview:view];
+        
+        self.leftView = view;
         
         view.tag = 1;
         UITapGestureRecognizer *tap = [[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)] autorelease];
         [view addGestureRecognizer:tap];
-        
-        [self addSubview:view];
     }
+    
 }
 
 -(void)setCm2:(CouponModel *)cm2
@@ -54,15 +57,19 @@
     [_cm2 release];
     _cm2 = [cm2 retain];
     
+    [self.rightView removeFromSuperview];
+    
     if (self.cm1) {
         if (self.cm2) {
             CouponView_focused_tileView *view = [[[NSBundle mainBundle] loadNibNamed:@"CouponView_focused_tileView" owner:self options:nil] objectAtIndex:0];
             view.userInteractionEnabled = YES;
             view.cm = self.cm2;
             view.frame = CGRectMake(163, 5, view.frame.size.width, view.frame.size.height);
-            view.layer.borderColor = [UIColor lightGrayColor].CGColor;
-            view.layer.borderWidth = 0.4f;
+            view.parentView.layer.borderColor = [UIColor lightGrayColor].CGColor;
+            view.parentView.layer.borderWidth = 0.4f;
             view.tag = 2;
+            
+            self.rightView = view;
             
             UITapGestureRecognizer *tap = [[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)] autorelease];
             [view addGestureRecognizer:tap];
@@ -76,8 +83,9 @@
             view.frame = CGRectMake(163, 5, view.frame.size.width, view.frame.size.height);
             view.layer.borderColor = [UIColor lightGrayColor].CGColor;
             view.layer.borderWidth = 0.4f;
-            
             view.tag = 2;
+            
+            self.rightView = view;
             
             UITapGestureRecognizer *tap = [[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)] autorelease];
             [view addGestureRecognizer:tap];
@@ -87,6 +95,7 @@
     }else{
         //不添加任何view
     }
+    
 }
 
 -(void)tapAction:(UIGestureRecognizer *)gesture
@@ -119,6 +128,9 @@
 {
     self.cm1 = nil;
     self.cm2 = nil;
+    self.leftView = nil;
+    self.rightView = nil;
+    
     [super dealloc];
 }
 

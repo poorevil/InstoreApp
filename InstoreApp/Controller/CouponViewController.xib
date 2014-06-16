@@ -24,8 +24,8 @@
                     <rect key="frame" x="0.0" y="65" width="320" height="40"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="rwC-uL-nvr">
-                            <rect key="frame" x="15" y="5" width="75" height="30"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="rwC-uL-nvr">
+                            <rect key="frame" x="15" y="5" width="74" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <state key="normal" title="优惠类型" image="down_arrow.png">
@@ -33,8 +33,8 @@
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="p4E-B1-miI">
-                            <rect key="frame" x="98" y="5" width="52" height="30"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="p4E-B1-miI">
+                            <rect key="frame" x="98" y="5" width="46" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <state key="normal" title="分类 " image="down_arrow.png">
@@ -43,8 +43,8 @@
                             </state>
                             <state key="highlighted" backgroundImage="sale-sort-down.png"/>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="at7-hF-vIb">
-                            <rect key="frame" x="158" y="5" width="52" height="30"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="at7-hF-vIb">
+                            <rect key="frame" x="158" y="5" width="46" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <state key="normal" title="排序 " image="down_arrow.png">
@@ -53,8 +53,8 @@
                             </state>
                             <state key="highlighted" backgroundImage="sale-sort-down.png"/>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="sPM-BF-hpd">
-                            <rect key="frame" x="230" y="5" width="88" height="30"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="sPM-BF-hpd">
+                            <rect key="frame" x="212" y="5" width="104" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <state key="normal" title="已收藏128" image="nav_favor_btn.png">

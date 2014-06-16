@@ -14,4 +14,7 @@
 @property (nonatomic, retain) CouponModel *cm1;
 @property (nonatomic, retain) CouponModel *cm2;
 
+@property (nonatomic, retain) UIView *leftView;
+@property (nonatomic, retain) UIView *rightView;
+
 @end

@@ -26,4 +26,6 @@
 @property (nonatomic, retain) IBOutlet UIButton *favorBtn;
 @property (nonatomic, retain) IBOutlet UIButton *shareBtn;
 
+@property (nonatomic, retain) IBOutlet UIView *parentView;
+
 @end

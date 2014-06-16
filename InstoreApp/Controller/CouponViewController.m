@@ -10,8 +10,12 @@
 #import "CouponviewInterface.h"
 #import "CouponView_titleCell.h"
 #import "CouponView_focusedCell.h"
+#import "YouhuiCategoryViewController.h"
 
-@interface CouponViewController () <UITableViewDataSource, UITableViewDelegate, CouponViewInterfaceDelegate>
+#import "CategoryModel.h"
+
+@interface CouponViewController () <UITableViewDataSource, UITableViewDelegate,
+CouponViewInterfaceDelegate, YouhuiCategoryViewControllerDelegate>
 
 @property (nonatomic, retain) NSMutableDictionary *itemListDict;//关注的商户的优惠集合
 @property (nonatomic, retain) NSDictionary *otherGroupDict;//其他组内容集合
@@ -22,6 +26,8 @@
 @property (nonatomic, assign) NSInteger focusCount;//用户收藏的优惠数量
 
 @property (nonatomic, retain) CouponViewInterface *couponViewInterface;
+
+@property (nonatomic,strong) CategoryModel *filterCategory;//分类筛选条件
 
 @end
 
@@ -43,6 +49,7 @@
     self.currentPage = 1;
     
     self.title = @"优惠";
+    [self initToolBar];
     
     self.couponViewInterface = [[[CouponViewInterface alloc] init] autorelease];
     self.couponViewInterface.delegate = self;
@@ -61,6 +68,42 @@
     
     [super dealloc];
 }
+
+#pragma mark - private method
+-(void)initToolBar
+{
+    [self.cateBtn setImageEdgeInsets:UIEdgeInsetsMake(0,
+                                                      self.cateBtn.frame.size.width-self.cateBtn.imageView.frame.size.width,
+                                                      0,
+                                                      0)];
+    [self.cateBtn addTarget:self
+                     action:@selector(categoryBtnAction:)
+           forControlEvents:UIControlEventTouchUpInside];
+    
+    
+    [self.typeBtn setImageEdgeInsets:UIEdgeInsetsMake(0,
+                                                      self.typeBtn.frame.size.width-self.typeBtn.imageView.frame.size.width,
+                                                      0,
+                                                      0)];
+    [self.orderBtn setImageEdgeInsets:UIEdgeInsetsMake(0,
+                                                      self.orderBtn.frame.size.width-self.orderBtn.imageView.frame.size.width,
+                                                      0,
+                                                      0)];
+//    [self.favorBtn setImageEdgeInsets:UIEdgeInsetsMake(0,
+//                                                       0,
+//                                                       0,
+//                                                       self.favorBtn.frame.size.width-self.favorBtn.imageView.frame.size.width)];
+}
+
+-(void)categoryBtnAction:(id)sender
+{
+    YouhuiCategoryViewController *cateVC = [[YouhuiCategoryViewController alloc] initWithCategoryModel:self.filterCategory];
+    cateVC.delegate = self;
+    cateVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:cateVC animated:YES];
+    cateVC.hidesBottomBarWhenPushed = NO;
+}
+
 
 #pragma mark - UITableViewDataSource<NSObject>
 
@@ -174,24 +217,20 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row == 0) {
-        NSLog(@"----======%d===--45",indexPath.row);
         return 45;
     }else{
         if (indexPath.row <= (ceil((float)[[self.itemListDict objectForKey:@"itemlist"] count]/2))) {
-            NSLog(@"----======%d===--236",indexPath.row);
             return 236;
         }else{
             NSInteger rowNumTmp = ceil((float)[[self.itemListDict objectForKey:@"itemlist"] count]/2)+1;
             for (NSString *key in self.otherGroupKeysOrder) {
                 if (indexPath.row == rowNumTmp) {
-                    NSLog(@"----======%d===--45",indexPath.row);
                     return 45;
                 }else if (indexPath.row < rowNumTmp) {
                     break;
                 }
                 rowNumTmp += (ceil((float)[[[self.otherGroupDict objectForKey:key] objectForKey:@"itemlist"] count]/2)+1);
             }
-            NSLog(@"----======%d===--236",indexPath.row);
             return 236;
         }
     }
@@ -225,5 +264,20 @@
 {
     NSLog(@"%@",errorMsg);
 }
+
+#pragma mark - YouhuiCategoryViewControllerDelegate
+-(void)categoryDidSelected:(CategoryModel *)categoryModel
+{
+    self.filterCategory = categoryModel;
+    if (self.filterCategory) {
+        [self.cateBtn setTitle:[NSString stringWithFormat:@"%@ ",categoryModel.cName]
+                          forState:UIControlStateNormal];
+    }else{
+        [self.cateBtn setTitle:@"分类 " forState:UIControlStateNormal];
+    }
+    
+//    [self refreshTable];
+}
+
 
 @end

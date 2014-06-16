@@ -128,6 +128,7 @@
     self.endTimeLabel = nil;
     self.favorBtn = nil;
     self.shareBtn = nil;
+    self.parentView = nil;
     
     [super dealloc];
 }
