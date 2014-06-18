@@ -102,10 +102,12 @@
 		0357FF7B194DE17C0071BD5A /* toolbar_shop_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0357FF71194DE17C0071BD5A /* toolbar_shop_icon@2x.png */; };
 		0357FF7F194F3EB90071BD5A /* FoodViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0357FF7D194F3EB90071BD5A /* FoodViewController.m */; };
 		0357FF80194F3EB90071BD5A /* FoodViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0357FF7E194F3EB90071BD5A /* FoodViewController.xib */; };
-		0357FF85194F41710071BD5A /* FoodSectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0357FF83194F41710071BD5A /* FoodSectionCell.m */; };
-		0357FF86194F41710071BD5A /* FoodSectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0357FF84194F41710071BD5A /* FoodSectionCell.xib */; };
 		0357FF8A194F46310071BD5A /* FoodItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0357FF88194F46310071BD5A /* FoodItemCell.m */; };
 		0357FF8B194F46310071BD5A /* FoodItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0357FF89194F46310071BD5A /* FoodItemCell.xib */; };
+		0357FF8D1951CA6D0071BD5A /* address_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0357FF8C1951CA6D0071BD5A /* address_icon@2x.png */; };
+		0357FF901951CFCA0071BD5A /* FoodViewInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 0357FF8F1951CFCA0071BD5A /* FoodViewInterface.m */; };
+		0357FF941951EBF20071BD5A /* FoodCouponCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0357FF921951EBF20071BD5A /* FoodCouponCell.m */; };
+		0357FF951951EBF20071BD5A /* FoodCouponCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0357FF931951EBF20071BD5A /* FoodCouponCell.xib */; };
 		03650F431942D9EB00016289 /* MainView_DailyPromotionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 03650F421942D9EB00016289 /* MainView_DailyPromotionCell.m */; };
 		03650F461942D9FE00016289 /* MainView_DailyPromotionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03650F451942D9FE00016289 /* MainView_DailyPromotionCell.xib */; };
 		03650F491942F08B00016289 /* MainView_PromotionActivityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 03650F481942F08B00016289 /* MainView_PromotionActivityCell.m */; };
@@ -754,12 +756,15 @@
 		0357FF7C194F3EB90071BD5A /* FoodViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodViewController.h; sourceTree = "<group>"; };
 		0357FF7D194F3EB90071BD5A /* FoodViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodViewController.m; sourceTree = "<group>"; };
 		0357FF7E194F3EB90071BD5A /* FoodViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FoodViewController.xib; sourceTree = "<group>"; };
-		0357FF82194F41710071BD5A /* FoodSectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodSectionCell.h; sourceTree = "<group>"; };
-		0357FF83194F41710071BD5A /* FoodSectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodSectionCell.m; sourceTree = "<group>"; };
-		0357FF84194F41710071BD5A /* FoodSectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FoodSectionCell.xib; sourceTree = "<group>"; };
 		0357FF87194F46310071BD5A /* FoodItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodItemCell.h; sourceTree = "<group>"; };
 		0357FF88194F46310071BD5A /* FoodItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodItemCell.m; sourceTree = "<group>"; };
 		0357FF89194F46310071BD5A /* FoodItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FoodItemCell.xib; sourceTree = "<group>"; };
+		0357FF8C1951CA6D0071BD5A /* address_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "address_icon@2x.png"; sourceTree = "<group>"; };
+		0357FF8E1951CFCA0071BD5A /* FoodViewInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodViewInterface.h; sourceTree = "<group>"; };
+		0357FF8F1951CFCA0071BD5A /* FoodViewInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodViewInterface.m; sourceTree = "<group>"; };
+		0357FF911951EBF20071BD5A /* FoodCouponCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodCouponCell.h; sourceTree = "<group>"; };
+		0357FF921951EBF20071BD5A /* FoodCouponCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodCouponCell.m; sourceTree = "<group>"; };
+		0357FF931951EBF20071BD5A /* FoodCouponCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FoodCouponCell.xib; sourceTree = "<group>"; };
 		03650F411942D9EB00016289 /* MainView_DailyPromotionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainView_DailyPromotionCell.h; sourceTree = "<group>"; };
 		03650F421942D9EB00016289 /* MainView_DailyPromotionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainView_DailyPromotionCell.m; sourceTree = "<group>"; };
 		03650F451942D9FE00016289 /* MainView_DailyPromotionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainView_DailyPromotionCell.xib; sourceTree = "<group>"; };
@@ -1669,6 +1674,8 @@
 				03650F641945562700016289 /* MainViewInterface.m */,
 				C1E094EC194996F600AA814B /* CouponViewInterface.h */,
 				C1E094ED194996F600AA814B /* CouponViewInterface.m */,
+				0357FF8E1951CFCA0071BD5A /* FoodViewInterface.h */,
+				0357FF8F1951CFCA0071BD5A /* FoodViewInterface.m */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
@@ -1800,12 +1807,12 @@
 		0357FF81194F41080071BD5A /* FoodViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				0357FF82194F41710071BD5A /* FoodSectionCell.h */,
-				0357FF83194F41710071BD5A /* FoodSectionCell.m */,
-				0357FF84194F41710071BD5A /* FoodSectionCell.xib */,
 				0357FF87194F46310071BD5A /* FoodItemCell.h */,
 				0357FF88194F46310071BD5A /* FoodItemCell.m */,
 				0357FF89194F46310071BD5A /* FoodItemCell.xib */,
+				0357FF911951EBF20071BD5A /* FoodCouponCell.h */,
+				0357FF921951EBF20071BD5A /* FoodCouponCell.m */,
+				0357FF931951EBF20071BD5A /* FoodCouponCell.xib */,
 			);
 			name = FoodViewCell;
 			sourceTree = "<group>";
@@ -1813,6 +1820,7 @@
 		03650F661945F35F00016289 /* img_new */ = {
 			isa = PBXGroup;
 			children = (
+				0357FF8C1951CA6D0071BD5A /* address_icon@2x.png */,
 				0357FF68194DE17C0071BD5A /* toolbar_coupon_icon_press@2x.png */,
 				0357FF69194DE17C0071BD5A /* toolbar_coupon_icon@2x.png */,
 				0357FF6A194DE17C0071BD5A /* toolbar_food_icon_press@2x.png */,
@@ -2840,7 +2848,6 @@
 				4ECBF73818F4B9A4003963E1 /* tmpimg4.jpg in Resources */,
 				FA4E65E019357B21005022E2 /* UMSocialTwitterData.html in Resources */,
 				0357FF59194D8CD80071BD5A /* card@2x.png in Resources */,
-				0357FF86194F41710071BD5A /* FoodSectionCell.xib in Resources */,
 				4EF0910118FB52FD00ABFE7D /* store-btn-sb-red-pressed@2x.png in Resources */,
 				03650F901945FC9400016289 /* nav_search@2x.png in Resources */,
 				4EF090DC18FB52FD00ABFE7D /* index-tool-btn-food@2x.png in Resources */,
@@ -3038,6 +3045,7 @@
 				C1009E82192C589A00A4CC79 /* Icon_29.png in Resources */,
 				4EF0914818FC2CEE00ABFE7D /* pp_7.jpg in Resources */,
 				0357FF4B194D83F10071BD5A /* GroupBuyDetailViewController.xib in Resources */,
+				0357FF8D1951CA6D0071BD5A /* address_icon@2x.png in Resources */,
 				4EF090EA18FB52FD00ABFE7D /* sale-bar-tableft-cur@2x.png in Resources */,
 				4EF0911A18FB52FD00ABFE7D /* top-icon-more-black@2x.png in Resources */,
 				4EF0914418FC2CEE00ABFE7D /* pp_3.jpg in Resources */,
@@ -3083,6 +3091,7 @@
 				4ECBF74018F58C33003963E1 /* ShopDetailDescriptionCell.xib in Resources */,
 				03650F8D1945FC9400016289 /* nav_scan_qrcode_press@2x.png in Resources */,
 				4E2C6DE118D754ED00DF3772 /* MainViewNavigationCell.xib in Resources */,
+				0357FF951951EBF20071BD5A /* FoodCouponCell.xib in Resources */,
 				4EF0914918FC2CEE00ABFE7D /* pp_8.jpg in Resources */,
 				03650F801945F52200016289 /* mainview_mall_activity@2x.png in Resources */,
 				FA4E65D519357B21005022E2 /* UMSocialQQData.html in Resources */,
@@ -3132,6 +3141,7 @@
 				03573B9D190EAB9900A11A33 /* GlobeModel.m in Sources */,
 				03573ACB19055C7500A11A33 /* SVProgressHUD.m in Sources */,
 				C19532281920C6CB00D3BFA8 /* Base64.m in Sources */,
+				0357FF941951EBF20071BD5A /* FoodCouponCell.m in Sources */,
 				4E9608A718E48D6700418798 /* PullTableView.m in Sources */,
 				4E9608CE18E9C54400418798 /* MainViewMiaoShaCell.m in Sources */,
 				C1A9C87D193F130300DD420F /* NIRuntimeClassModifications.m in Sources */,
@@ -3221,6 +3231,7 @@
 				03650F5F194540E200016289 /* MainView_CategoryCell.m in Sources */,
 				03650F5B1942FF0E00016289 /* MainView_RestaurantCell.m in Sources */,
 				0357FF45194D76B20071BD5A /* CouponDetailStoreCell.m in Sources */,
+				0357FF901951CFCA0071BD5A /* FoodViewInterface.m in Sources */,
 				C1A9C885193F130300DD420F /* NIPageView.m in Sources */,
 				C1A9C88D193F130300DD420F /* TileView.m in Sources */,
 				C1A9C8C2194164D000DD420F /* Reachability.m in Sources */,
@@ -3268,7 +3279,6 @@
 				031203321917D7EA00077E25 /* CouponDownloadInterface.m in Sources */,
 				C1E094EE194996F600AA814B /* CouponViewInterface.m in Sources */,
 				C1A9C887193F130300DD420F /* BaseImageView.m in Sources */,
-				0357FF85194F41710071BD5A /* FoodSectionCell.m in Sources */,
 				4E96087718E4791000418798 /* CustomNavigationController.m in Sources */,
 				C1D8700F18EC0CAB0061F799 /* CouponDetailViewController.m in Sources */,
 				0312032B19169A4E00077E25 /* CouponInterface.m in Sources */,

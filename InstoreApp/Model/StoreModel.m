@@ -18,22 +18,25 @@
 {
     if (self = [super init]) {
         if (jsonMap && ![jsonMap isKindOfClass:[NSNull class]]) {
-            
+            self.sid = [[jsonMap objectForKey:@"id"] integerValue];
             self.title = [jsonMap objectForKey:@"title"];
             self.imageUrl = [jsonMap objectForKey:@"image"];
             self.itemType = [[jsonMap objectForKey:@"itemType"] integerValue];
-            self.sid = [[jsonMap objectForKey:@"id"] integerValue];
             self.appCategory = [jsonMap objectForKey:@"appCategory"];
             
-            
+            self.avgPrice = [jsonMap objectForKey:@"avgprice"]==nil?0:[[jsonMap objectForKey:@"avgprice"] integerValue];
+            self.slogan = [jsonMap objectForKey:@"slogan"];
             
             self.logoUrl = [jsonMap objectForKey:@"logo"];
             self.address = [jsonMap objectForKey:@"address"];
             self.tel = [jsonMap objectForKey:@"tel"];
             self.categoryModel = [[[CategoryModel alloc] initWithJsonMap:[jsonMap objectForKey:@"category"]] autorelease];
             self.position = [[[PositionModel alloc ]initWithJsonMap:[jsonMap objectForKey:@"pos"]] autorelease];
+            
+            self.promotionTypes = [jsonMap objectForKey:@"promotionTypes"];
+            
 //            self.descStr = [jsonMap objectForKey:@"description"];
-//            self.followerCount = [jsonMap objectForKey:@"followerCount"]==nil?0:[[jsonMap objectForKey:@"followerCount"] integerValue];
+            self.followerCount = [jsonMap objectForKey:@"followerCount"]==nil?0:[[jsonMap objectForKey:@"followerCount"] integerValue];
 //            self.isFocus = [[jsonMap objectForKey:@"isFocus"] boolValue];
 //            
 //            self.coupons = [NSMutableArray array];
@@ -65,6 +68,8 @@
     self.imageUrl = nil;
     self.coupons = nil;
     self.comments = nil;
+    self.slogan = nil;
+    self.promotionTypes = nil;
     
     [super dealloc];
 }
