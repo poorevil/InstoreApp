@@ -108,6 +108,11 @@
 		0357FF901951CFCA0071BD5A /* FoodViewInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 0357FF8F1951CFCA0071BD5A /* FoodViewInterface.m */; };
 		0357FF941951EBF20071BD5A /* FoodCouponCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0357FF921951EBF20071BD5A /* FoodCouponCell.m */; };
 		0357FF951951EBF20071BD5A /* FoodCouponCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0357FF931951EBF20071BD5A /* FoodCouponCell.xib */; };
+		0357FF9819533DC30071BD5A /* FoodViewPromotionInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 0357FF9719533DC30071BD5A /* FoodViewPromotionInterface.m */; };
+		0357FF9C195344D70071BD5A /* StoreDetail_RestaurantViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0357FF9A195344D70071BD5A /* StoreDetail_RestaurantViewController.m */; };
+		0357FF9D195344D70071BD5A /* StoreDetail_RestaurantViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0357FF9B195344D70071BD5A /* StoreDetail_RestaurantViewController.xib */; };
+		0357FFA2195347530071BD5A /* StoreDetail_headerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0357FFA0195347530071BD5A /* StoreDetail_headerCell.m */; };
+		0357FFA3195347530071BD5A /* StoreDetail_headerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0357FFA1195347530071BD5A /* StoreDetail_headerCell.xib */; };
 		03650F431942D9EB00016289 /* MainView_DailyPromotionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 03650F421942D9EB00016289 /* MainView_DailyPromotionCell.m */; };
 		03650F461942D9FE00016289 /* MainView_DailyPromotionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03650F451942D9FE00016289 /* MainView_DailyPromotionCell.xib */; };
 		03650F491942F08B00016289 /* MainView_PromotionActivityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 03650F481942F08B00016289 /* MainView_PromotionActivityCell.m */; };
@@ -765,6 +770,14 @@
 		0357FF911951EBF20071BD5A /* FoodCouponCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodCouponCell.h; sourceTree = "<group>"; };
 		0357FF921951EBF20071BD5A /* FoodCouponCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodCouponCell.m; sourceTree = "<group>"; };
 		0357FF931951EBF20071BD5A /* FoodCouponCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FoodCouponCell.xib; sourceTree = "<group>"; };
+		0357FF9619533DC30071BD5A /* FoodViewPromotionInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodViewPromotionInterface.h; sourceTree = "<group>"; };
+		0357FF9719533DC30071BD5A /* FoodViewPromotionInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodViewPromotionInterface.m; sourceTree = "<group>"; };
+		0357FF99195344D70071BD5A /* StoreDetail_RestaurantViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreDetail_RestaurantViewController.h; sourceTree = "<group>"; };
+		0357FF9A195344D70071BD5A /* StoreDetail_RestaurantViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreDetail_RestaurantViewController.m; sourceTree = "<group>"; };
+		0357FF9B195344D70071BD5A /* StoreDetail_RestaurantViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StoreDetail_RestaurantViewController.xib; sourceTree = "<group>"; };
+		0357FF9F195347530071BD5A /* StoreDetail_headerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreDetail_headerCell.h; sourceTree = "<group>"; };
+		0357FFA0195347530071BD5A /* StoreDetail_headerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreDetail_headerCell.m; sourceTree = "<group>"; };
+		0357FFA1195347530071BD5A /* StoreDetail_headerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StoreDetail_headerCell.xib; sourceTree = "<group>"; };
 		03650F411942D9EB00016289 /* MainView_DailyPromotionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainView_DailyPromotionCell.h; sourceTree = "<group>"; };
 		03650F421942D9EB00016289 /* MainView_DailyPromotionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainView_DailyPromotionCell.m; sourceTree = "<group>"; };
 		03650F451942D9FE00016289 /* MainView_DailyPromotionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainView_DailyPromotionCell.xib; sourceTree = "<group>"; };
@@ -1676,6 +1689,8 @@
 				C1E094ED194996F600AA814B /* CouponViewInterface.m */,
 				0357FF8E1951CFCA0071BD5A /* FoodViewInterface.h */,
 				0357FF8F1951CFCA0071BD5A /* FoodViewInterface.m */,
+				0357FF9619533DC30071BD5A /* FoodViewPromotionInterface.h */,
+				0357FF9719533DC30071BD5A /* FoodViewPromotionInterface.m */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
@@ -1815,6 +1830,16 @@
 				0357FF931951EBF20071BD5A /* FoodCouponCell.xib */,
 			);
 			name = FoodViewCell;
+			sourceTree = "<group>";
+		};
+		0357FF9E1953471A0071BD5A /* StoreDetailViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				0357FF9F195347530071BD5A /* StoreDetail_headerCell.h */,
+				0357FFA0195347530071BD5A /* StoreDetail_headerCell.m */,
+				0357FFA1195347530071BD5A /* StoreDetail_headerCell.xib */,
+			);
+			name = StoreDetailViewCell;
 			sourceTree = "<group>";
 		};
 		03650F661945F35F00016289 /* img_new */ = {
@@ -2017,6 +2042,9 @@
 				4ECBF70818F4449E003963E1 /* BindPhoneViewController.h */,
 				4ECBF70918F4449E003963E1 /* BindPhoneViewController.m */,
 				4ECBF70A18F4449E003963E1 /* BindPhoneViewController.xib */,
+				0357FF99195344D70071BD5A /* StoreDetail_RestaurantViewController.h */,
+				0357FF9A195344D70071BD5A /* StoreDetail_RestaurantViewController.m */,
+				0357FF9B195344D70071BD5A /* StoreDetail_RestaurantViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -2024,6 +2052,7 @@
 		4E2C6DCF18D7523D00DF3772 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				0357FF9E1953471A0071BD5A /* StoreDetailViewCell */,
 				0357FF81194F41080071BD5A /* FoodViewCell */,
 				0357FF52194D8C160071BD5A /* CouponDetailViewCell */,
 				0357FF4C194D87010071BD5A /* GroupBuyDetailViewCell */,
@@ -2789,6 +2818,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4EF0915B18FC50B400ABFE7D /* tabbar_bg.png in Resources */,
+				0357FFA3195347530071BD5A /* StoreDetail_headerCell.xib in Resources */,
 				FA4E65C919357B21005022E2 /* UMSocialControllerServiceComment.html in Resources */,
 				C1E094FF194AA92000AA814B /* down_arrow@2x.png in Resources */,
 				FA4E65F219357B21005022E2 /* UMSocialUIDelegate.html in Resources */,
@@ -2990,6 +3020,7 @@
 				4EF090DE18FB52FD00ABFE7D /* index-tool-btn-sale@2x.png in Resources */,
 				4EF0915C18FC50B400ABFE7D /* tabbar_bg@2x.png in Resources */,
 				4EF0914D18FC311B00ABFE7D /* dior.jpg in Resources */,
+				0357FF9D195344D70071BD5A /* StoreDetail_RestaurantViewController.xib in Resources */,
 				03650F841945F52200016289 /* mainview_msg@2x.png in Resources */,
 				03650F871945F52200016289 /* mainview_wifi_press@2x.png in Resources */,
 				FA4E65C019357B21005022E2 /* UMSnsAccountViewController.xib in Resources */,
@@ -3211,6 +3242,7 @@
 				03573AD719055DE200A11A33 /* StoreListView.m in Sources */,
 				C1A9C891193F13A600DD420F /* PhotoAlbumToolBarView.m in Sources */,
 				C1A9C879193F130300DD420F /* NINonEmptyCollectionTesting.m in Sources */,
+				0357FF9C195344D70071BD5A /* StoreDetail_RestaurantViewController.m in Sources */,
 				03573ADA19055E2300A11A33 /* SingletonHelpers.m in Sources */,
 				03573ADD19055E4A00A11A33 /* MBSFilterInfo.m in Sources */,
 				4ECBF75C18F6E9B4003963E1 /* CouponDetailDownloadCell.m in Sources */,
@@ -3218,6 +3250,7 @@
 				C1953221191CDBF500D3BFA8 /* DownloadCouponsViewController.m in Sources */,
 				0357FF5D194D8DF00071BD5A /* GroupBuyDateTimeCell.m in Sources */,
 				03650F651945562700016289 /* MainViewInterface.m in Sources */,
+				0357FF9819533DC30071BD5A /* FoodViewPromotionInterface.m in Sources */,
 				C195320B191B6D5000D3BFA8 /* EGOImageButton.m in Sources */,
 				0357FF2E1949EB4A0071BD5A /* CouponView_titleCell.m in Sources */,
 				C1A9C8BB194164C600DD420F /* ASIFormDataRequest.m in Sources */,
@@ -3251,6 +3284,7 @@
 				C195322B1921F3D700D3BFA8 /* CommentModel.m in Sources */,
 				0312035D191945DF00077E25 /* EGOImageView.m in Sources */,
 				4E96088118E4837100418798 /* YouhuiTileView.m in Sources */,
+				0357FFA2195347530071BD5A /* StoreDetail_headerCell.m in Sources */,
 				03573B9A190EA8DB00A11A33 /* KeyChainTool.m in Sources */,
 				031203351917D9F600077E25 /* CouponDownloadModel.m in Sources */,
 				4E96087E18E4815500418798 /* BaseViewController.m in Sources */,

@@ -17,8 +17,10 @@
 #import "FloorModel.h"
 #import "FoodCouponCell.h"
 
+#import "FoodViewPromotionInterface.h"
 
-@interface FoodViewController () <FoodViewInterfaceDelegate>
+
+@interface FoodViewController () <FoodViewInterfaceDelegate, FoodViewPromotionInterfaceDelegate>
 @property (nonatomic,strong) CycleScrollView *lunboView;
 
 @property (nonatomic, retain) NSMutableArray *itemList;
@@ -30,6 +32,10 @@
 
 @property (nonatomic, retain) UIView *headerView;
 @property (nonatomic, retain) UISegmentedControl *segmentedControl;
+
+@property (nonatomic, retain) FoodViewPromotionInterface *foodViewPromotionInterface;
+@property (nonatomic, assign) NSInteger promotion_currentPage;
+@property (nonatomic, assign) NSInteger promotion_totalCount;
 
 @end
 
@@ -46,9 +52,8 @@
     
     [self initLunboView];
     
-    self.foodViewInterface = [[FoodViewInterface alloc] init];
-    self.foodViewInterface.delegate = self;
-    [self.foodViewInterface getFoodListByPage:self.currentPage amount:20];
+    //TODO:111
+    [self showTypeChanged:self.segmentedControl];
 }
 
 - (void)didReceiveMemoryWarning
@@ -125,8 +130,15 @@
 {
     if ([sender selectedSegmentIndex] == 0) {
         //商户
+        self.foodViewInterface = [[FoodViewInterface alloc] init];
+        self.foodViewInterface.delegate = self;
+        [self.foodViewInterface getFoodListByPage:self.currentPage amount:20];
+        
     }else{
         //优惠
+        self.foodViewPromotionInterface = [[FoodViewPromotionInterface alloc] init];
+        self.foodViewPromotionInterface.delegate = self;
+        [self.foodViewPromotionInterface getFoodViewPromotionListByPage:self.promotion_currentPage amount:20];
     }
 }
 
@@ -195,6 +207,24 @@
 }
 
 -(void)getFoodListDidFailed:(NSString *)errorMsg
+{
+    NSLog(@"%@",errorMsg);
+}
+
+#pragma mark - FoodViewPromotionInterfaceDelegate <NSObject>
+
+-(void)getFoodViewPromotionListDidFinished:(NSArray *)itemList
+                                totalCount:(NSInteger)totalCount
+                               currentPage:(NSInteger)currentPage
+{
+    [self.itemCouponList addObjectsFromArray:itemList];
+    self.promotion_currentPage++;
+    self.promotion_totalCount = totalCount;
+    
+    [self.mtableView reloadData];
+}
+
+-(void)getFoodViewPromotionListDidFailed:(NSString *)errorMsg
 {
     NSLog(@"%@",errorMsg);
 }
