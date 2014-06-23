@@ -11,12 +11,28 @@
 #import "EGOImageView.h"
 #import "PositionModel.h"
 #import "FloorModel.h"
+#import "AppDelegate.h"
+
+#import "StoreDetail_RestaurantViewController.h"
 
 @implementation FoodItemCell
 
 - (void)awakeFromNib
 {
     // Initialization code
+    UITapGestureRecognizer *tap = [[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)] autorelease];
+    [self addGestureRecognizer:tap];
+}
+
+-(void)tapAction:(id)gesture
+{
+    AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+    UINavigationController *nav = (UINavigationController *)appDelegate.tabBarController.selectedViewController;
+    StoreDetail_RestaurantViewController *sdrvc = [[StoreDetail_RestaurantViewController alloc] initWithNibName:@"StoreDetail_RestaurantViewController" bundle:nil];
+    sdrvc.shopId = self.storeModel.sid;
+    sdrvc.hidesBottomBarWhenPushed = YES;
+    [nav pushViewController:sdrvc animated:YES];
+    sdrvc.hidesBottomBarWhenPushed = NO;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated

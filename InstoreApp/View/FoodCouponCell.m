@@ -11,7 +11,8 @@
 #import "CouponModel.h"
 #import "CouponView_focused_tileView.h"
 #import "AppDelegate.h"
-
+#import "GroupBuyDetailViewController.h"
+#import "CouponDetailViewController.h"
 
 @implementation FoodCouponCell
 
@@ -37,6 +38,7 @@
     if (self.cm1) {
         CouponView_focused_tileView *view = [[[NSBundle mainBundle] loadNibNamed:@"CouponView_focused_tileView" owner:self options:nil] objectAtIndex:0];
         view.cm = self.cm1;
+        view.userInteractionEnabled = YES;
         view.frame = CGRectMake(5, 5, view.frame.size.width, view.frame.size.height);
         view.parentView.layer.borderColor = [UIColor lightGrayColor].CGColor;
         view.parentView.layer.borderWidth = 0.4f;
@@ -84,29 +86,30 @@
 
 -(void)tapAction:(UIGestureRecognizer *)gesture
 {
-//    UIView *v = gesture.view;
-//    
-//    AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
-//    UINavigationController *nav = (UINavigationController *)appDelegate.tabBarController.selectedViewController;
-//    
-//    UIViewController *vc = nil;
-//    CouponModel *cm = v.tag==1?self.cm1:self.cm2;
-//    switch (cm.promotionType ) {//优惠类型 (1, '优惠活动'), (2, '优惠券'), (3, '团购')
-//        case 3:
-//            vc = [[[GroupBuyDetailViewController alloc] initWithNibName:@"GroupBuyDetailViewController" bundle:nil] autorelease];
-//            break;
-//        case 2:
-//            vc = [[[CouponDetailViewController alloc] initWithNibName:@"CouponDetailViewController" bundle:nil] autorelease];
-//            break;
-//            //TODO:case2
-//            
-//    }
-//    
-//    [vc setCouponModel:cm];
-//    vc.hidesBottomBarWhenPushed = YES;
-//    [nav pushViewController:vc animated:YES];
-//    vc.hidesBottomBarWhenPushed = NO;
+    UIView *v = gesture.view;
+    
+    AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+    UINavigationController *nav = (UINavigationController *)appDelegate.tabBarController.selectedViewController;
+    
+    UIViewController *vc = nil;
+    CouponModel *cm = v.tag==1?self.cm1:self.cm2;
+    switch (cm.promotionType ) {//优惠类型 (1, '优惠活动'), (2, '优惠券'), (3, '团购')
+        case 3:
+            vc = [[[GroupBuyDetailViewController alloc] initWithNibName:@"GroupBuyDetailViewController" bundle:nil] autorelease];
+            break;
+        case 2:
+            vc = [[[CouponDetailViewController alloc] initWithNibName:@"CouponDetailViewController" bundle:nil] autorelease];
+            break;
+            //TODO:case2
+            
+    }
+    
+    [vc setCouponModel:cm];
+    vc.hidesBottomBarWhenPushed = YES;
+    [nav pushViewController:vc animated:YES];
+    vc.hidesBottomBarWhenPushed = NO;
 }
+
 
 -(void)dealloc
 {

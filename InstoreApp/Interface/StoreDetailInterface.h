@@ -20,6 +20,7 @@
 
 @property (nonatomic,assign) id<StoreDetailInterfaceDelegate> delegate;
 
--(void)getStoreDetailByShopId:(NSInteger)shopId commentSize:(NSInteger)commentSize couponSize:(NSInteger)couponSize;
+//-(void)getStoreDetailByShopId:(NSInteger)shopId commentSize:(NSInteger)commentSize couponSize:(NSInteger)couponSize;
+-(void)getStoreDetailByShopId:(NSInteger)shopId;
 
 @end

@@ -1,14 +1,14 @@
 //
-//  StoreDetail_headerCell.m
+//  StoreDetailCardCell.m
 //  InstoreApp
 //
-//  Created by evil on 14-6-20.
+//  Created by evil on 14-6-23.
 //  Copyright (c) 2014年 evil. All rights reserved.
 //
 
-#import "StoreDetail_headerCell.h"
+#import "StoreDetail_cardCell.h"
 
-@implementation StoreDetail_headerCell
+@implementation StoreDetail_cardCell
 
 - (void)awakeFromNib
 {
@@ -20,6 +20,12 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+-(void)dealloc
+{
+    self.cardLabel = nil;
+    [super dealloc];
 }
 
 @end

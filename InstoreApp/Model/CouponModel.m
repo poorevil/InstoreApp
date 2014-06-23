@@ -55,8 +55,6 @@
             self.commentCount = [jsonMap objectForKey:@"commentCount"]?[[jsonMap objectForKey:@"commentCount"] integerValue]:0;
 
             
-//
-//            self.imageUrl = [jsonMap objectForKey:@"image"];
 //            self.imageWidth = [jsonMap objectForKey:@"pixelWith"]?[[jsonMap objectForKey:@"pixelWith"] integerValue]:0;
 //            self.imageHeight = [jsonMap objectForKey:@"pixelHeight"]?[[jsonMap objectForKey:@"pixelHeight"] integerValue]:0;
 //            

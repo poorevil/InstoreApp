@@ -35,20 +35,20 @@
             
             self.promotionTypes = [jsonMap objectForKey:@"promotionTypes"];
             
-//            self.descStr = [jsonMap objectForKey:@"description"];
+            self.descStr = [jsonMap objectForKey:@"description"];
             self.followerCount = [jsonMap objectForKey:@"followerCount"]==nil?0:[[jsonMap objectForKey:@"followerCount"] integerValue];
-//            self.isFocus = [[jsonMap objectForKey:@"isFocus"] boolValue];
-//            
-//            self.coupons = [NSMutableArray array];
-//            NSArray *coupons = [jsonMap objectForKey:@"coupons"];
-//            for (NSDictionary *couponDict in coupons) {
-//                [self.coupons addObject:[[[CouponModel alloc] initWithJsonMap:couponDict] autorelease]];
-//            }
-//            self.comments = [NSMutableArray array];
-//            NSArray *comments = [jsonMap objectForKey:@"comments"];
-//            for (NSDictionary *commentDict in comments) {
-//                [self.comments addObject:[[[CommentModel alloc] initWithJsonMap:commentDict] autorelease]];
-//            }
+            self.isFocus = [[jsonMap objectForKey:@"isFocus"] boolValue];
+//
+            self.coupons = [NSMutableArray array];
+            NSArray *coupons = [jsonMap objectForKey:@"coupons"];//coupons
+            for (NSDictionary *couponDict in coupons) {
+                [self.coupons addObject:[[[CouponModel alloc] initWithJsonMap:couponDict] autorelease]];
+            }
+            self.comments = [NSMutableArray array];
+            NSArray *comments = [jsonMap objectForKey:@"comments"];
+            for (NSDictionary *commentDict in comments) {
+                [self.comments addObject:[[[CommentModel alloc] initWithJsonMap:commentDict] autorelease]];
+            }
         }
     }
     
