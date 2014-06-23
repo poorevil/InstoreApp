@@ -38,6 +38,10 @@
 		035214C519588ADC00F92B55 /* StoreDetail_otherCouponTileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 035214C419588ADC00F92B55 /* StoreDetail_otherCouponTileView.xib */; };
 		035214C9195894C500F92B55 /* StoreListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 035214C7195894C500F92B55 /* StoreListViewController.m */; };
 		035214CA195894C500F92B55 /* StoreListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 035214C8195894C500F92B55 /* StoreListViewController.xib */; };
+		035214CE1958A23100F92B55 /* StoreList_headerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 035214CD1958A23100F92B55 /* StoreList_headerView.m */; };
+		035214D01958A23E00F92B55 /* StoreList_headerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 035214CF1958A23E00F92B55 /* StoreList_headerView.xib */; };
+		035214D41958A4E100F92B55 /* StoreList_goodsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 035214D21958A4E100F92B55 /* StoreList_goodsCell.m */; };
+		035214D51958A4E100F92B55 /* StoreList_goodsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 035214D31958A4E100F92B55 /* StoreList_goodsCell.xib */; };
 		03573A6F19041D5600A11A33 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 03573A6E19041D5600A11A33 /* libxml2.dylib */; };
 		03573A7519041EFB00A11A33 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03573A7419041EFB00A11A33 /* CoreLocation.framework */; };
 		03573ABD1905584800A11A33 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03573ABC1905584800A11A33 /* QuartzCore.framework */; };
@@ -621,6 +625,12 @@
 		035214C6195894C500F92B55 /* StoreListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreListViewController.h; sourceTree = "<group>"; };
 		035214C7195894C500F92B55 /* StoreListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreListViewController.m; sourceTree = "<group>"; };
 		035214C8195894C500F92B55 /* StoreListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StoreListViewController.xib; sourceTree = "<group>"; };
+		035214CC1958A23100F92B55 /* StoreList_headerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreList_headerView.h; sourceTree = "<group>"; };
+		035214CD1958A23100F92B55 /* StoreList_headerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreList_headerView.m; sourceTree = "<group>"; };
+		035214CF1958A23E00F92B55 /* StoreList_headerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StoreList_headerView.xib; sourceTree = "<group>"; };
+		035214D11958A4E100F92B55 /* StoreList_goodsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreList_goodsCell.h; sourceTree = "<group>"; };
+		035214D21958A4E100F92B55 /* StoreList_goodsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreList_goodsCell.m; sourceTree = "<group>"; };
+		035214D31958A4E100F92B55 /* StoreList_goodsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StoreList_goodsCell.xib; sourceTree = "<group>"; };
 		03573A6E19041D5600A11A33 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		03573A7019041E2200A11A33 /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
 		03573A7219041EF400A11A33 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -1443,6 +1453,19 @@
 			path = EGOImageView;
 			sourceTree = "<group>";
 		};
+		035214CB1958A20D00F92B55 /* StoreListViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				035214CC1958A23100F92B55 /* StoreList_headerView.h */,
+				035214CD1958A23100F92B55 /* StoreList_headerView.m */,
+				035214CF1958A23E00F92B55 /* StoreList_headerView.xib */,
+				035214D11958A4E100F92B55 /* StoreList_goodsCell.h */,
+				035214D21958A4E100F92B55 /* StoreList_goodsCell.m */,
+				035214D31958A4E100F92B55 /* StoreList_goodsCell.xib */,
+			);
+			name = StoreListViewCell;
+			sourceTree = "<group>";
+		};
 		03573ABE19055B7700A11A33 /* IndoorMap */ = {
 			isa = PBXGroup;
 			children = (
@@ -2103,6 +2126,7 @@
 		4E2C6DCF18D7523D00DF3772 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				035214CB1958A20D00F92B55 /* StoreListViewCell */,
 				0357FF9E1953471A0071BD5A /* StoreDetailViewCell */,
 				0357FF81194F41080071BD5A /* FoodViewCell */,
 				0357FF52194D8C160071BD5A /* CouponDetailViewCell */,
@@ -2910,6 +2934,7 @@
 				0357FF73194DE17C0071BD5A /* toolbar_coupon_icon@2x.png in Resources */,
 				0357FF74194DE17C0071BD5A /* toolbar_food_icon_press@2x.png in Resources */,
 				4E9608AA18E48D6700418798 /* blueArrow.png in Resources */,
+				035214D51958A4E100F92B55 /* StoreList_goodsCell.xib in Resources */,
 				FA4E660019357B22005022E2 /* ios-social-sdk-share-detail.html in Resources */,
 				4E96088318E4838000418798 /* YouhuiTileView.xib in Resources */,
 				C1A84A50192C538C003219DA /* Icon_120.png in Resources */,
@@ -3053,6 +3078,7 @@
 				FA4E65C619357B21005022E2 /* UMSocialButton.html in Resources */,
 				FA4E65CE19357B21005022E2 /* UMSocialEmailData.html in Resources */,
 				FA4E65D019357B21005022E2 /* UMSocialFacebookData.html in Resources */,
+				035214D01958A23E00F92B55 /* StoreList_headerView.xib in Resources */,
 				4ECBF73518F4B9A4003963E1 /* tmpimg1.jpg in Resources */,
 				4EF0911818FB52FD00ABFE7D /* top-icon-back-white@2x.png in Resources */,
 				4EF0915418FC4A8900ABFE7D /* c_3.jpg in Resources */,
@@ -3300,6 +3326,7 @@
 				C1A9C87A193F130300DD420F /* NINonRetainingCollections.m in Sources */,
 				03573B8E190EA45800A11A33 /* RuntimeModel.m in Sources */,
 				C1A9C886193F130300DD420F /* NIPagingScrollView.m in Sources */,
+				035214CE1958A23100F92B55 /* StoreList_headerView.m in Sources */,
 				4E2C6DAC18D7502100DF3772 /* main.m in Sources */,
 				03573AD719055DE200A11A33 /* StoreListView.m in Sources */,
 				C1A9C891193F13A600DD420F /* PhotoAlbumToolBarView.m in Sources */,
@@ -3310,6 +3337,7 @@
 				4ECBF75C18F6E9B4003963E1 /* CouponDetailDownloadCell.m in Sources */,
 				C1A9C876193F130300DD420F /* NIInMemoryCache.m in Sources */,
 				C1953221191CDBF500D3BFA8 /* DownloadCouponsViewController.m in Sources */,
+				035214D41958A4E100F92B55 /* StoreList_goodsCell.m in Sources */,
 				0357FF5D194D8DF00071BD5A /* GroupBuyDateTimeCell.m in Sources */,
 				03650F651945562700016289 /* MainViewInterface.m in Sources */,
 				0357FF9819533DC30071BD5A /* FoodViewPromotionInterface.m in Sources */,
