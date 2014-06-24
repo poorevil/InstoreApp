@@ -42,13 +42,13 @@ static NSString* szClientSecret = @"ea13692f9c960a37db0086ff87e56e01";
     // 友盟appKey
     [UMSocialData setAppKey:@"5385444a56240bdc070c0d4e"];
     
-    //初始化HTTPAccess
-    if (![HTTPAccess getInstanceIfInited]) {
-        HTTPAccess *httpAccess = [HTTPAccess createWithId:szClientId andSecret:szClientSecret];
-//        [httpAccess requestAccessTokenFromServer];
-        [httpAccess requestAccessTokenFromServerSynchronously];
-        NSLog(@"===========%@",[httpAccess accessToken]);
-    }
+//    //地图初始化HTTPAccess
+//    if (![HTTPAccess getInstanceIfInited]) {
+//        HTTPAccess *httpAccess = [HTTPAccess createWithId:szClientId andSecret:szClientSecret];
+////        [httpAccess requestAccessTokenFromServer];
+//        [httpAccess requestAccessTokenFromServerSynchronously];
+//        NSLog(@"===========%@",[httpAccess accessToken]);
+//    }
     
     [[GlobeModel sharedSingleton] initUUIDIfNeeded];
     

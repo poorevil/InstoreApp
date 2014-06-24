@@ -10,18 +10,29 @@
 
 @protocol StoreInterfaceDelegate <NSObject>
 
--(void)getStoreListDidFinished:(NSArray *)resultList totalCount:(NSInteger)totalCount currentPage:(NSInteger)currentPage;
+-(void)getStoreListDidFinished:(NSArray *)resultList
+                    totalCount:(NSInteger)totalCount
+                    storeCount:(NSInteger)storeCount    //用户关注的商家数
+                   currentPage:(NSInteger)currentPage
+                      category:(NSString *)category;    //商户大分类 默认"Department"
+
 -(void)getStoreListDidFailed:(NSString *)errorMessage;
 
 @end
 
 @interface StoreInterface : BaseInterface <BaseInterfaceDelegate>
 @property (nonatomic,assign) id<StoreInterfaceDelegate> delegate;
+@property (nonatomic, retain) NSString *category;
 
--(void)getStoreListByFloor:(NSString *)floor
-                       cid:(NSInteger)cid
+-(void)getStoreListByAmount:(NSInteger)amount
+                       page:(NSInteger)page
+                   category:(NSString *)category; //商户大分类 默认"Department";
+//复杂查询
+-(void)getStoreListByFloorId:(NSInteger)fid
+                         cid:(NSInteger)cid
+                  buildingId:(NSInteger)bid
                      order:(NSString *)order
-                    isLike:(NSInteger)isLike
+                    category:(NSString *)category //商户大分类 默认"Department"
                     amount:(NSInteger)amount
                       page:(NSInteger)page;
 

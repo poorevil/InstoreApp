@@ -12,40 +12,41 @@
 
 @implementation StoreInterface
 
--(void)getStoreListByFloor:(NSString *)floor
-                       cid:(NSInteger)cid
-                     order:(NSString *)order
-                    isLike:(NSInteger)isLike
-                    amount:(NSInteger)amount
-                      page:(NSInteger)page
+-(void)getStoreListByAmount:(NSInteger)amount
+                       page:(NSInteger)page
+                   category:(NSString *)category
 {
-    self.interfaceUrl = [NSString stringWithFormat:@"%@api/%@/shop",BASE_INTERFACE_DOMAIN, MALL_CODE];
-    self.args = @{@"floor":floor,
+    self.interfaceUrl = [NSString stringWithFormat:@"%@api/%@/store",BASE_INTERFACE_DOMAIN, MALL_CODE];
+    self.args = @{@"page":[NSString stringWithFormat:@"%d",page],
+                  @"amount":[NSString stringWithFormat:@"%d",amount]};
+    self.baseDelegate = self;
+    self.category = category;
+    [self connect];
+}
+
+//复杂查询
+-(void)getStoreListByFloorId:(NSInteger )fid
+                         cid:(NSInteger)cid
+                  buildingId:(NSInteger)bid
+                       order:(NSString *)order
+                    category:(NSString *)category //商户大分类 默认"Department"
+                      amount:(NSInteger)amount
+                        page:(NSInteger)page
+{
+    self.interfaceUrl = [NSString stringWithFormat:@"%@api/%@/store",BASE_INTERFACE_DOMAIN, MALL_CODE];
+    self.args = @{@"floorId":[NSString stringWithFormat:@"%d",fid],
                   @"cid":[NSString stringWithFormat:@"%d",cid],
-//                  @"order":order,
-                  @"like":[NSString stringWithFormat:@"%d",isLike],
+                  @"buildingId": [NSString stringWithFormat:@"%d",bid],
+                  @"order":order,
                   @"page":[NSString stringWithFormat:@"%d",page],
                   @"amount":[NSString stringWithFormat:@"%d",amount]};
     self.baseDelegate = self;
+    self.category = category;
     [self connect];
 }
 
 #pragma mark - BaseInterfaceDelegate
-//{
-//    "totalCount":<总页数>,
-//    "currentPage":<当前页>,
-//    "list":[                         //优惠列表
-//            {
-//            title: '商户名称',
-//            logo: '商户LOGO',
-//                id: '商户ID',
-//            category: '商户类型',
-//            floor: '楼层',
-//            storeNo: '商户房间号',
-//            followerCount: '关注人数'
-//            }...
-//            ]                    
-//}
+//https://github.com/joyx-inc/vmall-app-ios/wiki/Store-List
 -(void)parseResult:(ASIHTTPRequest *)request{
     NSString *jsonStr = [[[NSString alloc] initWithData:[request responseData] encoding:NSUTF8StringEncoding] autorelease];
     id jsonObj = [jsonStr objectFromJSONString];
@@ -54,9 +55,11 @@
         NSMutableArray *resultList = [NSMutableArray array];
         NSInteger totalCount = 0;
         NSInteger currentPage = 0;
+        NSInteger storeCount = 0;
         if (jsonObj && [[jsonObj objectForKey:@"totalCount"] integerValue] > 0) {
             totalCount = [[jsonObj objectForKey:@"totalCount"] integerValue];
             currentPage = [[jsonObj objectForKey:@"currentPage"] integerValue];
+            storeCount = [[jsonObj objectForKey:@"storeCount"] integerValue];
             
             NSArray *storesArray = [jsonObj objectForKey:@"list"];
             if (storesArray) {
@@ -67,10 +70,12 @@
             }
         }
         
-        if ([self.delegate respondsToSelector:@selector(getStoreListDidFinished:totalCount:currentPage:)]) {
+        if ([self.delegate respondsToSelector:@selector(getStoreListDidFinished:totalCount:storeCount:currentPage:category:)]) {
             [self.delegate getStoreListDidFinished:resultList
                                           totalCount:totalCount
-                                          currentPage:currentPage];
+                                        storeCount:storeCount
+                                       currentPage:currentPage
+                                          category:self.category];
         }
     }
 }
@@ -84,6 +89,8 @@
 -(void)dealloc
 {
     self.delegate = nil;
+    self.category = nil;
+    
     [super dealloc];
 }
 

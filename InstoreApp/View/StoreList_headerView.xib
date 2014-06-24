@@ -21,9 +21,19 @@
                     </segments>
                     <color key="tintColor" red="0.90588235289999997" green="0.20000000000000001" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
                 </segmentedControl>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="line_bg.png" id="7Lc-gI-SDU">
+                    <rect key="frame" x="0.0" y="51" width="320" height="1"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="segmentControl" destination="356-g3-jcw" id="hZT-c1-jFD"/>
+            </connections>
         </view>
     </objects>
+    <resources>
+        <image name="line_bg.png" width="2" height="1"/>
+    </resources>
 </document>

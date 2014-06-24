@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class EGOImageView;
+@class StoreModel;
 @interface StoreList_goodsCell : UITableViewCell
 
+@property (nonatomic, retain) IBOutlet EGOImageView *logoImageView;
+@property (nonatomic, retain) IBOutlet UILabel *titleLabel;
+@property (nonatomic, retain) IBOutlet UILabel *addressLabel;
+@property (nonatomic, retain) IBOutlet UILabel *favorLabel;
+
+@property (nonatomic, retain) StoreModel *storeModel;
 @end

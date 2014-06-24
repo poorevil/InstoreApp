@@ -10,4 +10,6 @@
 
 @interface StoreList_headerView : UIView
 
+@property (nonatomic, retain) IBOutlet UISegmentedControl *segmentControl;
+
 @end

@@ -28,4 +28,11 @@
 }
 */
 
+-(void)dealloc
+{
+    self.segmentControl = nil;
+    
+    [super dealloc];
+}
+
 @end
