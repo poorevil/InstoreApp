@@ -15,6 +15,7 @@
 @property (nonatomic,strong) IBOutlet EGOImageView *headIconImageView;
 @property (nonatomic,strong) IBOutlet UILabel *cardNumLabel;
 @property (nonatomic,strong) IBOutlet UILabel *nickNameLabel;
+@property (nonatomic,strong) IBOutlet UILabel *pointLabel;
 
 
 @property (nonatomic,strong) UserInfoModel *userInfo;

@@ -39,13 +39,7 @@
 }
 
 #pragma mark - BaseInterfaceDelegate
-//{
-//    name: "姓名",
-//    gender: "性别",            // **int** 0: 保密; 1: 男; 2: 女
-//    nickName: "昵称",
-//    mobile: "手机号",
-//    clubCard: "会员卡号",
-//}
+//https://github.com/joyx-inc/vmall-app-ios/wiki/User-Info
 -(void)parseResult:(ASIHTTPRequest *)request{
     if (self.requestType==1) {
         if ([self.delegate respondsToSelector:@selector(setUserInfoDidFinished)]) {

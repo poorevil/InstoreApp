@@ -10,13 +10,6 @@
 
 @implementation UserInfoModel
 
-//{
-//name: "姓名",
-//gender: "性别",            // **int** 0: 保密; 1: 男; 2: 女
-//nickName: "昵称",
-//mobile: "手机号",
-//clubCard: "会员卡号",
-//}
 -(id)initWithJsonDict:(NSDictionary *)jsonMap
 {
     if (self = [super init]) {
@@ -25,6 +18,13 @@
         self.nickName = [jsonMap objectForKey:@"nickName"];
         self.mobile = [jsonMap objectForKey:@"mobile"];
         self.clubCard = [jsonMap objectForKey:@"clubCard"];
+        
+        self.headUrl = [jsonMap objectForKey:@"head"];
+        self.points = [jsonMap objectForKey:@"points"] == nil?0:[[jsonMap objectForKey:@"points"] integerValue];
+        self.promotionCount = [jsonMap objectForKey:@"promotionCount"] == nil?0:[[jsonMap objectForKey:@"promotionCount"] integerValue];
+        self.isStoreFocusRecommend = [jsonMap objectForKey:@"store_focus_recommend"] == nil?NO:[[jsonMap objectForKey:@"store_focus_recommend"] boolValue];
+        self.isAutoConnectWifi = [jsonMap objectForKey:@"auto_connect_wifi"] == nil?NO:[[jsonMap objectForKey:@"auto_connect_wifi"] boolValue];
+        
     }
     
     return self;
@@ -37,6 +37,7 @@
     self.nickName = nil;
     self.mobile = nil;
     self.clubCard = nil;
+    self.headUrl = nil;
     
     [super dealloc];
 }

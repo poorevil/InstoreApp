@@ -26,6 +26,9 @@
 
 -(void)awakeFromNib
 {
+    self.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"me_headview_bg@2x" ofType:@"png"]]];
+    
+    
     self.headIconImageView.userInteractionEnabled = YES;
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
     [self.headIconImageView addGestureRecognizer:tap];
@@ -53,9 +56,10 @@
 {
     _userInfo = userInfo;
     
-//    self.headIconImageView.imageURL = [NSURL URLWithString:self.userInfo.photo];
+    self.headIconImageView.imageURL = [NSURL URLWithString:userInfo.headUrl];
     self.nickNameLabel.text = self.userInfo.name;
     self.cardNumLabel.text = self.userInfo.clubCard;
+    self.pointLabel.text = [NSString stringWithFormat:@"%d",self.userInfo.points];
 }
 
 -(void)dealloc
@@ -64,6 +68,7 @@
     self.cardNumLabel = nil;
     self.nickNameLabel = nil;
     self.userInfo = nil;
+    self.pointLabel = nil;
     
     [super dealloc];
 }

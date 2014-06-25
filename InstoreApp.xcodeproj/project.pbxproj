@@ -42,6 +42,9 @@
 		035214D01958A23E00F92B55 /* StoreList_headerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 035214CF1958A23E00F92B55 /* StoreList_headerView.xib */; };
 		035214D41958A4E100F92B55 /* StoreList_goodsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 035214D21958A4E100F92B55 /* StoreList_goodsCell.m */; };
 		035214D51958A4E100F92B55 /* StoreList_goodsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 035214D31958A4E100F92B55 /* StoreList_goodsCell.xib */; };
+		035214DD195B1CFF00F92B55 /* me_edit_btn_press@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 035214DB195B1CFF00F92B55 /* me_edit_btn_press@2x.png */; };
+		035214DE195B1CFF00F92B55 /* me_edit_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 035214DC195B1CFF00F92B55 /* me_edit_btn@2x.png */; };
+		035214E0195B1D9700F92B55 /* me_headview_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 035214DF195B1D9700F92B55 /* me_headview_bg@2x.png */; };
 		03573A6F19041D5600A11A33 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 03573A6E19041D5600A11A33 /* libxml2.dylib */; };
 		03573A7519041EFB00A11A33 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03573A7419041EFB00A11A33 /* CoreLocation.framework */; };
 		03573ABD1905584800A11A33 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03573ABC1905584800A11A33 /* QuartzCore.framework */; };
@@ -631,6 +634,9 @@
 		035214D11958A4E100F92B55 /* StoreList_goodsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreList_goodsCell.h; sourceTree = "<group>"; };
 		035214D21958A4E100F92B55 /* StoreList_goodsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreList_goodsCell.m; sourceTree = "<group>"; };
 		035214D31958A4E100F92B55 /* StoreList_goodsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StoreList_goodsCell.xib; sourceTree = "<group>"; };
+		035214DB195B1CFF00F92B55 /* me_edit_btn_press@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "me_edit_btn_press@2x.png"; sourceTree = "<group>"; };
+		035214DC195B1CFF00F92B55 /* me_edit_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "me_edit_btn@2x.png"; sourceTree = "<group>"; };
+		035214DF195B1D9700F92B55 /* me_headview_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "me_headview_bg@2x.png"; sourceTree = "<group>"; };
 		03573A6E19041D5600A11A33 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		03573A7019041E2200A11A33 /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
 		03573A7219041EF400A11A33 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -1921,6 +1927,9 @@
 		03650F661945F35F00016289 /* img_new */ = {
 			isa = PBXGroup;
 			children = (
+				035214DF195B1D9700F92B55 /* me_headview_bg@2x.png */,
+				035214DB195B1CFF00F92B55 /* me_edit_btn_press@2x.png */,
+				035214DC195B1CFF00F92B55 /* me_edit_btn@2x.png */,
 				035214B01958746A00F92B55 /* tel_icon@2x.png */,
 				0357FF8C1951CA6D0071BD5A /* address_icon@2x.png */,
 				0357FF68194DE17C0071BD5A /* toolbar_coupon_icon_press@2x.png */,
@@ -2953,6 +2962,7 @@
 				035214B11958746A00F92B55 /* tel_icon@2x.png in Resources */,
 				4ECBF73818F4B9A4003963E1 /* tmpimg4.jpg in Resources */,
 				FA4E65E019357B21005022E2 /* UMSocialTwitterData.html in Resources */,
+				035214DE195B1CFF00F92B55 /* me_edit_btn@2x.png in Resources */,
 				0357FF59194D8CD80071BD5A /* card@2x.png in Resources */,
 				4EF0910118FB52FD00ABFE7D /* store-btn-sb-red-pressed@2x.png in Resources */,
 				03650F901945FC9400016289 /* nav_search@2x.png in Resources */,
@@ -2985,6 +2995,7 @@
 				4EF090F618FB52FD00ABFE7D /* service-icon-food@2x.png in Resources */,
 				4EF090F018FB52FD00ABFE7D /* sale-heart-icon@2x.png in Resources */,
 				4E2547C918F30393007388B6 /* my-img-userface.png in Resources */,
+				035214E0195B1D9700F92B55 /* me_headview_bg@2x.png in Resources */,
 				FA4E65ED19357B21005022E2 /* disclosure_open.png in Resources */,
 				4ECBF70718F442DE003963E1 /* ShopDetailHeaderView.xib in Resources */,
 				035214CA195894C500F92B55 /* StoreListViewController.xib in Resources */,
@@ -3079,6 +3090,7 @@
 				FA4E65CE19357B21005022E2 /* UMSocialEmailData.html in Resources */,
 				FA4E65D019357B21005022E2 /* UMSocialFacebookData.html in Resources */,
 				035214D01958A23E00F92B55 /* StoreList_headerView.xib in Resources */,
+				035214DD195B1CFF00F92B55 /* me_edit_btn_press@2x.png in Resources */,
 				4ECBF73518F4B9A4003963E1 /* tmpimg1.jpg in Resources */,
 				4EF0911818FB52FD00ABFE7D /* top-icon-back-white@2x.png in Resources */,
 				4EF0915418FC4A8900ABFE7D /* c_3.jpg in Resources */,
