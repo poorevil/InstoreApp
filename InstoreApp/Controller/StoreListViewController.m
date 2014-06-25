@@ -13,6 +13,8 @@
 
 #import "StoreList_goodsCell.h"
 #import "FoodItemCell.h"
+#import "StoreModel.h"
+#import "StoreDetail_RestaurantViewController.h"
 
 @interface StoreListViewController () <UITableViewDataSource, UITableViewDelegate,
 StoreInterfaceDelegate>
@@ -76,15 +78,15 @@ StoreInterfaceDelegate>
             break;
         //TODO:
         case 1:
-            category = @"Department";
+            category = @"Restaurant";
             page = self.foodCurrentPage;
             break;
         case 2:
-            category = @"Food";//TODO:11
+            category = @"Entertainment";
             page = self.foodCurrentPage;
             break;
         default:
-            category = @"Game";//TODO:11
+            category = @"Department";
             page = self.goodsCurrentPage;
             break;
     }
@@ -129,19 +131,20 @@ StoreInterfaceDelegate>
         case 0:
             if (self.goodsItemList.count==0) {
                 [self loadItemList];
+                return;
             }
-            return;
+            break;
         case 1:
             if (self.foodItemList.count==0) {
                 [self loadItemList];
+                return;
             }
-            return;
+            break;
         case 2:
             if (self.gameItemList.count==0) {
                 [self loadItemList];
+                return;
             }
-            return;
-        default:
             break;
     }
     
@@ -190,12 +193,26 @@ StoreInterfaceDelegate>
                                             options:nil] objectAtIndex:0];
     }
     
+    StoreModel *sm = nil;
+    
+    switch ([self.headerView.segmentControl selectedSegmentIndex]) {
+        case 0:
+            sm = [self.goodsItemList objectAtIndex:indexPath.row];
+            break;
+        case 1:
+            sm = [self.foodItemList objectAtIndex:indexPath.row];
+            break;
+        case 2:
+            sm = [self.gameItemList objectAtIndex:indexPath.row];
+            break;
+    }
+    
     if ([cell isMemberOfClass:[StoreList_goodsCell class]]) {
         StoreList_goodsCell *goodsCell = (StoreList_goodsCell *)cell;
-        goodsCell.storeModel = [self.goodsItemList objectAtIndex:indexPath.row];
+        goodsCell.storeModel = sm;
     }else if ([cell isMemberOfClass:[FoodItemCell class]]){
         FoodItemCell *foodCell = (FoodItemCell *)cell;
-        foodCell.storeModel = [self.goodsItemList objectAtIndex:indexPath.row];
+        foodCell.storeModel = sm;
     }
     
     return cell;
@@ -216,6 +233,31 @@ StoreInterfaceDelegate>
     }
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    StoreModel *sm = nil;
+    switch ([self.headerView.segmentControl selectedSegmentIndex]) {
+        case 0:
+            sm = [self.goodsItemList objectAtIndex:indexPath.row];
+            break;
+        case 1:
+            sm = [self.foodItemList objectAtIndex:indexPath.row];
+            break;
+        case 2:
+            sm = [self.gameItemList objectAtIndex:indexPath.row];
+            break;
+    }
+    
+    StoreDetail_RestaurantViewController *sdrvc = [[StoreDetail_RestaurantViewController alloc] initWithNibName:@"StoreDetail_RestaurantViewController" bundle:nil];
+    sdrvc.shopId = sm.sid;
+    sdrvc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:sdrvc animated:YES];
+    sdrvc.hidesBottomBarWhenPushed = NO;
+}
+
+
 #pragma mark - StoreInterfaceDelegate <NSObject>
 
 -(void)getStoreListDidFinished:(NSArray *)resultList
@@ -229,8 +271,17 @@ StoreInterfaceDelegate>
         self.goodsTotalCount = totalCount;
         self.goodsCurrentPage = currentPage;
         self.goodsCurrentPage++;
+    }else if ([category isEqualToString:@"Restaurant"]) {
+        [self.foodItemList addObjectsFromArray:resultList];
+        self.foodTotalCount = totalCount;
+        self.foodCurrentPage = currentPage;
+        self.foodCurrentPage++;
+    }else if ([category isEqualToString:@"Entertainment"]) {
+        [self.gameItemList addObjectsFromArray:resultList];
+        self.gameTotalCount = totalCount;
+        self.gameCurrentPage = currentPage;
+        self.gameCurrentPage++;
     }
-    //TODO:else
     
     self.storeCount = storeCount;
     
