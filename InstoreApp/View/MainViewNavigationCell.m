@@ -10,6 +10,8 @@
 #import "AppDelegate.h"
 #import "IndoorMapWithLeftPopBtnViewController.h"
 
+#import "MallNewsViewController.h"
+
 @implementation MainViewNavigationCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -33,10 +35,25 @@
     [self setBtnStyle:self.cardBtn];
     [self setBtnStyle:self.myScoreBtn];
 
-//    [self.mapBtn addTarget:self action:@selector(mapBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+    [self.mallActicityBtn addTarget:self
+                             action:@selector(mallActicityBtnAction:)
+                   forControlEvents:UIControlEventTouchUpInside];
 //    [self.saleBtn addTarget:self action:@selector(saleBtnAction:) forControlEvents:UIControlEventTouchUpInside];
 //    [self.cardBtn addTarget:self action:@selector(cardBtnAction:) forControlEvents:UIControlEventTouchUpInside];
 }
+
+-(void)mallActicityBtnAction:(id)sender
+{
+    AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+    UINavigationController *nav = (UINavigationController *)appDelegate.tabBarController.selectedViewController;
+    MallNewsViewController *mnVC = [[[MallNewsViewController alloc] initWithNibName:@"MallNewsViewController"
+                                                                             bundle:nil] autorelease];
+    mnVC.hidesBottomBarWhenPushed = YES;
+    [nav pushViewController:mnVC animated:YES];
+    mnVC.hidesBottomBarWhenPushed = NO;
+}
+
+
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {

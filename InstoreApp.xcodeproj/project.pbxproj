@@ -45,6 +45,14 @@
 		035214DD195B1CFF00F92B55 /* me_edit_btn_press@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 035214DB195B1CFF00F92B55 /* me_edit_btn_press@2x.png */; };
 		035214DE195B1CFF00F92B55 /* me_edit_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 035214DC195B1CFF00F92B55 /* me_edit_btn@2x.png */; };
 		035214E0195B1D9700F92B55 /* me_headview_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 035214DF195B1D9700F92B55 /* me_headview_bg@2x.png */; };
+		035214E3195C6DF600F92B55 /* MallNewsInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 035214E2195C6DF600F92B55 /* MallNewsInterface.m */; };
+		035214E6195C702000F92B55 /* MallNewsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 035214E5195C702000F92B55 /* MallNewsModel.m */; };
+		035214EA195C788B00F92B55 /* MallNewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 035214E8195C788B00F92B55 /* MallNewsViewController.m */; };
+		035214EB195C788B00F92B55 /* MallNewsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 035214E9195C788B00F92B55 /* MallNewsViewController.xib */; };
+		035214F0195C79B400F92B55 /* MallNews_singleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 035214EE195C79B400F92B55 /* MallNews_singleCell.m */; };
+		035214F1195C79B400F92B55 /* MallNews_singleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 035214EF195C79B400F92B55 /* MallNews_singleCell.xib */; };
+		035214F5195C7A0700F92B55 /* MallNews_multiTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 035214F3195C7A0700F92B55 /* MallNews_multiTableViewCell.m */; };
+		035214F6195C7A0700F92B55 /* MallNews_multiTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 035214F4195C7A0700F92B55 /* MallNews_multiTableViewCell.xib */; };
 		03573A6F19041D5600A11A33 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 03573A6E19041D5600A11A33 /* libxml2.dylib */; };
 		03573A7519041EFB00A11A33 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03573A7419041EFB00A11A33 /* CoreLocation.framework */; };
 		03573ABD1905584800A11A33 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03573ABC1905584800A11A33 /* QuartzCore.framework */; };
@@ -637,6 +645,19 @@
 		035214DB195B1CFF00F92B55 /* me_edit_btn_press@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "me_edit_btn_press@2x.png"; sourceTree = "<group>"; };
 		035214DC195B1CFF00F92B55 /* me_edit_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "me_edit_btn@2x.png"; sourceTree = "<group>"; };
 		035214DF195B1D9700F92B55 /* me_headview_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "me_headview_bg@2x.png"; sourceTree = "<group>"; };
+		035214E1195C6DF600F92B55 /* MallNewsInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MallNewsInterface.h; sourceTree = "<group>"; };
+		035214E2195C6DF600F92B55 /* MallNewsInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MallNewsInterface.m; sourceTree = "<group>"; };
+		035214E4195C702000F92B55 /* MallNewsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MallNewsModel.h; sourceTree = "<group>"; };
+		035214E5195C702000F92B55 /* MallNewsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MallNewsModel.m; sourceTree = "<group>"; };
+		035214E7195C788B00F92B55 /* MallNewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MallNewsViewController.h; sourceTree = "<group>"; };
+		035214E8195C788B00F92B55 /* MallNewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MallNewsViewController.m; sourceTree = "<group>"; };
+		035214E9195C788B00F92B55 /* MallNewsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MallNewsViewController.xib; sourceTree = "<group>"; };
+		035214ED195C79B400F92B55 /* MallNews_singleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MallNews_singleCell.h; sourceTree = "<group>"; };
+		035214EE195C79B400F92B55 /* MallNews_singleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MallNews_singleCell.m; sourceTree = "<group>"; };
+		035214EF195C79B400F92B55 /* MallNews_singleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MallNews_singleCell.xib; sourceTree = "<group>"; };
+		035214F2195C7A0700F92B55 /* MallNews_multiTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MallNews_multiTableViewCell.h; sourceTree = "<group>"; };
+		035214F3195C7A0700F92B55 /* MallNews_multiTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MallNews_multiTableViewCell.m; sourceTree = "<group>"; };
+		035214F4195C7A0700F92B55 /* MallNews_multiTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MallNews_multiTableViewCell.xib; sourceTree = "<group>"; };
 		03573A6E19041D5600A11A33 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		03573A7019041E2200A11A33 /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
 		03573A7219041EF400A11A33 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -1472,6 +1493,19 @@
 			name = StoreListViewCell;
 			sourceTree = "<group>";
 		};
+		035214EC195C790C00F92B55 /* MallNewsCell */ = {
+			isa = PBXGroup;
+			children = (
+				035214ED195C79B400F92B55 /* MallNews_singleCell.h */,
+				035214EE195C79B400F92B55 /* MallNews_singleCell.m */,
+				035214EF195C79B400F92B55 /* MallNews_singleCell.xib */,
+				035214F2195C7A0700F92B55 /* MallNews_multiTableViewCell.h */,
+				035214F3195C7A0700F92B55 /* MallNews_multiTableViewCell.m */,
+				035214F4195C7A0700F92B55 /* MallNews_multiTableViewCell.xib */,
+			);
+			name = MallNewsCell;
+			sourceTree = "<group>";
+		};
 		03573ABE19055B7700A11A33 /* IndoorMap */ = {
 			isa = PBXGroup;
 			children = (
@@ -1703,6 +1737,8 @@
 				C195320D191CB58E00D3BFA8 /* UserInfoModel.m */,
 				C19532291921F3D700D3BFA8 /* CommentModel.h */,
 				C195322A1921F3D700D3BFA8 /* CommentModel.m */,
+				035214E4195C702000F92B55 /* MallNewsModel.h */,
+				035214E5195C702000F92B55 /* MallNewsModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1752,6 +1788,8 @@
 				0357FF8F1951CFCA0071BD5A /* FoodViewInterface.m */,
 				0357FF9619533DC30071BD5A /* FoodViewPromotionInterface.h */,
 				0357FF9719533DC30071BD5A /* FoodViewPromotionInterface.m */,
+				035214E1195C6DF600F92B55 /* MallNewsInterface.h */,
+				035214E2195C6DF600F92B55 /* MallNewsInterface.m */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
@@ -2128,6 +2166,9 @@
 				035214C6195894C500F92B55 /* StoreListViewController.h */,
 				035214C7195894C500F92B55 /* StoreListViewController.m */,
 				035214C8195894C500F92B55 /* StoreListViewController.xib */,
+				035214E7195C788B00F92B55 /* MallNewsViewController.h */,
+				035214E8195C788B00F92B55 /* MallNewsViewController.m */,
+				035214E9195C788B00F92B55 /* MallNewsViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -2135,6 +2176,7 @@
 		4E2C6DCF18D7523D00DF3772 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				035214EC195C790C00F92B55 /* MallNewsCell */,
 				035214CB1958A20D00F92B55 /* StoreListViewCell */,
 				0357FF9E1953471A0071BD5A /* StoreDetailViewCell */,
 				0357FF81194F41080071BD5A /* FoodViewCell */,
@@ -2993,6 +3035,7 @@
 				0357FF1F194758A10071BD5A /* mainview_line@2x.png in Resources */,
 				4EF090D318FB52FD00ABFE7D /* index-btn-time-bg@2x.png in Resources */,
 				4EF090F618FB52FD00ABFE7D /* service-icon-food@2x.png in Resources */,
+				035214EB195C788B00F92B55 /* MallNewsViewController.xib in Resources */,
 				4EF090F018FB52FD00ABFE7D /* sale-heart-icon@2x.png in Resources */,
 				4E2547C918F30393007388B6 /* my-img-userface.png in Resources */,
 				035214E0195B1D9700F92B55 /* me_headview_bg@2x.png in Resources */,
@@ -3065,6 +3108,7 @@
 				4E9608A918E48D6700418798 /* blackArrow@2x.png in Resources */,
 				4EF090F918FB52FD00ABFE7D /* service-icon-paint@2x.png in Resources */,
 				4E25476A18EC69BF007388B6 /* SearchViewController.xib in Resources */,
+				035214F6195C7A0700F92B55 /* MallNews_multiTableViewCell.xib in Resources */,
 				FA4E65BC19357B21005022E2 /* UMSCommentInputControlleriPad.xib in Resources */,
 				C1A9C892193F13A600DD420F /* PhotoAlbumToolBarView.xib in Resources */,
 				4E2C6E0818D7617100DF3772 /* wifi1.jpg in Resources */,
@@ -3116,6 +3160,7 @@
 				0357FF9D195344D70071BD5A /* StoreDetail_RestaurantViewController.xib in Resources */,
 				03650F841945F52200016289 /* mainview_msg@2x.png in Resources */,
 				03650F871945F52200016289 /* mainview_wifi_press@2x.png in Resources */,
+				035214F1195C79B400F92B55 /* MallNews_singleCell.xib in Resources */,
 				FA4E65C019357B21005022E2 /* UMSnsAccountViewController.xib in Resources */,
 				4EF090F518FB52FD00ABFE7D /* service-icon-car@2x.png in Resources */,
 				0357FF57194D8C6F0071BD5A /* GroupBuyDetailCardCell.xib in Resources */,
@@ -3262,6 +3307,7 @@
 				0357FF291949EB260071BD5A /* CouponView_focusedCell.m in Sources */,
 				C1E094F3194A9FF900AA814B /* UILabelStrikeThrough.m in Sources */,
 				03573B861906DA4600A11A33 /* BaseInterface.m in Sources */,
+				035214EA195C788B00F92B55 /* MallNewsViewController.m in Sources */,
 				03573B6E190578FC00A11A33 /* CityListViewController.m in Sources */,
 				C1953211191CB68F00D3BFA8 /* UserInfoInterface.m in Sources */,
 				C195321A191CC4B800D3BFA8 /* MyCouponsListInterface.m in Sources */,
@@ -3290,6 +3336,7 @@
 				C1A9C8BA194164C600DD420F /* ASIDownloadCache.m in Sources */,
 				03573AC319055B7700A11A33 /* IndoorMapViewController.m in Sources */,
 				4E9608CA18E9BD4300418798 /* CycleScrollView.m in Sources */,
+				035214F5195C7A0700F92B55 /* MallNews_multiTableViewCell.m in Sources */,
 				035214BF1958765300F92B55 /* StoreDetail_otherCouponCell.m in Sources */,
 				4E9608B418E7B1B600418798 /* ServiceViewCell.m in Sources */,
 				C1E094EA194993B400AA814B /* CouponViewController.m in Sources */,
@@ -3300,6 +3347,7 @@
 				4ECBF73E18F58C28003963E1 /* ShopDetailDescriptionCell.m in Sources */,
 				C1A9C881193F130300DD420F /* NSData+NimbusCore.m in Sources */,
 				03573BA3190EBE1600A11A33 /* CouponModel.m in Sources */,
+				035214F0195C79B400F92B55 /* MallNews_singleCell.m in Sources */,
 				03120347191937E100077E25 /* StoreFocusInterface.m in Sources */,
 				C1A9C884193F130300DD420F /* ImageMetaDataLoader.m in Sources */,
 				C1A9C882193F130300DD420F /* NSString+NimbusCore.m in Sources */,
@@ -3347,6 +3395,7 @@
 				03573ADA19055E2300A11A33 /* SingletonHelpers.m in Sources */,
 				03573ADD19055E4A00A11A33 /* MBSFilterInfo.m in Sources */,
 				4ECBF75C18F6E9B4003963E1 /* CouponDetailDownloadCell.m in Sources */,
+				035214E6195C702000F92B55 /* MallNewsModel.m in Sources */,
 				C1A9C876193F130300DD420F /* NIInMemoryCache.m in Sources */,
 				C1953221191CDBF500D3BFA8 /* DownloadCouponsViewController.m in Sources */,
 				035214D41958A4E100F92B55 /* StoreList_goodsCell.m in Sources */,
@@ -3388,6 +3437,7 @@
 				4E96088118E4837100418798 /* YouhuiTileView.m in Sources */,
 				03573B9A190EA8DB00A11A33 /* KeyChainTool.m in Sources */,
 				031203351917D9F600077E25 /* CouponDownloadModel.m in Sources */,
+				035214E3195C6DF600F92B55 /* MallNewsInterface.m in Sources */,
 				4E96087E18E4815500418798 /* BaseViewController.m in Sources */,
 				C1D8701418ED5B1D0061F799 /* ShopDetailViewController.m in Sources */,
 				C1A9C873193F130300DD420F /* NIDeviceOrientation.m in Sources */,
