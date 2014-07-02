@@ -56,6 +56,7 @@ static NSString* szClientSecret = @"ea13692f9c960a37db0086ff87e56e01";
 //    self.myInitInterface.delegate = self;
 //    [self.myInitInterface getInitParam];
     
+    
     [self initWindow];
     return YES;
 }

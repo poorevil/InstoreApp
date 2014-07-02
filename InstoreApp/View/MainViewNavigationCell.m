@@ -11,6 +11,8 @@
 #import "IndoorMapWithLeftPopBtnViewController.h"
 
 #import "MallNewsViewController.h"
+#import "DailyDealViewController.h"
+#import "BankCardViewController.h"
 
 @implementation MainViewNavigationCell
 
@@ -34,10 +36,14 @@
     [self setBtnStyle:self.wifiBtn];
     [self setBtnStyle:self.cardBtn];
     [self setBtnStyle:self.myScoreBtn];
+    
+    AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+    self.nav = (UINavigationController *)appDelegate.tabBarController.selectedViewController;
 
     [self.mallActicityBtn addTarget:self
                              action:@selector(mallActicityBtnAction:)
                    forControlEvents:UIControlEventTouchUpInside];
+//    self.couponBtn addTarget:<#(id)#> action:<#(SEL)#> forControlEvents:<#(UIControlEvents)#>
 //    [self.saleBtn addTarget:self action:@selector(saleBtnAction:) forControlEvents:UIControlEventTouchUpInside];
 //    [self.cardBtn addTarget:self action:@selector(cardBtnAction:) forControlEvents:UIControlEventTouchUpInside];
 }
@@ -86,17 +92,17 @@
     imvc.hidesBottomBarWhenPushed = NO;
 }
 
--(void)saleBtnAction:(id)sender
-{
-    AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
-    [appDelegate.tabBarController setSelectedIndex:1];
-}
-
--(void)cardBtnAction:(id)sender
-{
-    AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
-    [appDelegate.tabBarController setSelectedIndex:4];
-}
+//-(void)saleBtnAction:(id)sender
+//{
+//    AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+//    [appDelegate.tabBarController setSelectedIndex:1];
+//}
+//
+//-(void)cardBtnAction:(id)sender
+//{
+//    AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+//    [appDelegate.tabBarController setSelectedIndex:4];
+//}
 
 -(void)dealloc
 {
@@ -109,6 +115,21 @@
     self.cardBtn = nil;
     self.myScoreBtn = nil;
     
+    self.nav = nil;
+    
     [super dealloc];
+}
+- (IBAction)btnDailyDealAction:(UIButton *)sender {
+    DailyDealViewController *ddVC = [[DailyDealViewController alloc]init];
+    ddVC.hidesBottomBarWhenPushed = YES;
+    [self.nav pushViewController:ddVC animated:YES];
+}
+
+- (IBAction)btnBackCardAction:(UIButton *)sender {
+    BankCardViewController *bankCardVC = [[BankCardViewController alloc]init];
+    bankCardVC.hidesBottomBarWhenPushed = YES;
+    self.nav.title = @"我的卡恵";
+    [self.nav pushViewController:bankCardVC animated:YES];
+    self.nav.navigationItem.leftBarButtonItem.title = @"";
 }
 @end

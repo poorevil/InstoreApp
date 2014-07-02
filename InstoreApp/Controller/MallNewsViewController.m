@@ -11,6 +11,7 @@
 #import "MallNewsInterface.h"
 #import "MallNews_singleCell.h"
 #import "MallNews_multiTableViewCell.h"
+#import "MallNewsDetailViewController.h"
 
 @interface MallNewsViewController () <MallNewsInterfaceDelegate>
 
@@ -40,9 +41,10 @@
     self.title = @"商场活动";
     self.itemList = [NSMutableArray array];
     
-    self.mallNewsInterface = [[MallNewsInterface alloc] init];
+    self.mallNewsInterface = [[[MallNewsInterface alloc] init]autorelease];
     self.mallNewsInterface.delegate = self;
     [self.mallNewsInterface getMallNewsByPage:self.currentPage amount:20];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -84,8 +86,16 @@
                                              owner:self
                                            options:nil] objectAtIndex:0];
     }
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     
     [cell setDict:dict];
+    
+//    static NSString *CellIdentifer = @"Cell";
+//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifer];
+//    if (!cell) {
+//        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifer];
+//    }
+//    cell.textLabel.text = [NSString stringWithFormat:@"%d",indexPath.row];
     
     return cell;
 }
@@ -102,6 +112,18 @@
         height = 340;
     }
     return height;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSDictionary *dict = [self.itemList objectAtIndex:indexPath.row];
+    
+    MallNewsModel *mnm = [[dict objectForKey:@"articles"] objectAtIndex:0];
+    
+    MallNewsDetailViewController *mallVC = [[MallNewsDetailViewController alloc]init];
+    mallVC.URL = mnm.url;
+    mallVC.imageUrl = mnm.imageUrl;
+    [self.navigationController pushViewController:mallVC animated:YES];
+    [mallVC release];
 }
 
 #pragma mark - MallNewsInterfaceDelegate <NSObject>

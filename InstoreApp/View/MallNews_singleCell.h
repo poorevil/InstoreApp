@@ -20,4 +20,6 @@
 
 @property (nonatomic, retain) NSDictionary *dict;
 
+-(void)setDict:(NSDictionary *)dict;
+
 @end
