@@ -31,9 +31,19 @@
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:self.URL]];
     [_myWebView loadRequest:request];
 
+//    [self performSelector:@selector(printURL) withObject:nil afterDelay:2];
     
+//    [_myWebView reload];
+//    [_myWebView stopLoading];
+//    [_myWebView goBack];
+//    [_myWebView stopLoading];
 }
-
+//-(void)printURL{
+//    NSLog(@"%s:%@",__FUNCTION__,_myWebView.request.URL.absoluteString);
+//}
+-(void)viewDidAppear:(BOOL)animated{
+//    self.hidesBottomBarWhenPushed = YES;
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

@@ -14,9 +14,7 @@
 - (void)awakeFromNib
 {
     // Initialization code
-    
-    self.egoImageView = [[EGOImageView alloc]initWithFrame:CGRectMake(10, 10, 30, 30)];
-    [self.contentView addSubview:_egoImageView];
+
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated

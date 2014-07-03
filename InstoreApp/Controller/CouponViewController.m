@@ -113,6 +113,7 @@ CouponViewInterfaceDelegate, YouhuiCategoryViewControllerDelegate>
         return 0;
     }
     
+    //ceil:返回大于或者等于指定表达式的最小整数
     NSInteger numberOfRows = ceil((float)[[self.itemListDict objectForKey:@"itemlist"] count] / 2)+1;
     
     if (self.listTotalCount == [[self.itemListDict objectForKey:@"itemlist"] count]) {

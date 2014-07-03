@@ -27,8 +27,8 @@
     [_shortTitle release];
     [_imgView release];
     [_summary release];
+    [_focusCount release];
     [super dealloc];
 }
-- (IBAction)btnAction:(UIButton *)sender {
-}
+
 @end

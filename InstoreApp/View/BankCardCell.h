@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EGOImageView.h"
 
 @interface BankCardCell : UITableViewCell
-@property (retain, nonatomic) IBOutlet UIImageView *bankImageIcon;
+@property (retain, nonatomic) IBOutlet EGOImageView *bankImageIcon;
 @property (retain, nonatomic) IBOutlet UILabel *labBankName;
 @property (retain, nonatomic) IBOutlet UILabel *labDiscountCount;
 @property (retain, nonatomic) IBOutlet UILabel *labSlogan;

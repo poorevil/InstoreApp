@@ -11,6 +11,6 @@
 
 @interface AddBankCardCell : UITableViewCell
 @property (retain, nonatomic) IBOutlet UILabel *labBankName;
-@property (retain, nonatomic) EGOImageView *egoImageView;
+@property (retain, nonatomic) IBOutlet EGOImageView *egoImageView;
 
 @end

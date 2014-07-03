@@ -7,14 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EGOImageView.h"
 
 @interface DailyDealViewCell : UITableViewCell
 
 @property (retain, nonatomic) IBOutlet UILabel *title;
 @property (retain, nonatomic) IBOutlet UILabel *shortTitle;
-@property (retain, nonatomic) IBOutlet UIImageView *imgView;
+@property (retain, nonatomic) IBOutlet EGOImageView *imgView;
 @property (retain, nonatomic) IBOutlet UILabel *summary;
+@property (retain, nonatomic) IBOutlet UILabel *focusCount;
 
-- (IBAction)btnAction:(UIButton *)sender;
 
 @end

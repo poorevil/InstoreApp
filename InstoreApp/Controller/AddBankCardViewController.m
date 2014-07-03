@@ -9,6 +9,8 @@
 #import "AddBankCardViewController.h"
 #import "EGOImageView.h"
 #import "AddBankCardCell.h"
+#import "AddBankCardModel.h"
+#import "SaveAddBankCardInterface.h"
 
 
 @interface AddBankCardViewController ()
@@ -32,11 +34,17 @@
     // Do any additional setup after loading the view from its nib.
     
     self.itemList = [NSMutableArray array];
+    self.chooeseBankCard = [NSMutableDictionary dictionary];
     
     self.addBankCardInterface = [[[AddBandCardInterface alloc]init]autorelease];
     _addBankCardInterface.delegate = self;
     [_addBankCardInterface getAddBankCardByPage:self.currentPage amount:20];
     
+    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 320, 35)];
+    label.text = @"  请选择银行";
+    label.font = [UIFont systemFontOfSize:12];
+    label.textColor = [UIColor colorWithRed:121/255.0 green:121/255.0 blue:121/255.0 alpha:1];
+    self.myTableView.tableHeaderView = label;
     
 }
 #pragma mark - UITableViewDataSource
@@ -44,27 +52,24 @@
 {
     return 50;
 }
--(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 35;
-}
+//-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+//    return 35;
+//}
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    //    return self.itemList.count;
-    return 5;
+    return self.itemList.count;
 }
-//-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-//    return 1;
+
+//-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+//    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 320, 35)];
+//    label.text = @"  请选择银行";
+//    label.font = [UIFont systemFontOfSize:12];
+//    label.textColor = [UIColor colorWithRed:121/255.0 green:121/255.0 blue:121/255.0 alpha:1];
+//    UITableViewHeaderFooterView *view = [self.myTableView headerViewForSection:0];
+//    [view addSubview:label];
+////    view.backgroundColor = [UIColor colorWithRed:247/255.0 green:247/255.0 blue:247/255.0 alpha:1];
+//    return label;
 //}
--(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 320, 35)];
-    label.text = @"  请选择银行";
-    label.font = [UIFont systemFontOfSize:12];
-    label.textColor = [UIColor colorWithRed:121/255.0 green:121/255.0 blue:121/255.0 alpha:1];
-    UITableViewHeaderFooterView *view = [self.myTableView headerViewForSection:0];
-    [view addSubview:label];
-//    view.backgroundColor = [UIColor colorWithRed:247/255.0 green:247/255.0 blue:247/255.0 alpha:1];
-    return label;
-}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -78,8 +83,9 @@
                                                 options:nil] objectAtIndex:0];
         }
         if (self.itemList.count > 0) {
-            cell.egoImageView.imageURL = [NSURL URLWithString:[[self.itemList objectAtIndex:indexPath.row] objectForKey:@"logo"]];
-            cell.labBankName.text = [[self.itemList objectAtIndex:indexPath.row] objectForKey:@"name"];
+            AddBankCardModel *addBankModel = [self.itemList objectAtIndex:indexPath.row];
+            cell.egoImageView.imageURL = [NSURL URLWithString:addBankModel.logo];
+            cell.labBankName.text = addBankModel.name;
         }
         
         return cell;
@@ -90,12 +96,23 @@
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    
+    AddBankCardModel *addBankModel = [self.itemList objectAtIndex:indexPath.row];
+    BOOL chooesed = addBankModel.choosed;
+    
     if (cell.accessoryType == UITableViewCellAccessoryNone) {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
         
+        if (chooesed == NO) {
+            NSInteger bankId = addBankModel.bankId;
+            [self.chooeseBankCard setObject:[NSNumber numberWithInteger:bankId] forKey:[NSString stringWithFormat:@"%d",bankId]];
+        }
     }else{
         cell.accessoryType = UITableViewCellAccessoryNone;
         
+        if ([self.chooeseBankCard objectForKey:[NSString stringWithFormat:@"%d",addBankModel.bankId]]) {
+            [self.chooeseBankCard removeObjectForKey:[NSString stringWithFormat:@"%d",addBankModel.bankId]];
+        }
     }
     
 }
@@ -113,6 +130,7 @@
 -(void)dealloc{
     self.addBankCardInterface = nil;
     self.itemList = nil;
+    self.chooeseBankCard = nil;
     
     [_myTableView release];
     [_labChooeseCount release];
@@ -126,5 +144,11 @@
 }
 
 - (IBAction)btnFinishedAction:(UIButton *)sender {
+    NSLog(@"%s:%@",__FUNCTION__,self.chooeseBankCard);
+    //id=1&id=2&id=3
+    SaveAddBankCardInterface *saveVC = [[SaveAddBankCardInterface alloc]init];
+    
+    [saveVC SaveAddBankCardWithDictionary:self.chooeseBankCard];
+    [saveVC release];
 }
 @end

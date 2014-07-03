@@ -20,9 +20,14 @@
                         <color key="textColor" red="0.3411764705882353" green="0.3411764705882353" blue="0.3411764705882353" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iKh-df-tqv" customClass="EGOImageView">
+                        <rect key="frame" x="10" y="10" width="30" height="30"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    </imageView>
                 </subviews>
             </tableViewCellContentView>
             <connections>
+                <outlet property="egoImageView" destination="iKh-df-tqv" id="ipw-om-Kmi"/>
                 <outlet property="labBankName" destination="mXb-mN-1fX" id="ta8-dW-oGb"/>
             </connections>
         </tableViewCell>

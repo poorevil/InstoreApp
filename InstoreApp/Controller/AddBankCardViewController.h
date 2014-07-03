@@ -21,5 +21,7 @@
 @property (retain, nonatomic) IBOutlet UILabel *labText;
 - (IBAction)btnFinishedAction:(UIButton *)sender;
 
+@property (retain, nonatomic) NSMutableDictionary *chooeseBankCard;
+
 
 @end

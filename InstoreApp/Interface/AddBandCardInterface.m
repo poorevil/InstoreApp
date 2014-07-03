@@ -8,6 +8,7 @@
 
 #import "AddBandCardInterface.h"
 #import "JSONKit.h"
+#import "AddBankCardModel.h"
 
 @implementation AddBandCardInterface
 
@@ -38,12 +39,9 @@
             NSArray *cardListArray = [jsonObj objectForKey:@"list"];
             if (cardListArray) {
                 for (NSDictionary *cardList in cardListArray) {
-                    NSMutableDictionary *cardListItem = [NSMutableDictionary dictionary];
-                    [cardListItem setObject:[cardList objectForKey:@"id"] forKey:@"id"];
-                    [cardListItem setObject:[cardList objectForKey:@"name"] forKey:@"name"];
-                    [cardListItem setObject:[cardList objectForKey:@"logo"] forKey:@"logo"];
-                    [cardListItem setObject:[cardList objectForKey:@"choosed"] forKey:@"choosed"];
-                    [resultList addObject:cardListItem];
+                    AddBankCardModel *addBackCardModel = [[AddBankCardModel alloc]initWithJsonMap:cardList];
+                    [resultList addObject:addBackCardModel];
+                    [addBackCardModel release];
                 }
             }
         }

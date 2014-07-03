@@ -7,15 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EGOImageView.h"
 
 @interface BankDiscoundListCell : UITableViewCell
 
 @property (retain, nonatomic) IBOutlet UIView *parentView;
 @property (retain, nonatomic) IBOutlet UILabel *labTitle;
-@property (retain, nonatomic) IBOutlet UIImageView *labBankLogo;
+@property (retain, nonatomic) IBOutlet EGOImageView *imgBankLogo;
 @property (retain, nonatomic) IBOutlet UILabel *labStartTime;
 @property (retain, nonatomic) IBOutlet UILabel *labEndTime;
-@property (retain, nonatomic) IBOutlet UIImageView *imgView;
-@property (retain, nonatomic) IBOutlet UIImageView *imageStoreLogo;
+@property (retain, nonatomic) IBOutlet EGOImageView *imgView;
+@property (retain, nonatomic) IBOutlet EGOImageView *imageStoreLogo;
 
 @end

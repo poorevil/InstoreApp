@@ -180,6 +180,18 @@
 		04196A271962D2B30037C046 /* DailyDealViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04196A251962D2B30037C046 /* DailyDealViewController.xib */; };
 		04196A2B1962D3C90037C046 /* DailyDealViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04196A291962D3C90037C046 /* DailyDealViewCell.m */; };
 		04196A2C1962D3C90037C046 /* DailyDealViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04196A2A1962D3C90037C046 /* DailyDealViewCell.xib */; };
+		042E47E71964F0C100CD945A /* DailyDealInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 042E47E61964F0C100CD945A /* DailyDealInterface.m */; };
+		042E47EB1964F2B000CD945A /* DailyDealModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 042E47EA1964F2B000CD945A /* DailyDealModel.m */; };
+		042E47ED1964FF8200CD945A /* dailyDeal_cell_img_focus.png in Resources */ = {isa = PBXBuildFile; fileRef = 042E47EC1964FF8200CD945A /* dailyDeal_cell_img_focus.png */; };
+		042E47F119650D0E00CD945A /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 042E47EF19650D0E00CD945A /* WebViewController.m */; };
+		042E47F219650D0E00CD945A /* WebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 042E47F019650D0E00CD945A /* WebViewController.xib */; };
+		042E47F719651A2500CD945A /* webView_bottomBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 042E47F319651A2500CD945A /* webView_bottomBG.png */; };
+		042E47F819651A2500CD945A /* webView_goBack.png in Resources */ = {isa = PBXBuildFile; fileRef = 042E47F419651A2500CD945A /* webView_goBack.png */; };
+		042E47F919651A2500CD945A /* webView_goForward.png in Resources */ = {isa = PBXBuildFile; fileRef = 042E47F519651A2500CD945A /* webView_goForward.png */; };
+		042E47FA19651A2500CD945A /* webView_reload.png in Resources */ = {isa = PBXBuildFile; fileRef = 042E47F619651A2500CD945A /* webView_reload.png */; };
+		042E47FD1965559D00CD945A /* BankCardModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 042E47FC1965559D00CD945A /* BankCardModel.m */; };
+		042E4800196557A700CD945A /* AddBankCardModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 042E47FF196557A700CD945A /* AddBankCardModel.m */; };
+		042E48031965660800CD945A /* SaveAddBankCardInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 042E48021965660800CD945A /* SaveAddBankCardInterface.m */; };
 		04EF11E81963AFBC0066C902 /* BankCardInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EF11E71963AFBC0066C902 /* BankCardInterface.m */; };
 		04EF11EC1963B50F0066C902 /* BankCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EF11EA1963B50F0066C902 /* BankCardViewController.m */; };
 		04EF11ED1963B50F0066C902 /* BankCardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04EF11EB1963B50F0066C902 /* BankCardViewController.xib */; };
@@ -925,6 +937,24 @@
 		04196A281962D3C90037C046 /* DailyDealViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DailyDealViewCell.h; sourceTree = "<group>"; };
 		04196A291962D3C90037C046 /* DailyDealViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DailyDealViewCell.m; sourceTree = "<group>"; };
 		04196A2A1962D3C90037C046 /* DailyDealViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DailyDealViewCell.xib; sourceTree = "<group>"; };
+		042E47E51964F0C100CD945A /* DailyDealInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DailyDealInterface.h; sourceTree = "<group>"; };
+		042E47E61964F0C100CD945A /* DailyDealInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DailyDealInterface.m; sourceTree = "<group>"; };
+		042E47E91964F2B000CD945A /* DailyDealModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DailyDealModel.h; sourceTree = "<group>"; };
+		042E47EA1964F2B000CD945A /* DailyDealModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DailyDealModel.m; sourceTree = "<group>"; };
+		042E47EC1964FF8200CD945A /* dailyDeal_cell_img_focus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = dailyDeal_cell_img_focus.png; path = resources/dailyDeal_cell_img_focus.png; sourceTree = "<group>"; };
+		042E47EE19650D0E00CD945A /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
+		042E47EF19650D0E00CD945A /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
+		042E47F019650D0E00CD945A /* WebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebViewController.xib; sourceTree = "<group>"; };
+		042E47F319651A2500CD945A /* webView_bottomBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = webView_bottomBG.png; path = resources/webView_bottomBG.png; sourceTree = "<group>"; };
+		042E47F419651A2500CD945A /* webView_goBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = webView_goBack.png; path = resources/webView_goBack.png; sourceTree = "<group>"; };
+		042E47F519651A2500CD945A /* webView_goForward.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = webView_goForward.png; path = resources/webView_goForward.png; sourceTree = "<group>"; };
+		042E47F619651A2500CD945A /* webView_reload.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = webView_reload.png; path = resources/webView_reload.png; sourceTree = "<group>"; };
+		042E47FB1965559D00CD945A /* BankCardModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BankCardModel.h; sourceTree = "<group>"; };
+		042E47FC1965559D00CD945A /* BankCardModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BankCardModel.m; sourceTree = "<group>"; };
+		042E47FE196557A700CD945A /* AddBankCardModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddBankCardModel.h; sourceTree = "<group>"; };
+		042E47FF196557A700CD945A /* AddBankCardModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddBankCardModel.m; sourceTree = "<group>"; };
+		042E48011965660800CD945A /* SaveAddBankCardInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SaveAddBankCardInterface.h; sourceTree = "<group>"; };
+		042E48021965660800CD945A /* SaveAddBankCardInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SaveAddBankCardInterface.m; sourceTree = "<group>"; };
 		04EF11E61963AFBC0066C902 /* BankCardInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BankCardInterface.h; sourceTree = "<group>"; };
 		04EF11E71963AFBC0066C902 /* BankCardInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BankCardInterface.m; sourceTree = "<group>"; };
 		04EF11E91963B50F0066C902 /* BankCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BankCardViewController.h; sourceTree = "<group>"; };
@@ -1809,6 +1839,12 @@
 				C195322A1921F3D700D3BFA8 /* CommentModel.m */,
 				035214E4195C702000F92B55 /* MallNewsModel.h */,
 				035214E5195C702000F92B55 /* MallNewsModel.m */,
+				042E47E91964F2B000CD945A /* DailyDealModel.h */,
+				042E47EA1964F2B000CD945A /* DailyDealModel.m */,
+				042E47FB1965559D00CD945A /* BankCardModel.h */,
+				042E47FC1965559D00CD945A /* BankCardModel.m */,
+				042E47FE196557A700CD945A /* AddBankCardModel.h */,
+				042E47FF196557A700CD945A /* AddBankCardModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1860,10 +1896,14 @@
 				0357FF9719533DC30071BD5A /* FoodViewPromotionInterface.m */,
 				035214E1195C6DF600F92B55 /* MallNewsInterface.h */,
 				035214E2195C6DF600F92B55 /* MallNewsInterface.m */,
+				042E47E51964F0C100CD945A /* DailyDealInterface.h */,
+				042E47E61964F0C100CD945A /* DailyDealInterface.m */,
 				04EF11E61963AFBC0066C902 /* BankCardInterface.h */,
 				04EF11E71963AFBC0066C902 /* BankCardInterface.m */,
 				04EF1214196429700066C902 /* AddBandCardInterface.h */,
 				04EF1215196429700066C902 /* AddBandCardInterface.m */,
+				042E48011965660800CD945A /* SaveAddBankCardInterface.h */,
+				042E48021965660800CD945A /* SaveAddBankCardInterface.m */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
@@ -2198,6 +2238,11 @@
 		4E2C6DA618D7502100DF3772 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				042E47F319651A2500CD945A /* webView_bottomBG.png */,
+				042E47F419651A2500CD945A /* webView_goBack.png */,
+				042E47F519651A2500CD945A /* webView_goForward.png */,
+				042E47F619651A2500CD945A /* webView_reload.png */,
+				042E47EC1964FF8200CD945A /* dailyDeal_cell_img_focus.png */,
 				04EF120A1964151F0066C902 /* tempImage */,
 				04EF12071964124B0066C902 /* bankcard_cell_time.png */,
 				04EF11FA1963F4A10066C902 /* bankcard_addBank.png */,
@@ -2297,6 +2342,9 @@
 				04EF120F196425D90066C902 /* AddBankCardViewController.h */,
 				04EF1210196425D90066C902 /* AddBankCardViewController.m */,
 				04EF1211196425D90066C902 /* AddBankCardViewController.xib */,
+				042E47EE19650D0E00CD945A /* WebViewController.h */,
+				042E47EF19650D0E00CD945A /* WebViewController.m */,
+				042E47F019650D0E00CD945A /* WebViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -2304,6 +2352,7 @@
 		4E2C6DCF18D7523D00DF3772 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				03573B871908028000A11A33 /* MainViewCell */,
 				035214EC195C790C00F92B55 /* MallNewsCell */,
 				04196A211962D2750037C046 /* DailyDealViewCell */,
 				04EF11EE1963DF8F0066C902 /* BackCardCell */,
@@ -2314,7 +2363,6 @@
 				0357FF4C194D87010071BD5A /* GroupBuyDetailViewCell */,
 				0357FF241949EAFA0071BD5A /* CouponViewCell */,
 				4E9608C518E9BD4300418798 /* CycleScrollView */,
-				03573B871908028000A11A33 /* MainViewCell */,
 				4E96087F18E4837100418798 /* YouhuiTileView.h */,
 				4E96088018E4837100418798 /* YouhuiTileView.m */,
 				4E96088218E4838000418798 /* YouhuiTileView.xib */,
@@ -3083,6 +3131,7 @@
 				FA4E65FE19357B22005022E2 /* ios-social-sdk-login-quick.html in Resources */,
 				03650F461942D9FE00016289 /* MainView_DailyPromotionCell.xib in Resources */,
 				4EF090DF18FB52FD00ABFE7D /* my-icon-more@2x.png in Resources */,
+				042E47F819651A2500CD945A /* webView_goBack.png in Resources */,
 				FA4E65C419357B21005022E2 /* UMSocialAccountManager.html in Resources */,
 				C1E094EB194993B400AA814B /* CouponViewController.xib in Resources */,
 				4EF0907B18FB52CE00ABFE7D /* index-btn-map.png in Resources */,
@@ -3132,6 +3181,7 @@
 				4EF0914518FC2CEE00ABFE7D /* pp_4.jpg in Resources */,
 				4EF090DB18FB52FD00ABFE7D /* index-tool-btn-card@2x.png in Resources */,
 				4EF090DD18FB52FD00ABFE7D /* index-tool-btn-order@2x.png in Resources */,
+				042E47FA19651A2500CD945A /* webView_reload.png in Resources */,
 				4ECBF76318F6F13A003963E1 /* CouponDetailWithTitleCell.xib in Resources */,
 				03650F521942FC1B00016289 /* MainView_CouponsCell.xib in Resources */,
 				035214B11958746A00F92B55 /* tel_icon@2x.png in Resources */,
@@ -3257,6 +3307,7 @@
 				FA4E65CB19357B21005022E2 /* UMSocialData.html in Resources */,
 				04EF11F51963E4250066C902 /* bankcard_img_jiantou.png in Resources */,
 				0357FF3B1949FAAF0071BD5A /* CouponView_empty_tileView.xib in Resources */,
+				042E47ED1964FF8200CD945A /* dailyDeal_cell_img_focus.png in Resources */,
 				C1E094FD194AA92000AA814B /* nav_favor_btn@2x.png in Resources */,
 				FA4E65BE19357B21005022E2 /* UMShareEditViewControlleriPad.xib in Resources */,
 				04EF1213196425D90066C902 /* AddBankCardViewController.xib in Resources */,
@@ -3267,6 +3318,7 @@
 				4EF090FD18FB52FD00ABFE7D /* share-icon-qq@2x.png in Resources */,
 				0357FF75194DE17C0071BD5A /* toolbar_food_icon@2x.png in Resources */,
 				FA4E65FD19357B22005022E2 /* ios-social-sdk-login-detail.html in Resources */,
+				042E47F219650D0E00CD945A /* WebViewController.xib in Resources */,
 				4EF0910418FB52FD00ABFE7D /* store-feedback-submit@2x.png in Resources */,
 				4EF0914718FC2CEE00ABFE7D /* pp_6.jpg in Resources */,
 				FA4E65C619357B21005022E2 /* UMSocialButton.html in Resources */,
@@ -3321,6 +3373,7 @@
 				4EF090D518FB52FD00ABFE7D /* index-mid-btn-quick-pressed@2x.png in Resources */,
 				4EF090FC18FB52FD00ABFE7D /* share-icon-friend@2x.png in Resources */,
 				4E9608D618E9CA5D00418798 /* ms2.jpg in Resources */,
+				042E47F919651A2500CD945A /* webView_goForward.png in Resources */,
 				0357FF311949F72C0071BD5A /* couponview_focus_time@2x.png in Resources */,
 				C1E094E61949504B00AA814B /* MainView_CategoryCell.xib in Resources */,
 				4EF0913218FC1E4600ABFE7D /* miaosha_1.jpg in Resources */,
@@ -3413,6 +3466,7 @@
 				0357FF951951EBF20071BD5A /* FoodCouponCell.xib in Resources */,
 				4EF0914918FC2CEE00ABFE7D /* pp_8.jpg in Resources */,
 				03650F801945F52200016289 /* mainview_mall_activity@2x.png in Resources */,
+				042E47F719651A2500CD945A /* webView_bottomBG.png in Resources */,
 				FA4E65D519357B21005022E2 /* UMSocialQQData.html in Resources */,
 				4EF090D718FB52FD00ABFE7D /* index-red-btn@2x.png in Resources */,
 				4EF0913818FC224F00ABFE7D /* other.jpg in Resources */,
@@ -3485,6 +3539,7 @@
 				C1A9C8BA194164C600DD420F /* ASIDownloadCache.m in Sources */,
 				03573AC319055B7700A11A33 /* IndoorMapViewController.m in Sources */,
 				4E9608CA18E9BD4300418798 /* CycleScrollView.m in Sources */,
+				042E4800196557A700CD945A /* AddBankCardModel.m in Sources */,
 				035214F5195C7A0700F92B55 /* MallNews_multiTableViewCell.m in Sources */,
 				035214BF1958765300F92B55 /* StoreDetail_otherCouponCell.m in Sources */,
 				4E9608B418E7B1B600418798 /* ServiceViewCell.m in Sources */,
@@ -3532,6 +3587,7 @@
 				C195321D191CC6A200D3BFA8 /* BindPhoneInterface.m in Sources */,
 				4ECBF76118F6EAEA003963E1 /* CouponDetailWithTitleCell.m in Sources */,
 				04F07F641962A45100F3BF97 /* MallNewsDetailViewController.m in Sources */,
+				042E47EB1964F2B000CD945A /* DailyDealModel.m in Sources */,
 				C1A9C87B193F130300DD420F /* NIOperations.m in Sources */,
 				035214B51958750F00F92B55 /* StoreDetail_detailCell.m in Sources */,
 				C1A9C877193F130300DD420F /* NINavigationAppearance.m in Sources */,
@@ -3569,12 +3625,14 @@
 				4E2C6DF618D75CD600DF3772 /* YouhuiViewController.m in Sources */,
 				03650F5F194540E200016289 /* MainView_CategoryCell.m in Sources */,
 				03650F5B1942FF0E00016289 /* MainView_RestaurantCell.m in Sources */,
+				042E47E71964F0C100CD945A /* DailyDealInterface.m in Sources */,
 				0357FF45194D76B20071BD5A /* CouponDetailStoreCell.m in Sources */,
 				0357FF901951CFCA0071BD5A /* FoodViewInterface.m in Sources */,
 				C1A9C885193F130300DD420F /* NIPageView.m in Sources */,
 				C1A9C88D193F130300DD420F /* TileView.m in Sources */,
 				C1A9C8C2194164D000DD420F /* Reachability.m in Sources */,
 				4E9608A518E48D6700418798 /* MessageInterceptor.m in Sources */,
+				042E47F119650D0E00CD945A /* WebViewController.m in Sources */,
 				03573BA0190EBB8300A11A33 /* SearchInterface.m in Sources */,
 				C1A9C8BC194164C600DD420F /* ASIHTTPRequest.m in Sources */,
 				0357FF391949FAA00071BD5A /* CouponView_empty_tileView.m in Sources */,
@@ -3583,6 +3641,7 @@
 				C1A9C87F193F130300DD420F /* NIState.m in Sources */,
 				4E9608A418E48D6700418798 /* LoadMoreTableFooterView.m in Sources */,
 				C1A9C8A219405F2400DD420F /* Static.m in Sources */,
+				042E47FD1965559D00CD945A /* BankCardModel.m in Sources */,
 				C183471C1925BF75002F7B9B /* BuildingModel.m in Sources */,
 				C1953214191CC00D00D3BFA8 /* CouponsDownloadListInterface.m in Sources */,
 				4E25476018EB1BC1007388B6 /* MainViewYouhuiCell.m in Sources */,
@@ -3618,6 +3677,7 @@
 				4E9608A618E48D6700418798 /* PullPsCollectionView.m in Sources */,
 				0312035B191945DF00077E25 /* EGOImageLoadConnection.m in Sources */,
 				4E9608A318E48D6700418798 /* EGORefreshTableHeaderView.m in Sources */,
+				042E48031965660800CD945A /* SaveAddBankCardInterface.m in Sources */,
 				035214AD195871ED00F92B55 /* StoreDetail_headerView.m in Sources */,
 				C1A9C8BD194164C600DD420F /* ASIInputStream.m in Sources */,
 				031203321917D7EA00077E25 /* CouponDownloadInterface.m in Sources */,
@@ -3791,13 +3851,14 @@
 					"$(PROJECT_DIR)/InstoreApp/utility/umeng_ios_social_sdk_3.3-1.8_custom/UMSocial_Sdk_Extra_Frameworks/TencentOpenAPI",
 					"$(PROJECT_DIR)/InstoreApp/utility/umeng_ios_social_sdk_3.3-1.8_custom/UMSocial_Sdk_Extra_Frameworks/Wechat",
 				);
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"-lxml2",
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				VALID_ARCHS = "armv7 armv7s";
+				VALID_ARCHS = "armv7 armv7s armv64";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -3839,7 +3900,7 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				VALID_ARCHS = "armv7 armv7s";
+				VALID_ARCHS = "armv7 armv7s armv64";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

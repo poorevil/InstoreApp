@@ -26,7 +26,7 @@
 
 - (void)dealloc {
     [_labTitle release];
-    [_labBankLogo release];
+    [_imgBankLogo release];
     [_labStartTime release];
     [_labEndTime release];
     [_imgView release];

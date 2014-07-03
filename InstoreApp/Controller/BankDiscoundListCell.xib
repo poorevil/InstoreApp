@@ -45,7 +45,7 @@
                                 <color key="textColor" red="0.47450980390000003" green="0.47450980390000003" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bankcard_cell_bankIcon.png" id="H8g-NB-Q06">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bankcard_cell_bankIcon.png" id="H8g-NB-Q06" customClass="EGOImageView">
                                 <rect key="frame" x="225" y="14" width="80" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -53,11 +53,11 @@
                                 <rect key="frame" x="15" y="37" width="15" height="15"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bankcard_cell_img1.png" id="HLU-mz-DGN">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bankcard_cell_img1.png" id="HLU-mz-DGN" customClass="EGOImageView">
                                 <rect key="frame" x="15" y="60" width="280" height="130"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bankcard_cell_img2.png" id="agp-FX-Y3v">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bankcard_cell_img2.png" id="agp-FX-Y3v" customClass="EGOImageView">
                                 <rect key="frame" x="237" y="60" width="58" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -69,8 +69,8 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="imageStoreLogo" destination="agp-FX-Y3v" id="m7P-Pi-oZT"/>
+                <outlet property="imgBankLogo" destination="H8g-NB-Q06" id="U0T-Gl-6zJ"/>
                 <outlet property="imgView" destination="HLU-mz-DGN" id="hXP-SE-dqp"/>
-                <outlet property="labBankLogo" destination="H8g-NB-Q06" id="rfo-Br-Psi"/>
                 <outlet property="labEndTime" destination="9ph-Ax-4df" id="cL0-wC-XyV"/>
                 <outlet property="labStartTime" destination="9eV-MM-1yZ" id="zWC-Im-4W0"/>
                 <outlet property="labTitle" destination="eSN-qE-urv" id="wPu-As-yss"/>

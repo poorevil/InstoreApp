@@ -1,19 +1,19 @@
 //
-//  BankCardInterface.m
+//  DailyDealInterface.m
 //  InstoreApp
 //
-//  Created by Mac on 14-7-2.
+//  Created by Mac on 14-7-3.
 //  Copyright (c) 2014年 evil. All rights reserved.
 //
 
-#import "BankCardInterface.h"
+#import "DailyDealInterface.h"
 #import "JSONKit.h"
-#import "BankCardModel.h"
+#import "DailyDealModel.h"
 
-@implementation BankCardInterface
+@implementation DailyDealInterface
 
--(void)getBankCardByPage:(NSInteger)page amount:(NSInteger)amount{
-    self.interfaceUrl = [NSString stringWithFormat:@"%@api/%@/myinfo/bank"
+-(void)getDailyDealByPage:(NSInteger)page amount:(NSInteger)amount{
+    self.interfaceUrl = [NSString stringWithFormat:@"%@api/%@/daily_promotion"
                          ,BASE_INTERFACE_DOMAIN, MALL_CODE];
     self.args = @{@"page":[NSString stringWithFormat:@"%d",page],
                   @"amount":[NSString stringWithFormat:@"%d",amount]};
@@ -36,31 +36,30 @@
             totalCount = [[jsonObj objectForKey:@"totalCount"] integerValue];
             currentPage = [[jsonObj objectForKey:@"currentPage"] integerValue];
             
-            NSArray *cardListArray = [jsonObj objectForKey:@"list"];
-            if (cardListArray) {
-                for (NSDictionary *cardList in cardListArray) {
-                    BankCardModel *bankCardModel = [[BankCardModel alloc]initWithJsonMap:cardList];
-                    [resultList addObject:bankCardModel];
-                    [bankCardModel release];
+            NSArray *dailyListArray = [jsonObj objectForKey:@"list"];
+            if (dailyListArray) {
+                for (NSDictionary *dailyList in dailyListArray) {
+                    DailyDealModel *dailyDealModel = [[DailyDealModel alloc]initWithJsonMap:dailyList];
+                    [resultList addObject:dailyDealModel];
                 }
             }
         }
-        if ([self.delegate respondsToSelector:@selector(getBankCardDidFinished:totalCount:currentPage:)]) {
-            [self.delegate getBankCardDidFinished:resultList
+        if ([self.delegate respondsToSelector:@selector(getDailyDealDidFinished:totalCount:currentPage:)]) {
+            [self.delegate getDailyDealDidFinished:resultList
                                        totalCount:totalCount
                                       currentPage:currentPage];
         }
         
     }else{
-        if ([self.delegate respondsToSelector:@selector(getBankCardDidFailed:)]) {
-            [self.delegate getBankCardDidFailed:@"获取失败！(response empty)"];
+        if ([self.delegate respondsToSelector:@selector(getDailyDealDidFailed:)]) {
+            [self.delegate getDailyDealDidFailed:@"获取失败！(response empty)"];
         }
     }
 }
 
 -(void)requestIsFailed:(NSError *)error{
-    if (_delegate && [self.delegate respondsToSelector:@selector(getBankCardDidFailed:)]) {
-        [self.delegate getBankCardDidFailed:@"获取失败！(response empty)"];
+    if (_delegate && [self.delegate respondsToSelector:@selector(getDailyDealDidFailed:)]) {
+        [self.delegate getDailyDealDidFailed:@"获取失败！(response empty)"];
     }
 }
 
@@ -69,4 +68,5 @@
     
     [super dealloc];
 }
+
 @end

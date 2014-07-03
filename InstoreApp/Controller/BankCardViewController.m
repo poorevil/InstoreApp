@@ -9,6 +9,7 @@
 #import "BankCardViewController.h"
 #import "BankCardCell.h"
 #import "BankCardInterface.h"
+#import "BankCardModel.h"
 #import "BankDiscoundListViewController.h"
 #import "AddBankCardViewController.h"
 
@@ -42,7 +43,6 @@
     
     UIButton *btnEditor = [UIButton buttonWithType:UIButtonTypeCustom];
     btnEditor.frame = CGRectMake(0, 0, 38, 19);
-//    btnEditor.frame = CGRectMake(0, 0, 17, 19);
     [btnEditor setImage:[UIImage imageNamed:@"bankcard_editor.png"] forState:UIControlStateNormal];
     [btnEditor setImageEdgeInsets:UIEdgeInsetsMake(0, 10, 0, 10)];
     [btnEditor addTarget:self action:@selector(btnEditorAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -65,12 +65,7 @@
     
     
 }
--(void)viewDidAppear:(BOOL)animated{
-//    self.tabBarController
-//    self.hidesBottomBarWhenPushed = YES;
-//    NSLog(@"%@",self.navigationController.title);
-//    self.navigationController.navigationBar.backgroundColor = [UIColor redColor];
-}
+
 #pragma mark - UITableViewDataSource
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -85,7 +80,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifer = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifer];
+    BankCardCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifer];
     if (!cell) {
         //cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifer];
         cell = [[[NSBundle mainBundle] loadNibNamed:@"BankCardCell"
@@ -93,6 +88,11 @@
                                             options:nil] objectAtIndex:0];
     }
 //    cell.textLabel.text = [NSString stringWithFormat:@"%d",indexPath.row];
+    BankCardModel *bankCardModel = [self.itemList objectAtIndex:indexPath.row];
+    cell.labBankName.text = bankCardModel.name;
+    cell.labSlogan.text = bankCardModel.slogan;
+    cell.labDiscountCount.text = [NSString stringWithFormat:@"(%d个优惠)",bankCardModel.promotionCount];
+    cell.bankImageIcon.imageURL = [NSURL URLWithString:bankCardModel.logo];
     
     return cell;
 }
