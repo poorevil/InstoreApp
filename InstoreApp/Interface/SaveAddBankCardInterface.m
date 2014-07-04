@@ -13,17 +13,7 @@
 @implementation SaveAddBankCardInterface
 
 -(void)SaveAddBankCardWithDictionary:(NSDictionary *)dict{
-//    NSString *urlStr = [NSString stringWithFormat:@"%@api/%@/myinfo/bank/add?timestamp=%@&userid=%@&v=%@sign=%@",BASE_INTERFACE_DOMAIN,
-//                        MALL_CODE,
-//                        [NSString stringWithFormat:@"%ld",(long)[[NSDate date] timeIntervalSince1970],
-//                         [GlobeModel sharedSingleton].userId forKey:@"userid"],
-//                         [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"] forKey:@"v"],
-//    ];
-//    
-//    
-//    NSURL *URL = [NSURL URLWithString:urlStr];
-//    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:URL];
-//    [request setHTTPMethod:@"POST"];
+
     NSString *str = @"";
     for (NSString *string in [dict allKeys]) {
         str = [NSString stringWithFormat:@"%@%@,",str,string];
@@ -32,15 +22,11 @@
     NSString *string = [str substringWithRange:range];
     NSDictionary *dictionary = @{@"bankId": string};
     NSLog(@"%@",string);
-//    NSData *data = [string dataUsingEncoding:NSUTF8StringEncoding];
-//    [request setHTTPBody:data];
-//    NSData *received = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
-//    NSLog(@"%@",[[NSString alloc]initWithData:received encoding:NSUTF8StringEncoding]);
     
     self.interfaceUrl = [NSString stringWithFormat:@"%@api/%@/myinfo/bank/add",BASE_INTERFACE_DOMAIN, MALL_CODE];
     self.requestMethod = @"POST";
     self.args = dictionary;
-//    self.postParams = dictionary;
+    self.postParams = dictionary;
     self.baseDelegate = self;
     [self connect];
 
