@@ -7,11 +7,15 @@
 //
 
 #import "BaseInterface.h"
-//#import <Foundation/Foundation.h>
 
-//@interface SaveAddBankCardInterface : NSObject
+@protocol SaveAddBankCardInterfaceDelegate <NSObject>
+
+-(void)getReceivedFromPoatAddBankCard:(NSString *)result;
+
+@end
 @interface SaveAddBankCardInterface : BaseInterface<BaseInterfaceDelegate>
 
+@property (assign, nonatomic) id<SaveAddBankCardInterfaceDelegate>delegate;
 -(void)SaveAddBankCardWithDictionary:(NSDictionary *)dict;
 
 @end

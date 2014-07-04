@@ -9,7 +9,7 @@
 #import "BaseViewController.h"
 #import "AddBandCardInterface.h"
 
-@interface AddBankCardViewController : BaseViewController<AddBankCardDelegate,UITableViewDataSource,UITableViewDelegate>
+@interface AddBankCardViewController : BaseViewController<AddBankCardDelegate,UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate>
 
 @property (retain, nonatomic) AddBandCardInterface *addBankCardInterface;
 @property (nonatomic, retain) NSMutableArray *itemList;
@@ -23,5 +23,6 @@
 
 @property (retain, nonatomic) NSMutableDictionary *chooeseBankCard;
 
+@property (assign, nonatomic) int chooesedCount;
 
 @end

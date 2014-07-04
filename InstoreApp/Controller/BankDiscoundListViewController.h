@@ -11,4 +11,7 @@
 @interface BankDiscoundListViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate>
 @property (retain, nonatomic) IBOutlet UITableView *myTableView;
 
+@property (assign, nonatomic) NSInteger bankId;
+//@property (retain, nonatomic) NSString *titleString;
+
 @end

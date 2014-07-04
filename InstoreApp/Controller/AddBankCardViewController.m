@@ -12,8 +12,11 @@
 #import "AddBankCardModel.h"
 #import "SaveAddBankCardInterface.h"
 
+@class BankCardViewController;
 
-@interface AddBankCardViewController ()
+@interface AddBankCardViewController ()<SaveAddBankCardInterfaceDelegate>{
+    SaveAddBankCardInterface *saveVC;
+}
 
 @end
 
@@ -36,6 +39,9 @@
     self.itemList = [NSMutableArray array];
     self.chooeseBankCard = [NSMutableDictionary dictionary];
     
+    saveVC = [[SaveAddBankCardInterface alloc]init];
+    saveVC.delegate = self;
+    
     self.addBankCardInterface = [[[AddBandCardInterface alloc]init]autorelease];
     _addBankCardInterface.delegate = self;
     [_addBankCardInterface getAddBankCardByPage:self.currentPage amount:20];
@@ -46,15 +52,16 @@
     label.textColor = [UIColor colorWithRed:121/255.0 green:121/255.0 blue:121/255.0 alpha:1];
     self.myTableView.tableHeaderView = label;
     
+//    for (UIViewController *vc in self.navigationController.viewControllers) {
+//        NSLog(@"%@",[vc class]);
+//    }
+    
 }
 #pragma mark - UITableViewDataSource
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 50;
 }
-//-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-//    return 35;
-//}
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return self.itemList.count;
@@ -106,18 +113,28 @@
         if (chooesed == NO) {
             NSInteger bankId = addBankModel.bankId;
             [self.chooeseBankCard setObject:[NSNumber numberWithInteger:bankId] forKey:[NSString stringWithFormat:@"%d",bankId]];
+            self.chooesedCount++;
         }
     }else{
         cell.accessoryType = UITableViewCellAccessoryNone;
         
         if ([self.chooeseBankCard objectForKey:[NSString stringWithFormat:@"%d",addBankModel.bankId]]) {
             [self.chooeseBankCard removeObjectForKey:[NSString stringWithFormat:@"%d",addBankModel.bankId]];
+            self.chooesedCount--;
         }
     }
     
 }
+
 -(void)getAddBankCardDidFinished:(NSArray *)itemList totalCount:(NSInteger)totalCount currentPage:(NSInteger)currentPage{
-    [self.itemList addObjectsFromArray:itemList];
+    
+    for (AddBankCardModel *addBankCardModel in itemList) {
+        BOOL chooesed = addBankCardModel.choosed;
+        if (chooesed == NO) {
+            [self.itemList addObject:addBankCardModel];
+        }
+    }
+//    [self.itemList addObjectsFromArray:itemList];
     self.totalAmount = totalCount;
     self.currentPage = currentPage;
     self.currentPage++;
@@ -131,6 +148,7 @@
     self.addBankCardInterface = nil;
     self.itemList = nil;
     self.chooeseBankCard = nil;
+    [saveVC release];
     
     [_myTableView release];
     [_labChooeseCount release];
@@ -142,13 +160,40 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+-(void)setChooesedCount:(int)chooesedCount{
+    _chooesedCount = chooesedCount;
+    self.labChooeseCount.text = [NSString stringWithFormat:@"%d",chooesedCount];
+}
 - (IBAction)btnFinishedAction:(UIButton *)sender {
-    NSLog(@"%s:%@",__FUNCTION__,self.chooeseBankCard);
-    //id=1&id=2&id=3
-    SaveAddBankCardInterface *saveVC = [[SaveAddBankCardInterface alloc]init];
+    if (self.chooeseBankCard.count > 0) {
+        [saveVC SaveAddBankCardWithDictionary:self.chooeseBankCard];
+    }
     
-    [saveVC SaveAddBankCardWithDictionary:self.chooeseBankCard];
-    [saveVC release];
+}
+-(void)getReceivedFromPoatAddBankCard:(NSString *)result{
+    if ([result isEqualToString:@"success"]) {
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"保存成功" message:nil delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        alert.tag = 100;
+        [alert show];
+        [alert release];
+    }else{
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"保存失败" message:nil delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [alert show];
+        [alert release];
+    }
+    
+}
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (alertView.tag == 100) {
+        NSArray *array = self.navigationController.viewControllers;
+        UIViewController *vcc = nil;
+        for (UIViewController *vc in array) {
+            if ([[vc class] isSubclassOfClass:[BankCardViewController class]]) {
+                vcc = vc;
+            }
+        }        
+        [self.navigationController popViewControllerAnimated:YES];
+        [(BankCardViewController *)vcc refreshData];
+    }
 }
 @end

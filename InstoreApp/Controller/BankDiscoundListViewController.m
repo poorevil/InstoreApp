@@ -8,9 +8,23 @@
 
 #import "BankDiscoundListViewController.h"
 #import "BankDiscoundListCell.h"
+#import "BankCardModel.h"
+#import "BankCardDetailModel.h"
+#import "BankCardDetailInterface.h"
+#import "NSDate+DynamicDateString.h"
 
 
-@interface BankDiscoundListViewController ()
+@interface BankDiscoundListViewController ()<BankCardDetailInterfaceDelegate>{
+    
+}
+
+@property (retain, nonatomic) BankCardDetailInterface *bankCardDetailInterface;
+@property (nonatomic, retain) NSMutableArray *itemList;
+@property (nonatomic, assign) NSInteger totalAmount;
+@property (nonatomic, assign) NSInteger currentPage;
+
+@property (nonatomic, retain) NSDateFormatter *formatter;
+
 
 @end
 
@@ -35,6 +49,15 @@
     self.myTableView.tableHeaderView = view;
     [view release];
     
+//    self.title = @"";
+    self.itemList = [NSMutableArray array];
+    self.bankCardDetailInterface = [[BankCardDetailInterface alloc]init];
+    self.bankCardDetailInterface.delegate = self;
+    [self.bankCardDetailInterface getBankCardDetailByPage:self.currentPage amount:20 andBankId:self.bankId];
+    
+    self.formatter = [[NSDateFormatter alloc]init];
+    [self.formatter setDateFormat:@"yyyy-MM-dd"];
+    
 }
 #pragma mark - UITableViewDataSource
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -43,14 +66,13 @@
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    //    return self.itemList.count;
-    return 10;
+    return self.itemList.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifer = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifer];
+    BankDiscoundListCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifer];
     if (!cell) {
         //cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifer];
         cell = [[[NSBundle mainBundle] loadNibNamed:@"BankDiscoundListCell"
@@ -58,6 +80,13 @@
                                             options:nil] objectAtIndex:0];
     }
     //    cell.textLabel.text = [NSString stringWithFormat:@"%d",indexPath.row];
+    BankCardDetailModel *bankCardDetailModel = [self.itemList objectAtIndex:indexPath.row];
+    cell.labTitle.text = bankCardDetailModel.title;
+    cell.imgBankLogo.imageURL = [NSURL URLWithString:bankCardDetailModel.bank.logo];
+    cell.imgView.imageURL = [NSURL URLWithString:bankCardDetailModel.image];
+    cell.labStartTime.text = [[NSDate dateFromString:bankCardDetailModel.startTime] toDateString];
+    cell.labEndTime.text = [[NSDate dateFromString:bankCardDetailModel.endTime] toDateString];    
+    cell.imageStoreLogo.imageURL = [NSURL URLWithString:bankCardDetailModel.store.logoUrl];
     
     return cell;
 }
@@ -66,6 +95,21 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
 }
+
+#pragma mark - BankCardDetailInterfaceDelegate
+-(void)getBankCardDetailDidFinished:(NSArray *)itemList totalCount:(NSInteger)totalCount currentPage:(NSInteger)currentPage{
+    [self.itemList addObjectsFromArray:itemList];
+    self.totalAmount = totalCount;
+    self.currentPage = currentPage;
+    self.currentPage++;
+    
+    [self.myTableView reloadData];
+}
+-(void)getBankCardDetailDidFailed:(NSString *)errorMsg{
+    NSLog(@"%s:%@",__FUNCTION__,errorMsg);
+}
+
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

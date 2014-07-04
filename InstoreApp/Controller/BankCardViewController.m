@@ -12,13 +12,19 @@
 #import "BankCardModel.h"
 #import "BankDiscoundListViewController.h"
 #import "AddBankCardViewController.h"
+#import "DeleteBankCardInterface.h"
 
-@interface BankCardViewController ()<BankCardInterfaceDelegate>
+@interface BankCardViewController ()<BankCardInterfaceDelegate>{
+//    UIBarButtonItem *itemTemp;
+//    UIBarButtonItem *itemCancel;
+    UIButton *btnTemp;
+}
 
 @property (retain, nonatomic) BankCardInterface *bankCardInterface;
 @property (nonatomic, retain) NSMutableArray *itemList;
 @property (nonatomic, assign) NSInteger totalAmount;
 @property (nonatomic, assign) NSInteger currentPage;
+@property (retain, nonatomic) DeleteBankCardInterface *deleteBankCardInterface;
 
 @end
 
@@ -46,6 +52,7 @@
     [btnEditor setImage:[UIImage imageNamed:@"bankcard_editor.png"] forState:UIControlStateNormal];
     [btnEditor setImageEdgeInsets:UIEdgeInsetsMake(0, 10, 0, 10)];
     [btnEditor addTarget:self action:@selector(btnEditorAction:) forControlEvents:UIControlEventTouchUpInside];
+    btnEditor.tag = 101;
     UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc]initWithCustomView:btnEditor];
     self.navigationItem.rightBarButtonItem = rightBtn;
     [rightBtn release];
@@ -53,6 +60,8 @@
     self.bankCardInterface = [[[BankCardInterface alloc]init]autorelease];
     _bankCardInterface.delegate = self;
     [_bankCardInterface getBankCardByPage:self.currentPage amount:20];
+    
+    self.deleteBankCardInterface = [[DeleteBankCardInterface alloc]init];
     
     UIView *footView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 94)];
     UIButton *btnAddBank = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -63,9 +72,26 @@
     self.myTableView.tableFooterView = footView;
     [footView release];
     
+//    UIButton *btnCancel = [UIButton buttonWithType:UIButtonTypeCustom];
+//    btnCancel.frame = CGRectMake(0, 0, 60, 44);
+//    [btnCancel addTarget:self action:@selector(btnCancelEditorAction:) forControlEvents:UIControlEventTouchUpInside];
+//    [btnCancel setTitle:@"取消" forState:UIControlStateNormal];
+    
+//    itemTemp = self.navigationItem.leftBarButtonItem;
+//    itemCancel= [[UIBarButtonItem alloc]initWithCustomView:nil];
+//    self.navigationItem.leftBarButtonItem = itemCancel;
+
+    
     
 }
-
+-(void)viewWillAppear:(BOOL)animated{
+    
+}
+-(void)refreshData{
+    self.currentPage = 1;
+    [self.itemList removeAllObjects];
+    [_bankCardInterface getBankCardByPage:self.currentPage amount:20];
+}
 #pragma mark - UITableViewDataSource
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -74,7 +100,6 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return self.itemList.count;
-//    return 5;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -100,9 +125,23 @@
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     BankDiscoundListViewController *bankDiscoundListVC = [[BankDiscoundListViewController alloc]init];
-    bankDiscoundListVC.title = @"招商银行信用卡";
+    BankCardModel *bankCardModel = [self.itemList objectAtIndex:indexPath.row];
+    bankDiscoundListVC.title = bankCardModel.name;
+    bankDiscoundListVC.bankId = bankCardModel.bankId;
     [self.navigationController pushViewController:bankDiscoundListVC animated:YES];
     [bankDiscoundListVC release];
+    [bankCardModel release];
+}
+-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        BankCardModel *bankCardModel = [self.itemList objectAtIndex:indexPath.row];
+        NSInteger bankId = bankCardModel.bankId;
+        [self.deleteBankCardInterface deleteBankCardWithBankId:bankId];
+        
+        
+        [self.itemList removeObjectAtIndex:indexPath.row];
+        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];    
+    }
 }
 
 -(void)btnEditorAction:(UIButton *)sender{
@@ -112,18 +151,27 @@
         [sender setTitle:@"完成" forState:UIControlStateNormal];
         
         isEditor = YES;
-        
         self.myTableView.editing = YES;
+        
+        self.navigationItem.hidesBackButton = YES;
     }else{
         [sender setImage:[UIImage imageNamed:@"bankcard_editor.png"] forState:UIControlStateNormal];
         [sender setTitle:@"" forState:UIControlStateNormal];
         
         isEditor = NO;
-        
         self.myTableView.editing = NO;
+        self.navigationItem.hidesBackButton = NO;
     }
+    if (!btnTemp) {
+        btnTemp = sender;
+    }    
 }
-
+//-(void)btnCancelEditorAction:(UIButton *)sender{
+//    self.myTableView.editing = NO;
+//    self.navigationItem.leftBarButtonItem = itemTemp;
+//    [self btnEditorAction:nil];
+//    
+//}
 -(void)getBankCardDidFinished:(NSArray *)itemList totalCount:(NSInteger)totalCount currentPage:(NSInteger)currentPage{
     [self.itemList addObjectsFromArray:itemList];
     self.totalAmount = totalCount;
@@ -136,6 +184,12 @@
     NSLog(@"%s:%@",__FUNCTION__,errorMsg);
 }
 -(void)btnAddBankAction:(UIButton *)sender{
+    if (self.myTableView.editing == YES) {
+        self.myTableView.editing = NO;
+        [btnTemp setImage:[UIImage imageNamed:@"bankcard_editor.png"] forState:UIControlStateNormal];
+        [btnTemp setTitle:@"" forState:UIControlStateNormal];
+    }
+    
     AddBankCardViewController *addBankCardVC = [[AddBankCardViewController alloc]init];
     [self.navigationController pushViewController:addBankCardVC animated:YES];
     addBankCardVC.title = @"添加银行卡";
@@ -144,6 +198,8 @@
 -(void)dealloc{
     self.bankCardInterface.delegate = nil;
     self.bankCardInterface = nil;
+    self.deleteBankCardInterface = nil;
+//    [itemCancel release];
     
     [_myTableView release];
     [super dealloc];

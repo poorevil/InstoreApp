@@ -192,6 +192,10 @@
 		042E47FD1965559D00CD945A /* BankCardModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 042E47FC1965559D00CD945A /* BankCardModel.m */; };
 		042E4800196557A700CD945A /* AddBankCardModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 042E47FF196557A700CD945A /* AddBankCardModel.m */; };
 		042E48031965660800CD945A /* SaveAddBankCardInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 042E48021965660800CD945A /* SaveAddBankCardInterface.m */; };
+		04405C32196686B300CDD36F /* DeleteBankCardInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 04405C31196686B300CDD36F /* DeleteBankCardInterface.m */; };
+		04405C3419668D2500CDD36F /* bankCard_addCard_OK@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04405C3319668D2500CDD36F /* bankCard_addCard_OK@2x.png */; };
+		04405C371966988100CDD36F /* BankCardDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04405C361966988100CDD36F /* BankCardDetailModel.m */; };
+		04405C3A19669B5500CDD36F /* BankCardDetailInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 04405C3919669B5500CDD36F /* BankCardDetailInterface.m */; };
 		04EF11E81963AFBC0066C902 /* BankCardInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EF11E71963AFBC0066C902 /* BankCardInterface.m */; };
 		04EF11EC1963B50F0066C902 /* BankCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EF11EA1963B50F0066C902 /* BankCardViewController.m */; };
 		04EF11ED1963B50F0066C902 /* BankCardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04EF11EB1963B50F0066C902 /* BankCardViewController.xib */; };
@@ -955,6 +959,13 @@
 		042E47FF196557A700CD945A /* AddBankCardModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddBankCardModel.m; sourceTree = "<group>"; };
 		042E48011965660800CD945A /* SaveAddBankCardInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SaveAddBankCardInterface.h; sourceTree = "<group>"; };
 		042E48021965660800CD945A /* SaveAddBankCardInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SaveAddBankCardInterface.m; sourceTree = "<group>"; };
+		04405C30196686B300CDD36F /* DeleteBankCardInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeleteBankCardInterface.h; sourceTree = "<group>"; };
+		04405C31196686B300CDD36F /* DeleteBankCardInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeleteBankCardInterface.m; sourceTree = "<group>"; };
+		04405C3319668D2500CDD36F /* bankCard_addCard_OK@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bankCard_addCard_OK@2x.png"; path = "resources/bankCard_addCard_OK@2x.png"; sourceTree = "<group>"; };
+		04405C351966988100CDD36F /* BankCardDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BankCardDetailModel.h; sourceTree = "<group>"; };
+		04405C361966988100CDD36F /* BankCardDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BankCardDetailModel.m; sourceTree = "<group>"; };
+		04405C3819669B5500CDD36F /* BankCardDetailInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BankCardDetailInterface.h; sourceTree = "<group>"; };
+		04405C3919669B5500CDD36F /* BankCardDetailInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BankCardDetailInterface.m; sourceTree = "<group>"; };
 		04EF11E61963AFBC0066C902 /* BankCardInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BankCardInterface.h; sourceTree = "<group>"; };
 		04EF11E71963AFBC0066C902 /* BankCardInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BankCardInterface.m; sourceTree = "<group>"; };
 		04EF11E91963B50F0066C902 /* BankCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BankCardViewController.h; sourceTree = "<group>"; };
@@ -1845,6 +1856,8 @@
 				042E47FC1965559D00CD945A /* BankCardModel.m */,
 				042E47FE196557A700CD945A /* AddBankCardModel.h */,
 				042E47FF196557A700CD945A /* AddBankCardModel.m */,
+				04405C351966988100CDD36F /* BankCardDetailModel.h */,
+				04405C361966988100CDD36F /* BankCardDetailModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1904,6 +1917,10 @@
 				04EF1215196429700066C902 /* AddBandCardInterface.m */,
 				042E48011965660800CD945A /* SaveAddBankCardInterface.h */,
 				042E48021965660800CD945A /* SaveAddBankCardInterface.m */,
+				04405C30196686B300CDD36F /* DeleteBankCardInterface.h */,
+				04405C31196686B300CDD36F /* DeleteBankCardInterface.m */,
+				04405C3819669B5500CDD36F /* BankCardDetailInterface.h */,
+				04405C3919669B5500CDD36F /* BankCardDetailInterface.m */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
@@ -2238,6 +2255,7 @@
 		4E2C6DA618D7502100DF3772 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				04405C3319668D2500CDD36F /* bankCard_addCard_OK@2x.png */,
 				042E47F319651A2500CD945A /* webView_bottomBG.png */,
 				042E47F419651A2500CD945A /* webView_goBack.png */,
 				042E47F519651A2500CD945A /* webView_goForward.png */,
@@ -3461,6 +3479,7 @@
 				0357FF2A1949EB260071BD5A /* CouponView_focusedCell.xib in Resources */,
 				4ECBF74018F58C33003963E1 /* ShopDetailDescriptionCell.xib in Resources */,
 				03650F8D1945FC9400016289 /* nav_scan_qrcode_press@2x.png in Resources */,
+				04405C3419668D2500CDD36F /* bankCard_addCard_OK@2x.png in Resources */,
 				4E2C6DE118D754ED00DF3772 /* MainViewNavigationCell.xib in Resources */,
 				035214C519588ADC00F92B55 /* StoreDetail_otherCouponTileView.xib in Resources */,
 				0357FF951951EBF20071BD5A /* FoodCouponCell.xib in Resources */,
@@ -3521,6 +3540,7 @@
 				4E9608A718E48D6700418798 /* PullTableView.m in Sources */,
 				4E9608CE18E9C54400418798 /* MainViewMiaoShaCell.m in Sources */,
 				C1A9C87D193F130300DD420F /* NIRuntimeClassModifications.m in Sources */,
+				04405C371966988100CDD36F /* BankCardDetailModel.m in Sources */,
 				4ECBF72418F45377003963E1 /* ShopDetailItemListCell.m in Sources */,
 				C1A9C87E193F130300DD420F /* NISDKAvailability.m in Sources */,
 				03573AD119055D8A00A11A33 /* UIGlossyButton.m in Sources */,
@@ -3540,6 +3560,7 @@
 				03573AC319055B7700A11A33 /* IndoorMapViewController.m in Sources */,
 				4E9608CA18E9BD4300418798 /* CycleScrollView.m in Sources */,
 				042E4800196557A700CD945A /* AddBankCardModel.m in Sources */,
+				04405C32196686B300CDD36F /* DeleteBankCardInterface.m in Sources */,
 				035214F5195C7A0700F92B55 /* MallNews_multiTableViewCell.m in Sources */,
 				035214BF1958765300F92B55 /* StoreDetail_otherCouponCell.m in Sources */,
 				4E9608B418E7B1B600418798 /* ServiceViewCell.m in Sources */,
@@ -3639,6 +3660,7 @@
 				C1A9C81F193F12CC00DD420F /* PhotoViewController.m in Sources */,
 				4E2C6DF118D75CC400DF3772 /* MeViewController.m in Sources */,
 				C1A9C87F193F130300DD420F /* NIState.m in Sources */,
+				04405C3A19669B5500CDD36F /* BankCardDetailInterface.m in Sources */,
 				4E9608A418E48D6700418798 /* LoadMoreTableFooterView.m in Sources */,
 				C1A9C8A219405F2400DD420F /* Static.m in Sources */,
 				042E47FD1965559D00CD945A /* BankCardModel.m in Sources */,

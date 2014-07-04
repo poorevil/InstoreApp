@@ -11,4 +11,6 @@
 @interface BankCardViewController : BaseViewController/*UIViewController*/<UITableViewDataSource, UITableViewDelegate>
 @property (retain, nonatomic) IBOutlet UITableView *myTableView;
 
+-(void)refreshData;
+
 @end
