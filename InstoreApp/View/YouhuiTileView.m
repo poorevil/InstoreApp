@@ -76,8 +76,8 @@
 //    }
     
     //计算高度
-    CGFloat diffHeight = 0;
-    CGFloat width = self.bounds.size.width;
+//    CGFloat diffHeight = 0;
+//    CGFloat width = self.bounds.size.width;
     // Image
 //    CGFloat objectWidth = self.coupon.imageWidth==0?160:self.coupon.imageWidth;
 //    CGFloat objectHeight = self.coupon.imageHeight==0?160:self.coupon.imageHeight;

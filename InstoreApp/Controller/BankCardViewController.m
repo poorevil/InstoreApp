@@ -14,9 +14,8 @@
 #import "AddBankCardViewController.h"
 #import "DeleteBankCardInterface.h"
 
+
 @interface BankCardViewController ()<BankCardInterfaceDelegate>{
-//    UIBarButtonItem *itemTemp;
-//    UIBarButtonItem *itemCancel;
     UIButton *btnTemp;
 }
 
@@ -46,6 +45,7 @@
     
     self.itemList = [NSMutableArray array];
     self.title = @"银行卡恵";
+    self.navigationItem.rightBarButtonItem = nil;
     
     UIButton *btnEditor = [UIButton buttonWithType:UIButtonTypeCustom];
     btnEditor.frame = CGRectMake(0, 0, 38, 19);
@@ -72,14 +72,6 @@
     self.myTableView.tableFooterView = footView;
     [footView release];
     
-//    UIButton *btnCancel = [UIButton buttonWithType:UIButtonTypeCustom];
-//    btnCancel.frame = CGRectMake(0, 0, 60, 44);
-//    [btnCancel addTarget:self action:@selector(btnCancelEditorAction:) forControlEvents:UIControlEventTouchUpInside];
-//    [btnCancel setTitle:@"取消" forState:UIControlStateNormal];
-    
-//    itemTemp = self.navigationItem.leftBarButtonItem;
-//    itemCancel= [[UIBarButtonItem alloc]initWithCustomView:nil];
-//    self.navigationItem.leftBarButtonItem = itemCancel;
 
     
     
@@ -166,12 +158,7 @@
         btnTemp = sender;
     }    
 }
-//-(void)btnCancelEditorAction:(UIButton *)sender{
-//    self.myTableView.editing = NO;
-//    self.navigationItem.leftBarButtonItem = itemTemp;
-//    [self btnEditorAction:nil];
-//    
-//}
+
 -(void)getBankCardDidFinished:(NSArray *)itemList totalCount:(NSInteger)totalCount currentPage:(NSInteger)currentPage{
     [self.itemList addObjectsFromArray:itemList];
     self.totalAmount = totalCount;

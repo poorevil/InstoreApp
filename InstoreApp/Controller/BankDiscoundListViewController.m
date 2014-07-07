@@ -13,6 +13,7 @@
 #import "BankCardDetailInterface.h"
 #import "NSDate+DynamicDateString.h"
 
+#import "MallNewsDetailViewController.h"
 
 @interface BankDiscoundListViewController ()<BankCardDetailInterfaceDelegate>{
     
@@ -93,7 +94,11 @@
 
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
+    MallNewsDetailViewController *detailVC = [[MallNewsDetailViewController alloc]init];
+    BankCardDetailModel *bankCardDetailModel = [self.itemList objectAtIndex:indexPath.row];
+    detailVC.youhuiID = bankCardDetailModel.youHuiId;
+    [self.navigationController pushViewController:detailVC animated:YES];
+    [detailVC release];
 }
 
 #pragma mark - BankCardDetailInterfaceDelegate

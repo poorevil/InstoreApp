@@ -33,6 +33,7 @@
 //@property (nonatomic, assign) NSInteger collectCount;//TODO:下载数
 @property (nonatomic, assign) BOOL isFocus;//是否已收藏，显示红心
 
+@property (retain, nonatomic) NSString *link;  //外链地址
 //团购
 @property (nonatomic, retain) NSString *source;//团购来源
 

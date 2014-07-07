@@ -38,6 +38,7 @@
 //            //@property (nonatomic, assign) NSInteger collectCount;//TODO:下载数
             self.isFocus = [jsonMap objectForKey:@"isFocus"]?[[jsonMap objectForKey:@"isFocus"] boolValue]:NO;
             
+            self.link = [jsonMap objectForKey:@"link"];
             
             self.instruction = [jsonMap objectForKey:@"instruction"];
             
@@ -88,6 +89,8 @@
     self.oldPrice = nil;
     self.price = nil;
     self.source = nil;
+    
+    self.link = nil;
     
     //----
     self.hotTag = nil;

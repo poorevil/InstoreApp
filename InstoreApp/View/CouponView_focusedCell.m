@@ -13,6 +13,7 @@
 #import "CouponDetailViewController.h"
 #import "AppDelegate.h"
 #import "GroupBuyDetailViewController.h"
+#import "MallNewsDetailViewController.h"
 
 @implementation CouponView_focusedCell
 
@@ -114,7 +115,9 @@
         case 2:
             vc = [[[CouponDetailViewController alloc] initWithNibName:@"CouponDetailViewController" bundle:nil] autorelease];
             break;
-        //TODO:case2
+        case 1:
+            vc = [[[MallNewsDetailViewController alloc]init]autorelease];
+            break;
             
     }
     
