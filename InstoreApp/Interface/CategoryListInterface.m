@@ -13,7 +13,7 @@
 @implementation CategoryListInterface
 -(void)getCategoryListByPage:(NSInteger) page amount:(NSInteger) amount
 {
-    self.interfaceUrl = [NSString stringWithFormat:@"%@api/%@/shop/category",BASE_INTERFACE_DOMAIN, MALL_CODE];
+    self.interfaceUrl = [NSString stringWithFormat:@"%@api/%@/common/category",BASE_INTERFACE_DOMAIN, MALL_CODE];
     self.args = @{@"page":[NSString stringWithFormat:@"%d",page],
                   @"amount":[NSString stringWithFormat:@"%d",amount]};
     self.baseDelegate = self;
@@ -21,21 +21,6 @@
 }
 
 #pragma mark - BaseInterfaceDelegate
-//{
-//    "totalCount":<总页数>,
-//    "currentPage":<当前页>,
-//    "categories":[                         //优惠列表
-//                  {
-//                      id: '分类ID',
-//                  name: '分类名称'
-//                  },
-//                  {
-//                      id: '分类ID',
-//                  name: '分类名称'
-//                  },
-//                  ...
-//                  ]
-//}
 -(void)parseResult:(ASIHTTPRequest *)request{
     NSString *jsonStr = [[[NSString alloc] initWithData:[request responseData] encoding:NSUTF8StringEncoding] autorelease];
     id jsonObj = [jsonStr objectFromJSONString];
@@ -48,7 +33,7 @@
             totalCount = [[jsonObj objectForKey:@"totalCount"] integerValue];
             currentPage = [[jsonObj objectForKey:@"currentPage"] integerValue];
             
-            NSArray *categorysArray = [jsonObj objectForKey:@"categories"];
+            NSArray *categorysArray = [jsonObj objectForKey:@"list"];
             if (categorysArray) {
                 for (NSDictionary *categoryDict in categorysArray) {
                     CategoryModel *category = [[[CategoryModel alloc] initWithJsonMap:categoryDict] autorelease];
