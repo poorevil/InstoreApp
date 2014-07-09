@@ -12,10 +12,12 @@
 @interface CouponViewController : BaseViewController
 
 @property (nonatomic, retain) IBOutlet UITableView *mtableView;
-@property (nonatomic, retain) IBOutlet UIButton *cateBtn;
+//@property (nonatomic, retain) IBOutlet UIButton *cateBtn;
 @property (nonatomic, retain) IBOutlet UIButton *typeBtn;
 @property (nonatomic, retain) IBOutlet UIButton *orderBtn;
 
 @property (nonatomic, retain) IBOutlet UIButton *favorBtn;
+- (IBAction)btnOrderAction:(UIButton *)sender;
+- (IBAction)btnCategoryAction:(UIButton *)sender;
 
 @end

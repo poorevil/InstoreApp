@@ -7,7 +7,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CouponViewController">
             <connections>
-                <outlet property="cateBtn" destination="rwC-uL-nvr" id="zcw-oL-PcF"/>
                 <outlet property="favorBtn" destination="sPM-BF-hpd" id="OeM-KJ-nLU"/>
                 <outlet property="mtableView" destination="Whc-ID-tH1" id="qjh-OP-hMF"/>
                 <outlet property="orderBtn" destination="at7-hF-vIb" id="MyA-vb-aKp"/>
@@ -24,32 +23,33 @@
                     <rect key="frame" x="0.0" y="65" width="320" height="40"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="rwC-uL-nvr">
-                            <rect key="frame" x="10" y="5" width="70" height="30"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                            <state key="normal" title="优惠类型" image="down_arrow.png">
-                                <color key="titleColor" red="0.47450980390000003" green="0.47450980390000003" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                        </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="p4E-B1-miI">
-                            <rect key="frame" x="80" y="5" width="70" height="30"/>
+                            <rect key="frame" x="9" y="5" width="70" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                            <state key="normal" title="分类 " image="down_arrow.png">
+                            <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="10" maxY="0.0"/>
+                            <inset key="imageEdgeInsets" minX="60" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <state key="normal" title="默认排序" image="down_arrow.png">
                                 <color key="titleColor" red="0.47450980390000003" green="0.47450980390000003" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="btnOrderAction:" destination="-1" eventType="touchUpInside" id="Obh-82-AI5"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="at7-hF-vIb">
-                            <rect key="frame" x="150" y="5" width="46" height="30"/>
+                            <rect key="frame" x="87" y="5" width="70" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                            <state key="normal" title="排序 " image="down_arrow.png">
+                            <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="10" maxY="0.0"/>
+                            <inset key="imageEdgeInsets" minX="60" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <state key="normal" title="全部分类" image="down_arrow.png">
                                 <color key="titleColor" red="0.47450980390000003" green="0.47450980390000003" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="btnCategoryAction:" destination="-1" eventType="touchUpInside" id="epg-7P-0Ol"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="sPM-BF-hpd">
                             <rect key="frame" x="212" y="5" width="104" height="30"/>

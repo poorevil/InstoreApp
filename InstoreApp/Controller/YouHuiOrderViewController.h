@@ -10,14 +10,13 @@
 
 @protocol YouHuiOrderViewControllerDelegate <NSObject>
 
--(void)youHuiOrderViewControllerDidSelected:(NSString *)order;
+-(void)youHuiOrderViewControllerDidSelected:(NSUInteger)index;
 
 @end
 
 @interface YouHuiOrderViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 
 @property (retain, nonatomic) NSArray *list;
-@property (retain, nonatomic) NSArray *result;
 @property (assign, nonatomic) id<YouHuiOrderViewControllerDelegate>delegate;
 
 @end

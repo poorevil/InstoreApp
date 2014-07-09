@@ -1,18 +1,23 @@
 //
-//  YouHuiPromotionTypeViewController.m
+//  FocusStoreViewController.m
 //  InstoreApp
 //
-//  Created by Mac on 14-7-8.
+//  Created by Mac on 14-7-9.
 //  Copyright (c) 2014年 evil. All rights reserved.
 //
 
-#import "YouHuiPromotionTypeViewController.h"
+#import "FocusStoreViewController.h"
+#import "FocusStoreInterface.h"
+#import "FocusStoreModel.h"
 
-@interface YouHuiPromotionTypeViewController ()
+@interface FocusStoreViewController ()
+
+@property (retain, nonatomic) FocusStoreInterface *focusStoreInterface;
 
 @end
 
-@implementation YouHuiPromotionTypeViewController
+@implementation FocusStoreViewController
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -28,40 +33,33 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    self.title = @"优惠类型";
-    self.list = [NSArray arrayWithObjects:@"全部",@"团购",@"优惠券",@"优惠活动", nil];
+    
 }
 
 #pragma mark - UITableViewDataSource
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 0;
+}
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 44;
+    return 0;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.list.count;
+    return 0;
 }
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (!cell) {
-        cell = [[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier]autorelease];
-    }
-    cell.textLabel.text = [self.list objectAtIndex:indexPath.row];
-    return cell;
+
+    return nil;
 }
 
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    if (_delegate && [_delegate respondsToSelector:@selector(youHuiPromotionTypeViewControllerDidSelected:)]) {
-        [_delegate youHuiPromotionTypeViewControllerDidSelected:[self.list objectAtIndex:indexPath.row]];
-    }
-    [self.navigationController popViewControllerAnimated:YES];
 }
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -69,10 +67,11 @@
 }
 
 - (void)dealloc {
+    [_btnIsRecommend release];
     [_myTableView release];
-    self.list = nil;
-    self.delegate = nil;
-    
     [super dealloc];
+}
+- (IBAction)btnIsRecommendAction:(UIButton *)sender {
+//    [sender setImage:[UIImage imageNamed:@"focusstore_yes.png"] forState:UIControlStateNormal];
 }
 @end

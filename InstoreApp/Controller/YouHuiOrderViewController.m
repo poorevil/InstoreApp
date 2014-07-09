@@ -29,8 +29,8 @@
     // Do any additional setup after loading the view from its nib.
     
     self.title = @"排序";
-    self.list = @[@"默认排序",@"按人气排序",@"按收藏排序",@"按结束时间排序"];
-    self.result = @[@"",@"人气",@"收藏",@"结束时间"];
+    self.list = @[@"默认排序",@"人气优先",@"收藏数量",@"结束时间"];
+
 }
 
 #pragma mark - UITableViewDataSource
@@ -58,7 +58,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     if (_delegate && [_delegate respondsToSelector:@selector(youHuiOrderViewControllerDidSelected:)]) {
-        [_delegate youHuiOrderViewControllerDidSelected:[self.result objectAtIndex:indexPath.row]];
+        [_delegate youHuiOrderViewControllerDidSelected:indexPath.row];
     }
     [self.navigationController popViewControllerAnimated:YES];
 }
