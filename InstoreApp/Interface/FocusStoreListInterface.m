@@ -17,7 +17,7 @@
                          ,BASE_INTERFACE_DOMAIN, MALL_CODE];
     self.args = @{@"amount":[NSString stringWithFormat:@"%d",amount],
                   @"page":[NSString stringWithFormat:@"%d",page],
-                  @"category":category == nil ? @"Department" : [NSString stringWithFormat:@"%d",amount]};
+                  @"category":category == nil ? @"Department" : category};
     self.baseDelegate = self;
     [self connect];
 }
@@ -33,12 +33,15 @@
         NSInteger totalCount = [[jsonObj objectForKey:@"totalCount"] integerValue];
         NSInteger currentPage = 0;
         NSInteger storeCount = 0;
-        NSString *recommend = @"";
+        BOOL recommend = NO;
         NSMutableArray *resultList = [NSMutableArray array];
         if (totalCount  > 0) {
             currentPage = [[jsonObj objectForKey:@"currentPage"] integerValue];
             storeCount = [[jsonObj objectForKey:@"storeCount"] integerValue];
-            recommend = [jsonObj objectForKey:@"recommend"];
+            NSString *recommendStr = [jsonObj objectForKey:@"recommend"];
+            if ([recommendStr isEqualToString:@"on"]) {
+                recommend = YES;
+            }
             NSArray *listArray = [jsonObj objectForKey:@"list"];
             if (listArray) {
                 for (NSDictionary *dict in listArray) {

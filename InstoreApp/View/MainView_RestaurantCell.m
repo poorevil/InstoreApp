@@ -13,6 +13,8 @@
 #import "GroupBuyDetailViewController.h"
 #import "CouponDetailViewController.h"
 
+#import "MallNewsDetailViewController.h"
+
 @implementation MainView_RestaurantCell
 
 - (void)awakeFromNib
@@ -33,7 +35,8 @@
 
 -(IBAction)moreBtnAction:(id)sender
 {
-    
+    AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+    [appDelegate.tabBarController setSelectedIndex:2];
 }
 
 -(void)setDataList:(NSArray *)dataList
@@ -78,6 +81,8 @@
     
     AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
     UINavigationController *nav = (UINavigationController *)appDelegate.tabBarController.selectedViewController;
+    [nav.navigationBar setBarTintColor:[UIColor colorWithRed:248.0f/255.0f green:40.0f/255.0f blue:53.0f/255.0f alpha:1]];
+    [nav.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
     
     UIViewController *vc = nil;
     switch (cm.promotionType ) {//优惠类型 (1, '优惠活动'), (2, '优惠券'), (3, '团购')
@@ -88,6 +93,8 @@
             vc = [[[CouponDetailViewController alloc] initWithNibName:@"CouponDetailViewController" bundle:nil] autorelease];
             break;
             //TODO:case2
+        case 1:
+            vc = [[[MallNewsDetailViewController alloc]initWithNibName:@"MallNewsDetailViewController" bundle:nil]autorelease];
             
     }
     

@@ -22,7 +22,7 @@
 
 @interface MallNewsDetailViewController ()<CouponDetailInterfaceDelegate>{
     EGOImageView *egoHeaderView;
-    UIButton *btnFocus;
+//    UIButton *btnFocus;
 }
 @property (retain, nonatomic) FocusInterface *focusInterface;
 
@@ -54,11 +54,11 @@
         [self.couponDetailInterface getCouponDetailByCouponId:self.youhuiID];
     }
     
-    btnFocus = [UIButton buttonWithType:UIButtonTypeCustom];
-    btnFocus.frame = CGRectMake(0, 0, 28, 44);
-    [btnFocus setImage:[UIImage imageNamed:@"focus_whiteLine.png"] forState:UIControlStateNormal];
-    [btnFocus setImageEdgeInsets:UIEdgeInsetsMake(14, 5, 14, 5)];
-    [btnFocus addTarget:self action:@selector(btnFocusAction:) forControlEvents:UIControlEventTouchUpInside];
+//    btnFocus = [UIButton buttonWithType:UIButtonTypeCustom];
+//    btnFocus.frame = CGRectMake(0, 0, 28, 44);
+//    [btnFocus setImage:[UIImage imageNamed:@"focus_whiteLine.png"] forState:UIControlStateNormal];
+//    [btnFocus setImageEdgeInsets:UIEdgeInsetsMake(14, 5, 14, 5)];
+//    [btnFocus addTarget:self action:@selector(btnFocusAction:) forControlEvents:UIControlEventTouchUpInside];
     
     UIButton *btnShare = [UIButton buttonWithType:UIButtonTypeCustom];
     btnShare.frame = CGRectMake(0, 0, 28, 44);
@@ -66,10 +66,10 @@
     [btnShare setImageEdgeInsets:UIEdgeInsetsMake(13, 5, 13, 5)];
     [btnShare addTarget:self action:@selector(btnShareAction:) forControlEvents:UIControlEventTouchUpInside];
     
-    UIBarButtonItem *barItem1 = [[UIBarButtonItem alloc]initWithCustomView:btnFocus];
+//    UIBarButtonItem *barItem1 = [[UIBarButtonItem alloc]initWithCustomView:btnFocus];
     UIBarButtonItem *barItem2 = [[UIBarButtonItem alloc]initWithCustomView:btnShare];
     
-    self.navigationItem.rightBarButtonItems = @[barItem2,barItem1];
+    self.navigationItem.rightBarButtonItems = @[barItem2/*,barItem1*/];
     
     [self initHeaderView];
     
@@ -197,7 +197,7 @@
                 {
                     threeCell.iconImage.image = [UIImage imageNamed:@"Icon_phone.png"];
                     threeCell.labClass.text = @"电话";
-                    threeCell.img.hidden = YES;
+//                    threeCell.img.hidden = YES;
                     threeCell.labName.textColor = [UIColor colorWithRed:60/255.0 green:179/255.0 blue:235/255.0 alpha:1];
                     threeCell.labName.text = self.couponModel.store.tel;
                 }
@@ -260,7 +260,9 @@
     [self.myTableView reloadData];
     [self initHeaderView];
     if (self.couponModel.isFocus == YES) {
-        [btnFocus setImage:[UIImage imageNamed:@"focus_white"] forState:UIControlStateNormal];
+        [self.btnFocus setTitle:@"已收藏" forState:UIControlStateNormal];
+    }else{
+        [self.btnFocus setTitle:@"收藏" forState:UIControlStateNormal];
     }
 }
 
@@ -268,15 +270,16 @@
 {
     NSLog(@"%@",errorMessage);
 }
--(void)btnFocusAction:(UIButton *)sender{
+-(IBAction)btnFocusAction:(UIButton *)sender{
     if (self.couponModel.isFocus == YES) {
-        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"您已经关注过了！" message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"您已经收藏过了！" message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
         [alert show];
         [alert release];
     }else{
         [self.focusInterface sendFocusCouponID:self.couponModel.cid];
-        [sender setImage:[UIImage imageNamed:@"focus_white"] forState:UIControlStateNormal];
-        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"关注成功" message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        self.couponModel.isFocus = YES;
+        [sender setTitle:@"已收藏" forState:UIControlStateNormal];
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"收藏成功" message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
         [alert show];
         [alert release];
     }
@@ -296,6 +299,7 @@
     [egoHeaderView release];
     self.focusInterface = nil;
     
+    [_btnFocus release];
     [super dealloc];
 }
 -(void)imagesTapAction:(UIGestureRecognizer *)sender

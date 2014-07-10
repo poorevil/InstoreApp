@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface CouponView_empty_tileView : UIView
+- (IBAction)goNextVCAction:(UIButton *)sender;
 
 @end

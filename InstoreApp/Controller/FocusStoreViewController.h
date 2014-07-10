@@ -14,5 +14,8 @@
 - (IBAction)btnIsRecommendAction:(UIButton *)sender;
 @property (retain, nonatomic) IBOutlet UITableView *myTableView;
 
+@property (retain, nonatomic) IBOutlet UIButton *btnCategory;
+- (IBAction)btnCategoryAction:(UIButton *)sender;
+
 
 @end

@@ -4,15 +4,9 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FocusStoreView">
-            <connections>
-                <outlet property="isFocusImage" destination="Lz8-Z6-vpK" id="1Zd-Ez-b7a"/>
-                <outlet property="labStoreName" destination="NS3-ya-Koe" id="dwU-36-BRy"/>
-                <outlet property="storeIogo" destination="Kq8-7e-qgG" id="GMn-0k-Ii9"/>
-            </connections>
-        </placeholder>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB">
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="FocusStoreView">
             <rect key="frame" x="0.0" y="0.0" width="75" height="110"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -21,7 +15,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="香奈儿" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="NS3-ya-Koe">
-                    <rect key="frame" x="0.0" y="82" width="75" height="21"/>
+                    <rect key="frame" x="0.0" y="80" width="75" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                     <color key="textColor" red="0.47450980390000003" green="0.47450980390000003" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -32,8 +26,12 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="isFocusImage" destination="Lz8-Z6-vpK" id="rvv-4g-Gld"/>
+                <outlet property="labStoreName" destination="NS3-ya-Koe" id="OXy-aB-YwP"/>
+                <outlet property="storeIogo" destination="Kq8-7e-qgG" id="72i-aN-iOH"/>
+            </connections>
         </view>
     </objects>
 </document>

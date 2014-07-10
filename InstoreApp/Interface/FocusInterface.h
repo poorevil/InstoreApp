@@ -14,7 +14,7 @@
 //
 //@end
 
-@interface FocusInterface : BaseInterface<BaseInterfaceDelegate>
+@interface FocusInterface : BaseInterface/*<BaseInterfaceDelegate>*/
 
 //@property (assign, nonatomic) id<BaseInterfaceDelegate>delegate;
 

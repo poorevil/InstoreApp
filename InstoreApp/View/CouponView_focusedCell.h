@@ -17,4 +17,6 @@
 @property (nonatomic, retain) UIView *leftView;
 @property (nonatomic, retain) UIView *rightView;
 
+@property (assign, nonatomic) BOOL addSecondView;  //为真时不添加第2个view！！！
+
 @end

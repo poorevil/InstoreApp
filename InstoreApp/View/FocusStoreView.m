@@ -26,6 +26,14 @@
     self.storeIogo.layer.cornerRadius = 12.0;
     self.storeIogo.layer.borderWidth = 1.0;
     self.storeIogo.layer.borderColor = [UIColor colorWithRed:215/255.0 green:215/255.0 blue:215/255.0 alpha:1].CGColor;
+    
+    UITapGestureRecognizer *tap = [[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)] autorelease];
+    [self addGestureRecognizer:tap];
+}
+-(void)tapAction:(UIGestureRecognizer *)gesture{
+    if (_delegate && [_delegate respondsToSelector:@selector(focusStoreViewHasTap:)]) {
+        [_delegate focusStoreViewHasTap:self];
+    }
 }
 
 
@@ -42,6 +50,7 @@
     [_storeIogo release];
     [_isFocusImage release];
     [_labStoreName release];
+    self.delegate = nil;
     [super dealloc];
 }
 @end

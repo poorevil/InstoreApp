@@ -8,7 +8,7 @@
 
 #import "BaseInterface.h"
 
-@interface CancelFocusInterface : BaseInterface<BaseInterfaceDelegate>
+@interface CancelFocusInterface : BaseInterface/*<BaseInterfaceDelegate>*/
 
 -(void)sendCancelFocusCouponID:(NSInteger)couponid;
 

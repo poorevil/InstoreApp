@@ -78,20 +78,24 @@
             
             [self addSubview:view];
         }else{
-            //添加CouponView_empty_tileView
-            CouponView_empty_tileView *view = [[[NSBundle mainBundle] loadNibNamed:@"CouponView_empty_tileView" owner:self options:nil] objectAtIndex:0];
-            view.userInteractionEnabled = YES;
-            view.frame = CGRectMake(163, 5, view.frame.size.width, view.frame.size.height);
-            view.layer.borderColor = [UIColor lightGrayColor].CGColor;
-            view.layer.borderWidth = 0.4f;
-            view.tag = 2;
-            
-            self.rightView = view;
-            
-            UITapGestureRecognizer *tap = [[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)] autorelease];
-            [view addGestureRecognizer:tap];
-            
-            [self addSubview:view];
+            if (self.addSecondView) {
+                
+            }else{
+                //添加CouponView_empty_tileView
+                CouponView_empty_tileView *view = [[[NSBundle mainBundle] loadNibNamed:@"CouponView_empty_tileView" owner:self options:nil] objectAtIndex:0];
+                view.userInteractionEnabled = YES;
+                view.frame = CGRectMake(163, 5, view.frame.size.width, view.frame.size.height);
+                view.layer.borderColor = [UIColor lightGrayColor].CGColor;
+                view.layer.borderWidth = 0.4f;
+                view.tag = 2;
+                
+                self.rightView = view;
+                
+                UITapGestureRecognizer *tap = [[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)] autorelease];
+                [view addGestureRecognizer:tap];
+                
+                [self addSubview:view];
+            }
         }
     }else{
         //不添加任何view

@@ -9,7 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
 
-@interface CouponViewController : BaseViewController
+#import "EGORefreshTableHeaderView.h"
+
+@interface CouponViewController : BaseViewController<EGORefreshTableHeaderDelegate>
 
 @property (nonatomic, retain) IBOutlet UITableView *mtableView;
 //@property (nonatomic, retain) IBOutlet UIButton *cateBtn;
@@ -19,5 +21,9 @@
 @property (nonatomic, retain) IBOutlet UIButton *favorBtn;
 - (IBAction)btnOrderAction:(UIButton *)sender;
 - (IBAction)btnCategoryAction:(UIButton *)sender;
+- (IBAction)btnMyFocusYouHuiAction:(UIButton *)sender;
+
+@property (nonatomic,retain) EGORefreshTableHeaderView *refreshHeaderView;
+@property (nonatomic,assign) BOOL reloading;
 
 @end

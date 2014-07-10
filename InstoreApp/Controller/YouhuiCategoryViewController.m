@@ -62,6 +62,14 @@
     self.categoryInterface.delegate = self;
     [self.categoryInterface getCategoryListByPage:self.currentPage
                                            amount:20];
+    
+    CategoryModel *categoryModel = [[CategoryModel alloc]init];
+    categoryModel.cid = 0;
+    categoryModel.cName = @"全部分类";
+    categoryModel.imageUrl = @"";
+    categoryModel.subhead = @"";
+    [self.categorys addObject:categoryModel];
+    [categoryModel release];
 }
 
 - (void)didReceiveMemoryWarning

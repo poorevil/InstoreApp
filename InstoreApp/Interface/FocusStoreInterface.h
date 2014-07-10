@@ -10,7 +10,7 @@
 
 #import "BaseInterface.h"
 
-@interface FocusStoreInterface : BaseInterface<BaseInterfaceDelegate>
+@interface FocusStoreInterface : BaseInterface/*<BaseInterfaceDelegate>*/
 
 -(void)focusStoreWithID:(NSInteger)storeID WithMethod:(NSString *)method;
 

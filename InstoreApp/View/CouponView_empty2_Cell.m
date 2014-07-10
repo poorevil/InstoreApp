@@ -9,7 +9,6 @@
 #import "CouponView_empty2_Cell.h"
 #import "FocusStoreViewController.h"
 #import "AppDelegate.h"
-//#import "WebViewController.h"
 
 @implementation CouponView_empty2_Cell
 
@@ -34,11 +33,12 @@
     [super dealloc];
 }
 - (IBAction)addMyBrand:(UIButton *)sender {
-    FocusStoreViewController *vc = [[FocusStoreViewController alloc]init];
-//    WebViewController *webVC = [[WebViewController alloc]init];
+    FocusStoreViewController *vc = [[FocusStoreViewController alloc]initWithNibName:@"FocusStoreViewController" bundle:nil];
     AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
     UINavigationController *nav = (UINavigationController *)appDelegate.tabBarController.selectedViewController;
+    vc.hidesBottomBarWhenPushed = YES;
     [nav pushViewController:vc animated:YES];
+    vc.hidesBottomBarWhenPushed = NO;
     [vc release];
 }
 @end

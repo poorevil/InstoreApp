@@ -267,7 +267,7 @@ CouponDetailInterfaceDelegate>
                 withTitleCell.iconImageView.image = [UIImage imageNamed:@"groupbuy_memo"];
                 withTitleCell.dateLabel.text = self.couponModel.descriptionStr;
                 
-                withTitleCell.dateLabel.numberOfLines = 99;
+                withTitleCell.dateLabel.numberOfLines = 0;
                 //计算内容的size
                 CGSize labelFontSize = [self.couponModel.descriptionStr sizeWithFont:[UIFont systemFontOfSize:14]
                                                                    constrainedToSize:CGSizeMake(withTitleCell.dateLabel.frame.size.width, 999)

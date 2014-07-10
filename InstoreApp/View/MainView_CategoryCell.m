@@ -9,6 +9,7 @@
 #import "MainView_CategoryCell.h"
 #import "CategoryModel.h"
 #import "EGOImageView.h"
+#import "AppDelegate.h"
 
 @implementation MainView_CategoryCell
 
@@ -42,7 +43,7 @@
     for (NSInteger i = 0; i < self.dataList.count; i++) {
         CategoryModel *cm = [self.dataList objectAtIndex:i];
         
-        UIView *tileView = [self createTileView:cm];
+        UIView *tileView = [self createTileView:cm WithTag:i+100];
         CGRect frame = tileView.frame ;
         frame.origin.y = lastY - (i / 2)*2;
         if (i % 2 == 0) {
@@ -58,9 +59,10 @@
     }
 }
 
--(UIView *)createTileView:(CategoryModel *)cm
+-(UIView *)createTileView:(CategoryModel *)cm WithTag:(int)tag
 {
     UIView *tileView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, (self.frame.size.width-2)/2+4, 60)] autorelease];
+    tileView.tag = tag;
     tileView.layer.borderColor = [UIColor colorWithRed:247/255.0f
                                                  green:247/255.0f
                                                   blue:247/255.0f
@@ -84,9 +86,22 @@
     [tileView addSubview:subTitleLabel];
     
     //TODO:tap action
+    UITapGestureRecognizer *tap = [[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)] autorelease];
+    [tileView addGestureRecognizer:tap];
     
     return tileView;
 }
 
+-(void)tapAction:(UIGestureRecognizer *)gesture
+{
+//    UIView *view = gesture.view;
+//    int tag = view.tag - 100;
+//    
+//    CategoryModel *categoryModel = [self.dataList objectAtIndex:tag];
+    
+    AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+    [appDelegate.tabBarController setSelectedIndex:1];
+    
+}
 
 @end

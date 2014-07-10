@@ -16,14 +16,14 @@
                          ,BASE_INTERFACE_DOMAIN, MALL_CODE];
     self.args = @{@"couponid":[NSString stringWithFormat:@"%d",couponid]};
     self.requestMethod = @"DELETE";
-    self.baseDelegate = self;
+//    self.baseDelegate = self;
     [self connect];
 }
 
--(void)parseResult:(ASIHTTPRequest *)request{
-    
-}
--(void)requestIsFailed:(NSError *)error{
-    
-}
+//-(void)parseResult:(ASIHTTPRequest *)request{
+//    
+//}
+//-(void)requestIsFailed:(NSError *)error{
+//    
+//}
 @end

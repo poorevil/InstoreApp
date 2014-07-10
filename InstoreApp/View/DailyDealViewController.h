@@ -8,8 +8,9 @@
 
 #import "BaseViewController.h"
 #import "DailyDealInterface.h"
+#import "EGORefreshTableHeaderView.h"
 
-@interface DailyDealViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate>
+@interface DailyDealViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate,EGORefreshTableHeaderDelegate>
 
 @property (retain, nonatomic) IBOutlet UITableView *myTableView;
 
@@ -17,5 +18,8 @@
 @property (nonatomic, retain) NSMutableArray *itemList;
 @property (nonatomic, assign) NSInteger totalAmount;
 @property (nonatomic, assign) NSInteger currentPage;
+
+@property (nonatomic,retain) EGORefreshTableHeaderView *refreshHeaderView;
+@property (nonatomic,assign) BOOL reloading;
 
 @end

@@ -20,6 +20,8 @@
 #import "YouhuiCategoryViewController.h"
 #import "YouHuiOrderViewController.h"
 
+#import "MyFocusYouHuiViewController.h"  //我收藏的优惠 （团、券、恵）
+
 
 @interface CouponViewController () <UITableViewDataSource, UITableViewDelegate,
 CouponViewInterfaceDelegate, YouhuiCategoryViewControllerDelegate,YouHuiOrderViewControllerDelegate,CouponSectionTwoInterfaceDelegate,CouponSearchOrderInterfaceDelegate>
@@ -27,9 +29,6 @@ CouponViewInterfaceDelegate, YouhuiCategoryViewControllerDelegate,YouHuiOrderVie
 @property (nonatomic, retain) NSMutableDictionary *itemListDict;//关注的商户的优惠集合
 @property (nonatomic, retain) NSDictionary *otherGroupDict;//其他组内容集合
 
-//@property (nonatomic, assign) NSInteger listTotalCount;//关注的商户的优惠总数
-//@property (nonatomic, retain) NSArray *otherGroupKeysOrder;//其他组的顺序，记录了所有key的名字
-//@property (nonatomic, assign) NSInteger currentPage;//当前页
 @property (nonatomic, assign) NSInteger focusCount;//用户收藏的优惠数量
 
 @property (nonatomic,strong) CategoryModel *filterCategory;//分类筛选条件
@@ -49,6 +48,8 @@ CouponViewInterfaceDelegate, YouhuiCategoryViewControllerDelegate,YouHuiOrderVie
 @property (assign, nonatomic) NSInteger totalCount2;
 
 @property (assign, nonatomic) BOOL isOrder;
+@property (assign, nonatomic) BOOL isOrder1;
+@property (assign, nonatomic) BOOL isOrder2;
 @property (assign, nonatomic) NSInteger cid;
 @property (assign, nonatomic) NSInteger type;
 @property (retain, nonatomic) NSString *order;
@@ -92,6 +93,16 @@ CouponViewInterfaceDelegate, YouhuiCategoryViewControllerDelegate,YouHuiOrderVie
     
     self.couponSearchOrderInterface = [[CouponSearchOrderInterface alloc]init];
     self.couponSearchOrderInterface.delegate = self;
+    
+    
+    if (self.refreshHeaderView == nil) {
+		
+		EGORefreshTableHeaderView *view = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f,0.0f - self.mtableView.bounds.size.height,self.mtableView.frame.size.width,self.mtableView.bounds.size.height)];
+		view.delegate = self;
+		[self.mtableView addSubview:view];
+		self.refreshHeaderView = view;
+	}
+    [self.refreshHeaderView refreshLastUpdatedDate];
 
 }
 
@@ -182,31 +193,42 @@ CouponViewInterfaceDelegate, YouhuiCategoryViewControllerDelegate,YouHuiOrderVie
     if (self.isOrder == NO) {
         switch (indexPath.section) {
             case 1:
-            {
+            {   //收藏店铺的优惠
                 if (self.itemList.count % 2 == 0) {
+                    //收藏店铺的优惠数量是偶数时
                     if (self.itemList.count < (indexPath.row * 2 + 1)) {
+                        //如果是最后一行时，出现一个占整行位置的“添加”cell
                         static NSString *CellIdentifier = @"CouponView_empty2_Cell";
                         CouponView_empty2_Cell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
                         if (!cell) {
                             cell = [[[NSBundle mainBundle] loadNibNamed:@"CouponView_empty2_Cell" owner:self options:nil] objectAtIndex:0];
                         }
                         return cell;
+                    }else{
+                        //不是最后一行
+                        static NSString *CellIdentifier = @"CouponView_focusedCell";
+                        CouponView_focusedCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                        if (!cell) {
+                            cell = [[[NSBundle mainBundle] loadNibNamed:@"CouponView_focusedCell" owner:self options:nil] objectAtIndex:0];
+                        }
+                        cell.cm1 = [self.itemList objectAtIndex:indexPath.row * 2];
+                        cell.cm2 = [self.itemList objectAtIndex:(indexPath.row * 2 + 1)];
+                        return cell;
                     }
-                }else/* if(indexPath.row == 3)*/{
+                }else{
+                    //收藏店铺的优惠数量是奇数时
                     static NSString *CellIdentifier = @"CouponView_focusedCell";
                     CouponView_focusedCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
                     if (!cell) {
                         cell = [[[NSBundle mainBundle] loadNibNamed:@"CouponView_focusedCell" owner:self options:nil] objectAtIndex:0];
                     }
                     cell.cm1 = [self.itemList objectAtIndex:indexPath.row * 2];
-                    if (self.itemList.count < indexPath.row * 2 +1) {
+                    if (self.itemList.count == indexPath.row * 2 +1) {
                         cell.cm2 = nil;
                     }else{
                         cell.cm2 = [self.itemList objectAtIndex:(indexPath.row * 2 + 1)];
                     }
                     return cell;
-                    //            }else{
-                    //                
                 }
             }
                 break;
@@ -253,7 +275,6 @@ CouponViewInterfaceDelegate, YouhuiCategoryViewControllerDelegate,YouHuiOrderVie
             }
                 break;
             default:
-                return nil;
                 break;
         }
     }
@@ -269,65 +290,6 @@ CouponViewInterfaceDelegate, YouhuiCategoryViewControllerDelegate,YouHuiOrderVie
         cell.cm2 = [self.itemListAll objectAtIndex:(indexPath.row * 2 + 1)];
     }
     return cell;
-/*    NSString *CellIdentifier = [self getCellIdentifier:indexPath];
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (self.isOrder) {  //排序后
-        if (!cell) {
-            cell = [[[NSBundle mainBundle] loadNibNamed:@"CouponView_focusedCell" owner:self options:nil] objectAtIndex:0];
-        }
-        CouponView_focusedCell *myCell = (CouponView_focusedCell *)cell;
-        myCell.cm1 = [self.itemListAll objectAtIndex:indexPath.row * 2];
-        myCell.cm2 = [self.itemListAll objectAtIndex:(indexPath.row * 2 + 1)];
-        return myCell;
-    }else{   //排序前，分2组
-        if (indexPath.section == 0) { //组1
-            if (self.itemList.count % 2 == 0) { //"添加收藏"样式
-                if (indexPath.row == ceil((self.itemList.count +1)/ 2)) {
-                    //“添加收藏”为整行的时候
-                    if (!cell) {
-                        cell = [[[NSBundle mainBundle] loadNibNamed:@"CouponView_empty2_Cell" owner:self options:nil] objectAtIndex:0];
-                    }
-                    return cell;
-                }
-            }
-//            else{
-//                if (indexPath.row == ceil((self.itemList.count)/ 2)) {
-//                    if (!cell) {
-//                        cell = [[[NSBundle mainBundle] loadNibNamed:@"CouponView_focusedCell" owner:self options:nil] objectAtIndex:0];
-//                    }
-//                    CouponView_focusedCell *myCell = (CouponView_focusedCell *)cell;
-//                    myCell.cm1 = [self.itemListAll objectAtIndex:indexPath.row * 2];
-//                    myCell.cm2 = nil;
-//                    return myCell;
-//                }else{
-//                    if (!cell) {
-//                        cell = [[[NSBundle mainBundle] loadNibNamed:@"CouponView_focusedCell" owner:self options:nil] objectAtIndex:0];
-//                    }
-//                    CouponView_focusedCell *myCell = (CouponView_focusedCell *)cell;
-//                    myCell.cm1 = [self.itemListAll objectAtIndex:indexPath.row * 2];
-//                    myCell.cm2 = [self.itemListAll objectAtIndex:(indexPath.row * 2 + 1)];
-//                    return myCell;
-//                }
-//            }
-        }else{
-            //组2
-            if (!cell) {
-                cell = [[[NSBundle mainBundle] loadNibNamed:@"CouponView_focusedCell" owner:self options:nil] objectAtIndex:0];
-            }
-            CouponView_focusedCell *myCell = (CouponView_focusedCell *)cell;
-            myCell.cm1 = [self.itemListAll objectAtIndex:indexPath.row * 2];
-            myCell.cm2 = [self.itemListAll objectAtIndex:(indexPath.row * 2 + 1)];
-            return myCell;
-        }
-    }
-    if (!cell) {
-        cell = [[[NSBundle mainBundle] loadNibNamed:@"CouponView_focusedCell" owner:self options:nil] objectAtIndex:0];
-    }
-    CouponView_focusedCell *myCell = (CouponView_focusedCell *)cell;
-    myCell.cm1 = [self.itemListAll objectAtIndex:indexPath.row * 2];
-    myCell.cm2 = [self.itemListAll objectAtIndex:(indexPath.row * 2 + 1)];
-    return myCell;
- */
 }
 
 
@@ -337,23 +299,6 @@ CouponViewInterfaceDelegate, YouhuiCategoryViewControllerDelegate,YouHuiOrderVie
                           totalCount:(NSInteger)totalCount
                          currentPage:(NSInteger)currentPage
 {
-    /*
-    self.listTotalCount = totalCount;
-    self.focusCount = focusCount;
-    
-    if (self.currentPage == 1) {
-        self.otherGroupDict = resultDict;
-        self.otherGroupKeysOrder = [resultDict objectForKey:@"otherGroupKeysOrder"];
-        self.itemListDict = [self.otherGroupDict objectForKey:@"list"];
-    }else{
-        //其他页只返回关注的商户的优惠集合
-        [[self.itemListDict objectForKey:@"itemlist"] addObjectsFromArray:[resultDict objectForKey:@"list"]];
-    }
-    
-    self.currentPage ++;
-    
-    [self.mtableView reloadData];
-    */
     self.totalCount1 = totalCount;
     self.currentPage1 = currentPage;
     self.currentPage1++;
@@ -377,6 +322,8 @@ CouponViewInterfaceDelegate, YouhuiCategoryViewControllerDelegate,YouHuiOrderVie
     [self.itemList2 addObjectsFromArray:resultArray];
     
     [self.mtableView reloadData];
+    
+    [self.favorBtn setTitle:[NSString stringWithFormat:@"已收藏%d",focusCount] forState:UIControlStateNormal];
 }
 - (void)getCouponSectionTwoListDidFailed:(NSString *)errorMsg{
    NSLog(@"%@",errorMsg);
@@ -384,6 +331,10 @@ CouponViewInterfaceDelegate, YouhuiCategoryViewControllerDelegate,YouHuiOrderVie
     
 #pragma mark - CouponSearchOrderInterfaceDelegate
 -(void)couponSearchOrderDidFinished:(NSArray*)result totalAmount:(NSInteger)totalAmount currentPage:(NSInteger)currentPage{
+    if (self.isOrder1 == NO && self.isOrder2 == NO) {
+        self.isOrder = NO;
+    }
+    
     [self.itemListAll addObjectsFromArray:result];
     self.totalCountAll = totalAmount;
     self.currentPageAll = currentPage;
@@ -405,6 +356,7 @@ CouponViewInterfaceDelegate, YouhuiCategoryViewControllerDelegate,YouHuiOrderVie
                           forState:UIControlStateNormal];
     }else{
         [self.orderBtn setTitle:@"全部分类" forState:UIControlStateNormal];
+        self.isOrder2 = NO;
     }
     self.cid = categoryModel.cid;
     self.currentPageAll = 1;
@@ -418,6 +370,7 @@ CouponViewInterfaceDelegate, YouhuiCategoryViewControllerDelegate,YouHuiOrderVie
         case 0: {
             self.order = @"";
             [self.typeBtn setTitle:@"默认排序" forState:UIControlStateNormal];
+            self.isOrder1 = NO;
         }
             break;
         case 1:{
@@ -453,6 +406,7 @@ CouponViewInterfaceDelegate, YouhuiCategoryViewControllerDelegate,YouHuiOrderVie
     vc.hidesBottomBarWhenPushed = NO;
     [vc release];
     
+    self.isOrder1 = YES;
     self.isOrder = YES;
 }
 
@@ -464,6 +418,55 @@ CouponViewInterfaceDelegate, YouhuiCategoryViewControllerDelegate,YouHuiOrderVie
     cateVC.hidesBottomBarWhenPushed = NO;
     [cateVC release];
     
+    self.isOrder2 = YES;
     self.isOrder = YES;
 }
+
+- (IBAction)btnMyFocusYouHuiAction:(UIButton *)sender {
+    MyFocusYouHuiViewController *vc = [[MyFocusYouHuiViewController alloc]init];
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vc animated:YES];
+    [vc release];
+}
+
+#pragma mark - Data Source Loading / Reloading Methods
+-(void)refreshDate
+{
+//    [self.couponViewInterface getDailyDealByPage:self.currentPageAll amount:20];
+}
+- (void)reloadTableViewDataSource{
+	_reloading = YES;
+    [self refreshDate];
+}
+
+- (void)doneLoadingTableViewData{
+	//  model should call this when its done loading
+	_reloading = NO;
+	[_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.mtableView];
+}
+
+
+#pragma mark - UIScrollViewDelegate Methods
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+	[_refreshHeaderView egoRefreshScrollViewDidScroll:scrollView];
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+	[_refreshHeaderView egoRefreshScrollViewDidEndDragging:scrollView];
+}
+
+#pragma mark - EGORefreshTableHeaderDelegate Methods
+- (void)egoRefreshTableHeaderDidTriggerRefresh:(EGORefreshTableHeaderView*)view{
+	[self reloadTableViewDataSource];
+	[self performSelector:@selector(doneLoadingTableViewData) withObject:nil afterDelay:3.0];
+}
+- (BOOL)egoRefreshTableHeaderDataSourceIsLoading:(EGORefreshTableHeaderView*)view{
+	return _reloading; // should return if data source model is reloading
+}
+
+- (NSDate*)egoRefreshTableHeaderDataSourceLastUpdated:(EGORefreshTableHeaderView*)view{
+	return [NSDate date]; // should return date data source was last changed
+}
+
+
 @end

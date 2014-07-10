@@ -10,7 +10,7 @@
 
 @protocol FocusStoreListInterfaceDelegate <NSObject>
 
--(void)getFocusStoreListDidFinished:(NSArray *)itemList totalCount:(NSInteger)totalCount currentPage:(NSInteger)currentPage storeCount:(NSInteger)storeCount recommend:(NSString *)recommend;
+-(void)getFocusStoreListDidFinished:(NSArray *)itemList totalCount:(NSInteger)totalCount currentPage:(NSInteger)currentPage storeCount:(NSInteger)storeCount recommend:(BOOL)recommend;
 -(void)getFocusStoreListDidFailed:(NSString *)errorMsg;
 
 @end

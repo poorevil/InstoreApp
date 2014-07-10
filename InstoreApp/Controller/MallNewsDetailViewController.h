@@ -22,5 +22,7 @@
 @property (retain, nonatomic) CouponDetailInterface *couponDetailInterface;
 
 - (IBAction)btnGoNextAction:(UIButton *)sender;
+-(IBAction)btnFocusAction:(UIButton *)sender;
+@property (retain, nonatomic) IBOutlet UIButton *btnFocus;
 
 @end
