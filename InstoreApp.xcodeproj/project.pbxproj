@@ -205,6 +205,7 @@
 		042F1212196D2A96003F255E /* focusstore_no@2x@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 042F120E196D2A96003F255E /* focusstore_no@2x@2x.png */; };
 		042F1213196D2A96003F255E /* focusstore_nofocus.png in Resources */ = {isa = PBXBuildFile; fileRef = 042F120F196D2A96003F255E /* focusstore_nofocus.png */; };
 		042F1214196D2A96003F255E /* focusstore_yes@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 042F1210196D2A96003F255E /* focusstore_yes@2x.png */; };
+		042F1217196D6C92003F255E /* FocusStoreListInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 042F1216196D6C92003F255E /* FocusStoreListInterface.m */; };
 		0433EA53196A4A9F003AB8FD /* MallNewsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0433EA51196A4A9F003AB8FD /* MallNewsDetailViewController.m */; };
 		0433EA54196A4A9F003AB8FD /* MallNewsDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0433EA52196A4A9F003AB8FD /* MallNewsDetailViewController.xib */; };
 		04405C32196686B300CDD36F /* DeleteBankCardInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 04405C31196686B300CDD36F /* DeleteBankCardInterface.m */; };
@@ -1013,6 +1014,8 @@
 		042F120E196D2A96003F255E /* focusstore_no@2x@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "focusstore_no@2x@2x.png"; sourceTree = "<group>"; };
 		042F120F196D2A96003F255E /* focusstore_nofocus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = focusstore_nofocus.png; sourceTree = "<group>"; };
 		042F1210196D2A96003F255E /* focusstore_yes@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "focusstore_yes@2x.png"; sourceTree = "<group>"; };
+		042F1215196D6C92003F255E /* FocusStoreListInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FocusStoreListInterface.h; sourceTree = "<group>"; };
+		042F1216196D6C92003F255E /* FocusStoreListInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FocusStoreListInterface.m; sourceTree = "<group>"; };
 		0433EA50196A4A9F003AB8FD /* MallNewsDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MallNewsDetailViewController.h; sourceTree = "<group>"; };
 		0433EA51196A4A9F003AB8FD /* MallNewsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MallNewsDetailViewController.m; sourceTree = "<group>"; };
 		0433EA52196A4A9F003AB8FD /* MallNewsDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MallNewsDetailViewController.xib; sourceTree = "<group>"; };
@@ -2027,6 +2030,8 @@
 				0491F120196ACACE00E7DC5A /* CancelFocusInterface.m */,
 				042F11F7196D1BBB003F255E /* FocusStoreInterface.h */,
 				042F11F8196D1BBB003F255E /* FocusStoreInterface.m */,
+				042F1215196D6C92003F255E /* FocusStoreListInterface.h */,
+				042F1216196D6C92003F255E /* FocusStoreListInterface.m */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
@@ -3757,6 +3762,7 @@
 				04196A2B1962D3C90037C046 /* DailyDealViewCell.m in Sources */,
 				C1A9C8B8194164C600DD420F /* ASIDataCompressor.m in Sources */,
 				03120344191934B000077E25 /* StoreDetailInterface.m in Sources */,
+				042F1217196D6C92003F255E /* FocusStoreListInterface.m in Sources */,
 				03573BA6190EBF5300A11A33 /* StoreModel.m in Sources */,
 				C1A9C870193F130300DD420F /* NICommonMetrics.m in Sources */,
 				C18347181925BB57002F7B9B /* PositionModel.m in Sources */,

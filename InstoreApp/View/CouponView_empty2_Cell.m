@@ -7,6 +7,9 @@
 //
 
 #import "CouponView_empty2_Cell.h"
+#import "FocusStoreViewController.h"
+#import "AppDelegate.h"
+//#import "WebViewController.h"
 
 @implementation CouponView_empty2_Cell
 
@@ -15,6 +18,8 @@
     // Initialization code
     self.backGroundView.layer.borderColor = [UIColor colorWithRed:231/255.0 green:210/255.0 blue:210/255.0 alpha:1].CGColor;
     self.backGroundView.layer.borderWidth = 0.5f;
+    
+
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
@@ -29,6 +34,11 @@
     [super dealloc];
 }
 - (IBAction)addMyBrand:(UIButton *)sender {
-    
+    FocusStoreViewController *vc = [[FocusStoreViewController alloc]init];
+//    WebViewController *webVC = [[WebViewController alloc]init];
+    AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+    UINavigationController *nav = (UINavigationController *)appDelegate.tabBarController.selectedViewController;
+    [nav pushViewController:vc animated:YES];
+    [vc release];
 }
 @end
