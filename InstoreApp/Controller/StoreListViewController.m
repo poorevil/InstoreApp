@@ -16,8 +16,15 @@
 #import "StoreModel.h"
 #import "StoreDetail_RestaurantViewController.h"
 
+#import "FloorSelectViewController.h"
+#import "YouhuiCategoryViewController.h"
+#import "YouHuiOrderViewController.h"
+#import "CategoryModel.h"
+#import "FloorModel.h"
+
 @interface StoreListViewController () <UITableViewDataSource, UITableViewDelegate,
-StoreInterfaceDelegate>
+StoreInterfaceDelegate,FloorSelectViewControllerDelegate,YouhuiCategoryViewControllerDelegate,
+YouHuiOrderViewControllerDelegate>
 
 @property (nonatomic, assign) NSInteger storeCount;
 
@@ -39,6 +46,10 @@ StoreInterfaceDelegate>
 
 @property (nonatomic, retain) StoreInterface *storeInterface;
 
+
+@property (nonatomic,strong) CategoryModel *filterCategory;//分类筛选条件
+@property (nonatomic,strong) FloorModel *filterFloorModel;//楼层筛选
+@property (nonatomic,retain) NSString *filterOrder;//排序
 @end
 
 @implementation StoreListViewController
@@ -122,6 +133,18 @@ StoreInterfaceDelegate>
         [self.headerView.segmentControl addTarget:self
                                            action:@selector(segmentChanged:)
                                  forControlEvents:UIControlEventValueChanged];
+        
+        [self.headerView.floorBtn addTarget:self
+                                     action:@selector(floorBtnAction:)
+                           forControlEvents:UIControlEventTouchUpInside];
+        [self.headerView.categoryBtn addTarget:self
+                                     action:@selector(categoryBtnAction:)
+                           forControlEvents:UIControlEventTouchUpInside];
+        [self.headerView.orderBtn addTarget:self
+                                     action:@selector(btnOrderAction:)
+                           forControlEvents:UIControlEventTouchUpInside];
+        
+        [self.headerView.segmentControl setSelectedSegmentIndex:0];
     }
 }
 
@@ -129,26 +152,58 @@ StoreInterfaceDelegate>
 {
     switch ([sender selectedSegmentIndex]) {
         case 0:
+            [self.headerView hideFilterView:NO];
             if (self.goodsItemList.count==0) {
                 [self loadItemList];
-                return;
             }
             break;
         case 1:
+            [self.headerView hideFilterView:YES];
             if (self.foodItemList.count==0) {
                 [self loadItemList];
-                return;
+//                return;
             }
             break;
         case 2:
+            [self.headerView hideFilterView:YES];
             if (self.gameItemList.count==0) {
                 [self loadItemList];
-                return;
+//                return;
             }
             break;
     }
     
+    self.mtableView.tableHeaderView = self.headerView;
+    
     [self.mtableView reloadData];
+}
+
+#pragma mark - header btn method
+-(void)floorBtnAction:(id)sender
+{
+    FloorSelectViewController *floorVC = [[FloorSelectViewController alloc] initWithFloorModel:self.filterFloorModel];
+    floorVC.delegate = self;
+    floorVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:floorVC animated:YES];
+    floorVC.hidesBottomBarWhenPushed = NO;
+}
+
+-(void)categoryBtnAction:(id)sender
+{
+    YouhuiCategoryViewController *cateVC = [[YouhuiCategoryViewController alloc] initWithCategoryModel:self.filterCategory];
+    cateVC.delegate = self;
+    cateVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:cateVC animated:YES];
+    cateVC.hidesBottomBarWhenPushed = NO;
+}
+
+- (IBAction)btnOrderAction:(UIButton *)sender {
+    YouHuiOrderViewController *vc= [[YouHuiOrderViewController alloc]init];
+    vc.delegate = self;
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vc animated:YES];
+    vc.hidesBottomBarWhenPushed = NO;
+    [vc release];
 }
 
 #pragma mark - UITableViewDataSource
@@ -291,6 +346,67 @@ StoreInterfaceDelegate>
 -(void)getStoreListDidFailed:(NSString *)errorMessage
 {
     NSLog(@"%@",errorMessage);
+}
+
+#pragma mark - FloorSelectViewControllerDelegate
+-(void)floorSelectDidFinished:(FloorModel *) floorModel
+{
+    self.filterFloorModel = floorModel;
+    
+    if (self.filterFloorModel) {
+        [self.headerView.floorBtn setTitle:[NSString stringWithFormat:@"%@ ",self.filterFloorModel.fName]
+                       forState:UIControlStateNormal];
+    }else{
+        [self.headerView.floorBtn setTitle:@"楼层 " forState:UIControlStateNormal];
+    }
+    
+//TODO:    [self refreshDate];
+}
+
+#pragma mark - YouhuiCategoryViewControllerDelegate
+-(void)categoryDidSelected:(CategoryModel *)categoryModel
+{
+    self.filterCategory = categoryModel;
+    if (self.filterCategory) {
+        [self.headerView.categoryBtn setTitle:[NSString stringWithFormat:@"%@ ",categoryModel.cName]
+                      forState:UIControlStateNormal];
+    }else{
+        [self.headerView.categoryBtn setTitle:@"分类 " forState:UIControlStateNormal];
+    }
+    
+//TODO:    [self refreshDate];
+}
+
+#pragma mark - @protocol YouHuiOrderViewControllerDelegate
+-(void)youHuiOrderViewControllerDidSelected:(NSUInteger)index
+{
+    //@[@"默认排序",@"人气优先",@"收藏数量",@"结束时间"];
+    switch (index) {
+        case 0: {
+            self.filterOrder = @"";
+            [self.headerView.orderBtn setTitle:@"默认排序" forState:UIControlStateNormal];
+        }
+            break;
+        case 1:{
+            self.filterOrder = @"hot";
+            [self.headerView.orderBtn setTitle:@"人气优先" forState:UIControlStateNormal];
+        }
+            break;
+        case 2:{
+            self.filterOrder = @"collect";
+            [self.headerView.orderBtn setTitle:@"收藏数量" forState:UIControlStateNormal];
+        }
+            break;
+        case 3:{
+            self.filterOrder = @"latest";
+            [self.headerView.orderBtn setTitle:@"结束时间" forState:UIControlStateNormal];
+        }
+            break;
+        default:
+            break;
+    }
+    
+    //TODO:    [self refreshDate];
 }
 
 @end

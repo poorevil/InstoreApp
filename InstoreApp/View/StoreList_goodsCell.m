@@ -18,6 +18,8 @@
 - (void)awakeFromNib
 {
     // Initialization code
+    self.logoImageView.layer.borderWidth = 0.4f;
+    self.logoImageView.layer.borderColor = [UIColor lightGrayColor].CGColor;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
