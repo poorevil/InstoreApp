@@ -22,6 +22,8 @@
     // Initialization code
     UITapGestureRecognizer *tap = [[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)] autorelease];
     [self addGestureRecognizer:tap];
+    
+    self.logoImageView.contentMode = UIViewContentModeScaleAspectFit;
 }
 
 -(void)tapAction:(id)gesture

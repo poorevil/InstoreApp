@@ -37,13 +37,6 @@
 //团购
 @property (nonatomic, retain) NSString *source;//团购来源
 
-
-
-////@property (nonatomic,assign) NSInteger cid;
-//
-
-////@property (nonatomic,strong) NSString *title;
-////@property (nonatomic,strong) NSString *imageUrl;
 //@property (nonatomic,assign) CGFloat imageWidth;
 //@property (nonatomic,assign) CGFloat imageHeight;
 @property (nonatomic,assign) NSInteger commentCount;//评论数

@@ -133,7 +133,7 @@ CouponViewInterfaceDelegate, YouhuiCategoryViewControllerDelegate,YouHuiOrderVie
 
 #pragma mark - UITableViewDataSource<NSObject>
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    if (self.isOrder) {
+    if (self.isOrder1 == YES || self.isOrder2 == YES) {
         return 1;
     }else{
         return 4;
@@ -141,7 +141,7 @@ CouponViewInterfaceDelegate, YouhuiCategoryViewControllerDelegate,YouHuiOrderVie
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (self.isOrder) {
+    if (self.isOrder1 == YES || self.isOrder2 == YES) {
         return ceil(self.itemListAll.count /2.0);
     }else{
         switch (section) {
@@ -164,11 +164,13 @@ CouponViewInterfaceDelegate, YouhuiCategoryViewControllerDelegate,YouHuiOrderVie
     }
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (self.isOrder) {
+    if (self.isOrder1 == YES || self.isOrder2 == YES) {
         return 236;
     }else{
         switch (indexPath.section) {
             case 0:
+                return 0;
+                break;
             case 2:
                 return 44;
                 break;
@@ -190,7 +192,7 @@ CouponViewInterfaceDelegate, YouhuiCategoryViewControllerDelegate,YouHuiOrderVie
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (self.isOrder == NO) {
+    if (self.isOrder1 == NO && self.isOrder2 == NO) {
         switch (indexPath.section) {
             case 1:
             {   //收藏店铺的优惠
@@ -320,9 +322,7 @@ CouponViewInterfaceDelegate, YouhuiCategoryViewControllerDelegate,YouHuiOrderVie
     self.currentPage2++;
     
     [self.itemList2 addObjectsFromArray:resultArray];
-    
     [self.mtableView reloadData];
-    
     [self.favorBtn setTitle:[NSString stringWithFormat:@"已收藏%d",focusCount] forState:UIControlStateNormal];
 }
 - (void)getCouponSectionTwoListDidFailed:(NSString *)errorMsg{
@@ -331,9 +331,6 @@ CouponViewInterfaceDelegate, YouhuiCategoryViewControllerDelegate,YouHuiOrderVie
     
 #pragma mark - CouponSearchOrderInterfaceDelegate
 -(void)couponSearchOrderDidFinished:(NSArray*)result totalAmount:(NSInteger)totalAmount currentPage:(NSInteger)currentPage{
-    if (self.isOrder1 == NO && self.isOrder2 == NO) {
-        self.isOrder = NO;
-    }
     
     [self.itemListAll addObjectsFromArray:result];
     self.totalCountAll = totalAmount;
@@ -347,21 +344,17 @@ CouponViewInterfaceDelegate, YouhuiCategoryViewControllerDelegate,YouHuiOrderVie
     NSLog(@"%s:%@",__FUNCTION__,errorMessage);
 }
 
-#pragma mark - YouhuiCategoryViewControllerDelegate
--(void)categoryDidSelected:(CategoryModel *)categoryModel
-{
-    self.filterCategory = categoryModel;
-    if (self.filterCategory) {
-        [self.orderBtn setTitle:[NSString stringWithFormat:@"%@",categoryModel.cName]
-                          forState:UIControlStateNormal];
-    }else{
-        [self.orderBtn setTitle:@"全部分类" forState:UIControlStateNormal];
-        self.isOrder2 = NO;
-    }
-    self.cid = categoryModel.cid;
-    self.currentPageAll = 1;
-    [self.itemListAll removeAllObjects];
-    [self.couponSearchOrderInterface searchByAmount:20 Page:self.currentPageAll Cid:self.cid Type:self.type Order:self.order];
+
+//排序：全部、人气、收藏、结束时间
+- (IBAction)btnOrderAction:(UIButton *)sender {
+    YouHuiOrderViewController *vc= [[YouHuiOrderViewController alloc]init];
+    vc.delegate = self;
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vc animated:YES];
+    vc.hidesBottomBarWhenPushed = NO;
+    [vc release];
+    
+    self.isOrder1 = YES;
 }
 #pragma mark - YouHuiOrderViewControllerDelegate
 -(void)youHuiOrderViewControllerDidSelected:(NSUInteger)index{
@@ -392,24 +385,13 @@ CouponViewInterfaceDelegate, YouhuiCategoryViewControllerDelegate,YouHuiOrderVie
     }
     
     //@[@"",@"人气",@"收藏",@"结束时间"];
-    self.currentPageAll = 0;
+    
     [self.itemListAll removeAllObjects];
     self.currentPageAll = 1;
     [self.couponSearchOrderInterface searchByAmount:20 Page:self.currentPageAll Cid:self.cid Type:self.type Order:self.order];
 }
 
-- (IBAction)btnOrderAction:(UIButton *)sender {
-    YouHuiOrderViewController *vc= [[YouHuiOrderViewController alloc]init];
-    vc.delegate = self;
-    vc.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:vc animated:YES];
-    vc.hidesBottomBarWhenPushed = NO;
-    [vc release];
-    
-    self.isOrder1 = YES;
-    self.isOrder = YES;
-}
-
+//分类-全部、潮流女装、男人帮。。。。。。
 - (IBAction)btnCategoryAction:(UIButton *)sender {
     YouhuiCategoryViewController *cateVC = [[YouhuiCategoryViewController alloc] initWithCategoryModel:self.filterCategory];
     cateVC.delegate = self;
@@ -419,9 +401,25 @@ CouponViewInterfaceDelegate, YouhuiCategoryViewControllerDelegate,YouHuiOrderVie
     [cateVC release];
     
     self.isOrder2 = YES;
-    self.isOrder = YES;
+}
+#pragma mark - YouhuiCategoryViewControllerDelegate
+-(void)categoryDidSelected:(CategoryModel *)categoryModel
+{
+    self.filterCategory = categoryModel;
+    if ([self.filterCategory.cName isEqualToString:@"全部分类"]) {
+        [self.orderBtn setTitle:@"全部分类" forState:UIControlStateNormal];
+        self.isOrder2 = NO;
+    }else{
+        [self.orderBtn setTitle:[NSString stringWithFormat:@"%@",categoryModel.cName]
+                       forState:UIControlStateNormal];
+    }
+    self.cid = categoryModel.cid;
+    self.currentPageAll = 1;
+    [self.itemListAll removeAllObjects];
+    [self.couponSearchOrderInterface searchByAmount:20 Page:self.currentPageAll Cid:self.cid Type:self.type Order:self.order];
 }
 
+//我的收藏
 - (IBAction)btnMyFocusYouHuiAction:(UIButton *)sender {
     MyFocusYouHuiViewController *vc = [[MyFocusYouHuiViewController alloc]init];
     vc.hidesBottomBarWhenPushed = YES;
@@ -432,7 +430,19 @@ CouponViewInterfaceDelegate, YouhuiCategoryViewControllerDelegate,YouHuiOrderVie
 #pragma mark - Data Source Loading / Reloading Methods
 -(void)refreshDate
 {
-//    [self.couponViewInterface getDailyDealByPage:self.currentPageAll amount:20];
+    if (self.isOrder1 == YES || self.isOrder2 == YES) {
+        self.currentPageAll = 1;
+        [self.itemListAll removeAllObjects];
+        [self.couponSearchOrderInterface searchByAmount:20 Page:self.currentPageAll Cid:self.cid Type:self.type Order:self.order];
+    }else{
+        self.currentPage1 = 1;
+        self.currentPage2 = 1;
+        [self.itemList removeAllObjects];
+        [self.itemList2 removeAllObjects];
+        [self.couponViewInterface getCouponViewListByPage:self.currentPageAll amount:20];
+        [self.couponSectionTwoInterface getCouponSectionTwoListByPage:self.currentPage2 amount:20];
+    }
+//
 }
 - (void)reloadTableViewDataSource{
 	_reloading = YES;
@@ -463,7 +473,6 @@ CouponViewInterfaceDelegate, YouhuiCategoryViewControllerDelegate,YouHuiOrderVie
 - (BOOL)egoRefreshTableHeaderDataSourceIsLoading:(EGORefreshTableHeaderView*)view{
 	return _reloading; // should return if data source model is reloading
 }
-
 - (NSDate*)egoRefreshTableHeaderDataSourceLastUpdated:(EGORefreshTableHeaderView*)view{
 	return [NSDate date]; // should return date data source was last changed
 }

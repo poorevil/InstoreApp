@@ -36,29 +36,14 @@
     _hud.labelText = @"Loading";
     [self.view addSubview:self.hud];
     [_hud show:YES];
-//    [_hud showWhileExecuting:@selector(oneTask) onTarget:self withObject:nil animated:YES];
-    
-//    NSURL *URL = [NSURL URLWithString:self.urlStr];
-//    NSURLRequest *request = [[NSURLRequest alloc]initWithURL:URL cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60];
-//    NSURLConnection *connection = [[NSURLConnection alloc]initWithRequest:request delegate:self];
-//    [connection start];
     
     NSURL *URL = [NSURL URLWithString:self.urlStr];
     NSURLRequest *request = [[NSURLRequest alloc]initWithURL:URL];
     [self.myWebView loadRequest:request];
     
-    
+    self.hidesBottomBarWhenPushed = YES;
 }
 
-//- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response{
-//    
-//}
-//-(void)connectionDidFinishLoading:(NSURLConnection *)connection{
-//    
-//}
-//-(void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error{
-//    NSLog(@"%s:%@",__FUNCTION__,error);
-//}
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView{
     sleep(0.5);

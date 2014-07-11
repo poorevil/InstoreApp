@@ -21,6 +21,8 @@
 #import "NSDate+DynamicDateString.h"
 
 #import "CouponDetailInterface.h"
+#import "FocusInterface.h"
+#import "WebViewController.h"
 
 @interface GroupBuyDetailViewController () <UITableViewDataSource, UITableViewDelegate,
 CouponDetailInterfaceDelegate>
@@ -30,6 +32,7 @@ CouponDetailInterfaceDelegate>
 @property (nonatomic,strong) UILabel *titleLabel;
 
 @property (nonatomic,strong) CouponDetailInterface *couponDetailInterface;
+@property (retain, nonatomic) FocusInterface *focusInterface;
 
 @end
 
@@ -57,6 +60,9 @@ CouponDetailInterfaceDelegate>
     
     [self initHeaderView];
     
+    self.focusInterface = [[[FocusInterface alloc]init]autorelease];
+    
+    self.hidesBottomBarWhenPushed = YES;
 }
 
 - (void)didReceiveMemoryWarning
@@ -77,7 +83,10 @@ CouponDetailInterfaceDelegate>
     self.couponDetailInterface.delegate = nil;
     self.couponDetailInterface = nil;
     
+    self.focusInterface = nil;
     
+    [_btnFocus release];
+    [_btnGoNext release];
     [super dealloc];
 }
 
@@ -154,8 +163,8 @@ CouponDetailInterfaceDelegate>
             return 1;//购买须知
         case 5:
             return 1;//商户
-        case 6:
-            return 1;//你可能还喜欢
+//        case 6:
+//            return 1;//你可能还喜欢
             
         default:
             return 1;
@@ -164,7 +173,7 @@ CouponDetailInterfaceDelegate>
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 7;
+    return 6;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -191,9 +200,9 @@ CouponDetailInterfaceDelegate>
         case 5:
             cellIdentifier = @"CouponDetailStoreCell";
             break;
-        case 6:
-            cellIdentifier = @"GroupBuyRecommendCell";
-            break;
+//        case 6:
+//            cellIdentifier = @"GroupBuyRecommendCell";
+//            break;
         default:
             cellIdentifier = @"cell";
             break;
@@ -292,8 +301,8 @@ CouponDetailInterfaceDelegate>
                 }
             }
             break;
-        case 6:
-            //可能还喜欢
+//        case 6:
+//            //可能还喜欢
 //            if (self.couponModel.rec) {
 //                GroupBuyRecommendCell
 //            }
@@ -313,7 +322,7 @@ CouponDetailInterfaceDelegate>
             return 40;
         case 2:
             return 53;
-        case 3:{
+        case 3:
             return 68;
         case 4:{
             //计算内容的size
@@ -327,9 +336,8 @@ CouponDetailInterfaceDelegate>
         }
         case 5:
             return 108;
-        case 6:
-            return 108;
-        }
+//        case 6:
+//            return 108;
         default:
             return 44;
     }
@@ -342,6 +350,16 @@ CouponDetailInterfaceDelegate>
 {
     self.couponModel = couponModel;
     [self refreshUI];
+    if (couponModel.isFocus) {
+        [self.btnFocus setTitle:@"已收藏" forState:UIControlStateNormal];
+    }else{
+        [self.btnFocus setTitle:@"收藏" forState:UIControlStateNormal];
+    }
+    if (couponModel.link) {
+        self.btnGoNext.enabled = YES;
+    }else{
+        self.btnGoNext.enabled = NO;
+    }
 }
 
 -(void)getCouponDetailDidFailed:(NSString *)errorMessage
@@ -349,4 +367,25 @@ CouponDetailInterfaceDelegate>
     NSLog(@"%@",errorMessage);
 }
 
+- (IBAction)btnFocusAction:(UIButton *)sender {
+    if (self.couponModel.isFocus == YES) {
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"您已经收藏过了！" message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [alert show];
+        [alert release];
+    }else{
+        [self.focusInterface sendFocusCouponID:self.couponModel.cid];
+        self.couponModel.isFocus = YES;
+        [sender setTitle:@"已收藏" forState:UIControlStateNormal];
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"收藏成功" message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [alert show];
+        [alert release];
+    }
+}
+- (IBAction)btnGoNextAction:(UIButton *)sender {
+    WebViewController *webVC = [[WebViewController alloc]init];
+    webVC.urlStr = self.couponModel.link;
+    webVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:webVC animated:YES];
+    [webVC release];
+}
 @end

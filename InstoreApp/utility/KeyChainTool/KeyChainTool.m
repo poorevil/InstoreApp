@@ -45,8 +45,8 @@
         CFTypeRef result = nil;
         // 先找到一个item
         OSStatus s = SecItemCopyMatching((CFDictionaryRef)query, &result);
-        NSLog(@"select name : %ld",s);  //  errSecItemNotFound 就是找不到
-        NSLog(@"%@",result);
+//        NSLog(@"select name : %ld",s);  //  errSecItemNotFound 就是找不到
+//        NSLog(@"%@",result);
         if (s == noErr) {
             // 继续查找item的secValue
             NSMutableDictionary* dic = [NSMutableDictionary dictionaryWithDictionary:result];

@@ -18,7 +18,10 @@
 #import "WebViewController.h"
 #import "PhotoViewController.h"
 
-#import "FocusInterface.h"
+#import "FocusInterface.h" //收藏优惠
+
+#import "StoreDetail_RestaurantViewController.h" //商户详情
+//#import "StoreModel.h"
 
 @interface MallNewsDetailViewController ()<CouponDetailInterfaceDelegate>{
     EGOImageView *egoHeaderView;
@@ -73,7 +76,9 @@
     
     [self initHeaderView];
     
-    self.focusInterface = [[FocusInterface alloc]init];
+    self.focusInterface = [[[FocusInterface alloc]init]autorelease];
+    
+    self.hidesBottomBarWhenPushed = YES;
 
 }
 
@@ -232,25 +237,26 @@
             case 0:
             {
                 //商户
+                StoreDetail_RestaurantViewController *vc = [[StoreDetail_RestaurantViewController alloc]initWithNibName:@"StoreDetail_RestaurantViewController" bundle:nil];
+                vc.shopId = self.couponModel.store.sid;
+                [self.navigationController pushViewController:vc animated:YES];
+                [vc release];
             }
                 break;
             case 1:{
                 //地址
+
             }
                 break;
             case 2:{
                 //电话
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel:10086"]];
             }
                 break;
             default:
                 break;
         }
     }
-//    else{
-//        UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-//        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-//    }
-    
 }
 
 #pragma mark - CouponDetailInterfaceDelegate <NSObject>
@@ -264,6 +270,13 @@
     }else{
         [self.btnFocus setTitle:@"收藏" forState:UIControlStateNormal];
     }
+    
+    //无外链时是进入浏览图片
+//    if (couponModel.link) {
+//        self.btnGoNext.enabled = YES;
+//    }else{
+//        self.btnGoNext.enabled = NO;
+//    }
 }
 
 -(void)getCouponDetailDidFailed:(NSString *)errorMessage

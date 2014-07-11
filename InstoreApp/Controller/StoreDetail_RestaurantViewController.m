@@ -45,10 +45,13 @@
     
     [self initHeaderView];
     
-    self.storeDetailInterface = [[StoreDetailInterface alloc] init];
+    self.storeDetailInterface = [[[StoreDetailInterface alloc] init]autorelease];
     self.storeDetailInterface.delegate = self;
     [self.storeDetailInterface getStoreDetailByShopId:self.shopId];
+    
+    self.hidesBottomBarWhenPushed = YES;
 }
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -59,6 +62,9 @@
 -(void)dealloc
 {
     self.mtableView = nil;
+    self.storeModel = nil;
+    self.storeDetailInterface = nil;
+    self.headerView = nil;
     
     [super dealloc];
 }
@@ -70,8 +76,6 @@
         self.headerView = [[[NSBundle mainBundle] loadNibNamed:@"StoreDetail_headerView"
                                                         owner:self
                                                       options:nil] objectAtIndex:0];
-        
-        
         self.mtableView.tableHeaderView = self.headerView;
     }
     

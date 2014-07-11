@@ -77,15 +77,10 @@
     [btn setTitle:title forState:state];
     [btn setImage:icon forState:state];
     
-//    [btn setImageEdgeInsets:UIEdgeInsetsMake(0,
-//                                             (btn.frame.size.width-btn.imageView.frame.size.width)/2,
-//                                             (btn.frame.size.height-btn.imageView.frame.size.height)/2 +5,
-//                                             0)];
-//    [btn setTitleEdgeInsets:UIEdgeInsetsMake(btn.imageView.frame.size.height +5,
-//                                             -btn.imageView.frame.size.width,
-//                                             0, 0)];
+    [btn setImageEdgeInsets:UIEdgeInsetsMake(0, (btn.frame.size.width / 2 -btn.imageView.frame.size.width),0, btn.frame.size.width / 2)];
+    [btn setTitleEdgeInsets:UIEdgeInsetsMake(0,btn.frame.size.width / 2-10, 0, 10)];
     
-//    [btn.titleLabel setFont:[UIFont systemFontOfSize:12]];
+    [btn.titleLabel setFont:[UIFont systemFontOfSize:12]];
     
     
 }

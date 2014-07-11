@@ -136,6 +136,11 @@
     }
 }
 
+- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return @"  删除";
+}
+
 -(void)btnEditorAction:(UIButton *)sender{
     static BOOL isEditor = NO;
     if (isEditor == NO) {

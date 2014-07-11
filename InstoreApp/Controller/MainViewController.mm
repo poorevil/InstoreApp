@@ -20,11 +20,16 @@
 #import "MainView_CategoryCell.h"
 #import "MainView_StoreCell.h"
 
+//#import "PhotoViewController.h"
+#import "CouponModel.h"
+#import "EGOImageView.h"
+
 @interface MainViewController () <ZXingDelegate, MainViewInterfaceDelegate>
 @property (nonatomic,strong) CycleScrollView *lunboView;
 
 @property (nonatomic, retain) NSArray *itemList;
 @property (nonatomic, retain) MainViewInterface *mainViewInterface;
+
 
 @end
 
@@ -116,7 +121,12 @@
         imageView.image = [UIImage imageNamed:[imageFileName objectAtIndex:i]];
         imageView.contentMode = UIViewContentModeScaleAspectFill;
         imageView.clipsToBounds = YES;
+        imageView.tag = i +1000;
         [viewsArray addObject:imageView];
+        
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
+        [imageView addGestureRecognizer:tap];
+        [tap release];
     }
     
     self.lunboView = [[[CycleScrollView alloc] initWithFrame:CGRectMake(0, 0, 320, 120)
@@ -132,7 +142,33 @@
     };
     
     self.mtableView.tableHeaderView = self.lunboView;
+    
+    
+//    if (self.itemList) {
+//        
+//        for (CouponModel *couponModel in [self.itemList objectAtIndex:0]) {
+//            EGOImageView *egoImageView = [[[EGOImageView alloc]initWithFrame:CGRectMake(0, 0, 320, 120)]autorelease];
+//            egoImageView.contentMode = UIViewContentModeScaleAspectFit;
+//            egoImageView.imageURL = [NSURL URLWithString:couponModel.imageUrl];
+//            UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
+//            [egoImageView addGestureRecognizer:tap];
+//            [tap release];
+//            
+//        }
+//    }
+//    
+    
+    
 
+}
+-(void)tapAction:(UIGestureRecognizer *)ges{
+//    PhotoViewController *photoViewController = [[[PhotoViewController alloc] init] autorelease];
+//    photoViewController.hidesBottomBarWhenPushed = YES;
+//    self.hidesBottomBarWhenPushed = YES;
+//    photoViewController.currentImageUrl = [self.couponModel.images objectAtIndex:0];
+//    photoViewController.imageListUrl = self.tempImageList;
+//    
+//    [self.navigationController pushViewController:photoViewController animated:NO];
 }
 
 -(void)scanQRCode

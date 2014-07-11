@@ -14,4 +14,10 @@
 @property (nonatomic,strong) IBOutlet UITableView *mtableView;
 @property (nonatomic,retain) CouponModel *couponModel;
 
+@property (retain, nonatomic) IBOutlet UIButton *btnFocus;
+- (IBAction)btnFocusAction:(UIButton *)sender;
+@property (retain, nonatomic) IBOutlet UIButton *btnGoNext;
+- (IBAction)btnGoNextAction:(UIButton *)sender;
+
+
 @end

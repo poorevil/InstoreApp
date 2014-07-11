@@ -46,6 +46,7 @@
     self.mallNewsInterface.delegate = self;
     [self.mallNewsInterface getMallNewsByPage:self.currentPage amount:20];
     
+    self.navigationItem.rightBarButtonItem = nil;
 }
 
 - (void)didReceiveMemoryWarning

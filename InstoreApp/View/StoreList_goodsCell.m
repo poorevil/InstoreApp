@@ -20,6 +20,8 @@
     // Initialization code
     self.logoImageView.layer.borderWidth = 0.4f;
     self.logoImageView.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    
+    self.logoImageView.contentMode = UIViewContentModeScaleAspectFit;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated

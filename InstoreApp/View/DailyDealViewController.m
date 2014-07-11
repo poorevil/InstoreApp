@@ -40,13 +40,13 @@
     self.itemList = [NSMutableArray array];
     self.currentPage = 1;
     
-    self.dailyDealInterface = [[DailyDealInterface alloc]init];
+    self.dailyDealInterface = [[[DailyDealInterface alloc]init]autorelease];
     _dailyDealInterface.delegate = self;
     [_dailyDealInterface getDailyDealByPage:self.currentPage amount:20];
 
+    self.navigationItem.rightBarButtonItem = nil;
     
     if (self.refreshHeaderView == nil) {
-		
 		EGORefreshTableHeaderView *view = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f,0.0f - self.myTableView.bounds.size.height,self.myTableView.frame.size.width,self.myTableView.bounds.size.height)];
 		view.delegate = self;
 		[self.myTableView addSubview:view];
@@ -55,6 +55,7 @@
     [self.refreshHeaderView refreshLastUpdatedDate];
     
 }
+
 #pragma mark - UITableViewDataSource
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -101,7 +102,7 @@
                     WebViewController *webVC = [[WebViewController alloc]init];
                     webVC.hidesBottomBarWhenPushed = YES;
                     webVC.urlStr = dailyDealModel.url;
-                    webVC.titleStr = dailyDealModel.title;
+                    webVC.titleStr = @"优惠详情";
                     [self.navigationController pushViewController:webVC animated:YES];
                     [webVC release];
                 }
@@ -172,7 +173,6 @@
 	_reloading = NO;
 	[_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.myTableView];
 }
-
 
 #pragma mark - UIScrollViewDelegate Methods
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{

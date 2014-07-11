@@ -2389,9 +2389,6 @@
 				035214E7195C788B00F92B55 /* MallNewsViewController.h */,
 				035214E8195C788B00F92B55 /* MallNewsViewController.m */,
 				035214E9195C788B00F92B55 /* MallNewsViewController.xib */,
-				0433EA50196A4A9F003AB8FD /* MallNewsDetailViewController.h */,
-				0433EA51196A4A9F003AB8FD /* MallNewsDetailViewController.m */,
-				0433EA52196A4A9F003AB8FD /* MallNewsDetailViewController.xib */,
 			);
 			name = MallNews;
 			sourceTree = "<group>";
@@ -2549,6 +2546,9 @@
 				0357FF47194D83F10071BD5A /* GroupBuyDetailViewController.h */,
 				0357FF48194D83F10071BD5A /* GroupBuyDetailViewController.m */,
 				0357FF49194D83F10071BD5A /* GroupBuyDetailViewController.xib */,
+				0433EA50196A4A9F003AB8FD /* MallNewsDetailViewController.h */,
+				0433EA51196A4A9F003AB8FD /* MallNewsDetailViewController.m */,
+				0433EA52196A4A9F003AB8FD /* MallNewsDetailViewController.xib */,
 				4ECBF70818F4449E003963E1 /* BindPhoneViewController.h */,
 				4ECBF70918F4449E003963E1 /* BindPhoneViewController.m */,
 				4ECBF70A18F4449E003963E1 /* BindPhoneViewController.xib */,

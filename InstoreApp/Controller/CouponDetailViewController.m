@@ -24,6 +24,9 @@
 
 #import "PhotoViewController.h"
 
+#import "FocusInterface.h"
+#import "WebViewController.h"
+
 @interface CouponDetailViewController () <CouponDetailInterfaceDelegate,CouponDownloadInterfaceDelegate>
 @property (nonatomic,strong) UIView *headerView;
 @property (nonatomic,strong) UIView *footerView;
@@ -36,6 +39,8 @@
 @property (nonatomic,strong) CouponDownloadInterface *couponDownloadInterface;
 
 @property (nonatomic,strong) UIButton *downloadBtn;
+
+@property (retain, nonatomic) FocusInterface *focusInterface;
 @end
 
 @implementation CouponDetailViewController
@@ -59,10 +64,15 @@
     [self.couponDetailInterface getCouponDetailByCouponId:self.couponModel.cid];
     
     [self initHeaderView];
-    [self initFooterView];
+//    [self initFooterView];
     
     self.title = @"优惠劵详情";
+    
+    self.focusInterface = [[[FocusInterface alloc]init]autorelease];
+    
+    self.hidesBottomBarWhenPushed = YES;
 }
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -74,7 +84,7 @@
 -(void)refreshUI
 {
 //    [self initHeaderView];
-    [self initFooterView];
+//    [self initFooterView];
     [self.mtableView reloadData];
 }
 
@@ -318,6 +328,16 @@
 {
     self.couponModel = couponModel;
     [self refreshUI];
+    if (couponModel.isFocus) {
+        [self.btnFocus setTitle:@"已收藏" forState:UIControlStateNormal];
+    }else{
+        [self.btnFocus setTitle:@"收藏" forState:UIControlStateNormal];
+    }
+    if (couponModel.link) {
+        self.btnGoNext.enabled = YES;
+    }else{
+        self.btnGoNext.enabled = NO;
+    }
 }
 
 -(void)getCouponDetailDidFailed:(NSString *)errorMessage
@@ -381,7 +401,32 @@
     self.titleLabel = nil;
     self.downloadBtn = nil;
     
+    self.focusInterface = nil;
+    
+    [_btnFocus release];
+    [_btnGoNext release];
     [super dealloc];
 }
 
+- (IBAction)btnFocusAction:(UIButton *)sender {
+    if (self.couponModel.isFocus == YES) {
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"您已经收藏过了！" message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [alert show];
+        [alert release];
+    }else{
+        [self.focusInterface sendFocusCouponID:self.couponModel.cid];
+        self.couponModel.isFocus = YES;
+        [sender setTitle:@"已收藏" forState:UIControlStateNormal];
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"收藏成功" message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [alert show];
+        [alert release];
+    }
+}
+- (IBAction)btnGoNextAction:(UIButton *)sender {
+    WebViewController *webVC = [[WebViewController alloc]init];
+    webVC.urlStr = self.couponModel.link;
+    webVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:webVC animated:YES];
+    [webVC release];
+}
 @end

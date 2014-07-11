@@ -44,12 +44,11 @@
     [_dataList release];
     _dataList = [dataList retain];
     
-    CGPoint lastPoint = CGPointMake(0, 0);
     for (NSInteger i = 0; i < self.dataList.count; i++) {
         StoreModel *sm = [self.dataList objectAtIndex:i];
         
         EGOImageView *imageView = [[[EGOImageView alloc] initWithFrame:CGRectMake(0, 0, 56, 56)] autorelease];
-        imageView.contentMode = UIViewContentModeScaleAspectFill;
+        imageView.contentMode = UIViewContentModeScaleAspectFit;
         imageView.layer.cornerRadius = 4;
         imageView.layer.borderWidth = 0.4f;
         imageView.layer.borderColor = [UIColor lightGrayColor].CGColor;
@@ -62,13 +61,11 @@
         [imageView addGestureRecognizer:tap];
         
         CGRect frame = imageView.frame ;
-        frame.origin = lastPoint;
-        
-        if (i != 0 && i % 4 == 0) {
-            lastPoint.y = 56 + 10;
-            lastPoint.x = 0;
+        if (i < 5) {
+            frame.origin.x = i * (56 + 5);
         }else{
-            lastPoint.x += 56 + 5;
+            frame.origin.y = 56 + 10;
+            frame.origin.x = (i - 5) * (56 + 5);
         }
         
         imageView.frame = frame;

@@ -27,6 +27,8 @@
     self.storeIogo.layer.borderWidth = 1.0;
     self.storeIogo.layer.borderColor = [UIColor colorWithRed:215/255.0 green:215/255.0 blue:215/255.0 alpha:1].CGColor;
     
+    self.storeIogo.contentMode = UIViewContentModeScaleAspectFit;
+    
     UITapGestureRecognizer *tap = [[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)] autorelease];
     [self addGestureRecognizer:tap];
 }

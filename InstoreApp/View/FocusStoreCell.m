@@ -33,7 +33,7 @@
         view.delegate = self;
         view.tag = 100;
         view.frame = CGRectMake(4, 0, 75, 110);
-        view.storeIogo.imageURL = [NSURL URLWithString:view1.logo];
+        view.storeIogo.imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@/150*150.png",view1.logo]];
         if (view1.isFocus) {
             view.isFocusImage.image = [UIImage imageNamed:@"focusstore_isfocus.png"];
         }else{
@@ -51,7 +51,7 @@
         view.delegate = self;
         view.tag = 200;
         view.frame = CGRectMake(83, 0, 75, 110);
-        view.storeIogo.imageURL = [NSURL URLWithString:view2.logo];
+        view.storeIogo.imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@/150*150.png",view2.logo]];
         if (view2.isFocus) {
             view.isFocusImage.image = [UIImage imageNamed:@"focusstore_isfocus.png"];
         }else{
@@ -69,7 +69,7 @@
         view.delegate = self;
         view.tag = 300;
         view.frame = CGRectMake(162, 0, 75, 110);
-        view.storeIogo.imageURL = [NSURL URLWithString:view3.logo];
+        view.storeIogo.imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@/150*150.png",view3.logo]];
         if (view3.isFocus) {
             view.isFocusImage.image = [UIImage imageNamed:@"focusstore_isfocus.png"];
         }else{
@@ -87,7 +87,7 @@
         view.delegate = self;
         view.tag = 400;
         view.frame = CGRectMake(241, 0, 75, 110);
-        view.storeIogo.imageURL = [NSURL URLWithString:view4.logo];
+        view.storeIogo.imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@/150*150.png",view4.logo]];
         if (view4.isFocus) {
             view.isFocusImage.image = [UIImage imageNamed:@"focusstore_isfocus.png"];
         }else{
