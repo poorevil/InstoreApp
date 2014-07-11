@@ -115,7 +115,7 @@
     [self.requestArgs setObject:[GlobeModel sharedSingleton].userId forKey:@"userid"];
     [self.requestArgs setObject:[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"] forKey:@"v"];
     
-    __block ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@init/%@?userid=%@&v=%@&timestamp=%@",
+    __block ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@init/%@?userid=%@&timestamp=%@&v=%@",
                                                                                    BASE_INTERFACE_DOMAIN,
                                                                                    MALL_CODE,
                                                                                    [GlobeModel sharedSingleton].userId,

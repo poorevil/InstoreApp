@@ -16,6 +16,8 @@
 
 +(BOOL)setValue:(NSString *)value forKey:(NSString *)key
 {
+    [KeyChainTool removeValueByKey:key];
+    
     if (value.length > 0 && key.length > 0) {
         // 一个mutable字典结构存储item信息
         NSMutableDictionary* dic = [NSMutableDictionary dictionary];
