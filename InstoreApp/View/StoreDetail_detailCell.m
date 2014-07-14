@@ -36,13 +36,12 @@
     CGFloat diff = 0;
     
     if (self.detailLabel.frame.size.height != 60) {
+        diff = 60 - self.detailLabel.frame.size.height;
         self.detailLabel.frame = CGRectMake(self.detailLabel.frame.origin.x,
                                             self.detailLabel.frame.origin.y,
                                             self.detailLabel.frame.size.width,
                                             60);
         self.detailLabel.numberOfLines = 3;
-        
-        diff = 60 - self.detailLabel.frame.size.height;
         
     }else{
         CGSize labelFontSize = [self.detailLabel.text sizeWithFont:[UIFont systemFontOfSize:14]
@@ -69,8 +68,9 @@
                             self.frame.size.height + diff);
     
     if ([self.delegate isMemberOfClass:[StoreDetail_RestaurantViewController class]]) {
-//        self.delegate.detailCellHeight = self.frame.size.height;
-//        [self.delegate.mtableView reloadData];
+        StoreDetail_RestaurantViewController *rvc = (StoreDetail_RestaurantViewController*)self.delegate;
+        rvc.detailCellHeight = self.frame.size.height;
+        [rvc.mtableView reloadData];
     }
 }
 

@@ -12,7 +12,7 @@
 @interface StoreDetail_detailCell : UITableViewCell
 @property (nonatomic, retain) IBOutlet UILabel *detailLabel;
 @property (nonatomic, retain) IBOutlet UIButton *slideUpBtn;
-@property (nonatomic, assign) id<StoreDetail_RestaurantViewController> delegate;
+@property (nonatomic, assign) id delegate;
 
 -(IBAction)slideUpBtnAction:(id)sender;
 

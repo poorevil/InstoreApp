@@ -149,7 +149,7 @@
     if ([cell isMemberOfClass:[StoreDetail_detailCell class]]) {
         StoreDetail_detailCell *detailCell = (StoreDetail_detailCell *)cell;
         detailCell.detailLabel.text = self.storeModel.descStr;
-        detailCell.delegate = tableView;
+        detailCell.delegate = self;
         
     }else if ([cell isMemberOfClass:[CommentListCell class]]) {
         CommentListCell *commentCell = (CommentListCell *)cell;
