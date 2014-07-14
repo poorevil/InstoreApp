@@ -12,5 +12,5 @@
 
 @property (nonatomic, retain) IBOutlet UITableView *mtableView;
 @property (nonatomic,assign) NSInteger shopId;
-
+@property (nonatomic, assign) CGFloat detailCellHeight;
 @end

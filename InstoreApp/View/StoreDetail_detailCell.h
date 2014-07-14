@@ -8,7 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@class StoreDetail_RestaurantViewController;
 @interface StoreDetail_detailCell : UITableViewCell
 @property (nonatomic, retain) IBOutlet UILabel *detailLabel;
+@property (nonatomic, retain) IBOutlet UIButton *slideUpBtn;
+@property (nonatomic, assign) id<StoreDetail_RestaurantViewController> delegate;
+
+-(IBAction)slideUpBtnAction:(id)sender;
 
 @end
