@@ -8,7 +8,7 @@
 
 #import "DailyDealInterface.h"
 #import "JSONKit.h"
-#import "DailyDealModel.h"
+#import "CouponModel.h"
 
 @implementation DailyDealInterface
 
@@ -22,7 +22,7 @@
 }
 
 #pragma mark - BaseInterfaceDelegate
-//https://github.com/joyx-inc/vmall-app-ios/wiki/Mall-News
+//https://github.com/joyx-inc/vmall-app-ios/wiki/Daily-Promotion
 -(void)parseResult:(ASIHTTPRequest *)request{
     NSString *jsonStr = [[[NSString alloc] initWithData:[request responseData]
                                                encoding:NSUTF8StringEncoding] autorelease];
@@ -39,8 +39,9 @@
             NSArray *dailyListArray = [jsonObj objectForKey:@"list"];
             if (dailyListArray) {
                 for (NSDictionary *dailyList in dailyListArray) {
-                    DailyDealModel *dailyDealModel = [[DailyDealModel alloc]initWithJsonMap:dailyList];
-                    [resultList addObject:dailyDealModel];
+                    CouponModel *couponModel = [[CouponModel alloc]initWithJsonMap:dailyList];
+                    [resultList addObject:couponModel];
+                    [couponModel release];
                 }
             }
         }

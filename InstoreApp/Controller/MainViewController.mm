@@ -23,13 +23,22 @@
 //#import "PhotoViewController.h"
 #import "CouponModel.h"
 #import "EGOImageView.h"
+#import "LunBoImageInterface.h"
+#import "WebViewController.h"
 
-@interface MainViewController () <ZXingDelegate, MainViewInterfaceDelegate>
+#import "GroupBuyDetailViewController.h"
+#import "CouponDetailViewController.h"
+#import "MallNewsDetailViewController.h"
+#import "AppDelegate.h"
+
+@interface MainViewController () <ZXingDelegate, MainViewInterfaceDelegate,LunBoImageInterfaceDelegate>
 @property (nonatomic,strong) CycleScrollView *lunboView;
 
 @property (nonatomic, retain) NSArray *itemList;
 @property (nonatomic, retain) MainViewInterface *mainViewInterface;
 
+@property (retain, nonatomic) NSArray *itemLuoBoImageList;
+@property (retain, nonatomic) LunBoImageInterface *lunBoImageInterface;
 
 @end
 
@@ -50,13 +59,17 @@
     // Do any additional setup after loading the view from its nib.
     
     [self initNavigationView];
-    [self initLunboView];
+//    [self initLunboView];
     self.mtableView.scrollsToTop = YES;
     
     self.mainViewInterface = [[[MainViewInterface alloc] init] autorelease];
     self.mainViewInterface.delegate = self;
     [self.mainViewInterface getMainViewList];
     
+    self.itemLuoBoImageList = [NSArray array];
+    self.lunBoImageInterface = [[[LunBoImageInterface alloc]init] autorelease];
+    self.lunBoImageInterface.delegate = self;
+    [self.lunBoImageInterface getLunBoImageListWithPos:1];
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -114,51 +127,146 @@
 
 -(void)initLunboView
 {
-    NSArray *imageFileName = @[@"banner_1.jpg",@"banner_2.jpg",@"banner_3.jpg",@"banner_4.jpg",@"banner_5.jpg"];
+//    NSArray *imageFileName = @[@"banner_1.jpg",@"banner_2.jpg",@"banner_3.jpg",@"banner_4.jpg",@"banner_5.jpg"];
+//    NSMutableArray *viewsArray = [NSMutableArray array];
+//    for (int i = 0; i < imageFileName.count; ++i) {
+//        UIImageView *imageView = [[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 120)] autorelease];
+//        imageView.image = [UIImage imageNamed:[imageFileName objectAtIndex:i]];
+//        imageView.contentMode = UIViewContentModeScaleAspectFill;
+//        imageView.clipsToBounds = YES;
+//        imageView.tag = i +1000;
+//        [viewsArray addObject:imageView];
+//        
+//        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
+//        [imageView addGestureRecognizer:tap];
+//        [tap release];
+//    }
+//    
+//    self.lunboView = [[[CycleScrollView alloc] initWithFrame:CGRectMake(0, 0, 320, 120)
+//                                          animationDuration:5] autorelease];
+//    self.lunboView.fetchContentViewAtIndex = ^UIView *(NSInteger pageIndex){
+//        return viewsArray[pageIndex];
+//    };
+//    self.lunboView.totalPagesCount = ^NSInteger(void){
+//        return imageFileName.count;
+//    };
+//    self.lunboView.TapActionBlock = ^(NSInteger pageIndex){
+//        NSLog(@"点击了第%d个",pageIndex);
+//    };
+//    
+//    self.mtableView.tableHeaderView = self.lunboView;
+    
+    
+    
     NSMutableArray *viewsArray = [NSMutableArray array];
-    for (int i = 0; i < imageFileName.count; ++i) {
-        UIImageView *imageView = [[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 120)] autorelease];
-        imageView.image = [UIImage imageNamed:[imageFileName objectAtIndex:i]];
-        imageView.contentMode = UIViewContentModeScaleAspectFill;
-        imageView.clipsToBounds = YES;
-        imageView.tag = i +1000;
-        [viewsArray addObject:imageView];
-        
-        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
-        [imageView addGestureRecognizer:tap];
-        [tap release];
+    if (self.itemLuoBoImageList.count > 0) {
+        for (int i = 0 ; i < self.itemLuoBoImageList.count; i++) {
+            CouponModel *couponModel = [self.itemLuoBoImageList objectAtIndex:i];
+            
+            EGOImageView *egoImageView = [[[EGOImageView alloc]initWithFrame:CGRectMake(0, 0, 320, 120)]autorelease];
+            egoImageView.contentMode = UIViewContentModeScaleAspectFit;
+            egoImageView.imageURL = [NSURL URLWithString:couponModel.imageUrl];
+            
+            [viewsArray addObject:egoImageView];
+        }
     }
     
     self.lunboView = [[[CycleScrollView alloc] initWithFrame:CGRectMake(0, 0, 320, 120)
-                                          animationDuration:5] autorelease];
+                                           animationDuration:5] autorelease];
     self.lunboView.fetchContentViewAtIndex = ^UIView *(NSInteger pageIndex){
         return viewsArray[pageIndex];
     };
     self.lunboView.totalPagesCount = ^NSInteger(void){
-        return imageFileName.count;
+        return self.itemLuoBoImageList.count;
     };
     self.lunboView.TapActionBlock = ^(NSInteger pageIndex){
         NSLog(@"点击了第%d个",pageIndex);
+        
+        AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+        UINavigationController *nav = (UINavigationController *)appDelegate.tabBarController.selectedViewController;
+
+        
+        CouponModel *couponModel = [self.itemLuoBoImageList objectAtIndex:pageIndex];
+        int itemType = couponModel.itemType;
+        switch (itemType) {
+            case 1:
+            {
+                [nav.navigationBar setBarTintColor:[UIColor colorWithRed:248.0f/255.0f green:40.0f/255.0f blue:53.0f/255.0f alpha:1]];
+                [nav.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
+                
+                int promotionType = couponModel.promotionType;
+                //优惠
+                switch (promotionType) {
+                    case 1:
+                    {
+                        //优惠活动
+                        WebViewController *webVC = [[WebViewController alloc]init];
+                        webVC.hidesBottomBarWhenPushed = YES;
+                        webVC.urlStr = couponModel.link;
+                        webVC.titleStr = @"优惠详情";
+                        [self.navigationController pushViewController:webVC animated:YES];
+                        [webVC release];
+                    }
+                        break;
+                    case 2:
+                    {
+                        //优惠券
+                        CouponDetailViewController *coupnDVC = [[CouponDetailViewController alloc]init];
+                        coupnDVC.couponModel = couponModel;
+                        coupnDVC.couponModel.cid = couponModel.itemId;
+                        coupnDVC.hidesBottomBarWhenPushed = YES;
+                        [self.navigationController pushViewController:coupnDVC animated:YES];
+                        [coupnDVC release];
+                    }
+                        break;
+                    case 3:
+                    {
+                        //团购
+                        GroupBuyDetailViewController *groupBuyDVC = [[GroupBuyDetailViewController alloc]init];
+                        groupBuyDVC.couponModel = couponModel;
+                        groupBuyDVC.couponModel.cid = couponModel.itemId;
+                        groupBuyDVC.hidesBottomBarWhenPushed = YES;
+                        [self.navigationController pushViewController:groupBuyDVC animated:YES];
+                        [groupBuyDVC release];
+                    }
+                        break;
+                        
+                    default:
+                        break;
+                }
+            }
+                break;
+            case 2:
+            {
+                //商户
+            }
+                break;
+            case 3:
+            {
+                //商品
+            }
+                break;
+            case 4:
+            {
+                //网页
+                
+                [nav.navigationBar setBarTintColor:[UIColor colorWithRed:248.0f/255.0f green:40.0f/255.0f blue:53.0f/255.0f alpha:1]];
+                [nav.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
+                
+                WebViewController *webVC = [[WebViewController alloc]init];
+                webVC.hidesBottomBarWhenPushed = YES;
+                webVC.urlStr = couponModel.link;
+                webVC.titleStr = @"优惠详情";
+                [self.navigationController pushViewController:webVC animated:YES];
+                [webVC release];
+            }
+                break;
+            default:
+                break;
+        }
     };
     
     self.mtableView.tableHeaderView = self.lunboView;
-    
-    
-//    if (self.itemList) {
-//        
-//        for (CouponModel *couponModel in [self.itemList objectAtIndex:0]) {
-//            EGOImageView *egoImageView = [[[EGOImageView alloc]initWithFrame:CGRectMake(0, 0, 320, 120)]autorelease];
-//            egoImageView.contentMode = UIViewContentModeScaleAspectFit;
-//            egoImageView.imageURL = [NSURL URLWithString:couponModel.imageUrl];
-//            UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
-//            [egoImageView addGestureRecognizer:tap];
-//            [tap release];
-//            
-//        }
-//    }
-//    
-    
-    
 
 }
 -(void)tapAction:(UIGestureRecognizer *)ges{
@@ -284,6 +392,11 @@
     self.mainViewInterface.delegate = nil;
     self.mainViewInterface = nil;
     
+    self.itemList = nil;
+    self.itemLuoBoImageList = nil;
+    
+    self.lunBoImageInterface = nil;
+    
     [super dealloc];
 }
 
@@ -300,6 +413,18 @@
 
 -(void)getMainViewListDidFailed:(NSString *)errorMsg
 {
+    NSLog(@"%@",errorMsg);
+}
+
+#pragma mark - LunBoImageInterfaceDelegate
+-(void)getLunBoImageListDidFinished:(NSArray *)itemList totalCount:(NSInteger)totalCount{
+    self.itemLuoBoImageList = itemList;
+    
+    [self initLunboView];
+    
+    [self.mtableView reloadData];
+}
+-(void)getLunBoImageListDidFailed:(NSString *)errorMsg{
     NSLog(@"%@",errorMsg);
 }
 

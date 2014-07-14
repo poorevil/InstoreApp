@@ -21,9 +21,12 @@
             self.itemType = [[jsonMap objectForKey:@"itemType"] integerValue];
             self.promotionType = [[jsonMap objectForKey:@"promotionType"] integerValue];
             self.cid = [[jsonMap objectForKey:@"id"] integerValue];
+            self.itemId = [[jsonMap objectForKey:@"itemId"] integerValue];
             self.oldPrice = [jsonMap objectForKey:@"oldPrice"];
             self.price = [jsonMap objectForKey:@"price"];
             self.source = [jsonMap objectForKey:@"source"];
+            
+            self.summary = [jsonMap objectForKey:@"summary"];
             
             self.images = [jsonMap objectForKey:@"images"]==nil?[NSMutableArray array]:
             [NSMutableArray arrayWithArray:[jsonMap objectForKey:@"images"]];
@@ -83,6 +86,8 @@
 //    self.hotTag = nil;
     self.instruction = nil;
 //    self.couponCode = nil;
+    
+    self.summary = nil;
     
     self.title = nil;
     self.imageUrl = nil;

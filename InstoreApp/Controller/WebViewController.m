@@ -42,6 +42,8 @@
     [self.myWebView loadRequest:request];
     
     self.hidesBottomBarWhenPushed = YES;
+    
+    NSLog(@"WebView_URL:%@",self.urlStr);
 }
 
 

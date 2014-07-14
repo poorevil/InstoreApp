@@ -25,6 +25,8 @@
 #import "GlobeModel.h"
 #import "UMSocial.h"
 
+#import "FirstViewController.h"
+
 static NSString* szClientId = @"2014040301";
 static NSString* szClientSecret = @"ea13692f9c960a37db0086ff87e56e01";
 
@@ -38,6 +40,10 @@ static NSString* szClientSecret = @"ea13692f9c960a37db0086ff87e56e01";
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
+    self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
+    self.window.backgroundColor = [UIColor whiteColor];
+    [self.window makeKeyAndVisible];
     
     // 友盟appKey
     [UMSocialData setAppKey:@"5385444a56240bdc070c0d4e"];
@@ -56,8 +62,18 @@ static NSString* szClientSecret = @"ea13692f9c960a37db0086ff87e56e01";
 //    self.myInitInterface.delegate = self;
 //    [self.myInitInterface getInitParam];
     
+    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"isFirst"];
     
-    [self initWindow];
+    BOOL isFirst = [[NSUserDefaults standardUserDefaults] boolForKey:@"isFirst"];
+    if (!isFirst) {
+        FirstViewController *vc = [[FirstViewController alloc]initWithNibName:@"FirstViewController" bundle:nil];
+        self.window.rootViewController = vc;
+        [vc release];
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isFirst"];
+    }else{
+        [self initWindow];
+    }
+    
     return YES;
 }
 
@@ -134,6 +150,8 @@ static NSString* szClientSecret = @"ea13692f9c960a37db0086ff87e56e01";
     self.window.backgroundColor = [UIColor whiteColor];
     self.window.rootViewController = self.tabBarController;
     [self.window makeKeyAndVisible];
+    
+//    return self.tabBarController;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

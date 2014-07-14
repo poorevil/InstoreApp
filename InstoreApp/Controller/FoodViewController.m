@@ -19,8 +19,15 @@
 
 #import "FoodViewPromotionInterface.h"
 
+#import "LunBoImageInterface.h"
+#import "GroupBuyDetailViewController.h"
+#import "CouponDetailViewController.h"
+#import "MallNewsDetailViewController.h"
+#import "WebViewController.h"
+#import "AppDelegate.h"
 
-@interface FoodViewController () <FoodViewInterfaceDelegate, FoodViewPromotionInterfaceDelegate>
+
+@interface FoodViewController () <FoodViewInterfaceDelegate, FoodViewPromotionInterfaceDelegate,LunBoImageInterfaceDelegate>
 @property (nonatomic,strong) CycleScrollView *lunboView;
 
 @property (nonatomic, retain) NSMutableArray *itemList;
@@ -37,6 +44,9 @@
 @property (nonatomic, assign) NSInteger promotion_currentPage;
 @property (nonatomic, assign) NSInteger promotion_totalCount;
 
+@property (retain, nonatomic) LunBoImageInterface *lunBoImageInterface;
+@property (retain, nonatomic) NSArray *itemLunBoImageList;
+
 @end
 
 @implementation FoodViewController
@@ -50,10 +60,17 @@
     self.itemList = [NSMutableArray array];
     self.itemCouponList = [NSMutableArray array];
     
-    [self initLunboView];
+//    self.itemLunBoImageList = [NSArray ar]
+    
+//    [self initLunboView];
     
     //TODO:111
     [self showTypeChanged:self.segmentedControl];
+    
+    self.lunBoImageInterface = [[[LunBoImageInterface alloc]init]autorelease];
+    self.lunBoImageInterface.delegate = self;
+    [self.lunBoImageInterface getLunBoImageListWithPos:2];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -74,20 +91,104 @@
     self.foodViewInterface.delegate = nil;
     self.foodViewInterface = nil;
     
+    self.lunBoImageInterface = nil;
+    self.itemLunBoImageList = nil;
+    
     [super dealloc];
 }
 
 #pragma mark - private method
+//-(void)initLunboView
+//{
+//    NSArray *imageFileName = @[@"banner_1.jpg",@"banner_2.jpg",@"banner_3.jpg",@"banner_4.jpg",@"banner_5.jpg"];
+//    NSMutableArray *viewsArray = [NSMutableArray array];
+//    for (int i = 0; i < imageFileName.count; ++i) {
+//        UIImageView *imageView = [[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 100)] autorelease];
+//        imageView.image = [UIImage imageNamed:[imageFileName objectAtIndex:i]];
+//        imageView.contentMode = UIViewContentModeScaleAspectFill;
+//        imageView.clipsToBounds = YES;
+//        [viewsArray addObject:imageView];
+//    }
+//    
+//    self.lunboView = [[[CycleScrollView alloc] initWithFrame:CGRectMake(0, 0, 320, 100)
+//                                           animationDuration:5] autorelease];
+//    self.lunboView.fetchContentViewAtIndex = ^UIView *(NSInteger pageIndex){
+//        return viewsArray[pageIndex];
+//    };
+//    self.lunboView.totalPagesCount = ^NSInteger(void){
+//        return imageFileName.count;
+//    };
+//    self.lunboView.TapActionBlock = ^(NSInteger pageIndex){
+//        NSLog(@"点击了第%d个",pageIndex);
+//    };
+//    
+//    self.headerView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 152)] autorelease];
+//    [self.headerView addSubview:self.lunboView];
+//    
+//    self.segmentedControl = [[[UISegmentedControl alloc] initWithItems:@[@"餐厅",@"优惠"]] autorelease];
+//    self.segmentedControl.frame = CGRectMake(65,
+//                                             112,
+//                                             190,
+//                                             29);
+//    self.segmentedControl.segmentedControlStyle = UISegmentedControlStyleBar;
+//    self.segmentedControl.selectedSegmentIndex = 0;
+//    self.segmentedControl.tintColor = [UIColor colorWithRed:229/255.0f
+//                                                       green:63/255.0f
+//                                                        blue:17/255.0f
+//                                                       alpha:1];
+//    [self.segmentedControl addTarget:self
+//                              action:@selector(showTypeChanged:)
+//                    forControlEvents:UIControlEventValueChanged];
+//    
+//    [self.headerView addSubview:self.segmentedControl];
+//    
+//    self.mtableView.tableHeaderView = self.headerView;
+//    
+//}
 -(void)initLunboView
 {
-    NSArray *imageFileName = @[@"banner_1.jpg",@"banner_2.jpg",@"banner_3.jpg",@"banner_4.jpg",@"banner_5.jpg"];
+    //    NSArray *imageFileName = @[@"banner_1.jpg",@"banner_2.jpg",@"banner_3.jpg",@"banner_4.jpg",@"banner_5.jpg"];
+    //    NSMutableArray *viewsArray = [NSMutableArray array];
+    //    for (int i = 0; i < imageFileName.count; ++i) {
+    //        UIImageView *imageView = [[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 120)] autorelease];
+    //        imageView.image = [UIImage imageNamed:[imageFileName objectAtIndex:i]];
+    //        imageView.contentMode = UIViewContentModeScaleAspectFill;
+    //        imageView.clipsToBounds = YES;
+    //        imageView.tag = i +1000;
+    //        [viewsArray addObject:imageView];
+    //
+    //        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
+    //        [imageView addGestureRecognizer:tap];
+    //        [tap release];
+    //    }
+    //
+    //    self.lunboView = [[[CycleScrollView alloc] initWithFrame:CGRectMake(0, 0, 320, 120)
+    //                                          animationDuration:5] autorelease];
+    //    self.lunboView.fetchContentViewAtIndex = ^UIView *(NSInteger pageIndex){
+    //        return viewsArray[pageIndex];
+    //    };
+    //    self.lunboView.totalPagesCount = ^NSInteger(void){
+    //        return imageFileName.count;
+    //    };
+    //    self.lunboView.TapActionBlock = ^(NSInteger pageIndex){
+    //        NSLog(@"点击了第%d个",pageIndex);
+    //    };
+    //
+    //    self.mtableView.tableHeaderView = self.lunboView;
+    
+    
+    
     NSMutableArray *viewsArray = [NSMutableArray array];
-    for (int i = 0; i < imageFileName.count; ++i) {
-        UIImageView *imageView = [[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 100)] autorelease];
-        imageView.image = [UIImage imageNamed:[imageFileName objectAtIndex:i]];
-        imageView.contentMode = UIViewContentModeScaleAspectFill;
-        imageView.clipsToBounds = YES;
-        [viewsArray addObject:imageView];
+    if (self.itemLunBoImageList.count > 0) {
+        for (int i = 0 ; i < self.itemLunBoImageList.count; i++) {
+            CouponModel *couponModel = [self.itemLunBoImageList objectAtIndex:i];
+            
+            EGOImageView *egoImageView = [[[EGOImageView alloc]initWithFrame:CGRectMake(0, 0, 320, 100)]autorelease];
+            egoImageView.contentMode = UIViewContentModeScaleAspectFit;
+            egoImageView.imageURL = [NSURL URLWithString:couponModel.imageUrl];
+            
+            [viewsArray addObject:egoImageView];
+        }
     }
     
     self.lunboView = [[[CycleScrollView alloc] initWithFrame:CGRectMake(0, 0, 320, 100)
@@ -96,33 +197,96 @@
         return viewsArray[pageIndex];
     };
     self.lunboView.totalPagesCount = ^NSInteger(void){
-        return imageFileName.count;
+        return self.itemLunBoImageList.count;
     };
     self.lunboView.TapActionBlock = ^(NSInteger pageIndex){
         NSLog(@"点击了第%d个",pageIndex);
+        
+        AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+        UINavigationController *nav = (UINavigationController *)appDelegate.tabBarController.selectedViewController;
+        
+        
+        CouponModel *couponModel = [self.itemLunBoImageList objectAtIndex:pageIndex];
+        int itemType = couponModel.itemType;
+        switch (itemType) {
+            case 1:
+            {
+                [nav.navigationBar setBarTintColor:[UIColor colorWithRed:248.0f/255.0f green:40.0f/255.0f blue:53.0f/255.0f alpha:1]];
+                [nav.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
+                
+                int promotionType = couponModel.promotionType;
+                //优惠
+                switch (promotionType) {
+                    case 1:
+                    {
+                        //优惠活动
+                        WebViewController *webVC = [[WebViewController alloc]init];
+                        webVC.hidesBottomBarWhenPushed = YES;
+                        webVC.urlStr = couponModel.link;
+                        webVC.titleStr = @"优惠详情";
+                        [nav pushViewController:webVC animated:YES];
+                        [webVC release];
+                    }
+                        break;
+                    case 2:
+                    {
+                        //优惠券
+                        CouponDetailViewController *coupnDVC = [[CouponDetailViewController alloc]init];
+                        coupnDVC.couponModel = couponModel;
+                        coupnDVC.couponModel.cid = couponModel.itemId;
+                        coupnDVC.hidesBottomBarWhenPushed = YES;
+                        [nav pushViewController:coupnDVC animated:YES];
+                        [coupnDVC release];
+                    }
+                        break;
+                    case 3:
+                    {
+                        //团购
+                        GroupBuyDetailViewController *groupBuyDVC = [[GroupBuyDetailViewController alloc]init];
+                        groupBuyDVC.couponModel = couponModel;
+                        groupBuyDVC.couponModel.cid = couponModel.itemId;
+                        groupBuyDVC.hidesBottomBarWhenPushed = YES;
+                        [nav pushViewController:groupBuyDVC animated:YES];
+                        [groupBuyDVC release];
+                    }
+                        break;
+                        
+                    default:
+                        break;
+                }
+            }
+                break;
+            case 2:
+            {
+                //商户
+            }
+                break;
+            case 3:
+            {
+                //商品
+            }
+                break;
+            case 4:
+            {
+                //网页
+                
+                [nav.navigationBar setBarTintColor:[UIColor colorWithRed:248.0f/255.0f green:40.0f/255.0f blue:53.0f/255.0f alpha:1]];
+                [nav.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
+                
+                WebViewController *webVC = [[WebViewController alloc]init];
+                webVC.hidesBottomBarWhenPushed = YES;
+                webVC.urlStr = couponModel.link;
+                webVC.titleStr = @"优惠详情";
+                [nav pushViewController:webVC animated:YES];
+                [webVC release];
+            }
+                break;
+            default:
+                break;
+        }
     };
     
-    self.headerView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 152)] autorelease];
-    [self.headerView addSubview:self.lunboView];
-    
-    self.segmentedControl = [[[UISegmentedControl alloc] initWithItems:@[@"餐厅",@"优惠"]] autorelease];
-    self.segmentedControl.frame = CGRectMake(65,
-                                             112,
-                                             190,
-                                             29);
-    self.segmentedControl.segmentedControlStyle = UISegmentedControlStyleBar;
-    self.segmentedControl.selectedSegmentIndex = 0;
-    self.segmentedControl.tintColor = [UIColor colorWithRed:229/255.0f
-                                                       green:63/255.0f
-                                                        blue:17/255.0f
-                                                       alpha:1];
-    [self.segmentedControl addTarget:self
-                              action:@selector(showTypeChanged:)
-                    forControlEvents:UIControlEventValueChanged];
-    
-    [self.headerView addSubview:self.segmentedControl];
-    
-    self.mtableView.tableHeaderView = self.headerView;
+    self.mtableView.tableHeaderView = self.lunboView;
     
 }
 
@@ -226,6 +390,18 @@
 
 -(void)getFoodViewPromotionListDidFailed:(NSString *)errorMsg
 {
+    NSLog(@"%@",errorMsg);
+}
+
+#pragma mark - LunBoImageInterfaceDelegate
+-(void)getLunBoImageListDidFinished:(NSArray *)itemList totalCount:(NSInteger)totalCount{
+    self.itemLunBoImageList = itemList;
+    
+    [self initLunboView];
+    
+    [self.mtableView reloadData];
+}
+-(void)getLunBoImageListDidFailed:(NSString *)errorMsg{
     NSLog(@"%@",errorMsg);
 }
 

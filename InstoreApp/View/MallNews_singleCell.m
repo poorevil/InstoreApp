@@ -8,8 +8,8 @@
 
 #import "MallNews_singleCell.h"
 #import "NSDate+DynamicDateString.h"
-#import "MallNewsModel.h"
 #import "EGOImageView.h"
+#import "CouponModel.h"
 
 @implementation MallNews_singleCell
 
@@ -34,9 +34,9 @@
     
     NSString *dateStr = [self.dict objectForKey:@"date"];
     self.dateLabel.text = dateStr == nil?@"":[[NSDate dateFromString:dateStr] toDateString];
-    MallNewsModel *mnm = [[self.dict objectForKey:@"articles"] objectAtIndex:0];
+    CouponModel *mnm = [[self.dict objectForKey:@"articles"] objectAtIndex:0];
     self.titleLabel.text = mnm.title;
-    self.articleDateLabel.text = [mnm.date toDateString];
+    self.articleDateLabel.text = [mnm.endTime toDateString];
     self.summaryLabel.text = mnm.summary;
     self.articleImageView.imageURL = [NSURL URLWithString:mnm.imageUrl];
 }

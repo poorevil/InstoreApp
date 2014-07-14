@@ -9,7 +9,7 @@
 #import "MallNews_multiTableViewCell.h"
 #import "EGOImageView.h"
 #import "NSDate+DynamicDateString.h"
-#import "MallNewsModel.h"
+#import "CouponModel.h"
 
 
 @implementation MallNews_multiTableViewCell
@@ -36,7 +36,7 @@
     NSString *dateStr = [self.dict objectForKey:@"date"];
     self.dateLabel.text = dateStr == nil?@"":[[NSDate dateFromString:dateStr] toDateString];
     
-    MallNewsModel *mnm = [[self.dict objectForKey:@"articles"] objectAtIndex:0];
+    CouponModel *mnm = [[self.dict objectForKey:@"articles"] objectAtIndex:0];
     self.titleLabel_1.text = mnm.title;
     self.articleImageView_1.imageURL = [NSURL URLWithString:mnm.imageUrl];
     

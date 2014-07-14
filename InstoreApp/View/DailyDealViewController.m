@@ -8,7 +8,7 @@
 
 #import "DailyDealViewController.h"
 #import "DailyDealViewCell.h"
-#import "DailyDealModel.h"
+#import "CouponModel.h"
 #import "WebViewController.h"
 
 #import "GroupBuyDetailViewController.h"
@@ -75,22 +75,21 @@
                                               owner:self
                                             options:nil] objectAtIndex:0];
     }
-//    cell.textLabel.text = [NSString stringWithFormat:@"%d",indexPath.row];
-    DailyDealModel *dailyDealModel = [self.itemList objectAtIndex:indexPath.row];
-    cell.title.text = dailyDealModel.title;
-    cell.shortTitle.text = dailyDealModel.shortTitle;
-    cell.imgView.imageURL = [NSURL URLWithString:dailyDealModel.image];
-    cell.summary.text = dailyDealModel.summary;
-    cell.focusCount.text = [NSString stringWithFormat:@"%d",dailyDealModel.fousCount];
+    CouponModel *couponModel = [self.itemList objectAtIndex:indexPath.row];
+    cell.title.text = couponModel.title;
+    cell.shortTitle.text = couponModel.shortTitle;
+    cell.imgView.imageURL = [NSURL URLWithString:couponModel.imageUrl];
+    cell.summary.text = couponModel.summary;
+    cell.focusCount.text = [NSString stringWithFormat:@"%d",couponModel.focusCount];
     
     return cell;
 }
 
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    DailyDealModel *dailyDealModel = [self.itemList objectAtIndex:indexPath.row];
-    int itemType = dailyDealModel.itemType;
-    int promotionType = dailyDealModel.promotionType;
+    CouponModel *couponModel = [self.itemList objectAtIndex:indexPath.row];
+    int itemType = couponModel.itemType;
+    int promotionType = couponModel.promotionType;
     switch (itemType) {
         case 1:
         {
@@ -101,7 +100,7 @@
                     //优惠活动
                     WebViewController *webVC = [[WebViewController alloc]init];
                     webVC.hidesBottomBarWhenPushed = YES;
-                    webVC.urlStr = dailyDealModel.url;
+                    webVC.urlStr = couponModel.link;
                     webVC.titleStr = @"优惠详情";
                     [self.navigationController pushViewController:webVC animated:YES];
                     [webVC release];
@@ -111,6 +110,8 @@
                 {
                     //优惠券
                     CouponDetailViewController *coupnDVC = [[CouponDetailViewController alloc]init];
+                    coupnDVC.couponModel = couponModel;
+                    coupnDVC.couponModel.cid = couponModel.itemId;
                     coupnDVC.hidesBottomBarWhenPushed = YES;
                     [self.navigationController pushViewController:coupnDVC animated:YES];
                     [coupnDVC release];
@@ -120,6 +121,8 @@
                 {
                     //团购
                     GroupBuyDetailViewController *groupBuyDVC = [[GroupBuyDetailViewController alloc]init];
+                    groupBuyDVC.couponModel = couponModel;
+                    groupBuyDVC.couponModel.cid = couponModel.itemId;
                     groupBuyDVC.hidesBottomBarWhenPushed = YES;
                     [self.navigationController pushViewController:groupBuyDVC animated:YES];
                     [groupBuyDVC release];
@@ -146,8 +149,8 @@
             //网页
             WebViewController *webVC = [[WebViewController alloc]init];
             webVC.hidesBottomBarWhenPushed = YES;
-            webVC.urlStr = dailyDealModel.url;
-            webVC.titleStr = dailyDealModel.title;
+            webVC.urlStr = couponModel.link;
+            webVC.titleStr = @"优惠详情";
             [self.navigationController pushViewController:webVC animated:YES];
             [webVC release];
         }

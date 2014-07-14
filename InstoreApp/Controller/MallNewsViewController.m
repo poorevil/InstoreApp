@@ -7,7 +7,8 @@
 //
 
 #import "MallNewsViewController.h"
-#import "MallNewsModel.h"
+//#import "MallNewsModel.h"
+#import "CouponModel.h"
 #import "MallNewsInterface.h"
 #import "MallNews_singleCell.h"
 #import "MallNews_multiTableViewCell.h"
@@ -111,10 +112,11 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     NSDictionary *dict = [self.itemList objectAtIndex:indexPath.row];
-    MallNewsModel *mnm = [[dict objectForKey:@"articles"] objectAtIndex:0];
+//    MallNewsModel *mnm = [[dict objectForKey:@"articles"] objectAtIndex:0];
+    CouponModel *couponModel = [[dict objectForKey:@"articles"] objectAtIndex:0];
     WebViewController *webVC = [[WebViewController alloc]init];
     webVC.hidesBottomBarWhenPushed = YES;
-    webVC.urlStr = mnm.url;
+    webVC.urlStr = couponModel.link;
     [self.navigationController pushViewController:webVC animated:YES];
     [webVC release];
 }

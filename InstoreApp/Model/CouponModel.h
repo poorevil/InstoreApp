@@ -15,7 +15,11 @@
 @property (nonatomic, retain) NSString *imageUrl;
 @property (nonatomic, assign) NSInteger itemType;//对象类型 固定为1 代表优惠
 @property (nonatomic, assign) NSInteger cid;//itemId对象id
+@property (assign, nonatomic) NSInteger itemId;   //轮播图需要
 @property (nonatomic, assign) NSInteger promotionType;//优惠类型 (1, '优惠活动'), (2, '优惠券'), (3, '团购')
+
+@property (nonatomic, retain) NSString *summary;  //摘要，每日优惠、商场活动用到
+
 @property (nonatomic, retain) NSString *oldPrice;//原价
 @property (nonatomic, retain) NSString *price;//现价
 

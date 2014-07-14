@@ -8,7 +8,7 @@
 
 #import "MallNewsInterface.h"
 #import "JSONKit.h"
-#import "MallNewsModel.h"
+#import "CouponModel.h"
 
 @implementation MallNewsInterface
 
@@ -48,8 +48,10 @@
                     NSMutableArray *articles = [NSMutableArray array];
                     [newsListItem setObject:articles forKey:@"articles"];
                     for (NSDictionary *newsDict in [newsList objectForKey:@"articles"]) {
-                        MallNewsModel *mallNewsModel = [[[MallNewsModel alloc] initWithJsonMap:newsDict] autorelease];
-                        [articles addObject:mallNewsModel];
+                        CouponModel *couponModel = [[CouponModel alloc]initWithJsonMap:newsDict];
+                        [articles addObject:couponModel];
+                        [couponModel release];
+                        
                     }
                 }
             }
