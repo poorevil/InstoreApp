@@ -22,6 +22,8 @@
 #import "CategoryModel.h"
 #import "FloorModel.h"
 
+#import "StoreListFocusedViewController.h"
+
 @interface StoreListViewController () <UITableViewDataSource, UITableViewDelegate,
 StoreInterfaceDelegate,FloorSelectViewControllerDelegate,YouhuiCategoryViewControllerDelegate,
 YouHuiOrderViewControllerDelegate>
@@ -151,6 +153,10 @@ YouHuiOrderViewControllerDelegate>
                                      action:@selector(btnOrderAction:)
                            forControlEvents:UIControlEventTouchUpInside];
         
+        [self.headerView.favorBtn addTarget:self
+                                     action:@selector(favorBtnAction:)
+                           forControlEvents:UIControlEventTouchUpInside];
+        
         [self.headerView.segmentControl setSelectedSegmentIndex:0];
     }
 }
@@ -211,6 +217,15 @@ YouHuiOrderViewControllerDelegate>
     [self.navigationController pushViewController:vc animated:YES];
     vc.hidesBottomBarWhenPushed = NO;
     [vc release];
+}
+
+-(void)favorBtnAction:(UIButton *)sender
+{
+    StoreListFocusedViewController *vc = [[StoreListFocusedViewController alloc] initWithNibName:@"StoreListFocusedViewController" bundle:nil];
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vc animated:YES];
+    
+    vc.hidesBottomBarWhenPushed = NO;
 }
 
 #pragma mark - UITableViewDataSource
