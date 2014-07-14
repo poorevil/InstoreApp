@@ -104,7 +104,14 @@ YouHuiOrderViewControllerDelegate>
     
     self.storeInterface = [[StoreInterface alloc] init];
     self.storeInterface.delegate = self;
-    [self.storeInterface getStoreListByAmount:20 page:page category:category];
+    
+    [self.storeInterface getStoreListByFloorId:self.filterFloorModel.fid
+                                           cid:self.filterCategory.cid
+                                    buildingId:self.filterFloorModel.buildingId
+                                         order:self.filterOrder
+                                      category:category
+                                        amount:20
+                                          page:page];
 }
 
 - (void)didReceiveMemoryWarning
@@ -360,7 +367,12 @@ YouHuiOrderViewControllerDelegate>
         [self.headerView.floorBtn setTitle:@"楼层 " forState:UIControlStateNormal];
     }
     
-//TODO:    [self refreshDate];
+    [self.goodsItemList removeAllObjects];
+    self.goodsTotalCount = 0;
+    self.goodsCurrentPage = 1;
+    [self.mtableView reloadData];
+    
+    [self loadItemList];
 }
 
 #pragma mark - YouhuiCategoryViewControllerDelegate
@@ -374,7 +386,11 @@ YouHuiOrderViewControllerDelegate>
         [self.headerView.categoryBtn setTitle:@"分类 " forState:UIControlStateNormal];
     }
     
-//TODO:    [self refreshDate];
+    [self.goodsItemList removeAllObjects];
+    self.goodsTotalCount = 0;
+    self.goodsCurrentPage = 1;
+    [self.mtableView reloadData];
+    [self loadItemList];
 }
 
 #pragma mark - @protocol YouHuiOrderViewControllerDelegate
@@ -406,7 +422,11 @@ YouHuiOrderViewControllerDelegate>
             break;
     }
     
-    //TODO:    [self refreshDate];
+    [self.goodsItemList removeAllObjects];
+    self.goodsTotalCount = 0;
+    self.goodsCurrentPage = 1;
+    [self.mtableView reloadData];
+    [self loadItemList];
 }
 
 @end

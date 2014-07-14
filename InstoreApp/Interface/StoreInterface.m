@@ -34,12 +34,19 @@
                         page:(NSInteger)page
 {
     self.interfaceUrl = [NSString stringWithFormat:@"%@api/%@/store",BASE_INTERFACE_DOMAIN, MALL_CODE];
-    self.args = @{@"floorId":[NSString stringWithFormat:@"%d",fid],
+    NSMutableDictionary *requestArgs = [NSMutableDictionary dictionaryWithDictionary:@{@"floorId":[NSString stringWithFormat:@"%d",fid],
                   @"cid":[NSString stringWithFormat:@"%d",cid],
                   @"buildingId": [NSString stringWithFormat:@"%d",bid],
-                  @"order":order,
                   @"page":[NSString stringWithFormat:@"%d",page],
-                  @"amount":[NSString stringWithFormat:@"%d",amount]};
+                  @"amount":[NSString stringWithFormat:@"%d",amount]}];
+    if (order) {
+        [requestArgs setObject:order forKey:@"order"];
+    }
+    if (category) {
+        [requestArgs setObject:category forKey:@"category"];
+    }
+    
+    self.args = requestArgs;
     self.baseDelegate = self;
     self.category = category;
     [self connect];
