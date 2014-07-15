@@ -174,6 +174,11 @@
 		03650F8E1945FC9400016289 /* nav_scan_qrcode@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03650F8A1945FC9400016289 /* nav_scan_qrcode@2x.png */; };
 		03650F8F1945FC9400016289 /* nav_search_press@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03650F8B1945FC9400016289 /* nav_search_press@2x.png */; };
 		03650F901945FC9400016289 /* nav_search@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03650F8C1945FC9400016289 /* nav_search@2x.png */; };
+		0373FA441974271000A1CF68 /* StoreListFocusedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0373FA421974271000A1CF68 /* StoreListFocusedViewController.m */; };
+		0373FA451974271000A1CF68 /* StoreListFocusedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0373FA431974271000A1CF68 /* StoreListFocusedViewController.xib */; };
+		0373FA4A19742C7D00A1CF68 /* StoreListFocused_headerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0373FA4919742C7D00A1CF68 /* StoreListFocused_headerView.m */; };
+		0373FA4C19742C8A00A1CF68 /* StoreListFocused_headerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0373FA4B19742C8A00A1CF68 /* StoreListFocused_headerView.xib */; };
+		0373FA4F197433CB00A1CF68 /* FocusedStoreListInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 0373FA4E197433CB00A1CF68 /* FocusedStoreListInterface.m */; };
 		03C6592A1928985D009CADA6 /* SearchResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C659291928985D009CADA6 /* SearchResultViewController.m */; };
 		04196A261962D2B30037C046 /* DailyDealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04196A241962D2B30037C046 /* DailyDealViewController.m */; };
 		04196A271962D2B30037C046 /* DailyDealViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04196A251962D2B30037C046 /* DailyDealViewController.xib */; };
@@ -984,6 +989,14 @@
 		03650F8A1945FC9400016289 /* nav_scan_qrcode@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav_scan_qrcode@2x.png"; sourceTree = "<group>"; };
 		03650F8B1945FC9400016289 /* nav_search_press@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav_search_press@2x.png"; sourceTree = "<group>"; };
 		03650F8C1945FC9400016289 /* nav_search@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav_search@2x.png"; sourceTree = "<group>"; };
+		0373FA411974271000A1CF68 /* StoreListFocusedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreListFocusedViewController.h; sourceTree = "<group>"; };
+		0373FA421974271000A1CF68 /* StoreListFocusedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreListFocusedViewController.m; sourceTree = "<group>"; };
+		0373FA431974271000A1CF68 /* StoreListFocusedViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StoreListFocusedViewController.xib; sourceTree = "<group>"; };
+		0373FA4819742C7D00A1CF68 /* StoreListFocused_headerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreListFocused_headerView.h; sourceTree = "<group>"; };
+		0373FA4919742C7D00A1CF68 /* StoreListFocused_headerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreListFocused_headerView.m; sourceTree = "<group>"; };
+		0373FA4B19742C8A00A1CF68 /* StoreListFocused_headerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StoreListFocused_headerView.xib; sourceTree = "<group>"; };
+		0373FA4D197433CB00A1CF68 /* FocusedStoreListInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FocusedStoreListInterface.h; sourceTree = "<group>"; };
+		0373FA4E197433CB00A1CF68 /* FocusedStoreListInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FocusedStoreListInterface.m; sourceTree = "<group>"; };
 		03C659281928985D009CADA6 /* SearchResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultViewController.h; sourceTree = "<group>"; };
 		03C659291928985D009CADA6 /* SearchResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultViewController.m; sourceTree = "<group>"; };
 		04196A231962D2B30037C046 /* DailyDealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DailyDealViewController.h; path = ../View/DailyDealViewController.h; sourceTree = "<group>"; };
@@ -2066,6 +2079,8 @@
 				04FBB836196E916200A46F9C /* SetStoreFocusRecommend.m */,
 				04B694F9197370EB00012D35 /* LunBoImageInterface.h */,
 				04B694FA197370EB00012D35 /* LunBoImageInterface.m */,
+				0373FA4D197433CB00A1CF68 /* FocusedStoreListInterface.h */,
+				0373FA4E197433CB00A1CF68 /* FocusedStoreListInterface.m */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
@@ -2296,6 +2311,16 @@
 				03650F671945F35F00016289 /* nav_icon@2x.png */,
 			);
 			path = img_new;
+			sourceTree = "<group>";
+		};
+		0373FA4719742C4400A1CF68 /* StoreListFocusedCell */ = {
+			isa = PBXGroup;
+			children = (
+				0373FA4819742C7D00A1CF68 /* StoreListFocused_headerView.h */,
+				0373FA4919742C7D00A1CF68 /* StoreListFocused_headerView.m */,
+				0373FA4B19742C8A00A1CF68 /* StoreListFocused_headerView.xib */,
+			);
+			name = StoreListFocusedCell;
 			sourceTree = "<group>";
 		};
 		04196A211962D2750037C046 /* DailyDealViewCell */ = {
@@ -2583,6 +2608,9 @@
 				035214C6195894C500F92B55 /* StoreListViewController.h */,
 				035214C7195894C500F92B55 /* StoreListViewController.m */,
 				035214C8195894C500F92B55 /* StoreListViewController.xib */,
+				0373FA411974271000A1CF68 /* StoreListFocusedViewController.h */,
+				0373FA421974271000A1CF68 /* StoreListFocusedViewController.m */,
+				0373FA431974271000A1CF68 /* StoreListFocusedViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -2590,6 +2618,7 @@
 		4E2C6DCF18D7523D00DF3772 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				0373FA4719742C4400A1CF68 /* StoreListFocusedCell */,
 				03573B871908028000A11A33 /* MainViewCell */,
 				035214EC195C790C00F92B55 /* MallNewsCell */,
 				04196A211962D2750037C046 /* DailyDealViewCell */,
@@ -3435,6 +3464,7 @@
 				C1009E86192C5CBF00A4CC79 /* Icon_114.png in Resources */,
 				FA4E65E519357B21005022E2 /* UMSocialYXSessionData.html in Resources */,
 				4ECBF74918F593A0003963E1 /* ShopDetailCommentsCell.xib in Resources */,
+				0373FA4C19742C8A00A1CF68 /* StoreListFocused_headerView.xib in Resources */,
 				4ECBF73A18F4B9A4003963E1 /* tmpimg6.jpg in Resources */,
 				0357FF73194DE17C0071BD5A /* toolbar_coupon_icon@2x.png in Resources */,
 				0357FF74194DE17C0071BD5A /* toolbar_food_icon_press@2x.png in Resources */,
@@ -3756,6 +3786,7 @@
 				03573ACA19055C7500A11A33 /* SVProgressHUD.bundle in Resources */,
 				4E2C6DF718D75CD600DF3772 /* YouhuiViewController.xib in Resources */,
 				4E9608D018E9C55600418798 /* MainViewMiaoShaCell.xib in Resources */,
+				0373FA451974271000A1CF68 /* StoreListFocusedViewController.xib in Resources */,
 				0357FF80194F3EB90071BD5A /* FoodViewController.xib in Resources */,
 				4E2C6E0C18D761F900DF3772 /* tmp1.png in Resources */,
 				04EF120D196415BE0066C902 /* bankcard_cell_img1.png in Resources */,
@@ -3816,6 +3847,7 @@
 				C1E094F3194A9FF900AA814B /* UILabelStrikeThrough.m in Sources */,
 				03573B861906DA4600A11A33 /* BaseInterface.m in Sources */,
 				0433EA53196A4A9F003AB8FD /* MallNewsDetailViewController.m in Sources */,
+				0373FA441974271000A1CF68 /* StoreListFocusedViewController.m in Sources */,
 				035214EA195C788B00F92B55 /* MallNewsViewController.m in Sources */,
 				03573B6E190578FC00A11A33 /* CityListViewController.m in Sources */,
 				C1953211191CB68F00D3BFA8 /* UserInfoInterface.m in Sources */,
@@ -3906,6 +3938,7 @@
 				C1A9C87B193F130300DD420F /* NIOperations.m in Sources */,
 				035214B51958750F00F92B55 /* StoreDetail_detailCell.m in Sources */,
 				C1A9C877193F130300DD420F /* NINavigationAppearance.m in Sources */,
+				0373FA4A19742C7D00A1CF68 /* StoreListFocused_headerView.m in Sources */,
 				03573B7F1906D05700A11A33 /* FloorSelectViewController.m in Sources */,
 				0491F0FF196A564C00E7DC5A /* MallNewsDetail_oneCell.m in Sources */,
 				0357FF56194D8C6F0071BD5A /* GroupBuyDetailCardCell.m in Sources */,
@@ -3931,6 +3964,7 @@
 				03650F651945562700016289 /* MainViewInterface.m in Sources */,
 				0357FF9819533DC30071BD5A /* FoodViewPromotionInterface.m in Sources */,
 				0491F114196A81B800E7DC5A /* MallNewsDetail_fourCell.m in Sources */,
+				0373FA4F197433CB00A1CF68 /* FocusedStoreListInterface.m in Sources */,
 				C195320B191B6D5000D3BFA8 /* EGOImageButton.m in Sources */,
 				0357FF2E1949EB4A0071BD5A /* CouponView_titleCell.m in Sources */,
 				C1A9C8BB194164C600DD420F /* ASIFormDataRequest.m in Sources */,
