@@ -68,10 +68,10 @@
                             self.frame.size.width,
                             self.frame.size.height + diff);
     
-    if ([self.delegate isMemberOfClass:[StoreDetail_RestaurantViewController class]]) {
+//    if ([self.delegate isMemberOfClass:[StoreDetail_RestaurantViewController class]]) {
 //        self.delegate.detailCellHeight = self.frame.size.height;
 //        [self.delegate.mtableView reloadData];
-    }
+//    }
 }
 
 @end

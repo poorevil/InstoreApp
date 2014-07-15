@@ -58,7 +58,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    [self initNavigationView];
+//    [self initNavigationView];
 //    [self initLunboView];
     self.mtableView.scrollsToTop = YES;
     
@@ -70,6 +70,8 @@
     self.lunBoImageInterface = [[[LunBoImageInterface alloc]init] autorelease];
     self.lunBoImageInterface.delegate = self;
     [self.lunBoImageInterface getLunBoImageListWithPos:1];
+    
+    self.navigationController.navigationBarHidden = YES;
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -85,24 +87,24 @@
 #pragma mark - private method
 -(void)initNavigationView
 {
-    //扫描二维码btn
-    UIButton *scanBtn = [UIButton buttonWithType:UIButtonTypeSystem];
-    scanBtn.frame = CGRectMake(0, 0, 34, 34);
-    UIImage *image = [[UIImage imageNamed:@"nav_scan_qrcode"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    [scanBtn setImage:image forState:UIControlStateNormal];
-    [scanBtn addTarget:self action:@selector(scanQRCode) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *scanBarBtn = [[[UIBarButtonItem alloc] initWithCustomView:scanBtn] autorelease];
+//    //扫描二维码btn
+//    UIButton *scanBtn = [UIButton buttonWithType:UIButtonTypeSystem];
+//    scanBtn.frame = CGRectMake(0, 0, 34, 34);
+//    UIImage *image = [[UIImage imageNamed:@"nav_scan_qrcode"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+//    [scanBtn setImage:image forState:UIControlStateNormal];
+//    [scanBtn addTarget:self action:@selector(scanQRCode) forControlEvents:UIControlEventTouchUpInside];
+//    UIBarButtonItem *scanBarBtn = [[[UIBarButtonItem alloc] initWithCustomView:scanBtn] autorelease];
     
-    //查询按钮
-    UIButton *searchBtn = [UIButton buttonWithType:UIButtonTypeSystem];
-    searchBtn.frame = CGRectMake(0, 0, 34, 34);
-    [searchBtn setImage:[[UIImage imageNamed:@"nav_search"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]
-               forState:UIControlStateNormal];
-    [searchBtn addTarget:self action:@selector(showSearchView)
-        forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *searchBarBtn = [[[UIBarButtonItem alloc] initWithCustomView:searchBtn] autorelease];
-    
-    self.navigationItem.rightBarButtonItems = @[scanBarBtn, searchBarBtn];
+//    //查询按钮
+//    UIButton *searchBtn = [UIButton buttonWithType:UIButtonTypeSystem];
+//    searchBtn.frame = CGRectMake(0, 0, 34, 34);
+//    [searchBtn setImage:[[UIImage imageNamed:@"nav_search"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]
+//               forState:UIControlStateNormal];
+//    [searchBtn addTarget:self action:@selector(showSearchView)
+//        forControlEvents:UIControlEventTouchUpInside];
+//    UIBarButtonItem *searchBarBtn = [[[UIBarButtonItem alloc] initWithCustomView:searchBtn] autorelease];
+//    
+//    self.navigationItem.rightBarButtonItems = @[scanBarBtn, searchBarBtn];
 
     
     //navigation titleview
