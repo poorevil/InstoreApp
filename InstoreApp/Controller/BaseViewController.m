@@ -72,7 +72,7 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void)showSearchView
+-(void)showSearchView;
 {
     SearchViewController *searchVC = [[[SearchViewController alloc] initWithNibName:@"SearchViewController" bundle:nil] autorelease];
     UINavigationController *nav = [[[UINavigationController alloc] initWithRootViewController:searchVC] autorelease];

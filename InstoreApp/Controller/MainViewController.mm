@@ -30,6 +30,7 @@
 #import "CouponDetailViewController.h"
 #import "MallNewsDetailViewController.h"
 #import "AppDelegate.h"
+#import "SearchViewController.h"
 
 @interface MainViewController () <ZXingDelegate, MainViewInterfaceDelegate,LunBoImageInterfaceDelegate>
 @property (nonatomic,strong) CycleScrollView *lunboView;
@@ -107,24 +108,24 @@
 //    self.navigationItem.rightBarButtonItems = @[scanBarBtn, searchBarBtn];
 
     
-    //navigation titleview
-    UIView *titleView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 130, 44)] autorelease];
-    
-    UIImageView *iconImageView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"nav_icon"]] autorelease];
-    iconImageView.frame = CGRectMake(0, 4, 36, 36);
-    [titleView addSubview:iconImageView];
-    
-    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(44, 2, 100, 40)];
-    titleLabel.textColor = [UIColor colorWithRed:248.0f/255.0f
-                                           green:40.0f/255.0f
-                                            blue:53.0f/255.0f
-                                           alpha:1];
-    titleLabel.font = [UIFont systemFontOfSize:18];
-    titleLabel.textAlignment = NSTextAlignmentLeft;
-    titleLabel.text = @"智慧商场";
-    [titleView addSubview:titleLabel];
-    
-    self.navigationItem.titleView = titleView;
+//    //navigation titleview
+//    UIView *titleView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 130, 44)] autorelease];
+//    
+//    UIImageView *iconImageView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"nav_icon"]] autorelease];
+//    iconImageView.frame = CGRectMake(0, 4, 36, 36);
+//    [titleView addSubview:iconImageView];
+//    
+//    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(44, 2, 100, 40)];
+//    titleLabel.textColor = [UIColor colorWithRed:248.0f/255.0f
+//                                           green:40.0f/255.0f
+//                                            blue:53.0f/255.0f
+//                                           alpha:1];
+//    titleLabel.font = [UIFont systemFontOfSize:18];
+//    titleLabel.textAlignment = NSTextAlignmentLeft;
+//    titleLabel.text = @"智慧商场";
+//    [titleView addSubview:titleLabel];
+//    
+//    self.navigationItem.titleView = titleView;
 }
 
 -(void)initLunboView
@@ -281,7 +282,7 @@
 //    [self.navigationController pushViewController:photoViewController animated:NO];
 }
 
--(void)scanQRCode
+-(IBAction)scanQRCode:(id)sender
 {
     //二维码
     ZXingWidgetController *widController = [[ZXingWidgetController alloc] initWithDelegate:self showCancel:YES OneDMode:NO];
@@ -294,7 +295,14 @@
     [self presentViewController:widController animated:YES completion:nil];
     [widController release];
 }
-
+-(IBAction)showSearchView:(id)sender;
+{
+    SearchViewController *searchVC = [[[SearchViewController alloc] initWithNibName:@"SearchViewController" bundle:nil] autorelease];
+    UINavigationController *nav = [[[UINavigationController alloc] initWithRootViewController:searchVC] autorelease];
+    [self presentViewController:nav
+                       animated:NO
+                     completion:nil];
+}
 
 #pragma mark - UITableViewDataSource<NSObject>
 

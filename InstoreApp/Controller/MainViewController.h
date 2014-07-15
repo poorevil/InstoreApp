@@ -13,4 +13,7 @@
 
 @property (strong,nonatomic) IBOutlet UITableView *mtableView;
 
+-(IBAction)showSearchView:(id)sender;
+-(IBAction)scanQRCode:(id)sender;
+
 @end

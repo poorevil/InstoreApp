@@ -9,6 +9,7 @@
 #import "SearchInterface.h"
 #import "JSONKit.h"
 #import "CouponModel.h"
+#import "StoreModel.h"
 
 @implementation SearchInterface
 
@@ -29,64 +30,45 @@
 }
 
 #pragma mark - BaseInterfaceDelegate
-//{
-//    
-//    "coupons": [
-//                {
-//                    store:                         // 优惠对应的商户信息
-//                        {
-//                        title: '商户名称',
-//                        logo: '商户LOGO',
-//                            id: '商户ID',               // **int**
-//                        category: {
-//                            id: '商户类型ID',        // **int**
-//                        name: '商户类型名称'
-//                        }
-//                        },
-//                        id: '优惠ID',                  // **int**
-//                        title: '优惠标题',
-//                        type: '优惠类型',              // **int** 1: 优惠活动; 2: 优惠券; 3: 团购;
-//                        hotTag: '优惠HOT标签',
-//                        isFocus: '是否已关注',         // **boolean** true: 已关注; false: 未关注
-//                        image: '优惠图',
-//                        pixelWith: '图片宽',            // **int**
-//                        pixelHeight: '图片高',          // **int**
-//                        collectCount: '下载数',        // **int**
-//                        commentCount: '评论数',        // **int**
-//                        focusCount: '关注数',          // **int**
-//                        startTime: '开始时间',
-//                        endTime: '结束时间'
-//                },
-//                ...
-//                ],
-//    "totalCount": 3,
-//    "currentPage": 1
-//
-//}
+
 -(void)parseResult:(ASIHTTPRequest *)request{
     NSString *jsonStr = [[[NSString alloc] initWithData:[request responseData]
                                                encoding:NSUTF8StringEncoding] autorelease];
     id jsonObj = [jsonStr objectFromJSONString];
     
     if (jsonObj) {
-        NSMutableArray *resultList = [NSMutableArray array];
-        NSInteger totalCount = 0;
+        NSMutableDictionary *resultDict = [NSMutableDictionary dictionary];
+//        NSMutableArray *resultList = [NSMutableArray array];
+        NSInteger totalCount = [[jsonObj objectForKey:@"totalCount"] integerValue];
         NSInteger currentPage = 0;
-        if (jsonObj && [[jsonObj objectForKey:@"totalCount"] integerValue] > 0) {
+        if (totalCount > 0) {
             totalCount = [[jsonObj objectForKey:@"totalCount"] integerValue];
             currentPage = [[jsonObj objectForKey:@"currentPage"] integerValue];
             
-            NSArray *couponsArray = [jsonObj objectForKey:@"coupons"];
+            NSMutableArray *couponResult = [NSMutableArray array];
+            NSArray *couponsArray = [jsonObj objectForKey:@"list"];
             if (couponsArray) {
                 for (NSDictionary *couponDict in couponsArray) {
                     CouponModel *coupon = [[[CouponModel alloc] initWithJsonMap:couponDict] autorelease];
-                    [resultList addObject:coupon];
+                    [couponResult addObject:coupon];
                 }
             }
+            
+            NSMutableArray *storeResult = [NSMutableArray array];
+            NSArray *storeList = [jsonObj objectForKey:@"store_list"];
+            if (storeList) {
+                for (NSDictionary *storeDict in storeList) {
+                    StoreModel *storeModel = [[StoreModel alloc]initWithJsonMap:storeDict];
+                    [storeResult addObject:storeModel];
+                    [storeModel release];
+                }
+            }
+            [resultDict setObject:couponResult forKey:@"couponList"];
+            [resultDict setObject:storeResult forKey:@"storeList"];
         }
         
         if ([self.delegate respondsToSelector:@selector(searchDidFinished:totalAmount:currentPage:)]) {
-            [self.delegate searchDidFinished:resultList
+            [self.delegate searchDidFinished:resultDict
                                  totalAmount:totalCount
                                  currentPage:currentPage];
         }

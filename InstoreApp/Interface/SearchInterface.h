@@ -10,7 +10,7 @@
 
 @protocol SearchInterfaceDelegate <NSObject>
 
--(void)searchDidFinished:(NSArray*)result totalAmount:(NSInteger)totalAmount currentPage:(NSInteger)currentPage;
+-(void)searchDidFinished:(NSDictionary *)result totalAmount:(NSInteger)totalAmount currentPage:(NSInteger)currentPage;
 -(void)searchDidFailed:(NSString*)errorMessage;
 
 @end

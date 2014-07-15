@@ -10,6 +10,7 @@
 #import "YouhuiTileView.h"
 #import "SearchInterface.h"
 #import "CouponModel.h"
+#import "StoreModel.h"
 
 @interface SearchResultViewController () <UISearchBarDelegate,SearchInterfaceDelegate,UIScrollViewDelegate>
 
@@ -17,6 +18,8 @@
 
 @property (nonatomic,strong) SearchInterface *searchInterface;
 @property (nonatomic,assign) NSInteger currentPage;
+
+@property (retain, nonatomic) NSArray *storeList;
 
 @end
 
@@ -38,10 +41,13 @@
     
     [self initViews];
     
-    if(!self.collectionView.pullTableIsRefreshing) {
-        self.collectionView.pullTableIsRefreshing = YES;
-        [self performSelector:@selector(refreshTable) withObject:nil afterDelay:0];
-    }
+    self.searchInterface = [[[SearchInterface alloc] init] autorelease];
+    self.searchInterface.delegate = self;
+    
+//    if(!self.collectionView.pullTableIsRefreshing) {
+//        self.collectionView.pullTableIsRefreshing = YES;
+//        [self performSelector:@selector(refreshTable) withObject:nil afterDelay:0];
+//    }
 }
 
 -(void)initViews
@@ -71,30 +77,30 @@
     self.currentPage = 1;
     self.title = @"我的优惠劵";
     
-    self.collectionView = [[[PullPsCollectionView alloc] initWithFrame:CGRectMake(0,
-                                                                                 self.navigationController.navigationBar.frame.size.height+self.navigationController.navigationBar.frame.origin.y,
-                                                                                  self.view.frame.size.width,
-                                                                                  self.view.frame.size.height-(self.navigationController.navigationBar.frame.size.height+self.navigationController.navigationBar.frame.origin.y))] autorelease];
-    [self.view addSubview:self.collectionView];
-    self.collectionView.collectionViewDelegate = self;
-    self.collectionView.collectionViewDataSource = self;
-    self.collectionView.pullDelegate=self;
-    self.collectionView.backgroundColor = [UIColor clearColor];
-    self.collectionView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    
-    self.collectionView.numColsPortrait = 2;
-    self.collectionView.numColsLandscape = 3;
-    
-    self.collectionView.pullArrowImage = [UIImage imageNamed:@"blackArrow"];
-    self.collectionView.pullBackgroundColor = [UIColor whiteColor];
-    self.collectionView.pullTextColor = [UIColor blackColor];
-    
-    UILabel *loadingLabel = [[[UILabel alloc] initWithFrame:self.collectionView.bounds] autorelease];
-    loadingLabel.text = @"Loading...";
-    loadingLabel.textAlignment = NSTextAlignmentCenter;
-    self.collectionView.loadingView = loadingLabel;
-    
-    self.collectionView.delegate = self;
+//    self.collectionView = [[[PullPsCollectionView alloc] initWithFrame:CGRectMake(0,
+//                                                                                 self.navigationController.navigationBar.frame.size.height+self.navigationController.navigationBar.frame.origin.y,
+//                                                                                  self.view.frame.size.width,
+//                                                                                  self.view.frame.size.height-(self.navigationController.navigationBar.frame.size.height+self.navigationController.navigationBar.frame.origin.y))] autorelease];
+//    [self.view addSubview:self.collectionView];
+//    self.collectionView.collectionViewDelegate = self;
+//    self.collectionView.collectionViewDataSource = self;
+//    self.collectionView.pullDelegate=self;
+//    self.collectionView.backgroundColor = [UIColor clearColor];
+//    self.collectionView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+//    
+//    self.collectionView.numColsPortrait = 2;
+//    self.collectionView.numColsLandscape = 3;
+//    
+//    self.collectionView.pullArrowImage = [UIImage imageNamed:@"blackArrow"];
+//    self.collectionView.pullBackgroundColor = [UIColor whiteColor];
+//    self.collectionView.pullTextColor = [UIColor blackColor];
+//    
+//    UILabel *loadingLabel = [[[UILabel alloc] initWithFrame:self.collectionView.bounds] autorelease];
+//    loadingLabel.text = @"Loading...";
+//    loadingLabel.textAlignment = NSTextAlignmentCenter;
+//    self.collectionView.loadingView = loadingLabel;
+//    
+//    self.collectionView.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning
@@ -106,100 +112,174 @@
 - (void) refreshTable
 {
     [self.items removeAllObjects];
-    [self loadDataSource];
     self.currentPage = 1;
-    self.collectionView.pullLastRefreshDate = [NSDate date];
-    self.collectionView.pullTableIsRefreshing = NO;
-    [self.collectionView reloadData];
-}
-
-- (void) loadMoreDataToTable
-{
     [self loadDataSource];
-    self.collectionView.pullTableIsLoadingMore = NO;
+//    self.collectionView.pullLastRefreshDate = [NSDate date];
+//    self.collectionView.pullTableIsRefreshing = NO;
+//    [self.collectionView reloadData];
 }
 
-#pragma mark - PullTableViewDelegate
-
-- (void)pullPsCollectionViewDidTriggerRefresh:(PullPsCollectionView *)pullTableView
+#pragma mark - UITableViewDataSource
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 4;
+}
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    [self performSelector:@selector(refreshTable) withObject:nil afterDelay:3.0f];
+    switch (section) {
+        case 0:
+            return 1;
+            break;
+        case 1:
+            return self.storeList.count;
+            break;
+        case 2:
+            return 1;
+            break;
+        case 3:
+            return ceil(self.items.count / 2.0);
+            break;
+        default:
+            return 0;
+            break;
+    }
 }
 
-- (void)pullPsCollectionViewDidTriggerLoadMore:(PullPsCollectionView *)pullTableView
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self performSelector:@selector(loadMoreDataToTable) withObject:nil afterDelay:3.0f];
-}
-
-- (void)viewDidUnload
-{
-    [self setCollectionView:nil];
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
-}
-
-//实例化tile
-- (YouhuiTileView *)collectionView:(PSCollectionView *)collectionView viewAtIndex:(NSInteger)index {
-    CouponModel *item = [self.items objectAtIndex:index];
+    switch (indexPath.section) {
+        case 0:{
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+            if (!cell) {
+                cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"] autorelease];
+                cell.backgroundColor = [UIColor colorWithRed:247/255.0 green:247/255.0 blue:247/255.0 alpha:1];
+            }
+            cell.textLabel.text = @"品牌";
+        }
+            break;
+        case 2:{
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+            if (!cell) {
+                cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"] autorelease];
+                cell.backgroundColor = [UIColor colorWithRed:247/255.0 green:247/255.0 blue:247/255.0 alpha:1];
+            }
+            cell.textLabel.text = @"优惠";
+        }
+            break;
+        case 1:{
+            if (self.storeList.count > 0) {
+                StoreModel *storeModel = [self.storeList objectAtIndex:indexPath.row];
+                if (storeModel.appCategory) {
+#warning 7月15日
+                }
+            }
+        }
     
-    //TODO:重用view！！
-    YouhuiTileView *v = nil;//(YouhuiTileView *)[self.collectionView dequeueReusableView];
-    if(v == nil) {
-        NSArray *nib =
-        [[NSBundle mainBundle] loadNibNamed:@"YouhuiTileView" owner:self options:nil];
-        v = [nib objectAtIndex:0];
+            break;
+            
+        default:
+            break;
     }
     
-    [v fillViewWithObject:item];
     
-    return v;
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    if (!cell) {
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"] autorelease];
+    }
+    
+    return cell;
 }
 
-//根据图片高度返回tile高度
-- (CGFloat)heightForViewAtIndex:(NSInteger)index {
-    // You should probably subclass PSCollectionViewCell
-    return [YouhuiTileView heightForViewWithObject:[self.items objectAtIndex:index] inColumnWidth:self.collectionView.colWidth];
+#pragma mark - UITableViewDelegate
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 1) {
+        //品牌  其他不用点
+        
+    }
 }
 
-- (void)collectionView:(PSCollectionView *)collectionView didSelectView:(PSCollectionViewCell *)view atIndex:(NSInteger)index {
-    // Do something with the tap
-}
 
-- (NSInteger)numberOfViewsInCollectionView:(PSCollectionView *)collectionView {
-    return [self.items count];
-}
+
+//- (void) loadMoreDataToTable
+//{
+//    [self loadDataSource];
+//    self.collectionView.pullTableIsLoadingMore = NO;
+//}
+//
+//#pragma mark - PullTableViewDelegate
+//
+//- (void)pullPsCollectionViewDidTriggerRefresh:(PullPsCollectionView *)pullTableView
+//{
+//    [self performSelector:@selector(refreshTable) withObject:nil afterDelay:3.0f];
+//}
+//
+//- (void)pullPsCollectionViewDidTriggerLoadMore:(PullPsCollectionView *)pullTableView
+//{
+//    [self performSelector:@selector(loadMoreDataToTable) withObject:nil afterDelay:3.0f];
+//}
+
+
+//- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+//{
+//    return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+//}
+
+////实例化tile
+//- (YouhuiTileView *)collectionView:(PSCollectionView *)collectionView viewAtIndex:(NSInteger)index {
+//    CouponModel *item = [self.items objectAtIndex:index];
+//    
+//    //TODO:重用view！！
+//    YouhuiTileView *v = nil;//(YouhuiTileView *)[self.collectionView dequeueReusableView];
+//    if(v == nil) {
+//        NSArray *nib =
+//        [[NSBundle mainBundle] loadNibNamed:@"YouhuiTileView" owner:self options:nil];
+//        v = [nib objectAtIndex:0];
+//    }
+//    
+//    [v fillViewWithObject:item];
+//    
+//    return v;
+//}
+//
+////根据图片高度返回tile高度
+//- (CGFloat)heightForViewAtIndex:(NSInteger)index {
+//    // You should probably subclass PSCollectionViewCell
+//    return [YouhuiTileView heightForViewWithObject:[self.items objectAtIndex:index] inColumnWidth:self.collectionView.colWidth];
+//}
+//
+//- (void)collectionView:(PSCollectionView *)collectionView didSelectView:(PSCollectionViewCell *)view atIndex:(NSInteger)index {
+//    // Do something with the tap
+//}
+//
+//- (NSInteger)numberOfViewsInCollectionView:(PSCollectionView *)collectionView {
+//    return [self.items count];
+//}
 
 
 
 //获取接口数据
-- (void)loadDataSource {
-    self.searchInterface = [[[SearchInterface alloc] init] autorelease];
-    self.searchInterface.delegate = self;
+- (void)loadDataSource {    
     [self.searchInterface searchKeyword:self.searchKeyWord
                                    type:0
                                 orderBy:nil
                                  amount:20 page:self.currentPage];
-    
 }
 
-- (void)dataSourceDidLoad {
-    [self.collectionView reloadData];
-}
-
-- (void)dataSourceDidError {
-    [self.collectionView reloadData];
-}
+//- (void)dataSourceDidLoad {
+//    [self.collectionView reloadData];
+//}
+//
+//- (void)dataSourceDidError {
+//    [self.collectionView reloadData];
+//}
 
 #pragma mark - SearchInterfaceDelegate
--(void)searchDidFinished:(NSArray*)result totalAmount:(NSInteger)totalAmount currentPage:(NSInteger)currentPage;
+-(void)searchDidFinished:(NSDictionary *)result totalAmount:(NSInteger)totalAmount currentPage:(NSInteger)currentPage;
 {
-    [self.items addObjectsFromArray:result];
-    [self dataSourceDidLoad];
+    [self.items addObjectsFromArray:[result objectForKey:@"couponList"]];
+    self.storeList = [result objectForKey:@"storeList"];
+//    [self dataSourceDidLoad];
+    [self.myTableView reloadData];
     
     self.currentPage++;
 }
@@ -243,11 +323,12 @@
 {
     self.items = nil;
     self.searchKeyWord = nil;
-    self.collectionView = nil;
+//    self.collectionView = nil;
     self.searchBar = nil;
     self.searchInterface.delegate = nil;
     self.searchInterface = nil;
     
+    [_myTableView release];
     [super dealloc];
 }
 @end

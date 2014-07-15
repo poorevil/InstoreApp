@@ -9,13 +9,14 @@
 #import <UIKit/UIKit.h>
 
 #import "BaseViewController.h"
-#import "PSCollectionView.h"
-#import "PullPsCollectionView.h"
+//#import "PSCollectionView.h"
+//#import "PullPsCollectionView.h"
 
-@interface SearchResultViewController : BaseViewController <PSCollectionViewDelegate,PSCollectionViewDataSource,UIScrollViewDelegate,PullPsCollectionViewDelegate>
+@interface SearchResultViewController : BaseViewController </*PSCollectionViewDelegate,PSCollectionViewDataSource,UIScrollViewDelegate,PullPsCollectionViewDelegate*/UITableViewDataSource,UITableViewDelegate>
 
-@property(nonatomic,retain) PullPsCollectionView *collectionView;
-@property(nonatomic,retain) NSMutableArray *items;
+@property (retain, nonatomic) IBOutlet UITableView *myTableView;
+//@property (nonatomic,retain) PullPsCollectionView *collectionView;
+@property (nonatomic,retain) NSMutableArray *items;
 @property (nonatomic,strong) NSString *searchKeyWord;
 
 @end

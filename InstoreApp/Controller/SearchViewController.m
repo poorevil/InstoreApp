@@ -8,9 +8,17 @@
 
 #import "SearchViewController.h"
 #import "SearchResultViewController.h"
+#import "SearchHotKeywordAndHistoryInterface.h"
+#import "SearchClearHistoryInterface.h"
 
-@interface SearchViewController () <UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate>
+@interface SearchViewController () <UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate,SearchHotKeywordInterfaceDelegate>
 @property (nonatomic,strong) UISearchBar *searchBar;
+
+@property (retain, nonatomic) SearchHotKeywordAndHistoryInterface *searchHotKeywordAndHistoryInterface;
+@property (retain, nonatomic) NSArray *hotKeyWordList;
+@property (retain, nonatomic) NSArray *historyList;
+@property (retain, nonatomic) SearchClearHistoryInterface *searchClearHistoryInterface;
+
 @end
 
 @implementation SearchViewController
@@ -48,20 +56,14 @@
     self.navigationItem.titleView = self.searchBar;
 //    [self.searchBar becomeFirstResponder];
     
-}
-
--(void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
+    self.searchHotKeywordAndHistoryInterface = [[[SearchHotKeywordAndHistoryInterface alloc]init]autorelease];
+    self.searchHotKeywordAndHistoryInterface.delegate = self;
+    [self.searchHotKeywordAndHistoryInterface getSearchHotKeywordAndHistoryList];
     
-//    double delayInSeconds = 0.05;
-//    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-//    dispatch_after(popTime, dispatch_get_main_queue(), ^{
-//            [self.searchBar becomeFirstResponder];
-//    });
-
-//    [self.searchBar performSelector:@selector(becomeFirstResponder) withObject:nil afterDelay:0.05];
+    self.searchClearHistoryInterface = [[[SearchClearHistoryInterface alloc]init]autorelease];
 }
+
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -84,7 +86,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 4;
+    return self.historyList.count + 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -97,53 +99,34 @@
                                                    green:106/255.0f
                                                     blue:106/255.0f
                                                    alpha:1];
+        cell.textLabel.font = [UIFont systemFontOfSize:14];
+    }
+    if (indexPath.row == self.historyList.count ) {
+        cell.textLabel.text = @"                                清空搜索记录";
+//        cell.textLabel.center = CGPointMake(160, 22);
+        cell.textLabel.font = [UIFont systemFontOfSize:12];
+    }else{
+        cell.textLabel.text = [self.historyList objectAtIndex:indexPath.row];
     }
     
-    switch (indexPath.row) {
-        case 0:
-            cell.textLabel.text = @"电影院";
-            break;
-        case 1:
-            cell.textLabel.text = @"牛仔裤 三折";
-            break;
-        case 2:
-            cell.textLabel.text = @"披萨";
-            break;
-        case 3:
-            cell.textLabel.text = @"阿迪达斯";
-            break;
-        default:
-            break;
-    }
     return cell;
 }
 
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
-    SearchResultViewController *searchResultViewController = [[[SearchResultViewController alloc] init] autorelease];
-    NSString *keyWord = nil;
-    switch (indexPath.row) {
-        case 0:
-            keyWord = @"电影院";
-            break;
-        case 1:
-            keyWord = @"牛仔裤 三折";
-            break;
-        case 2:
-            keyWord = @"披萨";
-            break;
-        case 3:
-            keyWord = @"阿迪达斯";
-            break;
-        default:
-            break;
+//    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if (indexPath.row == self.historyList.count ) {
+        self.historyList = nil;
+        [self.mtableView reloadData];
+        //服务器请求：清空历史记录
+        [self.searchClearHistoryInterface clearHistoty];
+        
+    }else{
+        SearchResultViewController *searchResultViewController = [[[SearchResultViewController alloc] init] autorelease];
+        searchResultViewController.searchKeyWord = [self.historyList objectAtIndex:indexPath.row];
+        [self.navigationController pushViewController:searchResultViewController animated:NO];
     }
-    searchResultViewController.searchKeyWord = keyWord;
-    [self.navigationController pushViewController:searchResultViewController animated:NO];
-    
 }
 
 #pragma mark - UISearchBarDelegate
@@ -160,12 +143,40 @@
     
 }
 
+#pragma mark - SearchHotKeywordInterfaceDelegate <NSObject>
+-(void)getSearchHotKeywordAndHistoryListDidFinished:(NSArray *)hot AndHistory:(NSArray *)history{
+    self.hotKeyWordList = hot;
+    [self.btnHotWord1 setTitle:[hot objectAtIndex:0] forState:UIControlStateNormal];
+    [self.btnHotWord2 setTitle:[hot objectAtIndex:1] forState:UIControlStateNormal];
+    [self.btnHotWord3 setTitle:[hot objectAtIndex:2] forState:UIControlStateNormal];
+    
+    self.historyList = history;
+    [self.mtableView reloadData];
+}
+-(void)getSearchHotKeywordAndHistoryListListDidFailed:(NSString *)errorMsg{
+    NSLog(@"%@",errorMsg);
+}
+
 -(void)dealloc
 {
     self.mtableView = nil;
     self.searchBar = nil;
     
+    self.hotKeyWordList = nil;
+    self.historyList = nil;
+    
+    self.searchHotKeywordAndHistoryInterface = nil;
+    self.searchClearHistoryInterface = nil;
+    
+    [_btnHotWord1 release];
+    [_btnHotWord2 release];
+    [_btnHotWord3 release];
     [super dealloc];
 }
 
+- (IBAction)btnHotSearchAction:(UIButton *)sender {
+    SearchResultViewController *searchResultViewController = [[[SearchResultViewController alloc] init] autorelease];
+    searchResultViewController.searchKeyWord = sender.titleLabel.text;
+    [self.navigationController pushViewController:searchResultViewController animated:NO];
+}
 @end
