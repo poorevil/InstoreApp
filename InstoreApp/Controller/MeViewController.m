@@ -13,6 +13,7 @@
 #import "UserInfoModel.h"
 
 #import "DownloadCouponsViewController.h"
+#import "StoreListFocusedViewController.h"
 
 #import "ShopViewController.h"
 
@@ -195,10 +196,10 @@
         case 0:
             switch (indexPath.row) {
                 case 0:{
-                    DownloadCouponsViewController *dcvc = [[[DownloadCouponsViewController alloc] initWithNibName:@"DownloadCouponsViewController" bundle:nil] autorelease];
-                    dcvc.hidesBottomBarWhenPushed = YES;
-                    [self.navigationController pushViewController:dcvc animated:YES];
-                    dcvc.hidesBottomBarWhenPushed = NO;
+//                    DownloadCouponsViewController *dcvc = [[[DownloadCouponsViewController alloc] initWithNibName:@"DownloadCouponsViewController" bundle:nil] autorelease];
+//                    dcvc.hidesBottomBarWhenPushed = YES;
+//                    [self.navigationController pushViewController:dcvc animated:YES];
+//                    dcvc.hidesBottomBarWhenPushed = NO;
                     break;
                 }
             }
@@ -206,11 +207,11 @@
         case 1:
             switch (indexPath.row) {
                 case 0:{
-                    ShopViewController *shopVC = [[[ShopViewController alloc] initWithNibName:@"ShopViewController" bundle:nil] autorelease];
-                    shopVC.isShowLikeOnly = YES;
-                    shopVC.hidesBottomBarWhenPushed = YES;
-                    [self.navigationController pushViewController:shopVC animated:YES];
-                    shopVC.hidesBottomBarWhenPushed = NO;
+//                    ShopViewController *shopVC = [[[ShopViewController alloc] initWithNibName:@"ShopViewController" bundle:nil] autorelease];
+//                    shopVC.isShowLikeOnly = YES;
+//                    shopVC.hidesBottomBarWhenPushed = YES;
+//                    [self.navigationController pushViewController:shopVC animated:YES];
+//                    shopVC.hidesBottomBarWhenPushed = NO;
 
                     break;
                 }
@@ -218,6 +219,18 @@
                     break;
             }
             break;
+        case 2:
+            switch (indexPath.row) {
+                case 0:{
+                    StoreListFocusedViewController *slfVC = [[[StoreListFocusedViewController alloc] initWithNibName:@"StoreListFocusedViewController" bundle:nil] autorelease];
+                    slfVC.hidesBottomBarWhenPushed = YES;
+                    [self.navigationController pushViewController:slfVC animated:YES];
+                    slfVC.hidesBottomBarWhenPushed = NO;
+                    break;
+                }   
+                default:
+                    break;
+            }
     }
 }
 

@@ -179,6 +179,8 @@
 		0373FA4A19742C7D00A1CF68 /* StoreListFocused_headerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0373FA4919742C7D00A1CF68 /* StoreListFocused_headerView.m */; };
 		0373FA4C19742C8A00A1CF68 /* StoreListFocused_headerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0373FA4B19742C8A00A1CF68 /* StoreListFocused_headerView.xib */; };
 		0373FA4F197433CB00A1CF68 /* FocusedStoreListInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 0373FA4E197433CB00A1CF68 /* FocusedStoreListInterface.m */; };
+		0373FA551975809300A1CF68 /* StoreCategoryFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0373FA531975809300A1CF68 /* StoreCategoryFilterViewController.m */; };
+		0373FA561975809300A1CF68 /* StoreCategoryFilterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0373FA541975809300A1CF68 /* StoreCategoryFilterViewController.xib */; };
 		03C6592A1928985D009CADA6 /* SearchResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C659291928985D009CADA6 /* SearchResultViewController.m */; };
 		04196A261962D2B30037C046 /* DailyDealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04196A241962D2B30037C046 /* DailyDealViewController.m */; };
 		04196A271962D2B30037C046 /* DailyDealViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04196A251962D2B30037C046 /* DailyDealViewController.xib */; };
@@ -1003,6 +1005,9 @@
 		0373FA4B19742C8A00A1CF68 /* StoreListFocused_headerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StoreListFocused_headerView.xib; sourceTree = "<group>"; };
 		0373FA4D197433CB00A1CF68 /* FocusedStoreListInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FocusedStoreListInterface.h; sourceTree = "<group>"; };
 		0373FA4E197433CB00A1CF68 /* FocusedStoreListInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FocusedStoreListInterface.m; sourceTree = "<group>"; };
+		0373FA521975809300A1CF68 /* StoreCategoryFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreCategoryFilterViewController.h; sourceTree = "<group>"; };
+		0373FA531975809300A1CF68 /* StoreCategoryFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreCategoryFilterViewController.m; sourceTree = "<group>"; };
+		0373FA541975809300A1CF68 /* StoreCategoryFilterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StoreCategoryFilterViewController.xib; sourceTree = "<group>"; };
 		03C659281928985D009CADA6 /* SearchResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultViewController.h; sourceTree = "<group>"; };
 		03C659291928985D009CADA6 /* SearchResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultViewController.m; sourceTree = "<group>"; };
 		04196A231962D2B30037C046 /* DailyDealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DailyDealViewController.h; path = ../View/DailyDealViewController.h; sourceTree = "<group>"; };
@@ -2631,6 +2636,9 @@
 				0373FA411974271000A1CF68 /* StoreListFocusedViewController.h */,
 				0373FA421974271000A1CF68 /* StoreListFocusedViewController.m */,
 				0373FA431974271000A1CF68 /* StoreListFocusedViewController.xib */,
+				0373FA521975809300A1CF68 /* StoreCategoryFilterViewController.h */,
+				0373FA531975809300A1CF68 /* StoreCategoryFilterViewController.m */,
+				0373FA541975809300A1CF68 /* StoreCategoryFilterViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -3719,6 +3727,7 @@
 				4EF090D918FB52FD00ABFE7D /* index-silde-nav@2x.png in Resources */,
 				FA4E65EF19357B21005022E2 /* title_background.png in Resources */,
 				4EF0910818FB52FD00ABFE7D /* store-icon-feed-black@2x.png in Resources */,
+				0373FA561975809300A1CF68 /* StoreCategoryFilterViewController.xib in Resources */,
 				FA4E65D419357B21005022E2 /* UMSocialLWTimelineData.html in Resources */,
 				04196A2C1962D3C90037C046 /* DailyDealViewCell.xib in Resources */,
 				FA4E65EB19357B21005022E2 /* class_grath.png in Resources */,
@@ -3896,6 +3905,7 @@
 				0357FF1C1946156A0071BD5A /* MainView_BaseCell.m in Sources */,
 				03573B8B190EA1EF00A11A33 /* InitInterface.m in Sources */,
 				0357FF341949FA2F0071BD5A /* CouponView_focused_tileView.m in Sources */,
+				0373FA551975809300A1CF68 /* StoreCategoryFilterViewController.m in Sources */,
 				C1A9C88A193F130300DD420F /* NIPhotoScrollView.m in Sources */,
 				0491F11E196AC82900E7DC5A /* FocusInterface.m in Sources */,
 				03573ACE19055CA900A11A33 /* StoreOverViewController.m in Sources */,

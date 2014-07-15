@@ -12,21 +12,28 @@
 #import "YouhuiCategoryViewController.h"
 #import "YouHuiOrderViewController.h"
 
-#import "YouhuiCategoryViewController.h"
 #import "YouHuiOrderViewController.h"
-#import "CategoryModel.h"
 
-@interface StoreListFocusedViewController () <YouhuiCategoryViewControllerDelegate,
-YouHuiOrderViewControllerDelegate>
+#import "StoreModel.h"
+#import "FocusedStoreListInterface.h"
+#import "StoreCategoryFilterViewController.h"
+
+#import "FoodItemCell.h"
+
+@interface StoreListFocusedViewController () <YouHuiOrderViewControllerDelegate,
+FocusedStoreListInterfaceDelegate, StoreCategoryFilterViewControllerDelegate>
 
 @property (nonatomic, retain) NSMutableArray *itemList;
+@property (nonatomic, assign) NSInteger storeCount;
 
 @property (nonatomic, retain) StoreListFocused_headerView *headerView;
-@property (nonatomic,strong) CategoryModel *filterCategory;//分类筛选条件
+@property (nonatomic,strong) NSString *filterCategory;//分类筛选条件
 @property (nonatomic,retain) NSString *filterOrder;//排序
 
 @property (nonatomic, assign) NSInteger totalCount;
 @property (nonatomic, assign) NSInteger currentPage;
+
+@property (nonatomic, retain) FocusedStoreListInterface *focusedStoreListInterface;
 
 @end
 
@@ -46,8 +53,11 @@ YouHuiOrderViewControllerDelegate>
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.title = @"已关注的商家";
+    self.itemList = [NSMutableArray array];
     
     [self initHeaderView];
+    
+    [self loadItemList];
 }
 
 - (void)didReceiveMemoryWarning
@@ -67,19 +77,12 @@ YouHuiOrderViewControllerDelegate>
 #pragma mark - private method
 -(void)loadItemList
 {
-    NSString *category = nil;
-    NSInteger page = 1;
-    
-//    self.storeInterface = [[StoreInterface alloc] init];
-//    self.storeInterface.delegate = self;
-//    
-//    [self.storeInterface getStoreListByFloorId:self.filterFloorModel.fid
-//                                           cid:self.filterCategory.cid
-//                                    buildingId:self.filterFloorModel.buildingId
-//                                         order:self.filterOrder
-//                                      category:category
-//                                        amount:20
-//                                          page:page];
+    self.focusedStoreListInterface = [[[FocusedStoreListInterface alloc] init] autorelease];
+    self.focusedStoreListInterface.delegate = self;
+    [self.focusedStoreListInterface getFocusedStoreListByAmount:20
+                                                           page:self.currentPage
+                                                          order:self.filterOrder
+                                                       category:self.filterCategory];
 }
 
 -(void)initHeaderView
@@ -98,11 +101,12 @@ YouHuiOrderViewControllerDelegate>
 
 -(void)categoryBtnAction:(id)sender
 {
-    YouhuiCategoryViewController *cateVC = [[YouhuiCategoryViewController alloc] initWithCategoryModel:self.filterCategory];
-    cateVC.delegate = self;
-    cateVC.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:cateVC animated:YES];
-    cateVC.hidesBottomBarWhenPushed = NO;
+    StoreCategoryFilterViewController *scfvc = [[StoreCategoryFilterViewController alloc] initWithNibName:@"StoreCategoryFilterViewController" bundle:nil];
+    scfvc.delegate = self;
+    scfvc.category = self.filterCategory;
+    scfvc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:scfvc animated:YES];
+    scfvc.hidesBottomBarWhenPushed = NO;
 }
 
 - (IBAction)btnOrderAction:(UIButton *)sender {
@@ -118,7 +122,7 @@ YouHuiOrderViewControllerDelegate>
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 10;//self.itemList.count;
+    return self.itemList.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -132,6 +136,9 @@ YouHuiOrderViewControllerDelegate>
                                             options:nil] objectAtIndex:0];
     }
     
+    FoodItemCell *fc = (FoodItemCell *)cell;
+    fc.storeModel = [self.itemList objectAtIndex:indexPath.row];
+    
     return cell;
 }
 
@@ -139,24 +146,6 @@ YouHuiOrderViewControllerDelegate>
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 80;
-}
-
-#pragma mark - YouhuiCategoryViewControllerDelegate
--(void)categoryDidSelected:(CategoryModel *)categoryModel
-{
-    self.filterCategory = categoryModel;
-    if (self.filterCategory) {
-        [self.headerView.categoryBtn setTitle:[NSString stringWithFormat:@"%@ ",categoryModel.cName]
-                                     forState:UIControlStateNormal];
-    }else{
-        [self.headerView.categoryBtn setTitle:@"分类 " forState:UIControlStateNormal];
-    }
-    
-    [self.itemList removeAllObjects];
-    self.totalCount = 0;
-    self.currentPage = 1;
-    [self.mtableView reloadData];
-    [self loadItemList];
 }
 
 #pragma mark - @protocol YouHuiOrderViewControllerDelegate
@@ -188,6 +177,40 @@ YouHuiOrderViewControllerDelegate>
             break;
     }
     
+    [self.itemList removeAllObjects];
+    self.totalCount = 0;
+    self.currentPage = 1;
+    [self.mtableView reloadData];
+    [self loadItemList];
+}
+
+#pragma mark - FocusedStoreListInterfaceDelegate <NSObject>
+-(void)getFocusedStoreListDidFinished:(NSArray *)itemList
+                           totalCount:(NSInteger)totalCount
+                          currentPage:(NSInteger)currentPage
+                           storeCount:(NSInteger)storeCount
+{
+    [self.itemList addObjectsFromArray:itemList];
+    self.totalCount = totalCount;
+    self.currentPage = currentPage;
+    self.currentPage++;
+    self.storeCount = storeCount;
+    
+    [self.mtableView reloadData];
+}
+
+-(void)getFocusedStoreListDidFailed:(NSString *)errorMsg
+{
+    NSLog(@"%@",errorMsg);
+}
+
+#pragma mark - StoreCategoryFilterViewControllerDelegate
+-(void)categorySelectDidFinished:(NSString *) category name:(NSString *)name
+{
+    self.filterCategory = category;
+    [self.headerView.categoryBtn setTitle:name forState:UIControlStateNormal];
+
+
     [self.itemList removeAllObjects];
     self.totalCount = 0;
     self.currentPage = 1;
