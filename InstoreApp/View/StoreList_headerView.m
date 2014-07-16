@@ -52,7 +52,6 @@
     self.segmentControl = nil;
     self.filterParentView = nil;
     self.floorBtn = nil;
-    self.favorBtn = nil;
     self.orderBtn = nil;
     self.categoryBtn = nil;
     

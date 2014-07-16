@@ -49,6 +49,28 @@
     
     self.detailCellHeight = 102;
     
+    //init navigater
+    [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:248.0f/255.0f
+                                                                             green:40.0f/255.0f
+                                                                              blue:53.0f/255.0f
+                                                                             alpha:1]];
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
+    
+    UIButton *focuseBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [focuseBtn setImage:[UIImage imageNamed:@"nav_focuse_btn"] forState:UIControlStateNormal];
+    [focuseBtn addTarget:self action:@selector(focuseBtnAction) forControlEvents:UIControlEventTouchUpInside];
+    [focuseBtn sizeToFit];
+    UIBarButtonItem *focuseBarBtn = [[[UIBarButtonItem alloc] initWithCustomView:focuseBtn] autorelease];
+    
+    UIButton *shareBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [shareBtn setImage:[UIImage imageNamed:@"share_white"] forState:UIControlStateNormal];
+    [shareBtn addTarget:self action:@selector(shareBtnAction)
+       forControlEvents:UIControlEventTouchUpInside];
+    [shareBtn sizeToFit];
+    UIBarButtonItem *shareBarBtn = [[[UIBarButtonItem alloc] initWithCustomView:shareBtn] autorelease];
+    
+    self.navigationItem.rightBarButtonItems =@[shareBarBtn, focuseBarBtn];
+    
     self.storeDetailInterface = [[[StoreDetailInterface alloc] init]autorelease];
     self.storeDetailInterface.delegate = self;
     [self.storeDetailInterface getStoreDetailByShopId:self.shopId];
@@ -86,6 +108,15 @@
     if (self.storeModel) {
         self.headerView.storeModel = self.storeModel;
     }
+}
+
+-(void)focuseBtnAction
+{
+    
+}
+
+-(void)shareBtnAction
+{
     
 }
 

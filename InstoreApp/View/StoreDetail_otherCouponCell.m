@@ -11,6 +11,12 @@
 #import "CouponModel.h"
 #import "StoreDetail_otherCouponTileView.h"
 
+#import "GroupBuyDetailViewController.h"
+#import "CouponDetailViewController.h"
+#import "MallNewsDetailViewController.h"
+
+#import "AppDelegate.h"
+
 @implementation StoreDetail_otherCouponCell
 
 - (void)awakeFromNib
@@ -37,6 +43,12 @@
         tile.frame = CGRectMake(0, i*tile.frame.size.height,
                                 tile.frame.size.width, tile.frame.size.height);
         [self.couponsParentView addSubview:tile];
+        
+        tile.userInteractionEnabled = YES;
+        UITapGestureRecognizer *tap = [[[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                               action:@selector(tapAction:)] autorelease];
+        tile.tag = 900+i;
+        [tile addGestureRecognizer:tap];
     }
     
     self.couponsParentView.frame = CGRectMake(self.couponsParentView.frame.origin.x,
@@ -45,6 +57,33 @@
                                               coupons.count*80);
     self.frame = CGRectMake(0, 0, self.frame.size.width, coupons.count*80+41);
 }
+
+-(void)tapAction:(UIGestureRecognizer *)gesture
+{
+    UIView *view = gesture.view;
+    NSInteger idx = view.tag-900;
+    CouponModel *cm = [self.coupons objectAtIndex:idx];
+    
+    UIViewController *vc = nil;
+    switch (cm.promotionType ) {//优惠类型 (1, '优惠活动'), (2, '优惠券'), (3, '团购')
+        case 3:
+            vc = [[[GroupBuyDetailViewController alloc] initWithNibName:@"GroupBuyDetailViewController" bundle:nil] autorelease];
+            break;
+        case 2:
+            vc = [[[CouponDetailViewController alloc] initWithNibName:@"CouponDetailViewController" bundle:nil] autorelease];
+            break;
+        case 1:
+            vc = [[[MallNewsDetailViewController alloc]init]autorelease];
+            break;
+    }
+    [vc setCouponModel:cm];
+    vc.hidesBottomBarWhenPushed = YES;
+    AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+    UINavigationController *nav = (UINavigationController *)appDelegate.tabBarController.selectedViewController;
+    [nav pushViewController:vc animated:YES];
+    vc.hidesBottomBarWhenPushed = NO;
+}
+
 
 -(void)dealloc
 {

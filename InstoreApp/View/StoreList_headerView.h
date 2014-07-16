@@ -16,7 +16,6 @@
 @property (nonatomic, retain) IBOutlet UIButton *floorBtn;
 @property (nonatomic, retain) IBOutlet UIButton *categoryBtn;
 @property (nonatomic, retain) IBOutlet UIButton *orderBtn;
-@property (nonatomic, retain) IBOutlet UIButton *favorBtn;
 
 @property (nonatomic, retain) IBOutlet UIImageView *line;
 

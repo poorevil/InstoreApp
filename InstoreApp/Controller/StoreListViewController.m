@@ -23,6 +23,7 @@
 #import "FloorModel.h"
 
 #import "StoreListFocusedViewController.h"
+#import "IndoorMapWithLeftPopBtnViewController.h"
 
 @interface StoreListViewController () <UITableViewDataSource, UITableViewDelegate,
 StoreInterfaceDelegate,FloorSelectViewControllerDelegate,YouhuiCategoryViewControllerDelegate,
@@ -73,6 +74,28 @@ YouHuiOrderViewControllerDelegate>
     self.goodsItemList = [NSMutableArray array];
     self.foodItemList = [NSMutableArray array];
     self.gameItemList = [NSMutableArray array];
+    
+    //init navigater
+    [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:248.0f/255.0f
+                                                                             green:40.0f/255.0f
+                                                                              blue:53.0f/255.0f
+                                                                             alpha:1]];
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
+    
+    UIButton *mapBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [mapBtn setImage:[UIImage imageNamed:@"nav_map_btn"] forState:UIControlStateNormal];
+    [mapBtn addTarget:self action:@selector(showMap) forControlEvents:UIControlEventTouchUpInside];
+    [mapBtn sizeToFit];
+    UIBarButtonItem *mapBarBtn = [[[UIBarButtonItem alloc] initWithCustomView:mapBtn] autorelease];
+    
+    UIButton *favorBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [favorBtn setImage:[UIImage imageNamed:@"Icon_phone"] forState:UIControlStateNormal];
+    [favorBtn addTarget:self action:@selector(showFocusedStoreList)
+       forControlEvents:UIControlEventTouchUpInside];
+    [favorBtn sizeToFit];
+    UIBarButtonItem *favorBarBtn = [[[UIBarButtonItem alloc] initWithCustomView:favorBtn] autorelease];
+    
+    self.navigationItem.rightBarButtonItems =@[favorBarBtn, mapBarBtn];
     
     [self initHeaderView];
     
@@ -131,6 +154,22 @@ YouHuiOrderViewControllerDelegate>
 }
 
 #pragma mark - private method
+-(void)showMap
+{
+    IndoorMapWithLeftPopBtnViewController *imvc = [[[IndoorMapWithLeftPopBtnViewController alloc] initWithFrame:self.view.bounds] autorelease];
+    imvc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:imvc animated:YES];
+}
+
+-(void)showFocusedStoreList
+{
+    StoreListFocusedViewController *vc = [[StoreListFocusedViewController alloc] initWithNibName:@"StoreListFocusedViewController" bundle:nil];
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vc animated:YES];
+    
+//    vc.hidesBottomBarWhenPushed = NO;
+}
+
 -(void)initHeaderView
 {
     if (!self.headerView) {
@@ -151,10 +190,6 @@ YouHuiOrderViewControllerDelegate>
                            forControlEvents:UIControlEventTouchUpInside];
         [self.headerView.orderBtn addTarget:self
                                      action:@selector(btnOrderAction:)
-                           forControlEvents:UIControlEventTouchUpInside];
-        
-        [self.headerView.favorBtn addTarget:self
-                                     action:@selector(favorBtnAction:)
                            forControlEvents:UIControlEventTouchUpInside];
         
         [self.headerView.segmentControl setSelectedSegmentIndex:0];
@@ -217,15 +252,6 @@ YouHuiOrderViewControllerDelegate>
     [self.navigationController pushViewController:vc animated:YES];
     vc.hidesBottomBarWhenPushed = NO;
     [vc release];
-}
-
--(void)favorBtnAction:(UIButton *)sender
-{
-    StoreListFocusedViewController *vc = [[StoreListFocusedViewController alloc] initWithNibName:@"StoreListFocusedViewController" bundle:nil];
-    vc.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:vc animated:YES];
-    
-    vc.hidesBottomBarWhenPushed = NO;
 }
 
 #pragma mark - UITableViewDataSource
@@ -329,6 +355,7 @@ YouHuiOrderViewControllerDelegate>
     
     StoreDetail_RestaurantViewController *sdrvc = [[StoreDetail_RestaurantViewController alloc] initWithNibName:@"StoreDetail_RestaurantViewController" bundle:nil];
     sdrvc.shopId = sm.sid;
+    sdrvc.title = sm.title;
     sdrvc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:sdrvc animated:YES];
     sdrvc.hidesBottomBarWhenPushed = NO;

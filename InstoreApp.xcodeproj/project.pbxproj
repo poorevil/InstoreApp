@@ -181,6 +181,9 @@
 		0373FA4F197433CB00A1CF68 /* FocusedStoreListInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 0373FA4E197433CB00A1CF68 /* FocusedStoreListInterface.m */; };
 		0373FA551975809300A1CF68 /* StoreCategoryFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0373FA531975809300A1CF68 /* StoreCategoryFilterViewController.m */; };
 		0373FA561975809300A1CF68 /* StoreCategoryFilterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0373FA541975809300A1CF68 /* StoreCategoryFilterViewController.xib */; };
+		0373FABA1976CAE500A1CF68 /* nav_map_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0373FAB91976CAE500A1CF68 /* nav_map_btn@2x.png */; };
+		0373FAC51976D8FD00A1CF68 /* nav_focuse_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0373FAC31976D8FD00A1CF68 /* nav_focuse_btn@2x.png */; };
+		0373FAC61976D8FD00A1CF68 /* nav_focuse_pressed_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0373FAC41976D8FD00A1CF68 /* nav_focuse_pressed_btn@2x.png */; };
 		03C6592A1928985D009CADA6 /* SearchResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C659291928985D009CADA6 /* SearchResultViewController.m */; };
 		04196A261962D2B30037C046 /* DailyDealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04196A241962D2B30037C046 /* DailyDealViewController.m */; };
 		04196A271962D2B30037C046 /* DailyDealViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04196A251962D2B30037C046 /* DailyDealViewController.xib */; };
@@ -1008,6 +1011,9 @@
 		0373FA521975809300A1CF68 /* StoreCategoryFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreCategoryFilterViewController.h; sourceTree = "<group>"; };
 		0373FA531975809300A1CF68 /* StoreCategoryFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreCategoryFilterViewController.m; sourceTree = "<group>"; };
 		0373FA541975809300A1CF68 /* StoreCategoryFilterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StoreCategoryFilterViewController.xib; sourceTree = "<group>"; };
+		0373FAB91976CAE500A1CF68 /* nav_map_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "nav_map_btn@2x.png"; path = "img_new/nav_map_btn@2x.png"; sourceTree = "<group>"; };
+		0373FAC31976D8FD00A1CF68 /* nav_focuse_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "nav_focuse_btn@2x.png"; path = "img_new/nav_focuse_btn@2x.png"; sourceTree = "<group>"; };
+		0373FAC41976D8FD00A1CF68 /* nav_focuse_pressed_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "nav_focuse_pressed_btn@2x.png"; path = "img_new/nav_focuse_pressed_btn@2x.png"; sourceTree = "<group>"; };
 		03C659281928985D009CADA6 /* SearchResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultViewController.h; sourceTree = "<group>"; };
 		03C659291928985D009CADA6 /* SearchResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultViewController.m; sourceTree = "<group>"; };
 		04196A231962D2B30037C046 /* DailyDealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DailyDealViewController.h; path = ../View/DailyDealViewController.h; sourceTree = "<group>"; };
@@ -2824,6 +2830,9 @@
 		4EF0907518FB52CE00ABFE7D /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				0373FAC31976D8FD00A1CF68 /* nav_focuse_btn@2x.png */,
+				0373FAC41976D8FD00A1CF68 /* nav_focuse_pressed_btn@2x.png */,
+				0373FAB91976CAE500A1CF68 /* nav_map_btn@2x.png */,
 				046352FB19750F5A00BDB159 /* search_btn_hot_bg.png */,
 				046352F21974D4F200BDB159 /* nav_search_bg.png */,
 				046352F31974D4F200BDB159 /* nav_search_gray.png */,
@@ -3513,6 +3522,7 @@
 				0357FF2F1949EB4A0071BD5A /* CouponView_titleCell.xib in Resources */,
 				4EF0911F18FB52FD00ABFE7D /* topBar-btn-zoom@2x.png in Resources */,
 				FA4E65F819357B22005022E2 /* iOS-social-analytics-releasenote.html in Resources */,
+				0373FAC51976D8FD00A1CF68 /* nav_focuse_btn@2x.png in Resources */,
 				03650F571942FD9A00016289 /* MainView_GroupBuyingCell.xib in Resources */,
 				4EF090CE18FB52FD00ABFE7D /* attention-icon@2x.png in Resources */,
 				4EF0914518FC2CEE00ABFE7D /* pp_4.jpg in Resources */,
@@ -3720,6 +3730,7 @@
 				FA4E65CF19357B21005022E2 /* UMSocialExtConfig.html in Resources */,
 				4EF090E718FB52FD00ABFE7D /* register-phone-register@2x.png in Resources */,
 				C1E094FC194AA92000AA814B /* cellview_share_btn@2x.png in Resources */,
+				0373FABA1976CAE500A1CF68 /* nav_map_btn@2x.png in Resources */,
 				0491F10A196A589400E7DC5A /* MallNewsDetail_threeCell.xib in Resources */,
 				0432360B1973D38200C6C117 /* firstImage_4_5.png in Resources */,
 				FA4E65B819357B21005022E2 /* UMSocialLocalizable.strings in Resources */,
@@ -3816,6 +3827,7 @@
 				043236071973D38200C6C117 /* firstImage_2_5.png in Resources */,
 				4EF0912918FC155200ABFE7D /* banner_4.jpg in Resources */,
 				FA4E65BB19357B21005022E2 /* UMSCommentInputController.xib in Resources */,
+				0373FAC61976D8FD00A1CF68 /* nav_focuse_pressed_btn@2x.png in Resources */,
 				035214B61958750F00F92B55 /* StoreDetail_detailCell.xib in Resources */,
 				C1A84A53192C538C003219DA /* Icon_58.png in Resources */,
 				4EF0915518FC4A8900ABFE7D /* c_4.jpg in Resources */,

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
-@interface StoreListViewController : BaseViewController
+@interface StoreListViewController : UIViewController
 
 @property (nonatomic, retain) IBOutlet UITableView *mtableView;
 

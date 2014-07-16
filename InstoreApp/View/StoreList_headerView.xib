@@ -70,21 +70,6 @@
                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="WXj-K0-vhd">
-                            <rect key="frame" x="208" y="13" width="97" height="17"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <state key="normal" title=" 已关注111" image="cellview_favor_yes_btn.png">
-                                <color key="titleColor" red="0.3411764706" green="0.3411764706" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <state key="selected">
-                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <state key="highlighted">
-                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                        </button>
                     </subviews>
                 </view>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="line_bg.png" id="7Lc-gI-SDU">
@@ -96,7 +81,6 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="categoryBtn" destination="yA7-1K-BTS" id="Pqs-SF-8uN"/>
-                <outlet property="favorBtn" destination="WXj-K0-vhd" id="Fht-gf-SD7"/>
                 <outlet property="filterParentView" destination="P8O-Lt-VfP" id="QIA-eq-BWO"/>
                 <outlet property="floorBtn" destination="WQ0-7n-Hhb" id="7s9-FU-X2I"/>
                 <outlet property="line" destination="7Lc-gI-SDU" id="YBK-3Z-hQ1"/>
@@ -106,7 +90,6 @@
         </view>
     </objects>
     <resources>
-        <image name="cellview_favor_yes_btn.png" width="12" height="10"/>
         <image name="down_arrow.png" width="8" height="4"/>
         <image name="line_bg.png" width="2" height="1"/>
     </resources>
