@@ -233,6 +233,7 @@
                 }
                     break;
             }
+            break;
         case 3:
             switch (indexPath.row) {
                 case 0:{
