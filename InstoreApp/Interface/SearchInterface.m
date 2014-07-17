@@ -39,6 +39,19 @@
     if (jsonObj) {
         NSMutableDictionary *resultDict = [NSMutableDictionary dictionary];
 //        NSMutableArray *resultList = [NSMutableArray array];
+        
+        NSMutableArray *storeResult = [NSMutableArray array];
+        NSArray *storeList = [jsonObj objectForKey:@"store_list"];
+        if (storeList) {
+            for (NSDictionary *storeDict in storeList) {
+                StoreModel *storeModel = [[StoreModel alloc]initWithJsonMap:storeDict];
+                [storeResult addObject:storeModel];
+                [storeModel release];
+            }
+        }
+        
+        [resultDict setObject:storeResult forKey:@"storeList"];
+        
         NSInteger totalCount = [[jsonObj objectForKey:@"totalCount"] integerValue];
         NSInteger currentPage = 0;
         if (totalCount > 0) {
@@ -53,18 +66,7 @@
                     [couponResult addObject:coupon];
                 }
             }
-            
-            NSMutableArray *storeResult = [NSMutableArray array];
-            NSArray *storeList = [jsonObj objectForKey:@"store_list"];
-            if (storeList) {
-                for (NSDictionary *storeDict in storeList) {
-                    StoreModel *storeModel = [[StoreModel alloc]initWithJsonMap:storeDict];
-                    [storeResult addObject:storeModel];
-                    [storeModel release];
-                }
-            }
             [resultDict setObject:couponResult forKey:@"couponList"];
-            [resultDict setObject:storeResult forKey:@"storeList"];
         }
         
         if ([self.delegate respondsToSelector:@selector(searchDidFinished:totalAmount:currentPage:)]) {

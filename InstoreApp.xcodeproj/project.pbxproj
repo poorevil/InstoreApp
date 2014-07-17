@@ -239,6 +239,12 @@
 		04635305197523F300BDB159 /* SearchResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04635304197523F300BDB159 /* SearchResultViewController.xib */; };
 		04635309197528D700BDB159 /* SearchResultStoreCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04635307197528D700BDB159 /* SearchResultStoreCell.m */; };
 		0463530A197528D700BDB159 /* SearchResultStoreCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04635308197528D700BDB159 /* SearchResultStoreCell.xib */; };
+		046C112619767D1C007F7FE3 /* MyViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 046C112419767D1C007F7FE3 /* MyViewCell.m */; };
+		046C112719767D1C007F7FE3 /* MyViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 046C112519767D1C007F7FE3 /* MyViewCell.xib */; };
+		046C112C19768F4A007F7FE3 /* MyVIPCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 046C112A19768F4A007F7FE3 /* MyVIPCardViewController.m */; };
+		046C112D19768F4A007F7FE3 /* MyVIPCardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 046C112B19768F4A007F7FE3 /* MyVIPCardViewController.xib */; };
+		046C113119768F70007F7FE3 /* MyFocusBankCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 046C112F19768F70007F7FE3 /* MyFocusBankCardViewController.m */; };
+		046C113219768F70007F7FE3 /* MyFocusBankCardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 046C113019768F70007F7FE3 /* MyFocusBankCardViewController.xib */; };
 		0491F0FF196A564C00E7DC5A /* MallNewsDetail_oneCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0491F0FD196A564C00E7DC5A /* MallNewsDetail_oneCell.m */; };
 		0491F100196A564C00E7DC5A /* MallNewsDetail_oneCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0491F0FE196A564C00E7DC5A /* MallNewsDetail_oneCell.xib */; };
 		0491F104196A56E900E7DC5A /* MallNewsDetail_twoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0491F102196A56E900E7DC5A /* MallNewsDetail_twoCell.m */; };
@@ -1092,6 +1098,15 @@
 		04635306197528D700BDB159 /* SearchResultStoreCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultStoreCell.h; sourceTree = "<group>"; };
 		04635307197528D700BDB159 /* SearchResultStoreCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultStoreCell.m; sourceTree = "<group>"; };
 		04635308197528D700BDB159 /* SearchResultStoreCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchResultStoreCell.xib; sourceTree = "<group>"; };
+		046C112319767D1C007F7FE3 /* MyViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyViewCell.h; sourceTree = "<group>"; };
+		046C112419767D1C007F7FE3 /* MyViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyViewCell.m; sourceTree = "<group>"; };
+		046C112519767D1C007F7FE3 /* MyViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyViewCell.xib; sourceTree = "<group>"; };
+		046C112919768F4A007F7FE3 /* MyVIPCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyVIPCardViewController.h; sourceTree = "<group>"; };
+		046C112A19768F4A007F7FE3 /* MyVIPCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyVIPCardViewController.m; sourceTree = "<group>"; };
+		046C112B19768F4A007F7FE3 /* MyVIPCardViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyVIPCardViewController.xib; sourceTree = "<group>"; };
+		046C112E19768F70007F7FE3 /* MyFocusBankCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyFocusBankCardViewController.h; sourceTree = "<group>"; };
+		046C112F19768F70007F7FE3 /* MyFocusBankCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyFocusBankCardViewController.m; sourceTree = "<group>"; };
+		046C113019768F70007F7FE3 /* MyFocusBankCardViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyFocusBankCardViewController.xib; sourceTree = "<group>"; };
 		0491F0FC196A564C00E7DC5A /* MallNewsDetail_oneCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MallNewsDetail_oneCell.h; sourceTree = "<group>"; };
 		0491F0FD196A564C00E7DC5A /* MallNewsDetail_oneCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MallNewsDetail_oneCell.m; sourceTree = "<group>"; };
 		0491F0FE196A564C00E7DC5A /* MallNewsDetail_oneCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MallNewsDetail_oneCell.xib; sourceTree = "<group>"; };
@@ -2376,6 +2391,29 @@
 			name = FocusStoreCell;
 			sourceTree = "<group>";
 		};
+		046C112119767CF6007F7FE3 /* MyView */ = {
+			isa = PBXGroup;
+			children = (
+				046C112319767D1C007F7FE3 /* MyViewCell.h */,
+				046C112419767D1C007F7FE3 /* MyViewCell.m */,
+				046C112519767D1C007F7FE3 /* MyViewCell.xib */,
+			);
+			name = MyView;
+			sourceTree = "<group>";
+		};
+		046C112819768F13007F7FE3 /* MyView */ = {
+			isa = PBXGroup;
+			children = (
+				046C112919768F4A007F7FE3 /* MyVIPCardViewController.h */,
+				046C112A19768F4A007F7FE3 /* MyVIPCardViewController.m */,
+				046C112B19768F4A007F7FE3 /* MyVIPCardViewController.xib */,
+				046C112E19768F70007F7FE3 /* MyFocusBankCardViewController.h */,
+				046C112F19768F70007F7FE3 /* MyFocusBankCardViewController.m */,
+				046C113019768F70007F7FE3 /* MyFocusBankCardViewController.xib */,
+			);
+			name = MyView;
+			sourceTree = "<group>";
+		};
 		04EF11EE1963DF8F0066C902 /* BackCardCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -2607,6 +2645,7 @@
 				4E2C6DEE18D75CC400DF3772 /* MeViewController.h */,
 				4E2C6DEF18D75CC400DF3772 /* MeViewController.m */,
 				4E2C6DF018D75CC400DF3772 /* MeViewController.xib */,
+				046C112819768F13007F7FE3 /* MyView */,
 				C1E094E7194993B400AA814B /* CouponViewController.h */,
 				C1E094E8194993B400AA814B /* CouponViewController.m */,
 				C1E094E9194993B400AA814B /* CouponViewController.xib */,
@@ -2652,6 +2691,7 @@
 		4E2C6DCF18D7523D00DF3772 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				046C112119767CF6007F7FE3 /* MyView */,
 				0373FA4719742C4400A1CF68 /* StoreListFocusedCell */,
 				03573B871908028000A11A33 /* MainViewCell */,
 				035214EC195C790C00F92B55 /* MallNewsCell */,
@@ -3692,6 +3732,7 @@
 				4ECBF73518F4B9A4003963E1 /* tmpimg1.jpg in Resources */,
 				4EF0911818FB52FD00ABFE7D /* top-icon-back-white@2x.png in Resources */,
 				4EF0915418FC4A8900ABFE7D /* c_3.jpg in Resources */,
+				046C112719767D1C007F7FE3 /* MyViewCell.xib in Resources */,
 				FA4E65D919357B21005022E2 /* UMSocialSinaData.html in Resources */,
 				4EF0913518FC1E4600ABFE7D /* miaosha_4.jpg in Resources */,
 				C1E094FE194AA92000AA814B /* cellview_favor_yes_btn@2x.png in Resources */,
@@ -3726,6 +3767,7 @@
 				4EF090F518FB52FD00ABFE7D /* service-icon-car@2x.png in Resources */,
 				0357FF57194D8C6F0071BD5A /* GroupBuyDetailCardCell.xib in Resources */,
 				4EF0915D18FC50B400ABFE7D /* tabbar_selected_bg.png in Resources */,
+				046C112D19768F4A007F7FE3 /* MyVIPCardViewController.xib in Resources */,
 				03650F7F1945F52200016289 /* mainview_mall_activity_press@2x.png in Resources */,
 				FA4E65CF19357B21005022E2 /* UMSocialExtConfig.html in Resources */,
 				4EF090E718FB52FD00ABFE7D /* register-phone-register@2x.png in Resources */,
@@ -3779,6 +3821,7 @@
 				FA4E65D119357B21005022E2 /* UMSocialIconActionSheet.html in Resources */,
 				4EF090F818FB52FD00ABFE7D /* service-icon-money@2x.png in Resources */,
 				4EF090E118FB52FD00ABFE7D /* my-icon-radio-pressed@2x.png in Resources */,
+				046C113219768F70007F7FE3 /* MyFocusBankCardViewController.xib in Resources */,
 				4E2C6E0618D7611200DF3772 /* banner2.jpg in Resources */,
 				4EF0910718FB52FD00ABFE7D /* store-icon-fav-red@2x.png in Resources */,
 				4ECBF70C18F4449E003963E1 /* BindPhoneViewController.xib in Resources */,
@@ -4005,6 +4048,7 @@
 				C1A9C879193F130300DD420F /* NINonEmptyCollectionTesting.m in Sources */,
 				0357FF9C195344D70071BD5A /* StoreDetail_RestaurantViewController.m in Sources */,
 				03573ADA19055E2300A11A33 /* SingletonHelpers.m in Sources */,
+				046C112C19768F4A007F7FE3 /* MyVIPCardViewController.m in Sources */,
 				03573ADD19055E4A00A11A33 /* MBSFilterInfo.m in Sources */,
 				04EF120419640E170066C902 /* BankDiscoundListCell.m in Sources */,
 				4ECBF75C18F6E9B4003963E1 /* CouponDetailDownloadCell.m in Sources */,
@@ -4049,6 +4093,7 @@
 				04FBB82B196E852F00A46F9C /* MyFocusYouHuiInterface.m in Sources */,
 				04FBB837196E916200A46F9C /* SetStoreFocusRecommend.m in Sources */,
 				04405C3A19669B5500CDD36F /* BankCardDetailInterface.m in Sources */,
+				046C113119768F70007F7FE3 /* MyFocusBankCardViewController.m in Sources */,
 				4E9608A418E48D6700418798 /* LoadMoreTableFooterView.m in Sources */,
 				C1A9C8A219405F2400DD420F /* Static.m in Sources */,
 				042E47FD1965559D00CD945A /* BankCardModel.m in Sources */,
@@ -4057,6 +4102,7 @@
 				4E25476018EB1BC1007388B6 /* MainViewYouhuiCell.m in Sources */,
 				03573B95190EA53800A11A33 /* JSONKit.m in Sources */,
 				C195322B1921F3D700D3BFA8 /* CommentModel.m in Sources */,
+				046C112619767D1C007F7FE3 /* MyViewCell.m in Sources */,
 				0312035D191945DF00077E25 /* EGOImageView.m in Sources */,
 				4E96088118E4837100418798 /* YouhuiTileView.m in Sources */,
 				03573B9A190EA8DB00A11A33 /* KeyChainTool.m in Sources */,

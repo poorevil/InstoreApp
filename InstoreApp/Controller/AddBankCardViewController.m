@@ -52,9 +52,7 @@
     label.textColor = [UIColor colorWithRed:121/255.0 green:121/255.0 blue:121/255.0 alpha:1];
     self.myTableView.tableHeaderView = label;
     
-//    for (UIViewController *vc in self.navigationController.viewControllers) {
-//        NSLog(@"%@",[vc class]);
-//    }
+    self.hidesBottomBarWhenPushed = YES;
     
 }
 #pragma mark - UITableViewDataSource

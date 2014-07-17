@@ -83,7 +83,13 @@
     self.subTitleLabel.text = self.storeModel.slogan;
     self.logoImageView.imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@/120*120.png",
                                                         self.storeModel.logoUrl]];
-    self.priceLabel.text = [NSString stringWithFormat:@"人均:%d",self.storeModel.avgPrice];
+    NSString *avgPrice = @"";
+    if (!self.storeModel.avgPrice) {
+        avgPrice = @"人均:--";
+    }else{
+        avgPrice = [NSString stringWithFormat:@"人均:%d",self.storeModel.avgPrice];
+    }
+    self.priceLabel.text = avgPrice;
     self.addressLabel.text = self.storeModel.position.floor.fName;
     self.favorLabel.text = [NSString stringWithFormat:@"%d",self.storeModel.followerCount];
 

@@ -422,7 +422,6 @@ CouponViewInterfaceDelegate, YouhuiCategoryViewControllerDelegate,YouHuiOrderVie
 //我的收藏
 - (IBAction)btnMyFocusYouHuiAction:(UIButton *)sender {
     MyFocusYouHuiViewController *vc = [[MyFocusYouHuiViewController alloc]init];
-    vc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];
     [vc release];
 }

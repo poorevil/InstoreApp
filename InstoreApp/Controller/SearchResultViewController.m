@@ -10,7 +10,9 @@
 #import "YouhuiTileView.h"
 #import "SearchInterface.h"
 #import "CouponModel.h"
-#import "StoreModel.h"
+#import "FoodItemCell.h"
+#import "CouponView_focusedCell.h"
+
 
 @interface SearchResultViewController () <UISearchBarDelegate,SearchInterfaceDelegate,UIScrollViewDelegate>
 
@@ -43,15 +45,13 @@
     
     self.searchInterface = [[[SearchInterface alloc] init] autorelease];
     self.searchInterface.delegate = self;
-    
-//    if(!self.collectionView.pullTableIsRefreshing) {
-//        self.collectionView.pullTableIsRefreshing = YES;
-//        [self performSelector:@selector(refreshTable) withObject:nil afterDelay:0];
-//    }
+    [self loadDataSource];
 }
 
 -(void)initViews
 {
+    self.hidesBottomBarWhenPushed = YES;
+    
     [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:248.0f/255.0f
                                                                              green:40.0f/255.0f
                                                                               blue:53.0f/255.0f
@@ -76,31 +76,8 @@
     self.items = [NSMutableArray array];
     self.currentPage = 1;
     self.title = @"我的优惠劵";
+
     
-//    self.collectionView = [[[PullPsCollectionView alloc] initWithFrame:CGRectMake(0,
-//                                                                                 self.navigationController.navigationBar.frame.size.height+self.navigationController.navigationBar.frame.origin.y,
-//                                                                                  self.view.frame.size.width,
-//                                                                                  self.view.frame.size.height-(self.navigationController.navigationBar.frame.size.height+self.navigationController.navigationBar.frame.origin.y))] autorelease];
-//    [self.view addSubview:self.collectionView];
-//    self.collectionView.collectionViewDelegate = self;
-//    self.collectionView.collectionViewDataSource = self;
-//    self.collectionView.pullDelegate=self;
-//    self.collectionView.backgroundColor = [UIColor clearColor];
-//    self.collectionView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-//    
-//    self.collectionView.numColsPortrait = 2;
-//    self.collectionView.numColsLandscape = 3;
-//    
-//    self.collectionView.pullArrowImage = [UIImage imageNamed:@"blackArrow"];
-//    self.collectionView.pullBackgroundColor = [UIColor whiteColor];
-//    self.collectionView.pullTextColor = [UIColor blackColor];
-//    
-//    UILabel *loadingLabel = [[[UILabel alloc] initWithFrame:self.collectionView.bounds] autorelease];
-//    loadingLabel.text = @"Loading...";
-//    loadingLabel.textAlignment = NSTextAlignmentCenter;
-//    self.collectionView.loadingView = loadingLabel;
-//    
-//    self.collectionView.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning
@@ -114,9 +91,8 @@
     [self.items removeAllObjects];
     self.currentPage = 1;
     [self loadDataSource];
-//    self.collectionView.pullLastRefreshDate = [NSDate date];
-//    self.collectionView.pullTableIsRefreshing = NO;
-//    [self.collectionView reloadData];
+
+    
 }
 
 #pragma mark - UITableViewDataSource
@@ -127,7 +103,7 @@
 {
     switch (section) {
         case 0:
-            return 1;
+            return self.storeList.count == 0 ? 0 : 1;
             break;
         case 1:
             return self.storeList.count;
@@ -143,6 +119,22 @@
             break;
     }
 }
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    switch (indexPath.section) {
+        case 0:
+            return 44;
+            break;
+        case 1:
+            return 80;
+            break;
+        case 2:
+            return 44;
+            break;
+        case 3:
+            return 236;
+    }
+    return 0;
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -154,6 +146,7 @@
                 cell.backgroundColor = [UIColor colorWithRed:247/255.0 green:247/255.0 blue:247/255.0 alpha:1];
             }
             cell.textLabel.text = @"品牌";
+            return cell;
         }
             break;
         case 2:{
@@ -163,30 +156,44 @@
                 cell.backgroundColor = [UIColor colorWithRed:247/255.0 green:247/255.0 blue:247/255.0 alpha:1];
             }
             cell.textLabel.text = @"优惠";
+            return cell;
         }
             break;
         case 1:{
             if (self.storeList.count > 0) {
-                StoreModel *storeModel = [self.storeList objectAtIndex:indexPath.row];
-                if (storeModel.appCategory) {
-#warning 7月15日
+                static NSString *CellIdentifier = @"FoodItemCell";
+                UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                if (!cell) {
+                    cell = [[[NSBundle mainBundle] loadNibNamed:CellIdentifier
+                                                          owner:self
+                                                        options:nil] objectAtIndex:0];
                 }
+                StoreModel *store = [self.storeList objectAtIndex:indexPath.row];
+                FoodItemCell *fic = (FoodItemCell*)cell;
+                fic.storeModel = store;
+                return cell;
             }
         }
-    
             break;
-            
+        case 3:{
+            static NSString *CellIdentifier = @"CouponView_focusedCell";
+            CouponView_focusedCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+            if (!cell) {
+                cell = [[[NSBundle mainBundle] loadNibNamed:@"CouponView_focusedCell" owner:self options:nil] objectAtIndex:0];
+            }
+            cell.cm1 = [self.items objectAtIndex:indexPath.row * 2];
+            if (self.items.count < indexPath.row * 2 +1) {
+                cell.cm2 = nil;
+            }else{
+                cell.cm2 = [self.items objectAtIndex:(indexPath.row * 2 + 1)];
+            }
+            return cell;
+        }
+            break;
         default:
             break;
     }
-    
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
-    if (!cell) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"] autorelease];
-    }
-    
-    return cell;
+    return nil;
 }
 
 #pragma mark - UITableViewDelegate

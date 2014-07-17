@@ -44,6 +44,8 @@
     self.myFocusYouHuiInterface = [[MyFocusYouHuiInterface alloc]init];
     self.myFocusYouHuiInterface.delegate = self;
     [self.myFocusYouHuiInterface getMyFocusYouHuiListWithAmount:20 Page:self.currentPage];
+    
+    self.hidesBottomBarWhenPushed = YES;
 }
 
 #pragma mark - UITableViewDataSource

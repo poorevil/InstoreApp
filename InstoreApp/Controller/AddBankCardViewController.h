@@ -9,7 +9,7 @@
 #import "BaseViewController.h"
 #import "AddBandCardInterface.h"
 
-@interface AddBankCardViewController : BaseViewController<AddBankCardDelegate,UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate>
+@interface AddBankCardViewController : UIViewController<AddBankCardDelegate,UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate>
 
 @property (retain, nonatomic) AddBandCardInterface *addBankCardInterface;
 @property (nonatomic, retain) NSMutableArray *itemList;

@@ -54,8 +54,6 @@
 }
 -(void)goNextAction:(UIButton *)sender{
     AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
-//    UINavigationController *nav = (UINavigationController *)appDelegate.tabBarController.selectedViewController;
-//    appDelegate.window.rootViewController =
     [appDelegate initWindow];
 }
 

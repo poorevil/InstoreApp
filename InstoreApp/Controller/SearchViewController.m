@@ -41,6 +41,8 @@
                                                                               blue:53.0f/255.0f
                                                                              alpha:1]];
     
+    self.hidesBottomBarWhenPushed = YES;
+    
     UIBarButtonItem *cancelBtn = [[UIBarButtonItem alloc] initWithTitle:@"关闭" style:UIBarButtonItemStylePlain target:self action:@selector(cancelAction)];
     cancelBtn.tintColor = [UIColor whiteColor];
     self.navigationItem.rightBarButtonItem = cancelBtn;
@@ -125,7 +127,7 @@
     }else{
         SearchResultViewController *searchResultViewController = [[[SearchResultViewController alloc] init] autorelease];
         searchResultViewController.searchKeyWord = [self.historyList objectAtIndex:indexPath.row];
-        [self.navigationController pushViewController:searchResultViewController animated:NO];
+        [self.navigationController pushViewController:searchResultViewController animated:YES];
     }
 }
 
@@ -175,8 +177,8 @@
 }
 
 - (IBAction)btnHotSearchAction:(UIButton *)sender {
-    SearchResultViewController *searchResultViewController = [[[SearchResultViewController alloc] init] autorelease];
+    SearchResultViewController *searchResultViewController = [[[SearchResultViewController alloc] initWithNibName:@"SearchResultViewController" bundle:nil] autorelease];
     searchResultViewController.searchKeyWord = sender.titleLabel.text;
-    [self.navigationController pushViewController:searchResultViewController animated:NO];
+    [self.navigationController pushViewController:searchResultViewController animated:YES];
 }
 @end

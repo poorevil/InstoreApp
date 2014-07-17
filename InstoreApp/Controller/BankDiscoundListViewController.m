@@ -24,7 +24,7 @@
 @property (nonatomic, assign) NSInteger totalAmount;
 @property (nonatomic, assign) NSInteger currentPage;
 
-@property (nonatomic, retain) NSDateFormatter *formatter;
+//@property (nonatomic, retain) NSDateFormatter *formatter;
 
 
 @end
@@ -56,8 +56,10 @@
     self.bankCardDetailInterface.delegate = self;
     [self.bankCardDetailInterface getBankCardDetailByPage:self.currentPage amount:20 andBankId:self.bankId];
     
-    self.formatter = [[NSDateFormatter alloc]init];
-    [self.formatter setDateFormat:@"yyyy-MM-dd"];
+//    self.formatter = [[NSDateFormatter alloc]init];
+//    [self.formatter setDateFormat:@"yyyy-MM-dd"];
+    
+    self.hidesBottomBarWhenPushed = YES;
     
 }
 #pragma mark - UITableViewDataSource

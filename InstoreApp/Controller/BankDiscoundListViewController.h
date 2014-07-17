@@ -8,7 +8,7 @@
 
 #import "BaseViewController.h"
 
-@interface BankDiscoundListViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate>
+@interface BankDiscoundListViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 @property (retain, nonatomic) IBOutlet UITableView *myTableView;
 
 @property (assign, nonatomic) NSInteger bankId;

@@ -16,7 +16,8 @@
 #import "StoreListFocusedViewController.h"
 
 #import "ShopViewController.h"
-
+#import "MyViewCell.h"
+#import "MyFocusYouHuiViewController.h"
 
 @interface MeViewController () <UserInfoInterfaceDelegate>
 
@@ -50,6 +51,8 @@
     self.userInfoInterface.delegate = self;
     [self.userInfoInterface getUserInfo];
     
+    self.navigationItem.rightBarButtonItem = nil;
+    
 }
 
 -(void)initHeaderView
@@ -79,7 +82,7 @@
         case 3:
             return 3;
         case 4:
-            return 2;
+            return 1;
             
     }
     
@@ -99,22 +102,34 @@
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1
                                       reuseIdentifier:@"cell"] autorelease];
         cell.detailTextLabel.font = [UIFont systemFontOfSize:12];
+        cell.textLabel.font = [UIFont systemFontOfSize:14];
     }
     UISwitch *switchButton1;
     switch (indexPath.section) {
-        case 0:
-            switch (indexPath.row) {
-                case 0:
-                    cell.textLabel.text = @"消息中心(5)";
-                    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-                    break;
+        case 0:{
+            static NSString *CellIdentifier = @"MyViewCell";
+            MyViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+            if (!cell) {
+                cell = [[[NSBundle mainBundle] loadNibNamed:@"MyViewCell" owner:self options:nil] objectAtIndex:0];
+                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             }
+            cell.textDict = @{@"title": @"消息中心",@"count":@"（5）"};
+            return cell;
+        }
             break;
         case 1:
             switch (indexPath.row) {
-                case 0:
-                    cell.textLabel.text = @"已下载的优惠劵(10)";
-                    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                case 0:{
+                    //已下载的优惠劵
+                    static NSString *CellIdentifier = @"MyViewCell";
+                    MyViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                    if (!cell) {
+                        cell = [[[NSBundle mainBundle] loadNibNamed:@"MyViewCell" owner:self options:nil] objectAtIndex:0];
+                        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                    }
+                    cell.textDict = @{@"title": @"已下载的优惠券",@"count":@"（5）"};
+                    return cell;
+                }
                     break;
                 case 1:
                     cell.textLabel.text = @"收藏的优惠";
@@ -153,33 +168,13 @@
             }
             break;
         case 4:
-            switch (indexPath.row) {
-                case 0:
-                    cell.textLabel.text = @"接收已关注商家的优惠信息";
-                    cell.accessoryType = UITableViewCellAccessoryNone;
-                    switchButton1 = [[UISwitch alloc] init];
-                    switchButton1.frame = CGRectMake(tableView.frame.size.width - switchButton1.frame.size.width - 10, (cell.frame.size.height - switchButton1.frame.size.height)/2, switchButton1.frame.size.width, switchButton1.frame.size.height);
-                    [switchButton1 setOn:YES];
-//                    [switchButton addTarget:self action:@selector(switchAction:) forControlEvents:UIControlEventValueChanged];
-                    [cell.contentView addSubview:switchButton1];
-                    break;
-                    
-                case 1:
-                    cell.textLabel.text = @"进入商场自动连接WiFi网络";
-                    cell.accessoryType = UITableViewCellAccessoryNone;
-                    switchButton1 = [[UISwitch alloc] init];
-                    switchButton1.frame = CGRectMake(tableView.frame.size.width - switchButton1.frame.size.width - 10, (cell.frame.size.height - switchButton1.frame.size.height)/2, switchButton1.frame.size.width, switchButton1.frame.size.height);
-                    [switchButton1 setOn:YES];
-                    //                    [switchButton addTarget:self action:@selector(switchAction:) forControlEvents:UIControlEventValueChanged];
-                    [cell.contentView addSubview:switchButton1];
-                    break;
-            }
-            
-            break;
-
-            
-        default:
-            break;
+            cell.textLabel.text = @"接收已关注商家的优惠信息";
+            cell.accessoryType = UITableViewCellAccessoryNone;
+            switchButton1 = [[UISwitch alloc] init];
+            switchButton1.frame = CGRectMake(tableView.frame.size.width - switchButton1.frame.size.width - 10, (cell.frame.size.height - switchButton1.frame.size.height)/2, switchButton1.frame.size.width, switchButton1.frame.size.height);
+            [switchButton1 setOn:YES];
+            [cell.contentView addSubview:switchButton1];
+            [switchButton1 release];
     }
     
     return  cell;
@@ -191,46 +186,63 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    //DownloadCouponsViewController
     switch (indexPath.section) {
-        case 0:
-            switch (indexPath.row) {
-                case 0:{
-//                    DownloadCouponsViewController *dcvc = [[[DownloadCouponsViewController alloc] initWithNibName:@"DownloadCouponsViewController" bundle:nil] autorelease];
-//                    dcvc.hidesBottomBarWhenPushed = YES;
-//                    [self.navigationController pushViewController:dcvc animated:YES];
-//                    dcvc.hidesBottomBarWhenPushed = NO;
-                    break;
-                }
-            }
+        case 0:{
+            //消息中心
+            
+        }
             break;
         case 1:
             switch (indexPath.row) {
                 case 0:{
-//                    ShopViewController *shopVC = [[[ShopViewController alloc] initWithNibName:@"ShopViewController" bundle:nil] autorelease];
-//                    shopVC.isShowLikeOnly = YES;
-//                    shopVC.hidesBottomBarWhenPushed = YES;
-//                    [self.navigationController pushViewController:shopVC animated:YES];
-//                    shopVC.hidesBottomBarWhenPushed = NO;
-
-                    break;
+                    //已下载的优惠券
+                    
                 }
-                default:
+                    break;
+                case 1:{
+                    //收藏的优惠
+                    MyFocusYouHuiViewController *vc = [[MyFocusYouHuiViewController alloc]init];
+                    [self.navigationController pushViewController:vc animated:YES];
+                    [vc release];
+                }
                     break;
             }
             break;
         case 2:
             switch (indexPath.row) {
                 case 0:{
+                    //我关注的商家
                     StoreListFocusedViewController *slfVC = [[[StoreListFocusedViewController alloc] initWithNibName:@"StoreListFocusedViewController" bundle:nil] autorelease];
                     slfVC.hidesBottomBarWhenPushed = YES;
                     [self.navigationController pushViewController:slfVC animated:YES];
                     slfVC.hidesBottomBarWhenPushed = NO;
                     break;
                 }   
-                default:
+                case 1:{
+                    //我关注的卡恵
+                    
+                }
                     break;
             }
+        case 3:
+            switch (indexPath.row) {
+                case 0:{
+                    //我的电子会员卡
+                    
+                }
+                    break;
+                case 1:{
+                    //商场会员指南
+                    
+                }
+                case 2:{
+                    //绑定手机号
+                    
+                }
+            }
+            case 4:
+            //接收已关注商家的优惠信息
+            return;
     }
 }
 

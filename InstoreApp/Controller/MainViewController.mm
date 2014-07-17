@@ -72,12 +72,17 @@
     self.lunBoImageInterface.delegate = self;
     [self.lunBoImageInterface getLunBoImageListWithPos:1];
     
-    self.navigationController.navigationBarHidden = YES;
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [self.navigationController.navigationBar setBarTintColor:[UIColor whiteColor]];
+    self.navigationController.navigationBarHidden = YES;
+}
+-(void)viewDidDisappear:(BOOL)animated{
+//    self.navigationController.navigationBarHidden = NO;
+    [self.navigationController setNavigationBarHidden:NO animated:NO];
 }
 
 - (void)didReceiveMemoryWarning
@@ -298,10 +303,9 @@
 -(IBAction)showSearchView:(id)sender;
 {
     SearchViewController *searchVC = [[[SearchViewController alloc] initWithNibName:@"SearchViewController" bundle:nil] autorelease];
-    UINavigationController *nav = [[[UINavigationController alloc] initWithRootViewController:searchVC] autorelease];
-    [self presentViewController:nav
-                       animated:NO
-                     completion:nil];
+    AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+    UINavigationController *nav = (UINavigationController *)appDelegate.tabBarController.selectedViewController;
+    [nav pushViewController:searchVC animated:YES];
 }
 
 #pragma mark - UITableViewDataSource<NSObject>
