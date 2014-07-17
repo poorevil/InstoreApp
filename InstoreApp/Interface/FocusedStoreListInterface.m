@@ -51,6 +51,7 @@
             if (listArray) {
                 for (NSDictionary *dict in listArray) {
                     StoreModel *storeModel = [[StoreModel alloc]initWithJsonMap:dict];
+                    storeModel.isFocus = YES;
                     [resultList addObject:storeModel];
                     [storeModel release];
                 }

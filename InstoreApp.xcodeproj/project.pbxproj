@@ -184,6 +184,7 @@
 		0373FABA1976CAE500A1CF68 /* nav_map_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0373FAB91976CAE500A1CF68 /* nav_map_btn@2x.png */; };
 		0373FAC51976D8FD00A1CF68 /* nav_focuse_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0373FAC31976D8FD00A1CF68 /* nav_focuse_btn@2x.png */; };
 		0373FAC61976D8FD00A1CF68 /* nav_focuse_pressed_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0373FAC41976D8FD00A1CF68 /* nav_focuse_pressed_btn@2x.png */; };
+		0373FACB19781E6000A1CF68 /* share_white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0373FACA19781E6000A1CF68 /* share_white@2x.png */; };
 		03C6592A1928985D009CADA6 /* SearchResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C659291928985D009CADA6 /* SearchResultViewController.m */; };
 		04196A261962D2B30037C046 /* DailyDealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04196A241962D2B30037C046 /* DailyDealViewController.m */; };
 		04196A271962D2B30037C046 /* DailyDealViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04196A251962D2B30037C046 /* DailyDealViewController.xib */; };
@@ -260,7 +261,6 @@
 		0491F11B196AB77A00E7DC5A /* focus_whiteLine.png in Resources */ = {isa = PBXBuildFile; fileRef = 0491F119196AB77A00E7DC5A /* focus_whiteLine.png */; };
 		0491F11E196AC82900E7DC5A /* FocusInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 0491F11D196AC82900E7DC5A /* FocusInterface.m */; };
 		0491F121196ACACE00E7DC5A /* CancelFocusInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 0491F120196ACACE00E7DC5A /* CancelFocusInterface.m */; };
-		0491F123196ACCC900E7DC5A /* share_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 0491F122196ACCC900E7DC5A /* share_white.png */; };
 		049AC1D91977E57F00262B69 /* my_card_btnAddCard@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 049AC1D61977E57F00262B69 /* my_card_btnAddCard@2x.png */; };
 		049AC1DA1977E57F00262B69 /* my_card_NO_bangding@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 049AC1D71977E57F00262B69 /* my_card_NO_bangding@2x.png */; };
 		049AC1DB1977E57F00262B69 /* my_card_YES_bangding@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 049AC1D81977E57F00262B69 /* my_card_YES_bangding@2x.png */; };
@@ -1023,6 +1023,7 @@
 		0373FAB91976CAE500A1CF68 /* nav_map_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "nav_map_btn@2x.png"; path = "img_new/nav_map_btn@2x.png"; sourceTree = "<group>"; };
 		0373FAC31976D8FD00A1CF68 /* nav_focuse_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "nav_focuse_btn@2x.png"; path = "img_new/nav_focuse_btn@2x.png"; sourceTree = "<group>"; };
 		0373FAC41976D8FD00A1CF68 /* nav_focuse_pressed_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "nav_focuse_pressed_btn@2x.png"; path = "img_new/nav_focuse_pressed_btn@2x.png"; sourceTree = "<group>"; };
+		0373FACA19781E6000A1CF68 /* share_white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "share_white@2x.png"; sourceTree = "<group>"; };
 		03C659281928985D009CADA6 /* SearchResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultViewController.h; sourceTree = "<group>"; };
 		03C659291928985D009CADA6 /* SearchResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultViewController.m; sourceTree = "<group>"; };
 		04196A231962D2B30037C046 /* DailyDealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DailyDealViewController.h; path = ../View/DailyDealViewController.h; sourceTree = "<group>"; };
@@ -1131,7 +1132,6 @@
 		0491F11D196AC82900E7DC5A /* FocusInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FocusInterface.m; sourceTree = "<group>"; };
 		0491F11F196ACACE00E7DC5A /* CancelFocusInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CancelFocusInterface.h; sourceTree = "<group>"; };
 		0491F120196ACACE00E7DC5A /* CancelFocusInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CancelFocusInterface.m; sourceTree = "<group>"; };
-		0491F122196ACCC900E7DC5A /* share_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = share_white.png; sourceTree = "<group>"; };
 		049AC1D61977E57F00262B69 /* my_card_btnAddCard@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "my_card_btnAddCard@2x.png"; sourceTree = "<group>"; };
 		049AC1D71977E57F00262B69 /* my_card_NO_bangding@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "my_card_NO_bangding@2x.png"; sourceTree = "<group>"; };
 		049AC1D81977E57F00262B69 /* my_card_YES_bangding@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "my_card_YES_bangding@2x.png"; sourceTree = "<group>"; };
@@ -2876,6 +2876,7 @@
 		4EF0907518FB52CE00ABFE7D /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				0373FACA19781E6000A1CF68 /* share_white@2x.png */,
 				049AC1D61977E57F00262B69 /* my_card_btnAddCard@2x.png */,
 				049AC1D71977E57F00262B69 /* my_card_NO_bangding@2x.png */,
 				049AC1D81977E57F00262B69 /* my_card_YES_bangding@2x.png */,
@@ -2900,7 +2901,6 @@
 				042F120E196D2A96003F255E /* focusstore_no@2x.png */,
 				042F120F196D2A96003F255E /* focusstore_nofocus.png */,
 				042F1210196D2A96003F255E /* focusstore_yes@2x.png */,
-				0491F122196ACCC900E7DC5A /* share_white.png */,
 				0491F118196AB77A00E7DC5A /* focus_white.png */,
 				0491F119196AB77A00E7DC5A /* focus_whiteLine.png */,
 				04EF12071964124B0066C902 /* bankcard_cell_time.png */,
@@ -3656,7 +3656,6 @@
 				FA4E660319357B22005022E2 /* markdown.css in Resources */,
 				FA4E65D719357B21005022E2 /* UMSocialRenrenData.html in Resources */,
 				4EF090CF18FB52FD00ABFE7D /* attention-tab-bg@2x.png in Resources */,
-				0491F123196ACCC900E7DC5A /* share_white.png in Resources */,
 				4E2C6DE818D756FD00DF3772 /* MainViewOtherCell.xib in Resources */,
 				4EF0912718FC155200ABFE7D /* banner_2.jpg in Resources */,
 				4EF0910D18FB52FD00ABFE7D /* store-icon-liked@2x.png in Resources */,
@@ -3762,6 +3761,7 @@
 				0491F105196A56E900E7DC5A /* MallNewsDetail_twoCell.xib in Resources */,
 				4EF090E818FB52FD00ABFE7D /* register-phone-submit@2x.png in Resources */,
 				046352F41974D4F200BDB159 /* nav_search_bg.png in Resources */,
+				0373FACB19781E6000A1CF68 /* share_white@2x.png in Resources */,
 				4ECBF71918F45225003963E1 /* ShopDetailLocationCell.xib in Resources */,
 				03650F791945F52200016289 /* mainview_card_press@2x.png in Resources */,
 				4EF090DE18FB52FD00ABFE7D /* index-tool-btn-sale@2x.png in Resources */,

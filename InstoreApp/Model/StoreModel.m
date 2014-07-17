@@ -37,7 +37,7 @@
             
             self.descStr = [jsonMap objectForKey:@"description"];
             self.followerCount = [jsonMap objectForKey:@"followerCount"]==nil?0:[[jsonMap objectForKey:@"followerCount"] integerValue];
-//            self.isFocus = [[jsonMap objectForKey:@"isFocus"] boolValue];
+            self.isFocus = [jsonMap objectForKey:@"isFocus"]?[[jsonMap objectForKey:@"isFocus"] boolValue]:NO;
 
             self.coupons = [NSMutableArray array];
             NSArray *coupons = [jsonMap objectForKey:@"coupons"];//coupons

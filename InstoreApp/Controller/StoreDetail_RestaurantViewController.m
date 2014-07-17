@@ -19,6 +19,8 @@
 
 #import "EGOImageView.h"
 
+#import "FocusStoreInterface.h"
+
 @interface StoreDetail_RestaurantViewController () <StoreDetailInterfaceDelegate>
 
 @property (nonatomic, retain) StoreModel *storeModel;
@@ -26,7 +28,9 @@
 
 @property (nonatomic, retain) StoreDetailInterface *storeDetailInterface;
 
+@property (nonatomic, retain) UIButton *focuseBtn;
 
+@property (nonatomic, retain) FocusStoreInterface *focusStoreInterface;
 @end
 
 @implementation StoreDetail_RestaurantViewController
@@ -56,11 +60,15 @@
                                                                              alpha:1]];
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
     
-    UIButton *focuseBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [focuseBtn setImage:[UIImage imageNamed:@"nav_focuse_btn"] forState:UIControlStateNormal];
-    [focuseBtn addTarget:self action:@selector(focuseBtnAction) forControlEvents:UIControlEventTouchUpInside];
-    [focuseBtn sizeToFit];
-    UIBarButtonItem *focuseBarBtn = [[[UIBarButtonItem alloc] initWithCustomView:focuseBtn] autorelease];
+    self.focuseBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    NSString *imageName = @"nav_focuse_btn";
+    if (self.storeModel.isFocus) {
+        imageName = @"nav_focuse_pressed_btn";
+    }
+    [self.focuseBtn setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
+    [self.focuseBtn addTarget:self action:@selector(focuseBtnAction) forControlEvents:UIControlEventTouchUpInside];
+    [self.focuseBtn sizeToFit];
+    UIBarButtonItem *focuseBarBtn = [[[UIBarButtonItem alloc] initWithCustomView:self.focuseBtn] autorelease];
     
     UIButton *shareBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [shareBtn setImage:[UIImage imageNamed:@"share_white"] forState:UIControlStateNormal];
@@ -92,6 +100,8 @@
     self.storeDetailInterface = nil;
     self.headerView = nil;
     
+    self.focuseBtn = nil;
+    
     [super dealloc];
 }
 
@@ -107,11 +117,40 @@
     
     if (self.storeModel) {
         self.headerView.storeModel = self.storeModel;
+        
+        NSString *imageName = @"nav_focuse_btn";
+        if (self.storeModel.isFocus) {
+            imageName = @"nav_focuse_pressed_btn";
+        }
+        [self.focuseBtn setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
     }
 }
 
 -(void)focuseBtnAction
 {
+    self.focusStoreInterface = [[[FocusStoreInterface alloc] init] autorelease];
+    NSString *msg = @"";
+    if (self.storeModel.isFocus) {
+        [self.focusStoreInterface focusStoreWithID:self.storeModel.sid WithMethod:@"DELETE"];
+        [self.focuseBtn setImage:[UIImage imageNamed:@"nav_focuse_btn"]
+                        forState:UIControlStateNormal];
+        msg = @"取消关注成功";
+        self.storeModel.isFocus = NO;
+    }else{
+        [self.focusStoreInterface focusStoreWithID:self.storeModel.sid WithMethod:@"PUT"];
+        [self.focuseBtn setImage:[UIImage imageNamed:@"nav_focuse_pressed_btn"]
+                        forState:UIControlStateNormal];
+        msg = @"关注成功";
+        self.storeModel.isFocus = YES;
+    }
+    
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil
+                                                        message:msg
+                                                       delegate:nil
+                                              cancelButtonTitle:@"确定"
+                                              otherButtonTitles:nil];
+    [alertView show];
+    [alertView release];
     
 }
 
