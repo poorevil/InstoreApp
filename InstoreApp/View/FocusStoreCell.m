@@ -118,8 +118,6 @@
             isFocus = _view4.isFocus;
             focusStoreModel = _view4;
             break;
-        default:
-            break;
     }
     
     if (isFocus) {  //原来是喜欢，现在应该是取消喜欢
@@ -128,6 +126,7 @@
             [_delegate upDataFocusStoreCount:NO];
         }
         view.isFocusImage.image = [UIImage imageNamed:@"focusstore_nofocus.png"];
+        focusStoreModel.isFocus = NO;
         isFocus = NO;
     }else{
         [self.focusStoreInterface focusStoreWithID:focusStoreModel.storeID WithMethod:@"PUT"];
@@ -135,6 +134,7 @@
             [_delegate upDataFocusStoreCount:YES];
         }
         view.isFocusImage.image = [UIImage imageNamed:@"focusstore_isfocus.png"];
+        focusStoreModel.isFocus = YES;
         isFocus = YES;
     }    
 }

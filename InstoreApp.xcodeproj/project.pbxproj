@@ -261,6 +261,9 @@
 		0491F11E196AC82900E7DC5A /* FocusInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 0491F11D196AC82900E7DC5A /* FocusInterface.m */; };
 		0491F121196ACACE00E7DC5A /* CancelFocusInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 0491F120196ACACE00E7DC5A /* CancelFocusInterface.m */; };
 		0491F123196ACCC900E7DC5A /* share_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 0491F122196ACCC900E7DC5A /* share_white.png */; };
+		049AC1D91977E57F00262B69 /* my_card_btnAddCard@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 049AC1D61977E57F00262B69 /* my_card_btnAddCard@2x.png */; };
+		049AC1DA1977E57F00262B69 /* my_card_NO_bangding@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 049AC1D71977E57F00262B69 /* my_card_NO_bangding@2x.png */; };
+		049AC1DB1977E57F00262B69 /* my_card_YES_bangding@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 049AC1D81977E57F00262B69 /* my_card_YES_bangding@2x.png */; };
 		04B694FB197370EC00012D35 /* LunBoImageInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B694FA197370EB00012D35 /* LunBoImageInterface.m */; };
 		04D72940196B99B200590C23 /* YouHuiOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D7293E196B99B200590C23 /* YouHuiOrderViewController.m */; };
 		04D72941196B99B200590C23 /* YouHuiOrderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04D7293F196B99B200590C23 /* YouHuiOrderViewController.xib */; };
@@ -1129,6 +1132,9 @@
 		0491F11F196ACACE00E7DC5A /* CancelFocusInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CancelFocusInterface.h; sourceTree = "<group>"; };
 		0491F120196ACACE00E7DC5A /* CancelFocusInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CancelFocusInterface.m; sourceTree = "<group>"; };
 		0491F122196ACCC900E7DC5A /* share_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = share_white.png; sourceTree = "<group>"; };
+		049AC1D61977E57F00262B69 /* my_card_btnAddCard@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "my_card_btnAddCard@2x.png"; sourceTree = "<group>"; };
+		049AC1D71977E57F00262B69 /* my_card_NO_bangding@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "my_card_NO_bangding@2x.png"; sourceTree = "<group>"; };
+		049AC1D81977E57F00262B69 /* my_card_YES_bangding@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "my_card_YES_bangding@2x.png"; sourceTree = "<group>"; };
 		04B694F9197370EB00012D35 /* LunBoImageInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LunBoImageInterface.h; sourceTree = "<group>"; };
 		04B694FA197370EB00012D35 /* LunBoImageInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LunBoImageInterface.m; sourceTree = "<group>"; };
 		04D7293D196B99B200590C23 /* YouHuiOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YouHuiOrderViewController.h; sourceTree = "<group>"; };
@@ -2870,6 +2876,9 @@
 		4EF0907518FB52CE00ABFE7D /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				049AC1D61977E57F00262B69 /* my_card_btnAddCard@2x.png */,
+				049AC1D71977E57F00262B69 /* my_card_NO_bangding@2x.png */,
+				049AC1D81977E57F00262B69 /* my_card_YES_bangding@2x.png */,
 				0373FAC31976D8FD00A1CF68 /* nav_focuse_btn@2x.png */,
 				0373FAC41976D8FD00A1CF68 /* nav_focuse_pressed_btn@2x.png */,
 				0373FAB91976CAE500A1CF68 /* nav_map_btn@2x.png */,
@@ -3511,6 +3520,7 @@
 				03650F461942D9FE00016289 /* MainView_DailyPromotionCell.xib in Resources */,
 				4EF090DF18FB52FD00ABFE7D /* my-icon-more@2x.png in Resources */,
 				042E47F819651A2500CD945A /* webView_goBack.png in Resources */,
+				049AC1DB1977E57F00262B69 /* my_card_YES_bangding@2x.png in Resources */,
 				042F1201196D1ED6003F255E /* FocusStoreViewController.xib in Resources */,
 				FA4E65C419357B21005022E2 /* UMSocialAccountManager.html in Resources */,
 				C1E094EB194993B400AA814B /* CouponViewController.xib in Resources */,
@@ -3631,6 +3641,7 @@
 				0433EA54196A4A9F003AB8FD /* MallNewsDetailViewController.xib in Resources */,
 				043236081973D38200C6C117 /* firstImage_3_4.png in Resources */,
 				4EF090F118FB52FD00ABFE7D /* sale-icon-hot@2x.png in Resources */,
+				049AC1DA1977E57F00262B69 /* my_card_NO_bangding@2x.png in Resources */,
 				4E2C6E0118D75CED00DF3772 /* ServiceViewController.xib in Resources */,
 				C1D8701518ED5B1D0061F799 /* ShopDetailViewController.xib in Resources */,
 				035214BB1958757500F92B55 /* CommentListCell.xib in Resources */,
@@ -3828,6 +3839,7 @@
 				C1009E82192C589A00A4CC79 /* Icon_29.png in Resources */,
 				04EF12081964124B0066C902 /* bankcard_cell_bankIcon.png in Resources */,
 				4EF0914818FC2CEE00ABFE7D /* pp_7.jpg in Resources */,
+				049AC1D91977E57F00262B69 /* my_card_btnAddCard@2x.png in Resources */,
 				0357FF4B194D83F10071BD5A /* GroupBuyDetailViewController.xib in Resources */,
 				0357FF8D1951CA6D0071BD5A /* address_icon@2x.png in Resources */,
 				4EF090EA18FB52FD00ABFE7D /* sale-bar-tableft-cur@2x.png in Resources */,

@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MyVIPCardViewController : UIViewController
+@interface MyVIPCardViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
+
+@property (retain, nonatomic) UIImage *VIPCardNumberImage;
+@property (retain, nonatomic) NSArray *list;
+@property (retain, nonatomic) IBOutlet UITableView *myTableView;
 
 @end

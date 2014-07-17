@@ -45,6 +45,7 @@
     
     self.itemList = [NSMutableArray array];
     self.title = @"银行卡恵";
+    self.hidesBottomBarWhenPushed = YES;
     self.navigationItem.rightBarButtonItem = nil;
     
     UIButton *btnEditor = [UIButton buttonWithType:UIButtonTypeCustom];

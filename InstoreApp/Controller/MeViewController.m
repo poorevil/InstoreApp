@@ -18,6 +18,11 @@
 #import "ShopViewController.h"
 #import "MyViewCell.h"
 #import "MyFocusYouHuiViewController.h"
+#import "MyVIPCardViewController.h"
+#import "BankCardViewController.h"
+
+#import "SetStoreFocusRecommend.h"
+
 
 @interface MeViewController () <UserInfoInterfaceDelegate>
 
@@ -25,6 +30,10 @@
 
 @property (nonatomic,strong) UserInfoInterface *userInfoInterface;
 @property (nonatomic,strong) UserInfoModel *userInfo;
+
+//接受通知
+@property (assign, nonatomic) BOOL recommend;
+@property (retain, nonatomic) SetStoreFocusRecommend *setStoreFocusRecommend;
 @end
 
 @implementation MeViewController
@@ -103,15 +112,15 @@
                                       reuseIdentifier:@"cell"] autorelease];
         cell.detailTextLabel.font = [UIFont systemFontOfSize:12];
         cell.textLabel.font = [UIFont systemFontOfSize:14];
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
-    UISwitch *switchButton1;
+    UISwitch *_switchButton = nil;
     switch (indexPath.section) {
         case 0:{
             static NSString *CellIdentifier = @"MyViewCell";
             MyViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             if (!cell) {
                 cell = [[[NSBundle mainBundle] loadNibNamed:@"MyViewCell" owner:self options:nil] objectAtIndex:0];
-                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             }
             cell.textDict = @{@"title": @"消息中心",@"count":@"（5）"};
             return cell;
@@ -125,7 +134,6 @@
                     MyViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
                     if (!cell) {
                         cell = [[[NSBundle mainBundle] loadNibNamed:@"MyViewCell" owner:self options:nil] objectAtIndex:0];
-                        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                     }
                     cell.textDict = @{@"title": @"已下载的优惠券",@"count":@"（5）"};
                     return cell;
@@ -133,7 +141,6 @@
                     break;
                 case 1:
                     cell.textLabel.text = @"收藏的优惠";
-                    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                     break;
             }
             break;
@@ -142,12 +149,10 @@
             switch (indexPath.row) {
                 case 0:
                     cell.textLabel.text = @"我关注的商家";
-                    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                     break;
                 case 1:
                     cell.textLabel.text = @"我关注的卡惠";
                     cell.detailTextLabel.text=@"银行信用卡优惠";
-                    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                     break;
             }
             break;
@@ -155,26 +160,25 @@
             switch (indexPath.row) {
                 case 0:
                     cell.textLabel.text = @"我的电子会员卡";
-                    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                     break;
                 case 1:
                     cell.textLabel.text = @"商场会员指南";
-                    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                     break;
                 case 2:
                     cell.textLabel.text = @"绑定手机号";
-                    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                     break;
             }
             break;
         case 4:
             cell.textLabel.text = @"接收已关注商家的优惠信息";
             cell.accessoryType = UITableViewCellAccessoryNone;
-            switchButton1 = [[UISwitch alloc] init];
-            switchButton1.frame = CGRectMake(tableView.frame.size.width - switchButton1.frame.size.width - 10, (cell.frame.size.height - switchButton1.frame.size.height)/2, switchButton1.frame.size.width, switchButton1.frame.size.height);
-            [switchButton1 setOn:YES];
-            [cell.contentView addSubview:switchButton1];
-            [switchButton1 release];
+            if (!_switchButton) {
+                _switchButton = [[UISwitch alloc] init];
+                _switchButton.frame = CGRectMake(tableView.frame.size.width - _switchButton.frame.size.width - 10, (cell.frame.size.height - _switchButton.frame.size.height)/2, _switchButton.frame.size.width, _switchButton.frame.size.height);
+                [_switchButton setOn:_recommend];
+                [_switchButton addTarget:self action:@selector(switchButtonChangeAchtion:) forControlEvents:UIControlEventValueChanged];
+                [cell.contentView addSubview:_switchButton];
+            }
     }
     
     return  cell;
@@ -220,7 +224,12 @@
                 }   
                 case 1:{
                     //我关注的卡恵
-                    
+                    BankCardViewController *bankCardVC = [[BankCardViewController alloc]initWithNibName:@"BankCardViewController" bundle:nil];
+                    bankCardVC.hidesBottomBarWhenPushed = YES;
+//                    self.navigationController.title = @"我的卡恵";
+                    [self.navigationController pushViewController:bankCardVC animated:YES];
+                    self.navigationController.navigationItem.leftBarButtonItem.title = @"";
+                    [bankCardVC release];
                 }
                     break;
             }
@@ -228,7 +237,12 @@
             switch (indexPath.row) {
                 case 0:{
                     //我的电子会员卡
-                    
+                    MyVIPCardViewController *vc = [[MyVIPCardViewController alloc]initWithNibName:@"MyVIPCardViewController" bundle:nil];
+//                    vc.VIPCardNumberImage = [UIImage imageNamed:@"my_card_YES_bangding.png"];
+                    self.hidesBottomBarWhenPushed = YES;
+                    [self.navigationController pushViewController:vc animated:YES];
+                    self.hidesBottomBarWhenPushed = NO;
+                    [vc  release];
                 }
                     break;
                 case 1:{
@@ -240,8 +254,9 @@
                     
                 }
             }
-            case 4:
+        case 4:
             //接收已关注商家的优惠信息
+            break;
             return;
     }
 }
@@ -251,13 +266,24 @@
 {
     self.userInfo = userInfo;
     self.headerView.userInfo = self.userInfo;
+    self.recommend = userInfo.isStoreFocusRecommend;
 }
 
 -(void)getUserInfoDidFailed:(NSString *)errorMessage
 {
     NSLog(@"%@",errorMessage);
 }
-
+-(void)switchButtonChangeAchtion:(UISwitch *)sender{
+    if (sender.on) {
+        [sender setOn:NO];
+        [self.setStoreFocusRecommend setStoreFocusRecomend:NO];
+        _recommend = NO;
+    }else{
+        [sender setOn:YES];
+        [self.setStoreFocusRecommend setStoreFocusRecomend:YES];
+        _recommend = YES;
+    }
+}
 -(void)dealloc
 {
     self.mtableView = nil;
@@ -266,6 +292,8 @@
     self.userInfoInterface.delegate = nil;
     self.userInfoInterface = nil;
     self.userInfo = nil;
+    
+    self.setStoreFocusRecommend = nil;
     
     [super dealloc];
 }
