@@ -55,7 +55,7 @@
 @property (nonatomic,assign) NSInteger userCollectCount;//我的下载次数// 已下载返回1,未下载返回0.
 //
 
-@property (nonatomic,strong) NSString *instruction;//优惠券使用说明
+@property (nonatomic,strong) NSString *instruction;//优惠券使用说明  (仅限堂食。。。)
 ////@property (nonatomic,assign) NSInteger collectRole;//下载规则
 
 //

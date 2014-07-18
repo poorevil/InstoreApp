@@ -60,9 +60,7 @@
     self.itemList = [NSMutableArray array];
     self.itemCouponList = [NSMutableArray array];
     
-//    self.itemLunBoImageList = [NSArray ar]
-    
-//    [self initLunboView];
+    self.navigationItem.rightBarButtonItem = nil;
     
     //TODO:111
     [self showTypeChanged:self.segmentedControl];
@@ -98,53 +96,6 @@
 }
 
 #pragma mark - private method
-//-(void)initLunboView
-//{
-//    NSArray *imageFileName = @[@"banner_1.jpg",@"banner_2.jpg",@"banner_3.jpg",@"banner_4.jpg",@"banner_5.jpg"];
-//    NSMutableArray *viewsArray = [NSMutableArray array];
-//    for (int i = 0; i < imageFileName.count; ++i) {
-//        UIImageView *imageView = [[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 100)] autorelease];
-//        imageView.image = [UIImage imageNamed:[imageFileName objectAtIndex:i]];
-//        imageView.contentMode = UIViewContentModeScaleAspectFill;
-//        imageView.clipsToBounds = YES;
-//        [viewsArray addObject:imageView];
-//    }
-//    
-//    self.lunboView = [[[CycleScrollView alloc] initWithFrame:CGRectMake(0, 0, 320, 100)
-//                                           animationDuration:5] autorelease];
-//    self.lunboView.fetchContentViewAtIndex = ^UIView *(NSInteger pageIndex){
-//        return viewsArray[pageIndex];
-//    };
-//    self.lunboView.totalPagesCount = ^NSInteger(void){
-//        return imageFileName.count;
-//    };
-//    self.lunboView.TapActionBlock = ^(NSInteger pageIndex){
-//        NSLog(@"点击了第%d个",pageIndex);
-//    };
-//    
-//    self.headerView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 152)] autorelease];
-//    [self.headerView addSubview:self.lunboView];
-//    
-//    self.segmentedControl = [[[UISegmentedControl alloc] initWithItems:@[@"餐厅",@"优惠"]] autorelease];
-//    self.segmentedControl.frame = CGRectMake(65,
-//                                             112,
-//                                             190,
-//                                             29);
-//    self.segmentedControl.segmentedControlStyle = UISegmentedControlStyleBar;
-//    self.segmentedControl.selectedSegmentIndex = 0;
-//    self.segmentedControl.tintColor = [UIColor colorWithRed:229/255.0f
-//                                                       green:63/255.0f
-//                                                        blue:17/255.0f
-//                                                       alpha:1];
-//    [self.segmentedControl addTarget:self
-//                              action:@selector(showTypeChanged:)
-//                    forControlEvents:UIControlEventValueChanged];
-//    
-//    [self.headerView addSubview:self.segmentedControl];
-//    
-//    self.mtableView.tableHeaderView = self.headerView;
-//    
-//}
 -(void)initLunboView
 {
     //    NSArray *imageFileName = @[@"banner_1.jpg",@"banner_2.jpg",@"banner_3.jpg",@"banner_4.jpg",@"banner_5.jpg"];

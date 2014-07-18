@@ -81,6 +81,7 @@
         [self.navigationItem.rightBarButtonItem setTitle:@"关闭"];
     }else{
         [self dismissViewControllerAnimated:NO completion:nil];
+//        [self.navigationController popViewControllerAnimated:YES];
     }
 }
 

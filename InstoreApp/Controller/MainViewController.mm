@@ -59,7 +59,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-//    [self initNavigationView];
+    [self initNavigationView];
 //    [self initLunboView];
     self.mtableView.scrollsToTop = YES;
     
@@ -78,12 +78,11 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [self.navigationController.navigationBar setBarTintColor:[UIColor whiteColor]];
-    self.navigationController.navigationBarHidden = YES;
+//    self.navigationController.navigationBarHidden = YES;
 }
--(void)viewDidDisappear:(BOOL)animated{
-//    self.navigationController.navigationBarHidden = NO;
-    [self.navigationController setNavigationBarHidden:NO animated:NO];
-}
+//-(void)viewWillDisappear:(BOOL)animated{
+//    [self.navigationController setNavigationBarHidden:NO animated:NO];
+//}
 
 - (void)didReceiveMemoryWarning
 {
@@ -93,79 +92,58 @@
 #pragma mark - private method
 -(void)initNavigationView
 {
-//    //扫描二维码btn
-//    UIButton *scanBtn = [UIButton buttonWithType:UIButtonTypeSystem];
-//    scanBtn.frame = CGRectMake(0, 0, 34, 34);
-//    UIImage *image = [[UIImage imageNamed:@"nav_scan_qrcode"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-//    [scanBtn setImage:image forState:UIControlStateNormal];
-//    [scanBtn addTarget:self action:@selector(scanQRCode) forControlEvents:UIControlEventTouchUpInside];
-//    UIBarButtonItem *scanBarBtn = [[[UIBarButtonItem alloc] initWithCustomView:scanBtn] autorelease];
+    UIView *view = [[[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 44)]autorelease];
+    view.backgroundColor = [UIColor clearColor];
     
-//    //查询按钮
-//    UIButton *searchBtn = [UIButton buttonWithType:UIButtonTypeSystem];
-//    searchBtn.frame = CGRectMake(0, 0, 34, 34);
-//    [searchBtn setImage:[[UIImage imageNamed:@"nav_search"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]
-//               forState:UIControlStateNormal];
-//    [searchBtn addTarget:self action:@selector(showSearchView)
-//        forControlEvents:UIControlEventTouchUpInside];
-//    UIBarButtonItem *searchBarBtn = [[[UIBarButtonItem alloc] initWithCustomView:searchBtn] autorelease];
-//    
-//    self.navigationItem.rightBarButtonItems = @[scanBarBtn, searchBarBtn];
-
+    UIImageView *imageViewIcon = [[UIImageView alloc]initWithFrame:CGRectMake(18, 0, 25, 25)];
+    imageViewIcon.image = [UIImage imageNamed:@"nav_icon.png"];
+    [view addSubview:imageViewIcon];
+    [imageViewIcon release];
     
-//    //navigation titleview
-//    UIView *titleView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 130, 44)] autorelease];
-//    
-//    UIImageView *iconImageView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"nav_icon"]] autorelease];
-//    iconImageView.frame = CGRectMake(0, 4, 36, 36);
-//    [titleView addSubview:iconImageView];
-//    
-//    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(44, 2, 100, 40)];
-//    titleLabel.textColor = [UIColor colorWithRed:248.0f/255.0f
-//                                           green:40.0f/255.0f
-//                                            blue:53.0f/255.0f
-//                                           alpha:1];
-//    titleLabel.font = [UIFont systemFontOfSize:18];
-//    titleLabel.textAlignment = NSTextAlignmentLeft;
-//    titleLabel.text = @"智慧商场";
-//    [titleView addSubview:titleLabel];
-//    
-//    self.navigationItem.titleView = titleView;
+    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(10, 28, 40, 16)];
+    label.backgroundColor = [UIColor clearColor];
+    label.text = @"智慧商场";
+    label.textAlignment = NSTextAlignmentCenter;
+    label.font = [UIFont systemFontOfSize:10];
+    label.textColor = [UIColor colorWithRed:238/255.0 green:76/255.0 blue:76/255.0 alpha:1];
+    [view addSubview:label];
+    [label release];
+    
+    UIImageView *imageSearchBG = [[UIImageView alloc]initWithFrame:CGRectMake(70, 9, 180, 27)];
+    imageSearchBG.image = [UIImage imageNamed:@"nav_search_bg.png"];
+    [view addSubview:imageSearchBG];
+    [imageSearchBG release];
+    
+    UIImageView *imageSearchIcon = [[UIImageView alloc]initWithFrame:CGRectMake(81, 16, 14, 14)];
+    imageSearchIcon.image = [UIImage imageNamed:@"nav_search_gray.png"];
+    [view addSubview:imageSearchIcon];
+    [imageSearchIcon release];
+    
+    UITextField *textField = [[UITextField alloc]initWithFrame:CGRectMake(102, 13, 142, 20)];
+    textField.placeholder = @"输入品牌、商户、优惠";
+    textField.font = [UIFont systemFontOfSize:14];
+    textField.borderStyle = UITextBorderStyleNone;
+    [view addSubview:textField];
+    [textField release];
+    
+    UIButton *btnSearch = [UIButton buttonWithType:UIButtonTypeCustom];
+    btnSearch.frame = CGRectMake(63, 3, 195, 37);
+    [btnSearch addTarget:self action:@selector(showSearchView:) forControlEvents:UIControlEventTouchUpInside];
+    [view addSubview:btnSearch];
+    
+    UIButton *btnScanCode = [UIButton buttonWithType:UIButtonTypeCustom];
+    btnScanCode.frame = CGRectMake(260, 0, 44, 44);
+    [btnScanCode setImage:[UIImage imageNamed:@"nav_scan_qrcode.png"] forState:UIControlStateNormal];
+    [btnScanCode addTarget:self action:@selector(scanQRCode:) forControlEvents:UIControlEventTouchUpInside];
+    [view addSubview:btnScanCode];
+    
+    self.navigationItem.leftBarButtonItem = nil;
+    self.navigationItem.rightBarButtonItem = nil;
+    self.navigationItem.titleView = view;
 }
 
 -(void)initLunboView
 {
-//    NSArray *imageFileName = @[@"banner_1.jpg",@"banner_2.jpg",@"banner_3.jpg",@"banner_4.jpg",@"banner_5.jpg"];
-//    NSMutableArray *viewsArray = [NSMutableArray array];
-//    for (int i = 0; i < imageFileName.count; ++i) {
-//        UIImageView *imageView = [[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 120)] autorelease];
-//        imageView.image = [UIImage imageNamed:[imageFileName objectAtIndex:i]];
-//        imageView.contentMode = UIViewContentModeScaleAspectFill;
-//        imageView.clipsToBounds = YES;
-//        imageView.tag = i +1000;
-//        [viewsArray addObject:imageView];
-//        
-//        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
-//        [imageView addGestureRecognizer:tap];
-//        [tap release];
-//    }
-//    
-//    self.lunboView = [[[CycleScrollView alloc] initWithFrame:CGRectMake(0, 0, 320, 120)
-//                                          animationDuration:5] autorelease];
-//    self.lunboView.fetchContentViewAtIndex = ^UIView *(NSInteger pageIndex){
-//        return viewsArray[pageIndex];
-//    };
-//    self.lunboView.totalPagesCount = ^NSInteger(void){
-//        return imageFileName.count;
-//    };
-//    self.lunboView.TapActionBlock = ^(NSInteger pageIndex){
-//        NSLog(@"点击了第%d个",pageIndex);
-//    };
-//    
-//    self.mtableView.tableHeaderView = self.lunboView;
-    
-    
-    
     NSMutableArray *viewsArray = [NSMutableArray array];
     if (self.itemLuoBoImageList.count > 0) {
         for (int i = 0 ; i < self.itemLuoBoImageList.count; i++) {
@@ -277,15 +255,6 @@
     self.mtableView.tableHeaderView = self.lunboView;
 
 }
--(void)tapAction:(UIGestureRecognizer *)ges{
-//    PhotoViewController *photoViewController = [[[PhotoViewController alloc] init] autorelease];
-//    photoViewController.hidesBottomBarWhenPushed = YES;
-//    self.hidesBottomBarWhenPushed = YES;
-//    photoViewController.currentImageUrl = [self.couponModel.images objectAtIndex:0];
-//    photoViewController.imageListUrl = self.tempImageList;
-//    
-//    [self.navigationController pushViewController:photoViewController animated:NO];
-}
 
 -(IBAction)scanQRCode:(id)sender
 {
@@ -302,10 +271,12 @@
 }
 -(IBAction)showSearchView:(id)sender;
 {
-    SearchViewController *searchVC = [[[SearchViewController alloc] initWithNibName:@"SearchViewController" bundle:nil] autorelease];
-    AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
-    UINavigationController *nav = (UINavigationController *)appDelegate.tabBarController.selectedViewController;
-    [nav pushViewController:searchVC animated:YES];
+//    SearchViewController *searchVC = [[[SearchViewController alloc] initWithNibName:@"SearchViewController" bundle:nil] autorelease];
+//    AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+//    UINavigationController *nav = (UINavigationController *)appDelegate.tabBarController.selectedViewController;
+//    [nav pushViewController:searchVC animated:YES];
+//    [self presentViewController:searchVC animated:YES completion:nil];
+    [super showSearchView];
 }
 
 #pragma mark - UITableViewDataSource<NSObject>

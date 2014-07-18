@@ -62,7 +62,7 @@ static NSString* szClientSecret = @"ea13692f9c960a37db0086ff87e56e01";
 //    self.myInitInterface.delegate = self;
 //    [self.myInitInterface getInitParam];
     
-    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"isFirst"];
+//    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"isFirst"];
     
     BOOL isFirst = [[NSUserDefaults standardUserDefaults] boolForKey:@"isFirst"];
     if (!isFirst) {

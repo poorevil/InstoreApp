@@ -7,6 +7,7 @@
 //
 
 #import "MyVIPCardViewController.h"
+#import "QrCodeViewCell.h"
 
 @interface MyVIPCardViewController ()
 
@@ -29,7 +30,7 @@
     // Do any additional setup after loading the view from its nib.
     
     self.hidesBottomBarWhenPushed = YES;
-    
+    self.title = @"我的会员卡";
     [self initHeaderView];
     
     self.list = @[@"我的积分",@"积分兑换",@"会员指南"];
@@ -41,6 +42,14 @@
     }else{
         return 1;
     }
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (self.VIPCardNumberImage) {
+        if (indexPath.section == 0 && indexPath.row == 0) {
+            return 80;
+        }
+    }
+    return 44;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if (self.VIPCardNumberImage) {
@@ -63,8 +72,16 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (self.VIPCardNumberImage) {
         switch (indexPath.section) {
-            case 0:
-                
+            case 0:{
+                static NSString *CellIdentifier = @"QrCodeViewCell";
+                QrCodeViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                if (!cell) {
+                    cell = [[[NSBundle mainBundle] loadNibNamed:@"QrCodeViewCell" owner:self options:nil] lastObject];
+                }
+                cell.imageQrCode.image = [UIImage imageNamed:@"tempCode.png"];
+                cell.labQRCode.text = @"546464776547684768";
+                return cell;
+            }
                 break;
             }
     }

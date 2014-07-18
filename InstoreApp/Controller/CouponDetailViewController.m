@@ -423,10 +423,14 @@
     }
 }
 - (IBAction)btnGoNextAction:(UIButton *)sender {
-    WebViewController *webVC = [[WebViewController alloc]init];
-    webVC.urlStr = self.couponModel.link;
-    webVC.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:webVC animated:YES];
-    [webVC release];
+    
+#warning 下载优惠券
+    
+//    WebViewController *webVC = [[WebViewController alloc]init];
+//    webVC.urlStr = self.couponModel.link;
+//    webVC.hidesBottomBarWhenPushed = YES;
+//    [self.navigationController pushViewController:webVC animated:YES];
+//    [webVC release];
+    
 }
 @end

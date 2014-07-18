@@ -23,6 +23,9 @@
 
 #import "SetStoreFocusRecommend.h"
 
+#import "WebViewController.h"
+#import "MyDownloadCouponViewController.h"
+
 
 @interface MeViewController () <UserInfoInterfaceDelegate>
 
@@ -200,7 +203,9 @@
             switch (indexPath.row) {
                 case 0:{
                     //已下载的优惠券
-                    
+                    MyDownloadCouponViewController *vc = [[MyDownloadCouponViewController alloc]initWithNibName:@"MyDownloadCouponViewController" bundle:nil];
+                    [self.navigationController pushViewController:vc animated:YES];
+                    [vc release];
                 }
                     break;
                 case 1:{
@@ -239,7 +244,7 @@
                 case 0:{
                     //我的电子会员卡
                     MyVIPCardViewController *vc = [[MyVIPCardViewController alloc]initWithNibName:@"MyVIPCardViewController" bundle:nil];
-//                    vc.VIPCardNumberImage = [UIImage imageNamed:@"my_card_YES_bangding.png"];
+                    vc.VIPCardNumberImage = [UIImage imageNamed:@"my_card_YES_bangding.png"];
                     self.hidesBottomBarWhenPushed = YES;
                     [self.navigationController pushViewController:vc animated:YES];
                     self.hidesBottomBarWhenPushed = NO;
@@ -248,7 +253,12 @@
                     break;
                 case 1:{
                     //商场会员指南
-                    
+                    WebViewController *vc = [[WebViewController alloc]initWithNibName:@"WebViewController" bundle:nil];
+                    vc.urlStr = @"http://www.baidu.com";
+                    self.hidesBottomBarWhenPushed = YES;
+                    [self.navigationController pushViewController:vc animated:YES];
+                    self.hidesBottomBarWhenPushed = NO;
+                    [vc release];
                 }
                 case 2:{
                     //绑定手机号
@@ -274,6 +284,14 @@
 {
     NSLog(@"%@",errorMessage);
 }
+
+-(void)setUserInfoDidFinished{
+    
+}
+-(void)setUserInfoDidFailed:(NSString *)errorMessage{
+    NSLog(@"%@",errorMessage);
+}
+
 -(void)switchButtonChangeAchtion:(UISwitch *)sender{
     if (sender.on) {
         [sender setOn:NO];
