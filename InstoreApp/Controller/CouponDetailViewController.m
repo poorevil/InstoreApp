@@ -361,6 +361,9 @@
                                           otherButtonTitles:nil,nil];
     [alert show];
     [alert release];
+    
+    [self.btnGoNext setTitle:@"已下载" forState:UIControlStateNormal];
+    self.couponModel.userCollectCount = 1;
 }
 
 -(void)getCouponDownloadDidFailed:(NSString *)errorMessage
@@ -424,13 +427,13 @@
     [self.couponDownloadInterface getCouponDownloadByCouponId:self.couponModel.cid];
 }
 
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
-    if (buttonIndex == 1) {
-        DownloadCouponDetailViewController *vc = [[DownloadCouponDetailViewController alloc]initWithNibName:@"DownloadCouponDetailViewController" bundle:nil];
-        vc.cid = self.couponModel.cid;
-        [self.navigationController pushViewController:vc animated:YES];
-        [vc release];
-    }
-}
+//- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+//    if (buttonIndex == 1) {
+//        DownloadCouponDetailViewController *vc = [[DownloadCouponDetailViewController alloc]initWithNibName:@"DownloadCouponDetailViewController" bundle:nil];
+//        vc.cid = self.couponModel.cid;
+//        [self.navigationController pushViewController:vc animated:YES];
+//        [vc release];
+//    }
+//}
 
 @end
