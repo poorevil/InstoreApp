@@ -22,18 +22,17 @@
 }
 
 #pragma mark - BaseInterfaceDelegate
-//https://github.com/joyx-inc/vmall-app-ios/wiki/Mall-News
+//https://github.com/joyx-inc/vmall-app-ios/wiki/User-Bank-Add
 -(void)parseResult:(ASIHTTPRequest *)request{
     NSString *jsonStr = [[[NSString alloc] initWithData:[request responseData]
                                                encoding:NSUTF8StringEncoding] autorelease];
     id jsonObj = [jsonStr objectFromJSONString];
     
     if (jsonObj) {
-        NSInteger totalCount = 0;
+        NSInteger totalCount = [[jsonObj objectForKey:@"totalCount"] integerValue];
         NSInteger currentPage = 0;
         NSMutableArray *resultList = [NSMutableArray array];
-        if (jsonObj && [[jsonObj objectForKey:@"totalCount"] integerValue] > 0) {
-            totalCount = [[jsonObj objectForKey:@"totalCount"] integerValue];
+        if (totalCount > 0) {
             currentPage = [[jsonObj objectForKey:@"currentPage"] integerValue];
             
             NSArray *cardListArray = [jsonObj objectForKey:@"list"];

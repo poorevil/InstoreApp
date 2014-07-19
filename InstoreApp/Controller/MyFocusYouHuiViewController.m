@@ -41,7 +41,7 @@
     self.title = @"我收藏的优惠";
     self.currentPage = 1;
     
-    self.myFocusYouHuiInterface = [[MyFocusYouHuiInterface alloc]init];
+    self.myFocusYouHuiInterface = [[[MyFocusYouHuiInterface alloc]init]autorelease];
     self.myFocusYouHuiInterface.delegate = self;
     [self.myFocusYouHuiInterface getMyFocusYouHuiListWithAmount:20 Page:self.currentPage];
     
@@ -91,6 +91,8 @@
 
 - (void)dealloc {
     [_myTableView release];
+    self.myFocusYouHuiInterface.delegate = nil;
+    self.myFocusYouHuiInterface = nil;
     self.itemList = nil;
     [super dealloc];
 }

@@ -57,19 +57,12 @@
         [self.couponDetailInterface getCouponDetailByCouponId:self.youhuiID];
     }
     
-//    btnFocus = [UIButton buttonWithType:UIButtonTypeCustom];
-//    btnFocus.frame = CGRectMake(0, 0, 28, 44);
-//    [btnFocus setImage:[UIImage imageNamed:@"focus_whiteLine.png"] forState:UIControlStateNormal];
-//    [btnFocus setImageEdgeInsets:UIEdgeInsetsMake(14, 5, 14, 5)];
-//    [btnFocus addTarget:self action:@selector(btnFocusAction:) forControlEvents:UIControlEventTouchUpInside];
-    
     UIButton *btnShare = [UIButton buttonWithType:UIButtonTypeCustom];
     btnShare.frame = CGRectMake(0, 0, 28, 44);
     [btnShare setImage:[UIImage imageNamed:@"share_white.png"] forState:UIControlStateNormal];
     [btnShare setImageEdgeInsets:UIEdgeInsetsMake(13, 5, 13, 5)];
     [btnShare addTarget:self action:@selector(btnShareAction:) forControlEvents:UIControlEventTouchUpInside];
     
-//    UIBarButtonItem *barItem1 = [[UIBarButtonItem alloc]initWithCustomView:btnFocus];
     UIBarButtonItem *barItem2 = [[UIBarButtonItem alloc]initWithCustomView:btnShare];
     
     self.navigationItem.rightBarButtonItems = @[barItem2/*,barItem1*/];
@@ -85,7 +78,7 @@
 -(void)initHeaderView{
     if(!egoHeaderView){
         egoHeaderView = [[EGOImageView alloc]initWithFrame:CGRectMake(0, 0, 320, 180)];
-        egoHeaderView.imageURL = [NSURL URLWithString:self.couponModel.imageUrl];
+        egoHeaderView.imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@/640*640.png", self.couponModel.imageUrl]];
         self.myTableView.tableHeaderView = egoHeaderView;
         egoHeaderView.userInteractionEnabled = YES;
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imagesTapAction:)];
@@ -116,10 +109,9 @@
             break;
             case 3:
         {
-//            CGSize size = [self.couponModel.descriptionStr sizeWithFont:[UIFont systemFontOfSize:14]
-//                                                               constrainedToSize:CGSizeMake(280, 999)
-//                                                                   lineBreakMode:NSLineBreakByWordWrapping];
-            CGSize size = [self.couponModel.descriptionStr boundingRectWithSize:CGSizeMake(300, 999) options:NSStringDrawingTruncatesLastVisibleLine|NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14]} context:nil].size;
+            CGSize size = [self.couponModel.descriptionStr sizeWithFont:[UIFont systemFontOfSize:14] constrainedToSize:CGSizeMake(300, 999) lineBreakMode:NSLineBreakByWordWrapping];
+            //TODO:iOS7计算label size 方法
+//            CGSize size = [self.couponModel.descriptionStr boundingRectWithSize:CGSizeMake(300, 999) options:NSStringDrawingTruncatesLastVisibleLine|NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14]} context:nil].size;
             return size.height + 44;
         }
             break;
@@ -206,9 +198,6 @@
                     threeCell.labName.textColor = [UIColor colorWithRed:60/255.0 green:179/255.0 blue:235/255.0 alpha:1];
                     threeCell.labName.text = self.couponModel.store.tel;
                 }
-                    
-                default:
-                    break;
             }
         }
             break;
@@ -250,7 +239,8 @@
                 break;
             case 2:{
                 //电话
-                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel:10086"]];
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel:%@",self.couponModel.store.tel]]];
+                //self.couponModel.store.tel
             }
                 break;
             default:

@@ -10,7 +10,7 @@
 
 @class CouponModel;
 
-@interface CouponDetailViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
+@interface CouponDetailViewController : UIViewController <UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate>
 
 @property (nonatomic,strong) IBOutlet UITableView *mtableView;
 @property (nonatomic,retain) CouponModel *couponModel;

@@ -8,7 +8,10 @@
 
 #import "MyDownloadCouponViewController.h"
 #import "MyDownloadCouponInterface.h"
+#import "DownloadCouponModel.h"
 #import "MyDownloadCoumonCell.h"
+
+#import "DownloadCouponDetailViewController.h"
 
 @interface MyDownloadCouponViewController ()<MyDownloadCouponInterfaceDelegate>
 
@@ -61,21 +64,30 @@
     return cell;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
+    DownloadCouponDetailViewController *vc = [[DownloadCouponDetailViewController alloc]initWithNibName:@"DownloadCouponDetailViewController" bundle:nil];
+    DownloadCouponModel *model = [self.itemList objectAtIndex:indexPath.row];
+//    vc.couponModel.cid = model.cid;
+    vc.cid = model.cid;
+    vc.downloadCouponModel = model;
+    [self.navigationController pushViewController:vc animated:YES];
+    [vc release];
 }
 
 #pragma mark - MyDownloadCouponInterfaceDelegate
 -(void)getMyDownloadCouponListDidFinished:(NSArray *)array{
     [self.itemList addObjectsFromArray:array];
-}
--(void)getMyDownloadCouponListListDidFailed:(NSString *)errorMsg{
     
+    [self.myTableView reloadData];
+}
+-(void)getMyDownloadCouponListDidFailed:(NSString *)errorMsg{
+    NSLog(@"%@",errorMsg);
 }
 
 -(void)dealloc{
     self.itemList = nil;
     self.myDownloadCouponInterface = nil;
     
+    [_myTableView release];
     [super dealloc];
 }
 - (void)didReceiveMemoryWarning

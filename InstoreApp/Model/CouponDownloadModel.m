@@ -7,21 +7,20 @@
 //
 
 #import "CouponDownloadModel.h"
+#import "NSDate+DynamicDateString.h"
 
 @implementation CouponDownloadModel
-//{
-//status: '下载结果',            // 1: 成功; 2: X; 3: 失败-已下载过; 4: 失败-不符合参与条件
-//msg: '提示信息',               // 失败的提示信息
-//coupon_code: '优惠代码',              // 1: 优惠活动; 2: 优惠券; 3: 团购;
-//    date":"<服务器当前时间>"
-//}
+
 -(id)initWithJsonMap:(NSDictionary *)jsonMap
 {
     if (self = [super init]) {
         if (jsonMap) {
             self.status = [[jsonMap objectForKey:@"status"] integerValue];
             self.msg = [jsonMap objectForKey:@"msg"];
-            self.couponCode = [[jsonMap objectForKey:@"coupon_code"] integerValue];
+            self.couponCode = [jsonMap objectForKey:@"couponCode"];
+            self.startTime = [NSDate dateFromString:[jsonMap objectForKey:@"couponStartTime"]];
+            self.endTime = [NSDate dateFromString:[jsonMap objectForKey:@"couponExpiredTime"]];
+            self.date = [NSDate dateFromString:[jsonMap objectForKey:@"date"]];
         }
     }
     
@@ -31,6 +30,11 @@
 -(void)dealloc
 {
     self.msg = nil;
+    self.couponCode = nil;
+    self.startTime = nil;
+    self.endTime = nil;
+    self.date = nil;
+    
     [super dealloc];
 }
 @end

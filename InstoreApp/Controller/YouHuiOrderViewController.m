@@ -62,6 +62,12 @@
     }
     [self.navigationController popViewControllerAnimated:YES];
 }
+
+-(void)dealloc{
+    self.list = nil;
+    
+    [super dealloc];
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

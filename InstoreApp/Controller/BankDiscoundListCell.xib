@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -82,6 +82,6 @@
         <image name="bankcard_cell_bankIcon.png" width="162" height="36"/>
         <image name="bankcard_cell_img1.png" width="558" height="260"/>
         <image name="bankcard_cell_img2.png" width="120" height="74"/>
-        <image name="bankcard_cell_time.png" width="30" height="30"/>
+        <image name="bankcard_cell_time.png" width="15" height="15"/>
     </resources>
 </document>

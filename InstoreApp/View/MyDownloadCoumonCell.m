@@ -28,7 +28,7 @@
         [_couponModel release];
         _couponModel = [couponModel retain];
         
-        self.imageIcon.imageURL = [NSURL URLWithString:[NSURL URLWithString:[NSString stringWithFormat:@"%@/120*120.png",couponModel.imageURL]]];
+        self.imageIcon.imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@/120*120.png",couponModel.imageURL]];
         self.labTitle.text = couponModel.title;
         CGSize sizeMax = CGSizeMake(180, 21);
         CGSize size = [couponModel.title sizeWithFont:_labTitle.font constrainedToSize:sizeMax lineBreakMode:NSLineBreakByCharWrapping];
@@ -41,6 +41,7 @@
         }
         
         self.labInstruction.text = couponModel.instruction;
+        
         // 优惠券状态 <0, "未消费/正常">, <1, "已消费">, <3, "已过期">
         switch (couponModel.couponStatus) {
             case 0:{

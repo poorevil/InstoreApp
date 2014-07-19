@@ -31,7 +31,7 @@
     
     self.title = self.titleStr;
     
-    self.hud = [[MBProgressHUD alloc]initWithView:self.view];
+    self.hud = [[[MBProgressHUD alloc]initWithView:self.view]autorelease];
     _hud.delegate = self;
     _hud.labelText = @"Loading";
     [self.view addSubview:self.hud];

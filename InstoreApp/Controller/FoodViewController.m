@@ -98,37 +98,6 @@
 #pragma mark - private method
 -(void)initLunboView
 {
-    //    NSArray *imageFileName = @[@"banner_1.jpg",@"banner_2.jpg",@"banner_3.jpg",@"banner_4.jpg",@"banner_5.jpg"];
-    //    NSMutableArray *viewsArray = [NSMutableArray array];
-    //    for (int i = 0; i < imageFileName.count; ++i) {
-    //        UIImageView *imageView = [[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 120)] autorelease];
-    //        imageView.image = [UIImage imageNamed:[imageFileName objectAtIndex:i]];
-    //        imageView.contentMode = UIViewContentModeScaleAspectFill;
-    //        imageView.clipsToBounds = YES;
-    //        imageView.tag = i +1000;
-    //        [viewsArray addObject:imageView];
-    //
-    //        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
-    //        [imageView addGestureRecognizer:tap];
-    //        [tap release];
-    //    }
-    //
-    //    self.lunboView = [[[CycleScrollView alloc] initWithFrame:CGRectMake(0, 0, 320, 120)
-    //                                          animationDuration:5] autorelease];
-    //    self.lunboView.fetchContentViewAtIndex = ^UIView *(NSInteger pageIndex){
-    //        return viewsArray[pageIndex];
-    //    };
-    //    self.lunboView.totalPagesCount = ^NSInteger(void){
-    //        return imageFileName.count;
-    //    };
-    //    self.lunboView.TapActionBlock = ^(NSInteger pageIndex){
-    //        NSLog(@"点击了第%d个",pageIndex);
-    //    };
-    //
-    //    self.mtableView.tableHeaderView = self.lunboView;
-    
-    
-    
     NSMutableArray *viewsArray = [NSMutableArray array];
     if (self.itemLunBoImageList.count > 0) {
         for (int i = 0 ; i < self.itemLunBoImageList.count; i++) {
@@ -136,7 +105,7 @@
             
             EGOImageView *egoImageView = [[[EGOImageView alloc]initWithFrame:CGRectMake(0, 0, 320, 100)]autorelease];
             egoImageView.contentMode = UIViewContentModeScaleAspectFit;
-            egoImageView.imageURL = [NSURL URLWithString:couponModel.imageUrl];
+            egoImageView.imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@/640*640.png",couponModel.imageUrl]];
             
             [viewsArray addObject:egoImageView];
         }

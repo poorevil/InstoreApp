@@ -38,6 +38,7 @@
                     DownloadCouponModel *downloadCouponModel = [[DownloadCouponModel alloc]initWithJsonMap:dict];
                     downloadCouponModel.storeModel = [[StoreModel alloc]initWithJsonMap:[dict objectForKey:@"store"]];
                     [resultList addObject:downloadCouponModel];
+                    [downloadCouponModel release];
                 }
             }
         }
@@ -45,15 +46,15 @@
             [self.delegate getMyDownloadCouponListDidFinished:resultList];
         }
     }else{
-        if ([self.delegate respondsToSelector:@selector(getMyDownloadCouponListListDidFailed:)]) {
-            [self.delegate getMyDownloadCouponListListDidFailed:@"获取失败！(response empty)"];
+        if ([self.delegate respondsToSelector:@selector(getMyDownloadCouponListDidFailed:)]) {
+            [self.delegate getMyDownloadCouponListDidFailed:@"获取失败！(response empty)"];
         }
     }
 }
 
 -(void)requestIsFailed:(NSError *)error{
-    if ([self.delegate respondsToSelector:@selector(getMyDownloadCouponListListDidFailed:)]) {
-        [self.delegate getMyDownloadCouponListListDidFailed:@"获取失败！(response empty)"];
+    if ([self.delegate respondsToSelector:@selector(getMyDownloadCouponListDidFailed:)]) {
+        [self.delegate getMyDownloadCouponListDidFailed:@"获取失败！(response empty)"];
     }
 }
 

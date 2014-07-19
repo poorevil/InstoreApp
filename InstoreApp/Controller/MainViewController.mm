@@ -151,7 +151,7 @@
             
             EGOImageView *egoImageView = [[[EGOImageView alloc]initWithFrame:CGRectMake(0, 0, 320, 120)]autorelease];
             egoImageView.contentMode = UIViewContentModeScaleAspectFit;
-            egoImageView.imageURL = [NSURL URLWithString:couponModel.imageUrl];
+            egoImageView.imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@/640*640.png",couponModel.imageUrl]];
             
             [viewsArray addObject:egoImageView];
         }

@@ -55,7 +55,6 @@
     self.orderBtn = nil;
     self.categoryBtn = nil;
     
-    
     [super dealloc];
 }
 

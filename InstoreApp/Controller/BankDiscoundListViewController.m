@@ -15,17 +15,12 @@
 
 #import "MallNewsDetailViewController.h"
 
-@interface BankDiscoundListViewController ()<BankCardDetailInterfaceDelegate>{
-    
-}
+@interface BankDiscoundListViewController ()<BankCardDetailInterfaceDelegate>
 
 @property (retain, nonatomic) BankCardDetailInterface *bankCardDetailInterface;
 @property (nonatomic, retain) NSMutableArray *itemList;
 @property (nonatomic, assign) NSInteger totalAmount;
 @property (nonatomic, assign) NSInteger currentPage;
-
-//@property (nonatomic, retain) NSDateFormatter *formatter;
-
 
 @end
 
@@ -50,14 +45,10 @@
     self.myTableView.tableHeaderView = view;
     [view release];
     
-//    self.title = @"";
     self.itemList = [NSMutableArray array];
-    self.bankCardDetailInterface = [[BankCardDetailInterface alloc]init];
+    self.bankCardDetailInterface = [[[BankCardDetailInterface alloc]init]autorelease];
     self.bankCardDetailInterface.delegate = self;
     [self.bankCardDetailInterface getBankCardDetailByPage:self.currentPage amount:20 andBankId:self.bankId];
-    
-//    self.formatter = [[NSDateFormatter alloc]init];
-//    [self.formatter setDateFormat:@"yyyy-MM-dd"];
     
     self.hidesBottomBarWhenPushed = YES;
     
@@ -77,12 +68,10 @@
     static NSString *CellIdentifer = @"Cell";
     BankDiscoundListCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifer];
     if (!cell) {
-        //cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifer];
         cell = [[[NSBundle mainBundle] loadNibNamed:@"BankDiscoundListCell"
                                               owner:self
                                             options:nil] objectAtIndex:0];
     }
-    //    cell.textLabel.text = [NSString stringWithFormat:@"%d",indexPath.row];
     BankCardDetailModel *bankCardDetailModel = [self.itemList objectAtIndex:indexPath.row];
     cell.labTitle.text = bankCardDetailModel.title;
     cell.imgBankLogo.imageURL = [NSURL URLWithString:bankCardDetailModel.bank.logo];
@@ -124,6 +113,9 @@
 }
 
 - (void)dealloc {
+    self.itemList = nil;
+    self.bankCardDetailInterface.delegate = nil;
+    self.bankCardDetailInterface = nil;
     [_myTableView release];
     [super dealloc];
 }

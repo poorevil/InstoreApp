@@ -147,7 +147,6 @@ CouponDetailInterfaceDelegate>
 }
 
 #pragma mark - UITableViewDataSource<NSObject>
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     switch (section) {
@@ -174,6 +173,29 @@ CouponDetailInterfaceDelegate>
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 6;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    switch (indexPath.section) {
+        case 0:
+            return 36;
+        case 1:
+            return 40;
+        case 2:
+            return 53;
+        case 3:
+            return 68;
+        case 4:{
+            //计算内容的size
+            CGSize labelFontSize = [self.couponModel.descriptionStr sizeWithFont:[UIFont systemFontOfSize:14]
+                                                               constrainedToSize:CGSizeMake(300, 999)
+                                                                   lineBreakMode:NSLineBreakByWordWrapping];
+            return labelFontSize.height+45;
+        }
+        case 5:
+            return 108;
+        default:
+            return 44;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -279,12 +301,12 @@ CouponDetailInterfaceDelegate>
                 withTitleCell.dateLabel.numberOfLines = 0;
                 //计算内容的size
                 CGSize labelFontSize = [self.couponModel.descriptionStr sizeWithFont:[UIFont systemFontOfSize:14]
-                                                                   constrainedToSize:CGSizeMake(withTitleCell.dateLabel.frame.size.width, 999)
+                                                                   constrainedToSize:CGSizeMake(300, 999)
                                                                        lineBreakMode:withTitleCell.dateLabel.lineBreakMode];
                 
                 withTitleCell.dateLabel.frame = CGRectMake(withTitleCell.dateLabel.frame.origin.x,
                                                              withTitleCell.dateLabel.frame.origin.y,
-                                                             withTitleCell.dateLabel.frame.size.width,
+                                                             300,
                                                              labelFontSize.height);
                 withTitleCell.frame = CGRectMake(0, 0, withTitleCell.frame.size.width,
                                                  withTitleCell.dateLabel.frame.size.height+45);
@@ -314,35 +336,7 @@ CouponDetailInterfaceDelegate>
 }
 
 #pragma mark - UITableViewDelegate
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    switch (indexPath.section) {
-        case 0:
-            return 36;
-        case 1:
-            return 40;
-        case 2:
-            return 53;
-        case 3:
-            return 68;
-        case 4:{
-            //计算内容的size
-            CGSize labelFontSize = [self.couponModel.descriptionStr sizeWithFont:[UIFont systemFontOfSize:14]
-                                                               constrainedToSize:CGSizeMake(280, 999)
-                                                                   lineBreakMode:NSLineBreakByWordWrapping];
-            
-            
-            
-            return labelFontSize.height+45;
-        }
-        case 5:
-            return 108;
-//        case 6:
-//            return 108;
-        default:
-            return 44;
-    }
-    
-}
+
 
 #pragma mark - CouponDetailInterfaceDelegate <NSObject>
 

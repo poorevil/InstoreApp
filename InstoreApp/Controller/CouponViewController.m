@@ -87,16 +87,15 @@ CouponViewInterfaceDelegate, YouhuiCategoryViewControllerDelegate,YouHuiOrderVie
     self.couponViewInterface.delegate = self;
     [self.couponViewInterface getCouponViewListByPage:self.currentPage1 amount:20];
     
-    self.couponSectionTwoInterface = [[CouponSectionTwoInterface alloc]init];
+    self.couponSectionTwoInterface = [[[CouponSectionTwoInterface alloc]init]autorelease];
     self.couponSectionTwoInterface.delegate = self;
     [self.couponSectionTwoInterface getCouponSectionTwoListByPage:self.currentPage2 amount:20];
     
-    self.couponSearchOrderInterface = [[CouponSearchOrderInterface alloc]init];
+    self.couponSearchOrderInterface = [[[CouponSearchOrderInterface alloc]init]autorelease];
     self.couponSearchOrderInterface.delegate = self;
     
     
     if (self.refreshHeaderView == nil) {
-		
 		EGORefreshTableHeaderView *view = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f,0.0f - self.mtableView.bounds.size.height,self.mtableView.frame.size.width,self.mtableView.bounds.size.height)];
 		view.delegate = self;
 		[self.mtableView addSubview:view];
@@ -117,8 +116,11 @@ CouponViewInterfaceDelegate, YouhuiCategoryViewControllerDelegate,YouHuiOrderVie
     self.typeBtn = nil;
     self.orderBtn = nil;
     self.mtableView = nil;
+    self.couponSearchOrderInterface.delegate = nil;
     self.couponSearchOrderInterface = nil;
+    self.couponViewInterface.delegate = nil;
     self.couponViewInterface = nil;
+    self.couponSectionTwoInterface.delegate = nil;
     self.couponSectionTwoInterface = nil;
     self.itemListDict = nil;
     self.otherGroupDict = nil;

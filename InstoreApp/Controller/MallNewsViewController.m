@@ -42,6 +42,7 @@
     // Do any additional setup after loading the view from its nib.
     self.title = @"商场活动";
     self.itemList = [NSMutableArray array];
+    self.hidesBottomBarWhenPushed = YES;
     
     self.mallNewsInterface = [[[MallNewsInterface alloc] init]autorelease];
     self.mallNewsInterface.delegate = self;

@@ -72,10 +72,6 @@
     [footView addSubview:btnAddBank];
     self.myTableView.tableFooterView = footView;
     [footView release];
-    
-
-    
-    
 }
 -(void)viewWillAppear:(BOOL)animated{
     
@@ -100,12 +96,10 @@
     static NSString *CellIdentifer = @"Cell";
     BankCardCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifer];
     if (!cell) {
-        //cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifer];
         cell = [[[NSBundle mainBundle] loadNibNamed:@"BankCardCell"
                                               owner:self
                                             options:nil] objectAtIndex:0];
     }
-//    cell.textLabel.text = [NSString stringWithFormat:@"%d",indexPath.row];
     BankCardModel *bankCardModel = [self.itemList objectAtIndex:indexPath.row];
     cell.labBankName.text = bankCardModel.name;
     cell.labSlogan.text = bankCardModel.slogan;
@@ -129,8 +123,7 @@
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         BankCardModel *bankCardModel = [self.itemList objectAtIndex:indexPath.row];
         NSInteger bankId = bankCardModel.bankId;
-        [self.deleteBankCardInterface deleteBankCardWithBankId:bankId];
-        
+        [self.deleteBankCardInterface deleteBankCardWithBankId:bankId];        
         
         [self.itemList removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];    
@@ -192,7 +185,6 @@
     self.bankCardInterface.delegate = nil;
     self.bankCardInterface = nil;
     self.deleteBankCardInterface = nil;
-//    [itemCancel release];
     
     [_myTableView release];
     [super dealloc];

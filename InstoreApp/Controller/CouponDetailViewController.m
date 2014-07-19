@@ -26,6 +26,8 @@
 
 #import "FocusInterface.h"
 #import "WebViewController.h"
+#import "DownloadCouponDetailViewController.h"
+
 
 @interface CouponDetailViewController () <CouponDetailInterfaceDelegate,CouponDownloadInterfaceDelegate>
 @property (nonatomic,strong) UIView *headerView;
@@ -41,6 +43,7 @@
 @property (nonatomic,strong) UIButton *downloadBtn;
 
 @property (retain, nonatomic) FocusInterface *focusInterface;
+
 @end
 
 @implementation CouponDetailViewController
@@ -139,45 +142,45 @@
 -(void)initFooterView
 {
     //TODO:tabbar!!
-    if (self.couponModel.promotionType==2) {//1: 优惠活动; 2: 优惠券; 3: 团购;
-        self.footerView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 44)] autorelease];
-        self.downloadBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        
-        UIImage *originalImage = [UIImage imageNamed:@"store-btn-sb-red"];
-        UIEdgeInsets insets = UIEdgeInsetsMake(0, 20, 6, 300);
-        UIImage *normalBg = [originalImage resizableImageWithCapInsets:insets];
-        
-        originalImage = [UIImage imageNamed:@"store-btn-sb-red-pressed"];
-        UIImage *pressedBg = [originalImage resizableImageWithCapInsets:insets];
-        
-        [self.downloadBtn setBackgroundImage:normalBg forState:UIControlStateNormal];
-        [self.downloadBtn setBackgroundImage:pressedBg forState:UIControlStateSelected];
-        [self.downloadBtn setBackgroundImage:pressedBg forState:UIControlStateHighlighted];
-        [self.downloadBtn setBackgroundImage:pressedBg forState:UIControlStateDisabled];
-        [self.downloadBtn setTitleColor:[UIColor grayColor] forState:UIControlStateDisabled];
-        
-        [self.downloadBtn setTitle:@"立即下载" forState:UIControlStateNormal];
-        self.downloadBtn.frame = CGRectMake((320-280)/2,
-                                       2,
-                                       280,
-                                       40);
-        [self.downloadBtn addTarget:self action:@selector(downloadBtnAction:) forControlEvents:UIControlEventTouchUpInside];
-        [self.footerView addSubview:self.downloadBtn];
-        self.mtableView.tableFooterView = self.footerView;
-        
-        if (self.couponModel.collectCount > 0) {
-            self.downloadBtn.enabled = NO;
-        }
-    }
+//    if (self.couponModel.promotionType==2) {//1: 优惠活动; 2: 优惠券; 3: 团购;
+//        self.footerView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 44)] autorelease];
+//        self.downloadBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+//        
+//        UIImage *originalImage = [UIImage imageNamed:@"store-btn-sb-red"];
+//        UIEdgeInsets insets = UIEdgeInsetsMake(0, 20, 6, 300);
+//        UIImage *normalBg = [originalImage resizableImageWithCapInsets:insets];
+//        
+//        originalImage = [UIImage imageNamed:@"store-btn-sb-red-pressed"];
+//        UIImage *pressedBg = [originalImage resizableImageWithCapInsets:insets];
+//        
+//        [self.downloadBtn setBackgroundImage:normalBg forState:UIControlStateNormal];
+//        [self.downloadBtn setBackgroundImage:pressedBg forState:UIControlStateSelected];
+//        [self.downloadBtn setBackgroundImage:pressedBg forState:UIControlStateHighlighted];
+//        [self.downloadBtn setBackgroundImage:pressedBg forState:UIControlStateDisabled];
+//        [self.downloadBtn setTitleColor:[UIColor grayColor] forState:UIControlStateDisabled];
+//        
+//        [self.downloadBtn setTitle:@"立即下载" forState:UIControlStateNormal];
+//        self.downloadBtn.frame = CGRectMake((320-280)/2,
+//                                       2,
+//                                       280,
+//                                       40);
+//        [self.downloadBtn addTarget:self action:@selector(downloadBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+//        [self.footerView addSubview:self.downloadBtn];
+//        self.mtableView.tableFooterView = self.footerView;
+//        
+//        if (self.couponModel.collectCount > 0) {
+//            self.downloadBtn.enabled = NO;
+//        }
+//    }
 }
 
 -(void)downloadBtnAction:(id)sender
 {
-    [SVProgressHUD showInView:self.view status:@"下载中，请稍后..."];
-    self.downloadBtn.enabled = NO;
-    self.couponDownloadInterface = [[[CouponDownloadInterface alloc] init] autorelease];
-    self.couponDownloadInterface.delegate = self;
-    [self.couponDownloadInterface getCouponDownloadByCouponId:self.couponModel.cid];
+//    [SVProgressHUD showInView:self.view status:@"下载中，请稍后..."];
+//    self.downloadBtn.enabled = NO;
+//    self.couponDownloadInterface = [[[CouponDownloadInterface alloc] init] autorelease];
+//    self.couponDownloadInterface.delegate = self;
+//    [self.couponDownloadInterface getCouponDownloadByCouponId:self.couponModel.cid];
 }
 
 #pragma mark - UITableViewDataSource<NSObject>
@@ -278,7 +281,7 @@
                 withTitleCell.detailLabel.numberOfLines = 39;
                 //计算内容的size
                 CGSize labelFontSize = [self.couponModel.descriptionStr sizeWithFont:[UIFont systemFontOfSize:14]
-                                                                   constrainedToSize:CGSizeMake(280, 999)
+                                                                   constrainedToSize:CGSizeMake(300, 999)
                                                                        lineBreakMode:NSLineBreakByWordWrapping];
                 
                 withTitleCell.detailLabel.frame = CGRectMake(withTitleCell.detailLabel.frame.origin.x,
@@ -309,7 +312,7 @@
         case 3:{
             //计算内容的size
             CGSize labelFontSize = [self.couponModel.descriptionStr sizeWithFont:[UIFont systemFontOfSize:14]
-                                          constrainedToSize:CGSizeMake(280, 999)
+                                          constrainedToSize:CGSizeMake(300, 999)
                                               lineBreakMode:NSLineBreakByWordWrapping];
             
             
@@ -330,13 +333,9 @@
     [self refreshUI];
     if (couponModel.isFocus) {
         [self.btnFocus setTitle:@"已收藏" forState:UIControlStateNormal];
-    }else{
-        [self.btnFocus setTitle:@"收藏" forState:UIControlStateNormal];
     }
-    if (couponModel.link) {
-        self.btnGoNext.enabled = YES;
-    }else{
-        self.btnGoNext.enabled = NO;
+    if (couponModel.userCollectCount) {
+        [self.btnGoNext setTitle:@"已下载" forState:UIControlStateNormal];
     }
 }
 
@@ -349,33 +348,19 @@
 -(void)getCouponDownloadDidFinished:(CouponDownloadModel *)couponDownloadModel
 {
     [SVProgressHUD dismiss];
-    //status: '下载结果',            // 1: 成功; 2: X; 3: 失败-已下载过; 4: 失败-不符合参与条件
+    //status: '下载结果',  1: 成功; 2: 成功-已下载; 3: 失败-已下载过; 4: 失败-不符合参与条件;5: 失败-已抢完
     NSString *title = nil;
-    switch (couponDownloadModel.status) {
-        case 1:
-            title = @"成功";
-            break;
-        case 2:
-            title = @"X";//??
-            break;
-        case 3:
-            title = @"失败-已下载过";
-            break;
-        case 4:
-            title = @"失败-不符合参与条件";
-            break;
-        default:
-            break;
+    if (couponDownloadModel.status == 1 || couponDownloadModel.status == 2) {
+        title = @"下载成功";
     }
-    
-    UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:title
-                                                    message:couponDownloadModel.status==1?
-                                                              [NSString stringWithFormat:@"优惠代码:%d",couponDownloadModel.couponCode]:
-                                                              couponDownloadModel.msg
+    title = title == nil ? @"下载失败" : title;
+//    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:couponDownloadModel.msg
                                                    delegate:nil
                                           cancelButtonTitle:@"关闭"
-                                          otherButtonTitles: nil] autorelease];
+                                          otherButtonTitles:nil,nil];
     [alert show];
+    [alert release];
 }
 
 -(void)getCouponDownloadDidFailed:(NSString *)errorMessage
@@ -423,14 +408,29 @@
     }
 }
 - (IBAction)btnGoNextAction:(UIButton *)sender {
+    if (self.couponModel.userCollectCount == 1) {
+//        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"该优惠券已下载" delegate:self cancelButtonTitle:@"关闭" otherButtonTitles:@"查看", nil];
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"该优惠券已下载" delegate:nil cancelButtonTitle:@"关闭" otherButtonTitles:nil, nil];
+        [alert show];
+        [alert release];
+        return;
+    }
     
-#warning 下载优惠券
-    
-//    WebViewController *webVC = [[WebViewController alloc]init];
-//    webVC.urlStr = self.couponModel.link;
-//    webVC.hidesBottomBarWhenPushed = YES;
-//    [self.navigationController pushViewController:webVC animated:YES];
-//    [webVC release];
-    
+    [SVProgressHUD showInView:self.view status:@"下载中，请稍后..."];
+    if (!self.couponDownloadInterface) {
+        self.couponDownloadInterface = [[[CouponDownloadInterface alloc] init] autorelease];
+        self.couponDownloadInterface.delegate = self;
+    }
+    [self.couponDownloadInterface getCouponDownloadByCouponId:self.couponModel.cid];
 }
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex == 1) {
+        DownloadCouponDetailViewController *vc = [[DownloadCouponDetailViewController alloc]initWithNibName:@"DownloadCouponDetailViewController" bundle:nil];
+        vc.cid = self.couponModel.cid;
+        [self.navigationController pushViewController:vc animated:YES];
+        [vc release];
+    }
+}
+
 @end

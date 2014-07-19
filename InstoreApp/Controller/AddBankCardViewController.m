@@ -65,37 +65,22 @@
     return self.itemList.count;
 }
 
-//-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-//    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 320, 35)];
-//    label.text = @"  请选择银行";
-//    label.font = [UIFont systemFontOfSize:12];
-//    label.textColor = [UIColor colorWithRed:121/255.0 green:121/255.0 blue:121/255.0 alpha:1];
-//    UITableViewHeaderFooterView *view = [self.myTableView headerViewForSection:0];
-//    [view addSubview:label];
-////    view.backgroundColor = [UIColor colorWithRed:247/255.0 green:247/255.0 blue:247/255.0 alpha:1];
-//    return label;
-//}
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 0) {
-        static NSString *CellIdentifer = @"Cell";
-        AddBankCardCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifer];
-        if (!cell) {
-            //        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifer];
-            cell = [[[NSBundle mainBundle] loadNibNamed:@"AddBankCardCell"
-                                                  owner:self
-                                                options:nil] objectAtIndex:0];
-        }
-        if (self.itemList.count > 0) {
-            AddBankCardModel *addBankModel = [self.itemList objectAtIndex:indexPath.row];
-            cell.egoImageView.imageURL = [NSURL URLWithString:addBankModel.logo];
-            cell.labBankName.text = addBankModel.name;
-        }
-        
-        return cell;
+    static NSString *CellIdentifer = @"Cell";
+    AddBankCardCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifer];
+    if (!cell) {
+        cell = [[[NSBundle mainBundle] loadNibNamed:@"AddBankCardCell"
+                                              owner:self
+                                            options:nil] objectAtIndex:0];
     }
-    return nil;
+    if (self.itemList.count > 0) {
+        AddBankCardModel *addBankModel = [self.itemList objectAtIndex:indexPath.row];
+        cell.egoImageView.imageURL = [NSURL URLWithString:addBankModel.logo];
+        cell.labBankName.text = addBankModel.name;
+    }
+    
+    return cell;
 }
 
 #pragma mark - UITableViewDelegate
@@ -143,6 +128,7 @@
     NSLog(@"%s:%@",__FUNCTION__,errorMsg);
 }
 -(void)dealloc{
+    self.addBankCardInterface.delegate = nil;
     self.addBankCardInterface = nil;
     self.itemList = nil;
     self.chooeseBankCard = nil;

@@ -36,7 +36,7 @@
     // Do any additional setup after loading the view from its nib.
     
     self.title = @"每日优惠";
-    
+    self.hidesBottomBarWhenPushed = YES;
     self.itemList = [NSMutableArray array];
     self.currentPage = 1;
     
@@ -78,7 +78,7 @@
     CouponModel *couponModel = [self.itemList objectAtIndex:indexPath.row];
     cell.title.text = couponModel.title;
     cell.shortTitle.text = couponModel.shortTitle;
-    cell.imgView.imageURL = [NSURL URLWithString:couponModel.imageUrl];
+    cell.imgView.imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@/120*120.png",couponModel.imageUrl]];
     cell.summary.text = couponModel.summary;
     cell.focusCount.text = [NSString stringWithFormat:@"%d",couponModel.focusCount];
     

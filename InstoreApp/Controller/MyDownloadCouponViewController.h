@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface MyDownloadCouponViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
+@property (retain, nonatomic) IBOutlet UITableView *myTableView;
 
 @end
