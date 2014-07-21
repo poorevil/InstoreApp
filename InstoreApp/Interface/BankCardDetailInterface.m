@@ -42,8 +42,9 @@
             if (dailyListArray) {
                 for (NSDictionary *dailyList in dailyListArray) {
                     BankCardDetailModel *bankCardDetailModel = [[BankCardDetailModel alloc]initWithJsonMap:dailyList];
-                    bankCardDetailModel.bank = [[BankCardModel alloc]initWithJsonMap:bankDict];
+                    bankCardDetailModel.bank = [[[BankCardModel alloc]initWithJsonMap:bankDict]autorelease];
                     [resultList addObject:bankCardDetailModel];
+                    [bankCardDetailModel release];
                 }                
             }
         }

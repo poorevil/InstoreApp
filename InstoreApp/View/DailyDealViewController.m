@@ -13,6 +13,7 @@
 
 #import "GroupBuyDetailViewController.h"
 #import "CouponDetailViewController.h"
+#import "MallNewsDetailViewController.h"
 
 
 @interface DailyDealViewController ()<DailyDealInterfaceDelegate>
@@ -98,12 +99,11 @@
                 case 1:
                 {
                     //优惠活动
-                    WebViewController *webVC = [[WebViewController alloc]init];
-                    webVC.hidesBottomBarWhenPushed = YES;
-                    webVC.urlStr = couponModel.link;
-                    webVC.titleStr = @"优惠详情";
-                    [self.navigationController pushViewController:webVC animated:YES];
-                    [webVC release];
+                    MallNewsDetailViewController *vc = [[MallNewsDetailViewController alloc]initWithNibName:@"MallNewsDetailViewController" bundle:nil];
+                    vc.couponModel = couponModel;
+                    vc.couponModel.cid = couponModel.itemId;
+                    [self.navigationController pushViewController:vc animated:YES];
+                    [vc release];
                 }
                     break;
                 case 2:

@@ -79,6 +79,6 @@
         </view>
     </objects>
     <resources>
-        <image name="search_btn_hot_bg.png" width="166" height="54"/>
+        <image name="search_btn_hot_bg.png" width="83" height="27"/>
     </resources>
 </document>

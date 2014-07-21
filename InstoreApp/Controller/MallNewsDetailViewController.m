@@ -66,6 +66,7 @@
     UIBarButtonItem *barItem2 = [[UIBarButtonItem alloc]initWithCustomView:btnShare];
     
     self.navigationItem.rightBarButtonItems = @[barItem2/*,barItem1*/];
+    [barItem2 release];
     
     [self initHeaderView];
     

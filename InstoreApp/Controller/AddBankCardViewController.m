@@ -51,6 +51,7 @@
     label.font = [UIFont systemFontOfSize:12];
     label.textColor = [UIColor colorWithRed:121/255.0 green:121/255.0 blue:121/255.0 alpha:1];
     self.myTableView.tableHeaderView = label;
+    [label release];
     
     self.hidesBottomBarWhenPushed = YES;
     

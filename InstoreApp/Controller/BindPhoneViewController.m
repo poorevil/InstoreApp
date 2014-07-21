@@ -29,6 +29,8 @@
     // Do any additional setup after loading the view from its nib.
     [self.phoneNumField becomeFirstResponder];
     
+    self.hidesBottomBarWhenPushed = YES;
+    
     UIImage *originalImage = [[UIImage imageNamed:@"index-red-btn"] stretchableImageWithLeftCapWidth:10 topCapHeight:10];
     [self.bindPhoneBtn setBackgroundImage:originalImage forState:UIControlStateNormal];
     [self.bindPhoneBtn setBackgroundImage:originalImage forState:UIControlStateHighlighted];
@@ -45,6 +47,25 @@
     [self.fetchCheckNumBtn setBackgroundImage:originalImage forState:UIControlStateSelected];
     
     self.title = @"绑定手机";
+    
+    self.fetchCheckNumBtn.enabled = NO;
+    [self.bindPhoneBtn addTarget:self action:@selector(btnBindPhont:) forControlEvents:UIControlEventTouchUpInside];
+}
+-(void)btnBindPhont:(UIButton *)sender{
+    if (self.checkNumField.text.length == 0) {
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"验证码不能为空" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [alert show];
+        [alert release];
+    }else{
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"验证码不正确" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [alert show];
+        [alert release];
+    }
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [textField resignFirstResponder];
+    return YES;
 }
 
 - (void)didReceiveMemoryWarning

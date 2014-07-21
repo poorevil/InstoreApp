@@ -11,6 +11,9 @@
 #import "EGOImageView.h"
 #import "AppDelegate.h"
 
+#import "CustomNavigationController.h"
+#import "CouponViewController.h"
+
 @implementation MainView_CategoryCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -93,15 +96,18 @@
 }
 
 -(void)tapAction:(UIGestureRecognizer *)gesture
-{
-//    UIView *view = gesture.view;
-//    int tag = view.tag - 100;
-//    
-//    CategoryModel *categoryModel = [self.dataList objectAtIndex:tag];
-    
+{    
     AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
     [appDelegate.tabBarController setSelectedIndex:1];
     
+    CustomNavigationController *nav = (CustomNavigationController *)appDelegate.tabBarController.selectedViewController;
+    CouponViewController *vc = [nav.viewControllers objectAtIndex:0];
+    
+    CategoryModel *cm = [self.dataList objectAtIndex:(gesture.view.tag - 100)];
+    vc.filterCategory = cm;
+    vc.cid = cm.cid;
+    [vc loadCategoryData];
+    vc.isOrder1 = YES;
 }
 
 @end

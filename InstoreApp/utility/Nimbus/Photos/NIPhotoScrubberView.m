@@ -93,7 +93,7 @@ static const NSInteger NIPhotoScrubberViewUnknownTag = -1;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (UIImageView *)photoView {
-  UIImageView* imageView = [[UIImageView alloc] init];
+  UIImageView* imageView = [[[UIImageView alloc] init]autorelease];
   
   imageView.layer.borderColor = [UIColor whiteColor].CGColor;
   imageView.layer.borderWidth = 1;

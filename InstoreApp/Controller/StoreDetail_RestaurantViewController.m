@@ -222,7 +222,7 @@
         detailCell.delegate = self;
         
     }else if ([cell isMemberOfClass:[CommentListCell class]]) {
-        CommentListCell *commentCell = (CommentListCell *)cell;
+//        CommentListCell *commentCell = (CommentListCell *)cell;
         //TODO:commentCell.commentList = self.storeModel.comments;
     }else if ([cell isMemberOfClass:[StoreDetail_otherCouponCell class]]) {
         StoreDetail_otherCouponCell *couponCell = (StoreDetail_otherCouponCell *)cell;

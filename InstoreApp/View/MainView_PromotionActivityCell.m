@@ -14,6 +14,9 @@
 #import "CouponDetailViewController.h"
 #import "MallNewsDetailViewController.h"
 
+#import "CustomNavigationController.h"
+#import "CouponViewController.h"
+
 @implementation MainView_PromotionActivityCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -43,11 +46,14 @@
 -(IBAction)moreBtnAction:(id)sender
 {
     AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
-//    UINavigationController *nav = (UINavigationController *)appDelegate.tabBarController.selectedViewController;
-//    [nav.navigationBar setBarTintColor:[UIColor colorWithRed:248.0f/255.0f green:40.0f/255.0f blue:53.0f/255.0f alpha:1]];
-//    [nav.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
     appDelegate.tabBarController.selectedIndex = 1;
     
+    CustomNavigationController *nav = (CustomNavigationController *)appDelegate.tabBarController.selectedViewController;
+    CouponViewController *vc = [nav.viewControllers objectAtIndex:0];
+    
+    [vc loadTypeData:1];
+    vc.isOrder1 = YES;
+    vc.isOrder = YES;
 }
 
 -(void)setDataList:(NSArray *)dataList

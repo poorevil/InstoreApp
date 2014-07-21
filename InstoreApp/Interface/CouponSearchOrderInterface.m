@@ -25,7 +25,7 @@
 }
 
 #pragma mark - BaseInterfaceDelegate
-//https://github.com/joyx-inc/vmall-app-ios/wiki/Mall-News
+//https://github.com/joyx-inc/vmall-app-ios/wiki/Promotion-List
 -(void)parseResult:(ASIHTTPRequest *)request{
     NSString *jsonStr = [[[NSString alloc] initWithData:[request responseData]
                                                encoding:NSUTF8StringEncoding] autorelease];
@@ -34,20 +34,21 @@
     if (jsonObj) {
         NSInteger totalCount = 0;
         NSInteger currentPage = 0;
-        NSInteger focusCount = 0;
-        NSInteger pageSize = 0;
+//        NSInteger focusCount = 0;
+//        NSInteger pageSize = 0;
         NSMutableArray *resultList = [NSMutableArray array];
         if ([[jsonObj objectForKey:@"totalCount"] integerValue] > 0) {
             totalCount = [[jsonObj objectForKey:@"totalCount"] integerValue];
             currentPage = [[jsonObj objectForKey:@"currentPage"] integerValue];
-            focusCount = [[jsonObj objectForKey:@"focusCount"] integerValue];
-            pageSize = [[jsonObj objectForKey:@"pageSize"] integerValue];
+//            focusCount = [[jsonObj objectForKey:@"focusCount"] integerValue];
+//            pageSize = [[jsonObj objectForKey:@"pageSize"] integerValue];
             
             NSArray *listArray = [jsonObj objectForKey:@"list"];
             if (listArray) {
                 for (NSDictionary *couponDict in listArray) {
                     CouponModel *couponModel = [[CouponModel alloc]initWithJsonMap:couponDict];                    
                     [resultList addObject:couponModel];
+                    [couponModel release];
                 }
             }
         }

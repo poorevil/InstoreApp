@@ -40,7 +40,7 @@
     NSURL *URL = [NSURL URLWithString:self.urlStr];
     NSURLRequest *request = [[NSURLRequest alloc]initWithURL:URL];
     [self.myWebView loadRequest:request];
-    
+    [request release];
     self.hidesBottomBarWhenPushed = YES;
     
     NSLog(@"WebView_URL:%@",self.urlStr);

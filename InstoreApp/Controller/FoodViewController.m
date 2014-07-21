@@ -214,13 +214,13 @@
 {
     if ([sender selectedSegmentIndex] == 0) {
         //商户
-        self.foodViewInterface = [[FoodViewInterface alloc] init];
+        self.foodViewInterface = [[[FoodViewInterface alloc] init]autorelease];
         self.foodViewInterface.delegate = self;
         [self.foodViewInterface getFoodListByPage:self.currentPage amount:20];
         
     }else{
         //优惠
-        self.foodViewPromotionInterface = [[FoodViewPromotionInterface alloc] init];
+        self.foodViewPromotionInterface = [[[FoodViewPromotionInterface alloc] init]autorelease];
         self.foodViewPromotionInterface.delegate = self;
         [self.foodViewPromotionInterface getFoodViewPromotionListByPage:self.promotion_currentPage amount:20];
     }

@@ -25,6 +25,7 @@
 
 #import "WebViewController.h"
 #import "MyDownloadCouponViewController.h"
+#import "BindPhoneViewController.h"
 
 
 @interface MeViewController () <UserInfoInterfaceDelegate>
@@ -262,7 +263,11 @@
                 }
                 case 2:{
                     //绑定手机号
-                    
+                    BindPhoneViewController *vc = [[BindPhoneViewController alloc]initWithNibName:@"BindPhoneViewController" bundle:nil];
+                    self.hidesBottomBarWhenPushed = YES;
+                    [self.navigationController pushViewController:vc animated:YES];
+                    [vc release];
+                    self.hidesBottomBarWhenPushed = NO;
                 }
             }
         case 4:

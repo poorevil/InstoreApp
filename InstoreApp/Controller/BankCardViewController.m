@@ -62,7 +62,7 @@
     _bankCardInterface.delegate = self;
     [_bankCardInterface getBankCardByPage:self.currentPage amount:20];
     
-    self.deleteBankCardInterface = [[DeleteBankCardInterface alloc]init];
+    self.deleteBankCardInterface = [[[DeleteBankCardInterface alloc]init]autorelease];
     
     UIView *footView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 94)];
     UIButton *btnAddBank = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -117,7 +117,7 @@
     bankDiscoundListVC.bankId = bankCardModel.bankId;
     [self.navigationController pushViewController:bankDiscoundListVC animated:YES];
     [bankDiscoundListVC release];
-    [bankCardModel release];
+//    [bankCardModel release];
 }
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
     if (editingStyle == UITableViewCellEditingStyleDelete) {

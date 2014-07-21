@@ -91,12 +91,12 @@
 //            }
          */
         NSInteger totalCount = [[jsonObj objectForKey:@"totalCount"] integerValue];
-        NSInteger pageSize;
+//        NSInteger pageSize;
         NSInteger currentPage;
         NSInteger focusCount;
         NSMutableArray *resultArray = [NSMutableArray array];
         if (totalCount) {
-            pageSize = [[jsonObj objectForKey:@"pageSize"] integerValue];
+//            pageSize = [[jsonObj objectForKey:@"pageSize"] integerValue];
             currentPage = [[jsonObj objectForKey:@"currentPage"] integerValue];
             focusCount = [[jsonObj objectForKey:@"focusCount"] integerValue];
             

@@ -127,7 +127,7 @@ YouHuiOrderViewControllerDelegate>
             break;
     }
     
-    self.storeInterface = [[StoreInterface alloc] init];
+    self.storeInterface = [[[StoreInterface alloc] init]autorelease];
     self.storeInterface.delegate = self;
     
     [self.storeInterface getStoreListByFloorId:self.filterFloorModel.fid
@@ -166,8 +166,7 @@ YouHuiOrderViewControllerDelegate>
     StoreListFocusedViewController *vc = [[StoreListFocusedViewController alloc] initWithNibName:@"StoreListFocusedViewController" bundle:nil];
     vc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];
-    
-//    vc.hidesBottomBarWhenPushed = NO;
+    [vc release];
 }
 
 -(void)initHeaderView
@@ -359,6 +358,7 @@ YouHuiOrderViewControllerDelegate>
     sdrvc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:sdrvc animated:YES];
     sdrvc.hidesBottomBarWhenPushed = NO;
+    [sdrvc release];
 }
 
 

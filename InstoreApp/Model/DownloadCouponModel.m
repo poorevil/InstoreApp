@@ -22,7 +22,7 @@
             self.startTime = [NSDate dateFromString:[jsonMap objectForKey:@"startTime"]];
             self.endTime = [NSDate dateFromString:[jsonMap objectForKey:@"endTime"]];
             self.imageURL = [jsonMap objectForKey:@"image"];
-            self.storeModel = [[StoreModel alloc]initWithJsonMap:[jsonMap objectForKey:@"store"]];
+            self.storeModel = [[[StoreModel alloc]initWithJsonMap:[jsonMap objectForKey:@"store"]]autorelease];
         }
     }
     return self;

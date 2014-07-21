@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface BindPhoneViewController : UIViewController
+@interface BindPhoneViewController : UIViewController<UITextFieldDelegate>
 
 @property (nonatomic,strong) IBOutlet UITextField *phoneNumField;
 @property (nonatomic,strong) IBOutlet UITextField *checkNumField;

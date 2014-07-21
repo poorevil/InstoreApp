@@ -35,6 +35,7 @@
     sdrvc.hidesBottomBarWhenPushed = YES;
     [nav pushViewController:sdrvc animated:YES];
     sdrvc.hidesBottomBarWhenPushed = NO;
+    [sdrvc release];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated

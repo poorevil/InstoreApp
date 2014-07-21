@@ -15,7 +15,7 @@
 {
     // Initialization code
     
-    self.focusStoreInterface = [[FocusStoreInterface alloc]init];
+    self.focusStoreInterface = [[[FocusStoreInterface alloc]init]autorelease];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
@@ -127,7 +127,7 @@
         }
         view.isFocusImage.image = [UIImage imageNamed:@"focusstore_nofocus.png"];
         focusStoreModel.isFocus = NO;
-        isFocus = NO;
+//        isFocus = NO;
     }else{
         [self.focusStoreInterface focusStoreWithID:focusStoreModel.storeID WithMethod:@"PUT"];
         if (_delegate && [_delegate respondsToSelector:@selector(upDataFocusStoreCount:)]) {
@@ -135,8 +135,8 @@
         }
         view.isFocusImage.image = [UIImage imageNamed:@"focusstore_isfocus.png"];
         focusStoreModel.isFocus = YES;
-        isFocus = YES;
-    }    
+//        isFocus = YES;
+    }
 }
 
 -(void)dealloc{
@@ -145,6 +145,7 @@
     self.view3 = nil;
     self.view4 = nil;
     self.delegate = nil;
+    [self.focusStoreInterface release];
     
     [super dealloc];
 }

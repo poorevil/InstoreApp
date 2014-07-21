@@ -186,6 +186,12 @@
 		0373FAC61976D8FD00A1CF68 /* nav_focuse_pressed_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0373FAC41976D8FD00A1CF68 /* nav_focuse_pressed_btn@2x.png */; };
 		0373FACB19781E6000A1CF68 /* share_white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0373FACA19781E6000A1CF68 /* share_white@2x.png */; };
 		03C6592A1928985D009CADA6 /* SearchResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C659291928985D009CADA6 /* SearchResultViewController.m */; };
+		04104CAA197CF08600BEB31F /* downloadCouponSuccess_btn_view@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04104CA9197CF08600BEB31F /* downloadCouponSuccess_btn_view@2x.png */; };
+		04104CB1197CF22F00BEB31F /* downloadCouponSuccess_bg_l.png in Resources */ = {isa = PBXBuildFile; fileRef = 04104CAC197CF22F00BEB31F /* downloadCouponSuccess_bg_l.png */; };
+		04104CB2197CF22F00BEB31F /* downloadCouponSuccess_bg_r@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04104CAD197CF22F00BEB31F /* downloadCouponSuccess_bg_r@2x.png */; };
+		04104CB3197CF22F00BEB31F /* downloadCouponSuccess_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04104CAE197CF22F00BEB31F /* downloadCouponSuccess_bg@2x.png */; };
+		04104CB4197CF22F00BEB31F /* downloadCouponSuccess_img_success@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04104CAF197CF22F00BEB31F /* downloadCouponSuccess_img_success@2x.png */; };
+		04104CB5197CF22F00BEB31F /* downloadCouponSuccess_img_xiewen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04104CB0197CF22F00BEB31F /* downloadCouponSuccess_img_xiewen@2x.png */; };
 		04196A261962D2B30037C046 /* DailyDealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04196A241962D2B30037C046 /* DailyDealViewController.m */; };
 		04196A271962D2B30037C046 /* DailyDealViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04196A251962D2B30037C046 /* DailyDealViewController.xib */; };
 		04196A2B1962D3C90037C046 /* DailyDealViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04196A291962D3C90037C046 /* DailyDealViewCell.m */; };
@@ -256,6 +262,8 @@
 		04635305197523F300BDB159 /* SearchResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04635304197523F300BDB159 /* SearchResultViewController.xib */; };
 		04635309197528D700BDB159 /* SearchResultStoreCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04635307197528D700BDB159 /* SearchResultStoreCell.m */; };
 		0463530A197528D700BDB159 /* SearchResultStoreCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04635308197528D700BDB159 /* SearchResultStoreCell.xib */; };
+		0468405A197CC92A00B49DC1 /* DownloadCouponSuccessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04684058197CC92A00B49DC1 /* DownloadCouponSuccessViewController.m */; };
+		0468405B197CC92A00B49DC1 /* DownloadCouponSuccessViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04684059197CC92A00B49DC1 /* DownloadCouponSuccessViewController.xib */; };
 		046C112619767D1C007F7FE3 /* MyViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 046C112419767D1C007F7FE3 /* MyViewCell.m */; };
 		046C112719767D1C007F7FE3 /* MyViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 046C112519767D1C007F7FE3 /* MyViewCell.xib */; };
 		046C112C19768F4A007F7FE3 /* MyVIPCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 046C112A19768F4A007F7FE3 /* MyVIPCardViewController.m */; };
@@ -1040,6 +1048,12 @@
 		0373FACA19781E6000A1CF68 /* share_white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "share_white@2x.png"; sourceTree = "<group>"; };
 		03C659281928985D009CADA6 /* SearchResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultViewController.h; sourceTree = "<group>"; };
 		03C659291928985D009CADA6 /* SearchResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultViewController.m; sourceTree = "<group>"; };
+		04104CA9197CF08600BEB31F /* downloadCouponSuccess_btn_view@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "downloadCouponSuccess_btn_view@2x.png"; sourceTree = "<group>"; };
+		04104CAC197CF22F00BEB31F /* downloadCouponSuccess_bg_l.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = downloadCouponSuccess_bg_l.png; sourceTree = "<group>"; };
+		04104CAD197CF22F00BEB31F /* downloadCouponSuccess_bg_r@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "downloadCouponSuccess_bg_r@2x.png"; sourceTree = "<group>"; };
+		04104CAE197CF22F00BEB31F /* downloadCouponSuccess_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "downloadCouponSuccess_bg@2x.png"; sourceTree = "<group>"; };
+		04104CAF197CF22F00BEB31F /* downloadCouponSuccess_img_success@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "downloadCouponSuccess_img_success@2x.png"; sourceTree = "<group>"; };
+		04104CB0197CF22F00BEB31F /* downloadCouponSuccess_img_xiewen@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "downloadCouponSuccess_img_xiewen@2x.png"; sourceTree = "<group>"; };
 		04196A231962D2B30037C046 /* DailyDealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DailyDealViewController.h; path = ../View/DailyDealViewController.h; sourceTree = "<group>"; };
 		04196A241962D2B30037C046 /* DailyDealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DailyDealViewController.m; path = ../View/DailyDealViewController.m; sourceTree = "<group>"; };
 		04196A251962D2B30037C046 /* DailyDealViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DailyDealViewController.xib; path = ../View/DailyDealViewController.xib; sourceTree = "<group>"; };
@@ -1139,6 +1153,9 @@
 		04635306197528D700BDB159 /* SearchResultStoreCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultStoreCell.h; sourceTree = "<group>"; };
 		04635307197528D700BDB159 /* SearchResultStoreCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultStoreCell.m; sourceTree = "<group>"; };
 		04635308197528D700BDB159 /* SearchResultStoreCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchResultStoreCell.xib; sourceTree = "<group>"; };
+		04684057197CC92A00B49DC1 /* DownloadCouponSuccessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadCouponSuccessViewController.h; sourceTree = "<group>"; };
+		04684058197CC92A00B49DC1 /* DownloadCouponSuccessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadCouponSuccessViewController.m; sourceTree = "<group>"; };
+		04684059197CC92A00B49DC1 /* DownloadCouponSuccessViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DownloadCouponSuccessViewController.xib; sourceTree = "<group>"; };
 		046C112319767D1C007F7FE3 /* MyViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyViewCell.h; sourceTree = "<group>"; };
 		046C112419767D1C007F7FE3 /* MyViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyViewCell.m; sourceTree = "<group>"; };
 		046C112519767D1C007F7FE3 /* MyViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyViewCell.xib; sourceTree = "<group>"; };
@@ -2729,6 +2746,9 @@
 				044FA0AA197A5745003A932C /* DownloadCouponDetailViewController.h */,
 				044FA0AB197A5745003A932C /* DownloadCouponDetailViewController.m */,
 				044FA0AC197A5745003A932C /* DownloadCouponDetailViewController.xib */,
+				04684057197CC92A00B49DC1 /* DownloadCouponSuccessViewController.h */,
+				04684058197CC92A00B49DC1 /* DownloadCouponSuccessViewController.m */,
+				04684059197CC92A00B49DC1 /* DownloadCouponSuccessViewController.xib */,
 				4ECBF70818F4449E003963E1 /* BindPhoneViewController.h */,
 				4ECBF70918F4449E003963E1 /* BindPhoneViewController.m */,
 				4ECBF70A18F4449E003963E1 /* BindPhoneViewController.xib */,
@@ -2927,6 +2947,12 @@
 		4EF0907518FB52CE00ABFE7D /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				04104CAC197CF22F00BEB31F /* downloadCouponSuccess_bg_l.png */,
+				04104CAD197CF22F00BEB31F /* downloadCouponSuccess_bg_r@2x.png */,
+				04104CAE197CF22F00BEB31F /* downloadCouponSuccess_bg@2x.png */,
+				04104CAF197CF22F00BEB31F /* downloadCouponSuccess_img_success@2x.png */,
+				04104CB0197CF22F00BEB31F /* downloadCouponSuccess_img_xiewen@2x.png */,
+				04104CA9197CF08600BEB31F /* downloadCouponSuccess_btn_view@2x.png */,
 				044FA0B9197A5C7E003A932C /* download_CDHVC_r@2x.png */,
 				044FA0BA197A5C7E003A932C /* download_CDHVC_l@2x.png */,
 				045FF8631979035400F4DA22 /* myDownloadCoupon_yiguoqi@2x.png */,
@@ -3573,6 +3599,7 @@
 				FA4E65FE19357B22005022E2 /* ios-social-sdk-login-quick.html in Resources */,
 				03650F461942D9FE00016289 /* MainView_DailyPromotionCell.xib in Resources */,
 				4EF090DF18FB52FD00ABFE7D /* my-icon-more@2x.png in Resources */,
+				04104CAA197CF08600BEB31F /* downloadCouponSuccess_btn_view@2x.png in Resources */,
 				042E47F819651A2500CD945A /* webView_goBack@2x.png in Resources */,
 				049AC1DB1977E57F00262B69 /* my_card_YES_bangding@2x.png in Resources */,
 				042F1201196D1ED6003F255E /* FocusStoreViewController.xib in Resources */,
@@ -3591,6 +3618,7 @@
 				4EF090EC18FB52FD00ABFE7D /* sale-bar-tabright-cur@2x.png in Resources */,
 				FA4E65E419357B21005022E2 /* UMSocialWechatTimelineData.html in Resources */,
 				FA4E65CD19357B21005022E2 /* UMSocialDoubanData.html in Resources */,
+				0468405B197CC92A00B49DC1 /* DownloadCouponSuccessViewController.xib in Resources */,
 				04FBB834196E893600A46F9C /* MyFocusYouHuiViewController.xib in Resources */,
 				C1A84A54192C538C003219DA /* Icon_80.png in Resources */,
 				4EF090E018FB52FD00ABFE7D /* my-icon-msg@2x.png in Resources */,
@@ -3639,10 +3667,12 @@
 				4ECBF76318F6F13A003963E1 /* CouponDetailWithTitleCell.xib in Resources */,
 				03650F521942FC1B00016289 /* MainView_CouponsCell.xib in Resources */,
 				04D7294A196C10F100590C23 /* CouponView_empty2_Cell.xib in Resources */,
+				04104CB4197CF22F00BEB31F /* downloadCouponSuccess_img_success@2x.png in Resources */,
 				035214B11958746A00F92B55 /* tel_icon@2x.png in Resources */,
 				4ECBF73818F4B9A4003963E1 /* tmpimg4.jpg in Resources */,
 				FA4E65E019357B21005022E2 /* UMSocialTwitterData.html in Resources */,
 				04635305197523F300BDB159 /* SearchResultViewController.xib in Resources */,
+				04104CB2197CF22F00BEB31F /* downloadCouponSuccess_bg_r@2x.png in Resources */,
 				035214DE195B1CFF00F92B55 /* me_edit_btn@2x.png in Resources */,
 				0357FF59194D8CD80071BD5A /* card@2x.png in Resources */,
 				4EF0910118FB52FD00ABFE7D /* store-btn-sb-red-pressed@2x.png in Resources */,
@@ -3654,6 +3684,7 @@
 				4EF0911B18FB52FD00ABFE7D /* top-icon-phone-black@2x.png in Resources */,
 				0357FF66194DA9580071BD5A /* groupbuy_memo@2x.png in Resources */,
 				4E9608B618E7B1C100418798 /* ServiceViewCell.xib in Resources */,
+				04104CB1197CF22F00BEB31F /* downloadCouponSuccess_bg_l.png in Resources */,
 				4E9608AC18E48D6700418798 /* grayArrow.png in Resources */,
 				4EF0915E18FC50B400ABFE7D /* tabbar_selected_bg@2x.png in Resources */,
 				C1A84A4F192C538C003219DA /* Icon_1024.png in Resources */,
@@ -3732,6 +3763,7 @@
 				4EF090E618FB52FD00ABFE7D /* register-phone-input@2x.png in Resources */,
 				4ECBF73B18F4B9A4003963E1 /* tmpimg7.jpg in Resources */,
 				FA4E65E319357B21005022E2 /* UMSocialWechatSessionData.html in Resources */,
+				04104CB3197CF22F00BEB31F /* downloadCouponSuccess_bg@2x.png in Resources */,
 				0357FF5E194D8DF00071BD5A /* GroupBuyDateTimeCell.xib in Resources */,
 				0357FF72194DE17C0071BD5A /* toolbar_coupon_icon_press@2x.png in Resources */,
 				4EF0910518FB52FD00ABFE7D /* store-icon-clock@2x.png in Resources */,
@@ -3751,6 +3783,7 @@
 				4EF0915318FC4A8900ABFE7D /* c_2.jpg in Resources */,
 				4EF0911418FB52FD00ABFE7D /* toolBar-btn-service@2x.png in Resources */,
 				FA4E65BA19357B21005022E2 /* UMSCommentDetailController.xib in Resources */,
+				04104CB5197CF22F00BEB31F /* downloadCouponSuccess_img_xiewen@2x.png in Resources */,
 				4EF0912A18FC155200ABFE7D /* banner_5.jpg in Resources */,
 				4EF090EE18FB52FD00ABFE7D /* sale-feed-icon@2x.png in Resources */,
 				042F120C196D22EC003F255E /* FocusStoreView.xib in Resources */,
@@ -4124,6 +4157,7 @@
 				03573AD719055DE200A11A33 /* StoreListView.m in Sources */,
 				0463530319751E7F00BDB159 /* SearchClearHistoryInterface.m in Sources */,
 				C1A9C891193F13A600DD420F /* PhotoAlbumToolBarView.m in Sources */,
+				0468405A197CC92A00B49DC1 /* DownloadCouponSuccessViewController.m in Sources */,
 				C1A9C879193F130300DD420F /* NINonEmptyCollectionTesting.m in Sources */,
 				0357FF9C195344D70071BD5A /* StoreDetail_RestaurantViewController.m in Sources */,
 				03573ADA19055E2300A11A33 /* SingletonHelpers.m in Sources */,

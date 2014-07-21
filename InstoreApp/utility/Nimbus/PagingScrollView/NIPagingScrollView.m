@@ -74,6 +74,7 @@ const CGFloat NIPagingScrollViewDefaultPageHorizontalMargin = 10;
   self.pagingScrollView.showsHorizontalScrollIndicator = NO;
 
   [self addSubview:self.pagingScrollView];
+    [self.pagingScrollView release];
 }
 
 

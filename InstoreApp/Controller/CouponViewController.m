@@ -7,7 +7,7 @@
 //
 
 #import "CouponViewController.h"
-#import "CategoryModel.h"
+
 
 #import "CouponviewInterface.h"
 #import "CouponSectionTwoInterface.h"
@@ -31,7 +31,7 @@ CouponViewInterfaceDelegate, YouhuiCategoryViewControllerDelegate,YouHuiOrderVie
 
 @property (nonatomic, assign) NSInteger focusCount;//用户收藏的优惠数量
 
-@property (nonatomic,strong) CategoryModel *filterCategory;//分类筛选条件
+
 
 @property (nonatomic, retain) CouponViewInterface *couponViewInterface; //收藏接口
 @property (retain, nonatomic) CouponSectionTwoInterface *couponSectionTwoInterface;
@@ -47,11 +47,7 @@ CouponViewInterfaceDelegate, YouhuiCategoryViewControllerDelegate,YouHuiOrderVie
 @property (assign, nonatomic) NSInteger totalCount1;
 @property (assign, nonatomic) NSInteger totalCount2;
 
-@property (assign, nonatomic) BOOL isOrder;
-@property (assign, nonatomic) BOOL isOrder1;
-@property (assign, nonatomic) BOOL isOrder2;
-@property (assign, nonatomic) NSInteger cid;
-@property (assign, nonatomic) NSInteger type;
+
 @property (retain, nonatomic) NSString *order;
 
 
@@ -83,16 +79,22 @@ CouponViewInterfaceDelegate, YouhuiCategoryViewControllerDelegate,YouHuiOrderVie
     self.itemList2 = [NSMutableArray array];
     self.itemListAll = [NSMutableArray array];
     
+    
+    if (!self.couponSearchOrderInterface) {
+        self.couponSearchOrderInterface = [[[CouponSearchOrderInterface alloc]init]autorelease];
+        self.couponSearchOrderInterface.delegate = self;
+    }
+
+
+    //关注商户的优惠
     self.couponViewInterface = [[[CouponViewInterface alloc] init] autorelease];
     self.couponViewInterface.delegate = self;
     [self.couponViewInterface getCouponViewListByPage:self.currentPage1 amount:20];
     
+    //其他商户的优惠
     self.couponSectionTwoInterface = [[[CouponSectionTwoInterface alloc]init]autorelease];
     self.couponSectionTwoInterface.delegate = self;
     [self.couponSectionTwoInterface getCouponSectionTwoListByPage:self.currentPage2 amount:20];
-    
-    self.couponSearchOrderInterface = [[[CouponSearchOrderInterface alloc]init]autorelease];
-    self.couponSearchOrderInterface.delegate = self;
     
     
     if (self.refreshHeaderView == nil) {
@@ -103,6 +105,28 @@ CouponViewInterfaceDelegate, YouhuiCategoryViewControllerDelegate,YouHuiOrderVie
 	}
     [self.refreshHeaderView refreshLastUpdatedDate];
 
+}
+
+//从首页过来
+-(void)loadCategoryData{
+    if (!self.couponSearchOrderInterface) {
+        self.couponSearchOrderInterface = [[[CouponSearchOrderInterface alloc]init]autorelease];
+        self.couponSearchOrderInterface.delegate = self;
+    }
+    [self.orderBtn setTitle:self.filterCategory.cName forState:UIControlStateNormal];
+    [self.itemListAll removeAllObjects];
+    self.currentPageAll = 1;
+    [self.couponSearchOrderInterface searchByAmount:20 Page:self.currentPageAll Cid:self.cid Type:self.type Order:self.order];
+}
+-(void)loadTypeData:(NSInteger)type{
+    if (!self.couponSearchOrderInterface) {
+        self.couponSearchOrderInterface = [[[CouponSearchOrderInterface alloc]init]autorelease];
+        self.couponSearchOrderInterface.delegate = self;
+    }
+    self.cid = 0;
+    [self.itemListAll removeAllObjects];
+    self.currentPageAll = 1;
+    [self.couponSearchOrderInterface searchByAmount:20 Page:self.currentPageAll Cid:self.cid Type:type Order:self.order];
 }
 
 - (void)didReceiveMemoryWarning
@@ -277,8 +301,6 @@ CouponViewInterfaceDelegate, YouhuiCategoryViewControllerDelegate,YouHuiOrderVie
                 cell.titleLabel.text = @"可能感兴趣的优惠";
                 return cell;
             }
-                break;
-            default:
                 break;
         }
     }

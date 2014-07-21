@@ -28,10 +28,10 @@
     
     if (jsonObj) {
         NSInteger totalCount = [[jsonObj objectForKey:@"totalCount"] integerValue];
-        NSInteger currentPage = 0;
+//        NSInteger currentPage = 0;
         NSMutableArray *resultList = [NSMutableArray array];
         if (totalCount > 0) {
-            currentPage = [[jsonObj objectForKey:@"currentPage"] integerValue];
+//            currentPage = [[jsonObj objectForKey:@"currentPage"] integerValue];
             NSArray *array = [jsonObj objectForKey:@"list"];
             if (array) {
                 for (NSDictionary *dict in array) {

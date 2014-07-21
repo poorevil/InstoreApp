@@ -271,7 +271,7 @@ CouponDetailInterfaceDelegate>
         }
         case 1:
             if ([cell isMemberOfClass:[GroupBuyDetailCardCell class]]) {
-                GroupBuyDetailCardCell *cardCell = (GroupBuyDetailCardCell *)cell;
+//                GroupBuyDetailCardCell *cardCell = (GroupBuyDetailCardCell *)cell;
                 //TODO:银行卡
                 //                cardCell.cardsLabel =
             }

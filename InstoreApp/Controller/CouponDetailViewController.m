@@ -27,6 +27,7 @@
 #import "FocusInterface.h"
 #import "WebViewController.h"
 #import "DownloadCouponDetailViewController.h"
+#import "DownloadCouponSuccessViewController.h"
 
 
 @interface CouponDetailViewController () <CouponDetailInterfaceDelegate,CouponDownloadInterfaceDelegate>
@@ -348,22 +349,24 @@
 -(void)getCouponDownloadDidFinished:(CouponDownloadModel *)couponDownloadModel
 {
     [SVProgressHUD dismiss];
-    //status: '下载结果',  1: 成功; 2: 成功-已下载; 3: 失败-已下载过; 4: 失败-不符合参与条件;5: 失败-已抢完
-    NSString *title = nil;
-    if (couponDownloadModel.status == 1 || couponDownloadModel.status == 2) {
-        title = @"下载成功";
-    }
-    title = title == nil ? @"下载失败" : title;
-//    
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:couponDownloadModel.msg
-                                                   delegate:nil
-                                          cancelButtonTitle:@"关闭"
-                                          otherButtonTitles:nil,nil];
-    [alert show];
-    [alert release];
+
     
-    [self.btnGoNext setTitle:@"已下载" forState:UIControlStateNormal];
-    self.couponModel.userCollectCount = 1;
+    //status: '下载结果',  1: 成功; 2: 成功-已下载; 3: 失败-已下载过; 4: 失败-不符合参与条件;5: 失败-已抢完
+    if (couponDownloadModel.status == 1 || couponDownloadModel.status == 2) {
+        [self.btnGoNext setTitle:@"已下载" forState:UIControlStateNormal];
+        self.couponModel.userCollectCount = 1;
+        
+        DownloadCouponSuccessViewController *vc = [[DownloadCouponSuccessViewController alloc]initWithNibName:@"DownloadCouponSuccessViewController" bundle:nil];
+        vc.titleStr = self.couponModel.title;
+        vc.imageURL = [self.couponModel.images objectAtIndex:0];
+        vc.couponDownloadModel = couponDownloadModel;
+        [self.navigationController pushViewController:vc animated:YES];
+        [vc release];
+    }else{
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"下载失败" message:couponDownloadModel.msg delegate:nil cancelButtonTitle:@"关闭" otherButtonTitles:nil,nil];
+        [alert show];
+        [alert release];
+    }
 }
 
 -(void)getCouponDownloadDidFailed:(NSString *)errorMessage
@@ -412,7 +415,6 @@
 }
 - (IBAction)btnGoNextAction:(UIButton *)sender {
     if (self.couponModel.userCollectCount == 1) {
-//        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"该优惠券已下载" delegate:self cancelButtonTitle:@"关闭" otherButtonTitles:@"查看", nil];
         UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"该优惠券已下载" delegate:nil cancelButtonTitle:@"关闭" otherButtonTitles:nil, nil];
         [alert show];
         [alert release];
@@ -427,13 +429,5 @@
     [self.couponDownloadInterface getCouponDownloadByCouponId:self.couponModel.cid];
 }
 
-//- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
-//    if (buttonIndex == 1) {
-//        DownloadCouponDetailViewController *vc = [[DownloadCouponDetailViewController alloc]initWithNibName:@"DownloadCouponDetailViewController" bundle:nil];
-//        vc.cid = self.couponModel.cid;
-//        [self.navigationController pushViewController:vc animated:YES];
-//        [vc release];
-//    }
-//}
 
 @end

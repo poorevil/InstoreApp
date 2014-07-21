@@ -98,7 +98,7 @@
 {
     NSString *path = [[NSBundle mainBundle] pathForResource:@"logo" ofType:@"png"];
     
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageWithContentsOfFile:path]];
+    UIImageView *imageView = [[[UIImageView alloc] initWithImage:[UIImage imageWithContentsOfFile:path]]autorelease];
     [imageView setFrame:CGRectMake(5, 10, imageView.frame.size.width/2, imageView.frame.size.height/2)];
     
     return imageView;

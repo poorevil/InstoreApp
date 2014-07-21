@@ -102,7 +102,7 @@
 
   NSMutableArray* views = [_reuseIdentifiersToRecycledViews objectForKey:reuseIdentifier];
   if (nil == views) {
-    views = [[NSMutableArray alloc] init];
+    views = [[[NSMutableArray alloc] init]autorelease];
     [_reuseIdentifiersToRecycledViews setObject:views forKey:reuseIdentifier];
   }
   [views addObject:view];
