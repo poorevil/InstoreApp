@@ -40,41 +40,28 @@
     
     AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
     self.nav = (UINavigationController *)appDelegate.tabBarController.selectedViewController;
-//    [self.nav.navigationBar setBarTintColor:[UIColor colorWithRed:248.0f/255.0f green:40.0f/255.0f blue:53.0f/255.0f alpha:1]];
-//    [self.nav.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
 
+    //1
     [self.mallActicityBtn addTarget:self
                              action:@selector(mallActicityBtnAction:)
                    forControlEvents:UIControlEventTouchUpInside];
     
+    //3
+    [self.foodBtn addTarget:self action:@selector(foodBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+    
+    //4
+    [self.myScoreBtn addTarget:self action:@selector(btnHuiGuangAction:) forControlEvents:UIControlEventTouchUpInside];
+    
+    //5
     [self.mapBtn addTarget:self action:@selector(mapBtnAction:) forControlEvents:UIControlEventTouchUpInside];
     
-    [self.foodBtn addTarget:self action:@selector(foodBtnAction:) forControlEvents:UIControlEventTouchUpInside];
-
+    //6
+    [self.wifiBtn addTarget:self action:@selector(btnFreeNetAction:) forControlEvents:UIControlEventTouchUpInside];
+    
+    //8
+    [self.msgBtn addTarget:self action:@selector(btnMyMessageAction:) forControlEvents:UIControlEventTouchUpInside];
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated
-{
-    [super setSelected:selected animated:animated];
-    
-    // Configure the view for the selected state
-}
-
--(void)dealloc
-{
-    self.mallActicityBtn = nil;
-    self.couponBtn = nil;
-    self.foodBtn = nil;
-    self.msgBtn = nil;
-    self.mapBtn = nil;
-    self.wifiBtn = nil;
-    self.cardBtn = nil;
-    self.myScoreBtn = nil;
-    
-    self.nav = nil;
-    
-    [super dealloc];
-}
 
 #pragma mark - private method
 -(void)setBtnStyle:(UIButton *)btn
@@ -101,7 +88,22 @@
     [nav pushViewController:mnVC animated:YES];
     mnVC.hidesBottomBarWhenPushed = NO;
 }
-
+#pragma mark 每日优惠
+- (IBAction)btnDailyDealAction:(UIButton *)sender {
+    DailyDealViewController *ddVC = [[DailyDealViewController alloc]initWithNibName:@"DailyDealViewController" bundle:nil];
+    ddVC.hidesBottomBarWhenPushed = YES;
+    [self.nav pushViewController:ddVC animated:YES];
+    [ddVC release];
+}
+#pragma mark 找美食
+-(void)foodBtnAction:(id)sender{
+    AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+    [appDelegate.tabBarController setSelectedIndex:2];
+}
+#pragma mark 恵逛模式
+-(void)btnHuiGuangAction:(UIButton *)sender{
+    
+}
 #pragma mark 商场地图
 -(void)mapBtnAction:(id)sender
 {
@@ -112,23 +114,9 @@
     [nav pushViewController:imvc animated:YES];
     imvc.hidesBottomBarWhenPushed = NO;
 }
-#pragma mark 找美食
--(void)foodBtnAction:(id)sender{
-    AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
-    [appDelegate.tabBarController setSelectedIndex:2];
-}
-//-(void)saleBtnAction:(id)sender
-//{
-//    AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
-//    [appDelegate.tabBarController setSelectedIndex:1];
-//}
-
-#pragma mark 每日优惠
-- (IBAction)btnDailyDealAction:(UIButton *)sender {
-    DailyDealViewController *ddVC = [[DailyDealViewController alloc]initWithNibName:@"DailyDealViewController" bundle:nil];
-    ddVC.hidesBottomBarWhenPushed = YES;
-    [self.nav pushViewController:ddVC animated:YES];
-    [ddVC release];
+#pragma mark 免费wifi
+-(void)btnFreeNetAction:(UIButton *)sender{
+    
 }
 #pragma mark 我的卡恵
 - (IBAction)btnBackCardAction:(UIButton *)sender {
@@ -138,5 +126,34 @@
     [self.nav pushViewController:bankCardVC animated:YES];
     self.nav.navigationItem.leftBarButtonItem.title = @"";
     [bankCardVC release];
+}
+#pragma mark 我的消息
+-(void)btnMyMessageAction:(UIButton *)sender{
+    
+}
+
+
+
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated
+{
+    [super setSelected:selected animated:animated];
+    
+    // Configure the view for the selected state
+}
+
+-(void)dealloc
+{
+    self.mallActicityBtn = nil;
+    self.couponBtn = nil;
+    self.foodBtn = nil;
+    self.msgBtn = nil;
+    self.mapBtn = nil;
+    self.wifiBtn = nil;
+    self.cardBtn = nil;
+    self.myScoreBtn = nil;
+    
+    self.nav = nil;
+    
+    [super dealloc];
 }
 @end

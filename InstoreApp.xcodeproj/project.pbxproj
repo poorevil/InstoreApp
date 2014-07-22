@@ -68,7 +68,6 @@
 		03573AE319055E8A00A11A33 /* CustomUITableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 03573AE219055E8A00A11A33 /* CustomUITableViewCell.m */; };
 		03573AE71905610600A11A33 /* MobiAccessaryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 03573AE61905610600A11A33 /* MobiAccessaryView.m */; };
 		03573B2A1905695C00A11A33 /* MBSMapBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 03573B071905695C00A11A33 /* MBSMapBundle.bundle */; };
-		03573B3119056A9000A11A33 /* libMBSMapViewController.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 03573B111905695C00A11A33 /* libMBSMapViewController.a */; };
 		03573B3619056A9800A11A33 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03573B3519056A9800A11A33 /* CFNetwork.framework */; };
 		03573B3819056ABE00A11A33 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 03573B3719056ABE00A11A33 /* libz.1.2.5.dylib */; };
 		03573B3A19056ACC00A11A33 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03573B3919056ACC00A11A33 /* MobileCoreServices.framework */; };
@@ -292,6 +291,18 @@
 		04D72945196BA6FE00590C23 /* CouponSearchOrderInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D72944196BA6FE00590C23 /* CouponSearchOrderInterface.m */; };
 		04D72949196C10F100590C23 /* CouponView_empty2_Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D72947196C10F100590C23 /* CouponView_empty2_Cell.m */; };
 		04D7294A196C10F100590C23 /* CouponView_empty2_Cell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04D72948196C10F100590C23 /* CouponView_empty2_Cell.xib */; };
+		04EB8EEC197E19F100CA65AC /* libMBSMapViewController.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 04EB8EEB197E19F100CA65AC /* libMBSMapViewController.a */; };
+		04EB8EF0197E367500CA65AC /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EB8EEE197E367500CA65AC /* AboutViewController.m */; };
+		04EB8EF1197E367500CA65AC /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04EB8EEF197E367500CA65AC /* AboutViewController.xib */; };
+		04EB8EF5197E3B6E00CA65AC /* RTLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EB8EF4197E3B6E00CA65AC /* RTLabel.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		04EB8EF7197E3B9F00CA65AC /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04EB8EF6197E3B9F00CA65AC /* CoreText.framework */; };
+		04EB8EF9197E475A00CA65AC /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04EB8EF8197E475A00CA65AC /* MessageUI.framework */; };
+		04EB8EFD197E49AA00CA65AC /* about_email@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04EB8EFA197E49AA00CA65AC /* about_email@2x.png */; };
+		04EB8EFE197E49AA00CA65AC /* about_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04EB8EFB197E49AA00CA65AC /* about_icon@2x.png */; };
+		04EB8EFF197E49AA00CA65AC /* about_web@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04EB8EFC197E49AA00CA65AC /* about_web@2x.png */; };
+		04EB8F01197E4D5A00CA65AC /* mainview_huiguang@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04EB8F00197E4D5A00CA65AC /* mainview_huiguang@2x.png */; };
+		04EB8F05197E53AB00CA65AC /* BindingVIPCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EB8F03197E53AB00CA65AC /* BindingVIPCardViewController.m */; };
+		04EB8F06197E53AB00CA65AC /* BindingVIPCardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04EB8F04197E53AB00CA65AC /* BindingVIPCardViewController.xib */; };
 		04EF11E81963AFBC0066C902 /* BankCardInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EF11E71963AFBC0066C902 /* BankCardInterface.m */; };
 		04EF11EC1963B50F0066C902 /* BankCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EF11EA1963B50F0066C902 /* BankCardViewController.m */; };
 		04EF11ED1963B50F0066C902 /* BankCardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04EF11EB1963B50F0066C902 /* BankCardViewController.xib */; };
@@ -862,7 +873,6 @@
 		03573B0A1905695C00A11A33 /* MBSMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBSMapViewController.h; sourceTree = "<group>"; };
 		03573B0C1905695C00A11A33 /* MBSFloor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBSFloor.h; sourceTree = "<group>"; };
 		03573B0D1905695C00A11A33 /* MBSMall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBSMall.h; sourceTree = "<group>"; };
-		03573B111905695C00A11A33 /* libMBSMapViewController.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMBSMapViewController.a; sourceTree = "<group>"; };
 		03573B131905695C00A11A33 /* MapShape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapShape.h; sourceTree = "<group>"; };
 		03573B141905695C00A11A33 /* SVGIcon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVGIcon.h; sourceTree = "<group>"; };
 		03573B151905695C00A11A33 /* SVGIconSubItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVGIconSubItem.h; sourceTree = "<group>"; };
@@ -1196,6 +1206,21 @@
 		04D72946196C10F100590C23 /* CouponView_empty2_Cell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CouponView_empty2_Cell.h; sourceTree = "<group>"; };
 		04D72947196C10F100590C23 /* CouponView_empty2_Cell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CouponView_empty2_Cell.m; sourceTree = "<group>"; };
 		04D72948196C10F100590C23 /* CouponView_empty2_Cell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CouponView_empty2_Cell.xib; sourceTree = "<group>"; };
+		04EB8EEB197E19F100CA65AC /* libMBSMapViewController.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMBSMapViewController.a; sourceTree = "<group>"; };
+		04EB8EED197E367500CA65AC /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
+		04EB8EEE197E367500CA65AC /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
+		04EB8EEF197E367500CA65AC /* AboutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutViewController.xib; sourceTree = "<group>"; };
+		04EB8EF3197E3B6E00CA65AC /* RTLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTLabel.h; sourceTree = "<group>"; };
+		04EB8EF4197E3B6E00CA65AC /* RTLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTLabel.m; sourceTree = "<group>"; };
+		04EB8EF6197E3B9F00CA65AC /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		04EB8EF8197E475A00CA65AC /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		04EB8EFA197E49AA00CA65AC /* about_email@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "about_email@2x.png"; sourceTree = "<group>"; };
+		04EB8EFB197E49AA00CA65AC /* about_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "about_icon@2x.png"; sourceTree = "<group>"; };
+		04EB8EFC197E49AA00CA65AC /* about_web@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "about_web@2x.png"; sourceTree = "<group>"; };
+		04EB8F00197E4D5A00CA65AC /* mainview_huiguang@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mainview_huiguang@2x.png"; sourceTree = "<group>"; };
+		04EB8F02197E53AB00CA65AC /* BindingVIPCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BindingVIPCardViewController.h; sourceTree = "<group>"; };
+		04EB8F03197E53AB00CA65AC /* BindingVIPCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BindingVIPCardViewController.m; sourceTree = "<group>"; };
+		04EB8F04197E53AB00CA65AC /* BindingVIPCardViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BindingVIPCardViewController.xib; sourceTree = "<group>"; };
 		04EF11E61963AFBC0066C902 /* BankCardInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BankCardInterface.h; sourceTree = "<group>"; };
 		04EF11E71963AFBC0066C902 /* BankCardInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BankCardInterface.m; sourceTree = "<group>"; };
 		04EF11E91963B50F0066C902 /* BankCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BankCardViewController.h; sourceTree = "<group>"; };
@@ -1747,6 +1772,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04EB8EF9197E475A00CA65AC /* MessageUI.framework in Frameworks */,
+				04EB8EF7197E3B9F00CA65AC /* CoreText.framework in Frameworks */,
 				03573A7519041EFB00A11A33 /* CoreLocation.framework in Frameworks */,
 				03573B3819056ABE00A11A33 /* libz.1.2.5.dylib in Frameworks */,
 				03573B3A19056ACC00A11A33 /* MobileCoreServices.framework in Frameworks */,
@@ -1757,7 +1784,6 @@
 				4E2C6DA418D7502100DF3772 /* UIKit.framework in Frameworks */,
 				4E2C6DA218D7502100DF3772 /* CoreGraphics.framework in Frameworks */,
 				4E2C6DA018D7502100DF3772 /* Foundation.framework in Frameworks */,
-				03573B3119056A9000A11A33 /* libMBSMapViewController.a in Frameworks */,
 				03573A6F19041D5600A11A33 /* libxml2.dylib in Frameworks */,
 				4EF091A31900321B00ABFE7D /* libZXingWidget.a in Frameworks */,
 				4EF0917C190026F500ABFE7D /* AVFoundation.framework in Frameworks */,
@@ -1766,6 +1792,7 @@
 				4EF09175190026D500ABFE7D /* AddressBook.framework in Frameworks */,
 				4EF09176190026D500ABFE7D /* AddressBookUI.framework in Frameworks */,
 				4EF09171190026BB00ABFE7D /* CoreVideo.framework in Frameworks */,
+				04EB8EEC197E19F100CA65AC /* libMBSMapViewController.a in Frameworks */,
 				4EF0916F1900264B00ABFE7D /* CoreMedia.framework in Frameworks */,
 				FA4E65B919357B21005022E2 /* libUMSocial_Sdk_3.3.8.a in Frameworks */,
 				4EF0916D1900264000ABFE7D /* Security.framework in Frameworks */,
@@ -1910,6 +1937,7 @@
 		03573AE81905695C00A11A33 /* MBSMap_lib */ = {
 			isa = PBXGroup;
 			children = (
+				04EB8EEB197E19F100CA65AC /* libMBSMapViewController.a */,
 				03573AE91905695C00A11A33 /* BaseDataType.h */,
 				03573AEA1905695C00A11A33 /* Cache */,
 				03573AF61905695C00A11A33 /* ChineseHelper.h */,
@@ -1924,7 +1952,6 @@
 				03573B091905695C00A11A33 /* MBSMapViewController-Prefix.pch */,
 				03573B0A1905695C00A11A33 /* MBSMapViewController.h */,
 				03573B0B1905695C00A11A33 /* Object */,
-				03573B101905695C00A11A33 /* Release-iphonesimulator */,
 				03573B121905695C00A11A33 /* Shape */,
 				03573B171905695C00A11A33 /* View&Controller */,
 				03573B241905695C00A11A33 /* XMLParser */,
@@ -1981,14 +2008,6 @@
 				03573B0D1905695C00A11A33 /* MBSMall.h */,
 			);
 			path = Object;
-			sourceTree = "<group>";
-		};
-		03573B101905695C00A11A33 /* Release-iphonesimulator */ = {
-			isa = PBXGroup;
-			children = (
-				03573B111905695C00A11A33 /* libMBSMapViewController.a */,
-			);
-			path = "Release-iphonesimulator";
 			sourceTree = "<group>";
 		};
 		03573B121905695C00A11A33 /* Shape */ = {
@@ -2480,11 +2499,26 @@
 				046C112919768F4A007F7FE3 /* MyVIPCardViewController.h */,
 				046C112A19768F4A007F7FE3 /* MyVIPCardViewController.m */,
 				046C112B19768F4A007F7FE3 /* MyVIPCardViewController.xib */,
+				04EB8F02197E53AB00CA65AC /* BindingVIPCardViewController.h */,
+				04EB8F03197E53AB00CA65AC /* BindingVIPCardViewController.m */,
+				04EB8F04197E53AB00CA65AC /* BindingVIPCardViewController.xib */,
 				045FF8681979141C00F4DA22 /* MyDownloadCouponViewController.h */,
 				045FF8691979141C00F4DA22 /* MyDownloadCouponViewController.m */,
 				045FF86A1979141C00F4DA22 /* MyDownloadCouponViewController.xib */,
+				04EB8EED197E367500CA65AC /* AboutViewController.h */,
+				04EB8EEE197E367500CA65AC /* AboutViewController.m */,
+				04EB8EEF197E367500CA65AC /* AboutViewController.xib */,
 			);
 			name = MyView;
+			sourceTree = "<group>";
+		};
+		04EB8EF2197E3B6E00CA65AC /* RTLabel */ = {
+			isa = PBXGroup;
+			children = (
+				04EB8EF3197E3B6E00CA65AC /* RTLabel.h */,
+				04EB8EF4197E3B6E00CA65AC /* RTLabel.m */,
+			);
+			path = RTLabel;
 			sourceTree = "<group>";
 		};
 		04EF11EE1963DF8F0066C902 /* BackCardCell */ = {
@@ -2619,6 +2653,8 @@
 		4E2C6D9E18D7502100DF3772 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				04EB8EF8197E475A00CA65AC /* MessageUI.framework */,
+				04EB8EF6197E3B9F00CA65AC /* CoreText.framework */,
 				03573B3D19056F5700A11A33 /* CoreFoundation.framework */,
 				03573B3B19056AE000A11A33 /* SystemConfiguration.framework */,
 				03573B3919056ACC00A11A33 /* MobileCoreServices.framework */,
@@ -2771,9 +2807,9 @@
 		4E2C6DCF18D7523D00DF3772 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				03573B871908028000A11A33 /* MainViewCell */,
 				046C112119767CF6007F7FE3 /* MyView */,
 				0373FA4719742C4400A1CF68 /* StoreListFocusedCell */,
-				03573B871908028000A11A33 /* MainViewCell */,
 				035214EC195C790C00F92B55 /* MallNewsCell */,
 				04196A211962D2750037C046 /* DailyDealViewCell */,
 				04EF11EE1963DF8F0066C902 /* BackCardCell */,
@@ -2851,6 +2887,7 @@
 		4E96088818E48D6700418798 /* utility */ = {
 			isa = PBXGroup;
 			children = (
+				04EB8EF2197E3B6E00CA65AC /* RTLabel */,
 				C1A9C8BF194164D000DD420F /* Reachability */,
 				C1A9C893193F17C100DD420F /* MBProgressHUD */,
 				C1A9C820193F130300DD420F /* Nimbus */,
@@ -2947,6 +2984,10 @@
 		4EF0907518FB52CE00ABFE7D /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				04EB8F00197E4D5A00CA65AC /* mainview_huiguang@2x.png */,
+				04EB8EFA197E49AA00CA65AC /* about_email@2x.png */,
+				04EB8EFB197E49AA00CA65AC /* about_icon@2x.png */,
+				04EB8EFC197E49AA00CA65AC /* about_web@2x.png */,
 				04104CAC197CF22F00BEB31F /* downloadCouponSuccess_bg_l.png */,
 				04104CAD197CF22F00BEB31F /* downloadCouponSuccess_bg_r@2x.png */,
 				04104CAE197CF22F00BEB31F /* downloadCouponSuccess_bg@2x.png */,
@@ -3673,6 +3714,7 @@
 				FA4E65E019357B21005022E2 /* UMSocialTwitterData.html in Resources */,
 				04635305197523F300BDB159 /* SearchResultViewController.xib in Resources */,
 				04104CB2197CF22F00BEB31F /* downloadCouponSuccess_bg_r@2x.png in Resources */,
+				04EB8EFD197E49AA00CA65AC /* about_email@2x.png in Resources */,
 				035214DE195B1CFF00F92B55 /* me_edit_btn@2x.png in Resources */,
 				0357FF59194D8CD80071BD5A /* card@2x.png in Resources */,
 				4EF0910118FB52FD00ABFE7D /* store-btn-sb-red-pressed@2x.png in Resources */,
@@ -3749,6 +3791,7 @@
 				4EF0912718FC155200ABFE7D /* banner_2.jpg in Resources */,
 				4EF0910D18FB52FD00ABFE7D /* store-icon-liked@2x.png in Resources */,
 				FA4E65D819357B21005022E2 /* UMSocialResponseEntity.html in Resources */,
+				04EB8EF1197E367500CA65AC /* AboutViewController.xib in Resources */,
 				03650F7D1945F52200016289 /* mainview_food_press@2x.png in Resources */,
 				4ECBF73718F4B9A4003963E1 /* tmpimg3.jpg in Resources */,
 				03573B2A1905695C00A11A33 /* MBSMapBundle.bundle in Resources */,
@@ -3759,6 +3802,7 @@
 				FA4E65BF19357B21005022E2 /* UMSLoginViewController.xib in Resources */,
 				04EF11F91963E9D60066C902 /* bankcard_editor@2x.png in Resources */,
 				0357FF77194DE17C0071BD5A /* toolbar_main_icon@2x.png in Resources */,
+				04EB8F06197E53AB00CA65AC /* BindingVIPCardViewController.xib in Resources */,
 				0357FF3D1949FBC00071BD5A /* couponview_empty_btn@2x.png in Resources */,
 				4EF090E618FB52FD00ABFE7D /* register-phone-input@2x.png in Resources */,
 				4ECBF73B18F4B9A4003963E1 /* tmpimg7.jpg in Resources */,
@@ -3817,6 +3861,7 @@
 				4E9608AF18E48D6700418798 /* whiteArrow@2x.png in Resources */,
 				4EF0912C18FC17A100ABFE7D /* line_bg@2x.png in Resources */,
 				046352F51974D4F200BDB159 /* nav_search_gray@2x.png in Resources */,
+				04EB8EFF197E49AA00CA65AC /* about_web@2x.png in Resources */,
 				4EF090FD18FB52FD00ABFE7D /* share-icon-qq@2x.png in Resources */,
 				0357FF75194DE17C0071BD5A /* toolbar_food_icon@2x.png in Resources */,
 				FA4E65FD19357B22005022E2 /* ios-social-sdk-login-detail.html in Resources */,
@@ -3923,6 +3968,7 @@
 				FA4E65E719357B21005022E2 /* styles.css in Resources */,
 				0357FF361949FA390071BD5A /* CouponView_focused_tileView.xib in Resources */,
 				FA4E65D119357B21005022E2 /* UMSocialIconActionSheet.html in Resources */,
+				04EB8F01197E4D5A00CA65AC /* mainview_huiguang@2x.png in Resources */,
 				4EF090F818FB52FD00ABFE7D /* service-icon-money@2x.png in Resources */,
 				4EF090E118FB52FD00ABFE7D /* my-icon-radio-pressed@2x.png in Resources */,
 				4E2C6E0618D7611200DF3772 /* banner2.jpg in Resources */,
@@ -3967,6 +4013,7 @@
 				04EF11ED1963B50F0066C902 /* BankCardViewController.xib in Resources */,
 				4EF0914618FC2CEE00ABFE7D /* pp_5.jpg in Resources */,
 				4ECBF72618F4538C003963E1 /* ShopDetailItemListCell.xib in Resources */,
+				04EB8EFE197E49AA00CA65AC /* about_icon@2x.png in Resources */,
 				4EF0911618FB52FD00ABFE7D /* toolBar-btn-user@2x.png in Resources */,
 				C1A9C888193F130300DD420F /* NimbusPhotos.bundle in Resources */,
 				FA4E65CA19357B21005022E2 /* UMSocialCustomAccount.html in Resources */,
@@ -4043,6 +4090,7 @@
 				0357FF291949EB260071BD5A /* CouponView_focusedCell.m in Sources */,
 				04196A261962D2B30037C046 /* DailyDealViewController.m in Sources */,
 				C1E094F3194A9FF900AA814B /* UILabelStrikeThrough.m in Sources */,
+				04EB8EF5197E3B6E00CA65AC /* RTLabel.m in Sources */,
 				03573B861906DA4600A11A33 /* BaseInterface.m in Sources */,
 				0433EA53196A4A9F003AB8FD /* MallNewsDetailViewController.m in Sources */,
 				0373FA441974271000A1CF68 /* StoreListFocusedViewController.m in Sources */,
@@ -4221,6 +4269,7 @@
 				4E96088118E4837100418798 /* YouhuiTileView.m in Sources */,
 				03573B9A190EA8DB00A11A33 /* KeyChainTool.m in Sources */,
 				031203351917D9F600077E25 /* CouponDownloadModel.m in Sources */,
+				04EB8F05197E53AB00CA65AC /* BindingVIPCardViewController.m in Sources */,
 				035214E3195C6DF600F92B55 /* MallNewsInterface.m in Sources */,
 				4E96087E18E4815500418798 /* BaseViewController.m in Sources */,
 				04EF1212196425D90066C902 /* AddBankCardViewController.m in Sources */,
@@ -4251,6 +4300,7 @@
 				042E48031965660800CD945A /* SaveAddBankCardInterface.m in Sources */,
 				035214AD195871ED00F92B55 /* StoreDetail_headerView.m in Sources */,
 				0491F121196ACACE00E7DC5A /* CancelFocusInterface.m in Sources */,
+				04EB8EF0197E367500CA65AC /* AboutViewController.m in Sources */,
 				C1A9C8BD194164C600DD420F /* ASIInputStream.m in Sources */,
 				031203321917D7EA00077E25 /* CouponDownloadInterface.m in Sources */,
 				C1E094EE194996F600AA814B /* CouponViewInterface.m in Sources */,
@@ -4422,6 +4472,8 @@
 					"$(PROJECT_DIR)/InstoreApp/utility/umeng_ios_social_sdk_3.3-1.8_custom/UMSocial_Sdk_3.3.8",
 					"$(PROJECT_DIR)/InstoreApp/utility/umeng_ios_social_sdk_3.3-1.8_custom/UMSocial_Sdk_Extra_Frameworks/TencentOpenAPI",
 					"$(PROJECT_DIR)/InstoreApp/utility/umeng_ios_social_sdk_3.3-1.8_custom/UMSocial_Sdk_Extra_Frameworks/Wechat",
+					"$(PROJECT_DIR)/InstoreApp/utility/MBSMap_lib/Release-iphoneos",
+					"$(PROJECT_DIR)/InstoreApp/utility/MBSMap_lib",
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
@@ -4465,6 +4517,8 @@
 					"$(PROJECT_DIR)/InstoreApp/utility/umeng_ios_social_sdk_3.3-1.8_custom/UMSocial_Sdk_3.3.8",
 					"$(PROJECT_DIR)/InstoreApp/utility/umeng_ios_social_sdk_3.3-1.8_custom/UMSocial_Sdk_Extra_Frameworks/TencentOpenAPI",
 					"$(PROJECT_DIR)/InstoreApp/utility/umeng_ios_social_sdk_3.3-1.8_custom/UMSocial_Sdk_Extra_Frameworks/Wechat",
+					"$(PROJECT_DIR)/InstoreApp/utility/MBSMap_lib/Release-iphoneos",
+					"$(PROJECT_DIR)/InstoreApp/utility/MBSMap_lib",
 				);
 				OTHER_LDFLAGS = (
 					"-lxml2",

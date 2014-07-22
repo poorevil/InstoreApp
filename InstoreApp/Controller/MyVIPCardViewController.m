@@ -8,6 +8,7 @@
 
 #import "MyVIPCardViewController.h"
 #import "QrCodeViewCell.h"
+#import "BindingVIPCardViewController.h"
 
 @interface MyVIPCardViewController ()
 
@@ -37,14 +38,14 @@
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    if (self.VIPCardNumberImage) {
+    if (self.code) {
         return 2;
     }else{
         return 1;
     }
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (self.VIPCardNumberImage) {
+    if (self.code) {
         if (indexPath.section == 0 && indexPath.row == 0) {
             return 80;
         }
@@ -52,7 +53,7 @@
     return 44;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    if (self.VIPCardNumberImage) {
+    if (self.code) {
         switch (section) {
             case 0:
                 return 1;
@@ -70,7 +71,7 @@
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (self.VIPCardNumberImage) {
+    if (self.code) {
         switch (indexPath.section) {
             case 0:{
                 static NSString *CellIdentifier = @"QrCodeViewCell";
@@ -78,8 +79,8 @@
                 if (!cell) {
                     cell = [[[NSBundle mainBundle] loadNibNamed:@"QrCodeViewCell" owner:self options:nil] lastObject];
                 }
-                cell.imageQrCode.image = [UIImage imageNamed:@"tempCode.png"];
-                cell.labQRCode.text = @"546464776547684768";
+                cell.imageQrCode.imageURL = [NSURL URLWithString:self.imageURL];
+                cell.labQRCode.text = self.code;
                 return cell;
             }
                 break;
@@ -97,8 +98,8 @@
     }
     cell.textLabel.text = [self.list objectAtIndex:indexPath.row];
     if (indexPath.row == 0 ) {
-        if (self.VIPCardNumberImage) {
-            cell.detailTextLabel.text = @"9999积分";
+        if (self.code) {
+            cell.detailTextLabel.text = [NSString stringWithFormat:@"%d 积分",self.points];
         }else{
             cell.detailTextLabel.text = @"未开通会员卡";
         }
@@ -108,7 +109,9 @@
 
 -(void)dealloc{
     self.list = nil;
-    self.VIPCardNumberImage = nil;
+//    self.VIPCardNumberImage = nil;
+    self.code = nil;
+    self.imageURL = nil;
     
     [_myTableView release];
     [super dealloc];
@@ -118,15 +121,15 @@
     UIView *view = [[[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 205)]autorelease];
     view.backgroundColor = [UIColor colorWithRed:247/255.0 green:247/255.0 blue:247/255.0 alpha:1];
     UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(10, 0, 300, 195)];
-    if (self.VIPCardNumberImage) {
-        imageView.image = self.VIPCardNumberImage;
+    if (self.code) {
+        imageView.image = [UIImage imageNamed:@"my_card_YES_bangding.png"];;
     }else{
         imageView.image = [UIImage imageNamed:@"my_card_NO_bangding.png"];
     }
     [view addSubview:imageView];
     [imageView release];
     
-    if (!self.VIPCardNumberImage) {
+    if (!self.code) {
         UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(10, 70, 300, 30)];
         label.backgroundColor = [UIColor clearColor];
         label.text = @"您尚未绑定商场会员卡";
@@ -146,7 +149,7 @@
     self.myTableView.tableHeaderView = view;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (self.VIPCardNumberImage) {
+    if (self.code) {
         if (indexPath.section == 1) {
             switch (indexPath.row) {
                 case 0:
@@ -170,7 +173,10 @@
     }
 }
 -(void)btnAddSotreVIPCardAction:(UIButton *)sender{
-    
+    BindingVIPCardViewController *vc = [[BindingVIPCardViewController alloc]initWithNibName:@"BindingVIPCardViewController" bundle:nil];
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vc animated:YES];
+    [vc release];
 }
 - (void)didReceiveMemoryWarning
 {

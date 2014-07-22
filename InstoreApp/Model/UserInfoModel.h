@@ -14,8 +14,8 @@
 @property (nonatomic,strong) NSString *gender;
 @property (nonatomic,strong) NSString *nickName;
 @property (nonatomic,strong) NSString *mobile;
-@property (nonatomic,strong) NSString *clubCard;
-
+@property (nonatomic,strong) NSString *clubCard;    //会员卡号
+@property (retain, nonatomic) NSString *barCodeUrl; //条码图片地址
 @property (nonatomic,strong) NSString *headUrl;//头像
 @property (nonatomic,assign) NSInteger points;//积分
 @property (nonatomic,assign) NSInteger promotionCount;//下载的优惠券数量

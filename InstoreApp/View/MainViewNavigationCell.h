@@ -18,7 +18,7 @@
 @property (nonatomic,strong) IBOutlet UIButton *mapBtn;  //商场地图
 @property (nonatomic,strong) IBOutlet UIButton *wifiBtn; //免费WIFI
 @property (nonatomic,strong) IBOutlet UIButton *cardBtn; //银行卡恵
-@property (nonatomic,strong) IBOutlet UIButton *myScoreBtn; //我的积分
+@property (nonatomic,strong) IBOutlet UIButton *myScoreBtn; //我的积分->恵逛模式
 
 - (IBAction)btnDailyDealAction:(UIButton *)sender;
 

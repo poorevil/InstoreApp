@@ -28,7 +28,7 @@
                 </tableView>
                 <view contentMode="scaleToFill" id="Ftd-oV-iJX">
                     <rect key="frame" x="0.0" y="437" width="320" height="44"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="XHw-cY-gyt">
                             <rect key="frame" x="165" y="8" width="100" height="28"/>

@@ -10,8 +10,12 @@
 
 @interface MyVIPCardViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 
-@property (retain, nonatomic) UIImage *VIPCardNumberImage;
+//@property (retain, nonatomic) UIImage *VIPCardNumberImage;
 @property (retain, nonatomic) NSArray *list;
 @property (retain, nonatomic) IBOutlet UITableView *myTableView;
+
+@property (retain, nonatomic) NSString *imageURL;
+@property (retain, nonatomic) NSString *code;
+@property (assign, nonatomic) NSInteger points;
 
 @end

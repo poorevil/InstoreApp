@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EGOImageView.h"
 
 @interface QrCodeViewCell : UITableViewCell
-@property (retain, nonatomic) IBOutlet UIImageView *imageQrCode;
+@property (retain, nonatomic) IBOutlet EGOImageView *imageQrCode;
 @property (retain, nonatomic) IBOutlet UILabel *labQRCode;
 
 @end

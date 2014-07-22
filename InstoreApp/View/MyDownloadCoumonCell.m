@@ -36,7 +36,7 @@
             self.labMianFei.frame = CGRectMake(262, 10, 30, 20);
         }else{
             CGRect frame = self.labMianFei.frame;
-            frame.origin.x = 80 + size.height + 2;
+            frame.origin.x = 80 + size.width + 2;
             self.labMianFei.frame = frame;
         }
         

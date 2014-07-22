@@ -18,7 +18,7 @@
         self.nickName = [jsonMap objectForKey:@"nickName"];
         self.mobile = [jsonMap objectForKey:@"mobile"];
         self.clubCard = [jsonMap objectForKey:@"clubCard"];
-        
+        self.barCodeUrl = [jsonMap objectForKey:@"barCodeUrl"];
         self.headUrl = [jsonMap objectForKey:@"head"];
         self.points = [jsonMap objectForKey:@"points"] == nil?0:[[jsonMap objectForKey:@"points"] integerValue];
         self.promotionCount = [jsonMap objectForKey:@"promotionCount"] == nil?0:[[jsonMap objectForKey:@"promotionCount"] integerValue];
@@ -38,6 +38,7 @@
     self.mobile = nil;
     self.clubCard = nil;
     self.headUrl = nil;
+    self.barCodeUrl = nil;
     
     [super dealloc];
 }

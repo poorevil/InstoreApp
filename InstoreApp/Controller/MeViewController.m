@@ -27,6 +27,8 @@
 #import "MyDownloadCouponViewController.h"
 #import "BindPhoneViewController.h"
 
+#import "AboutViewController.h"
+
 
 @interface MeViewController () <UserInfoInterfaceDelegate>
 
@@ -82,7 +84,10 @@
 }
 
 #pragma mark - UITableViewDataSource
-
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 6;
+}
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     switch (section) {
@@ -96,16 +101,13 @@
             return 3;
         case 4:
             return 1;
-            
+        case 5:
+            return 1;
     }
-    
     return 0;
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 5;
-}
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
@@ -126,7 +128,8 @@
             if (!cell) {
                 cell = [[[NSBundle mainBundle] loadNibNamed:@"MyViewCell" owner:self options:nil] objectAtIndex:0];
             }
-            cell.textDict = @{@"title": @"消息中心",@"count":@"（5）"};
+            cell.textDict = @{@"title": @"消息中心",@"count":@"(100)"};
+//            cell.textDict = @{@"title": @"消息中心",@"count":[NSString stringWithFormat:@"(%d)",self.userInfo.]};
             return cell;
         }
             break;
@@ -139,7 +142,7 @@
                     if (!cell) {
                         cell = [[[NSBundle mainBundle] loadNibNamed:@"MyViewCell" owner:self options:nil] objectAtIndex:0];
                     }
-                    cell.textDict = @{@"title": @"已下载的优惠券",@"count":@"（5）"};
+                    cell.textDict = @{@"title": @"已下载的优惠券",@"count":[NSString stringWithFormat:@"(%d)",self.userInfo.promotionCount]};
                     return cell;
                 }
                     break;
@@ -183,6 +186,9 @@
                 [_switchButton addTarget:self action:@selector(switchButtonChangeAchtion:) forControlEvents:UIControlEventValueChanged];
                 [cell.contentView addSubview:_switchButton];
             }
+            break;
+        case 5:
+            cell.textLabel.text = @"关于";
     }
     
     return  cell;
@@ -245,7 +251,10 @@
                 case 0:{
                     //我的电子会员卡
                     MyVIPCardViewController *vc = [[MyVIPCardViewController alloc]initWithNibName:@"MyVIPCardViewController" bundle:nil];
-                    vc.VIPCardNumberImage = [UIImage imageNamed:@"my_card_YES_bangding.png"];
+                    vc.code = self.userInfo.clubCard;
+                    vc.imageURL = self.userInfo.barCodeUrl;
+                    vc.points = self.userInfo.points;
+                    
                     self.hidesBottomBarWhenPushed = YES;
                     [self.navigationController pushViewController:vc animated:YES];
                     self.hidesBottomBarWhenPushed = NO;
@@ -274,6 +283,14 @@
             //接收已关注商家的优惠信息
             break;
             return;
+        case 5:{
+            AboutViewController *vc = [[AboutViewController alloc]initWithNibName:@"AboutViewController" bundle:nil];
+            vc.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:vc animated:YES];
+            vc.hidesBottomBarWhenPushed = NO;
+            [vc release];
+        }
+            break;
     }
 }
 
@@ -283,6 +300,8 @@
     self.userInfo = userInfo;
     self.headerView.userInfo = self.userInfo;
     self.recommend = userInfo.isStoreFocusRecommend;
+    
+    [self.mtableView reloadData];
 }
 
 -(void)getUserInfoDidFailed:(NSString *)errorMessage

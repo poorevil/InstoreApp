@@ -172,7 +172,7 @@ CouponViewInterfaceDelegate, YouhuiCategoryViewControllerDelegate,YouHuiOrderVie
     }else{
         switch (section) {
             case 0:
-                return 1;
+                return 0;
                 break;
             case 1:
                 return ceil((self.itemList.count +1 ) / 2.0);
