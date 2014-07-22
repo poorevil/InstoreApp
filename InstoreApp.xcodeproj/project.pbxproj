@@ -303,6 +303,23 @@
 		04EB8F01197E4D5A00CA65AC /* mainview_huiguang@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04EB8F00197E4D5A00CA65AC /* mainview_huiguang@2x.png */; };
 		04EB8F05197E53AB00CA65AC /* BindingVIPCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EB8F03197E53AB00CA65AC /* BindingVIPCardViewController.m */; };
 		04EB8F06197E53AB00CA65AC /* BindingVIPCardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04EB8F04197E53AB00CA65AC /* BindingVIPCardViewController.xib */; };
+		04EB8F0C197E57D200CA65AC /* WiFiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EB8F0A197E57D200CA65AC /* WiFiViewController.m */; };
+		04EB8F0D197E57D200CA65AC /* WiFiViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04EB8F0B197E57D200CA65AC /* WiFiViewController.xib */; };
+		04EB8F12197E5B0900CA65AC /* main_wifi_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04EB8F0F197E5B0900CA65AC /* main_wifi_btn@2x.png */; };
+		04EB8F13197E5B0900CA65AC /* main_wifi_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04EB8F10197E5B0900CA65AC /* main_wifi_icon@2x.png */; };
+		04EB8F14197E5B0900CA65AC /* main_wifi_image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04EB8F11197E5B0900CA65AC /* main_wifi_image@2x.png */; };
+		04EB8F18197E5DF600CA65AC /* HuiGuangViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EB8F16197E5DF600CA65AC /* HuiGuangViewController.m */; };
+		04EB8F19197E5DF600CA65AC /* HuiGuangViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04EB8F17197E5DF600CA65AC /* HuiGuangViewController.xib */; };
+		04EB8F1E197E643700CA65AC /* HuiGuangCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EB8F1C197E643700CA65AC /* HuiGuangCell.m */; };
+		04EB8F1F197E643700CA65AC /* HuiGuangCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04EB8F1D197E643700CA65AC /* HuiGuangCell.xib */; };
+		04EB8F22197E6CE300CA65AC /* HuiGuangModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EB8F21197E6CE300CA65AC /* HuiGuangModel.m */; };
+		04EB8F2A197E742900CA65AC /* main_huiguang_cell_allcomment@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04EB8F23197E742800CA65AC /* main_huiguang_cell_allcomment@2x.png */; };
+		04EB8F2B197E742900CA65AC /* main_huiguang_cell_bg_saler@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04EB8F24197E742800CA65AC /* main_huiguang_cell_bg_saler@2x.png */; };
+		04EB8F2C197E742900CA65AC /* main_huiguang_cell_bg_store@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04EB8F25197E742800CA65AC /* main_huiguang_cell_bg_store@2x.png */; };
+		04EB8F2D197E742900CA65AC /* main_huiguang_cell_comment@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04EB8F26197E742800CA65AC /* main_huiguang_cell_comment@2x.png */; };
+		04EB8F2E197E742900CA65AC /* main_huiguang_loaction@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04EB8F27197E742800CA65AC /* main_huiguang_loaction@2x.png */; };
+		04EB8F2F197E742900CA65AC /* main_huiguang_map@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04EB8F28197E742800CA65AC /* main_huiguang_map@2x.png */; };
+		04EB8F30197E742900CA65AC /* main_huiguang_topImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04EB8F29197E742800CA65AC /* main_huiguang_topImage@2x.png */; };
 		04EF11E81963AFBC0066C902 /* BankCardInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EF11E71963AFBC0066C902 /* BankCardInterface.m */; };
 		04EF11EC1963B50F0066C902 /* BankCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EF11EA1963B50F0066C902 /* BankCardViewController.m */; };
 		04EF11ED1963B50F0066C902 /* BankCardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04EF11EB1963B50F0066C902 /* BankCardViewController.xib */; };
@@ -1221,6 +1238,27 @@
 		04EB8F02197E53AB00CA65AC /* BindingVIPCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BindingVIPCardViewController.h; sourceTree = "<group>"; };
 		04EB8F03197E53AB00CA65AC /* BindingVIPCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BindingVIPCardViewController.m; sourceTree = "<group>"; };
 		04EB8F04197E53AB00CA65AC /* BindingVIPCardViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BindingVIPCardViewController.xib; sourceTree = "<group>"; };
+		04EB8F09197E57D200CA65AC /* WiFiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WiFiViewController.h; sourceTree = "<group>"; };
+		04EB8F0A197E57D200CA65AC /* WiFiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WiFiViewController.m; sourceTree = "<group>"; };
+		04EB8F0B197E57D200CA65AC /* WiFiViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WiFiViewController.xib; sourceTree = "<group>"; };
+		04EB8F0F197E5B0900CA65AC /* main_wifi_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_wifi_btn@2x.png"; sourceTree = "<group>"; };
+		04EB8F10197E5B0900CA65AC /* main_wifi_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_wifi_icon@2x.png"; sourceTree = "<group>"; };
+		04EB8F11197E5B0900CA65AC /* main_wifi_image@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_wifi_image@2x.png"; sourceTree = "<group>"; };
+		04EB8F15197E5DF600CA65AC /* HuiGuangViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HuiGuangViewController.h; sourceTree = "<group>"; };
+		04EB8F16197E5DF600CA65AC /* HuiGuangViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HuiGuangViewController.m; sourceTree = "<group>"; };
+		04EB8F17197E5DF600CA65AC /* HuiGuangViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HuiGuangViewController.xib; sourceTree = "<group>"; };
+		04EB8F1B197E643700CA65AC /* HuiGuangCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HuiGuangCell.h; sourceTree = "<group>"; };
+		04EB8F1C197E643700CA65AC /* HuiGuangCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HuiGuangCell.m; sourceTree = "<group>"; };
+		04EB8F1D197E643700CA65AC /* HuiGuangCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HuiGuangCell.xib; sourceTree = "<group>"; };
+		04EB8F20197E6CE300CA65AC /* HuiGuangModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HuiGuangModel.h; sourceTree = "<group>"; };
+		04EB8F21197E6CE300CA65AC /* HuiGuangModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HuiGuangModel.m; sourceTree = "<group>"; };
+		04EB8F23197E742800CA65AC /* main_huiguang_cell_allcomment@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_huiguang_cell_allcomment@2x.png"; sourceTree = "<group>"; };
+		04EB8F24197E742800CA65AC /* main_huiguang_cell_bg_saler@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_huiguang_cell_bg_saler@2x.png"; sourceTree = "<group>"; };
+		04EB8F25197E742800CA65AC /* main_huiguang_cell_bg_store@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_huiguang_cell_bg_store@2x.png"; sourceTree = "<group>"; };
+		04EB8F26197E742800CA65AC /* main_huiguang_cell_comment@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_huiguang_cell_comment@2x.png"; sourceTree = "<group>"; };
+		04EB8F27197E742800CA65AC /* main_huiguang_loaction@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_huiguang_loaction@2x.png"; sourceTree = "<group>"; };
+		04EB8F28197E742800CA65AC /* main_huiguang_map@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_huiguang_map@2x.png"; sourceTree = "<group>"; };
+		04EB8F29197E742800CA65AC /* main_huiguang_topImage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_huiguang_topImage@2x.png"; sourceTree = "<group>"; };
 		04EF11E61963AFBC0066C902 /* BankCardInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BankCardInterface.h; sourceTree = "<group>"; };
 		04EF11E71963AFBC0066C902 /* BankCardInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BankCardInterface.m; sourceTree = "<group>"; };
 		04EF11E91963B50F0066C902 /* BankCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BankCardViewController.h; sourceTree = "<group>"; };
@@ -2121,6 +2159,8 @@
 				042F11FB196D1BE1003F255E /* FocusStoreModel.m */,
 				045FF86519790D3F00F4DA22 /* DownloadCouponModel.h */,
 				045FF86619790D3F00F4DA22 /* DownloadCouponModel.m */,
+				04EB8F20197E6CE300CA65AC /* HuiGuangModel.h */,
+				04EB8F21197E6CE300CA65AC /* HuiGuangModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2521,6 +2561,16 @@
 			path = RTLabel;
 			sourceTree = "<group>";
 		};
+		04EB8F1A197E63F300CA65AC /* HuiGuangCell */ = {
+			isa = PBXGroup;
+			children = (
+				04EB8F1B197E643700CA65AC /* HuiGuangCell.h */,
+				04EB8F1C197E643700CA65AC /* HuiGuangCell.m */,
+				04EB8F1D197E643700CA65AC /* HuiGuangCell.xib */,
+			);
+			name = HuiGuangCell;
+			sourceTree = "<group>";
+		};
 		04EF11EE1963DF8F0066C902 /* BackCardCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -2576,6 +2626,12 @@
 				04FBB838196E923600A46F9C /* MallNews */,
 				04FBB82F196E88D300A46F9C /* DailyDeal */,
 				04FBB82E196E888F00A46F9C /* BankCard */,
+				04EB8F09197E57D200CA65AC /* WiFiViewController.h */,
+				04EB8F0A197E57D200CA65AC /* WiFiViewController.m */,
+				04EB8F0B197E57D200CA65AC /* WiFiViewController.xib */,
+				04EB8F15197E5DF600CA65AC /* HuiGuangViewController.h */,
+				04EB8F16197E5DF600CA65AC /* HuiGuangViewController.m */,
+				04EB8F17197E5DF600CA65AC /* HuiGuangViewController.xib */,
 			);
 			name = MainViewController;
 			sourceTree = "<group>";
@@ -2808,9 +2864,10 @@
 			isa = PBXGroup;
 			children = (
 				03573B871908028000A11A33 /* MainViewCell */,
+				035214EC195C790C00F92B55 /* MallNewsCell */,
+				04EB8F1A197E63F300CA65AC /* HuiGuangCell */,
 				046C112119767CF6007F7FE3 /* MyView */,
 				0373FA4719742C4400A1CF68 /* StoreListFocusedCell */,
-				035214EC195C790C00F92B55 /* MallNewsCell */,
 				04196A211962D2750037C046 /* DailyDealViewCell */,
 				04EF11EE1963DF8F0066C902 /* BackCardCell */,
 				035214CB1958A20D00F92B55 /* StoreListViewCell */,
@@ -2984,6 +3041,16 @@
 		4EF0907518FB52CE00ABFE7D /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				04EB8F23197E742800CA65AC /* main_huiguang_cell_allcomment@2x.png */,
+				04EB8F24197E742800CA65AC /* main_huiguang_cell_bg_saler@2x.png */,
+				04EB8F25197E742800CA65AC /* main_huiguang_cell_bg_store@2x.png */,
+				04EB8F26197E742800CA65AC /* main_huiguang_cell_comment@2x.png */,
+				04EB8F27197E742800CA65AC /* main_huiguang_loaction@2x.png */,
+				04EB8F28197E742800CA65AC /* main_huiguang_map@2x.png */,
+				04EB8F29197E742800CA65AC /* main_huiguang_topImage@2x.png */,
+				04EB8F0F197E5B0900CA65AC /* main_wifi_btn@2x.png */,
+				04EB8F10197E5B0900CA65AC /* main_wifi_icon@2x.png */,
+				04EB8F11197E5B0900CA65AC /* main_wifi_image@2x.png */,
 				04EB8F00197E4D5A00CA65AC /* mainview_huiguang@2x.png */,
 				04EB8EFA197E49AA00CA65AC /* about_email@2x.png */,
 				04EB8EFB197E49AA00CA65AC /* about_icon@2x.png */,
@@ -3641,6 +3708,7 @@
 				03650F461942D9FE00016289 /* MainView_DailyPromotionCell.xib in Resources */,
 				4EF090DF18FB52FD00ABFE7D /* my-icon-more@2x.png in Resources */,
 				04104CAA197CF08600BEB31F /* downloadCouponSuccess_btn_view@2x.png in Resources */,
+				04EB8F13197E5B0900CA65AC /* main_wifi_icon@2x.png in Resources */,
 				042E47F819651A2500CD945A /* webView_goBack@2x.png in Resources */,
 				049AC1DB1977E57F00262B69 /* my_card_YES_bangding@2x.png in Resources */,
 				042F1201196D1ED6003F255E /* FocusStoreViewController.xib in Resources */,
@@ -3675,6 +3743,7 @@
 				4EF090FE18FB52FD00ABFE7D /* share-icon-weibo@2x.png in Resources */,
 				03650F681945F35F00016289 /* nav_icon@2x.png in Resources */,
 				4E9608A818E48D6700418798 /* blackArrow.png in Resources */,
+				04EB8F0D197E57D200CA65AC /* WiFiViewController.xib in Resources */,
 				FA4E65C119357B21005022E2 /* UMSShareListController.xib in Resources */,
 				C1009E86192C5CBF00A4CC79 /* Icon_114.png in Resources */,
 				FA4E65E519357B21005022E2 /* UMSocialYXSessionData.html in Resources */,
@@ -3722,6 +3791,7 @@
 				4EF090DC18FB52FD00ABFE7D /* index-tool-btn-food@2x.png in Resources */,
 				C1A84A51192C538C003219DA /* Icon_44.png in Resources */,
 				4E2547CA18F30393007388B6 /* my-img-userface@2x.png in Resources */,
+				04EB8F2F197E742900CA65AC /* main_huiguang_map@2x.png in Resources */,
 				4EF0910618FB52FD00ABFE7D /* store-icon-fav-black@2x.png in Resources */,
 				4EF0911B18FB52FD00ABFE7D /* top-icon-phone-black@2x.png in Resources */,
 				0357FF66194DA9580071BD5A /* groupbuy_memo@2x.png in Resources */,
@@ -3798,6 +3868,7 @@
 				4EF0910018FB52FD00ABFE7D /* store-btn-download@2x.png in Resources */,
 				4E9608AD18E48D6700418798 /* grayArrow@2x.png in Resources */,
 				03573B6F190578FC00A11A33 /* ListViewController-iPad.xib in Resources */,
+				04EB8F12197E5B0900CA65AC /* main_wifi_btn@2x.png in Resources */,
 				FA4E660119357B22005022E2 /* ios-social-sdk-share-quick.html in Resources */,
 				FA4E65BF19357B21005022E2 /* UMSLoginViewController.xib in Resources */,
 				04EF11F91963E9D60066C902 /* bankcard_editor@2x.png in Resources */,
@@ -3811,6 +3882,7 @@
 				0357FF5E194D8DF00071BD5A /* GroupBuyDateTimeCell.xib in Resources */,
 				0357FF72194DE17C0071BD5A /* toolbar_coupon_icon_press@2x.png in Resources */,
 				4EF0910518FB52FD00ABFE7D /* store-icon-clock@2x.png in Resources */,
+				04EB8F14197E5B0900CA65AC /* main_wifi_image@2x.png in Resources */,
 				0357FF7B194DE17C0071BD5A /* toolbar_shop_icon@2x.png in Resources */,
 				4EF0914B18FC2E7C00ABFE7D /* pp_1.jpg in Resources */,
 				04EF121B196430F90066C902 /* AddBankCardCell.xib in Resources */,
@@ -3831,6 +3903,7 @@
 				4EF0912A18FC155200ABFE7D /* banner_5.jpg in Resources */,
 				4EF090EE18FB52FD00ABFE7D /* sale-feed-icon@2x.png in Resources */,
 				042F120C196D22EC003F255E /* FocusStoreView.xib in Resources */,
+				04EB8F2D197E742900CA65AC /* main_huiguang_cell_comment@2x.png in Resources */,
 				4E9608A918E48D6700418798 /* blackArrow@2x.png in Resources */,
 				042F1213196D2A96003F255E /* focusstore_nofocus@2x.png in Resources */,
 				4EF090F918FB52FD00ABFE7D /* service-icon-paint@2x.png in Resources */,
@@ -3855,6 +3928,7 @@
 				042E47ED1964FF8200CD945A /* dailyDeal_cell_img_focus@2x.png in Resources */,
 				C1E094FD194AA92000AA814B /* nav_favor_btn@2x.png in Resources */,
 				FA4E65BE19357B21005022E2 /* UMShareEditViewControlleriPad.xib in Resources */,
+				04EB8F2C197E742900CA65AC /* main_huiguang_cell_bg_store@2x.png in Resources */,
 				04EF1213196425D90066C902 /* AddBankCardViewController.xib in Resources */,
 				4EF0911C18FB52FD00ABFE7D /* top-search-icon@2x.png in Resources */,
 				FA4E65EC19357B21005022E2 /* disclosure.png in Resources */,
@@ -3890,17 +3964,21 @@
 				FA4E65FC19357B22005022E2 /* ios-social-sdk-like.html in Resources */,
 				0357FF67194DA9580071BD5A /* groupbuy_product_icon@2x.png in Resources */,
 				FA4E65F019357B21005022E2 /* index.html in Resources */,
+				04EB8F30197E742900CA65AC /* main_huiguang_topImage@2x.png in Resources */,
 				04EF12091964124B0066C902 /* bankcard_cell_time@2x.png in Resources */,
 				0357FF79194DE17C0071BD5A /* toolbar_me_icon@2x.png in Resources */,
 				4E2C6DFC18D75CE200DF3772 /* ShopViewController.xib in Resources */,
 				4EF090E418FB52FD00ABFE7D /* register-phone-code@2x.png in Resources */,
 				4EF0912818FC155200ABFE7D /* banner_3.jpg in Resources */,
+				04EB8F2E197E742900CA65AC /* main_huiguang_loaction@2x.png in Resources */,
 				0491F105196A56E900E7DC5A /* MallNewsDetail_twoCell.xib in Resources */,
 				4EF090E818FB52FD00ABFE7D /* register-phone-submit@2x.png in Resources */,
 				046352F41974D4F200BDB159 /* nav_search_bg@2x.png in Resources */,
+				04EB8F2B197E742900CA65AC /* main_huiguang_cell_bg_saler@2x.png in Resources */,
 				0373FACB19781E6000A1CF68 /* share_white@2x.png in Resources */,
 				4ECBF71918F45225003963E1 /* ShopDetailLocationCell.xib in Resources */,
 				03650F791945F52200016289 /* mainview_card_press@2x.png in Resources */,
+				04EB8F19197E5DF600CA65AC /* HuiGuangViewController.xib in Resources */,
 				4EF090DE18FB52FD00ABFE7D /* index-tool-btn-sale@2x.png in Resources */,
 				043236091973D38200C6C117 /* firstImage_3_5@2x.png in Resources */,
 				4EF0915C18FC50B400ABFE7D /* tabbar_bg@2x.png in Resources */,
@@ -4014,6 +4092,7 @@
 				4EF0914618FC2CEE00ABFE7D /* pp_5.jpg in Resources */,
 				4ECBF72618F4538C003963E1 /* ShopDetailItemListCell.xib in Resources */,
 				04EB8EFE197E49AA00CA65AC /* about_icon@2x.png in Resources */,
+				04EB8F1F197E643700CA65AC /* HuiGuangCell.xib in Resources */,
 				4EF0911618FB52FD00ABFE7D /* toolBar-btn-user@2x.png in Resources */,
 				C1A9C888193F130300DD420F /* NimbusPhotos.bundle in Resources */,
 				FA4E65CA19357B21005022E2 /* UMSocialCustomAccount.html in Resources */,
@@ -4038,6 +4117,7 @@
 				4E96088518E4861A00418798 /* url.jpg in Resources */,
 				0357FF51194D87410071BD5A /* GroupBuyDetailPriceCell.xib in Resources */,
 				0357FF2A1949EB260071BD5A /* CouponView_focusedCell.xib in Resources */,
+				04EB8F2A197E742900CA65AC /* main_huiguang_cell_allcomment@2x.png in Resources */,
 				4ECBF74018F58C33003963E1 /* ShopDetailDescriptionCell.xib in Resources */,
 				03650F8D1945FC9400016289 /* nav_scan_qrcode_press@2x.png in Resources */,
 				04405C3419668D2500CDD36F /* bankCard_addCard_OK@2x.png in Resources */,
@@ -4139,6 +4219,7 @@
 				4E9608B418E7B1B600418798 /* ServiceViewCell.m in Sources */,
 				04D72940196B99B200590C23 /* YouHuiOrderViewController.m in Sources */,
 				C1E094EA194993B400AA814B /* CouponViewController.m in Sources */,
+				04EB8F22197E6CE300CA65AC /* HuiGuangModel.m in Sources */,
 				0312034A19193BD800077E25 /* FloorInterface.m in Sources */,
 				0312033B1917DE8000077E25 /* ServiceModel.m in Sources */,
 				04EF11FF19640DA20066C902 /* BankDiscoundListViewController.m in Sources */,
@@ -4185,6 +4266,7 @@
 				0357FF62194D90040071BD5A /* GroupBuyRecommendCell.m in Sources */,
 				03573B781906C03700A11A33 /* YouhuiCategoryViewController.m in Sources */,
 				045FF86F197914B800F4DA22 /* MyDownloadCouponInterface.m in Sources */,
+				04EB8F0C197E57D200CA65AC /* WiFiViewController.m in Sources */,
 				C195321D191CC6A200D3BFA8 /* BindPhoneInterface.m in Sources */,
 				4ECBF76118F6EAEA003963E1 /* CouponDetailWithTitleCell.m in Sources */,
 				042F120A196D22D6003F255E /* FocusStoreView.m in Sources */,
@@ -4288,6 +4370,7 @@
 				4E9608B118E48D6700418798 /* PSCollectionViewCell.m in Sources */,
 				4ECBF71718F45219003963E1 /* ShopDetailLocationCell.m in Sources */,
 				0357FF7F194F3EB90071BD5A /* FoodViewController.m in Sources */,
+				04EB8F18197E5DF600CA65AC /* HuiGuangViewController.m in Sources */,
 				042F11FC196D1BE1003F255E /* FocusStoreModel.m in Sources */,
 				035214A819586DDD00F92B55 /* StoreDetail_cardCell.m in Sources */,
 				04EF121A196430F90066C902 /* AddBankCardCell.m in Sources */,
@@ -4309,6 +4392,7 @@
 				4E96087718E4791000418798 /* CustomNavigationController.m in Sources */,
 				C1D8700F18EC0CAB0061F799 /* CouponDetailViewController.m in Sources */,
 				0312032B19169A4E00077E25 /* CouponInterface.m in Sources */,
+				04EB8F1E197E643700CA65AC /* HuiGuangCell.m in Sources */,
 				C1D8701818ED5CE00061F799 /* ShopDetailHeaderView.m in Sources */,
 				031203411917E2C500077E25 /* StoreInterface.m in Sources */,
 				03650F431942D9EB00016289 /* MainView_DailyPromotionCell.m in Sources */,

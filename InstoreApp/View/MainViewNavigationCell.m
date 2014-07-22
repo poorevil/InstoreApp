@@ -14,6 +14,8 @@
 #import "DailyDealViewController.h"
 #import "BankCardViewController.h"
 #import "FoodViewController.h"
+#import "WiFiViewController.h"
+#import "HuiGuangViewController.h"
 
 @implementation MainViewNavigationCell
 
@@ -40,6 +42,7 @@
     
     AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
     self.nav = (UINavigationController *)appDelegate.tabBarController.selectedViewController;
+    
 
     //1
     [self.mallActicityBtn addTarget:self
@@ -102,7 +105,10 @@
 }
 #pragma mark 恵逛模式
 -(void)btnHuiGuangAction:(UIButton *)sender{
-    
+    HuiGuangViewController *vc = [[HuiGuangViewController alloc]initWithNibName:@"HuiGuangViewController" bundle:nil];
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.nav pushViewController:vc animated:YES];
+    [vc release];
 }
 #pragma mark 商场地图
 -(void)mapBtnAction:(id)sender
@@ -116,7 +122,11 @@
 }
 #pragma mark 免费wifi
 -(void)btnFreeNetAction:(UIButton *)sender{
-    
+    WiFiViewController *vc = [[WiFiViewController alloc]initWithNibName:@"WiFiViewController" bundle:nil];
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.nav pushViewController:vc animated:YES];
+    self.nav.navigationItem.leftBarButtonItem.title = @"";
+    [vc release];
 }
 #pragma mark 我的卡恵
 - (IBAction)btnBackCardAction:(UIButton *)sender {
