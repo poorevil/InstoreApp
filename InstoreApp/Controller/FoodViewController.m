@@ -206,7 +206,23 @@
         }
     };
     
-    self.mtableView.tableHeaderView = self.lunboView;
+    self.headerView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 152)] autorelease];
+    [self.headerView addSubview:self.lunboView];
+    self.segmentedControl = [[[UISegmentedControl alloc] initWithItems:@[@"餐厅",@"优惠"]] autorelease];
+    self.segmentedControl.frame = CGRectMake(65,112,190,29);
+    self.segmentedControl.segmentedControlStyle = UISegmentedControlStyleBar;
+    self.segmentedControl.selectedSegmentIndex = 0;
+    self.segmentedControl.tintColor = [UIColor colorWithRed:229/255.0f
+                                                      green:63/255.0f
+                                                       blue:17/255.0f
+                                                      alpha:1];
+    [self.segmentedControl addTarget:self
+                              action:@selector(showTypeChanged:)
+                    forControlEvents:UIControlEventValueChanged];
+
+    [self.headerView addSubview:self.segmentedControl];
+    self.mtableView.tableHeaderView = self.headerView;
+//self.mtableView.tableHeaderView = self.lunboView;
     
 }
 
