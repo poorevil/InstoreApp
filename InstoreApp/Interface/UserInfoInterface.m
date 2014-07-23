@@ -32,7 +32,7 @@
     self.requestType = 1;
     self.interfaceUrl = [NSString stringWithFormat:@"%@api/%@/myinfo",BASE_INTERFACE_DOMAIN, MALL_CODE];
     self.args = @{@"name":userInfo.name,
-                  @"gender":userInfo.gender,
+                  @"gender":[NSString stringWithFormat:@"%d",userInfo.gender],
                   @"nickName":userInfo.nickName};
     self.baseDelegate = self;
     [self connect];

@@ -15,8 +15,9 @@
 {
     // Initialization code
     
-    self.labComment = [[[RTLabel alloc]initWithFrame:CGRectMake(100, 80, 30, 50)]autorelease];
-//    self.labComment = 0;
+    self.labComment = [[[RTLabel alloc]initWithFrame:CGRectMake(25, 5, 140, 50)]autorelease];
+//    self.labComment.numberOfLines = 2;
+    self.labComment.font = [UIFont systemFontOfSize:10];
     [self.commentView addSubview:self.labComment];
     
 }
@@ -27,23 +28,47 @@
     
     UIImage *image;
     if (huiGuangModel.storeOrSaler) {
-        image = [UIImage imageNamed:@""];
+        image = [UIImage imageNamed:@"main_huiguang_cell_bg_saler.png"];
     }else{
         image = self.imageStoreOrSaler.image;
     }
     //TODO:拉伸图片
     
+    self.imageStoreOrSaler.image = image;
+    
     self.imageIcon.imageURL = [NSURL URLWithString:huiGuangModel.imageIconURL];
     self.Image.imageURL = [NSURL URLWithString:huiGuangModel.imageURL];
+    
+    
     self.labTitle.text = huiGuangModel.title;
-    if (huiGuangModel.commentCount > 0) {
-        self.labComment.text = [NSString stringWithFormat:@"<font color='#F49B27'>%@:</font> <font color=#D2D2D2>%@</font>",[[huiGuangModel.commentList lastObject] objectForKey:@"name" ],[[huiGuangModel.commentList lastObject] objectForKey:@"comment"]];
-        [self.btnAllComment setTitle:[NSString stringWithFormat:@"%d",huiGuangModel.commentCount] forState:UIControlStateNormal];
+    //title Frame
+    CGSize titleSizeMax = CGSizeMake(140, 100);
+    CGSize titleSize = [self.labTitle.text sizeWithFont:self.labTitle.font constrainedToSize:titleSizeMax lineBreakMode:NSLineBreakByWordWrapping];
+    CGRect titleFrame = self.labTitle.frame;
+    
+    if (titleSize.height > 30) {
+        CGRect commentViewFrame = self.commentView.frame;
+        CGRect parentFrame = self.parentView.frame;
+        
+        titleFrame.size.height = 34;
+        parentFrame.size.height += 17;
+        commentViewFrame.origin.y += 17;
+        
+        self.commentView.frame = commentViewFrame;
+        self.parentView.frame = parentFrame;
     }else{
-        self.btnAllComment.enabled = NO;
+        titleFrame.size.height = 17;
     }
+    self.labTitle.frame = titleFrame;
     
 
+    if (huiGuangModel.commentCount > 0) {
+        self.labComment.text = [NSString stringWithFormat:@"<font color='#F49B27'>%@:</font> <font color=#D2D2D2>%@</font>",[[huiGuangModel.commentList lastObject] objectForKey:@"name" ],[[huiGuangModel.commentList lastObject] objectForKey:@"comment"]];
+        
+        [self.btnAllComment setTitle:[NSString stringWithFormat:@"全部 %d 条评论",huiGuangModel.commentCount] forState:UIControlStateNormal];
+    }else{
+        self.commentView.hidden = YES;
+    }
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated

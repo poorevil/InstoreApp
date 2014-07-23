@@ -12,6 +12,7 @@
 
 #import "UserInfoModel.h"
 #import "EGOImageView.h"
+#import "UserInfoViewController.h"
 
 @implementation MeHeaderView
 
@@ -57,7 +58,7 @@
     _userInfo = userInfo;
     
     self.headIconImageView.imageURL = [NSURL URLWithString:userInfo.headUrl];
-    self.nickNameLabel.text = self.userInfo.name;
+    self.nickNameLabel.text = self.userInfo.nickName;
     self.cardNumLabel.text = self.userInfo.clubCard;
     self.pointLabel.text = [NSString stringWithFormat:@"%d",self.userInfo.points];
 }
@@ -71,5 +72,14 @@
     self.pointLabel = nil;
     
     [super dealloc];
+}
+- (IBAction)btnUpdataUserInfoAction:(UIButton *)sender {
+    AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+    UINavigationController *nav = (UINavigationController *)appDelegate.tabBarController.selectedViewController;
+    UserInfoViewController *vc = [[UserInfoViewController alloc]init];
+    vc.userInfoModel = self.userInfo;
+    vc.hidesBottomBarWhenPushed = YES;
+    [nav pushViewController:vc animated:YES];
+    [vc release];
 }
 @end

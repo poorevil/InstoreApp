@@ -13,10 +13,11 @@
 @interface MeHeaderView : UIView
 
 @property (nonatomic,strong) IBOutlet EGOImageView *headIconImageView;
-@property (nonatomic,strong) IBOutlet UILabel *cardNumLabel;
-@property (nonatomic,strong) IBOutlet UILabel *nickNameLabel;
-@property (nonatomic,strong) IBOutlet UILabel *pointLabel;
+@property (nonatomic,strong) IBOutlet UILabel *cardNumLabel;    //会员卡号
+@property (nonatomic,strong) IBOutlet UILabel *nickNameLabel;  //昵称
+@property (nonatomic,strong) IBOutlet UILabel *pointLabel;      //积分
 
+- (IBAction)btnUpdataUserInfoAction:(UIButton *)sender;
 
 @property (nonatomic,strong) UserInfoModel *userInfo;
 

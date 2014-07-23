@@ -64,10 +64,14 @@
     
     self.userInfoInterface = [[[UserInfoInterface alloc] init] autorelease];
     self.userInfoInterface.delegate = self;
-    [self.userInfoInterface getUserInfo];
+//    [self.userInfoInterface getUserInfo];
     
     self.navigationItem.rightBarButtonItem = nil;
     
+}
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    [self.userInfoInterface getUserInfo];
 }
 
 -(void)initHeaderView
@@ -270,6 +274,7 @@
                     self.hidesBottomBarWhenPushed = NO;
                     [vc release];
                 }
+                    break;
                 case 2:{
                     //绑定手机号
                     BindPhoneViewController *vc = [[BindPhoneViewController alloc]initWithNibName:@"BindPhoneViewController" bundle:nil];
@@ -278,6 +283,7 @@
                     [vc release];
                     self.hidesBottomBarWhenPushed = NO;
                 }
+                    break;
             }
         case 4:
             //接收已关注商家的优惠信息
@@ -300,6 +306,7 @@
     self.userInfo = userInfo;
     self.headerView.userInfo = self.userInfo;
     self.recommend = userInfo.isStoreFocusRecommend;
+//    self.
     
     [self.mtableView reloadData];
 }
