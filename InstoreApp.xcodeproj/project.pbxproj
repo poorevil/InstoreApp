@@ -322,6 +322,11 @@
 		04EB8F2E197E742900CA65AC /* main_huiguang_loaction@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04EB8F27197E742800CA65AC /* main_huiguang_loaction@2x.png */; };
 		04EB8F2F197E742900CA65AC /* main_huiguang_map@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04EB8F28197E742800CA65AC /* main_huiguang_map@2x.png */; };
 		04EB8F30197E742900CA65AC /* main_huiguang_topImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04EB8F29197E742800CA65AC /* main_huiguang_topImage@2x.png */; };
+		04EDCAB519810E7200A60458 /* libZXingWidget.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 04EDCAB019810E5200A60458 /* libZXingWidget.a */; };
+		04EDCAB91981149E00A60458 /* main_sacn_bg-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04EDCAB61981149E00A60458 /* main_sacn_bg-568h@2x.png */; };
+		04EDCABA1981149E00A60458 /* main_sacn_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04EDCAB71981149E00A60458 /* main_sacn_bg@2x.png */; };
+		04EDCABB1981149E00A60458 /* main_scan_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04EDCAB81981149E00A60458 /* main_scan_btn@2x.png */; };
+		04EDCABD1981151200A60458 /* main_sacn_center@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04EDCABC1981151200A60458 /* main_sacn_center@2x.png */; };
 		04EF11E81963AFBC0066C902 /* BankCardInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EF11E71963AFBC0066C902 /* BankCardInterface.m */; };
 		04EF11EC1963B50F0066C902 /* BankCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EF11EA1963B50F0066C902 /* BankCardViewController.m */; };
 		04EF11ED1963B50F0066C902 /* BankCardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04EF11EB1963B50F0066C902 /* BankCardViewController.xib */; };
@@ -575,7 +580,6 @@
 		4EF09178190026DE00ABFE7D /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EF09177190026DE00ABFE7D /* libiconv.dylib */; };
 		4EF0917A190026EC00ABFE7D /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EF09179190026EC00ABFE7D /* AudioToolbox.framework */; };
 		4EF0917C190026F500ABFE7D /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EF0917B190026F500ABFE7D /* AVFoundation.framework */; };
-		4EF091A31900321B00ABFE7D /* libZXingWidget.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EF0919E1900320700ABFE7D /* libZXingWidget.a */; };
 		C1009E82192C589A00A4CC79 /* Icon_29.png in Resources */ = {isa = PBXBuildFile; fileRef = C1009E80192C589A00A4CC79 /* Icon_29.png */; };
 		C1009E83192C589A00A4CC79 /* Icon_57.png in Resources */ = {isa = PBXBuildFile; fileRef = C1009E81192C589A00A4CC79 /* Icon_57.png */; };
 		C1009E86192C5CBF00A4CC79 /* Icon_114.png in Resources */ = {isa = PBXBuildFile; fileRef = C1009E85192C5CBF00A4CC79 /* Icon_114.png */; };
@@ -733,33 +737,33 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		04EDCAAF19810E5200A60458 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 04EDCAAA19810E5200A60458 /* ZXingWidget.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D2AAC07E0554694100DB518D;
+			remoteInfo = ZXingWidget;
+		};
+		04EDCAB119810E5200A60458 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 04EDCAAA19810E5200A60458 /* ZXingWidget.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1D60398D13DF7CAD006F4B51;
+			remoteInfo = ZXingTests;
+		};
+		04EDCAB319810E6400A60458 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 04EDCAAA19810E5200A60458 /* ZXingWidget.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = D2AAC07D0554694100DB518D;
+			remoteInfo = ZXingWidget;
+		};
 		4E2C6DBC18D7502200DF3772 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 4E2C6D9418D7502100DF3772 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 4E2C6D9B18D7502100DF3772;
 			remoteInfo = InstoreApp;
-		};
-		4EF0919D1900320700ABFE7D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4EF091981900320600ABFE7D /* ZXingWidget.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = D2AAC07E0554694100DB518D;
-			remoteInfo = ZXingWidget;
-		};
-		4EF0919F1900320700ABFE7D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4EF091981900320600ABFE7D /* ZXingWidget.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 1D60398D13DF7CAD006F4B51;
-			remoteInfo = ZXingTests;
-		};
-		4EF091A11900320E00ABFE7D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4EF091981900320600ABFE7D /* ZXingWidget.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = D2AAC07D0554694100DB518D;
-			remoteInfo = ZXingWidget;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -1272,6 +1276,11 @@
 		04EB8F27197E742800CA65AC /* main_huiguang_loaction@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_huiguang_loaction@2x.png"; sourceTree = "<group>"; };
 		04EB8F28197E742800CA65AC /* main_huiguang_map@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_huiguang_map@2x.png"; sourceTree = "<group>"; };
 		04EB8F29197E742800CA65AC /* main_huiguang_topImage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_huiguang_topImage@2x.png"; sourceTree = "<group>"; };
+		04EDCAAA19810E5200A60458 /* ZXingWidget.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ZXingWidget.xcodeproj; path = zxing/iphone/ZXingWidget/ZXingWidget.xcodeproj; sourceTree = "<group>"; };
+		04EDCAB61981149E00A60458 /* main_sacn_bg-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_sacn_bg-568h@2x.png"; sourceTree = "<group>"; };
+		04EDCAB71981149E00A60458 /* main_sacn_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_sacn_bg@2x.png"; sourceTree = "<group>"; };
+		04EDCAB81981149E00A60458 /* main_scan_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_scan_btn@2x.png"; sourceTree = "<group>"; };
+		04EDCABC1981151200A60458 /* main_sacn_center@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_sacn_center@2x.png"; sourceTree = "<group>"; };
 		04EF11E61963AFBC0066C902 /* BankCardInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BankCardInterface.h; sourceTree = "<group>"; };
 		04EF11E71963AFBC0066C902 /* BankCardInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BankCardInterface.m; sourceTree = "<group>"; };
 		04EF11E91963B50F0066C902 /* BankCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BankCardViewController.h; sourceTree = "<group>"; };
@@ -1576,7 +1585,6 @@
 		4EF09177190026DE00ABFE7D /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
 		4EF09179190026EC00ABFE7D /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		4EF0917B190026F500ABFE7D /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		4EF091981900320600ABFE7D /* ZXingWidget.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ZXingWidget.xcodeproj; path = zxing/iphone/ZXingWidget/ZXingWidget.xcodeproj; sourceTree = "<group>"; };
 		C1009E80192C589A00A4CC79 /* Icon_29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon_29.png; sourceTree = "<group>"; };
 		C1009E81192C589A00A4CC79 /* Icon_57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon_57.png; sourceTree = "<group>"; };
 		C1009E85192C5CBF00A4CC79 /* Icon_114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon_114.png; sourceTree = "<group>"; };
@@ -1832,6 +1840,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04EDCAB519810E7200A60458 /* libZXingWidget.a in Frameworks */,
 				04EB8EF9197E475A00CA65AC /* MessageUI.framework in Frameworks */,
 				04EB8EF7197E3B9F00CA65AC /* CoreText.framework in Frameworks */,
 				03573A7519041EFB00A11A33 /* CoreLocation.framework in Frameworks */,
@@ -1845,7 +1854,6 @@
 				4E2C6DA218D7502100DF3772 /* CoreGraphics.framework in Frameworks */,
 				4E2C6DA018D7502100DF3772 /* Foundation.framework in Frameworks */,
 				03573A6F19041D5600A11A33 /* libxml2.dylib in Frameworks */,
-				4EF091A31900321B00ABFE7D /* libZXingWidget.a in Frameworks */,
 				4EF0917C190026F500ABFE7D /* AVFoundation.framework in Frameworks */,
 				4EF0917A190026EC00ABFE7D /* AudioToolbox.framework in Frameworks */,
 				4EF09178190026DE00ABFE7D /* libiconv.dylib in Frameworks */,
@@ -2598,6 +2606,15 @@
 			name = HuiGuangCell;
 			sourceTree = "<group>";
 		};
+		04EDCAAB19810E5200A60458 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				04EDCAB019810E5200A60458 /* libZXingWidget.a */,
+				04EDCAB219810E5200A60458 /* ZXingTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		04EF11EE1963DF8F0066C902 /* BackCardCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -2711,7 +2728,7 @@
 		4E2C6D9318D7502100DF3772 = {
 			isa = PBXGroup;
 			children = (
-				4EF091981900320600ABFE7D /* ZXingWidget.xcodeproj */,
+				04EDCAAA19810E5200A60458 /* ZXingWidget.xcodeproj */,
 				4E2C6DA518D7502100DF3772 /* InstoreApp */,
 				4E2C6DBE18D7502200DF3772 /* InstoreAppTests */,
 				4E2C6D9E18D7502100DF3772 /* Frameworks */,
@@ -3074,6 +3091,10 @@
 		4EF0907518FB52CE00ABFE7D /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				04EDCABC1981151200A60458 /* main_sacn_center@2x.png */,
+				04EDCAB61981149E00A60458 /* main_sacn_bg-568h@2x.png */,
+				04EDCAB71981149E00A60458 /* main_sacn_bg@2x.png */,
+				04EDCAB81981149E00A60458 /* main_scan_btn@2x.png */,
 				047B907A197FBBEE005BAFEA /* updateUserInfo_ok@2x.png */,
 				04EB8F23197E742800CA65AC /* main_huiguang_cell_allcomment@2x.png */,
 				04EB8F24197E742800CA65AC /* main_huiguang_cell_bg_saler@2x.png */,
@@ -3288,15 +3309,6 @@
 				4EF0915218FC4A8900ABFE7D /* c_5.jpg */,
 			);
 			name = youhui;
-			sourceTree = "<group>";
-		};
-		4EF091991900320600ABFE7D /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				4EF0919E1900320700ABFE7D /* libZXingWidget.a */,
-				4EF091A01900320700ABFE7D /* ZXingTests.octest */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		C1953208191B6D3B00D3BFA8 /* EGOImageButton */ = {
@@ -3638,7 +3650,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				4EF091A21900320E00ABFE7D /* PBXTargetDependency */,
+				04EDCAB419810E6400A60458 /* PBXTargetDependency */,
 			);
 			name = InstoreApp;
 			productName = InstoreApp;
@@ -3697,8 +3709,8 @@
 					ProjectRef = 03573B3219056A9000A11A33 /* InstoreApp.xcodeproj */;
 				},
 				{
-					ProductGroup = 4EF091991900320600ABFE7D /* Products */;
-					ProjectRef = 4EF091981900320600ABFE7D /* ZXingWidget.xcodeproj */;
+					ProductGroup = 04EDCAAB19810E5200A60458 /* Products */;
+					ProjectRef = 04EDCAAA19810E5200A60458 /* ZXingWidget.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -3710,18 +3722,18 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		4EF0919E1900320700ABFE7D /* libZXingWidget.a */ = {
+		04EDCAB019810E5200A60458 /* libZXingWidget.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libZXingWidget.a;
-			remoteRef = 4EF0919D1900320700ABFE7D /* PBXContainerItemProxy */;
+			remoteRef = 04EDCAAF19810E5200A60458 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		4EF091A01900320700ABFE7D /* ZXingTests.octest */ = {
+		04EDCAB219810E5200A60458 /* ZXingTests.octest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = ZXingTests.octest;
-			remoteRef = 4EF0919F1900320700ABFE7D /* PBXContainerItemProxy */;
+			remoteRef = 04EDCAB119810E5200A60458 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -3785,6 +3797,7 @@
 				0373FA4C19742C8A00A1CF68 /* StoreListFocused_headerView.xib in Resources */,
 				4ECBF73A18F4B9A4003963E1 /* tmpimg6.jpg in Resources */,
 				0357FF73194DE17C0071BD5A /* toolbar_coupon_icon@2x.png in Resources */,
+				04EDCAB91981149E00A60458 /* main_sacn_bg-568h@2x.png in Resources */,
 				0357FF74194DE17C0071BD5A /* toolbar_food_icon_press@2x.png in Resources */,
 				04EF120519640E170066C902 /* BankDiscoundListCell.xib in Resources */,
 				4E9608AA18E48D6700418798 /* blueArrow.png in Resources */,
@@ -4107,6 +4120,7 @@
 				FA4E65E919357B21005022E2 /* hierarchy.html in Resources */,
 				04F3D4AB197F96AD008A828C /* UserInfoViewController.xib in Resources */,
 				4EF0911018FB52FD00ABFE7D /* store-icon-share-black@2x.png in Resources */,
+				04EDCABA1981149E00A60458 /* main_sacn_bg@2x.png in Resources */,
 				035214A919586DDD00F92B55 /* StoreDetail_cardCell.xib in Resources */,
 				045FF8641979035400F4DA22 /* myDownloadCoupon_yiguoqi@2x.png in Resources */,
 				FA4E65C819357B21005022E2 /* UMSocialControllerService.html in Resources */,
@@ -4129,6 +4143,7 @@
 				4ECBF75E18F6E9C4003963E1 /* CouponDetailDownloadCell.xib in Resources */,
 				03650F7C1945F52200016289 /* mainview_coupon@2x.png in Resources */,
 				04EF11F31963DFDA0066C902 /* BankCardCell.xib in Resources */,
+				04EDCABD1981151200A60458 /* main_sacn_center@2x.png in Resources */,
 				04EF11ED1963B50F0066C902 /* BankCardViewController.xib in Resources */,
 				4EF0914618FC2CEE00ABFE7D /* pp_5.jpg in Resources */,
 				4ECBF72618F4538C003963E1 /* ShopDetailItemListCell.xib in Resources */,
@@ -4150,6 +4165,7 @@
 				4EF0915518FC4A8900ABFE7D /* c_4.jpg in Resources */,
 				03573ACA19055C7500A11A33 /* SVProgressHUD.bundle in Resources */,
 				4E2C6DF718D75CD600DF3772 /* YouhuiViewController.xib in Resources */,
+				04EDCABB1981149E00A60458 /* main_scan_btn@2x.png in Resources */,
 				4E9608D018E9C55600418798 /* MainViewMiaoShaCell.xib in Resources */,
 				0373FA451974271000A1CF68 /* StoreListFocusedViewController.xib in Resources */,
 				0357FF80194F3EB90071BD5A /* FoodViewController.xib in Resources */,
@@ -4457,15 +4473,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		04EDCAB419810E6400A60458 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ZXingWidget;
+			targetProxy = 04EDCAB319810E6400A60458 /* PBXContainerItemProxy */;
+		};
 		4E2C6DBD18D7502200DF3772 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 4E2C6D9B18D7502100DF3772 /* InstoreApp */;
 			targetProxy = 4E2C6DBC18D7502200DF3772 /* PBXContainerItemProxy */;
-		};
-		4EF091A21900320E00ABFE7D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = ZXingWidget;
-			targetProxy = 4EF091A11900320E00ABFE7D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -4593,7 +4609,7 @@
 					"${SDKROOT}/usr/include/libxml2/**",
 				);
 				INFOPLIST_FILE = "InstoreApp/InstoreApp-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/InstoreApp/utility/MBSMap_lib/Release-iphonesimulator",
@@ -4638,7 +4654,7 @@
 					"${SDKROOT}/usr/include/libxml2/**",
 				);
 				INFOPLIST_FILE = "InstoreApp/InstoreApp-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/InstoreApp/utility/MBSMap_lib/Release-iphonesimulator",

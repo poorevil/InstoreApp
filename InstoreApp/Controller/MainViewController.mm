@@ -32,6 +32,8 @@
 #import "AppDelegate.h"
 #import "SearchViewController.h"
 
+//#import "MultiFormatOneDReader.h"
+
 @interface MainViewController () <ZXingDelegate, MainViewInterfaceDelegate,LunBoImageInterfaceDelegate>
 @property (nonatomic,strong) CycleScrollView *lunboView;
 
@@ -259,7 +261,7 @@
 -(IBAction)scanQRCode:(id)sender
 {
     //二维码
-    ZXingWidgetController *widController = [[ZXingWidgetController alloc] initWithDelegate:self showCancel:YES OneDMode:NO];
+    ZXingWidgetController *widController = [[ZXingWidgetController alloc] initWithDelegate:self showCancel:YES OneDMode:YES];
     NSMutableSet *readers = [[NSMutableSet alloc ] init];
     QRCodeReader* qrcodeReader = [[QRCodeReader alloc] init];
     [readers addObject:qrcodeReader];
@@ -268,14 +270,10 @@
     [readers release];
     [self presentViewController:widController animated:YES completion:nil];
     [widController release];
+
 }
 -(IBAction)showSearchView:(id)sender;
 {
-//    SearchViewController *searchVC = [[[SearchViewController alloc] initWithNibName:@"SearchViewController" bundle:nil] autorelease];
-//    AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
-//    UINavigationController *nav = (UINavigationController *)appDelegate.tabBarController.selectedViewController;
-//    [nav pushViewController:searchVC animated:YES];
-//    [self presentViewController:searchVC animated:YES completion:nil];
     [super showSearchView];
 }
 
@@ -354,7 +352,9 @@
 #pragma mark - ZXingDelegate
 - (void)zxingController:(ZXingWidgetController*)controller didScanResult:(NSString *)result
 {
-    NSLog(@"result:%@",result);
+    [controller dismissViewControllerAnimated:YES completion:nil];
+    
+//    NSLog(@"result:%@",result);
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil
                                                     message:result
                                                    delegate:nil
@@ -412,5 +412,13 @@
 -(void)getLunBoImageListDidFailed:(NSString *)errorMsg{
     NSLog(@"%@",errorMsg);
 }
+
+//- (void)zxingController:(ZXingWidgetController*)controller didScanResult:(NSString *)result{
+//    NSLog(@"%@",result);
+//    [controller dismissModalViewControllerAnimated:YES];
+//}
+//- (void)zxingControllerDidCancel:(ZXingWidgetController*)controller{
+//    [controller dismissModalViewControllerAnimated:YES];
+//}
 
 @end

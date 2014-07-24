@@ -40,6 +40,8 @@ static const CGFloat kLicenseButtonPadding = 10;
 @synthesize cancelButtonTitle;
 @synthesize cancelEnabled;
 
+#define DeviceHeight [UIScreen mainScreen].bounds.size.height
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 - (id)initWithFrame:(CGRect)theFrame cancelEnabled:(BOOL)isCancelEnabled oneDMode:(BOOL)isOneDModeEnabled {
   return [self initWithFrame:theFrame cancelEnabled:isCancelEnabled oneDMode:isOneDModeEnabled showLicense:YES];
@@ -59,31 +61,66 @@ static const CGFloat kLicenseButtonPadding = 10;
 
     self.backgroundColor = [UIColor clearColor];
     self.oneDMode = isOneDModeEnabled;
+//
+//    if (showLicenseButton) {
+//        self.licenseButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
+//        
+//        CGRect lbFrame = [licenseButton frame];
+//        lbFrame.origin.x = self.frame.size.width - licenseButton.frame.size.width - kLicenseButtonPadding;
+//        lbFrame.origin.y = self.frame.size.height - licenseButton.frame.size.height - kLicenseButtonPadding;
+//        [licenseButton setFrame:lbFrame];
+//        [licenseButton addTarget:self action:@selector(showLicenseAlert:) forControlEvents:UIControlEventTouchUpInside];
+//        
+//        [self addSubview:licenseButton];
+//    }
+//    self.cancelEnabled = isCancelEnabled;
+//
+//    if (self.cancelEnabled) {
+//      UIButton *butt = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+//      self.cancelButton = butt;
+//      if ([self.cancelButtonTitle length] > 0 ) {
+//        [cancelButton setTitle:self.cancelButtonTitle forState:UIControlStateNormal];
+//      } else {
+//        [cancelButton setTitle:NSLocalizedStringWithDefaultValue(@"OverlayView cancel button title", nil, [NSBundle mainBundle], @"Cancel", @"Cancel") forState:UIControlStateNormal];
+//      }
+//      [cancelButton addTarget:self action:@selector(cancel:) forControlEvents:UIControlEventTouchUpInside];
+//      [self addSubview:cancelButton];
+//    }
       
-    if (showLicenseButton) {
-        self.licenseButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
-        
-        CGRect lbFrame = [licenseButton frame];
-        lbFrame.origin.x = self.frame.size.width - licenseButton.frame.size.width - kLicenseButtonPadding;
-        lbFrame.origin.y = self.frame.size.height - licenseButton.frame.size.height - kLicenseButtonPadding;
-        [licenseButton setFrame:lbFrame];
-        [licenseButton addTarget:self action:@selector(showLicenseAlert:) forControlEvents:UIControlEventTouchUpInside];
-        
-        [self addSubview:licenseButton];
-    }
-    self.cancelEnabled = isCancelEnabled;
-
-    if (self.cancelEnabled) {
-      UIButton *butt = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-      self.cancelButton = butt;
-      if ([self.cancelButtonTitle length] > 0 ) {
-        [cancelButton setTitle:self.cancelButtonTitle forState:UIControlStateNormal];
-      } else {
-        [cancelButton setTitle:NSLocalizedStringWithDefaultValue(@"OverlayView cancel button title", nil, [NSBundle mainBundle], @"Cancel", @"Cancel") forState:UIControlStateNormal];
+      UIImageView *imageBG = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 320, DeviceHeight)];
+      imageBG.image = [UIImage imageNamed:@"main_sacn_bg.png"];
+      [self addSubview:imageBG];
+      [imageBG release];
+      
+      UIImageView *imageCenter = [[UIImageView alloc]init];
+      imageCenter.image = [UIImage imageNamed:@"main_sacn_center.png"];
+      [self addSubview:imageCenter];
+      [imageCenter release];
+      
+      UILabel *label = [[UILabel alloc]init];
+      label.backgroundColor = [UIColor clearColor];
+      label.text = @"讲二维码图案放在取景框内，即可自动扫描";
+      label.textColor = [UIColor whiteColor];
+      label.font = [UIFont systemFontOfSize:14];
+      label.textAlignment = NSTextAlignmentCenter;
+      [self addSubview:label];
+      [label release];
+      
+      UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+      [button setImage:[UIImage imageNamed:@"main_scan_btn.png"] forState:UIControlStateNormal];
+      [button addTarget:self action:@selector(cancel:) forControlEvents:UIControlEventTouchUpInside];
+      [self addSubview:button];
+      
+      if (DeviceHeight > 500) {
+          imageCenter.frame = CGRectMake(53, 136, 214, 214);
+          label.frame = CGRectMake(0, 375, 320, 30);
+          button.frame = CGRectMake(120, 450, 80, 27);
+      }else{
+          imageCenter.frame = CGRectMake(53, 101, 214, 214);
+          label.frame = CGRectMake(0, 340, 320, 30);
+          button.frame = CGRectMake(120, 415, 80, 27);
       }
-      [cancelButton addTarget:self action:@selector(cancel:) forControlEvents:UIControlEventTouchUpInside];
-      [self addSubview:cancelButton];
-    }
+      
   }
   return self;
 }
@@ -178,9 +215,10 @@ static const CGFloat kLicenseButtonPadding = 10;
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)drawRect:(CGRect)rect {
 	[super drawRect:rect];
-    if (displayedMessage == nil) {
-        self.displayedMessage = NSLocalizedStringWithDefaultValue(@"OverlayView displayed message", nil, [NSBundle mainBundle], @"Place a barcode inside the viewfinder rectangle to scan it.", @"Place a barcode inside the viewfinder rectangle to scan it.");
-    }
+   /*
+//    if (displayedMessage == nil) {
+//        self.displayedMessage = NSLocalizedStringWithDefaultValue(@"OverlayView displayed message", nil, [NSBundle mainBundle], @"Place a barcode inside the viewfinder rectangle to scan it.", @"Place a barcode inside the viewfinder rectangle to scan it.");
+//    }
 	CGContextRef c = UIGraphicsGetCurrentContext();
   
 	CGFloat white[4] = {1.0f, 1.0f, 1.0f, 1.0f};
@@ -200,14 +238,15 @@ static const CGFloat kLicenseButtonPadding = 10;
         // Invert height and width, because we are rotated.
         CGPoint textPoint = CGPointMake(self.bounds.size.height / 2 - textSize.width / 2, self.bounds.size.width * -1.0f + 20.0f);
         [text drawAtPoint:textPoint withFont:helvetica15];
-	}else {
-        UIFont *font = [UIFont systemFontOfSize:18];
-        CGSize constraint = CGSizeMake(rect.size.width  - 2 * kTextMargin, cropRect.origin.y);
-        CGSize displaySize = [self.displayedMessage sizeWithFont:font constrainedToSize:constraint];
-        CGRect displayRect = CGRectMake((rect.size.width - displaySize.width) / 2 , cropRect.origin.y - displaySize.height, displaySize.width, displaySize.height);
-//    [self.displayedMessage drawInRect:displayRect withFont:font lineBreakMode:UILineBreakModeWordWrap alignment:UITextAlignmentCenter];
-        [self.displayedMessage drawInRect:displayRect withFont:font];
 	}
+//    else {
+//        UIFont *font = [UIFont systemFontOfSize:18];
+//        CGSize constraint = CGSizeMake(rect.size.width  - 2 * kTextMargin, cropRect.origin.y);
+//        CGSize displaySize = [self.displayedMessage sizeWithFont:font constrainedToSize:constraint];
+//        CGRect displayRect = CGRectMake((rect.size.width - displaySize.width) / 2 , cropRect.origin.y - displaySize.height, displaySize.width, displaySize.height);
+////    [self.displayedMessage drawInRect:displayRect withFont:font lineBreakMode:UILineBreakModeWordWrap alignment:UITextAlignmentCenter];
+//        [self.displayedMessage drawInRect:displayRect withFont:font];
+//	}
     
 	CGContextRestoreGState(c);
 	int offset = rect.size.width / 2;
@@ -243,7 +282,7 @@ static const CGFloat kLicenseButtonPadding = 10;
 				[self drawRect:smallSquare inContext:c];
 			}
 		}
-	}
+	}  */
 }
 
 

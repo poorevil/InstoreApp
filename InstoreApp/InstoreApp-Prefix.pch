@@ -18,6 +18,8 @@
     #import "Static.h"
 #endif
 
+#define DeviceHeight [UIScreen mainScreen].bounds.size.height
+
 
 #define BASE_INTERFACE_DOMAIN       @"http://www.wise-mall.com/"
 //商场编号

@@ -10,7 +10,7 @@
 #import "NSDate+DynamicDateString.h"
 
 
-#define DeviceHeight [UIScreen mainScreen].bounds.size.height
+
 
 @interface UserInfoViewController ()
 
