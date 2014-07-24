@@ -4589,7 +4589,7 @@
 					"$(inherited)",
 					"/Applications/Xcode\\ 2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include",
 					"./zxing/iphone/ZXingWidget/Classes/**",
-					"./zxing/cpp/core/src/**",
+					./zxing/cpp/core/src,
 					"${SDKROOT}/usr/include/libxml2/**",
 				);
 				INFOPLIST_FILE = "InstoreApp/InstoreApp-Info.plist";
@@ -4634,7 +4634,7 @@
 					"$(inherited)",
 					"/Applications/Xcode\\ 2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include",
 					"./zxing/iphone/ZXingWidget/Classes/**",
-					"./zxing/cpp/core/src/**",
+					./zxing/cpp/core/src,
 					"${SDKROOT}/usr/include/libxml2/**",
 				);
 				INFOPLIST_FILE = "InstoreApp/InstoreApp-Info.plist";
