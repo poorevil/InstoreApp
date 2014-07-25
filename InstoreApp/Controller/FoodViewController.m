@@ -103,7 +103,7 @@
         for (int i = 0 ; i < self.itemLunBoImageList.count; i++) {
             CouponModel *couponModel = [self.itemLunBoImageList objectAtIndex:i];
             
-            EGOImageView *egoImageView = [[[EGOImageView alloc]initWithFrame:CGRectMake(0, 0, 320, 120)]autorelease];
+            EGOImageView *egoImageView = [[[EGOImageView alloc]initWithFrame:CGRectMake(0, 0, 320, 100)]autorelease];
 //            egoImageView.contentMode = UIViewContentModeScaleAspectFit;
             egoImageView.imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@/640*640.png",couponModel.imageUrl]];
             
@@ -111,7 +111,7 @@
         }
     }
     
-    self.lunboView = [[[CycleScrollView alloc] initWithFrame:CGRectMake(0, 0, 320, 120)
+    self.lunboView = [[[CycleScrollView alloc] initWithFrame:CGRectMake(0, 0, 320, 100)
                                            animationDuration:5] autorelease];
     self.lunboView.fetchContentViewAtIndex = ^UIView *(NSInteger pageIndex){
         return viewsArray[pageIndex];

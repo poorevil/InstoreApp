@@ -202,6 +202,8 @@
 		04162AF51982413300D05C80 /* MessageInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 04162AF41982413300D05C80 /* MessageInterface.m */; };
 		0418C7B11982495D001B5A2B /* MessageDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0418C7AF1982495D001B5A2B /* MessageDetailViewController.m */; };
 		0418C7B21982495D001B5A2B /* MessageDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0418C7B01982495D001B5A2B /* MessageDetailViewController.xib */; };
+		0418C7B6198275EC001B5A2B /* start-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0418C7B4198275EC001B5A2B /* start-568h@2x.png */; };
+		0418C7B7198275EC001B5A2B /* start@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0418C7B5198275EC001B5A2B /* start@2x.png */; };
 		04196A261962D2B30037C046 /* DailyDealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04196A241962D2B30037C046 /* DailyDealViewController.m */; };
 		04196A271962D2B30037C046 /* DailyDealViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04196A251962D2B30037C046 /* DailyDealViewController.xib */; };
 		04196A2B1962D3C90037C046 /* DailyDealViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04196A291962D3C90037C046 /* DailyDealViewCell.m */; };
@@ -1125,6 +1127,8 @@
 		0418C7AE1982495D001B5A2B /* MessageDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageDetailViewController.h; sourceTree = "<group>"; };
 		0418C7AF1982495D001B5A2B /* MessageDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageDetailViewController.m; sourceTree = "<group>"; };
 		0418C7B01982495D001B5A2B /* MessageDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageDetailViewController.xib; sourceTree = "<group>"; };
+		0418C7B4198275EC001B5A2B /* start-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "start-568h@2x.png"; sourceTree = "<group>"; };
+		0418C7B5198275EC001B5A2B /* start@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "start@2x.png"; sourceTree = "<group>"; };
 		04196A231962D2B30037C046 /* DailyDealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DailyDealViewController.h; path = ../View/DailyDealViewController.h; sourceTree = "<group>"; };
 		04196A241962D2B30037C046 /* DailyDealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DailyDealViewController.m; path = ../View/DailyDealViewController.m; sourceTree = "<group>"; };
 		04196A251962D2B30037C046 /* DailyDealViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DailyDealViewController.xib; path = ../View/DailyDealViewController.xib; sourceTree = "<group>"; };
@@ -3148,6 +3152,8 @@
 		4EF0907518FB52CE00ABFE7D /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				0418C7B4198275EC001B5A2B /* start-568h@2x.png */,
+				0418C7B5198275EC001B5A2B /* start@2x.png */,
 				040266F919820A3E003AC618 /* store_nav_right_love@2x.png */,
 				04EDCABC1981151200A60458 /* main_sacn_center@2x.png */,
 				04EDCAB61981149E00A60458 /* main_sacn_bg-568h@2x.png */,
@@ -3869,6 +3875,7 @@
 				03650F881945F52200016289 /* mainview_wifi@2x.png in Resources */,
 				0357FF2F1949EB4A0071BD5A /* CouponView_titleCell.xib in Resources */,
 				4EF0911F18FB52FD00ABFE7D /* topBar-btn-zoom@2x.png in Resources */,
+				0418C7B6198275EC001B5A2B /* start-568h@2x.png in Resources */,
 				FA4E65F819357B22005022E2 /* iOS-social-analytics-releasenote.html in Resources */,
 				0373FAC51976D8FD00A1CF68 /* nav_focuse_btn@2x.png in Resources */,
 				03650F571942FD9A00016289 /* MainView_GroupBuyingCell.xib in Resources */,
@@ -4211,6 +4218,7 @@
 				04EB8EFE197E49AA00CA65AC /* about_icon@2x.png in Resources */,
 				04EB8F1F197E643700CA65AC /* HuiGuangCell.xib in Resources */,
 				4EF0911618FB52FD00ABFE7D /* toolBar-btn-user@2x.png in Resources */,
+				0418C7B7198275EC001B5A2B /* start@2x.png in Resources */,
 				C1A9C888193F130300DD420F /* NimbusPhotos.bundle in Resources */,
 				FA4E65CA19357B21005022E2 /* UMSocialCustomAccount.html in Resources */,
 				FA4E65DD19357B21005022E2 /* UMSocialSnsPlatformManager.html in Resources */,
