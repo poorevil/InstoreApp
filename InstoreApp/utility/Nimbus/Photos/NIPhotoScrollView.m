@@ -659,7 +659,7 @@
 -(void)setLoadProgress:(CGFloat)progress
 {
     if (!self.hud) {
-        self.hud = [[MBProgressHUD alloc] initWithView:self];
+        self.hud = [[[MBProgressHUD alloc] initWithView:self]autorelease];
         self.hud.delegate = self;
         //            self.hud.labelText = @"Loading";
         

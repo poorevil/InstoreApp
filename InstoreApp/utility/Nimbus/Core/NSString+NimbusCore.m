@@ -81,7 +81,7 @@ NI_FIX_CATEGORY_BUG(NSStringNimbusCore)
 - (NSDictionary*)queryContentsUsingEncoding:(NSStringEncoding)encoding {
   NSCharacterSet* delimiterSet = [NSCharacterSet characterSetWithCharactersInString:@"&;"];
   NSMutableDictionary* pairs = [NSMutableDictionary dictionary];
-  NSScanner* scanner = [[NSScanner alloc] initWithString:self];
+  NSScanner* scanner = [[[NSScanner alloc] initWithString:self]autorelease];
   while (![scanner isAtEnd]) {
     NSString* pairString = nil;
     [scanner scanUpToCharactersFromSet:delimiterSet intoString:&pairString];

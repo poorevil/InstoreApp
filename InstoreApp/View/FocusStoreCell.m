@@ -99,7 +99,7 @@
 }
 
 -(void)focusStoreViewHasTap:(FocusStoreView *)view{
-    BOOL isFocus;
+    BOOL isFocus = NO;
     FocusStoreModel *focusStoreModel = nil;
     switch (view.tag) {
         case 100:
@@ -145,7 +145,7 @@
     self.view3 = nil;
     self.view4 = nil;
     self.delegate = nil;
-    [self.focusStoreInterface release];
+    self.focusStoreInterface = nil;
     
     [super dealloc];
 }

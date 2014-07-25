@@ -94,7 +94,7 @@
         CouponModel *coupon = [self.storeModel.coupons objectAtIndex:gesture.view.tag-900];
         CouponDetailViewController *cdvc = [[[CouponDetailViewController alloc] initWithNibName:@"CouponDetailViewController" bundle:nil] autorelease];
         cdvc.couponModel = coupon;
-        AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+        AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
         UINavigationController *nav = (UINavigationController *)appDelegate.tabBarController.selectedViewController;
         cdvc.hidesBottomBarWhenPushed = YES;
         [nav pushViewController:cdvc animated:YES];

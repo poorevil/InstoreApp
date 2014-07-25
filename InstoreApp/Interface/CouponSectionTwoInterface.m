@@ -43,12 +43,14 @@
                 [resultArray addObject:couponModel];
                 [couponModel release];
             }
-        }
-        if ([self.delegate respondsToSelector:@selector(getCouponSectionTwoListDidFinished:focusCount:totalCount:currentPage:)]) {
-            [self.delegate getCouponSectionTwoListDidFinished:resultArray
-                                             focusCount:focusCount
-                                             totalCount:totalCount
-                                            currentPage:currentPage];
+            
+            if ([self.delegate respondsToSelector:@selector(getCouponSectionTwoListDidFinished:focusCount:totalCount:currentPage:)]) {
+                [self.delegate getCouponSectionTwoListDidFinished:resultArray
+                                                       focusCount:focusCount
+                                                       totalCount:totalCount
+                                                      currentPage:currentPage];
+            }
+        
         }
     }else{
         if ([self.delegate respondsToSelector:@selector(getCouponSectionTwoListDidFailed:)]) {

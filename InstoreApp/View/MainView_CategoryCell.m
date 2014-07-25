@@ -97,7 +97,7 @@
 
 -(void)tapAction:(UIGestureRecognizer *)gesture
 {    
-    AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     [appDelegate.tabBarController setSelectedIndex:1];
     
     CustomNavigationController *nav = (CustomNavigationController *)appDelegate.tabBarController.selectedViewController;

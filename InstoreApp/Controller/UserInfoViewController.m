@@ -8,9 +8,7 @@
 
 #import "UserInfoViewController.h"
 #import "NSDate+DynamicDateString.h"
-
-
-
+#import "NSDate+DynamicDateString.h"
 
 @interface UserInfoViewController ()
 
@@ -67,10 +65,10 @@
     
     self.birthdayPickerView  = [[[UIDatePicker alloc]initWithFrame:CGRectMake(0, DeviceHeight , 320, 162)]autorelease];
     self.birthdayPickerView.datePickerMode = UIDatePickerModeDate;
-    self.birthdayPickerView.locale = [[NSLocale alloc]initWithLocaleIdentifier:@"zh"];
-    self.birthdayPickerView.minimumDate = [[NSDate alloc]initWithString:@"1970-01-01 00:00:00 -0500"];
-    self.birthdayPickerView.maximumDate = [[NSDate alloc]initWithString:@"2000-01-01 00:00:00 -0500"];
-    [self.view addSubview:self.birthdayPickerView];
+    self.birthdayPickerView.locale = [[[NSLocale alloc]initWithLocaleIdentifier:@"zh"]autorelease];
+    self.birthdayPickerView.minimumDate = [NSDate dateFromString:@"1970-01-01 00:00:00 -0500"];
+    self.birthdayPickerView.maximumDate = [NSDate dateFromString:@"2000-01-01 00:00:00 -0500"];
+    [self.view addSubview:_birthdayPickerView];
     
     self.genderList = @[@"男",@"女"];
 

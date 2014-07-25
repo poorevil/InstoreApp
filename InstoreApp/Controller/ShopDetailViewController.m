@@ -56,7 +56,8 @@
     
     self.storeDetailInterface = [[[StoreDetailInterface alloc] init] autorelease];
     self.storeDetailInterface.delegate = self;
-    [self.storeDetailInterface getStoreDetailByShopId:self.shopId commentSize:10 couponSize:10];
+//    [self.storeDetailInterface getStoreDetailByShopId:self.shopId commentSize:10 couponSize:10];
+    [self.storeDetailInterface getStoreDetailByShopId:self.shopId];
     
     self.hidesBottomBarWhenPushed = YES;
 }

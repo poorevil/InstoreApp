@@ -21,6 +21,8 @@
 
 #import "FocusStoreInterface.h"
 
+#import "UIViewController+ShareToWeChat.h"
+
 @interface StoreDetail_RestaurantViewController () <StoreDetailInterfaceDelegate>
 
 @property (nonatomic, retain) StoreModel *storeModel;
@@ -156,7 +158,7 @@
 
 -(void)shareBtnAction
 {
-    
+    [self shareToWeChatWithTitle:self.storeModel.title Description:nil LinkURL:[NSString stringWithFormat:@"%@/m/%@/store/detail/%d",BASE_INTERFACE_DOMAIN,MALL_CODE,self.storeModel.sid]];
 }
 
 #pragma mark - UITableViewDataSource<NSObject>

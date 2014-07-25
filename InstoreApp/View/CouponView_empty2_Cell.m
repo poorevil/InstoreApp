@@ -34,7 +34,7 @@
 }
 - (IBAction)addMyBrand:(UIButton *)sender {
     FocusStoreViewController *vc = [[FocusStoreViewController alloc]initWithNibName:@"FocusStoreViewController" bundle:nil];
-    AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     UINavigationController *nav = (UINavigationController *)appDelegate.tabBarController.selectedViewController;
     vc.hidesBottomBarWhenPushed = YES;
     [nav pushViewController:vc animated:YES];

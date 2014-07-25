@@ -113,12 +113,14 @@
 {
     self.storeInterface = [[[StoreInterface alloc] init] autorelease];
     self.storeInterface.delegate = self;
-    [self.storeInterface getStoreListByFloor:[NSString stringWithFormat:@"%d",self.filterFloorModel.fid]
-                                         cid:self.filterCategory.cid
-                                       order:nil
-                                      isLike:self.isShowLikeOnly?1:0
-                                      amount:20
-                                        page:self.currentPage];
+//    [self.storeInterface getStoreListByFloorId:self.filterFloorModel.fid]
+//                                         cid:self.filterCategory.cid
+//                                       order:nil
+//                                      isLike:self.isShowLikeOnly?1:0
+//                                      amount:20
+//                                        page:self.currentPage];
+    
+    [self.storeInterface getStoreListByFloorId:self.filterFloorModel.fid cid:self.filterCategory.cid buildingId:0 order:nil category:nil amount:20 page:self.currentPage];
 }
 
 - (void)didReceiveMemoryWarning
@@ -227,12 +229,19 @@
 }
 
 #pragma mark - StoreInterfaceDelegate <NSObject>
-
--(void)getStoreListDidFinished:(NSArray *)resultList totalCount:(NSInteger)totalCount currentPage:(NSInteger)currentPage
-{
+-(void)getStoreListDidFinished:(NSArray *)resultList
+                    totalCount:(NSInteger)totalCount
+                    storeCount:(NSInteger)storeCount    //用户关注的商家数
+                   currentPage:(NSInteger)currentPage
+                      category:(NSString *)category{
     [self.storeList addObjectsFromArray:resultList];
     [self.mtable reloadData];
 }
+
+//-(void)getStoreListDidFinished:(NSArray *)resultList totalCount:(NSInteger)totalCount currentPage:(NSInteger)currentPage
+//{
+//
+//}
 
 -(void)getStoreListDidFailed:(NSString *)errorMessage
 {

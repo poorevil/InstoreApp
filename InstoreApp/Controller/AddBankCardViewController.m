@@ -12,7 +12,7 @@
 #import "AddBankCardModel.h"
 #import "SaveAddBankCardInterface.h"
 
-@class BankCardViewController;
+#import "BankCardViewController.h"
 
 @interface AddBankCardViewController ()<SaveAddBankCardInterfaceDelegate>{
     SaveAddBankCardInterface *saveVC;

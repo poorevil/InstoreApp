@@ -40,7 +40,7 @@
     [self setBtnStyle:self.cardBtn];
     [self setBtnStyle:self.myScoreBtn];
     
-    AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     self.nav = (UINavigationController *)appDelegate.tabBarController.selectedViewController;
     
 
@@ -84,7 +84,7 @@
 #pragma mark 商场活动
 -(void)mallActicityBtnAction:(id)sender
 {
-    AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     UINavigationController *nav = (UINavigationController *)appDelegate.tabBarController.selectedViewController;
     MallNewsViewController *mnVC = [[[MallNewsViewController alloc] initWithNibName:@"MallNewsViewController" bundle:nil] autorelease];
     mnVC.hidesBottomBarWhenPushed = YES;
@@ -100,7 +100,7 @@
 }
 #pragma mark 找美食
 -(void)foodBtnAction:(id)sender{
-    AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     [appDelegate.tabBarController setSelectedIndex:2];
 }
 #pragma mark 恵逛模式
@@ -113,7 +113,7 @@
 #pragma mark 商场地图
 -(void)mapBtnAction:(id)sender
 {
-    AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     UINavigationController *nav = (UINavigationController *)appDelegate.tabBarController.selectedViewController;
     IndoorMapWithLeftPopBtnViewController *imvc = [[[IndoorMapWithLeftPopBtnViewController alloc] initWithFrame:nav.view.bounds] autorelease];
     imvc.hidesBottomBarWhenPushed = YES;

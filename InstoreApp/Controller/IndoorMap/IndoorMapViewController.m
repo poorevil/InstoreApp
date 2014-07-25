@@ -178,10 +178,11 @@
 
 #pragma mark - MBSMapViewControllerDelegate
 -(void)createFloorSwitchControl:(UIView *)mapView {
-    self.mFloorSwitcher = [[UITableView alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 50, 10, 40, self.view.frame.size.height)  style:UITableViewStylePlain];
+    self.mFloorSwitcher = [[[UITableView alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 50, 10, 40, self.view.frame.size.height)  style:UITableViewStylePlain]autorelease];
     
     MBSMall *currentMall = [MBSMall getCurrentMall];
     
+    [floorInforArray release];
     floorInforArray = [[currentMall getFloorArrayInNegativeSequence:YES] retain];
     
     [self.mFloorSwitcher setDelegate:self];

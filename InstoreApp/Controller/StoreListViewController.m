@@ -89,17 +89,43 @@ YouHuiOrderViewControllerDelegate>
     UIBarButtonItem *mapBarBtn = [[[UIBarButtonItem alloc] initWithCustomView:mapBtn] autorelease];
     
     UIButton *favorBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [favorBtn setImage:[UIImage imageNamed:@"Icon_phone"] forState:UIControlStateNormal];
+    [favorBtn setImage:[UIImage imageNamed:@"store_nav_right_love.png"] forState:UIControlStateNormal];
     [favorBtn addTarget:self action:@selector(showFocusedStoreList)
        forControlEvents:UIControlEventTouchUpInside];
     [favorBtn sizeToFit];
     UIBarButtonItem *favorBarBtn = [[[UIBarButtonItem alloc] initWithCustomView:favorBtn] autorelease];
     
-    self.navigationItem.rightBarButtonItems =@[favorBarBtn, mapBarBtn];
+    self.navigationItem.rightBarButtonItems =@[mapBarBtn,favorBarBtn];
     
     [self initHeaderView];
     
     [self loadItemList];
+    
+    [self initNavBarView];
+}
+
+-(void)initNavBarView{
+    UIView *view = [[[UIView alloc]initWithFrame:CGRectMake(0, 0, 150, 27)]autorelease];
+    view.backgroundColor = [UIColor clearColor];
+
+    UITextField *textField = [[UITextField alloc]initWithFrame:CGRectMake(0, 0, 150, 27)];
+    textField.placeholder = @"    输入品牌、商户、优惠";
+    textField.font = [UIFont systemFontOfSize:12];
+    textField.borderStyle = UITextBorderStyleRoundedRect;
+    [view addSubview:textField];
+    [textField release];
+    
+    UIImageView *imageSearchIcon = [[UIImageView alloc]initWithFrame:CGRectMake(7, 7, 14, 14)];
+    imageSearchIcon.image = [UIImage imageNamed:@"nav_search_gray.png"];
+    [view addSubview:imageSearchIcon];
+    [imageSearchIcon release];
+    
+    UIButton *btnSearch = [UIButton buttonWithType:UIButtonTypeCustom];
+    btnSearch.frame = CGRectMake(0, 0, 150, 27);
+    [btnSearch addTarget:self action:@selector(showSearchView:) forControlEvents:UIControlEventTouchUpInside];
+    [view addSubview:btnSearch];
+
+    self.navigationItem.titleView = view;
 }
 
 -(void)loadItemList
@@ -469,6 +495,11 @@ YouHuiOrderViewControllerDelegate>
     self.goodsCurrentPage = 1;
     [self.mtableView reloadData];
     [self loadItemList];
+}
+
+-(void)showSearchView:(id)sender;
+{
+    [super showSearchView];
 }
 
 @end

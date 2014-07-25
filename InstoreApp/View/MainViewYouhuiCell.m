@@ -40,7 +40,7 @@
 
 -(void)moreBtnAction:(id)sender
 {
-    AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     [appDelegate.tabBarController setSelectedIndex:1];
 }
 

@@ -137,5 +137,8 @@
         }
     }
 }
+- (void)parseErrorOccurred:(NSError *)error{
+    
+}
 
 @end

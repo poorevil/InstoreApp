@@ -342,11 +342,11 @@
         store = [groupLabel.subItems objectAtIndex:[indexPath row]];
     }
     
-    NSString *key = [NSString stringWithFormat:@"%ld", store.storeId];
+    NSString *key = [NSString stringWithFormat:@"%lld", store.storeId];
     MBSIconDownloader *iconDownloader = [self.imageDownloads objectForKey:key];
     if (iconDownloader != nil)
     {
-        CustomUITableViewCell *cell = (CustomUITableViewCell *)[self cellForRowAtIndexPath:iconDownloader.indexPathInTableView];
+        CustomUITableViewCell *cell = (CustomUITableViewCell *)[self tableView:self.listView cellForRowAtIndexPath:iconDownloader.indexPathInTableView];
         if (cell != Nil) {
             cell.imageView.image = iconObj;
         }

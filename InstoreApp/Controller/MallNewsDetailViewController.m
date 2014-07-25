@@ -23,6 +23,8 @@
 #import "StoreDetail_RestaurantViewController.h" //商户详情
 //#import "StoreModel.h"
 
+#import "UIViewController+ShareToWeChat.h"
+
 @interface MallNewsDetailViewController ()<CouponDetailInterfaceDelegate>{
     EGOImageView *egoHeaderView;
 //    UIButton *btnFocus;
@@ -63,10 +65,9 @@
     [btnShare setImageEdgeInsets:UIEdgeInsetsMake(13, 5, 13, 5)];
     [btnShare addTarget:self action:@selector(btnShareAction:) forControlEvents:UIControlEventTouchUpInside];
     
-    UIBarButtonItem *barItem2 = [[UIBarButtonItem alloc]initWithCustomView:btnShare];
-    
-    self.navigationItem.rightBarButtonItems = @[barItem2/*,barItem1*/];
-    [barItem2 release];
+    UIBarButtonItem *barItem = [[UIBarButtonItem alloc]initWithCustomView:btnShare];
+    self.navigationItem.rightBarButtonItems = @[barItem];
+    [barItem release];
     
     [self initHeaderView];
     
@@ -289,7 +290,7 @@
     }
 }
 -(void)btnShareAction:(UIButton *)sender{
-    
+    [self shareToWeChatWithTitle:self.couponModel.title Description:nil LinkURL:[NSString stringWithFormat:@"%@/m/%@/coupon/detail/%d",BASE_INTERFACE_DOMAIN,MALL_CODE,self.couponModel.cid]];
 }
 - (void)didReceiveMemoryWarning
 {

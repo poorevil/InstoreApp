@@ -11,7 +11,7 @@
 
 #import "UserInfoInterface.h"
 #import "UserInfoModel.h"
-
+#import "MessageViewController.h"
 #import "DownloadCouponsViewController.h"
 #import "StoreListFocusedViewController.h"
 
@@ -207,7 +207,10 @@
     switch (indexPath.section) {
         case 0:{
             //消息中心
-            
+            MessageViewController *vc = [[MessageViewController alloc]initWithNibName:@"MessageViewController" bundle:nil];
+            vc.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:vc animated:YES];
+            [vc release];
         }
             break;
         case 1:

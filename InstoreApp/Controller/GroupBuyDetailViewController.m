@@ -24,6 +24,8 @@
 #import "FocusInterface.h"
 #import "WebViewController.h"
 
+#import "UIViewController+ShareToWeChat.h"
+
 @interface GroupBuyDetailViewController () <UITableViewDataSource, UITableViewDelegate,
 CouponDetailInterfaceDelegate>
 @property (nonatomic,strong) UIView *headerView;
@@ -63,6 +65,16 @@ CouponDetailInterfaceDelegate>
     self.focusInterface = [[[FocusInterface alloc]init]autorelease];
     
     self.hidesBottomBarWhenPushed = YES;
+    
+    UIButton *btnShare = [UIButton buttonWithType:UIButtonTypeCustom];
+    btnShare.frame = CGRectMake(0, 0, 28, 44);
+    [btnShare setImage:[UIImage imageNamed:@"share_white.png"] forState:UIControlStateNormal];
+    [btnShare setImageEdgeInsets:UIEdgeInsetsMake(13, 5, 13, 5)];
+    [btnShare addTarget:self action:@selector(btnShareAction:) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIBarButtonItem *barItem = [[UIBarButtonItem alloc]initWithCustomView:btnShare];
+    self.navigationItem.rightBarButtonItems = @[barItem];
+    [barItem release];
 }
 
 - (void)didReceiveMemoryWarning
@@ -381,5 +393,9 @@ CouponDetailInterfaceDelegate>
     webVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:webVC animated:YES];
     [webVC release];
+}
+
+-(void)btnShareAction:(UIButton *)sender{
+    [self shareToWeChatWithTitle:self.couponModel.title Description:nil LinkURL:[NSString stringWithFormat:@"%@/m/%@/coupon/detail/%d",BASE_INTERFACE_DOMAIN,MALL_CODE,self.couponModel.cid]];
 }
 @end

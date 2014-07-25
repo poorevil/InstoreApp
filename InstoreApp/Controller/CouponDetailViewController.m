@@ -29,6 +29,8 @@
 #import "DownloadCouponDetailViewController.h"
 #import "DownloadCouponSuccessViewController.h"
 
+#import "UIViewController+ShareToWeChat.h"
+
 
 @interface CouponDetailViewController () <CouponDetailInterfaceDelegate,CouponDownloadInterfaceDelegate>
 @property (nonatomic,strong) UIView *headerView;
@@ -75,6 +77,16 @@
     self.focusInterface = [[[FocusInterface alloc]init]autorelease];
     
     self.hidesBottomBarWhenPushed = YES;
+    
+    UIButton *btnShare = [UIButton buttonWithType:UIButtonTypeCustom];
+    btnShare.frame = CGRectMake(0, 0, 28, 44);
+    [btnShare setImage:[UIImage imageNamed:@"share_white.png"] forState:UIControlStateNormal];
+    [btnShare setImageEdgeInsets:UIEdgeInsetsMake(13, 5, 13, 5)];
+    [btnShare addTarget:self action:@selector(btnShareAction:) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIBarButtonItem *barItem = [[UIBarButtonItem alloc]initWithCustomView:btnShare];
+    self.navigationItem.rightBarButtonItems = @[barItem];
+    [barItem release];
 }
 
 
@@ -427,6 +439,10 @@
         self.couponDownloadInterface.delegate = self;
     }
     [self.couponDownloadInterface getCouponDownloadByCouponId:self.couponModel.cid];
+}
+
+-(void)btnShareAction:(UIButton *)sender{
+    [self shareToWeChatWithTitle:self.couponModel.title Description:nil LinkURL:[NSString stringWithFormat:@"%@/m/%@/coupon/detail/%d",BASE_INTERFACE_DOMAIN,MALL_CODE,self.couponModel.cid]];
 }
 
 

@@ -20,6 +20,10 @@
 
 #import "FoodItemCell.h"
 
+#import "FocusStoreInterface.h"
+
+#import "StoreDetail_RestaurantViewController.h"
+
 @interface StoreListFocusedViewController () <YouHuiOrderViewControllerDelegate,
 FocusedStoreListInterfaceDelegate, StoreCategoryFilterViewControllerDelegate>
 
@@ -27,13 +31,15 @@ FocusedStoreListInterfaceDelegate, StoreCategoryFilterViewControllerDelegate>
 @property (nonatomic, assign) NSInteger storeCount;
 
 @property (nonatomic, retain) StoreListFocused_headerView *headerView;
-@property (nonatomic,strong) NSString *filterCategory;//分类筛选条件
+@property (nonatomic,retain) NSString *filterCategory;//分类筛选条件
 @property (nonatomic,retain) NSString *filterOrder;//排序
 
 @property (nonatomic, assign) NSInteger totalCount;
 @property (nonatomic, assign) NSInteger currentPage;
 
 @property (nonatomic, retain) FocusedStoreListInterface *focusedStoreListInterface;
+
+@property (retain, nonatomic) FocusStoreInterface *focusStoreInterface;
 
 @end
 
@@ -58,8 +64,40 @@ FocusedStoreListInterfaceDelegate, StoreCategoryFilterViewControllerDelegate>
     [self initHeaderView];
     
     [self loadItemList];
+    
+    self.focusStoreInterface = [[[FocusStoreInterface alloc]init]autorelease];
+    
+    
+    UIButton *btnEditor = [UIButton buttonWithType:UIButtonTypeCustom];
+    btnEditor.frame = CGRectMake(0, 0, 38, 19);
+    [btnEditor setImage:[UIImage imageNamed:@"bankcard_editor.png"] forState:UIControlStateNormal];
+    [btnEditor setImageEdgeInsets:UIEdgeInsetsMake(0, 10, 0, 10)];
+    [btnEditor addTarget:self action:@selector(btnEditorAction:) forControlEvents:UIControlEventTouchUpInside];
+    btnEditor.tag = 101;
+    UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc]initWithCustomView:btnEditor];
+    self.navigationItem.rightBarButtonItem = rightBtn;
+    [rightBtn release];
 }
 
+-(void)btnEditorAction:(UIButton *)sender{
+    static BOOL isEditor = NO;
+    if (isEditor == NO) {
+        [sender setImage:nil forState:UIControlStateNormal];
+        [sender setTitle:@"完成" forState:UIControlStateNormal];
+        
+        isEditor = YES;
+        self.mtableView.editing = YES;
+        
+        self.navigationItem.hidesBackButton = YES;
+    }else{
+        [sender setImage:[UIImage imageNamed:@"bankcard_editor.png"] forState:UIControlStateNormal];
+        [sender setTitle:@"" forState:UIControlStateNormal];
+        
+        isEditor = NO;
+        self.mtableView.editing = NO;
+        self.navigationItem.hidesBackButton = NO;
+    }
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -70,6 +108,12 @@ FocusedStoreListInterfaceDelegate, StoreCategoryFilterViewControllerDelegate>
 {
     self.mtableView = nil;
     self.itemList = nil;
+    self.focusStoreInterface = nil;
+    self.headerView = nil;
+    self.filterCategory = nil;
+    self.filterOrder = nil;
+    self.focusedStoreListInterface.delegate = nil;
+    self.focusedStoreListInterface = nil;
     
     [super dealloc];
 }
@@ -148,6 +192,16 @@ FocusedStoreListInterfaceDelegate, StoreCategoryFilterViewControllerDelegate>
     return 80;
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    StoreModel *storeModel = [self.itemList objectAtIndex:indexPath.row];
+    
+    StoreDetail_RestaurantViewController *sdrvc = [[StoreDetail_RestaurantViewController alloc] initWithNibName:@"StoreDetail_RestaurantViewController" bundle:nil];
+    sdrvc.shopId = storeModel.sid;
+    sdrvc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:sdrvc animated:YES];
+    [sdrvc release];
+}
+
 #pragma mark - @protocol YouHuiOrderViewControllerDelegate
 -(void)youHuiOrderViewControllerDidSelected:(NSUInteger)index
 {
@@ -216,6 +270,21 @@ FocusedStoreListInterfaceDelegate, StoreCategoryFilterViewControllerDelegate>
     self.currentPage = 1;
     [self.mtableView reloadData];
     [self loadItemList];
+}
+
+-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        StoreModel *storeModel = [self.itemList objectAtIndex:indexPath.row];
+        [self.focusStoreInterface focusStoreWithID:storeModel.sid WithMethod:@"DELETE"];
+        
+        [self.itemList removeObjectAtIndex:indexPath.row];
+        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    }
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return @"删除";
 }
 
 @end

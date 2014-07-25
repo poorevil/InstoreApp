@@ -185,12 +185,23 @@
 		0373FAC61976D8FD00A1CF68 /* nav_focuse_pressed_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0373FAC41976D8FD00A1CF68 /* nav_focuse_pressed_btn@2x.png */; };
 		0373FACB19781E6000A1CF68 /* share_white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0373FACA19781E6000A1CF68 /* share_white@2x.png */; };
 		03C6592A1928985D009CADA6 /* SearchResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C659291928985D009CADA6 /* SearchResultViewController.m */; };
+		040266F21981F52F003AC618 /* UIViewController+ShareToWeChat.m in Sources */ = {isa = PBXBuildFile; fileRef = 040266F11981F52F003AC618 /* UIViewController+ShareToWeChat.m */; };
+		040266F81981F560003AC618 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 040266F51981F560003AC618 /* libWeChatSDK.a */; };
+		040266FA19820A3E003AC618 /* store_nav_right_love@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 040266F919820A3E003AC618 /* store_nav_right_love@2x.png */; };
 		04104CAA197CF08600BEB31F /* downloadCouponSuccess_btn_view@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04104CA9197CF08600BEB31F /* downloadCouponSuccess_btn_view@2x.png */; };
 		04104CB1197CF22F00BEB31F /* downloadCouponSuccess_bg_l.png in Resources */ = {isa = PBXBuildFile; fileRef = 04104CAC197CF22F00BEB31F /* downloadCouponSuccess_bg_l.png */; };
 		04104CB2197CF22F00BEB31F /* downloadCouponSuccess_bg_r@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04104CAD197CF22F00BEB31F /* downloadCouponSuccess_bg_r@2x.png */; };
 		04104CB3197CF22F00BEB31F /* downloadCouponSuccess_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04104CAE197CF22F00BEB31F /* downloadCouponSuccess_bg@2x.png */; };
 		04104CB4197CF22F00BEB31F /* downloadCouponSuccess_img_success@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04104CAF197CF22F00BEB31F /* downloadCouponSuccess_img_success@2x.png */; };
 		04104CB5197CF22F00BEB31F /* downloadCouponSuccess_img_xiewen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04104CB0197CF22F00BEB31F /* downloadCouponSuccess_img_xiewen@2x.png */; };
+		04162AE819823D2A00D05C80 /* MessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04162AE619823D2A00D05C80 /* MessageViewController.m */; };
+		04162AE919823D2A00D05C80 /* MessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04162AE719823D2A00D05C80 /* MessageViewController.xib */; };
+		04162AEE19823E2D00D05C80 /* MessageViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04162AEC19823E2D00D05C80 /* MessageViewCell.m */; };
+		04162AEF19823E2D00D05C80 /* MessageViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04162AED19823E2D00D05C80 /* MessageViewCell.xib */; };
+		04162AF219823FA900D05C80 /* MessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04162AF119823FA900D05C80 /* MessageModel.m */; };
+		04162AF51982413300D05C80 /* MessageInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 04162AF41982413300D05C80 /* MessageInterface.m */; };
+		0418C7B11982495D001B5A2B /* MessageDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0418C7AF1982495D001B5A2B /* MessageDetailViewController.m */; };
+		0418C7B21982495D001B5A2B /* MessageDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0418C7B01982495D001B5A2B /* MessageDetailViewController.xib */; };
 		04196A261962D2B30037C046 /* DailyDealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04196A241962D2B30037C046 /* DailyDealViewController.m */; };
 		04196A271962D2B30037C046 /* DailyDealViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04196A251962D2B30037C046 /* DailyDealViewController.xib */; };
 		04196A2B1962D3C90037C046 /* DailyDealViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04196A291962D3C90037C046 /* DailyDealViewCell.m */; };
@@ -1089,12 +1100,31 @@
 		0373FACA19781E6000A1CF68 /* share_white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "share_white@2x.png"; sourceTree = "<group>"; };
 		03C659281928985D009CADA6 /* SearchResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultViewController.h; sourceTree = "<group>"; };
 		03C659291928985D009CADA6 /* SearchResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultViewController.m; sourceTree = "<group>"; };
+		040266F01981F52F003AC618 /* UIViewController+ShareToWeChat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ShareToWeChat.h"; sourceTree = "<group>"; };
+		040266F11981F52F003AC618 /* UIViewController+ShareToWeChat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ShareToWeChat.m"; sourceTree = "<group>"; };
+		040266F51981F560003AC618 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
+		040266F61981F560003AC618 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
+		040266F71981F560003AC618 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
+		040266F919820A3E003AC618 /* store_nav_right_love@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "store_nav_right_love@2x.png"; sourceTree = "<group>"; };
 		04104CA9197CF08600BEB31F /* downloadCouponSuccess_btn_view@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "downloadCouponSuccess_btn_view@2x.png"; sourceTree = "<group>"; };
 		04104CAC197CF22F00BEB31F /* downloadCouponSuccess_bg_l.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = downloadCouponSuccess_bg_l.png; sourceTree = "<group>"; };
 		04104CAD197CF22F00BEB31F /* downloadCouponSuccess_bg_r@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "downloadCouponSuccess_bg_r@2x.png"; sourceTree = "<group>"; };
 		04104CAE197CF22F00BEB31F /* downloadCouponSuccess_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "downloadCouponSuccess_bg@2x.png"; sourceTree = "<group>"; };
 		04104CAF197CF22F00BEB31F /* downloadCouponSuccess_img_success@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "downloadCouponSuccess_img_success@2x.png"; sourceTree = "<group>"; };
 		04104CB0197CF22F00BEB31F /* downloadCouponSuccess_img_xiewen@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "downloadCouponSuccess_img_xiewen@2x.png"; sourceTree = "<group>"; };
+		04162AE519823D2A00D05C80 /* MessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageViewController.h; sourceTree = "<group>"; };
+		04162AE619823D2A00D05C80 /* MessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageViewController.m; sourceTree = "<group>"; };
+		04162AE719823D2A00D05C80 /* MessageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageViewController.xib; sourceTree = "<group>"; };
+		04162AEB19823E2D00D05C80 /* MessageViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageViewCell.h; sourceTree = "<group>"; };
+		04162AEC19823E2D00D05C80 /* MessageViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageViewCell.m; sourceTree = "<group>"; };
+		04162AED19823E2D00D05C80 /* MessageViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageViewCell.xib; sourceTree = "<group>"; };
+		04162AF019823FA900D05C80 /* MessageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageModel.h; sourceTree = "<group>"; };
+		04162AF119823FA900D05C80 /* MessageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageModel.m; sourceTree = "<group>"; };
+		04162AF31982413300D05C80 /* MessageInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageInterface.h; sourceTree = "<group>"; };
+		04162AF41982413300D05C80 /* MessageInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageInterface.m; sourceTree = "<group>"; };
+		0418C7AE1982495D001B5A2B /* MessageDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageDetailViewController.h; sourceTree = "<group>"; };
+		0418C7AF1982495D001B5A2B /* MessageDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageDetailViewController.m; sourceTree = "<group>"; };
+		0418C7B01982495D001B5A2B /* MessageDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageDetailViewController.xib; sourceTree = "<group>"; };
 		04196A231962D2B30037C046 /* DailyDealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DailyDealViewController.h; path = ../View/DailyDealViewController.h; sourceTree = "<group>"; };
 		04196A241962D2B30037C046 /* DailyDealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DailyDealViewController.m; path = ../View/DailyDealViewController.m; sourceTree = "<group>"; };
 		04196A251962D2B30037C046 /* DailyDealViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DailyDealViewController.xib; path = ../View/DailyDealViewController.xib; sourceTree = "<group>"; };
@@ -1859,6 +1889,7 @@
 				4EF09178190026DE00ABFE7D /* libiconv.dylib in Frameworks */,
 				4EF09175190026D500ABFE7D /* AddressBook.framework in Frameworks */,
 				4EF09176190026D500ABFE7D /* AddressBookUI.framework in Frameworks */,
+				040266F81981F560003AC618 /* libWeChatSDK.a in Frameworks */,
 				4EF09171190026BB00ABFE7D /* CoreVideo.framework in Frameworks */,
 				04EB8EEC197E19F100CA65AC /* libMBSMapViewController.a in Frameworks */,
 				4EF0916F1900264B00ABFE7D /* CoreMedia.framework in Frameworks */,
@@ -2191,6 +2222,8 @@
 				045FF86619790D3F00F4DA22 /* DownloadCouponModel.m */,
 				04EB8F20197E6CE300CA65AC /* HuiGuangModel.h */,
 				04EB8F21197E6CE300CA65AC /* HuiGuangModel.m */,
+				04162AF019823FA900D05C80 /* MessageModel.h */,
+				04162AF119823FA900D05C80 /* MessageModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2278,6 +2311,8 @@
 				045FF86E197914B800F4DA22 /* MyDownloadCouponInterface.m */,
 				047B9076197FB95A005BAFEA /* UpdateUserInfoInterface.h */,
 				047B9077197FB95A005BAFEA /* UpdateUserInfoInterface.m */,
+				04162AF31982413300D05C80 /* MessageInterface.h */,
+				04162AF41982413300D05C80 /* MessageInterface.m */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
@@ -2520,6 +2555,16 @@
 			name = StoreListFocusedCell;
 			sourceTree = "<group>";
 		};
+		040266F41981F560003AC618 /* Wechat */ = {
+			isa = PBXGroup;
+			children = (
+				040266F51981F560003AC618 /* libWeChatSDK.a */,
+				040266F61981F560003AC618 /* WXApi.h */,
+				040266F71981F560003AC618 /* WXApiObject.h */,
+			);
+			path = Wechat;
+			sourceTree = "<group>";
+		};
 		04196A211962D2750037C046 /* DailyDealViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -2552,6 +2597,9 @@
 				046C112319767D1C007F7FE3 /* MyViewCell.h */,
 				046C112419767D1C007F7FE3 /* MyViewCell.m */,
 				046C112519767D1C007F7FE3 /* MyViewCell.xib */,
+				04162AEB19823E2D00D05C80 /* MessageViewCell.h */,
+				04162AEC19823E2D00D05C80 /* MessageViewCell.m */,
+				04162AED19823E2D00D05C80 /* MessageViewCell.xib */,
 				045FF8591978CBCA00F4DA22 /* QrCodeViewCell.h */,
 				045FF85A1978CBCA00F4DA22 /* QrCodeViewCell.m */,
 				045FF85B1978CBCA00F4DA22 /* QrCodeViewCell.xib */,
@@ -2571,6 +2619,12 @@
 				04F3D4A7197F96AD008A828C /* UserInfoViewController.h */,
 				04F3D4A8197F96AD008A828C /* UserInfoViewController.m */,
 				04F3D4A9197F96AD008A828C /* UserInfoViewController.xib */,
+				04162AE519823D2A00D05C80 /* MessageViewController.h */,
+				04162AE619823D2A00D05C80 /* MessageViewController.m */,
+				04162AE719823D2A00D05C80 /* MessageViewController.xib */,
+				0418C7AE1982495D001B5A2B /* MessageDetailViewController.h */,
+				0418C7AF1982495D001B5A2B /* MessageDetailViewController.m */,
+				0418C7B01982495D001B5A2B /* MessageDetailViewController.xib */,
 				046C112919768F4A007F7FE3 /* MyVIPCardViewController.h */,
 				046C112A19768F4A007F7FE3 /* MyVIPCardViewController.m */,
 				046C112B19768F4A007F7FE3 /* MyVIPCardViewController.xib */,
@@ -2994,6 +3048,7 @@
 		4E96088818E48D6700418798 /* utility */ = {
 			isa = PBXGroup;
 			children = (
+				040266F41981F560003AC618 /* Wechat */,
 				04EB8EF2197E3B6E00CA65AC /* RTLabel */,
 				C1A9C8BF194164D000DD420F /* Reachability */,
 				C1A9C893193F17C100DD420F /* MBProgressHUD */,
@@ -3021,6 +3076,8 @@
 				C1A9C8A119405F2400DD420F /* Static.m */,
 				C1E094F1194A9FF900AA814B /* UILabelStrikeThrough.h */,
 				C1E094F2194A9FF900AA814B /* UILabelStrikeThrough.m */,
+				040266F01981F52F003AC618 /* UIViewController+ShareToWeChat.h */,
+				040266F11981F52F003AC618 /* UIViewController+ShareToWeChat.m */,
 			);
 			path = utility;
 			sourceTree = "<group>";
@@ -3091,6 +3148,7 @@
 		4EF0907518FB52CE00ABFE7D /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				040266F919820A3E003AC618 /* store_nav_right_love@2x.png */,
 				04EDCABC1981151200A60458 /* main_sacn_center@2x.png */,
 				04EDCAB61981149E00A60458 /* main_sacn_bg-568h@2x.png */,
 				04EDCAB71981149E00A60458 /* main_sacn_bg@2x.png */,
@@ -3878,6 +3936,7 @@
 				4EF090EB18FB52FD00ABFE7D /* sale-bar-tableft@2x.png in Resources */,
 				4EF090E218FB52FD00ABFE7D /* my-icon-radio@2x.png in Resources */,
 				FA4E65CC19357B21005022E2 /* UMSocialDataService.html in Resources */,
+				040266FA19820A3E003AC618 /* store_nav_right_love@2x.png in Resources */,
 				4EF0910318FB52FD00ABFE7D /* store-feedback-input@2x.png in Resources */,
 				4ECBF73918F4B9A4003963E1 /* tmpimg5.jpg in Resources */,
 				04FBB844196EC3BD00A46F9C /* btnBackGround_focus@2x.png in Resources */,
@@ -3899,6 +3958,7 @@
 				03650F821945F52200016289 /* mainview_map@2x.png in Resources */,
 				4EF0913418FC1E4600ABFE7D /* miaosha_3.jpg in Resources */,
 				4E9608D518E9CA5D00418798 /* ms1.jpg in Resources */,
+				0418C7B21982495D001B5A2B /* MessageDetailViewController.xib in Resources */,
 				4EF0911518FB52FD00ABFE7D /* toolBar-btn-store@2x.png in Resources */,
 				FA4E65EE19357B21005022E2 /* library_background.png in Resources */,
 				03650F8F1945FC9400016289 /* nav_search_press@2x.png in Resources */,
@@ -4122,6 +4182,7 @@
 				4EF0911018FB52FD00ABFE7D /* store-icon-share-black@2x.png in Resources */,
 				04EDCABA1981149E00A60458 /* main_sacn_bg@2x.png in Resources */,
 				035214A919586DDD00F92B55 /* StoreDetail_cardCell.xib in Resources */,
+				04162AEF19823E2D00D05C80 /* MessageViewCell.xib in Resources */,
 				045FF8641979035400F4DA22 /* myDownloadCoupon_yiguoqi@2x.png in Resources */,
 				FA4E65C819357B21005022E2 /* UMSocialControllerService.html in Resources */,
 				C1E094FB194AA92000AA814B /* cellview_favor_no_btn@2x.png in Resources */,
@@ -4193,6 +4254,7 @@
 				FA4E65DF19357B21005022E2 /* UMSocialTencentData.html in Resources */,
 				045C0A451973CE040075A09E /* FirstViewController.xib in Resources */,
 				4EF090FB18FB52FD00ABFE7D /* share-alpha-bg@2x.png in Resources */,
+				04162AE919823D2A00D05C80 /* MessageViewController.xib in Resources */,
 				4EF0911118FB52FD00ABFE7D /* store-top-share-white@2x.png in Resources */,
 				4E2C6E0418D760DF00DF3772 /* banner.jpg in Resources */,
 				4EF0913318FC1E4600ABFE7D /* miaosha_2.jpg in Resources */,
@@ -4281,6 +4343,7 @@
 				0312034A19193BD800077E25 /* FloorInterface.m in Sources */,
 				0312033B1917DE8000077E25 /* ServiceModel.m in Sources */,
 				04EF11FF19640DA20066C902 /* BankDiscoundListViewController.m in Sources */,
+				04162AE819823D2A00D05C80 /* MessageViewController.m in Sources */,
 				4ECBF70B18F4449E003963E1 /* BindPhoneViewController.m in Sources */,
 				044FA0B7197A5B6E003A932C /* DownloadCouponDetailHeaderViewCell.m in Sources */,
 				03C6592A1928985D009CADA6 /* SearchResultViewController.m in Sources */,
@@ -4341,10 +4404,12 @@
 				0491F109196A589400E7DC5A /* MallNewsDetail_threeCell.m in Sources */,
 				03573B8E190EA45800A11A33 /* RuntimeModel.m in Sources */,
 				C1A9C886193F130300DD420F /* NIPagingScrollView.m in Sources */,
+				04162AF219823FA900D05C80 /* MessageModel.m in Sources */,
 				035214CE1958A23100F92B55 /* StoreList_headerView.m in Sources */,
 				4E2C6DAC18D7502100DF3772 /* main.m in Sources */,
 				03573AD719055DE200A11A33 /* StoreListView.m in Sources */,
 				0463530319751E7F00BDB159 /* SearchClearHistoryInterface.m in Sources */,
+				0418C7B11982495D001B5A2B /* MessageDetailViewController.m in Sources */,
 				C1A9C891193F13A600DD420F /* PhotoAlbumToolBarView.m in Sources */,
 				0468405A197CC92A00B49DC1 /* DownloadCouponSuccessViewController.m in Sources */,
 				C1A9C879193F130300DD420F /* NINonEmptyCollectionTesting.m in Sources */,
@@ -4361,6 +4426,7 @@
 				03650F651945562700016289 /* MainViewInterface.m in Sources */,
 				0357FF9819533DC30071BD5A /* FoodViewPromotionInterface.m in Sources */,
 				0491F114196A81B800E7DC5A /* MallNewsDetail_fourCell.m in Sources */,
+				04162AF51982413300D05C80 /* MessageInterface.m in Sources */,
 				0373FA4F197433CB00A1CF68 /* FocusedStoreListInterface.m in Sources */,
 				C195320B191B6D5000D3BFA8 /* EGOImageButton.m in Sources */,
 				0357FF2E1949EB4A0071BD5A /* CouponView_titleCell.m in Sources */,
@@ -4385,6 +4451,7 @@
 				4E9608A518E48D6700418798 /* MessageInterceptor.m in Sources */,
 				042E47F119650D0E00CD945A /* WebViewController.m in Sources */,
 				03573BA0190EBB8300A11A33 /* SearchInterface.m in Sources */,
+				04162AEE19823E2D00D05C80 /* MessageViewCell.m in Sources */,
 				C1A9C8BC194164C600DD420F /* ASIHTTPRequest.m in Sources */,
 				0357FF391949FAA00071BD5A /* CouponView_empty_tileView.m in Sources */,
 				0491F104196A56E900E7DC5A /* MallNewsDetail_twoCell.m in Sources */,
@@ -4400,6 +4467,7 @@
 				045FF86719790D3F00F4DA22 /* DownloadCouponModel.m in Sources */,
 				4E9608A418E48D6700418798 /* LoadMoreTableFooterView.m in Sources */,
 				C1A9C8A219405F2400DD420F /* Static.m in Sources */,
+				040266F21981F52F003AC618 /* UIViewController+ShareToWeChat.m in Sources */,
 				042E47FD1965559D00CD945A /* BankCardModel.m in Sources */,
 				C183471C1925BF75002F7B9B /* BuildingModel.m in Sources */,
 				C1953214191CC00D00D3BFA8 /* CouponsDownloadListInterface.m in Sources */,
@@ -4618,6 +4686,7 @@
 					"$(PROJECT_DIR)/InstoreApp/utility/umeng_ios_social_sdk_3.3-1.8_custom/UMSocial_Sdk_Extra_Frameworks/Wechat",
 					"$(PROJECT_DIR)/InstoreApp/utility/MBSMap_lib/Release-iphoneos",
 					"$(PROJECT_DIR)/InstoreApp/utility/MBSMap_lib",
+					"$(PROJECT_DIR)/InstoreApp/utility/Wechat",
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
@@ -4663,6 +4732,7 @@
 					"$(PROJECT_DIR)/InstoreApp/utility/umeng_ios_social_sdk_3.3-1.8_custom/UMSocial_Sdk_Extra_Frameworks/Wechat",
 					"$(PROJECT_DIR)/InstoreApp/utility/MBSMap_lib/Release-iphoneos",
 					"$(PROJECT_DIR)/InstoreApp/utility/MBSMap_lib",
+					"$(PROJECT_DIR)/InstoreApp/utility/Wechat",
 				);
 				OTHER_LDFLAGS = (
 					"-lxml2",

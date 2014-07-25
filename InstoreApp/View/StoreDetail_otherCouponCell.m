@@ -78,7 +78,7 @@
     }
     [vc setCouponModel:cm];
     vc.hidesBottomBarWhenPushed = YES;
-    AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     UINavigationController *nav = (UINavigationController *)appDelegate.tabBarController.selectedViewController;
     [nav pushViewController:vc animated:YES];
     vc.hidesBottomBarWhenPushed = NO;

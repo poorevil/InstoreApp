@@ -36,7 +36,7 @@
             if (array) {
                 for (NSDictionary *dict in array) {
                     DownloadCouponModel *downloadCouponModel = [[DownloadCouponModel alloc]initWithJsonMap:dict];
-                    downloadCouponModel.storeModel = [[StoreModel alloc]initWithJsonMap:[dict objectForKey:@"store"]];
+                    downloadCouponModel.storeModel = [[[StoreModel alloc]initWithJsonMap:[dict objectForKey:@"store"]]autorelease];
                     [resultList addObject:downloadCouponModel];
                     [downloadCouponModel release];
                 }

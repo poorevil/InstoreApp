@@ -53,7 +53,7 @@
     
 }
 -(void)goNextAction:(UIButton *)sender{
-    AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     [appDelegate initWindow];
 }
 

@@ -73,9 +73,7 @@
     self.myTableView.tableFooterView = footView;
     [footView release];
 }
--(void)viewWillAppear:(BOOL)animated{
-    
-}
+
 -(void)refreshData{
     self.currentPage = 1;
     [self.itemList removeAllObjects];

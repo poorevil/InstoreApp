@@ -19,6 +19,8 @@
 #endif
 
 #define DeviceHeight [UIScreen mainScreen].bounds.size.height
+//微信appkey
+#define WeChatKey @"wxaefaa127baded2d2"
 
 
 #define BASE_INTERFACE_DOMAIN       @"http://www.wise-mall.com/"

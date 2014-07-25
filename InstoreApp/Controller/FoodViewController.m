@@ -120,9 +120,9 @@
         return self.itemLunBoImageList.count;
     };
     self.lunboView.TapActionBlock = ^(NSInteger pageIndex){
-        NSLog(@"点击了第%d个",pageIndex);
+//        NSLog(@"点击了第%d个",pageIndex);
         
-        AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+        AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
         UINavigationController *nav = (UINavigationController *)appDelegate.tabBarController.selectedViewController;
         
         

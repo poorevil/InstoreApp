@@ -45,7 +45,7 @@
 */
 -(void)tapAction:(UIGestureRecognizer *)sender
 {
-    AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     UINavigationController *nav = (UINavigationController *)appDelegate.tabBarController.selectedViewController;
     BindPhoneViewController *bpvc = [[[BindPhoneViewController alloc] initWithNibName:@"BindPhoneViewController" bundle:nil] autorelease];
     bpvc.hidesBottomBarWhenPushed = YES;
@@ -74,7 +74,7 @@
     [super dealloc];
 }
 - (IBAction)btnUpdataUserInfoAction:(UIButton *)sender {
-    AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     UINavigationController *nav = (UINavigationController *)appDelegate.tabBarController.selectedViewController;
     UserInfoViewController *vc = [[UserInfoViewController alloc]init];
     vc.userInfoModel = self.userInfo;
