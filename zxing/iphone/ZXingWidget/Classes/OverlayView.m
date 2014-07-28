@@ -115,6 +115,7 @@ static const CGFloat kLicenseButtonPadding = 10;
           imageCenter.frame = CGRectMake(53, 136, 214, 214);
           label.frame = CGRectMake(0, 375, 320, 30);
           button.frame = CGRectMake(120, 450, 80, 27);
+          imageBG.image = [UIImage imageNamed:@"main_sacn_bg-568h.png"];
       }else{
           imageCenter.frame = CGRectMake(53, 101, 214, 214);
           label.frame = CGRectMake(0, 340, 320, 30);
