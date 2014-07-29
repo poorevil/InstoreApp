@@ -41,9 +41,7 @@
         MallNewsModel *model = [articles objectAtIndex:i];
         view.titleLabel.text = model.title;
         view.articleImageView.imageURL = [NSURL URLWithString:model.image];
-//        view.url = model.url;
         [self.parentView addSubview:view];
-        [view release];
         
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
         [view addGestureRecognizer:tap];

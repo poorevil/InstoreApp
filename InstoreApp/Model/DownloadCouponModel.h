@@ -19,10 +19,14 @@
 @property (retain, nonatomic) NSString *instruction;
 @property (retain, nonatomic) NSString *couponCode;
 @property (assign, nonatomic) NSInteger couponStatus;  // 优惠券状态 <0, "未消费/正常">, <1, "已消费">, <3, "已过期">;
+@property (retain, nonatomic) NSString *barCodeUrl;  //条码图片url
 @property (retain, nonatomic) NSDate *startTime;
 @property (retain, nonatomic) NSDate *endTime;
+@property (retain, nonatomic) NSDate *downloadTime;
 @property (retain, nonatomic) NSString *imageURL;
 @property (retain, nonatomic) StoreModel *storeModel;
+
+
 
 -(id)initWithJsonMap:(NSDictionary *)jsonMap;
 

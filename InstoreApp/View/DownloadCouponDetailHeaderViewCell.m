@@ -39,8 +39,8 @@
             self.labFree.frame = frame;
         }
         self.labInstruction.text = downloadCouponModel.instruction;
-//        self.imageCode.imageURL = [NSURL URLWithString:@""];
-//        self.labCode.text = ;
+        self.imageCode.imageURL = [NSURL URLWithString:downloadCouponModel.barCodeUrl];
+        self.labCode.text = downloadCouponModel.couponCode;
         
     }
 }

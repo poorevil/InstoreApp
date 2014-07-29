@@ -4733,7 +4733,7 @@
 					"$(PROJECT_DIR)/InstoreApp/utility/Wechat",
 				);
 				ONLY_ACTIVE_ARCH = NO;
-				OTHER_CFLAGS = "-D_FOR_DEBUG_";
+				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = (
 					"-lxml2",
 					"-all_load",
@@ -4779,7 +4779,7 @@
 					"$(PROJECT_DIR)/InstoreApp/utility/MBSMap_lib",
 					"$(PROJECT_DIR)/InstoreApp/utility/Wechat",
 				);
-				OTHER_CFLAGS = "-D_FOR_DEBUG_";
+				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = (
 					"-lxml2",
 					"-all_load",

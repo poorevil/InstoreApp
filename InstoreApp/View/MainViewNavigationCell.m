@@ -90,7 +90,7 @@
     MallNewsViewController *mnVC = [[[MallNewsViewController alloc] initWithNibName:@"MallNewsViewController" bundle:nil] autorelease];
     mnVC.hidesBottomBarWhenPushed = YES;
     [self.nav pushViewController:mnVC animated:YES];
-    mnVC.hidesBottomBarWhenPushed = NO;
+//    mnVC.hidesBottomBarWhenPushed = NO;
 }
 #pragma mark 每日优惠
 - (IBAction)btnDailyDealAction:(UIButton *)sender {
