@@ -16,6 +16,7 @@
 #import "FoodViewController.h"
 #import "WiFiViewController.h"
 #import "HuiGuangViewController.h"
+#import "MessageViewController.h"
 
 @implementation MainViewNavigationCell
 
@@ -84,11 +85,11 @@
 #pragma mark 商场活动
 -(void)mallActicityBtnAction:(id)sender
 {
-    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    UINavigationController *nav = (UINavigationController *)appDelegate.tabBarController.selectedViewController;
+//    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+//    UINavigationController *nav = (UINavigationController *)appDelegate.tabBarController.selectedViewController;
     MallNewsViewController *mnVC = [[[MallNewsViewController alloc] initWithNibName:@"MallNewsViewController" bundle:nil] autorelease];
     mnVC.hidesBottomBarWhenPushed = YES;
-    [nav pushViewController:mnVC animated:YES];
+    [self.nav pushViewController:mnVC animated:YES];
     mnVC.hidesBottomBarWhenPushed = NO;
 }
 #pragma mark 每日优惠
@@ -139,7 +140,10 @@
 }
 #pragma mark 我的消息
 -(void)btnMyMessageAction:(UIButton *)sender{
-    
+    MessageViewController *vc = [[MessageViewController alloc]initWithNibName:@"MessageViewController" bundle:nil];
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.nav pushViewController:vc animated:YES];
+    [vc release];
 }
 
 

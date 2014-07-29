@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 
-@interface MessageViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
+@interface MessageViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate>
 @property (retain, nonatomic) IBOutlet UITableView *myTableView;
 
 @end

@@ -8,7 +8,8 @@
 
 #import "MallNewsInterface.h"
 #import "JSONKit.h"
-#import "CouponModel.h"
+//#import "CouponModel.h"
+#import "MallNewsModel.h"
 
 @implementation MallNewsInterface
 
@@ -30,13 +31,11 @@
     id jsonObj = [jsonStr objectFromJSONString];
     
     if (jsonObj) {
-        NSInteger totalCount = 0;
+        NSInteger totalCount = [[jsonObj objectForKey:@"totalCount"] integerValue];
         NSInteger currentPage = 0;
         NSMutableArray *resultList = [NSMutableArray array];
-        if (jsonObj && [[jsonObj objectForKey:@"totalCount"] integerValue] > 0) {
-            totalCount = [[jsonObj objectForKey:@"totalCount"] integerValue];
+        if (totalCount  > 0) {
             currentPage = [[jsonObj objectForKey:@"currentPage"] integerValue];
-            
             
             NSArray *newsListArray = [jsonObj objectForKey:@"list"];
             if (newsListArray) {
@@ -48,29 +47,28 @@
                     NSMutableArray *articles = [NSMutableArray array];
                     [newsListItem setObject:articles forKey:@"articles"];
                     for (NSDictionary *newsDict in [newsList objectForKey:@"articles"]) {
-                        CouponModel *couponModel = [[CouponModel alloc]initWithJsonMap:newsDict];
-                        [articles addObject:couponModel];
-                        [couponModel release];
-                        
+                        MallNewsModel *mallnewsModel = [[MallNewsModel alloc]initWithJsonMap:newsDict];
+                        [articles addObject:mallnewsModel];
+                        [mallnewsModel release];
                     }
                 }
             }
         }
-        if ([self.delegate respondsToSelector:@selector(getMallNewsDidFinished:totalCount:currentPage:)]) {
+        if (_delegate && [_delegate respondsToSelector:@selector(getMallNewsDidFinished:totalCount:currentPage:)]) {
             [self.delegate getMallNewsDidFinished:resultList
                                        totalCount:totalCount
                                       currentPage:currentPage];
         }
         
     }else{
-        if ([self.delegate respondsToSelector:@selector(getmallNewsDidFailed:)]) {
+        if (_delegate && [_delegate respondsToSelector:@selector(getmallNewsDidFailed:)]) {
             [self.delegate getmallNewsDidFailed:@"获取失败！(response empty)"];
         }
     }
 }
 
 -(void)requestIsFailed:(NSError *)error{
-    if ([self.delegate respondsToSelector:@selector(getmallNewsDidFailed:)]) {
+    if (_delegate &&[_delegate respondsToSelector:@selector(getmallNewsDidFailed:)]) {
         [self.delegate getmallNewsDidFailed:@"获取失败！(response empty)"];
     }
 }

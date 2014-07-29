@@ -44,6 +44,7 @@
     self.title = @"我的消息";
     self.hidesBottomBarWhenPushed = YES;
     self.itemList = [NSMutableArray array];
+    self.navigationItem.rightBarButtonItem = nil;
     
     self.messageInterface = [[[MessageInterface alloc]init]autorelease];
     self.messageInterface.delegate = self;

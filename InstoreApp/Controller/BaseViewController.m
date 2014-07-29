@@ -9,6 +9,7 @@
 #import "BaseViewController.h"
 #import "MainViewController.h"
 #import "SearchViewController.h"
+#import "AppDelegate.h"
 
 @interface BaseViewController ()
 
@@ -75,10 +76,10 @@
 -(void)showSearchView;
 {
     SearchViewController *searchVC = [[[SearchViewController alloc] initWithNibName:@"SearchViewController" bundle:nil] autorelease];
-    UINavigationController *nav = [[[UINavigationController alloc] initWithRootViewController:searchVC] autorelease];
-    [self presentViewController:nav
-                       animated:NO
-                     completion:nil];
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    UINavigationController *nav = (UINavigationController *)appDelegate.tabBarController.selectedViewController;
+    searchVC.hidesBottomBarWhenPushed = YES;
+    [nav pushViewController:searchVC animated:NO];
 }
 
 -(void)dealloc

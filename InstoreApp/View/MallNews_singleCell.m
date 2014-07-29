@@ -9,7 +9,8 @@
 #import "MallNews_singleCell.h"
 #import "NSDate+DynamicDateString.h"
 #import "EGOImageView.h"
-#import "CouponModel.h"
+//#import "CouponModel.h"
+#import "MallNewsModel.h"
 
 @implementation MallNews_singleCell
 
@@ -34,11 +35,11 @@
     
     NSString *dateStr = [self.dict objectForKey:@"date"];
     self.dateLabel.text = dateStr == nil?@"":[[NSDate dateFromString:dateStr] toDateString];
-    CouponModel *mnm = [[self.dict objectForKey:@"articles"] objectAtIndex:0];
+    MallNewsModel *mnm = [[self.dict objectForKey:@"articles"] objectAtIndex:0];
     self.titleLabel.text = mnm.title;
-    self.articleDateLabel.text = [mnm.endTime toDateString];
+    self.articleDateLabel.text = [mnm.date toDateString];
     self.summaryLabel.text = mnm.summary;
-    self.articleImageView.imageURL = [NSURL URLWithString:mnm.imageUrl];
+    self.articleImageView.imageURL = [NSURL URLWithString:mnm.image];
 }
 
 -(void)dealloc

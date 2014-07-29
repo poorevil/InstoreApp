@@ -79,6 +79,8 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
+    
     [self.navigationController.navigationBar setBarTintColor:[UIColor whiteColor]];
 //    self.navigationController.navigationBarHidden = YES;
 }
@@ -413,12 +415,11 @@
     NSLog(@"%@",errorMsg);
 }
 
-//- (void)zxingController:(ZXingWidgetController*)controller didScanResult:(NSString *)result{
-//    NSLog(@"%@",result);
-//    [controller dismissModalViewControllerAnimated:YES];
+//#ifdef _FOR_DEBUG_
+//-(BOOL) respondsToSelector:(SEL)aSelector {
+//    printf("SELECTOR: %s\n", [NSStringFromSelector(aSelector) UTF8String]);
+//    return [super respondsToSelector:aSelector];
 //}
-//- (void)zxingControllerDidCancel:(ZXingWidgetController*)controller{
-//    [controller dismissModalViewControllerAnimated:YES];
-//}
+//#endif
 
 @end

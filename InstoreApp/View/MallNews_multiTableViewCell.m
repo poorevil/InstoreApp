@@ -9,7 +9,8 @@
 #import "MallNews_multiTableViewCell.h"
 #import "EGOImageView.h"
 #import "NSDate+DynamicDateString.h"
-#import "CouponModel.h"
+//#import "CouponModel.h"
+#import "MallNewsModel.h"
 
 
 @implementation MallNews_multiTableViewCell
@@ -36,21 +37,35 @@
     NSString *dateStr = [self.dict objectForKey:@"date"];
     self.dateLabel.text = dateStr == nil?@"":[[NSDate dateFromString:dateStr] toDateString];
     
-    CouponModel *mnm = [[self.dict objectForKey:@"articles"] objectAtIndex:0];
+    MallNewsModel *mnm = [[self.dict objectForKey:@"articles"] objectAtIndex:0];
     self.titleLabel_1.text = mnm.title;
-    self.articleImageView_1.imageURL = [NSURL URLWithString:mnm.imageUrl];
+    self.articleImageView_1.imageURL = [NSURL URLWithString:mnm.image];
     
-    if ([[self.dict objectForKey:@"articles"] count] >1) {
+    if ([[self.dict objectForKey:@"articles"] count] >0) {
         mnm = [[self.dict objectForKey:@"articles"] objectAtIndex:1];
         self.titleLabel_2.text = mnm.title;
-        self.articleImageView_2.imageURL = [NSURL URLWithString:mnm.imageUrl];
+        self.articleImageView_2.imageURL = [NSURL URLWithString:mnm.image];
     }
     
-    if ([[self.dict objectForKey:@"articles"] count] >2) {
+    if ([[self.dict objectForKey:@"articles"] count] >1) {
         mnm = [[self.dict objectForKey:@"articles"] objectAtIndex:2];
         self.titleLabel_3.text = mnm.title;
-        self.articleImageView_3.imageURL = [NSURL URLWithString:mnm.imageUrl];
+        self.articleImageView_3.imageURL = [NSURL URLWithString:mnm.image];
     }
+    
+//    NSArray *modelList = [self.dict objectForKey:@"articles"];
+//    MallNewsModel *model1 = [modelList objectAtIndex:0];
+//    
+//    self.titleLabel_1.text = model1.title;
+//    self.articleImageView_1.imageURL = [NSURL URLWithString:model1.image];
+//    
+//    self.titleLabel_2.text = model1.title;
+//    self.articleImageView_2.imageURL = [NSURL URLWithString:model1.image];
+//    
+//    if (modelList.count) {
+//        <#statements#>
+//    }
+    
 }
 
 -(void)dealloc

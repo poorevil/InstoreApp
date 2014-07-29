@@ -34,8 +34,6 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)dealloc {
   [[NSNotificationCenter defaultCenter] removeObserver:self];
-    
-    [super dealloc];
 }
 
 
@@ -104,7 +102,7 @@
 
   NSMutableArray* views = [_reuseIdentifiersToRecycledViews objectForKey:reuseIdentifier];
   if (nil == views) {
-    views = [[[NSMutableArray alloc] init]autorelease];
+    views = [[NSMutableArray alloc] init];
     [_reuseIdentifiersToRecycledViews setObject:views forKey:reuseIdentifier];
   }
   [views addObject:view];

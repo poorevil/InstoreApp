@@ -75,7 +75,6 @@ static NSMutableArray* sAppearanceStack = nil;
 
   NINavigationAppearanceSnapshot *snapshot = [[NINavigationAppearanceSnapshot alloc] initForNavigationController:navigationController];
   [sAppearanceStack addObject:snapshot];
-    [snapshot  release];
 }
 
 

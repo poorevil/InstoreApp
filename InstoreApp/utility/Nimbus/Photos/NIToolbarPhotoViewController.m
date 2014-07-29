@@ -114,7 +114,6 @@
     self.toolbar.items = [NSArray arrayWithObjects:
                           flexibleSpace, scrubberItem, flexibleSpace,
                           nil];
-      [scrubberItem release];
 
     [_photoScrubberView setSelectedPhotoIndex:self.photoAlbumView.centerPageIndex];
     
@@ -164,7 +163,7 @@
                           flexibleSpace,
                           nil];
   }
-    [flexibleSpace release];
+
 }
 
 

@@ -310,7 +310,7 @@ CouponViewInterfaceDelegate, YouhuiCategoryViewControllerDelegate,YouHuiOrderVie
         cell = [[[NSBundle mainBundle] loadNibNamed:@"CouponView_focusedCell" owner:self options:nil] objectAtIndex:0];
     }
     cell.cm1 = [self.itemListAll objectAtIndex:indexPath.row * 2];
-    if (self.itemListAll.count < indexPath.row * 2 +1) {
+    if (self.itemListAll.count <= (indexPath.row * 2 +1)) {
         cell.cm2 = nil;
     }else{
         cell.cm2 = [self.itemListAll objectAtIndex:(indexPath.row * 2 + 1)];

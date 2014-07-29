@@ -59,7 +59,7 @@ const CGFloat NIPagingScrollViewDefaultPageHorizontalMargin = 10;
 
   _viewRecycler = [[NIViewRecycler alloc] init];
 
-  self.pagingScrollView = [[[UIScrollView alloc] initWithFrame:self.bounds]autorelease];
+  self.pagingScrollView = [[UIScrollView alloc] initWithFrame:self.bounds];
   self.pagingScrollView.pagingEnabled = YES;
 
   self.pagingScrollView.autoresizingMask = (UIViewAutoresizingFlexibleWidth
@@ -74,7 +74,6 @@ const CGFloat NIPagingScrollViewDefaultPageHorizontalMargin = 10;
   self.pagingScrollView.showsHorizontalScrollIndicator = NO;
 
   [self addSubview:self.pagingScrollView];
-    [_pagingScrollView release];
 }
 
 
@@ -307,7 +306,6 @@ const CGFloat NIPagingScrollViewDefaultPageHorizontalMargin = 10;
       && [self.delegate respondsToSelector:@selector(pagingScrollViewDidChangePages:)]) {
     [self.delegate pagingScrollViewDidChangePages:self];
   }
-    [_visiblePages release];
 }
 
 

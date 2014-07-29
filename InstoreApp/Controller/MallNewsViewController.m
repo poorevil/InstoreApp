@@ -7,11 +7,11 @@
 //
 
 #import "MallNewsViewController.h"
-//#import "MallNewsModel.h"
-#import "CouponModel.h"
+#import "MallNewsModel.h"
 #import "MallNewsInterface.h"
 #import "MallNews_singleCell.h"
-#import "MallNews_multiTableViewCell.h"
+#import "MallNews_multiCell.h"
+//#import "MallNews_multiTableViewCell.h"
 #import "MallNewsDetailViewController.h"
 #import "WebViewController.h"
 
@@ -77,11 +77,10 @@
 {
     NSDictionary *dict = [self.itemList objectAtIndex:indexPath.row];
     NSInteger template = [[dict objectForKey:@"template"] integerValue];//0: 单页格式； 1: **多图文**
-    
-    
+
     NSString *cellIdentifer = @"MallNews_singleCell";
     if (template == 1) {
-        cellIdentifer = @"MallNews_multiTableViewCell";
+        cellIdentifer = @"MallNews_multiCell";
     }
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifer];
@@ -90,8 +89,7 @@
                                              owner:self
                                            options:nil] objectAtIndex:0];
     }
-    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-    
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];    
     [cell setDict:dict];
     
     return cell;
@@ -102,22 +100,21 @@
 {
     NSDictionary *dict = [self.itemList objectAtIndex:indexPath.row];
     NSInteger template = [[dict objectForKey:@"template"] integerValue];//0: 单页格式； 1: **多图文**
-    
-    
-    NSInteger height = 310;
-    if (template == 1) {
-        height = 340;
+    if (template == 0) {
+        return 310;
+    }else{
+        NSArray *articles = [dict objectForKey:@"articles"];
+        return (articles.count - 1) * 66 + 200;
     }
-    return height;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     NSDictionary *dict = [self.itemList objectAtIndex:indexPath.row];
-//    MallNewsModel *mnm = [[dict objectForKey:@"articles"] objectAtIndex:0];
-    CouponModel *couponModel = [[dict objectForKey:@"articles"] objectAtIndex:0];
+    MallNewsModel *mnm = [[dict objectForKey:@"articles"] objectAtIndex:0];
+//    CouponModel *couponModel = [[dict objectForKey:@"articles"] objectAtIndex:0];
     WebViewController *webVC = [[WebViewController alloc]init];
     webVC.hidesBottomBarWhenPushed = YES;
-    webVC.urlStr = couponModel.link;
+    webVC.urlStr = mnm.url;
     [self.navigationController pushViewController:webVC animated:YES];
     [webVC release];
 }
@@ -137,4 +134,12 @@
 {
     NSLog(@"%@",errorMsg);
 }
+
+//#ifdef _FOR_DEBUG_
+//-(BOOL) respondsToSelector:(SEL)aSelector {
+//    printf("SELECTOR: %s\n", [NSStringFromSelector(aSelector) UTF8String]);
+//    return [super respondsToSelector:aSelector];
+//}
+//#endif
+
 @end

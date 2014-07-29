@@ -230,7 +230,7 @@
 
   // Create a new cache entry.
   if (nil == info) {
-    info = [[[NIMemoryCacheInfo alloc] init]autorelease];
+    info = [[NIMemoryCacheInfo alloc] init];
     info.name = name;
   }
 
@@ -327,8 +327,8 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)removeAllObjects {
-  self.cacheMap = [[[NSMutableDictionary alloc] init]autorelease];
-  self.lruCacheObjects = [[[NILinkedList alloc] init]autorelease];
+  self.cacheMap = [[NSMutableDictionary alloc] init];
+  self.lruCacheObjects = [[NILinkedList alloc] init];
 }
 
 
@@ -345,7 +345,6 @@
       [self removeCacheInfoForName:name];
     }
   }
-    [cacheMap release];
   cacheMap = nil;
 }
 

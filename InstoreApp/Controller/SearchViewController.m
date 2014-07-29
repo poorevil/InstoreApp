@@ -80,8 +80,8 @@
         [self.searchBar resignFirstResponder];
         [self.navigationItem.rightBarButtonItem setTitle:@"关闭"];
     }else{
-        [self dismissViewControllerAnimated:NO completion:nil];
-//        [self.navigationController popViewControllerAnimated:YES];
+//        [self dismissViewControllerAnimated:NO completion:nil];
+        [self.navigationController popViewControllerAnimated:NO];
     }
 }
 
@@ -149,9 +149,18 @@
 #pragma mark - SearchHotKeywordInterfaceDelegate <NSObject>
 -(void)getSearchHotKeywordAndHistoryListDidFinished:(NSArray *)hot AndHistory:(NSArray *)history{
     self.hotKeyWordList = hot;
-    [self.btnHotWord1 setTitle:[hot objectAtIndex:0] forState:UIControlStateNormal];
-    [self.btnHotWord2 setTitle:[hot objectAtIndex:1] forState:UIControlStateNormal];
-    [self.btnHotWord3 setTitle:[hot objectAtIndex:2] forState:UIControlStateNormal];
+    if (hot.count > 0) {
+        [self.btnHotWord1 setTitle:[hot objectAtIndex:0] forState:UIControlStateNormal];
+        self.btnHotWord1.hidden = NO;
+    }
+    if (hot.count > 1) {
+        [self.btnHotWord2 setTitle:[hot objectAtIndex:1] forState:UIControlStateNormal];
+        self.btnHotWord2.hidden = NO;
+    }
+    if (hot.count > 2) {
+        [self.btnHotWord3 setTitle:[hot objectAtIndex:2] forState:UIControlStateNormal];
+        self.btnHotWord3.hidden = NO;
+    }    
     
     self.historyList = history;
     [self.mtableView reloadData];
