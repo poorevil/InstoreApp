@@ -7,9 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "CategoryModel.h"
+#import "PositionModel.h"
 
-@class CategoryModel;
-@class PositionModel;
 @interface StoreModel : NSObject
 
 @property (nonatomic,strong) NSString *title;
@@ -22,12 +22,11 @@
 @property (nonatomic, assign) NSInteger avgPrice;//人均消费
 @property (nonatomic, retain) NSString *slogan;//广告语
 
-
 @property (nonatomic,strong) NSString *logoUrl;//logo图片地址
 @property (nonatomic,strong) CategoryModel *categoryModel;
 
-
 @property (nonatomic,strong) NSString *roomNum;//商户房间号
+
 @property (nonatomic,strong) PositionModel *position;
 @property (nonatomic,strong) NSString *address;
 @property (nonatomic,strong) NSString *tel;

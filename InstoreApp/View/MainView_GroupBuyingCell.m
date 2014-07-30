@@ -42,8 +42,16 @@
     CouponViewController *vc = [nav.viewControllers objectAtIndex:0];
     
     [vc loadTypeData:3];
+//    vc.cid = 0;
     vc.isOrder1 = YES;
     vc.isOrder = YES;
+
+//    CategoryModel *cm = [self.dataList objectAtIndex:(gesture.view.tag - 100)];
+//    vc.filterCategory = cm;
+//    vc.cid = cm.cid;
+//    [vc loadCategoryData];
+//    vc.isOrder1 = YES;
+    
 }
 
 -(void)setDataList:(NSArray *)dataList

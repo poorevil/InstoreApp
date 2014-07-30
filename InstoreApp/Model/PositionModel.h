@@ -7,9 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "FloorModel.h"
+#import "BuildingModel.h"
 
-@class FloorModel;
-@class BuildingModel;
 @interface PositionModel : NSObject
 
 @property (nonatomic,strong) BuildingModel *building;

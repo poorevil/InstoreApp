@@ -13,7 +13,7 @@
 #import "CouponDetailWithTitleCell.h" //1、3
 #import "MallNewsDetail_threeCell.h"//2
 
-#import "CouponDetailInterface.h"
+//#import "CouponDetailInterface.h"
 #import "StoreModel.h"
 #import "StoreDetail_RestaurantViewController.h"
 
@@ -21,10 +21,12 @@
 
 #import "UIViewController+ShareToWeChat.h"
 
+#import "DownloadCouponDetailInterface.h"
 
-@interface DownloadCouponDetailViewController ()<CouponDetailInterfaceDelegate>
 
-@property (nonatomic,strong) CouponDetailInterface *couponDetailInterface;
+@interface DownloadCouponDetailViewController ()<DownloadCouponDetailInterfaceDelegate>
+
+@property (nonatomic ,retain) DownloadCouponDetailInterface *downloadCouponDetailInterface;
 
 @end
 
@@ -47,9 +49,9 @@
     self.title = @"优惠券详情";
     self.hidesBottomBarWhenPushed = YES;
     
-    self.couponDetailInterface = [[[CouponDetailInterface alloc] init] autorelease];
-    self.couponDetailInterface.delegate = self;
-    [self.couponDetailInterface getCouponDetailByCouponId:self.cid];
+    self.downloadCouponDetailInterface = [[[DownloadCouponDetailInterface alloc]init]autorelease];
+    self.downloadCouponDetailInterface.delegate = self;
+    [self.downloadCouponDetailInterface getMyDownloadCouponDetailWithID:self.cid];
     
     UIButton *btnShare = [UIButton buttonWithType:UIButtonTypeCustom];
     btnShare.frame = CGRectMake(0, 0, 28, 44);
@@ -80,7 +82,7 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     switch (indexPath.section) {
         case 0:{
-            return 166;
+            return 143;
         }
             break;
         case 1:{
@@ -93,7 +95,7 @@
             break;
         case 3:{
             //计算内容的size
-            CGSize labelFontSize = [self.couponModel.descriptionStr sizeWithFont:[UIFont systemFontOfSize:14] constrainedToSize:CGSizeMake(300, 999) lineBreakMode:NSLineBreakByWordWrapping];
+            CGSize labelFontSize = [self.downloadCouponModel.description sizeWithFont:[UIFont systemFontOfSize:14] constrainedToSize:CGSizeMake(300, 999) lineBreakMode:NSLineBreakByWordWrapping];
             return labelFontSize.height+60;
         }
             break;
@@ -135,7 +137,7 @@
             CouponDetailWithTitleCell *cell1 = (CouponDetailWithTitleCell *)cell;
             cell1.titleLabel.text = @"有效期";
             cell1.iconView.image = [UIImage imageNamed:@"store-icon-clock.png"];
-            cell1.detailLabel.text = [NSString stringWithFormat:@"%@ 至 %@",[self.couponModel.startTime toDateString],[self.couponModel.endTime toDateString]];
+            cell1.detailLabel.text = [NSString stringWithFormat:@"%@ 至 %@",[self.downloadCouponModel.startTime toDateString],[self.downloadCouponModel.endTime toDateString]];
         }
             break;
         case 2:{
@@ -146,14 +148,14 @@
                 {
                     threeCell.iconImage.image = [UIImage imageNamed:@"Icon_store.png"];
                     threeCell.labClass.text = @"商户";
-                    threeCell.labName.text = self.couponModel.store.title;
+                    threeCell.labName.text = self.downloadCouponModel.storeModel.title;
                 }
                     break;
                 case 1:
                 {
                     threeCell.iconImage.image = [UIImage imageNamed:@"Icon_address.png"];
                     threeCell.labClass.text = @"地址";
-                    threeCell.labName.text = self.couponModel.store.address;
+                    threeCell.labName.text = self.downloadCouponModel.storeModel.address;
                 }
                     break;
                 case 2:
@@ -162,7 +164,7 @@
                     threeCell.labClass.text = @"电话";
                     //                    threeCell.img.hidden = YES;
                     threeCell.labName.textColor = [UIColor colorWithRed:60/255.0 green:179/255.0 blue:235/255.0 alpha:1];
-                    threeCell.labName.text = self.couponModel.store.tel;
+                    threeCell.labName.text = self.downloadCouponModel.storeModel.tel;
                 }
             }
         }
@@ -171,10 +173,10 @@
             CouponDetailWithTitleCell *withTitleCell = (CouponDetailWithTitleCell *)cell;
             withTitleCell.titleLabel.text = @"优惠劵详情";
             withTitleCell.iconView.image = [UIImage imageNamed:@"store-icon-feed"];
-            withTitleCell.detailLabel.text = self.couponModel.descriptionStr;
+            withTitleCell.detailLabel.text = self.downloadCouponModel.description;
             withTitleCell.detailLabel.numberOfLines = 39;
             //计算内容的size
-            CGSize labelFontSize = [self.couponModel.descriptionStr sizeWithFont:[UIFont systemFontOfSize:14]
+            CGSize labelFontSize = [self.downloadCouponModel.description sizeWithFont:[UIFont systemFontOfSize:14]
                                                                constrainedToSize:CGSizeMake(300, 999)
                                                                    lineBreakMode:NSLineBreakByWordWrapping];
             
@@ -195,7 +197,7 @@
             case 0:{
                 //商户
                 StoreDetail_RestaurantViewController *vc = [[StoreDetail_RestaurantViewController alloc]initWithNibName:@"StoreDetail_RestaurantViewController" bundle:nil];
-                vc.shopId = self.couponModel.store.sid;
+                vc.shopId = self.downloadCouponModel.storeModel.sid;
                 [self.navigationController pushViewController:vc animated:YES];
                 [vc release];
             }
@@ -207,7 +209,7 @@
                 break;
             case 2:{
                 //电话
-                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel:%@",self.couponModel.store.tel]]];
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel:%@",self.downloadCouponModel.storeModel.tel]]];
             }
                 break;
         }
@@ -215,20 +217,18 @@
 }
 
 
-#pragma mark - CouponDetailInterfaceDelegate <NSObject>
--(void)getCouponDetailDidFinished:(CouponModel *)couponModel
-{
-    self.couponModel = couponModel;
-    
+#pragma mark - @protocol DownloadCouponDetailInterfaceDelegate <NSObject>
+
+-(void)getMyDownloadCouponDetailDidFinished:(DownloadCouponModel *)model{
+    self.downloadCouponModel = model;
     [self.myTableView reloadData];
 }
--(void)getCouponDetailDidFailed:(NSString *)errorMessage
-{
-    NSLog(@"%@",errorMessage);
+-(void)getMyDownloadCouponDetailDidFailed:(NSString *)errorMsg{
+    NSLog(@"%s:%@",__FUNCTION__,errorMsg);
 }
 
 -(void)btnShareAction:(UIButton *)sender{
-    [self shareToWeChatWithTitle:self.couponModel.title Description:nil LinkURL:[NSString stringWithFormat:@"%@/m/%@/coupon/detail/%d",BASE_INTERFACE_DOMAIN,MALL_CODE,self.couponModel.cid]];
+    [self shareToWeChatWithTitle:self.downloadCouponModel.title Description:nil LinkURL:[NSString stringWithFormat:@"%@/m/%@/coupon/detail/%d",BASE_INTERFACE_DOMAIN,MALL_CODE,self.downloadCouponModel.cid]];
 }
 
 - (void)didReceiveMemoryWarning
@@ -239,11 +239,11 @@
 
 - (void)dealloc {
     [_myTableView release];
-    
-    self.couponModel = nil;
-    self.couponDetailInterface.delegate = nil;
-    self.couponDetailInterface = nil;
+
     self.downloadCouponModel = nil;
+    
+    self.downloadCouponDetailInterface.delegate = nil;
+    self.downloadCouponDetailInterface = nil;
     
     [super dealloc];
 }

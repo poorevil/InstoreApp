@@ -30,7 +30,9 @@
 #import "AboutViewController.h"
 
 
-@interface MeViewController () <UserInfoInterfaceDelegate>
+@interface MeViewController () <UserInfoInterfaceDelegate>{
+//    UISwitch *_switchButton;
+}
 
 @property (nonatomic,strong) MeHeaderView *headerView;
 
@@ -115,7 +117,8 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     
     if (!cell) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1
@@ -124,27 +127,28 @@
         cell.textLabel.font = [UIFont systemFontOfSize:14];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
-    UISwitch *_switchButton = nil;
     switch (indexPath.section) {
         case 0:{
             static NSString *CellIdentifier = @"MyViewCell";
             MyViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             if (!cell) {
                 cell = [[[NSBundle mainBundle] loadNibNamed:@"MyViewCell" owner:self options:nil] objectAtIndex:0];
+                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             }
-            cell.textDict = @{@"title": @"消息中心",@"count":@"(100)"};
+            cell.textDict = @{@"title": @"消息中心",@"count":@"(10)"};
 //            cell.textDict = @{@"title": @"消息中心",@"count":[NSString stringWithFormat:@"(%d)",self.userInfo.]};
             return cell;
         }
             break;
-        case 1:
+        case 1:{
             switch (indexPath.row) {
                 case 0:{
                     //已下载的优惠劵
-                    static NSString *CellIdentifier = @"MyViewCell";
+                    static NSString *CellIdentifier = @"MyViewCell1";
                     MyViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
                     if (!cell) {
                         cell = [[[NSBundle mainBundle] loadNibNamed:@"MyViewCell" owner:self options:nil] objectAtIndex:0];
+                        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                     }
                     cell.textDict = @{@"title": @"已下载的优惠券",@"count":[NSString stringWithFormat:@"(%d)",self.userInfo.promotionCount]};
                     return cell;
@@ -152,47 +156,61 @@
                     break;
                 case 1:
                     cell.textLabel.text = @"收藏的优惠";
+//                    cell.detailTextLabel.text = @"";
+                    return cell;
                     break;
             }
-            break;
-            
-        case 2:
+        }
+            break;            
+        case 2:{
             switch (indexPath.row) {
                 case 0:
                     cell.textLabel.text = @"我关注的商家";
+                    return cell;
                     break;
                 case 1:
                     cell.textLabel.text = @"我关注的卡惠";
                     cell.detailTextLabel.text=@"银行信用卡优惠";
+                    return cell;
                     break;
             }
+        }
             break;
-        case 3:
+        case 3:{
             switch (indexPath.row) {
                 case 0:
                     cell.textLabel.text = @"我的电子会员卡";
+                    return cell;
                     break;
                 case 1:
                     cell.textLabel.text = @"商场会员指南";
+                    return cell;
                     break;
                 case 2:
                     cell.textLabel.text = @"绑定手机号";
+                    return cell;
                     break;
             }
+        }
             break;
-        case 4:
+        case 4:{
             cell.textLabel.text = @"接收已关注商家的优惠信息";
             cell.accessoryType = UITableViewCellAccessoryNone;
+            static UISwitch *_switchButton;
             if (!_switchButton) {
                 _switchButton = [[UISwitch alloc] init];
                 _switchButton.frame = CGRectMake(tableView.frame.size.width - _switchButton.frame.size.width - 10, (cell.frame.size.height - _switchButton.frame.size.height)/2, _switchButton.frame.size.width, _switchButton.frame.size.height);
                 [_switchButton setOn:_recommend];
                 [_switchButton addTarget:self action:@selector(switchButtonChangeAchtion:) forControlEvents:UIControlEventValueChanged];
                 [cell.contentView addSubview:_switchButton];
+                [_switchButton release];
             }
+            return cell;
+        }
             break;
         case 5:
             cell.textLabel.text = @"关于";
+            return cell;
     }
     
     return  cell;
@@ -271,7 +289,7 @@
                 case 1:{
                     //商场会员指南
                     WebViewController *vc = [[WebViewController alloc]initWithNibName:@"WebViewController" bundle:nil];
-                    vc.urlStr = @"http://www.baidu.com";
+                    vc.urlStr = self.userInfo.memberGuideUrl;
                     self.hidesBottomBarWhenPushed = YES;
                     [self.navigationController pushViewController:vc animated:YES];
                     self.hidesBottomBarWhenPushed = NO;
@@ -328,11 +346,11 @@
 
 -(void)switchButtonChangeAchtion:(UISwitch *)sender{
     if (sender.on) {
-        [sender setOn:NO];
+//        [sender setOn:NO];
         [self.setStoreFocusRecommend setStoreFocusRecomend:NO];
         _recommend = NO;
     }else{
-        [sender setOn:YES];
+//        [sender setOn:YES];
         [self.setStoreFocusRecommend setStoreFocusRecomend:YES];
         _recommend = YES;
     }
@@ -347,6 +365,8 @@
     self.userInfo = nil;
     
     self.setStoreFocusRecommend = nil;
+    
+//    _switchButton = nil;
     
     [super dealloc];
 }

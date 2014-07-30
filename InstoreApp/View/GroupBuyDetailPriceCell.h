@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UILabelStrikeThrough.h"
 
 @interface GroupBuyDetailPriceCell : UITableViewCell
 
 @property (nonatomic, retain) IBOutlet UILabel *priceLabel;
-@property (nonatomic, retain) IBOutlet UILabel *oldPriceLabel;
+@property (nonatomic, retain) IBOutlet UILabelStrikeThrough *oldPriceLabel;
 @property (nonatomic, retain) IBOutlet UILabel *amountLabel;
 
 @end

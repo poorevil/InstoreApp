@@ -28,8 +28,12 @@
 #import "WebViewController.h"
 #import "DownloadCouponDetailViewController.h"
 #import "DownloadCouponSuccessViewController.h"
-
+#import "MallNewsDetail_threeCell.h"
+#import "StoreDetail_RestaurantViewController.h"
 #import "UIViewController+ShareToWeChat.h"
+
+#import "GroupBuyDetailCardCell.h"
+#import "BankCardModel.h"
 
 
 @interface CouponDetailViewController () <CouponDetailInterfaceDelegate,CouponDownloadInterfaceDelegate>
@@ -70,7 +74,6 @@
     [self.couponDetailInterface getCouponDetailByCouponId:self.couponModel.cid];
     
     [self initHeaderView];
-//    [self initFooterView];
     
     self.title = @"优惠劵详情";
     
@@ -99,8 +102,6 @@
 #pragma mark - private method
 -(void)refreshUI
 {
-//    [self initHeaderView];
-//    [self initFooterView];
     [self.mtableView reloadData];
 }
 
@@ -152,40 +153,6 @@
     }
 }
 
--(void)initFooterView
-{
-    //TODO:tabbar!!
-//    if (self.couponModel.promotionType==2) {//1: 优惠活动; 2: 优惠券; 3: 团购;
-//        self.footerView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 44)] autorelease];
-//        self.downloadBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-//        
-//        UIImage *originalImage = [UIImage imageNamed:@"store-btn-sb-red"];
-//        UIEdgeInsets insets = UIEdgeInsetsMake(0, 20, 6, 300);
-//        UIImage *normalBg = [originalImage resizableImageWithCapInsets:insets];
-//        
-//        originalImage = [UIImage imageNamed:@"store-btn-sb-red-pressed"];
-//        UIImage *pressedBg = [originalImage resizableImageWithCapInsets:insets];
-//        
-//        [self.downloadBtn setBackgroundImage:normalBg forState:UIControlStateNormal];
-//        [self.downloadBtn setBackgroundImage:pressedBg forState:UIControlStateSelected];
-//        [self.downloadBtn setBackgroundImage:pressedBg forState:UIControlStateHighlighted];
-//        [self.downloadBtn setBackgroundImage:pressedBg forState:UIControlStateDisabled];
-//        [self.downloadBtn setTitleColor:[UIColor grayColor] forState:UIControlStateDisabled];
-//        
-//        [self.downloadBtn setTitle:@"立即下载" forState:UIControlStateNormal];
-//        self.downloadBtn.frame = CGRectMake((320-280)/2,
-//                                       2,
-//                                       280,
-//                                       40);
-//        [self.downloadBtn addTarget:self action:@selector(downloadBtnAction:) forControlEvents:UIControlEventTouchUpInside];
-//        [self.footerView addSubview:self.downloadBtn];
-//        self.mtableView.tableFooterView = self.footerView;
-//        
-//        if (self.couponModel.collectCount > 0) {
-//            self.downloadBtn.enabled = NO;
-//        }
-//    }
-}
 
 -(void)downloadBtnAction:(id)sender
 {
@@ -197,49 +164,69 @@
 }
 
 #pragma mark - UITableViewDataSource<NSObject>
-
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 5;
+}
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     switch (section) {
         case 0:
             return 1;//title
         case 1:
-            return 1;//有效期
+            return 1;
         case 2:
-            return 1;//商户。。。
+            return 1;//有效期
         case 3:
+            return 3;//商户。。。
+        case 4:
             return 1;//优惠劵详情
             
         default:
             return 1;
     }
 }
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 4;
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    switch (indexPath.section) {
+        case 0:
+            return 36;
+        case 1:
+            return 40;
+        case 2:
+            return 72;
+        case 3:
+            return 50;
+        case 4:{
+            //计算内容的size
+            CGSize labelFontSize = [self.couponModel.descriptionStr sizeWithFont:[UIFont systemFontOfSize:14]
+                                                               constrainedToSize:CGSizeMake(300, 999)
+                                                                   lineBreakMode:NSLineBreakByWordWrapping];
+            return labelFontSize.height+60;
+        }
+        default:
+            return 44;
+    }
 }
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSString *cellIdentifier = @"cell";
-    
-    
     switch (indexPath.section) {
         case 0:
             cellIdentifier = @"CouponDetailDownloadCell";
             break;
         case 1:
-            cellIdentifier = @"CouponDetailWithTitleCell";
+            cellIdentifier = @"GroupBuyDetailCardCell";
             break;
         case 2:
-            cellIdentifier = @"CouponDetailStoreCell";
+            cellIdentifier = @"CouponDetailWithTitleCell";
             break;
         case 3:
+            cellIdentifier = @"MallNewsDetail_threeCell";
+            break;
+        case 4:
             cellIdentifier = @"CouponDetailWithTitleCell";
             break;
         default:
-            cellIdentifier = @"cell";
             break;
     }
     
@@ -264,7 +251,20 @@
             
             break;
         }
-        case 1:
+        case 1:{
+            GroupBuyDetailCardCell *cellBank = (GroupBuyDetailCardCell *)cell;
+            if (self.couponModel.banklist.count > 0) {
+                NSString *str = @"银行卡专属：";
+                for (BankCardModel *model in self.couponModel.banklist) {
+                    str = [NSString stringWithFormat:@"%@%@ ",str,model.name];
+                }
+                cellBank.cardsLabel.text = str;
+            }else{
+                cellBank.cardsLabel.text = @"银行卡专属：无";
+            }
+        }
+            break;
+        case 2:
             if ([cell isMemberOfClass:[CouponDetailWithTitleCell class]]) {
                 CouponDetailWithTitleCell *withTitleCell = (CouponDetailWithTitleCell *)cell;
                 withTitleCell.titleLabel.text = @"有效期";
@@ -274,18 +274,37 @@
                                                   [self.couponModel.endTime toDateString]];
             }
             break;
-        case 2:
-            if (self.couponModel.store) {
-                if ([cell isMemberOfClass:[CouponDetailStoreCell class]]) {
-                    CouponDetailStoreCell *storeCell = (CouponDetailStoreCell *)cell;
-                    storeCell.storeNameLabel.text = self.couponModel.store.title;
-                    storeCell.storeAddrLabel.text = self.couponModel.store.address;
-                    storeCell.storetelLabel.text = self.couponModel.store.tel;
-                    
+        case 3:{
+            MallNewsDetail_threeCell *threeCell = (MallNewsDetail_threeCell *)cell;
+            threeCell.selectionStyle = UITableViewCellSelectionStyleGray;
+            switch (indexPath.row) {
+                case 0:
+                {
+                    threeCell.iconImage.image = [UIImage imageNamed:@"Icon_store.png"];
+                    threeCell.labClass.text = @"商户";
+                    threeCell.labName.text = self.couponModel.store.title;
+                }
+                    break;
+                case 1:
+                {
+                    threeCell.iconImage.image = [UIImage imageNamed:@"Icon_address.png"];
+                    threeCell.labClass.text = @"地址";
+                    threeCell.labName.text = [NSString stringWithFormat:@"%@ %@",self.couponModel.store.position.floor.fName,self.couponModel.store.position.roomNum];
+                }
+                    break;
+                case 2:
+                {
+                    threeCell.iconImage.image = [UIImage imageNamed:@"Icon_phone.png"];
+                    threeCell.labClass.text = @"电话";
+                    threeCell.labName.textColor = [UIColor colorWithRed:60/255.0 green:179/255.0 blue:235/255.0 alpha:1];
+                    threeCell.labName.text = self.couponModel.store.tel;
+                    threeCell.separatorView.hidden = YES;
+                    break;
                 }
             }
+        }
             break;
-        case 3:
+        case 4:
             if ([cell isMemberOfClass:[CouponDetailWithTitleCell class]]) {
                 CouponDetailWithTitleCell *withTitleCell = (CouponDetailWithTitleCell *)cell;
                 withTitleCell.titleLabel.text = @"优惠劵详情";
@@ -314,29 +333,34 @@
 }
 
 #pragma mark - UITableViewDelegate
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    switch (indexPath.section) {
-        case 0:
-            return 36;
-        case 1:
-            return 72;
-        case 2:
-            return 108;
-        case 3:{
-            //计算内容的size
-            CGSize labelFontSize = [self.couponModel.descriptionStr sizeWithFont:[UIFont systemFontOfSize:14]
-                                          constrainedToSize:CGSizeMake(300, 999)
-                                              lineBreakMode:NSLineBreakByWordWrapping];
-            
-            
-            
-            return labelFontSize.height+60;
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.section == 3) {
+        switch (indexPath.row) {
+            case 0:
+            {
+                //商户
+                StoreDetail_RestaurantViewController *vc = [[StoreDetail_RestaurantViewController alloc]initWithNibName:@"StoreDetail_RestaurantViewController" bundle:nil];
+                vc.shopId = self.couponModel.store.sid;
+                [self.navigationController pushViewController:vc animated:YES];
+                [vc release];
+            }
+                break;
+            case 1:{
+                //地址
+                
+            }
+                break;
+            case 2:{
+                //电话
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel:%@",self.couponModel.store.tel]]];
+            }
+                break;
+            default:
+                break;
         }
-        default:
-            return 44;
     }
-    
 }
+
 
 #pragma mark - CouponDetailInterfaceDelegate <NSObject>
 

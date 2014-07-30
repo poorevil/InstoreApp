@@ -25,12 +25,13 @@
 
 #import "UIViewController+ShareToWeChat.h"
 
+#import "GroupBuyDetailCardCell.h"
+#import "BankCardModel.h"
+
 @interface MallNewsDetailViewController ()<CouponDetailInterfaceDelegate>{
     EGOImageView *egoHeaderView;
-//    UIButton *btnFocus;
 }
-@property (retain, nonatomic) FocusInterface *focusInterface;
-
+@property (retain, nonatomic) FocusInterface *focusInterface; 
 
 @end
 
@@ -95,7 +96,7 @@
 #pragma mark - UITableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 4;
+    return 5;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -104,12 +105,15 @@
             return 36;
             break;
         case 1:
-            return 72;
+            return 40;
             break;
         case 2:
+            return 72;
+            break;
+        case 3:
             return 50;
             break;
-            case 3:
+        case 4:
         {
             CGSize size = [self.couponModel.descriptionStr sizeWithFont:[UIFont systemFontOfSize:14] constrainedToSize:CGSizeMake(300, 999) lineBreakMode:NSLineBreakByWordWrapping];
             //TODO:iOS7计算label size 方法
@@ -125,7 +129,7 @@
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (section == 2) {
+    if (section == 3) {
         return 3;
     }else{
         return 1;
@@ -141,12 +145,15 @@
             CellIdentifier = @"MallNewsDetail_oneCell";
             break;
         case 1:
-            CellIdentifier = @"MallNewsDetail_twoCell";
+            CellIdentifier = @"GroupBuyDetailCardCell";
             break;
         case 2:
-            CellIdentifier = @"MallNewsDetail_threeCell";
+            CellIdentifier = @"MallNewsDetail_twoCell";
             break;
         case 3:
+            CellIdentifier = @"MallNewsDetail_threeCell";
+            break;
+        case 4:
             CellIdentifier = @"MallNewsDetail_fourCell";
             break;
         default:
@@ -165,7 +172,20 @@
             oneCell.favNumLabel.text = [NSString stringWithFormat:@"%d",self.couponModel.focusCount];
         }
             break;
-        case 1:
+        case 1:{
+            GroupBuyDetailCardCell *cellBank = (GroupBuyDetailCardCell *)cell;
+            if (self.couponModel.banklist.count > 0) {
+                NSString *str = @"银行卡专属：";
+                for (BankCardModel *model in self.couponModel.banklist) {
+                    str = [NSString stringWithFormat:@"%@%@ ",str,model.name];
+                }
+                cellBank.cardsLabel.text = str;
+            }else{
+                cellBank.cardsLabel.text = @"银行卡专属：无";
+            }
+        }
+            break;
+        case 2:
         {
             MallNewsDetail_twoCell *twoCell = (MallNewsDetail_twoCell *)cell;
             twoCell.labDate.text = [NSString stringWithFormat:@"%@ 至 %@",
@@ -173,7 +193,7 @@
                                     [self.couponModel.endTime toDateString]];
         }
             break;
-        case 2:
+        case 3:
         {
             MallNewsDetail_threeCell *threeCell = (MallNewsDetail_threeCell *)cell;
             threeCell.selectionStyle = UITableViewCellSelectionStyleGray;
@@ -189,21 +209,21 @@
                 {
                     threeCell.iconImage.image = [UIImage imageNamed:@"Icon_address.png"];
                     threeCell.labClass.text = @"地址";
-                    threeCell.labName.text = self.couponModel.store.address;
+                    threeCell.labName.text = [NSString stringWithFormat:@"%@ %@",self.couponModel.store.position.floor.fName,self.couponModel.store.position.roomNum];
                 }
                     break;
                 case 2:
                 {
                     threeCell.iconImage.image = [UIImage imageNamed:@"Icon_phone.png"];
                     threeCell.labClass.text = @"电话";
-//                    threeCell.img.hidden = YES;
                     threeCell.labName.textColor = [UIColor colorWithRed:60/255.0 green:179/255.0 blue:235/255.0 alpha:1];
                     threeCell.labName.text = self.couponModel.store.tel;
+                    threeCell.separatorView.hidden = YES;
                 }
             }
         }
             break;
-        case 3:
+        case 4:
         {
             MallNewsDetail_fourCell *fourCell = (MallNewsDetail_fourCell *)cell;
             CGSize size = [self.couponModel.descriptionStr boundingRectWithSize:CGSizeMake(300, 999) options:NSStringDrawingTruncatesLastVisibleLine|NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14]} context:nil].size;
@@ -223,7 +243,7 @@
 
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.section == 2) {
+    if (indexPath.section == 3) {
         switch (indexPath.row) {
             case 0:
             {
@@ -242,7 +262,6 @@
             case 2:{
                 //电话
                 [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel:%@",self.couponModel.store.tel]]];
-                //self.couponModel.store.tel
             }
                 break;
             default:

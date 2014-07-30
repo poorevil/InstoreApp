@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
+        <deployment defaultVersion="1536" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <objects>
@@ -35,6 +36,11 @@
                         <rect key="frame" x="303" y="18" width="8" height="14"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
+                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VN6-vP-yxU">
+                        <rect key="frame" x="17" y="49" width="303" height="1"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" red="0.88235294117647056" green="0.88235294117647056" blue="0.88235294117647056" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
                 </subviews>
             </tableViewCellContentView>
             <connections>
@@ -42,11 +48,12 @@
                 <outlet property="img" destination="q2C-Sy-tbp" id="rAO-hA-r5L"/>
                 <outlet property="labClass" destination="vbg-cc-JEh" id="MHr-fX-V6v"/>
                 <outlet property="labName" destination="hjg-WP-B6Q" id="wkH-5m-JCQ"/>
+                <outlet property="separatorView" destination="VN6-vP-yxU" id="1jx-zF-ObJ"/>
             </connections>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="bankcard_img_jiantou.png" width="16" height="28"/>
+        <image name="bankcard_img_jiantou.png" width="8" height="14"/>
         <image name="couponview_focus_time.png" width="15" height="15"/>
     </resources>
 </document>

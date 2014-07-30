@@ -14,5 +14,6 @@
 @property (retain, nonatomic) IBOutlet UILabel *labClass;
 @property (retain, nonatomic) IBOutlet UILabel *labName;
 @property (retain, nonatomic) IBOutlet UIImageView *img;
+@property (retain, nonatomic) IBOutlet UIView *separatorView;
 
 @end

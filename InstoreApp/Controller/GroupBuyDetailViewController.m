@@ -17,6 +17,7 @@
 #import "GroupBuyDateTimeCell.h"
 #import "CouponDetailStoreCell.h"
 #import "GroupBuyRecommendCell.h"
+#import "MallNewsDetail_threeCell.h"
 
 #import "NSDate+DynamicDateString.h"
 
@@ -25,6 +26,10 @@
 #import "WebViewController.h"
 
 #import "UIViewController+ShareToWeChat.h"
+
+#import "StoreDetail_RestaurantViewController.h"
+#import "BankCardModel.h"
+
 
 @interface GroupBuyDetailViewController () <UITableViewDataSource, UITableViewDelegate,
 CouponDetailInterfaceDelegate>
@@ -158,7 +163,10 @@ CouponDetailInterfaceDelegate>
     [self.mtableView reloadData];
 }
 
-#pragma mark - UITableViewDataSource<NSObject>
+#pragma mark - UITableViewDataSource
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 6;
+}
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     switch (section) {
@@ -173,19 +181,13 @@ CouponDetailInterfaceDelegate>
         case 4:
             return 1;//购买须知
         case 5:
-            return 1;//商户
-//        case 6:
-//            return 1;//你可能还喜欢
+            return 3;
             
         default:
             return 1;
     }
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 6;
-}
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     switch (indexPath.section) {
         case 0:
@@ -204,7 +206,7 @@ CouponDetailInterfaceDelegate>
             return labelFontSize.height+45;
         }
         case 5:
-            return 108;
+            return 50;
         default:
             return 44;
     }
@@ -213,7 +215,6 @@ CouponDetailInterfaceDelegate>
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSString *cellIdentifier = @"cell";
-    
     
     switch (indexPath.section) {
         case 0:
@@ -232,11 +233,8 @@ CouponDetailInterfaceDelegate>
             cellIdentifier = @"GroupBuyDateTimeCell";
             break;
         case 5:
-            cellIdentifier = @"CouponDetailStoreCell";
+            cellIdentifier = @"MallNewsDetail_threeCell";
             break;
-//        case 6:
-//            cellIdentifier = @"GroupBuyRecommendCell";
-//            break;
         default:
             cellIdentifier = @"cell";
             break;
@@ -270,10 +268,16 @@ CouponDetailInterfaceDelegate>
 
             
             gbdp.oldPriceLabel.text = self.couponModel.oldPrice;
+            CGSize oldPriceLabelSize = [gbdp.oldPriceLabel.text sizeWithFont:gbdp.oldPriceLabel.font
+                                                    constrainedToSize:CGSizeMake(gbdp.oldPriceLabel.frame.size.width*2,
+                                                                                 gbdp.oldPriceLabel.frame.size.height)
+                                                        lineBreakMode:gbdp.oldPriceLabel.lineBreakMode];
             gbdp.oldPriceLabel.frame = CGRectMake(gbdp.priceLabel.frame.size.width + gbdp.priceLabel.frame.origin.x,
                                                   gbdp.oldPriceLabel.frame.origin.y,
-                                                  gbdp.oldPriceLabel.frame.size.width,
+                                                  oldPriceLabelSize.width,
                                                   gbdp.oldPriceLabel.frame.size.height);
+
+            gbdp.oldPriceLabel.isWithStrikeThrough = YES;
             
             gbdp.amountLabel.text = [NSString stringWithFormat:@"%d人已购买",self.couponModel.collectCount];
             
@@ -281,15 +285,26 @@ CouponDetailInterfaceDelegate>
             
             break;
         }
-        case 1:
-            if ([cell isMemberOfClass:[GroupBuyDetailCardCell class]]) {
-//                GroupBuyDetailCardCell *cardCell = (GroupBuyDetailCardCell *)cell;
-                //TODO:银行卡
-                //                cardCell.cardsLabel =
+        case 1:{
+            GroupBuyDetailCardCell *cellBank = (GroupBuyDetailCardCell *)cell;
+            if (self.couponModel.banklist.count > 0) {
+                NSString *str = @"银行卡专属：";
+                for (BankCardModel *model in self.couponModel.banklist) {
+                    str = [NSString stringWithFormat:@"%@%@ ",str,model.name];
+                }
+                cellBank.cardsLabel.text = str;
+            }else{
+                cellBank.cardsLabel.text = @"银行卡专属：无";
             }
+        }
             break;
         case 2:
-            cell.textLabel.text = self.couponModel.shortTitle;
+            cell.textLabel.textColor = [UIColor colorWithRed:79/255.0 green:79/255.0 blue:79/255.0 alpha:1];
+            if (self.couponModel.shortTitle) {
+                cell.textLabel.text = self.couponModel.shortTitle;
+            }else{
+                cell.textLabel.text = @"暂时没有介绍";
+            }
             break;
         case 3:
             if ([cell isMemberOfClass:[GroupBuyDateTimeCell class]]) {
@@ -324,22 +339,36 @@ CouponDetailInterfaceDelegate>
                                                  withTitleCell.dateLabel.frame.size.height+45);
             }
             break;
-        case 5:
-            if (self.couponModel.store) {
-                if ([cell isMemberOfClass:[CouponDetailStoreCell class]]) {
-                    CouponDetailStoreCell *storeCell = (CouponDetailStoreCell *)cell;
-                    storeCell.storeNameLabel.text = self.couponModel.store.title;
-                    storeCell.storeAddrLabel.text = self.couponModel.store.address;
-                    storeCell.storetelLabel.text = self.couponModel.store.tel;
-                    
+        case 5:{
+            MallNewsDetail_threeCell *threeCell = (MallNewsDetail_threeCell *)cell;
+            threeCell.selectionStyle = UITableViewCellSelectionStyleGray;
+            switch (indexPath.row) {
+                case 0:
+                {
+                    threeCell.iconImage.image = [UIImage imageNamed:@"Icon_store.png"];
+                    threeCell.labClass.text = @"商户";
+                    threeCell.labName.text = self.couponModel.store.title;
+                }
+                    break;
+                case 1:
+                {
+                    threeCell.iconImage.image = [UIImage imageNamed:@"Icon_address.png"];
+                    threeCell.labClass.text = @"地址";
+                    threeCell.labName.text = [NSString stringWithFormat:@"%@ %@",self.couponModel.store.position.floor.fName,self.couponModel.store.position.roomNum];
+                }
+                    break;
+                case 2:
+                {
+                    threeCell.iconImage.image = [UIImage imageNamed:@"Icon_phone.png"];
+                    threeCell.labClass.text = @"电话";
+                    threeCell.labName.textColor = [UIColor colorWithRed:60/255.0 green:179/255.0 blue:235/255.0 alpha:1];
+                    threeCell.labName.text = self.couponModel.store.tel;
+                    threeCell.separatorView.hidden = YES;
                 }
             }
+        }
             break;
-//        case 6:
-//            //可能还喜欢
-//            if (self.couponModel.rec) {
-//                GroupBuyRecommendCell
-//            }
+
         default:
             break;
     }
@@ -348,7 +377,33 @@ CouponDetailInterfaceDelegate>
 }
 
 #pragma mark - UITableViewDelegate
-
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.section == 5) {
+        switch (indexPath.row) {
+            case 0:
+            {
+                //商户
+                StoreDetail_RestaurantViewController *vc = [[StoreDetail_RestaurantViewController alloc]initWithNibName:@"StoreDetail_RestaurantViewController" bundle:nil];
+                vc.shopId = self.couponModel.store.sid;
+                [self.navigationController pushViewController:vc animated:YES];
+                [vc release];
+            }
+                break;
+            case 1:{
+                //地址
+                
+            }
+                break;
+            case 2:{
+                //电话
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel:%@",self.couponModel.store.tel]]];
+            }
+                break;
+            default:
+                break;
+        }
+    }
+}
 
 #pragma mark - CouponDetailInterfaceDelegate <NSObject>
 

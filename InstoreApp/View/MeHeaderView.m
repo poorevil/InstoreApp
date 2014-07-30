@@ -29,10 +29,10 @@
 {
     self.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"me_headview_bg@2x" ofType:@"png"]]];    
     
-    self.headIconImageView.userInteractionEnabled = YES;
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
-    [self.headIconImageView addGestureRecognizer:tap];
-    [tap release];
+//    self.headIconImageView.userInteractionEnabled = YES;
+//    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
+//    [self.headIconImageView addGestureRecognizer:tap];
+//    [tap release];
 }
 
 /*
@@ -43,15 +43,16 @@
     // Drawing code
 }
 */
--(void)tapAction:(UIGestureRecognizer *)sender
-{
-    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    UINavigationController *nav = (UINavigationController *)appDelegate.tabBarController.selectedViewController;
-    BindPhoneViewController *bpvc = [[[BindPhoneViewController alloc] initWithNibName:@"BindPhoneViewController" bundle:nil] autorelease];
-    bpvc.hidesBottomBarWhenPushed = YES;
-    [nav pushViewController:bpvc animated:YES];
-    bpvc.hidesBottomBarWhenPushed = NO;
-}
+
+//-(void)tapAction:(UIGestureRecognizer *)sender
+//{
+//    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+//    UINavigationController *nav = (UINavigationController *)appDelegate.tabBarController.selectedViewController;
+//    BindPhoneViewController *bpvc = [[[BindPhoneViewController alloc] initWithNibName:@"BindPhoneViewController" bundle:nil] autorelease];
+//    bpvc.hidesBottomBarWhenPushed = YES;
+//    [nav pushViewController:bpvc animated:YES];
+//    bpvc.hidesBottomBarWhenPushed = NO;
+//}
 
 -(void)setUserInfo:(UserInfoModel *)userInfo
 {

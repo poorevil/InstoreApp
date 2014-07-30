@@ -7,7 +7,7 @@
 //
 
 
-//获得已下载的优惠券列表
+//获得已下载的优惠券
 
 #import <Foundation/Foundation.h>
 #import "StoreModel.h"
@@ -16,7 +16,8 @@
 
 @property (assign, nonatomic) NSInteger cid;
 @property (retain, nonatomic) NSString *title;
-@property (retain, nonatomic) NSString *instruction;
+@property (retain, nonatomic) NSString *description;  //详情描述
+@property (retain, nonatomic) NSString *instruction;  //使用说明
 @property (retain, nonatomic) NSString *couponCode;
 @property (assign, nonatomic) NSInteger couponStatus;  // 优惠券状态 <0, "未消费/正常">, <1, "已消费">, <3, "已过期">;
 @property (retain, nonatomic) NSString *barCodeUrl;  //条码图片url

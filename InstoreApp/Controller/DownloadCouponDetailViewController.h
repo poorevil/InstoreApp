@@ -14,7 +14,7 @@
 @property (retain, nonatomic) IBOutlet UITableView *myTableView;
 
 @property (assign, nonatomic) NSInteger cid;
-@property (retain, nonatomic) CouponModel *couponModel;
+//@property (retain, nonatomic) CouponModel *couponModel;
 
 @property (retain, nonatomic) DownloadCouponModel *downloadCouponModel;
 

@@ -16,6 +16,7 @@
         if (jsonMap) {
             self.cid = [[jsonMap objectForKey:@"id"] integerValue];
             self.title = [jsonMap objectForKey:@"title"];
+            self.description = [jsonMap objectForKey:@"description"];
             self.instruction = [jsonMap objectForKey:@"instruction"];
             self.couponCode = [jsonMap objectForKey:@"couponCode"];
             self.couponStatus = [[jsonMap objectForKey:@"couponStatus"] integerValue];

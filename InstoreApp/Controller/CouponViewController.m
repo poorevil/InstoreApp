@@ -124,6 +124,7 @@ CouponViewInterfaceDelegate, YouhuiCategoryViewControllerDelegate,YouHuiOrderVie
         self.couponSearchOrderInterface.delegate = self;
     }
     self.cid = 0;
+    [self.orderBtn setTitle:@"全部分类" forState:UIControlStateNormal];
     [self.itemListAll removeAllObjects];
     self.currentPageAll = 1;
     [self.couponSearchOrderInterface searchByAmount:20 Page:self.currentPageAll Cid:self.cid Type:type Order:self.order];

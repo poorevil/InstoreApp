@@ -39,7 +39,7 @@
     _cm = [cm retain];
     
     if (self.cm) {
-        self.logoImageView.imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@/100*100.png",cm.store.imageUrl]];
+//        self.logoImageView.imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@/100*100.png",cm.store.imageUrl]];
         self.logoNameLabel.text = cm.store.title;
         if (cm.hotTag.length > 0) {
             self.tagLabel.superview.hidden = NO;
@@ -48,7 +48,7 @@
             self.tagLabel.superview.hidden = YES;
         }
         
-        self.couponImageView.imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@/400*400.png",cm.imageUrl]];
+        self.couponImageView.imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@/304*200.png",cm.imageUrl]];
         [self setupTypeLabel:cm.promotionType andTypeLabel:self.promotionTypeLabel];
         self.titleLabel.text = cm.title;
         self.endTimeLabel.text = [cm.endTime toDateString];//TODO:date

@@ -170,7 +170,7 @@
         return self.itemLuoBoImageList.count;
     };
     self.lunboView.TapActionBlock = ^(NSInteger pageIndex){
-        NSLog(@"点击了第%d个",pageIndex);
+//        NSLog(@"点击了第%d个",pageIndex);
         
         AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
         UINavigationController *nav = (UINavigationController *)appDelegate.tabBarController.selectedViewController;
@@ -190,12 +190,11 @@
                     case 1:
                     {
                         //优惠活动
-                        WebViewController *webVC = [[WebViewController alloc]init];
-                        webVC.hidesBottomBarWhenPushed = YES;
-                        webVC.urlStr = couponModel.link;
-                        webVC.titleStr = @"优惠详情";
-                        [self.navigationController pushViewController:webVC animated:YES];
-                        [webVC release];
+                        MallNewsDetailViewController *vc = [[MallNewsDetailViewController alloc]initWithNibName:@"MallNewsDetailViewController" bundle:nil];
+                        vc.couponModel = couponModel;
+                        vc.hidesBottomBarWhenPushed = YES;
+                        [nav pushViewController:vc animated:YES];
+                        [vc release];
                     }
                         break;
                     case 2:
@@ -239,6 +238,9 @@
             case 4:
             {
                 //网页
+                if (!couponModel.link || [couponModel.link isEqualToString:@"#"]) {
+                    break;
+                }
                 
                 [nav.navigationBar setBarTintColor:[UIColor colorWithRed:248.0f/255.0f green:40.0f/255.0f blue:53.0f/255.0f alpha:1]];
                 [nav.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];

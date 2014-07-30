@@ -35,7 +35,7 @@
             self.labFree.frame = CGRectMake(262, 10, 30, 20);
         }else{
             CGRect frame = self.labFree.frame;
-            frame.origin.x = 80 + size.height + 2;
+            frame.origin.x = 93 + size.width + 2;
             self.labFree.frame = frame;
         }
         self.labInstruction.text = downloadCouponModel.instruction;

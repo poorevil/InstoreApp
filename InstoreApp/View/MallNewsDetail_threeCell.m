@@ -27,6 +27,7 @@
     [_labClass release];
     [_labName release];
     [_img release];
+    [_separatorView release];
     [super dealloc];
 }
 @end

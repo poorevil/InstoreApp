@@ -182,7 +182,7 @@
                 cell = [[[NSBundle mainBundle] loadNibNamed:@"CouponView_focusedCell" owner:self options:nil] objectAtIndex:0];
             }
             cell.cm1 = [self.items objectAtIndex:indexPath.row * 2];
-            if (self.items.count < indexPath.row * 2 +1) {
+            if (self.items.count <= indexPath.row * 2 +1) {
                 cell.cm2 = nil;
             }else{
                 cell.cm2 = [self.items objectAtIndex:(indexPath.row * 2 + 1)];
