@@ -23,12 +23,14 @@
 #import "StoreDetail_RestaurantViewController.h" //商户详情
 //#import "StoreModel.h"
 
-#import "UIViewController+ShareToWeChat.h"
+//#import "UIViewController+ShareToWeChat.h"
+#import "ShareToWeChatViewController.h"
 
 #import "GroupBuyDetailCardCell.h"
 #import "BankCardModel.h"
 
-@interface MallNewsDetailViewController ()<CouponDetailInterfaceDelegate>{
+@interface MallNewsDetailViewController ()<CouponDetailInterfaceDelegate,ShareToWeChatDeleate,EGOImageViewDelegate>{
+    ShareToWeChatViewController *shareVC;
     EGOImageView *egoHeaderView;
 }
 @property (retain, nonatomic) FocusInterface *focusInterface; 
@@ -81,7 +83,10 @@
 -(void)initHeaderView{
     if(!egoHeaderView){
         egoHeaderView = [[EGOImageView alloc]initWithFrame:CGRectMake(0, 0, 320, 180)];
-        egoHeaderView.imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@/640*640.png", self.couponModel.imageUrl]];
+//        egoHeaderView.delegate = self;
+        egoHeaderView.imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@/640*0.png", self.couponModel.imageUrl]];
+//        NSLog(@"%@/640*0.png",self.couponModel.imageUrl);
+        
         self.myTableView.tableHeaderView = egoHeaderView;
         egoHeaderView.userInteractionEnabled = YES;
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imagesTapAction:)];
@@ -281,13 +286,10 @@
     }else{
         [self.btnFocus setTitle:@"收藏" forState:UIControlStateNormal];
     }
-    
-    //无外链时是进入浏览图片
-//    if (couponModel.link) {
-//        self.btnGoNext.enabled = YES;
-//    }else{
-//        self.btnGoNext.enabled = NO;
-//    }
+    if (!(couponModel.link.length > 0)) {
+        self.btnGoNext.hidden = YES;
+        self.btnFocus.frame = CGRectMake(110, 8, 100, 28);
+    }
 }
 
 -(void)getCouponDetailDidFailed:(NSString *)errorMessage
@@ -309,7 +311,22 @@
     }
 }
 -(void)btnShareAction:(UIButton *)sender{
-    [self shareToWeChatWithTitle:self.couponModel.title Description:nil LinkURL:[NSString stringWithFormat:@"%@/m/%@/coupon/detail/%d",BASE_INTERFACE_DOMAIN,MALL_CODE,self.couponModel.cid]];
+    //    [self shareToWeChatWithTitle:self.couponModel.title Description:nil LinkURL:[NSString stringWithFormat:@"%@/m/%@/coupon/detail/%d",BASE_INTERFACE_DOMAIN,MALL_CODE,self.couponModel.cid]];
+    if (!shareVC) {
+        shareVC = [[ShareToWeChatViewController alloc]initWithNibName:@"ShareToWeChatViewController" bundle:nil];
+        shareVC.delegate = self;
+        [self.view addSubview:shareVC.view];
+        shareVC.view.frame = CGRectMake(0, DeviceHeight, 320, DeviceHeight);
+    }
+    [shareVC showView];
+}
+-(void)hiddenShareView:(UIViewController *)vc{
+    [UIView animateWithDuration:0.3 animations:^(void){
+        CGRect frame = vc.view.frame;
+        frame.origin.y += DeviceHeight;
+        vc.view.frame = frame;
+    }];
+    
 }
 - (void)didReceiveMemoryWarning
 {
@@ -324,6 +341,7 @@
     self.focusInterface = nil;
     
     [_btnFocus release];
+    [_btnGoNext release];
     [super dealloc];
 }
 -(void)imagesTapAction:(UIGestureRecognizer *)sender
@@ -347,4 +365,20 @@
         [self imagesTapAction:nil];
     }
 }
+
+
+#pragma mark - EGOImageViewDelegate<NSObject>
+- (void)imageViewLoadedImage:(EGOImageView*)imageView{
+    NSLog(@"%@",NSStringFromCGSize(imageView.image.size));
+    CGSize size = imageView.image.size;
+    float height = 320 * size.height / size.width;
+    CGRect frame = imageView.frame;
+    frame.size.height = height;
+    imageView.frame = frame;
+}
+- (void)imageViewFailedToLoadImage:(EGOImageView*)imageView error:(NSError*)error{
+    
+}
+
+
 @end

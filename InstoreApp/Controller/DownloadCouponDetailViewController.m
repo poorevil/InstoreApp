@@ -19,12 +19,14 @@
 
 #import "NSDate+DynamicDateString.h"
 
-#import "UIViewController+ShareToWeChat.h"
-
+//#import "UIViewController+ShareToWeChat.h"
+#import "ShareToWeChatViewController.h"
 #import "DownloadCouponDetailInterface.h"
 
 
-@interface DownloadCouponDetailViewController ()<DownloadCouponDetailInterfaceDelegate>
+@interface DownloadCouponDetailViewController ()<DownloadCouponDetailInterfaceDelegate,ShareToWeChatDeleate>{
+    ShareToWeChatViewController *shareVC;
+}
 
 @property (nonatomic ,retain) DownloadCouponDetailInterface *downloadCouponDetailInterface;
 
@@ -217,7 +219,7 @@
 }
 
 
-#pragma mark - @protocol DownloadCouponDetailInterfaceDelegate <NSObject>
+#pragma mark - DownloadCouponDetailInterfaceDelegate <NSObject>
 
 -(void)getMyDownloadCouponDetailDidFinished:(DownloadCouponModel *)model{
     self.downloadCouponModel = model;
@@ -228,7 +230,22 @@
 }
 
 -(void)btnShareAction:(UIButton *)sender{
-    [self shareToWeChatWithTitle:self.downloadCouponModel.title Description:nil LinkURL:[NSString stringWithFormat:@"%@/m/%@/coupon/detail/%d",BASE_INTERFACE_DOMAIN,MALL_CODE,self.downloadCouponModel.cid]];
+    //    [self shareToWeChatWithTitle:self.couponModel.title Description:nil LinkURL:[NSString stringWithFormat:@"%@/m/%@/coupon/detail/%d",BASE_INTERFACE_DOMAIN,MALL_CODE,self.couponModel.cid]];
+    if (!shareVC) {
+        shareVC = [[ShareToWeChatViewController alloc]initWithNibName:@"ShareToWeChatViewController" bundle:nil];
+        shareVC.delegate = self;
+        [self.view addSubview:shareVC.view];
+        shareVC.view.frame = CGRectMake(0, DeviceHeight, 320, DeviceHeight);
+    }
+    [shareVC showView];
+}
+-(void)hiddenShareView:(UIViewController *)vc{
+    [UIView animateWithDuration:0.3 animations:^(void){
+        CGRect frame = vc.view.frame;
+        frame.origin.y += DeviceHeight;
+        vc.view.frame = frame;
+    }];
+    
 }
 
 - (void)didReceiveMemoryWarning

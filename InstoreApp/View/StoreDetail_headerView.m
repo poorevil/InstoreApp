@@ -44,6 +44,9 @@
     self.categoryLabel.text = self.storeModel.categoryModel.cName;
     self.addressLabel.text = self.storeModel.address;
     self.telLabel.text = self.storeModel.tel;
+    if ([storeModel.appCategory isEqualToString:@"Restaurant"]) {
+        self.avgPrice.text = [NSString stringWithFormat:@"人均:%d",storeModel.avgPrice];
+    }
 }
 
 -(void)dealloc

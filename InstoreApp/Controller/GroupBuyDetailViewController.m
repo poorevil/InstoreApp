@@ -25,14 +25,17 @@
 #import "FocusInterface.h"
 #import "WebViewController.h"
 
-#import "UIViewController+ShareToWeChat.h"
+//#import "UIViewController+ShareToWeChat.h"
+#import "ShareToWeChatViewController.h"
 
 #import "StoreDetail_RestaurantViewController.h"
 #import "BankCardModel.h"
 
 
 @interface GroupBuyDetailViewController () <UITableViewDataSource, UITableViewDelegate,
-CouponDetailInterfaceDelegate>
+CouponDetailInterfaceDelegate,ShareToWeChatDeleate>{
+    ShareToWeChatViewController *shareVC;
+}
 @property (nonatomic,strong) UIView *headerView;
 
 @property (nonatomic,strong) EGOImageView *headerImageView;
@@ -416,10 +419,9 @@ CouponDetailInterfaceDelegate>
     }else{
         [self.btnFocus setTitle:@"收藏" forState:UIControlStateNormal];
     }
-    if (couponModel.link) {
-        self.btnGoNext.enabled = YES;
-    }else{
-        self.btnGoNext.enabled = NO;
+    if (!(couponModel.link.length > 0)) {
+        self.btnGoNext.hidden = YES;
+        self.btnFocus.frame = CGRectMake(110, 8, 100, 28);
     }
 }
 
@@ -451,6 +453,20 @@ CouponDetailInterfaceDelegate>
 }
 
 -(void)btnShareAction:(UIButton *)sender{
-    [self shareToWeChatWithTitle:self.couponModel.title Description:nil LinkURL:[NSString stringWithFormat:@"%@/m/%@/coupon/detail/%d",BASE_INTERFACE_DOMAIN,MALL_CODE,self.couponModel.cid]];
+//    [self shareToWeChatWithTitle:self.couponModel.title Description:nil LinkURL:[NSString stringWithFormat:@"%@/m/%@/coupon/detail/%d",BASE_INTERFACE_DOMAIN,MALL_CODE,self.couponModel.cid]];
+    if (!shareVC) {
+        shareVC = [[ShareToWeChatViewController alloc]initWithNibName:@"ShareToWeChatViewController" bundle:nil];
+        shareVC.delegate = self;
+        [self.view addSubview:shareVC.view];
+        shareVC.view.frame = CGRectMake(0, DeviceHeight, 320, DeviceHeight);
+    }
+    [shareVC showView];
+}
+-(void)hiddenShareView:(UIViewController *)vc{
+    [UIView animateWithDuration:0.3 animations:^(void){
+        CGRect frame = vc.view.frame;
+        frame.origin.y += DeviceHeight;
+        vc.view.frame = frame;
+    }];
 }
 @end

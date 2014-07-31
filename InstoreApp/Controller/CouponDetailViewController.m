@@ -30,13 +30,15 @@
 #import "DownloadCouponSuccessViewController.h"
 #import "MallNewsDetail_threeCell.h"
 #import "StoreDetail_RestaurantViewController.h"
-#import "UIViewController+ShareToWeChat.h"
-
+//#import "UIViewController+ShareToWeChat.h"
+#import "ShareToWeChatViewController.h"
 #import "GroupBuyDetailCardCell.h"
 #import "BankCardModel.h"
 
 
-@interface CouponDetailViewController () <CouponDetailInterfaceDelegate,CouponDownloadInterfaceDelegate>
+@interface CouponDetailViewController () <CouponDetailInterfaceDelegate,CouponDownloadInterfaceDelegate,ShareToWeChatDeleate>{
+    ShareToWeChatViewController *shareVC;
+}
 @property (nonatomic,strong) UIView *headerView;
 @property (nonatomic,strong) UIView *footerView;
 
@@ -374,6 +376,9 @@
     if (couponModel.userCollectCount) {
         [self.btnGoNext setTitle:@"已下载" forState:UIControlStateNormal];
     }
+//    if (couponModel.link) {
+//        self.btnGoNext.enabled = YES;
+//    }
 }
 
 -(void)getCouponDetailDidFailed:(NSString *)errorMessage
@@ -466,8 +471,21 @@
 }
 
 -(void)btnShareAction:(UIButton *)sender{
-    [self shareToWeChatWithTitle:self.couponModel.title Description:nil LinkURL:[NSString stringWithFormat:@"%@/m/%@/coupon/detail/%d",BASE_INTERFACE_DOMAIN,MALL_CODE,self.couponModel.cid]];
+    //    [self shareToWeChatWithTitle:self.couponModel.title Description:nil LinkURL:[NSString stringWithFormat:@"%@/m/%@/coupon/detail/%d",BASE_INTERFACE_DOMAIN,MALL_CODE,self.couponModel.cid]];
+    if (!shareVC) {
+        shareVC = [[ShareToWeChatViewController alloc]initWithNibName:@"ShareToWeChatViewController" bundle:nil];
+        shareVC.delegate = self;
+        [self.view addSubview:shareVC.view];
+        shareVC.view.frame = CGRectMake(0, DeviceHeight, 320, DeviceHeight);
+    }
+    [shareVC showView];
 }
-
+-(void)hiddenShareView:(UIViewController *)vc{
+    [UIView animateWithDuration:0.3 animations:^(void){
+        CGRect frame = vc.view.frame;
+        frame.origin.y += DeviceHeight;
+        vc.view.frame = frame;
+    }];
+}
 
 @end

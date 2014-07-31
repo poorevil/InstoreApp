@@ -24,5 +24,6 @@
 - (IBAction)btnGoNextAction:(UIButton *)sender;
 -(IBAction)btnFocusAction:(UIButton *)sender;
 @property (retain, nonatomic) IBOutlet UIButton *btnFocus;
+@property (retain, nonatomic) IBOutlet UIButton *btnGoNext;
 
 @end

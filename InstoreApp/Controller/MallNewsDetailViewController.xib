@@ -9,6 +9,7 @@
             <connections>
                 <outlet property="bottomView" destination="Ftd-oV-iJX" id="JCz-Rp-cba"/>
                 <outlet property="btnFocus" destination="eou-zI-yJc" id="nRw-WN-gpF"/>
+                <outlet property="btnGoNext" destination="XHw-cY-gyt" id="Btk-cU-Ldb"/>
                 <outlet property="myTableView" destination="irz-Fm-Emn" id="vge-zi-34d"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>

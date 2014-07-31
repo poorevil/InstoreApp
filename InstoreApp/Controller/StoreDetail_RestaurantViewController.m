@@ -21,9 +21,12 @@
 
 #import "FocusStoreInterface.h"
 
-#import "UIViewController+ShareToWeChat.h"
+//#import "UIViewController+ShareToWeChat.h"
+#import "ShareToWeChatViewController.h"
 
-@interface StoreDetail_RestaurantViewController () <StoreDetailInterfaceDelegate>
+@interface StoreDetail_RestaurantViewController () <StoreDetailInterfaceDelegate,ShareToWeChatDeleate>{
+    ShareToWeChatViewController *shareVC;
+}
 
 @property (nonatomic, retain) StoreModel *storeModel;
 @property (nonatomic, retain) StoreDetail_headerView *headerView;
@@ -68,15 +71,19 @@
         imageName = @"nav_focuse_pressed_btn";
     }
     [self.focuseBtn setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
+//    [self.focuseBtn setImageEdgeInsets:UIEdgeInsetsMake(10, 10, 10, 10)];
     [self.focuseBtn addTarget:self action:@selector(focuseBtnAction) forControlEvents:UIControlEventTouchUpInside];
-    [self.focuseBtn sizeToFit];
+//    [self.focuseBtn sizeToFit];
+    self.focuseBtn.frame = CGRectMake(0, 0, 30, 30);
     UIBarButtonItem *focuseBarBtn = [[[UIBarButtonItem alloc] initWithCustomView:self.focuseBtn] autorelease];
     
     UIButton *shareBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [shareBtn setImage:[UIImage imageNamed:@"share_white"] forState:UIControlStateNormal];
+//    [shareBtn setImageEdgeInsets:UIEdgeInsetsMake(10, 10, 10, 10)];
     [shareBtn addTarget:self action:@selector(shareBtnAction)
        forControlEvents:UIControlEventTouchUpInside];
-    [shareBtn sizeToFit];
+//    [shareBtn sizeToFit];
+    shareBtn.frame = CGRectMake(0, 0, 30, 30);
     UIBarButtonItem *shareBarBtn = [[[UIBarButtonItem alloc] initWithCustomView:shareBtn] autorelease];
     
     self.navigationItem.rightBarButtonItems =@[shareBarBtn, focuseBarBtn];
@@ -158,7 +165,21 @@
 
 -(void)shareBtnAction
 {
-    [self shareToWeChatWithTitle:self.storeModel.title Description:nil LinkURL:[NSString stringWithFormat:@"%@/m/%@/store/detail/%d",BASE_INTERFACE_DOMAIN,MALL_CODE,self.storeModel.sid]];
+//    [self shareToWeChatWithTitle:self.storeModel.title Description:nil LinkURL:[NSString stringWithFormat:@"%@/m/%@/store/detail/%d",BASE_INTERFACE_DOMAIN,MALL_CODE,self.storeModel.sid]];
+    if (!shareVC) {
+        shareVC = [[ShareToWeChatViewController alloc]initWithNibName:@"ShareToWeChatViewController" bundle:nil];
+        shareVC.delegate = self;
+        [self.view addSubview:shareVC.view];
+        shareVC.view.frame = CGRectMake(0, DeviceHeight, 320, DeviceHeight);
+    }
+    [shareVC showView];
+}
+-(void)hiddenShareView:(UIViewController *)vc{
+    [UIView animateWithDuration:0.3 animations:^(void){
+        CGRect frame = vc.view.frame;
+        frame.origin.y += DeviceHeight;
+        vc.view.frame = frame;
+    }];
 }
 
 #pragma mark - UITableViewDataSource<NSObject>

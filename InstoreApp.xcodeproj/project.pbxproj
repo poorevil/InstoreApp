@@ -199,6 +199,12 @@
 		04104CB3197CF22F00BEB31F /* downloadCouponSuccess_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04104CAE197CF22F00BEB31F /* downloadCouponSuccess_bg@2x.png */; };
 		04104CB4197CF22F00BEB31F /* downloadCouponSuccess_img_success@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04104CAF197CF22F00BEB31F /* downloadCouponSuccess_img_success@2x.png */; };
 		04104CB5197CF22F00BEB31F /* downloadCouponSuccess_img_xiewen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04104CB0197CF22F00BEB31F /* downloadCouponSuccess_img_xiewen@2x.png */; };
+		0414FC63198A202D00FE7075 /* ShareToWeChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0414FC61198A202D00FE7075 /* ShareToWeChatViewController.m */; };
+		0414FC64198A202D00FE7075 /* ShareToWeChatViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0414FC62198A202D00FE7075 /* ShareToWeChatViewController.xib */; };
+		0414FC69198A203B00FE7075 /* share_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0414FC65198A203B00FE7075 /* share_bg@2x.png */; };
+		0414FC6A198A203B00FE7075 /* share_btn_1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0414FC66198A203B00FE7075 /* share_btn_1@2x.png */; };
+		0414FC6B198A203B00FE7075 /* share_btn_2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0414FC67198A203B00FE7075 /* share_btn_2@2x.png */; };
+		0414FC6C198A203B00FE7075 /* share_cancel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0414FC68198A203B00FE7075 /* share_cancel@2x.png */; };
 		04162AE819823D2A00D05C80 /* MessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04162AE619823D2A00D05C80 /* MessageViewController.m */; };
 		04162AE919823D2A00D05C80 /* MessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04162AE719823D2A00D05C80 /* MessageViewController.xib */; };
 		04162AEE19823E2D00D05C80 /* MessageViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04162AEC19823E2D00D05C80 /* MessageViewCell.m */; };
@@ -302,8 +308,6 @@
 		0491F11B196AB77A00E7DC5A /* focus_whiteLine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0491F119196AB77A00E7DC5A /* focus_whiteLine@2x.png */; };
 		0491F11E196AC82900E7DC5A /* FocusInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 0491F11D196AC82900E7DC5A /* FocusInterface.m */; };
 		0491F121196ACACE00E7DC5A /* CancelFocusInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 0491F120196ACACE00E7DC5A /* CancelFocusInterface.m */; };
-		0494B2621986348300851AA0 /* ShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0494B2601986348300851AA0 /* ShareViewController.m */; };
-		0494B2631986348300851AA0 /* ShareViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0494B2611986348300851AA0 /* ShareViewController.xib */; };
 		049AC1D91977E57F00262B69 /* my_card_btnAddCard@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 049AC1D61977E57F00262B69 /* my_card_btnAddCard@2x.png */; };
 		049AC1DA1977E57F00262B69 /* my_card_NO_bangding@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 049AC1D71977E57F00262B69 /* my_card_NO_bangding@2x.png */; };
 		049AC1DB1977E57F00262B69 /* my_card_YES_bangding@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 049AC1D81977E57F00262B69 /* my_card_YES_bangding@2x.png */; };
@@ -1131,6 +1135,13 @@
 		04104CAE197CF22F00BEB31F /* downloadCouponSuccess_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "downloadCouponSuccess_bg@2x.png"; sourceTree = "<group>"; };
 		04104CAF197CF22F00BEB31F /* downloadCouponSuccess_img_success@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "downloadCouponSuccess_img_success@2x.png"; sourceTree = "<group>"; };
 		04104CB0197CF22F00BEB31F /* downloadCouponSuccess_img_xiewen@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "downloadCouponSuccess_img_xiewen@2x.png"; sourceTree = "<group>"; };
+		0414FC60198A202D00FE7075 /* ShareToWeChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareToWeChatViewController.h; sourceTree = "<group>"; };
+		0414FC61198A202D00FE7075 /* ShareToWeChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareToWeChatViewController.m; sourceTree = "<group>"; };
+		0414FC62198A202D00FE7075 /* ShareToWeChatViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShareToWeChatViewController.xib; sourceTree = "<group>"; };
+		0414FC65198A203B00FE7075 /* share_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "share_bg@2x.png"; sourceTree = "<group>"; };
+		0414FC66198A203B00FE7075 /* share_btn_1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "share_btn_1@2x.png"; sourceTree = "<group>"; };
+		0414FC67198A203B00FE7075 /* share_btn_2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "share_btn_2@2x.png"; sourceTree = "<group>"; };
+		0414FC68198A203B00FE7075 /* share_cancel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "share_cancel@2x.png"; sourceTree = "<group>"; };
 		04162AE519823D2A00D05C80 /* MessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageViewController.h; sourceTree = "<group>"; };
 		04162AE619823D2A00D05C80 /* MessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageViewController.m; sourceTree = "<group>"; };
 		04162AE719823D2A00D05C80 /* MessageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageViewController.xib; sourceTree = "<group>"; };
@@ -1278,9 +1289,6 @@
 		0491F11D196AC82900E7DC5A /* FocusInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FocusInterface.m; sourceTree = "<group>"; };
 		0491F11F196ACACE00E7DC5A /* CancelFocusInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CancelFocusInterface.h; sourceTree = "<group>"; };
 		0491F120196ACACE00E7DC5A /* CancelFocusInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CancelFocusInterface.m; sourceTree = "<group>"; };
-		0494B25F1986348300851AA0 /* ShareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareViewController.h; sourceTree = "<group>"; };
-		0494B2601986348300851AA0 /* ShareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareViewController.m; sourceTree = "<group>"; };
-		0494B2611986348300851AA0 /* ShareViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShareViewController.xib; sourceTree = "<group>"; };
 		049AC1D61977E57F00262B69 /* my_card_btnAddCard@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "my_card_btnAddCard@2x.png"; sourceTree = "<group>"; };
 		049AC1D71977E57F00262B69 /* my_card_NO_bangding@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "my_card_NO_bangding@2x.png"; sourceTree = "<group>"; };
 		049AC1D81977E57F00262B69 /* my_card_YES_bangding@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "my_card_YES_bangding@2x.png"; sourceTree = "<group>"; };
@@ -2843,6 +2851,9 @@
 		04FBB839196E924900A46F9C /* Public */ = {
 			isa = PBXGroup;
 			children = (
+				0414FC60198A202D00FE7075 /* ShareToWeChatViewController.h */,
+				0414FC61198A202D00FE7075 /* ShareToWeChatViewController.m */,
+				0414FC62198A202D00FE7075 /* ShareToWeChatViewController.xib */,
 				C1D8700C18EC0CAB0061F799 /* CouponDetailViewController.h */,
 				C1D8700D18EC0CAB0061F799 /* CouponDetailViewController.m */,
 				C1D8700E18EC0CAB0061F799 /* CouponDetailViewController.xib */,
@@ -3131,9 +3142,6 @@
 				C1E094F2194A9FF900AA814B /* UILabelStrikeThrough.m */,
 				040266F01981F52F003AC618 /* UIViewController+ShareToWeChat.h */,
 				040266F11981F52F003AC618 /* UIViewController+ShareToWeChat.m */,
-				0494B25F1986348300851AA0 /* ShareViewController.h */,
-				0494B2601986348300851AA0 /* ShareViewController.m */,
-				0494B2611986348300851AA0 /* ShareViewController.xib */,
 			);
 			path = utility;
 			sourceTree = "<group>";
@@ -3204,6 +3212,10 @@
 		4EF0907518FB52CE00ABFE7D /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				0414FC65198A203B00FE7075 /* share_bg@2x.png */,
+				0414FC66198A203B00FE7075 /* share_btn_1@2x.png */,
+				0414FC67198A203B00FE7075 /* share_btn_2@2x.png */,
+				0414FC68198A203B00FE7075 /* share_cancel@2x.png */,
 				04F67D3B198908DE0096AC32 /* userIcon@2x.png */,
 				0418C7B4198275EC001B5A2B /* start-568h@2x.png */,
 				0418C7B5198275EC001B5A2B /* start@2x.png */,
@@ -3918,6 +3930,7 @@
 				0357FF74194DE17C0071BD5A /* toolbar_food_icon_press@2x.png in Resources */,
 				04EF120519640E170066C902 /* BankDiscoundListCell.xib in Resources */,
 				4E9608AA18E48D6700418798 /* blueArrow.png in Resources */,
+				0414FC6B198A203B00FE7075 /* share_btn_2@2x.png in Resources */,
 				0491F11A196AB77A00E7DC5A /* focus_white@2x.png in Resources */,
 				035214D51958A4E100F92B55 /* StoreList_goodsCell.xib in Resources */,
 				FA4E660019357B22005022E2 /* ios-social-sdk-share-detail.html in Resources */,
@@ -3941,6 +3954,7 @@
 				042E47FA19651A2500CD945A /* webView_reload@2x.png in Resources */,
 				4ECBF76318F6F13A003963E1 /* CouponDetailWithTitleCell.xib in Resources */,
 				03650F521942FC1B00016289 /* MainView_CouponsCell.xib in Resources */,
+				0414FC6A198A203B00FE7075 /* share_btn_1@2x.png in Resources */,
 				04D7294A196C10F100590C23 /* CouponView_empty2_Cell.xib in Resources */,
 				04104CB4197CF22F00BEB31F /* downloadCouponSuccess_img_success@2x.png in Resources */,
 				035214B11958746A00F92B55 /* tel_icon@2x.png in Resources */,
@@ -4011,6 +4025,7 @@
 				043236081973D38200C6C117 /* firstImage_3_4@2x.png in Resources */,
 				4EF090F118FB52FD00ABFE7D /* sale-icon-hot@2x.png in Resources */,
 				049AC1DA1977E57F00262B69 /* my_card_NO_bangding@2x.png in Resources */,
+				0414FC69198A203B00FE7075 /* share_bg@2x.png in Resources */,
 				4E2C6E0118D75CED00DF3772 /* ServiceViewController.xib in Resources */,
 				C1D8701518ED5B1D0061F799 /* ShopDetailViewController.xib in Resources */,
 				035214BB1958757500F92B55 /* CommentListCell.xib in Resources */,
@@ -4086,6 +4101,7 @@
 				0491F110196A7E0100E7DC5A /* Icon_store@2x.png in Resources */,
 				C1A9C892193F13A600DD420F /* PhotoAlbumToolBarView.xib in Resources */,
 				4E2C6E0818D7617100DF3772 /* wifi1.jpg in Resources */,
+				0414FC64198A202D00FE7075 /* ShareToWeChatViewController.xib in Resources */,
 				4ECBF73618F4B9A4003963E1 /* tmpimg2.jpg in Resources */,
 				4EF090D118FB52FD00ABFE7D /* btn-sb-gray@2x.png in Resources */,
 				0491F100196A564C00E7DC5A /* MallNewsDetail_oneCell.xib in Resources */,
@@ -4111,7 +4127,6 @@
 				0357FF75194DE17C0071BD5A /* toolbar_food_icon@2x.png in Resources */,
 				FA4E65FD19357B22005022E2 /* ios-social-sdk-login-detail.html in Resources */,
 				042E47F219650D0E00CD945A /* WebViewController.xib in Resources */,
-				0494B2631986348300851AA0 /* ShareViewController.xib in Resources */,
 				0491F10E196A7E0100E7DC5A /* Icon_address@2x.png in Resources */,
 				042F1214196D2A96003F255E /* focusstore_yes@2x.png in Resources */,
 				0491F10F196A7E0100E7DC5A /* Icon_phone@2x.png in Resources */,
@@ -4272,6 +4287,7 @@
 				04EF11ED1963B50F0066C902 /* BankCardViewController.xib in Resources */,
 				4EF0914618FC2CEE00ABFE7D /* pp_5.jpg in Resources */,
 				4ECBF72618F4538C003963E1 /* ShopDetailItemListCell.xib in Resources */,
+				0414FC6C198A203B00FE7075 /* share_cancel@2x.png in Resources */,
 				04EB8EFE197E49AA00CA65AC /* about_icon@2x.png in Resources */,
 				04EB8F1F197E643700CA65AC /* HuiGuangCell.xib in Resources */,
 				4EF0911618FB52FD00ABFE7D /* toolBar-btn-user@2x.png in Resources */,
@@ -4446,6 +4462,7 @@
 				0408DA10198781160029C584 /* MallNewsModel.m in Sources */,
 				03573AC419055B7700A11A33 /* IndoorMapWithLeftPopBtnViewController.m in Sources */,
 				4E9608BE18E7CEC900418798 /* MeHeaderView.m in Sources */,
+				0414FC63198A202D00FE7075 /* ShareToWeChatViewController.m in Sources */,
 				0312033E1917E05200077E25 /* ServicesInterface.m in Sources */,
 				C1A9C89B1940268200DD420F /* ImageMetadata.m in Sources */,
 				C1A9C875193F130300DD420F /* NIFoundationMethods.m in Sources */,
@@ -4559,7 +4576,6 @@
 				4E2C6DFB18D75CE200DF3772 /* ShopViewController.m in Sources */,
 				0357FF50194D87410071BD5A /* GroupBuyDetailPriceCell.m in Sources */,
 				4ECBF74718F59395003963E1 /* ShopDetailCommentsCell.m in Sources */,
-				0494B2621986348300851AA0 /* ShareViewController.m in Sources */,
 				03650F491942F08B00016289 /* MainView_PromotionActivityCell.m in Sources */,
 				0312035C191945DF00077E25 /* EGOImageLoader.m in Sources */,
 				C195320E191CB58E00D3BFA8 /* UserInfoModel.m in Sources */,

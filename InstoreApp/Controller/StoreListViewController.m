@@ -83,16 +83,18 @@ YouHuiOrderViewControllerDelegate>
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
     
     UIButton *mapBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    mapBtn.frame = CGRectMake(0, 0, 30, 30);
     [mapBtn setImage:[UIImage imageNamed:@"nav_map_btn"] forState:UIControlStateNormal];
     [mapBtn addTarget:self action:@selector(showMap) forControlEvents:UIControlEventTouchUpInside];
-    [mapBtn sizeToFit];
+//    [mapBtn sizeToFit];
     UIBarButtonItem *mapBarBtn = [[[UIBarButtonItem alloc] initWithCustomView:mapBtn] autorelease];
     
     UIButton *favorBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    favorBtn.frame = CGRectMake(0, 0, 30, 30);
     [favorBtn setImage:[UIImage imageNamed:@"store_nav_right_love.png"] forState:UIControlStateNormal];
     [favorBtn addTarget:self action:@selector(showFocusedStoreList)
        forControlEvents:UIControlEventTouchUpInside];
-    [favorBtn sizeToFit];
+//    [favorBtn sizeToFit];
     UIBarButtonItem *favorBarBtn = [[[UIBarButtonItem alloc] initWithCustomView:favorBtn] autorelease];
     
     self.navigationItem.rightBarButtonItems =@[mapBarBtn,favorBarBtn];
