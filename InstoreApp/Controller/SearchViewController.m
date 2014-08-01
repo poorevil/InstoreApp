@@ -46,6 +46,7 @@
     UIBarButtonItem *cancelBtn = [[UIBarButtonItem alloc] initWithTitle:@"关闭" style:UIBarButtonItemStylePlain target:self action:@selector(cancelAction)];
     cancelBtn.tintColor = [UIColor whiteColor];
     self.navigationItem.rightBarButtonItem = cancelBtn;
+    [cancelBtn release];
     
     self.searchBar = [[[UISearchBar alloc] initWithFrame:CGRectZero] autorelease];
     self.searchBar.placeholder = @"请输入关键词";

@@ -383,6 +383,7 @@
 		04F3D4AB197F96AD008A828C /* UserInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F3D4A9197F96AD008A828C /* UserInfoViewController.xib */; };
 		04F67D3A1988C4310096AC32 /* DownloadCouponDetailInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F67D391988C4310096AC32 /* DownloadCouponDetailInterface.m */; };
 		04F67D3C198908DE0096AC32 /* userIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04F67D3B198908DE0096AC32 /* userIcon@2x.png */; };
+		04FBAD8D198B3B6C0040E11A /* main_wifi_image-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04FBAD8C198B3B6C0040E11A /* main_wifi_image-568h@2x.png */; };
 		04FBB826196E780200A46F9C /* CategoryOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FBB824196E780200A46F9C /* CategoryOrderViewController.m */; };
 		04FBB827196E780200A46F9C /* CategoryOrderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04FBB825196E780200A46F9C /* CategoryOrderViewController.xib */; };
 		04FBB82B196E852F00A46F9C /* MyFocusYouHuiInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FBB82A196E852F00A46F9C /* MyFocusYouHuiInterface.m */; };
@@ -1385,6 +1386,7 @@
 		04F67D381988C4310096AC32 /* DownloadCouponDetailInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadCouponDetailInterface.h; sourceTree = "<group>"; };
 		04F67D391988C4310096AC32 /* DownloadCouponDetailInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadCouponDetailInterface.m; sourceTree = "<group>"; };
 		04F67D3B198908DE0096AC32 /* userIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "userIcon@2x.png"; sourceTree = "<group>"; };
+		04FBAD8C198B3B6C0040E11A /* main_wifi_image-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_wifi_image-568h@2x.png"; sourceTree = "<group>"; };
 		04FBB823196E780200A46F9C /* CategoryOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryOrderViewController.h; sourceTree = "<group>"; };
 		04FBB824196E780200A46F9C /* CategoryOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryOrderViewController.m; sourceTree = "<group>"; };
 		04FBB825196E780200A46F9C /* CategoryOrderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CategoryOrderViewController.xib; sourceTree = "<group>"; };
@@ -2661,9 +2663,6 @@
 		046C112819768F13007F7FE3 /* MyView */ = {
 			isa = PBXGroup;
 			children = (
-				4ECBF70818F4449E003963E1 /* BindPhoneViewController.h */,
-				4ECBF70918F4449E003963E1 /* BindPhoneViewController.m */,
-				4ECBF70A18F4449E003963E1 /* BindPhoneViewController.xib */,
 				04F3D4A7197F96AD008A828C /* UserInfoViewController.h */,
 				04F3D4A8197F96AD008A828C /* UserInfoViewController.m */,
 				04F3D4A9197F96AD008A828C /* UserInfoViewController.xib */,
@@ -2673,6 +2672,9 @@
 				0418C7AE1982495D001B5A2B /* MessageDetailViewController.h */,
 				0418C7AF1982495D001B5A2B /* MessageDetailViewController.m */,
 				0418C7B01982495D001B5A2B /* MessageDetailViewController.xib */,
+				C195321E191CDBF500D3BFA8 /* DownloadCouponsViewController.h */,
+				C195321F191CDBF500D3BFA8 /* DownloadCouponsViewController.m */,
+				C1953220191CDBF500D3BFA8 /* DownloadCouponsViewController.xib */,
 				044FA0AA197A5745003A932C /* DownloadCouponDetailViewController.h */,
 				044FA0AB197A5745003A932C /* DownloadCouponDetailViewController.m */,
 				044FA0AC197A5745003A932C /* DownloadCouponDetailViewController.xib */,
@@ -2682,6 +2684,9 @@
 				04EB8F02197E53AB00CA65AC /* BindingVIPCardViewController.h */,
 				04EB8F03197E53AB00CA65AC /* BindingVIPCardViewController.m */,
 				04EB8F04197E53AB00CA65AC /* BindingVIPCardViewController.xib */,
+				4ECBF70818F4449E003963E1 /* BindPhoneViewController.h */,
+				4ECBF70918F4449E003963E1 /* BindPhoneViewController.m */,
+				4ECBF70A18F4449E003963E1 /* BindPhoneViewController.xib */,
 				045FF8681979141C00F4DA22 /* MyDownloadCouponViewController.h */,
 				045FF8691979141C00F4DA22 /* MyDownloadCouponViewController.m */,
 				045FF86A1979141C00F4DA22 /* MyDownloadCouponViewController.xib */,
@@ -3007,9 +3012,6 @@
 				4E2C6DEF18D75CC400DF3772 /* MeViewController.m */,
 				4E2C6DF018D75CC400DF3772 /* MeViewController.xib */,
 				046C112819768F13007F7FE3 /* MyView */,
-				C195321E191CDBF500D3BFA8 /* DownloadCouponsViewController.h */,
-				C195321F191CDBF500D3BFA8 /* DownloadCouponsViewController.m */,
-				C1953220191CDBF500D3BFA8 /* DownloadCouponsViewController.xib */,
 				4E2C6DFD18D75CED00DF3772 /* ServiceViewController.h */,
 				4E2C6DFE18D75CED00DF3772 /* ServiceViewController.m */,
 				4E2C6DFF18D75CED00DF3772 /* ServiceViewController.xib */,
@@ -3235,6 +3237,7 @@
 				04EB8F0F197E5B0900CA65AC /* main_wifi_btn@2x.png */,
 				04EB8F10197E5B0900CA65AC /* main_wifi_icon@2x.png */,
 				04EB8F11197E5B0900CA65AC /* main_wifi_image@2x.png */,
+				04FBAD8C198B3B6C0040E11A /* main_wifi_image-568h@2x.png */,
 				04EB8F00197E4D5A00CA65AC /* mainview_huiguang@2x.png */,
 				04EB8EFA197E49AA00CA65AC /* about_email@2x.png */,
 				04EB8EFB197E49AA00CA65AC /* about_icon@2x.png */,
@@ -4005,6 +4008,7 @@
 				035214E0195B1D9700F92B55 /* me_headview_bg@2x.png in Resources */,
 				FA4E65ED19357B21005022E2 /* disclosure_open.png in Resources */,
 				4ECBF70718F442DE003963E1 /* ShopDetailHeaderView.xib in Resources */,
+				04FBAD8D198B3B6C0040E11A /* main_wifi_image-568h@2x.png in Resources */,
 				035214CA195894C500F92B55 /* StoreListViewController.xib in Resources */,
 				FA4E65FA19357B22005022E2 /* ios-social-sdk-comment-detail.html in Resources */,
 				4EF0911218FB52FD00ABFE7D /* toolBar-btn-home@2x.png in Resources */,

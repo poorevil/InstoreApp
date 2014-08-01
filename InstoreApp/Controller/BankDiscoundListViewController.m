@@ -21,6 +21,7 @@
 @property (nonatomic, retain) NSMutableArray *itemList;
 @property (nonatomic, assign) NSInteger totalAmount;
 @property (nonatomic, assign) NSInteger currentPage;
+@property (assign, nonatomic) NSInteger everyPageCount;
 
 @end
 
@@ -48,7 +49,9 @@
     self.itemList = [NSMutableArray array];
     self.bankCardDetailInterface = [[[BankCardDetailInterface alloc]init]autorelease];
     self.bankCardDetailInterface.delegate = self;
-    [self.bankCardDetailInterface getBankCardDetailByPage:self.currentPage amount:20 andBankId:self.bankId];
+    self.currentPage = 1;
+    self.everyPageCount = 10;
+    [self.bankCardDetailInterface getBankCardDetailByPage:self.currentPage amount:self.everyPageCount andBankId:self.bankId];
     
     self.hidesBottomBarWhenPushed = YES;
     
@@ -71,6 +74,7 @@
         cell = [[[NSBundle mainBundle] loadNibNamed:@"BankDiscoundListCell"
                                               owner:self
                                             options:nil] objectAtIndex:0];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     BankCardDetailModel *bankCardDetailModel = [self.itemList objectAtIndex:indexPath.row];
     cell.labTitle.text = bankCardDetailModel.title;
@@ -78,7 +82,14 @@
     cell.imgView.imageURL = [NSURL URLWithString:bankCardDetailModel.image];
     cell.labStartTime.text = [[NSDate dateFromString:bankCardDetailModel.startTime] toDateString];
     cell.labEndTime.text = [[NSDate dateFromString:bankCardDetailModel.endTime] toDateString];    
-    cell.imageStoreLogo.imageURL = [NSURL URLWithString:bankCardDetailModel.store.logoUrl];
+    cell.imageStoreLogo.imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@/100*100.png",bankCardDetailModel.store.logoUrl]];
+    
+    if (indexPath.row == self.itemList.count - 1) {
+        if (self.currentPage * self.everyPageCount < self.totalAmount) {
+            self.currentPage++;
+            [self.bankCardDetailInterface getBankCardDetailByPage:self.currentPage amount:self.everyPageCount andBankId:self.bankId];
+        }
+    }
     
     return cell;
 }
@@ -96,8 +107,6 @@
 -(void)getBankCardDetailDidFinished:(NSArray *)itemList totalCount:(NSInteger)totalCount currentPage:(NSInteger)currentPage{
     [self.itemList addObjectsFromArray:itemList];
     self.totalAmount = totalCount;
-    self.currentPage = currentPage;
-    self.currentPage++;
     
     [self.myTableView reloadData];
 }

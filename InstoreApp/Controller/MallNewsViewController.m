@@ -22,6 +22,7 @@
 
 @property (nonatomic, assign) NSInteger totalAmount;
 @property (nonatomic, assign) NSInteger currentPage;
+@property (assign, nonatomic) NSInteger everyPageCount;
 
 @end
 
@@ -46,7 +47,9 @@
     
     self.mallNewsInterface = [[[MallNewsInterface alloc] init]autorelease];
     self.mallNewsInterface.delegate = self;
-    [self.mallNewsInterface getMallNewsByPage:self.currentPage amount:20];
+    self.currentPage = 1;
+    self.everyPageCount = 10;
+    [self.mallNewsInterface getMallNewsByPage:self.currentPage amount:self.everyPageCount];
     
     self.navigationItem.rightBarButtonItem = nil;
 }
@@ -92,6 +95,12 @@
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];    
     [cell setDict:dict];
     
+    if (indexPath.row == self.itemList.count -1) {
+        if (self.currentPage * self.everyPageCount < self.itemList.count) {
+            [self.mallNewsInterface getMallNewsByPage:self.currentPage amount:self.everyPageCount];
+        }
+    }
+    
     return cell;
 }
 
@@ -124,8 +133,6 @@
 {
     [self.itemList addObjectsFromArray:itemList];
     self.totalAmount = totalCount;
-    self.currentPage = currentPage;
-    self.currentPage++;
     
     [self.mtableView reloadData];
 }

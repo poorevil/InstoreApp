@@ -47,6 +47,8 @@ YouHuiOrderViewControllerDelegate>
 @property (nonatomic, assign) NSInteger gameTotalCount;
 @property (nonatomic, assign) NSInteger gameCurrentPage;
 
+@property (assign, nonatomic) NSInteger everyPageCount;
+
 @property (nonatomic, retain) StoreInterface *storeInterface;
 
 
@@ -74,6 +76,8 @@ YouHuiOrderViewControllerDelegate>
     self.goodsItemList = [NSMutableArray array];
     self.foodItemList = [NSMutableArray array];
     self.gameItemList = [NSMutableArray array];
+    
+    self.everyPageCount = 10;
     
     //init navigater
     [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:248.0f/255.0f
@@ -155,15 +159,17 @@ YouHuiOrderViewControllerDelegate>
             break;
     }
     
-    self.storeInterface = [[[StoreInterface alloc] init]autorelease];
-    self.storeInterface.delegate = self;
+    if (!self.storeInterface) {
+        self.storeInterface = [[[StoreInterface alloc] init]autorelease];
+        self.storeInterface.delegate = self;
+    }
     
     [self.storeInterface getStoreListByFloorId:self.filterFloorModel.fid
                                            cid:self.filterCategory.cid
                                     buildingId:self.filterFloorModel.buildingId
                                          order:self.filterOrder
                                       category:category
-                                        amount:20
+                                        amount:self.everyPageCount
                                           page:page];
 }
 
@@ -177,6 +183,10 @@ YouHuiOrderViewControllerDelegate>
 {
     self.mtableView = nil;
     self.headerView = nil;
+    
+    self.goodsItemList = nil;
+    self.foodItemList = nil;
+    self.gameItemList = nil;
     
     [super dealloc];
 }
@@ -345,6 +355,33 @@ YouHuiOrderViewControllerDelegate>
         foodCell.storeModel = sm;
     }
     
+    switch ([self.headerView.segmentControl selectedSegmentIndex]) {
+        case 0:
+            if (indexPath.row == self.goodsItemList.count -1) {
+                if (self.goodsCurrentPage * self.everyPageCount < self.goodsTotalCount) {
+                    self.goodsCurrentPage++;
+                    [self loadItemList];
+                }
+            }
+            break;
+        case 1:
+            if (indexPath.row == self.foodItemList.count -1) {
+                if (self.foodCurrentPage * self.everyPageCount < self.foodTotalCount) {
+                    self.foodCurrentPage++;
+                    [self loadItemList];
+                }
+            }
+            break;
+        case 2:
+            if (indexPath.row == self.gameItemList.count -1) {
+                if (self.gameCurrentPage * self.everyPageCount < self.gameTotalCount) {
+                    self.gameCurrentPage++;
+                    [self loadItemList];
+                }
+            }
+            break;
+    }
+    
     return cell;
 }
 
@@ -402,17 +439,17 @@ YouHuiOrderViewControllerDelegate>
         [self.goodsItemList addObjectsFromArray:resultList];
         self.goodsTotalCount = totalCount;
         self.goodsCurrentPage = currentPage;
-        self.goodsCurrentPage++;
+//        self.goodsCurrentPage++;
     }else if ([category isEqualToString:@"Restaurant"]) {
         [self.foodItemList addObjectsFromArray:resultList];
         self.foodTotalCount = totalCount;
         self.foodCurrentPage = currentPage;
-        self.foodCurrentPage++;
+//        self.foodCurrentPage++;
     }else if ([category isEqualToString:@"Entertainment"]) {
         [self.gameItemList addObjectsFromArray:resultList];
         self.gameTotalCount = totalCount;
         self.gameCurrentPage = currentPage;
-        self.gameCurrentPage++;
+//        self.gameCurrentPage++;
     }
     
     self.storeCount = storeCount;

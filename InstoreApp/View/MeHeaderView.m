@@ -58,7 +58,7 @@
 {
     _userInfo = userInfo;
     
-    self.headIconImageView.imageURL = [NSURL URLWithString:userInfo.headUrl];
+//    self.headIconImageView.imageURL = [NSURL URLWithString:userInfo.headUrl];
     self.nickNameLabel.text = self.userInfo.nickName;
     self.cardNumLabel.text = self.userInfo.clubCard;
     self.pointLabel.text = [NSString stringWithFormat:@"%d",self.userInfo.points];

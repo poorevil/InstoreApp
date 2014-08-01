@@ -46,6 +46,7 @@ CouponViewInterfaceDelegate, YouhuiCategoryViewControllerDelegate,YouHuiOrderVie
 @property (assign, nonatomic) NSInteger totalCountAll;
 @property (assign, nonatomic) NSInteger totalCount1;
 @property (assign, nonatomic) NSInteger totalCount2;
+@property (assign, nonatomic) NSInteger everyPageCount;
 
 
 @property (retain, nonatomic) NSString *order;
@@ -72,6 +73,7 @@ CouponViewInterfaceDelegate, YouhuiCategoryViewControllerDelegate,YouHuiOrderVie
     self.currentPageAll = 1;
     self.currentPage1 = 1;
     self.currentPage2 = 1;
+    self.everyPageCount = 10;
     
     self.title = @"优惠";
     
@@ -89,12 +91,12 @@ CouponViewInterfaceDelegate, YouhuiCategoryViewControllerDelegate,YouHuiOrderVie
     //关注商户的优惠
     self.couponViewInterface = [[[CouponViewInterface alloc] init] autorelease];
     self.couponViewInterface.delegate = self;
-    [self.couponViewInterface getCouponViewListByPage:self.currentPage1 amount:20];
+    [self.couponViewInterface getCouponViewListByPage:self.currentPage1 amount:self.everyPageCount];
     
     //其他商户的优惠
     self.couponSectionTwoInterface = [[[CouponSectionTwoInterface alloc]init]autorelease];
     self.couponSectionTwoInterface.delegate = self;
-    [self.couponSectionTwoInterface getCouponSectionTwoListByPage:self.currentPage2 amount:20];
+    [self.couponSectionTwoInterface getCouponSectionTwoListByPage:self.currentPage2 amount:self.everyPageCount];
     
     
     if (self.refreshHeaderView == nil) {
@@ -116,7 +118,7 @@ CouponViewInterfaceDelegate, YouhuiCategoryViewControllerDelegate,YouHuiOrderVie
     [self.orderBtn setTitle:self.filterCategory.cName forState:UIControlStateNormal];
     [self.itemListAll removeAllObjects];
     self.currentPageAll = 1;
-    [self.couponSearchOrderInterface searchByAmount:20 Page:self.currentPageAll Cid:self.cid Type:self.type Order:self.order];
+    [self.couponSearchOrderInterface searchByAmount:self.everyPageCount Page:self.currentPageAll Cid:self.cid Type:self.type Order:self.order];
 }
 -(void)loadTypeData:(NSInteger)type{
     if (!self.couponSearchOrderInterface) {
@@ -127,7 +129,7 @@ CouponViewInterfaceDelegate, YouhuiCategoryViewControllerDelegate,YouHuiOrderVie
     [self.orderBtn setTitle:@"全部分类" forState:UIControlStateNormal];
     [self.itemListAll removeAllObjects];
     self.currentPageAll = 1;
-    [self.couponSearchOrderInterface searchByAmount:20 Page:self.currentPageAll Cid:self.cid Type:type Order:self.order];
+    [self.couponSearchOrderInterface searchByAmount:self.everyPageCount Page:self.currentPageAll Cid:self.cid Type:type Order:self.order];
 }
 
 - (void)didReceiveMemoryWarning
@@ -163,7 +165,7 @@ CouponViewInterfaceDelegate, YouhuiCategoryViewControllerDelegate,YouHuiOrderVie
     if (self.isOrder1 == YES || self.isOrder2 == YES) {
         return 1;
     }else{
-        return 4;
+        return 3;
     }
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -173,15 +175,12 @@ CouponViewInterfaceDelegate, YouhuiCategoryViewControllerDelegate,YouHuiOrderVie
     }else{
         switch (section) {
             case 0:
-                return 0;
-                break;
-            case 1:
                 return ceil((self.itemList.count +1 ) / 2.0);
                 break;
-            case 2:
+            case 1:
                 return 1;
                 break;
-            case 3:
+            case 2:
                 return ceil(self.itemList2.count / 2.0);
                 break;
             default:
@@ -196,23 +195,20 @@ CouponViewInterfaceDelegate, YouhuiCategoryViewControllerDelegate,YouHuiOrderVie
     }else{
         switch (indexPath.section) {
             case 0:
-                return 0;
-                break;
-            case 2:
-                return 44;
-                break;
-            case 1:
                 if (indexPath.row == ceil((self.itemList.count +1 ) / 2)) {
                     return 120;
                 }else{
                     return 236;
                 }
                 break;
-            case 3:
+            case 1:
+                return 44;
+                break;
+            case 2:
                 return 236;
                 break;
             default:
-                return 236;
+                return 0;
                 break;
         }
     }
@@ -221,7 +217,7 @@ CouponViewInterfaceDelegate, YouhuiCategoryViewControllerDelegate,YouHuiOrderVie
 {
     if (self.isOrder1 == NO && self.isOrder2 == NO) {
         switch (indexPath.section) {
-            case 1:
+            case 0:
             {   //收藏店铺的优惠
                 if (self.itemList.count % 2 == 0) {
                     //收藏店铺的优惠数量是偶数时
@@ -231,6 +227,7 @@ CouponViewInterfaceDelegate, YouhuiCategoryViewControllerDelegate,YouHuiOrderVie
                         CouponView_empty2_Cell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
                         if (!cell) {
                             cell = [[[NSBundle mainBundle] loadNibNamed:@"CouponView_empty2_Cell" owner:self options:nil] objectAtIndex:0];
+                            cell.selectionStyle = UITableViewCellSelectionStyleNone;
                         }
                         return cell;
                     }else{
@@ -239,9 +236,16 @@ CouponViewInterfaceDelegate, YouhuiCategoryViewControllerDelegate,YouHuiOrderVie
                         CouponView_focusedCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
                         if (!cell) {
                             cell = [[[NSBundle mainBundle] loadNibNamed:@"CouponView_focusedCell" owner:self options:nil] objectAtIndex:0];
+                            cell.selectionStyle = UITableViewCellSelectionStyleNone;
                         }
                         cell.cm1 = [self.itemList objectAtIndex:indexPath.row * 2];
                         cell.cm2 = [self.itemList objectAtIndex:(indexPath.row * 2 + 1)];
+                        
+                        if (self.currentPage1 * self.everyPageCount < self.itemList.count) {
+                            self.currentPage1++;
+                            [self.couponViewInterface getCouponViewListByPage:self.currentPage1 amount:self.everyPageCount];
+                        }
+                        
                         return cell;
                     }
                 }else{
@@ -261,12 +265,13 @@ CouponViewInterfaceDelegate, YouhuiCategoryViewControllerDelegate,YouHuiOrderVie
                 }
             }
                 break;
-            case 3:
+            case 2:
             {
                 static NSString *CellIdentifier = @"CouponView_focusedCell";
                 CouponView_focusedCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
                 if (!cell) {
                     cell = [[[NSBundle mainBundle] loadNibNamed:@"CouponView_focusedCell" owner:self options:nil] objectAtIndex:0];
+                    cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 }
                 cell.cm1 = [self.itemList2 objectAtIndex:indexPath.row * 2];
                 if (self.itemList2.count < indexPath.row * 2 +1) {
@@ -274,23 +279,18 @@ CouponViewInterfaceDelegate, YouhuiCategoryViewControllerDelegate,YouHuiOrderVie
                 }else{
                     cell.cm2 = [self.itemList2 objectAtIndex:(indexPath.row * 2 + 1)];
                 }
-                return cell;
-            }
-                break;
-            case 0:
-            {
-                static NSString *CellIdentifier = @"CouponView_titleCell";
-                CouponView_titleCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-                if (!cell) {
-                    cell = [[[NSBundle mainBundle] loadNibNamed:@"CouponView_titleCell"
-                                                          owner:self
-                                                        options:nil] objectAtIndex:0];
+                
+                if (indexPath.row == ceil(self.itemList2.count / 2.0)-1) {
+                    if (self.currentPage2 * self.everyPageCount < self.itemList2.count) {
+                        self.currentPage2++;
+                        [self.couponSectionTwoInterface getCouponSectionTwoListByPage:self.currentPage2 amount:self.everyPageCount];
+                    }
                 }
-                cell.titleLabel.text = @"收藏商品的优惠";
+                
                 return cell;
             }
                 break;
-            case 2:
+            case 1:
             {
                 static NSString *CellIdentifier = @"CouponView_titleCell";
                 CouponView_titleCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -309,6 +309,7 @@ CouponViewInterfaceDelegate, YouhuiCategoryViewControllerDelegate,YouHuiOrderVie
     CouponView_focusedCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (!cell) {
         cell = [[[NSBundle mainBundle] loadNibNamed:@"CouponView_focusedCell" owner:self options:nil] objectAtIndex:0];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     cell.cm1 = [self.itemListAll objectAtIndex:indexPath.row * 2];
     if (self.itemListAll.count <= (indexPath.row * 2 +1)) {
@@ -316,6 +317,15 @@ CouponViewInterfaceDelegate, YouhuiCategoryViewControllerDelegate,YouHuiOrderVie
     }else{
         cell.cm2 = [self.itemListAll objectAtIndex:(indexPath.row * 2 + 1)];
     }
+    
+    if (indexPath.row == ceil(self.itemListAll.count / 2.0) -1) {
+        if (self.currentPageAll * self.everyPageCount < self.itemListAll.count) {
+            self.currentPageAll++;
+            [self.couponSearchOrderInterface searchByAmount:self.everyPageCount Page:self.currentPageAll Cid:self.cid Type:self.type Order:self.order];
+        }
+    }
+    
+    
     return cell;
 }
 
@@ -328,7 +338,7 @@ CouponViewInterfaceDelegate, YouhuiCategoryViewControllerDelegate,YouHuiOrderVie
 {
     self.totalCount1 = totalCount;
     self.currentPage1 = currentPage;
-    self.currentPage1++;
+//    self.currentPage1++;
     
     [self.itemList addObjectsFromArray:resultArray];
     
@@ -344,7 +354,7 @@ CouponViewInterfaceDelegate, YouhuiCategoryViewControllerDelegate,YouHuiOrderVie
 - (void)getCouponSectionTwoListDidFinished:(NSArray *)resultArray focusCount:(NSInteger)focusCount totalCount:(NSInteger)totalCount currentPage:(NSInteger)currentPage{
     self.totalCount2 = totalCount;
     self.currentPage2 = currentPage;
-    self.currentPage2++;
+//    self.currentPage2++;
     
     [self.itemList2 addObjectsFromArray:resultArray];
     [self.mtableView reloadData];
@@ -360,7 +370,7 @@ CouponViewInterfaceDelegate, YouhuiCategoryViewControllerDelegate,YouHuiOrderVie
     [self.itemListAll addObjectsFromArray:result];
     self.totalCountAll = totalAmount;
     self.currentPageAll = currentPage;
-    self.currentPageAll++;
+//    self.currentPageAll++;
     
     [self.mtableView reloadData];
     [self.mtableView scrollRectToVisible:CGRectMake(0, 0, 320, 1) animated:YES];
@@ -413,7 +423,7 @@ CouponViewInterfaceDelegate, YouhuiCategoryViewControllerDelegate,YouHuiOrderVie
     
     [self.itemListAll removeAllObjects];
     self.currentPageAll = 1;
-    [self.couponSearchOrderInterface searchByAmount:20 Page:self.currentPageAll Cid:self.cid Type:self.type Order:self.order];
+    [self.couponSearchOrderInterface searchByAmount:self.everyPageCount Page:self.currentPageAll Cid:self.cid Type:self.type Order:self.order];
 }
 
 //分类-全部、潮流女装、男人帮。。。。。。
@@ -441,7 +451,7 @@ CouponViewInterfaceDelegate, YouhuiCategoryViewControllerDelegate,YouHuiOrderVie
     self.cid = categoryModel.cid;
     self.currentPageAll = 1;
     [self.itemListAll removeAllObjects];
-    [self.couponSearchOrderInterface searchByAmount:20 Page:self.currentPageAll Cid:self.cid Type:self.type Order:self.order];
+    [self.couponSearchOrderInterface searchByAmount:self.everyPageCount Page:self.currentPageAll Cid:self.cid Type:self.type Order:self.order];
 }
 
 //我的收藏
@@ -457,14 +467,14 @@ CouponViewInterfaceDelegate, YouhuiCategoryViewControllerDelegate,YouHuiOrderVie
     if (self.isOrder1 == YES || self.isOrder2 == YES) {
         self.currentPageAll = 1;
         [self.itemListAll removeAllObjects];
-        [self.couponSearchOrderInterface searchByAmount:20 Page:self.currentPageAll Cid:self.cid Type:self.type Order:self.order];
+        [self.couponSearchOrderInterface searchByAmount:self.everyPageCount Page:self.currentPageAll Cid:self.cid Type:self.type Order:self.order];
     }else{
         self.currentPage1 = 1;
         self.currentPage2 = 1;
         [self.itemList removeAllObjects];
         [self.itemList2 removeAllObjects];
-        [self.couponViewInterface getCouponViewListByPage:self.currentPageAll amount:20];
-        [self.couponSectionTwoInterface getCouponSectionTwoListByPage:self.currentPage2 amount:20];
+        [self.couponViewInterface getCouponViewListByPage:self.currentPageAll amount:self.everyPageCount];
+        [self.couponSectionTwoInterface getCouponSectionTwoListByPage:self.currentPage2 amount:self.everyPageCount];
     }
 //
 }

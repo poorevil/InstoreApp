@@ -24,6 +24,7 @@
 @property (retain, nonatomic) NSMutableArray *itemList;
 @property (assign, nonatomic) NSInteger totalCount;
 @property (assign, nonatomic) NSInteger currentPage;
+@property (assign, nonatomic) NSInteger everyPageCount;
 @property (assign, nonatomic) NSInteger storeCount;
 @property (assign, nonatomic) BOOL recommend;
 
@@ -51,10 +52,11 @@
     self.title = [NSString stringWithFormat:@"选择喜欢的品牌(%d)",self.storeCount];
     self.itemList = [NSMutableArray array];
     self.currentPage = 1;
+    self.everyPageCount = 10;
     
     self.focusStoreListInterface = [[[FocusStoreListInterface alloc]init]autorelease];
     self.focusStoreListInterface.delegate = self;
-    [self.focusStoreListInterface getFocusStoreListWithAmout:20 Page:self.currentPage Caregory:nil];
+    [self.focusStoreListInterface getFocusStoreListWithAmout:self.everyPageCount Page:self.currentPage Caregory:nil];
     
     self.setStoreFocusRecommend = [[[SetStoreFocusRecommend alloc]init]autorelease];
     
@@ -94,6 +96,14 @@
         cell.view4 = [self.itemList objectAtIndex:(indexPath.row * 4 + 3)];
     }
     
+    if (indexPath.row == ceil(self.itemList.count / 4.0) - 1) {
+        if (self.currentPage * self.everyPageCount < self.totalCount) {
+            self.currentPage++;
+            [self.focusStoreListInterface getFocusStoreListWithAmout:self.everyPageCount Page:self.currentPage Caregory:nil];
+        }
+    }
+    
+    
     return cell;
 }
 
@@ -113,8 +123,6 @@
 -(void)getFocusStoreListDidFinished:(NSArray *)itemList totalCount:(NSInteger)totalCount currentPage:(NSInteger)currentPage storeCount:(NSInteger)storeCount recommend:(BOOL)recommend{
     [self.itemList addObjectsFromArray:itemList];
     self.totalCount = totalCount;
-    self.currentPage = currentPage;
-    self.currentPage++;
     self.storeCount = storeCount;
     self.recommend = recommend;
     

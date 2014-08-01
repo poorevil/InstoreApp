@@ -47,6 +47,7 @@
     self.title = @"银行卡恵";
     self.hidesBottomBarWhenPushed = YES;
     self.navigationItem.rightBarButtonItem = nil;
+    self.currentPage = 1;
     
     UIButton *btnEditor = [UIButton buttonWithType:UIButtonTypeCustom];
     btnEditor.frame = CGRectMake(0, 0, 38, 19);
@@ -97,6 +98,7 @@
         cell = [[[NSBundle mainBundle] loadNibNamed:@"BankCardCell"
                                               owner:self
                                             options:nil] objectAtIndex:0];
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     BankCardModel *bankCardModel = [self.itemList objectAtIndex:indexPath.row];
     cell.labBankName.text = bankCardModel.name;
@@ -159,7 +161,7 @@
 -(void)getBankCardDidFinished:(NSArray *)itemList totalCount:(NSInteger)totalCount currentPage:(NSInteger)currentPage{
     [self.itemList addObjectsFromArray:itemList];
     self.totalAmount = totalCount;
-    self.currentPage = currentPage;
+//    self.currentPage = currentPage;
     self.currentPage++;
     
     [self.myTableView reloadData];

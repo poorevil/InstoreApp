@@ -36,6 +36,7 @@
     self.items = [NSMutableArray array];
     self.currentPage = 1;
     self.title = @"我的优惠劵";
+    self.hidesBottomBarWhenPushed = YES;
     
     self.collectionView = [[[PullPsCollectionView alloc] initWithFrame:CGRectMake(0,
                                                                                  self.navigationController.navigationBar.frame.size.height+self.navigationController.navigationBar.frame.origin.y,

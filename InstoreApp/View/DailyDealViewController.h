@@ -18,6 +18,7 @@
 @property (nonatomic, retain) NSMutableArray *itemList;
 @property (nonatomic, assign) NSInteger totalAmount;
 @property (nonatomic, assign) NSInteger currentPage;
+@property (assign, nonatomic) NSInteger everyPageCount;
 
 @property (nonatomic,retain) EGORefreshTableHeaderView *refreshHeaderView;
 @property (nonatomic,assign) BOOL reloading;

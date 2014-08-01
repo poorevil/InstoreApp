@@ -19,7 +19,10 @@
 @property (nonatomic,strong) UISearchBar *searchBar;
 
 @property (nonatomic,strong) SearchInterface *searchInterface;
+
 @property (nonatomic,assign) NSInteger currentPage;
+@property (nonatomic,assign) NSInteger totalCount;
+@property (assign, nonatomic) NSInteger everyPageCount;
 
 @property (retain, nonatomic) NSArray *storeList;
 
@@ -46,16 +49,16 @@
     self.searchInterface = [[[SearchInterface alloc] init] autorelease];
     self.searchInterface.delegate = self;
     [self loadDataSource];
+    
+    self.currentPage = 1;
+    self.everyPageCount = 10;
 }
 
 -(void)initViews
 {
     self.hidesBottomBarWhenPushed = YES;
     
-    [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:248.0f/255.0f
-                                                                             green:40.0f/255.0f
-                                                                              blue:53.0f/255.0f
-                                                                             alpha:1]];
+    [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:248.0f/255.0f green:40.0f/255.0f blue:53.0f/255.0f alpha:1]];
     
     UIBarButtonItem *cancelBtn = [[UIBarButtonItem alloc] initWithTitle:@"关闭" style:UIBarButtonItemStylePlain target:self action:@selector(cancelAction)];
     cancelBtn.tintColor = [UIColor whiteColor];
@@ -70,7 +73,6 @@
     [self.searchBar sizeToFit];
     
     self.navigationItem.titleView = self.searchBar;
-    
     
     
     self.items = [NSMutableArray array];
@@ -180,6 +182,8 @@
             CouponView_focusedCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             if (!cell) {
                 cell = [[[NSBundle mainBundle] loadNibNamed:@"CouponView_focusedCell" owner:self options:nil] objectAtIndex:0];
+                cell.addSecondView = YES;
+//                cell.
             }
             cell.cm1 = [self.items objectAtIndex:indexPath.row * 2];
             if (self.items.count <= indexPath.row * 2 +1) {
@@ -187,6 +191,16 @@
             }else{
                 cell.cm2 = [self.items objectAtIndex:(indexPath.row * 2 + 1)];
             }
+            
+            //上拉加载更多
+            if (indexPath.row == ceil(self.items.count / 2.0)-1) {
+                if (self.currentPage * self.everyPageCount < self.totalCount) {
+                    self.currentPage++;
+                    [self loadDataSource];
+                }
+                
+            }
+            
             return cell;
         }
             break;
@@ -207,88 +221,22 @@
 
 
 
-//- (void) loadMoreDataToTable
-//{
-//    [self loadDataSource];
-//    self.collectionView.pullTableIsLoadingMore = NO;
-//}
-//
-//#pragma mark - PullTableViewDelegate
-//
-//- (void)pullPsCollectionViewDidTriggerRefresh:(PullPsCollectionView *)pullTableView
-//{
-//    [self performSelector:@selector(refreshTable) withObject:nil afterDelay:3.0f];
-//}
-//
-//- (void)pullPsCollectionViewDidTriggerLoadMore:(PullPsCollectionView *)pullTableView
-//{
-//    [self performSelector:@selector(loadMoreDataToTable) withObject:nil afterDelay:3.0f];
-//}
-
-
-//- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-//{
-//    return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
-//}
-
-////实例化tile
-//- (YouhuiTileView *)collectionView:(PSCollectionView *)collectionView viewAtIndex:(NSInteger)index {
-//    CouponModel *item = [self.items objectAtIndex:index];
-//    
-//    //TODO:重用view！！
-//    YouhuiTileView *v = nil;//(YouhuiTileView *)[self.collectionView dequeueReusableView];
-//    if(v == nil) {
-//        NSArray *nib =
-//        [[NSBundle mainBundle] loadNibNamed:@"YouhuiTileView" owner:self options:nil];
-//        v = [nib objectAtIndex:0];
-//    }
-//    
-//    [v fillViewWithObject:item];
-//    
-//    return v;
-//}
-//
-////根据图片高度返回tile高度
-//- (CGFloat)heightForViewAtIndex:(NSInteger)index {
-//    // You should probably subclass PSCollectionViewCell
-//    return [YouhuiTileView heightForViewWithObject:[self.items objectAtIndex:index] inColumnWidth:self.collectionView.colWidth];
-//}
-//
-//- (void)collectionView:(PSCollectionView *)collectionView didSelectView:(PSCollectionViewCell *)view atIndex:(NSInteger)index {
-//    // Do something with the tap
-//}
-//
-//- (NSInteger)numberOfViewsInCollectionView:(PSCollectionView *)collectionView {
-//    return [self.items count];
-//}
-
-
-
 //获取接口数据
 - (void)loadDataSource {    
     [self.searchInterface searchKeyword:self.searchKeyWord
                                    type:0
                                 orderBy:nil
-                                 amount:20 page:self.currentPage];
+                                 amount:self.everyPageCount page:self.currentPage];
 }
 
-//- (void)dataSourceDidLoad {
-//    [self.collectionView reloadData];
-//}
-//
-//- (void)dataSourceDidError {
-//    [self.collectionView reloadData];
-//}
 
 #pragma mark - SearchInterfaceDelegate
 -(void)searchDidFinished:(NSDictionary *)result totalAmount:(NSInteger)totalAmount currentPage:(NSInteger)currentPage;
 {
     [self.items addObjectsFromArray:[result objectForKey:@"couponList"]];
     self.storeList = [result objectForKey:@"storeList"];
-//    [self dataSourceDidLoad];
+    self.totalCount = totalAmount;
     [self.myTableView reloadData];
-    
-    self.currentPage++;
 }
 
 -(void)searchDidFailed:(NSString*)errorMessage
@@ -303,7 +251,8 @@
         [self.searchBar resignFirstResponder];
         [self.navigationItem.rightBarButtonItem setTitle:@"关闭"];
     }else{
-        [self dismissViewControllerAnimated:NO completion:nil];
+//        [self dismissViewControllerAnimated:NO completion:nil];
+        [self.navigationController popViewControllerAnimated:YES];
     }
 }
 

@@ -41,6 +41,7 @@
     
     saveVC = [[SaveAddBankCardInterface alloc]init];
     saveVC.delegate = self;
+    self.currentPage = 1;
     
     self.addBankCardInterface = [[[AddBandCardInterface alloc]init]autorelease];
     _addBankCardInterface.delegate = self;
@@ -120,7 +121,7 @@
     }
 //    [self.itemList addObjectsFromArray:itemList];
     self.totalAmount = totalCount;
-    self.currentPage = currentPage;
+//    self.currentPage = currentPage;
     self.currentPage++;
     
     [self.myTableView reloadData];

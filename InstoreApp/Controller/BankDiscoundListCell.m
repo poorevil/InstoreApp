@@ -15,6 +15,8 @@
     // Initialization code
     self.parentView.layer.borderColor = [UIColor lightGrayColor].CGColor;
     self.parentView.layer.borderWidth = 0.4f;
+    
+    self.imageStoreLogo.contentMode = UIViewContentModeScaleAspectFit;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated

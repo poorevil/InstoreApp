@@ -40,10 +40,11 @@
     self.hidesBottomBarWhenPushed = YES;
     self.itemList = [NSMutableArray array];
     self.currentPage = 1;
+    self.everyPageCount = 10;
     
     self.dailyDealInterface = [[[DailyDealInterface alloc]init]autorelease];
     _dailyDealInterface.delegate = self;
-    [_dailyDealInterface getDailyDealByPage:self.currentPage amount:20];
+    [_dailyDealInterface getDailyDealByPage:self.currentPage amount:self.everyPageCount];
 
     self.navigationItem.rightBarButtonItem = nil;
     
@@ -82,6 +83,15 @@
     cell.imgView.imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@/120*120.png",couponModel.imageUrl]];
     cell.summary.text = couponModel.summary;
     cell.focusCount.text = [NSString stringWithFormat:@"%d",couponModel.focusCount];
+    
+    if (indexPath.row == self.itemList.count -1) {
+        if (self.currentPage * self.everyPageCount < self.itemList.count) {
+            self.currentPage++;
+            [self loadMoreData];
+        }
+        
+        
+    }
     
     return cell;
 }
@@ -159,6 +169,9 @@
             break;
     }
 }
+-(void)loadMoreData{
+    [_dailyDealInterface getDailyDealByPage:self.currentPage amount:self.everyPageCount];
+}
 
 #pragma mark - Data Source Loading / Reloading Methods
 -(void)refreshDate{
@@ -203,8 +216,6 @@
 -(void)getDailyDealDidFinished:(NSArray *)itemList totalCount:(NSInteger)totalCount currentPage:(NSInteger)currentPage{
     [self.itemList addObjectsFromArray:itemList];
     self.totalAmount = totalCount;
-    self.currentPage = currentPage;
-    self.currentPage++;
     
     [self.myTableView reloadData];
 }

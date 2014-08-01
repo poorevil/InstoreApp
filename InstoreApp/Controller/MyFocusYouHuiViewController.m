@@ -17,6 +17,7 @@
 @property (retain, nonatomic) NSMutableArray *itemList;
 @property (assign, nonatomic) NSInteger totalCount;
 @property (assign, nonatomic) NSInteger currentPage;
+@property (assign, nonatomic) NSInteger everyPageCount;
 
 
 @end
@@ -43,7 +44,7 @@
     
     self.myFocusYouHuiInterface = [[[MyFocusYouHuiInterface alloc]init]autorelease];
     self.myFocusYouHuiInterface.delegate = self;
-    [self.myFocusYouHuiInterface getMyFocusYouHuiListWithAmount:20 Page:self.currentPage];
+    [self.myFocusYouHuiInterface getMyFocusYouHuiListWithAmount:self.everyPageCount Page:self.currentPage];
     
     self.hidesBottomBarWhenPushed = YES;
 }
@@ -68,6 +69,14 @@
     }else{
         cell.cm2 = [self.itemList objectAtIndex:(indexPath.row * 2 + 1)];
     }
+    
+    if (indexPath.row == ceil(self.itemList.count / 2.0) - 1) {
+        if (self.currentPage * self.everyPageCount < self.totalCount) {
+            self.currentPage++;
+            [self.myFocusYouHuiInterface getMyFocusYouHuiListWithAmount:self.everyPageCount Page:self.currentPage];
+        }
+    }
+    
     return cell;
 }
 
@@ -75,8 +84,6 @@
 -(void)getMyFocusYouHuiListDidFinished:(NSArray *)itemList totalCount:(NSInteger)totalCount currentPage:(NSInteger)currentPage{
     [self.itemList addObjectsFromArray:itemList];
     self.totalCount = totalCount;
-    self.currentPage = currentPage;
-    self.currentPage++;
     
     [self.myTableView reloadData];
 }

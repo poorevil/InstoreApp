@@ -19,6 +19,7 @@
 @property (retain, nonatomic) NSMutableArray *itemList;
 @property (assign, nonatomic) NSInteger totalCount;
 @property (assign, nonatomic) NSInteger currentPage;
+@property (assign, nonatomic) NSInteger everyPageCount;
 
 @property (retain, nonatomic) MessageInterface *messageInterface;
 
@@ -49,7 +50,8 @@
     self.messageInterface = [[[MessageInterface alloc]init]autorelease];
     self.messageInterface.delegate = self;
     self.currentPage = 1;
-    [self.messageInterface getMessageInterfaceListByPage:self.currentPage amount:20];
+    self.everyPageCount = 10;
+    [self.messageInterface getMessageInterfaceListByPage:self.currentPage amount:self.everyPageCount];
     
 }
 
@@ -71,6 +73,13 @@
     cell.labDescription.text = messageModel.summary;
     cell.labDate.text = [messageModel.createDate toDateString];
     
+    if (indexPath.row == self.itemList.count -1) {
+        if (self.currentPage * self.everyPageCount < self.totalCount) {
+            self.currentPage++;
+            [self.messageInterface getMessageInterfaceListByPage:self.currentPage amount:self.everyPageCount];
+        }
+    }
+    
     return cell;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -81,12 +90,9 @@
     [vc release];
 }
 
-
 #pragma mark - MessageInterfaceDelegate <NSObject>
 -(void)getMessageInterfaceListDidFinished:(NSArray *)itemList totalCount:(NSInteger)totalCount currentPage:(NSInteger)currentPage{
     [self.itemList addObjectsFromArray:itemList];
-    self.currentPage = currentPage;
-    self.currentPage++;
     
     [self.myTableView reloadData];
 }

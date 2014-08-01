@@ -36,6 +36,7 @@ FocusedStoreListInterfaceDelegate, StoreCategoryFilterViewControllerDelegate>
 
 @property (nonatomic, assign) NSInteger totalCount;
 @property (nonatomic, assign) NSInteger currentPage;
+@property (assign, nonatomic) NSInteger everyPageCount;
 
 @property (nonatomic, retain) FocusedStoreListInterface *focusedStoreListInterface;
 
@@ -60,6 +61,8 @@ FocusedStoreListInterfaceDelegate, StoreCategoryFilterViewControllerDelegate>
     // Do any additional setup after loading the view from its nib.
     self.title = @"已关注的商家";
     self.itemList = [NSMutableArray array];
+    self.everyPageCount = 10;
+    self.currentPage = 1;
     
     [self initHeaderView];
     
@@ -121,9 +124,11 @@ FocusedStoreListInterfaceDelegate, StoreCategoryFilterViewControllerDelegate>
 #pragma mark - private method
 -(void)loadItemList
 {
-    self.focusedStoreListInterface = [[[FocusedStoreListInterface alloc] init] autorelease];
-    self.focusedStoreListInterface.delegate = self;
-    [self.focusedStoreListInterface getFocusedStoreListByAmount:20
+    if (!self.focusedStoreListInterface) {
+        self.focusedStoreListInterface = [[[FocusedStoreListInterface alloc] init] autorelease];
+        self.focusedStoreListInterface.delegate = self;
+    }
+    [self.focusedStoreListInterface getFocusedStoreListByAmount:self.everyPageCount
                                                            page:self.currentPage
                                                           order:self.filterOrder
                                                        category:self.filterCategory];
@@ -182,6 +187,13 @@ FocusedStoreListInterfaceDelegate, StoreCategoryFilterViewControllerDelegate>
     
     FoodItemCell *fc = (FoodItemCell *)cell;
     fc.storeModel = [self.itemList objectAtIndex:indexPath.row];
+    
+    if (indexPath.row == self.itemList.count - 1) {
+        if (self.currentPage * self.everyPageCount < self.totalCount) {
+            self.currentPage++;
+            [self loadItemList];
+        }
+    }
     
     return cell;
 }
@@ -246,8 +258,6 @@ FocusedStoreListInterfaceDelegate, StoreCategoryFilterViewControllerDelegate>
 {
     [self.itemList addObjectsFromArray:itemList];
     self.totalCount = totalCount;
-    self.currentPage = currentPage;
-    self.currentPage++;
     self.storeCount = storeCount;
     
     [self.mtableView reloadData];
