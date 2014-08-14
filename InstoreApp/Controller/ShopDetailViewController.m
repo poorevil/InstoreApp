@@ -345,7 +345,7 @@
 
 -(void)getStoreDetailDidFailed:(NSString *)errorMessage
 {
-    NSLog(@"%@",errorMessage);
+    DebugLog(@"%@",errorMessage);
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

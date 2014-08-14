@@ -167,7 +167,7 @@
     [self.myTableView reloadData];
 }
 -(void)getBankCardDidFailed:(NSString *)errorMsg{
-    NSLog(@"%s:%@",__FUNCTION__,errorMsg);
+    DebugLog(@"%@",errorMsg);
 }
 -(void)btnAddBankAction:(UIButton *)sender{
     if (self.myTableView.editing == YES) {

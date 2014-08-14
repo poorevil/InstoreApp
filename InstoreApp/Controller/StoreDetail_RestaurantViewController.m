@@ -291,7 +291,7 @@
 
 -(void)getStoreDetailDidFailed:(NSString *)errorMessage
 {
-    NSLog(@"%@",errorMessage);
+    DebugLog(@"%@",errorMessage);
 }
 
 @end

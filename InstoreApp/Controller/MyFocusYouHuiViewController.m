@@ -88,7 +88,7 @@
     [self.myTableView reloadData];
 }
 -(void)getMyFocusYouHuiListDidFailed:(NSString *)errorMsg{
-    NSLog(@"%@",errorMsg);
+    DebugLog(@"%@",errorMsg);
 }
 - (void)didReceiveMemoryWarning
 {

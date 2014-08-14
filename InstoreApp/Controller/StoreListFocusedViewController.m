@@ -265,7 +265,7 @@ FocusedStoreListInterfaceDelegate, StoreCategoryFilterViewControllerDelegate>
 
 -(void)getFocusedStoreListDidFailed:(NSString *)errorMsg
 {
-    NSLog(@"%@",errorMsg);
+    DebugLog(@"%@",errorMsg);
 }
 
 #pragma mark - StoreCategoryFilterViewControllerDelegate

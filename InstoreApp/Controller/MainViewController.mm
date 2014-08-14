@@ -181,15 +181,16 @@
         switch (itemType) {
             case 1:
             {
-                [nav.navigationBar setBarTintColor:[UIColor colorWithRed:248.0f/255.0f green:40.0f/255.0f blue:53.0f/255.0f alpha:1]];
-                [nav.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
-                
                 int promotionType = couponModel.promotionType;
                 //优惠
                 switch (promotionType) {
                     case 1:
                     {
                         //优惠活动
+                        
+                        [nav.navigationBar setBarTintColor:[UIColor colorWithRed:248.0f/255.0f green:40.0f/255.0f blue:53.0f/255.0f alpha:1]];
+                        [nav.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
+                        
                         MallNewsDetailViewController *vc = [[MallNewsDetailViewController alloc]initWithNibName:@"MallNewsDetailViewController" bundle:nil];
                         vc.couponModel = couponModel;
                         vc.hidesBottomBarWhenPushed = YES;
@@ -200,6 +201,10 @@
                     case 2:
                     {
                         //优惠券
+                        
+                        [nav.navigationBar setBarTintColor:[UIColor colorWithRed:248.0f/255.0f green:40.0f/255.0f blue:53.0f/255.0f alpha:1]];
+                        [nav.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
+                        
                         CouponDetailViewController *coupnDVC = [[CouponDetailViewController alloc]init];
                         coupnDVC.couponModel = couponModel;
                         coupnDVC.couponModel.cid = couponModel.itemId;
@@ -211,6 +216,10 @@
                     case 3:
                     {
                         //团购
+                        
+                        [nav.navigationBar setBarTintColor:[UIColor colorWithRed:248.0f/255.0f green:40.0f/255.0f blue:53.0f/255.0f alpha:1]];
+                        [nav.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
+                        
                         GroupBuyDetailViewController *groupBuyDVC = [[GroupBuyDetailViewController alloc]init];
                         groupBuyDVC.couponModel = couponModel;
                         groupBuyDVC.couponModel.cid = couponModel.itemId;
@@ -402,7 +411,7 @@
 
 -(void)getMainViewListDidFailed:(NSString *)errorMsg
 {
-    NSLog(@"%@",errorMsg);
+    DebugLog(@"%@",errorMsg);
 }
 
 #pragma mark - LunBoImageInterfaceDelegate
@@ -414,7 +423,7 @@
     [self.mtableView reloadData];
 }
 -(void)getLunBoImageListDidFailed:(NSString *)errorMsg{
-    NSLog(@"%@",errorMsg);
+    DebugLog(@"%@",errorMsg);
 }
 
 //#ifdef _FOR_DEBUG_

@@ -29,7 +29,7 @@
         [dic setObject:[value dataUsingEncoding:NSUTF8StringEncoding] forKey:(id)kSecValueData];
         // SecItemAdd
         OSStatus s = SecItemAdd((CFDictionaryRef)dic, NULL);
-        NSLog(@"add : %ld",s);
+        DebugLog(@"add : %ld",s);
     }
     
     return YES;
@@ -74,7 +74,7 @@
                                key,kSecAttrAccount,nil];
         // SecItemDelete
         OSStatus status = SecItemDelete((CFDictionaryRef)query);
-        NSLog(@"delete:%ld",status);    // //  errSecItemNotFound 就是没有
+        DebugLog(@"delete:%ld",status);    // //  errSecItemNotFound 就是没有
     }
     
     return YES;

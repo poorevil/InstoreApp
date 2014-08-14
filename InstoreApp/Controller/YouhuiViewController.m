@@ -226,7 +226,7 @@
 
 -(void)getCouponListDidFailed:(NSString *)errorMessage
 {
-    NSLog(@"%@",errorMessage);
+    DebugLog(@"%@",errorMessage);
 }
 
 -(void)dealloc

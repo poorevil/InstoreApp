@@ -25,7 +25,7 @@
     id jsonObj = [jsonStr objectFromJSONString];
     
     if (jsonObj) {
-        NSLog(@"%@",jsonObj);
+        DebugLog(@"%@",jsonObj);
     }
 }
 

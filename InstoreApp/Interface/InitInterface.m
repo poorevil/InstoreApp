@@ -58,7 +58,7 @@
         @catch (NSException *exception) {
             //TODO: 缺少重试机制
             
-            NSLog(@"%@",exception.reason);
+            DebugLog(@"%@",exception.reason);
             
             [self.delegate getInitParamDidFailed:exception.reason];
         }
@@ -66,7 +66,7 @@
 }
 
 -(void)requestIsFailed:(NSError *)error{
-    NSLog(@"%@",error.description);
+    DebugLog(@"%@",error.description);
 }
 
 -(void)dealloc

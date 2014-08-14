@@ -427,7 +427,7 @@ CouponDetailInterfaceDelegate,ShareToWeChatDeleate>{
 
 -(void)getCouponDetailDidFailed:(NSString *)errorMessage
 {
-    NSLog(@"%@",errorMessage);
+    DebugLog(@"%@",errorMessage);
 }
 
 - (IBAction)btnFocusAction:(UIButton *)sender {

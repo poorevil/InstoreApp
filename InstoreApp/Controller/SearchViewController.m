@@ -167,7 +167,7 @@
     [self.mtableView reloadData];
 }
 -(void)getSearchHotKeywordAndHistoryListListDidFailed:(NSString *)errorMsg{
-    NSLog(@"%@",errorMsg);
+    DebugLog(@"%@",errorMsg);
 }
 
 -(void)dealloc

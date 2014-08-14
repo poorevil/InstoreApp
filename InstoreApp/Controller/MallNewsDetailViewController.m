@@ -294,7 +294,7 @@
 
 -(void)getCouponDetailDidFailed:(NSString *)errorMessage
 {
-    NSLog(@"%@",errorMessage);
+    DebugLog(@"%@",errorMessage);
 }
 -(IBAction)btnFocusAction:(UIButton *)sender{
     if (self.couponModel.isFocus == YES) {
@@ -369,7 +369,7 @@
 
 #pragma mark - EGOImageViewDelegate<NSObject>
 - (void)imageViewLoadedImage:(EGOImageView*)imageView{
-    NSLog(@"%@",NSStringFromCGSize(imageView.image.size));
+    DebugLog(@"%@",NSStringFromCGSize(imageView.image.size));
     CGSize size = imageView.image.size;
     float height = 320 * size.height / size.width;
     CGRect frame = imageView.frame;

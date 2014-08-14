@@ -98,7 +98,7 @@
 
 - (void)ClickShare
 {
-    NSLog(@"分享");
+    DebugLog(@"分享");
 }
 -(void)refreshDate
 {
@@ -245,7 +245,7 @@
 
 -(void)getStoreListDidFailed:(NSString *)errorMessage
 {
-    NSLog(@"%@",errorMessage);
+    DebugLog(@"%@",errorMessage);
 }
 
 #pragma mark -

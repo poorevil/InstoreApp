@@ -383,7 +383,7 @@
 
 -(void)getCouponDetailDidFailed:(NSString *)errorMessage
 {
-    NSLog(@"%@",errorMessage);
+    DebugLog(@"%@",errorMessage);
 }
 
 #pragma mark - CouponDownloadInterfaceDelegate <NSObject>
@@ -412,7 +412,7 @@
 
 -(void)getCouponDownloadDidFailed:(NSString *)errorMessage
 {
-    NSLog(@"%@",errorMessage);
+    DebugLog(@"%@",errorMessage);
     [SVProgressHUD dismiss];
     
     self.downloadBtn.enabled = YES;

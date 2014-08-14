@@ -110,7 +110,7 @@
         ServiceModel *service = [self.serviceList objectAtIndex:btn.tag];
         
         //TODO:对应操作
-        NSLog(@"btnAction-------%@",service.name);
+        DebugLog(@"btnAction-------%@",service.name);
     }
 }
 

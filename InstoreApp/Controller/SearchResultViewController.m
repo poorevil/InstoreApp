@@ -241,7 +241,7 @@
 
 -(void)searchDidFailed:(NSString*)errorMessage
 {
-    NSLog(@"%@",errorMessage);
+    DebugLog(@"%@",errorMessage);
 }
 
 #pragma mark - private method

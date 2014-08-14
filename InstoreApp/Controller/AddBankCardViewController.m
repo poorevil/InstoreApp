@@ -127,7 +127,7 @@
     [self.myTableView reloadData];
 }
 -(void)getAddBankCardDidFailed:(NSString *)errorMsg{
-    NSLog(@"%s:%@",__FUNCTION__,errorMsg);
+    DebugLog(@"%@",errorMsg);
 }
 -(void)dealloc{
     self.addBankCardInterface.delegate = nil;

@@ -139,7 +139,7 @@
 
 -(void)getmallNewsDidFailed:(NSString *)errorMsg
 {
-    NSLog(@"%@",errorMsg);
+    DebugLog(@"%@",errorMsg);
 }
 
 //#ifdef _FOR_DEBUG_

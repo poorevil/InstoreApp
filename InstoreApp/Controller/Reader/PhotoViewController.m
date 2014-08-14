@@ -1017,7 +1017,7 @@ UIImage* resizedImage(UIImage *inImage, CGRect thumbRect)
 	
     ImageMetadata *metadata =  [_fileListData objectAtIndex:self.photoAlbum.centerPageIndex];
     
-    NSLog(@"actionSheet:clickedButtonAtIndex:%@", metadata.filename);
+    DebugLog(@"actionSheet:clickedButtonAtIndex:%@", metadata.filename);
     
     
     if (buttonIndex == 0) {
@@ -1122,7 +1122,7 @@ UIImage* resizedImage(UIImage *inImage, CGRect thumbRect)
     
     ImageMetadata *metadata = (ImageMetadata *)[_fileListData objectAtIndex:self.photoAlbum.centerPageIndex];
     
-    NSLog(@"presentOptionsMenu %@", metadata.filename);
+    DebugLog(@"presentOptionsMenu %@", metadata.filename);
     
     NSFileManager *fm = [NSFileManager defaultManager];
     

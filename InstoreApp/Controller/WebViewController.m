@@ -43,7 +43,7 @@
     [request release];
     self.hidesBottomBarWhenPushed = YES;
     
-    NSLog(@"WebView_URL:%@",self.urlStr);
+    DebugLog(@"WebView_URL:%@",self.urlStr);
 }
 
 

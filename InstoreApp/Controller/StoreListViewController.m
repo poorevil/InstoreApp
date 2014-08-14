@@ -459,7 +459,7 @@ YouHuiOrderViewControllerDelegate>
 
 -(void)getStoreListDidFailed:(NSString *)errorMessage
 {
-    NSLog(@"%@",errorMessage);
+    DebugLog(@"%@",errorMessage);
 }
 
 #pragma mark - FloorSelectViewControllerDelegate

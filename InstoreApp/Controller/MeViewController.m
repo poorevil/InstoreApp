@@ -334,14 +334,14 @@
 
 -(void)getUserInfoDidFailed:(NSString *)errorMessage
 {
-    NSLog(@"%@",errorMessage);
+    DebugLog(@"%@",errorMessage);
 }
 
 -(void)setUserInfoDidFinished{
     
 }
 -(void)setUserInfoDidFailed:(NSString *)errorMessage{
-    NSLog(@"%@",errorMessage);
+    DebugLog(@"%@",errorMessage);
 }
 
 -(void)switchButtonChangeAchtion:(UISwitch *)sender{

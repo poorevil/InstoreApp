@@ -111,7 +111,7 @@
 
 -(void)getFloorListDidFailed:(NSString *)errorMessage
 {
-    NSLog(@"%@",errorMessage);
+    DebugLog(@"%@",errorMessage);
 }
 
 -(void)dealloc

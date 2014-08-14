@@ -114,7 +114,7 @@
 
 -(void)getServicesListDidFailed:(NSString *)errorMessage
 {
-    NSLog(@"%@",errorMessage);
+    DebugLog(@"%@",errorMessage);
 }
 
 -(void)dealloc

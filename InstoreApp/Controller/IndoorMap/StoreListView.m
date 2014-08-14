@@ -371,14 +371,14 @@
         NSData *receivedData = (NSData *)responseData;
         if ([receivedData length] > 0) {
             
-            NSLog(@"get malls list !!! set DATA_TYPE_STORELIST2 !!!");
+            DebugLog(@"get malls list !!! set DATA_TYPE_STORELIST2 !!!");
             ParseOperation *parser = [[GeneralListParserOperation alloc] initWithData:receivedData DataType:DATA_TYPE_STORELIST2 delegate:self];
             [self.queue addOperation:parser];
             
             [parser release];
         }
     } else {
-        NSLog(@"get malls list fail !!!");
+        DebugLog(@"get malls list fail !!!");
     }
 }
 

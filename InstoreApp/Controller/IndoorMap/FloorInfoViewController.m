@@ -127,7 +127,7 @@
             [parser release];
         }
     } else {
-        NSLog(@"get svg space fail !!!");
+        DebugLog(@"get svg space fail !!!");
     }
 }
 

@@ -220,7 +220,7 @@
     [self.myTableView reloadData];
 }
 -(void)getDailyDealDidFailed:(NSString *)errorMsg{
-    NSLog(@"%s:%@",__FUNCTION__,errorMsg);
+    DebugLog(@"%s:%@",__FUNCTION__,errorMsg);
 }
 - (void)didReceiveMemoryWarning
 {

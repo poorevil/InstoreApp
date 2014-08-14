@@ -129,7 +129,7 @@
     [self.myTableView reloadData];
 }
 -(void)getFocusStoreListDidFailed:(NSString *)errorMsg{
-    NSLog(@"%s:%@",__FUNCTION__,errorMsg);
+    DebugLog(@"%s:%@",__FUNCTION__,errorMsg);
 }
 
 #pragma mark - UpDateFocusStoreCountDelegate

@@ -111,7 +111,7 @@
     [self.myTableView reloadData];
 }
 -(void)getBankCardDetailDidFailed:(NSString *)errorMsg{
-    NSLog(@"%s:%@",__FUNCTION__,errorMsg);
+    DebugLog(@"%@",errorMsg);
 }
 
 

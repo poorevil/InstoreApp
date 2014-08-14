@@ -347,7 +347,7 @@ CouponViewInterfaceDelegate, YouhuiCategoryViewControllerDelegate,YouHuiOrderVie
 
 - (void)getCouponViewListDidFailed:(NSString *)errorMsg
 {
-    NSLog(@"%@",errorMsg);
+    DebugLog(@"%@",errorMsg);
 }
 
 #pragma mark - CouponSectionTwoInterfaceDelegate
@@ -361,7 +361,7 @@ CouponViewInterfaceDelegate, YouhuiCategoryViewControllerDelegate,YouHuiOrderVie
     [self.favorBtn setTitle:[NSString stringWithFormat:@"已收藏%d",focusCount] forState:UIControlStateNormal];
 }
 - (void)getCouponSectionTwoListDidFailed:(NSString *)errorMsg{
-   NSLog(@"%@",errorMsg);
+   DebugLog(@"%@",errorMsg);
 }
     
 #pragma mark - CouponSearchOrderInterfaceDelegate
@@ -376,7 +376,7 @@ CouponViewInterfaceDelegate, YouhuiCategoryViewControllerDelegate,YouHuiOrderVie
     [self.mtableView scrollRectToVisible:CGRectMake(0, 0, 320, 1) animated:YES];
 }
 -(void)couponSearchOrderDidFailed:(NSString*)errorMessage{
-    NSLog(@"%s:%@",__FUNCTION__,errorMessage);
+    DebugLog(@"%s:%@",__FUNCTION__,errorMessage);
 }
 
 

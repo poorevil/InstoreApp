@@ -226,7 +226,7 @@
     [self.myTableView reloadData];
 }
 -(void)getMyDownloadCouponDetailDidFailed:(NSString *)errorMsg{
-    NSLog(@"%s:%@",__FUNCTION__,errorMsg);
+    DebugLog(@"%s:%@",__FUNCTION__,errorMsg);
 }
 
 -(void)btnShareAction:(UIButton *)sender{

@@ -172,7 +172,7 @@
 
 -(void)getCouponsDownloadListFailed:(NSString *)errorMessage
 {
-    NSLog(@"%@",errorMessage);
+    DebugLog(@"%@",errorMessage);
 }
 
 -(void)dealloc{

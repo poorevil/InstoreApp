@@ -203,7 +203,7 @@ static NSString* szClientSecret = @"ea13692f9c960a37db0086ff87e56e01";
 }
 
 -(void)getInitParamDidFailed:(NSString *)errorMsg{
-    NSLog(@"%@",errorMsg);
+    DebugLog(@"%@",errorMsg);
     [self initWindow];
 }
 

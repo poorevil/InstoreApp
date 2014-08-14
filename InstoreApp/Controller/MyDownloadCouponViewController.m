@@ -80,7 +80,7 @@
     [self.myTableView reloadData];
 }
 -(void)getMyDownloadCouponListDidFailed:(NSString *)errorMsg{
-    NSLog(@"%@",errorMsg);
+    DebugLog(@"%@",errorMsg);
 }
 
 -(void)dealloc{

@@ -79,7 +79,7 @@
         }
         
         urlString = [self URLEncodedString:urlString];
-        NSLog(@"urlString %@",urlString);
+        DebugLog(@"urlString %@",urlString);
         
         //TODO:加密算法
         
@@ -137,7 +137,7 @@
                 [self connect];
             }
             @catch (NSException *exception) {
-                NSLog(@"%@",exception.reason);
+                DebugLog(@"%@",exception.reason);
                 
                 [self requestFailed:request];
             }
@@ -181,7 +181,7 @@
 }
 
 -(void)requestFailed:(ASIHTTPRequest *)request {
-    NSLog(@"-------responseStatusMessage:%@",request.responseStatusMessage);
+    DebugLog(@"-------responseStatusMessage:%@",request.responseStatusMessage);
     
     [_baseDelegate requestIsFailed:request.error];
 }
@@ -232,7 +232,7 @@
     [string2Sign insertString:secretKey atIndex:0];
     [string2Sign appendString:MALL_CODE];
     
-    NSLog(@"---------string2Sign:%@",string2Sign);
+    DebugLog(@"---------string2Sign:%@",string2Sign);
     NSString *sign = [string2Sign HMAC_MD5_HEX:secretKey];
     [string2Sign release];
     return [sign uppercaseString];
