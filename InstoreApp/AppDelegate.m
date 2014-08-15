@@ -51,13 +51,13 @@ static NSString* szClientSecret = @"ea13692f9c960a37db0086ff87e56e01";
     //初始化微信 appkey
     [WXApi registerApp:WeChatKey];
     
-//    //地图初始化HTTPAccess
-//    if (![HTTPAccess getInstanceIfInited]) {
-//        HTTPAccess *httpAccess = [HTTPAccess createWithId:szClientId andSecret:szClientSecret];
-////        [httpAccess requestAccessTokenFromServer];
-//        [httpAccess requestAccessTokenFromServerSynchronously];
-//        NSLog(@"===========%@",[httpAccess accessToken]);
-//    }
+    //地图初始化HTTPAccess
+    if (![HTTPAccess getInstanceIfInited]) {
+        HTTPAccess *httpAccess = [HTTPAccess createWithId:szClientId andSecret:szClientSecret];
+//        [httpAccess requestAccessTokenFromServer];
+        [httpAccess requestAccessTokenFromServerSynchronously];
+        NSLog(@"===========%@",[httpAccess accessToken]);
+    }
     
     [[GlobeModel sharedSingleton] initUUIDIfNeeded];
     

@@ -26,8 +26,8 @@
 #import "WebViewController.h"
 #import "MyDownloadCouponViewController.h"
 #import "BindPhoneViewController.h"
-
 #import "AboutViewController.h"
+
 
 
 @interface MeViewController () <UserInfoInterfaceDelegate>{
@@ -69,6 +69,9 @@
 //    [self.userInfoInterface getUserInfo];
     
     self.navigationItem.rightBarButtonItem = nil;
+    
+    
+    self.setStoreFocusRecommend = [[[SetStoreFocusRecommend alloc]init]autorelease];
     
 }
 -(void)viewDidAppear:(BOOL)animated{
@@ -117,7 +120,13 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+//    UITableViewCell *cell;
+//    if (indexPath.section == 4) {
+//        cell = [tableView dequeueReusableCellWithIdentifier:@"CellRecive"];
+//    }else{
+//        cell= [tableView dequeueReusableCellWithIdentifier:@"cell"];
+//    }
+    
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     
     if (!cell) {
@@ -127,6 +136,7 @@
         cell.textLabel.font = [UIFont systemFontOfSize:14];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
+    
     switch (indexPath.section) {
         case 0:{
             static NSString *CellIdentifier = @"MyViewCell";
@@ -196,15 +206,13 @@
         case 4:{
             cell.textLabel.text = @"接收已关注商家的优惠信息";
             cell.accessoryType = UITableViewCellAccessoryNone;
-            static UISwitch *_switchButton;
-            if (!_switchButton) {
-                _switchButton = [[UISwitch alloc] init];
-                _switchButton.frame = CGRectMake(tableView.frame.size.width - _switchButton.frame.size.width - 10, (cell.frame.size.height - _switchButton.frame.size.height)/2, _switchButton.frame.size.width, _switchButton.frame.size.height);
-                [_switchButton setOn:_recommend];
-                [_switchButton addTarget:self action:@selector(switchButtonChangeAchtion:) forControlEvents:UIControlEventValueChanged];
-                [cell.contentView addSubview:_switchButton];
-                [_switchButton release];
-            }
+            UISwitch *_switchButton = [[UISwitch alloc] init];
+            _switchButton.frame = CGRectMake(tableView.frame.size.width - _switchButton.frame.size.width - 10, (cell.frame.size.height - _switchButton.frame.size.height)/2, _switchButton.frame.size.width, _switchButton.frame.size.height);
+            [_switchButton setOn:_recommend];
+            [_switchButton addTarget:self action:@selector(switchButtonChangeAchtion:) forControlEvents:UIControlEventValueChanged];
+            [cell.contentView addSubview:_switchButton];
+            [_switchButton release];
+    
             return cell;
         }
             break;
@@ -215,7 +223,6 @@
     
     return  cell;
 }
-
 
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -345,12 +352,10 @@
 }
 
 -(void)switchButtonChangeAchtion:(UISwitch *)sender{
-    if (sender.on) {
-//        [sender setOn:NO];
+    if (!sender.on) {
         [self.setStoreFocusRecommend setStoreFocusRecomend:NO];
         _recommend = NO;
     }else{
-//        [sender setOn:YES];
         [self.setStoreFocusRecommend setStoreFocusRecomend:YES];
         _recommend = YES;
     }

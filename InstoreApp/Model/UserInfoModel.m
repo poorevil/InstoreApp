@@ -25,8 +25,22 @@
         self.birthday = [NSDate dateFromString:[jsonMap objectForKey:@"birthday"]];
         self.promotionCount = [jsonMap objectForKey:@"promotionCount"] == nil?0:[[jsonMap objectForKey:@"promotionCount"] integerValue];
         self.memberGuideUrl = [jsonMap objectForKey:@"memberGuideUrl"];
-        self.isStoreFocusRecommend = [jsonMap objectForKey:@"store_focus_recommend"] == nil?NO:[[jsonMap objectForKey:@"store_focus_recommend"] boolValue];
-        self.isAutoConnectWifi = [jsonMap objectForKey:@"auto_connect_wifi"] == nil?NO:[[jsonMap objectForKey:@"auto_connect_wifi"] boolValue];
+//        self.isStoreFocusRecommend = [jsonMap objectForKey:@"store_focus_recommend"] == nil?NO:[[jsonMap objectForKey:@"store_focus_recommend"] boolValue];
+        NSDictionary *setting = [jsonMap objectForKey:@"setting"];
+        NSString *stringRecommend = [setting objectForKey:@"store_focus_recommend"];
+        NSString *stringAutoConnect = [setting objectForKey:@"auto_connect_wifi"];
+        if ([stringRecommend isEqualToString:@"on"]) {
+            self.isStoreFocusRecommend = YES;
+        }else{
+            self.isStoreFocusRecommend = NO;
+        }
+        if ([stringAutoConnect isEqualToString:@"on"]) {
+            self.isAutoConnectWifi = YES;
+        }else{
+            self.isAutoConnectWifi = NO;
+        }
+        
+//        self.isAutoConnectWifi = [jsonMap objectForKey:@"auto_connect_wifi"] == nil?NO:[[jsonMap objectForKey:@"auto_connect_wifi"] boolValue];
         
     }
     

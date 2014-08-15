@@ -30,7 +30,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    self.title = @"惠逛模式";
+    self.title = @"惠逛模式(Demo)";
     self.hidesBottomBarWhenPushed = YES;
     self.navigationItem.rightBarButtonItem = nil;
     

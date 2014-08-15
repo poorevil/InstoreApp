@@ -79,7 +79,8 @@
 
 - (void)viewDidLoad
 {
-    [self createRightBarItem:@"店铺列表" tagert:self action:@selector(switchToStoreListView)];
+//    [self createRightBarItem:@"店铺列表" tagert:self action:@selector(switchToStoreListView)];
+    [self createRightBarItem:@"楼层选择" tagert:self action:@selector(showListTableView)];
     
     float navgationBarHeight = 44; //self.navigationController.navigationBar.frame.size.height
     CGRect mallMapRect = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - navgationBarHeight);
@@ -126,14 +127,35 @@
 
 -(void)createRightBarItem:(NSString *)title tagert:(id)target action:(SEL)action
 {
-    UIGlossyButton *rightBtn = [[UIGlossyButton alloc] initWithFrame:CGRectMake(0, 0, 80, 30)];
-	[rightBtn setNavigationButtonWithColor:[UIColor navigationBarButtonColor]];
+//    UIGlossyButton *rightBtn = [[UIGlossyButton alloc] initWithFrame:CGRectMake(0, 0, 80, 30)];
+    UIButton *rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    rightBtn.frame = CGRectMake(0, 0, 80, 30);
+//	[rightBtn setNavigationButtonWithColor:[UIColor navigationBarButtonColor]];
     [rightBtn setTitle:title forState:UIControlStateNormal];
     [rightBtn addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *rightBarBtnItem = [[UIBarButtonItem alloc] initWithCustomView:rightBtn];
     self.navigationItem.rightBarButtonItem = rightBarBtnItem;
     [rightBarBtnItem release];
-    [rightBtn release];
+//    [rightBtn release];
+}
+
+-(void)showListTableView{
+    if (self.mFloorSwitcher.frame.origin.y > 0) {
+        return;
+    }
+    
+    [UIView animateWithDuration:0.6 animations:^(void){
+        CGRect frame = self.mFloorSwitcher.frame;
+        frame.origin.y += self.view.frame.size.height - 64;
+        self.mFloorSwitcher.frame = frame;
+    }];
+}
+-(void)hiddenListTableView{
+    [UIView animateWithDuration:0.6 animations:^(void){
+        CGRect frame = self.mFloorSwitcher.frame;
+        frame.origin.y -= self.view.frame.size.height - 64;
+        self.mFloorSwitcher.frame = frame;
+    }];
 }
 
 #pragma mark - table delegate - floorSwitcher
@@ -173,12 +195,13 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [self.mMapControl switchFloor: [floorInforArray objectAtIndex:indexPath.row]];
+    [self hiddenListTableView];
 }
 
 
 #pragma mark - MBSMapViewControllerDelegate
 -(void)createFloorSwitchControl:(UIView *)mapView {
-    self.mFloorSwitcher = [[[UITableView alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 50, 10, 40, self.view.frame.size.height)  style:UITableViewStylePlain]autorelease];
+    self.mFloorSwitcher = [[[UITableView alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 40, 64 -(self.view.frame.size.height - 64), 40, self.view.frame.size.height-64)  style:UITableViewStylePlain]autorelease];
     
     MBSMall *currentMall = [MBSMall getCurrentMall];
     

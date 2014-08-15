@@ -42,7 +42,7 @@
     self.logoImageView.imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@/150*150.png",self.storeModel.logoUrl]];
     self.titleLabel.text = self.storeModel.title;
     self.categoryLabel.text = self.storeModel.categoryModel.cName;
-    self.addressLabel.text = self.storeModel.address;
+    self.addressLabel.text = [NSString stringWithFormat:@"%@ %@",self.storeModel.position.floor.fName,self.storeModel.position.roomNum];
     self.telLabel.text = self.storeModel.tel;
     if ([storeModel.appCategory isEqualToString:@"Restaurant"]) {
         self.avgPrice.text = [NSString stringWithFormat:@"人均:%d",storeModel.avgPrice];

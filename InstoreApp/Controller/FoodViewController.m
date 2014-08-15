@@ -250,6 +250,7 @@
             self.foodViewInterface = [[[FoodViewInterface alloc] init]autorelease];
             self.foodViewInterface.delegate = self;
         }
+        self.mtableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
         [self.foodViewInterface getFoodListByPage:self.currentPage amount:20];
         
     }else{
@@ -259,6 +260,7 @@
             self.foodViewPromotionInterface.delegate = self;
         }
         [self.foodViewPromotionInterface getFoodViewPromotionListByPage:self.promotion_currentPage amount:20];
+        self.mtableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     }
 }
 

@@ -188,6 +188,7 @@
 		040266F21981F52F003AC618 /* UIViewController+ShareToWeChat.m in Sources */ = {isa = PBXBuildFile; fileRef = 040266F11981F52F003AC618 /* UIViewController+ShareToWeChat.m */; };
 		040266F81981F560003AC618 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 040266F51981F560003AC618 /* libWeChatSDK.a */; };
 		040266FA19820A3E003AC618 /* store_nav_right_love@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 040266F919820A3E003AC618 /* store_nav_right_love@2x.png */; };
+		0403FB68199DE04800AD2F97 /* main_cell_nav_message@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0403FB67199DE04800AD2F97 /* main_cell_nav_message@2x.png */; };
 		0408DA10198781160029C584 /* MallNewsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0408DA0F198781160029C584 /* MallNewsModel.m */; };
 		0408DA1519878A4D0029C584 /* MallNews_multiCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0408DA1319878A4D0029C584 /* MallNews_multiCell.m */; };
 		0408DA1619878A4D0029C584 /* MallNews_multiCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0408DA1419878A4D0029C584 /* MallNews_multiCell.xib */; };
@@ -1068,6 +1069,7 @@
 		040266F61981F560003AC618 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
 		040266F71981F560003AC618 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
 		040266F919820A3E003AC618 /* store_nav_right_love@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "store_nav_right_love@2x.png"; sourceTree = "<group>"; };
+		0403FB67199DE04800AD2F97 /* main_cell_nav_message@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_cell_nav_message@2x.png"; sourceTree = "<group>"; };
 		0408DA0E198781160029C584 /* MallNewsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MallNewsModel.h; sourceTree = "<group>"; };
 		0408DA0F198781160029C584 /* MallNewsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MallNewsModel.m; sourceTree = "<group>"; };
 		0408DA1219878A4D0029C584 /* MallNews_multiCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MallNews_multiCell.h; sourceTree = "<group>"; };
@@ -3054,6 +3056,7 @@
 		4EF0907518FB52CE00ABFE7D /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				0403FB67199DE04800AD2F97 /* main_cell_nav_message@2x.png */,
 				0414FC65198A203B00FE7075 /* share_bg@2x.png */,
 				0414FC66198A203B00FE7075 /* share_btn_1@2x.png */,
 				0414FC67198A203B00FE7075 /* share_btn_2@2x.png */,
@@ -3758,6 +3761,7 @@
 				4EF0915E18FC50B400ABFE7D /* tabbar_selected_bg@2x.png in Resources */,
 				C1A84A4F192C538C003219DA /* Icon_1024.png in Resources */,
 				4E2C6DAA18D7502100DF3772 /* InfoPlist.strings in Resources */,
+				0403FB68199DE04800AD2F97 /* main_cell_nav_message@2x.png in Resources */,
 				03650F831945F52200016289 /* mainview_msg_press@2x.png in Resources */,
 				4EF090F218FB52FD00ABFE7D /* sale-share-icon@2x.png in Resources */,
 				4EF090ED18FB52FD00ABFE7D /* sale-bar-tabright@2x.png in Resources */,
